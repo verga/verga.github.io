@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Dynamical localization | Random physics
+</title>
+    <link rel="canonical" href="/pages/kicked-localization.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Contrary to its classical version that, for large nonlinearity, enters a regime of diffusion, the quantum standard map evolves to a localized state.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}&nbsp;\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked.html">&raquo;kicked rotator</a><a href="/pages/rm.html">&raquo;random matrices</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<h1>Dynamical&nbsp;localization</h1>
+<p><a href="http://dx.doi.org/10.1103/PhysRev.109.1492">Anderson (1958)</a> discovered that disorder leads to localization of the quantum states. Contrary to naive physical &#8220;intuition&#8221;, transport in a metal with a strong concentration of impurities do not proceed by tunneling from one impurity to another, but completely stops above a threshold concentration: if initially the particle probability is concentrated at the origin, the probability of finding the particle at the origin when times goes to infinity, remains finite. Therefore the particle&#8217;s wave function is exponentially localized inside a region characterized by a <em>localization length</em> <span class="math">\(l\)</span>.</p>
+<p>A simple model of localization consists in a tight-binding one dimensional Hamiltonian <span class="math">\(H\)</span> with random energies <span class="math">\(\varepsilon_x\)</span> at each lattice site <span class="math">\(x\)</span> (we take the lattice step <span class="math">\(a=1\)</span> as the unit of length), and a constant hopping energy between neighboring sites (taken to be the unit of energy and <span class="math">\(\hbar=1\)</span>):
+</p>
+<div class="math">\begin{equation}
+    H = -\sum_x \left( |x+1\rangle \langle x| + |x-1\rangle \langle x| \right) +
+      \sum_x \varepsilon_x |x\rangle \langle x| \,,
+    \label{alH}
+\end{equation}</div>
+<p>
+where <span class="math">\(\varepsilon_x \sim \mathcal{U}(-W/2,W/2)\)</span> are uniformly distributed in a band of width <span class="math">\(W\)</span>, and <span class="math">\(|n\rangle\)</span> is the position state. The first term of <span class="math">\(H\)</span> contains the random energies, and the two last terms the hopping energies to the right or to the left of point <span class="math">\(x\)</span>. This model, proposed by Anderson, exhibit in one and two dimensions, complete localization for any disorder strength (measured by <span class="math">\(W\)</span>), and in three dimensions for disorder strengths above a&nbsp;threshold.</p>
+<p>The solution of the stationary Schrödinger&nbsp;equation,
+</p>
+<div class="math">\begin{equation}
+ H |E_n\rangle = E_n |E_n \rangle\,, \quad n = 0,1,\ldots
+  \label{alEV}
+\end{equation}</div>
+<p>
+are the <em>energy</em> eigenvectors <span class="math">\(\langle x|E_n\rangle = \psi_n(x)\)</span> and <span class="math">\(E_n\)</span> the corresponding eigenvalues. This eigenvalue problem can easily be solved&nbsp;numerically.</p>
+<h3>Exercice</h3>
+<blockquote>
+<p>Compute the eigenvectors and eigenvalues of the Anderson Hamiltonian (<span class="math">\(\ref{alH}\)</span>), and show in particular that the histogram of energy level spacings <span class="math">\(s=(E_{n+1} - E_n)/\overline{\Delta E}\)</span> follows a Poisson&nbsp;law.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">uniform</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">eig</span><span class="p">,</span> <span class="n">eigvals</span>
+<span class="k">def</span> <span class="nf">hamiltonian</span><span class="p">(</span><span class="n">L</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">roll</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">roll</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">diag</span><span class="p">(</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">W</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">W</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1250</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">hamiltonian</span><span class="p">(</span><span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">W</span><span class="p">)</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="p">[</span><span class="n">E</span><span class="o">.</span><span class="n">argsort</span><span class="p">()]</span>
+<span class="n">E</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img src="/images/al-e.png" alt="energy" style="width: 230px;"/>
+<img src="/images/al-psi800.png" alt="mode" style="width: 230px;"/>
+<img src="/images/al-ps.png" alt="spacings" style="width: 230px;"/></p>
+<p>The above figures show the spectrum of the random Hamiltonian, a typical eigenvector (in one dimension all the eigenvectors are localized), and a histogram showing that the energy spacing follows a Poisson distribution. This distribution is different from the random matrix distribution of the Gaussian orthogonal ensemble (valid for real symmetric matrices whose entries are Gaussian random numbers), which characterizes time reversal symmetric Hamiltonians. The main difference between the matrix <span class="math">\(H\)</span> and the Gaussian matrix is that its diagonal terms are uncorrelated; the Gaussian matrix can be diagonalized, but its eigenvalues will have strong&nbsp;correlations.</p>
+<p>The Schrödinger equation with energy <span class="math">\(E\)</span>, can also be written as a second order difference&nbsp;equation
+</p>
+<div class="math">\begin{equation}
+  \psi_{x+1} + \psi_{x-1} + (E - \varepsilon_x) \psi_x = 0\,,
+  \label{alS}
+\end{equation}</div>
+<p>
+where <span class="math">\(\psi_x = \langle x | \psi \rangle\)</span> is the particle wave function, the probability amplitude to find the particle at site <span class="math">\(x\)</span>. This form is well adapted to investigate the transmission <span class="math">\(T\)</span> through a lattice of length <span class="math">\(L\)</span>, as a function of the energy <span class="math">\(E\)</span>, of an incident particle <span class="math">\(\E^{\I kx}\)</span> (plane wave), where <span class="math">\(k\)</span> is given&nbsp;by 
+</p>
+<div class="math">$$E = -2 \cos(k)\,,$$</div>
+<p>
+the dispersion relation of a free particle (<span class="math">\(\varepsilon_x=0\)</span>), propagating from left to right. Equation (<span class="math">\(\ref{alS}\)</span>), can be put in a more convenient form, using the matrix <span class="math">\(M_n\)</span>,
+</p>
+<div class="math">\begin{equation}
+  \begin{pmatrix}
+    \psi_{x+1} \\ \psi_x
+  \end{pmatrix} =
+  M_x\,\begin{pmatrix}
+    \psi_{x} \\ \psi_{x-1}
+  \end{pmatrix}\,, \quad
+  M_x = \begin{pmatrix}
+    -(E-\varepsilon_x) &amp; -1 \\ 1 &amp; 0
+  \end{pmatrix}\,;
+  \label{alM}
+\end{equation}</div>
+<p>
+the matrix <span class="math">\(M_x\)</span> is unimodular (<span class="math">\(\det M_x =1\)</span>). Therefore, the initial value problem of the Schrödinger equation is solved by the product of random&nbsp;matrices:
+</p>
+<div class="math">$$ 
+  \begin{pmatrix}
+    \psi_{x+1} \\ \psi_x
+  \end{pmatrix} = M_x M_{x-1}\ldots M_1
+  \begin{pmatrix}
+    \psi_{1} \\ \psi_0
+  \end{pmatrix}
+$$</div>
+<p>
+A theorem on random unimodular matrices products due to <a href="http://dx.doi.org/10.2307/1993589">Furstenberg (1963)</a>, states&nbsp;that
+</p>
+<div class="math">\begin{equation}
+  \lim_{x\rightarrow \infty} \frac{1}{x} \ln  \mathrm{Tr}\, (M_x\ldots M_1 ) = \lambda&gt;0\,,
+  \label{alF}
+\end{equation}</div>
+<p>
+where <span class="math">\(\lambda\)</span> is the maximum Lyapunov exponent. As a consequence of the exponential growth of the matrix product, the asymptotic behavior of the wave amplitude must be of the&nbsp;form:
+</p>
+<div class="math">$$ \lim_{x \rightarrow \infty} \psi_x \sim \E^{\pm x/\ell}\,, \quad
+\ell \sim 1/\lambda\,.$$</div>
+<p>
+Indeed, for generic initial conditions <span class="math">\((\psi_0,\psi_1)\)</span>, the solutions of the Schrödinger equation will be a superposition of growing and decaying amplitudes, whose characteristic length scale is a function of the energy, <span class="math">\(\ell=\ell(E)\)</span>. Only for special values of the energy, precisely the eigenvalues of (<span class="math">\(\ref{alEV}\)</span>), will result in normalizable solutions, simultaneously decaying in both&nbsp;directions.</p>
+<p>In summary, the spectrum of the Anderson Hamiltonian is a discrete spectrum of exponentially localized wave functions, whose characteristic localization length is given by the inverse of the Lyapunov exponent of the transfer matrix&nbsp;product.</p>
+<p>It is worth noting that equation (<span class="math">\(\ref{alS}\)</span>) is analogous to the dynamical equation of a kicked Hamiltonian system, where position steps are replaced by time steps between kicks. This analogy allows to investigate the localization of the quantum kicked rotator using the methods developed to the Anderson&nbsp;problem.</p>
+<h3>Exercice</h3>
+<blockquote>
+<p>Compute the localization length and investigate the fluctuations of the transmission coefficient <span class="math">\(T=T(E,L)\)</span> of the one dimensional Anderson model. Solve (<span class="math">\(\ref{alS}\)</span>) imposing an outgoing plane wave at site <span class="math">\(L+1\)</span>: <span class="math">\(\psi_{L+1}=\E^{\I k}\)</span> and <span class="math">\(\psi_L = 1\)</span>, and integrating the difference equation backwards in space. See the <a href="http://arxiv.org/abs/cond-mat/0609580">Markos (2006)</a> paper, to find a computation of the transmission coefficient using the transfer matrix <span class="math">\(T\)</span>
+<div class="math">$$T_x = Q^{-1} M_x Q \,, \quad
+T^L = \begin{pmatrix}
+  1/t^* &amp; -r^*/t^* \\ -r/t &amp; 1/t
+\end{pmatrix} \,,\quad
+Q = \begin{pmatrix}
+  1 &amp; 1 \\ \E^{-\I k} &amp; \E^{\I k}
+\end{pmatrix}$$</div>
+</p>
+</blockquote>
+<p><img src="/images/al-psin.png" alt="amplitude" style="width: 230px;"/>
+<img src="/images/al-T.png" alt="transmission" style="width: 230px;"/></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># original perl code by Dominique Delande </span>
+<span class="c1">#   arXiv:1005.0915v2 (Les Houches, 2009)</span>
+<span class="c1">#   http://arxiv.org/abs/1005.0915v2</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">transmission</span><span class="p">(</span><span class="n">L</span> <span class="o">=</span> <span class="mi">1250</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">NA</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">arccos</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">E</span><span class="p">)</span>
+    <span class="n">logT</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">NA</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># average over disorder</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NA</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="c1"># initial plane wave (outgoing)</span>
+        <span class="n">psi_n_plus_1</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">psi_n</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">e_n</span> <span class="o">=</span> <span class="n">W</span><span class="o">*</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># solve Schroedinger equation from last point</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">psi_n_minus_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span> <span class="o">-</span> <span class="n">e_n</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">*</span><span class="n">psi_n</span> <span class="o">-</span> <span class="n">psi_n_plus_1</span>
+            <span class="p">(</span><span class="n">psi_n</span><span class="p">,</span> <span class="n">psi_n_plus_1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">psi_n_minus_1</span><span class="p">,</span> <span class="n">psi_n</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># transmission coefficient $itt = 1/|t|^2$</span>
+        <span class="n">psi_n_minus_1</span> <span class="o">=</span> <span class="n">E</span><span class="o">*</span><span class="n">psi_n</span> <span class="o">-</span> <span class="n">psi_n_plus_1</span>
+        <span class="n">itt</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">psi_n_minus_1</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">psi_n</span><span class="p">)</span><span class="o">/</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">logT</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">itt</span><span class="p">)</span>
+        <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">logT</span>
+</code></pre></div>
+
+<h2>Analogy of the kicked rotator with the Anderson&nbsp;model</h2>
+<p>A relation can be established between the Anderson model of spacial localization, and the dynamical localization in kicked systems. We start by using a Hermitian operator <span class="math">\(W\)</span> to transform the perturbation part of the Floquet operator <span class="math">\(F=\E^{-\I V(x)} \E^{-\I H_0}\)</span>:
+</p>
+<div class="math">\begin{equation}
+  \E^{-\I V(x)} = \frac{1 - \I W(x)}{1 + \I W(x)}\,, \quad
+  W(x) = \tan \frac{V(x)}{2}\,.
+  \label{alFW}
+\end{equation}</div>
+<p>
+Substitution in the eigenvector formula <span class="math">\(F |\phi\rangle = \E^{-\I \phi}|\phi\rangle\)</span>,&nbsp;gives
+</p>
+<div class="math">$$(1-\I W) \E^{\I \phi - \I H_0} |\phi\rangle = (1+\I W) |\phi\rangle\,,$$</div>
+<p>
+or after a simple (formal) manipulation, we&nbsp;get
+</p>
+<div class="math">$$\tan \frac{\phi - H_0}{2} |\phi\rangle - W |\phi\rangle = 0\,.$$</div>
+<p>
+Now, using the <span class="math">\(p\)</span>-representation (eigenvectors of the unperturbed system, <span class="math">\(H_0|n\rangle = (n^2/2M) |n\rangle\)</span>), the first term of the previous expression is diagonal, and the second one is a&nbsp;convolution:
+</p>
+<div class="math">\begin{equation}
+  \varepsilon_n \varphi_n - \sum_{m \ne n} W_{n-m} \varphi_m = E \varphi_n\,,
+  \label{alDiff}
+\end{equation}</div>
+<p>
+with <span class="math">\(E=&nbsp;W_0\)</span>
+</p>
+<div class="math">$$W_n = \frac{1}{2\pi}
+\int_{0}^{2\pi} \Di{x} 
+\tan \left( \frac{k\cos x}{2} \right)
+\E^{-\I n x}\,,\quad
+\varepsilon_n = \tan \left[ \frac{\phi}{2} - \frac{n^2}{4M} \right] \,,
+$$</div>
+<p>
+and <span class="math">\(\varphi_n = \langle n | \phi \rangle\)</span>. Equation (<span class="math">\(\ref{alDiff}\)</span>) is precisely of the form of the Schrödinger equation on a one dimensional lattice. The locality of interaction (between neighbors in the Anderson model) is ensured by the decay of <span class="math">\(W_n\)</span> with <span class="math">\(n\)</span>. Moreover, the &#8220;site energies&#8221;, are pseudo-random numbers with a Cauchy distribution: <span class="math">\(\varepsilon_n \sim \mathcal{L}\)</span>:
+</p>
+<div class="math">$$P(\varepsilon_n) = \frac{1}{\pi(1+\varepsilon_n^2)}\,.
+$$</div>
+<p>
+Indeed, the sequence entering the tangent, becomes effectively <span class="math">\(\phi - n^2/4M \mod \pi\)</span>, which is ergodic in the interval <span class="math">\([0,\pi]\)</span> [Weyl (1916)]. We will now investigate the localization in a one dimensional lattice, assuming neighbor hopping, with a Cauchy-like site disorder (known as the Lloyds model). Our objective is to derive an expression for the localization&nbsp;length.</p>
+<p><img src="/images/al-randome.png" alt="tan(p^2)" style="width: 230px;"/>
+<img src="/images/al-randomPe.png" alt="Lorentzian" style="width: 230px;"/></p>
+<p>The figures (above) show the values of <span class="math">\(\varepsilon_n\)</span> for <span class="math">\(\phi\)</span> the golden ratio and <span class="math">\(M=4\)</span>, together with its histogram, which fits a Lorentzian&nbsp;function.</p>
+<h2>Localization length and density of&nbsp;states</h2>
+<p>When restricted to nearest neighbors hopping, equation (<span class="math">\(\ref{alDiff}\)</span>) is analogous to the Anderson model Schrödinger&nbsp;equation:
+</p>
+<div class="math">\begin{equation}
+  \varphi_{n+1} + \varphi_{n-1} + (E - \varepsilon_n) \varphi_n = 0 \,, \quad
+  P(\varepsilon_n) = \frac{W}{2\pi} 
+  \frac{1}{ \left(\frac{W}{2} \right)^2 + \varepsilon_n^2}
+  \label{alDiffn}
+\end{equation}</div>
+<p>
+where hopping is in momentum space instead of position space, and site disorder is distributed according to the Cauchy law, rather than uniform, law. The assumption of hopping to the neighbors is not really satisfied when <span class="math">\(k\)</span> is large: the integral <span class="math">\(W_n\)</span> is oscillating and decays slowly; however, this approximation can give us a relevant qualitative information about the localized states of the kicked&nbsp;rotator.</p>
+<p>To compute the ensemble-averaged Lyapunov exponent, or equivalently the inverse of the localization length <span class="math">\(\overline{\lambda} = 1/\ell\)</span>, we can solve (<span class="math">\(\ref{alDiffn}\)</span>) as an initial value problem, fixing <span class="math">\(\varphi_0\)</span> and <span class="math">\(\varphi_1\)</span>, to find <span class="math">\(\varphi_L(E) \sim \E^{L/\ell(E)}\)</span> (if <span class="math">\(E\)</span> is not in the spectrum, according to the Furstenberg theorem). In one dimension <span class="math">\(\varphi_L(E)\)</span> is a polynomial of degree <span class="math">\(L-1\)</span> whose zeros correspond to the eigenvalues of the chain with fixed boundary <span class="math">\(\varphi_L=0\)</span>. This is special for one dimension, because we can order the eigenmodes by their number of nodes: the lowest energy state has no nodes, one node for the first &#8220;excited&#8221; state, etc. This is a property that the disorder do not change. Therefore, we can&nbsp;write,
+</p>
+<div class="math">\begin{equation}
+  \varphi_L(E) = C \prod_{k=1}^{L-1}(E_k - E)\,, \quad
+  \ln \varphi_L(E) = \sum_{k=1}^{L-1} 
+    \left[ \ln |E_k -E| + \I \pi \theta(E - E_k) + \ln C \right]\,,
+\end{equation}</div>
+<p>
+where indices <span class="math">\(k,\ldots\)</span> denote energy levels (<span class="math">\(n,\ldots\)</span>, are for &#8220;position&#8221;); the second expression takes into account the sign change at each node, which introduces a jump of <span class="math">\(\I \pi\)</span> in the logarithm (<span class="math">\(C\)</span> is a normalization constant). In the limit of an infinite system, the sum over states can be replaced by an integral over the density of states; separating real an imaginary parts, we&nbsp;obtains,
+</p>
+<div class="math">\begin{equation}
+  \frac{1}{\ell} = \lim_{L\rightarrow \infty} \frac{1}{L}
+  \mathrm{Re}\, \overline{ \varphi_L(E) } =
+  \int_{-\infty}^{\infty} \Di{E'} \overline{\rho(E')} \ln | E - E'| + 
+  \ln 2\,,
+  \label{alHJT}
+\end{equation}</div>
+<p>
+and,
+</p>
+<div class="math">\begin{equation}
+  F(E) = \lim_{L\rightarrow \infty}  \frac{1}{\pi}
+  \mathrm{Im}\,\overline{ \varphi_L(E)} = 
+  \int_{-\infty}^{E} \Di{E'} \overline{ \rho(E')} \,, 
+\end{equation}</div>
+<p>
+where <span class="math">\(\overline{\rho(E)}\)</span> is the <em>averaged</em> density of states, and <span class="math">\(F(E)\)</span> is its cumulative distribution (we denote <span class="math">\(\overline{\cdots}\)</span>, the disorder average). The constant was determined from the condition <span class="math">\(\ell^{-1}=0\)</span> for the free system. Equation (<span class="math">\(\ref{alHJT}\)</span>) relates the density of states in one dimension to the localization length, it is known as the Herbert, Jones, Thouless&nbsp;formula.</p>
+<p>An equivalent formula of the localization can be obtained from the behavior of the eigenstates. From (<span class="math">\(\ref{alDiffn}\)</span>) we can deduce the form of an effective Hamiltonian, whose matrix elements&nbsp;are
+</p>
+<div class="math">\begin{equation}
+  H_{nm} = \varepsilon_n \delta_{nm} - \delta_{n,m+1} - \delta_{n,m-1}\,,
+\end{equation}</div>
+<p>
+a tridiagonal matrix, with random elements on the diagonal. We note <span class="math">\(u_n(E_k)\)</span> the eigenvector of eigenvalue <span class="math">\(E_k\)</span> of <span class="math">\(H\)</span>. An explicit solution of the tridiagonal system is obtained from the Green function <span class="math">\(G = (E-H)^{-1}\)</span>, whose matrix elements can be written in terms of the cofactor <span class="math">\(C\)</span> and determinant of the <span class="math">\(E-H\)</span>&nbsp;matrix:
+</p>
+<div class="math">\begin{equation}
+  G=\frac{C^T(E-H)}{\det(E-H)}\,, \quad
+  G_{nm} = \frac{ (-1)^{n+m} \det(E-H)_{mn} }{\det(E-H)}
+\end{equation}</div>
+<p>
+where <span class="math">\(\det_{mn}\)</span> is the minor of row <span class="math">\(m\)</span> and column <span class="math">\(n\)</span>. The computation of the minor involving the initial site <span class="math">\(n=1\)</span> and the last one <span class="math">\(n=L\)</span> is trivial for a tridiagonal&nbsp;matrix:
+</p>
+<div class="math">\begin{equation}
+  G_{1L} = \prod_{k=1}^{L} (E-E_k)^{-1}
+  \label{e:alG1L}
+\end{equation}</div>
+<p>
+From the general form of the Green function in terms of the Hamiltonian basis functions <span class="math">\(u_n(E_k)\)</span>,
+</p>
+<div class="math">\begin{equation}
+  G_{1L} = \sum_k \frac{u_1(E_k) u_L(E_k) }{E - E_k}\,,
+\end{equation}</div>
+<p>
+we find that the residue of the pole at <span class="math">\(E=E_k\)</span> is <span class="math">\(u_1(E_k) u_L(E_k)\)</span>, and comparing with the residue of (<span class="math">\(\ref{alG1L}\)</span>), we&nbsp;get
+</p>
+<div class="math">\begin{equation}
+  u_1(E_k) u_L(E_k) = \prod_{j\ne k}^{L} (E_k-E_j)^{-1}\,.
+\end{equation}</div>
+<p>
+For a Bloch-type state <span class="math">\(|u_1u_L|\sim 1/L\)</span>, while for a localized state <span class="math">\(|u_1u_L|\sim \E^{-L/\ell}\)</span>.&nbsp;Therefore, 
+</p>
+<div class="math">$$\frac{1}{L} |\ln|u_1 u_L| \sim - \frac{1}{\ell}\,,$$</div>
+<p>
+is finite for a localized state, but vanishes for an extended state. Therefore, taking the logarithm and passing to the continuous limit, one obtains an equivalent to formula (<span class="math">\(\ref{alHJT}\)</span>).</p>
+<h2>Localization length of the kicked&nbsp;rotator</h2>
+<p>To evaluate the localization length for the Cauchy distribution,the appropriated probability law for the kicked rotator, we must calculate the average over disorder of the density of states. Instead of working directly with <span class="math">\(\rho\)</span>, it is easier to study the Green function before, and deduce the system&#8217;s properties from the Green function. For instance, starting from the formula of the&nbsp;trace,
+</p>
+<div class="math">$$\mathrm{Tr}\,G(E \pm \I o) = \sum_k \frac{1}{E - E_k \pm \I o} 
+\rightarrow P \int \Di{E'} \frac{\rho(E')}{E-E'} \mp \I \pi \rho(E)$$</div>
+<p>
+<span class="math">\(P\)</span> stands for the principal value and <span class="math">\(o\rightarrow 0\)</span>, it is easy to demonstrate that the derivative of the Lyapunov exponent is given&nbsp;by
+</p>
+<div class="math">\begin{equation}
+  \frac{\partial }{\partial E} \overline{ \lambda(E)} = 
+  \mathrm{Re}\, \mathrm{Tr}\, \overline{ G(E + \I o )} \,, \quad
+  \overline{ \rho(E)} = \frac{-1}{\pi} \mathrm{Im}\, \overline{G(E + \I o )} \,.
+  \label{alGa}
+\end{equation}</div>
+<p>
+Therefore, we need to average the Green function. One of the most interesting (and generally applicable) methods to compute disorder averages in many-body systems is the <em>replica method</em> devised by Edwards and Anderson (1975) [see the book Peliti, &#8220;Statistical Mechanics in a Nutshell&#8221;&nbsp;(2011)]. </p>
+<p>The idea of the replica method comes from the statistical mechanics of disordered systems as a trick to compute the disorder averaging <span class="math">\(\overline{\cdots}\)</span> of the free&nbsp;energy:
+</p>
+<div class="math">$$
+\overline{F} = \lim_{N\rightarrow\infty} - T\overline{\ln Z} = 
+\lim_{R \rightarrow 0} \lim_{N \rightarrow \infty} -T
+\frac{ \overline{Z^R} -1 }{R}
+$$</div>
+<p>
+(note the intervention of the limits). Instead of computing the average of a logarithm, which is almost never possible, one computes the moments <span class="math">\(\overline{Z^R}\)</span> for integer <span class="math">\(R\)</span>, and then analytically continue to <span class="math">\(R \rightarrow 0\)</span>, in the thermodynamic&nbsp;limit.</p>
+<p>In order to calculate the averaged Green function (<span class="math">\(\ref{alGa}\)</span>), we write it as a Gaussian&nbsp;integral,
+</p>
+<div class="math">\begin{equation}
+  G_{nm} = \langle n|G(E+\I o)|m\rangle = \frac{2}{Z} \int_{-\infty}^{\infty} 
+  \mathrm{D}\varphi \,\varphi_n \varphi_m 
+  \exp \left[-\I \varphi^T ( E-H+\I o ) \varphi \right] \,, 
+\end{equation}</div>
+<p>
+where <span class="math">\(\mathrm{D} \varphi = \prod_{i=1}^{L}\Di{\varphi_i}\)</span>, and <span class="math">\(\varphi = (\varphi_1,\ldots,\varphi_L)\)</span> is the (real) vector of integration variables; the normalization factor&nbsp;is,
+</p>
+<div class="math">$$Z = \frac{\pi^{L/2}}{ \det(E - H + \I o)^{1/2} }\,.
+$$</div>
+<p>
+If we replicate now the integral <span class="math">\(R\)</span> times and average over disorder, the normalization factor <span class="math">\(Z^R\)</span> will disappear in the limit <span class="math">\(R\rightarrow 0\)</span>:
+</p>
+<div class="math">\begin{equation}
+  \overline{G_{nm}} = 2
+  \lim_{R\rightarrow0} \int \mathrm{D}\varepsilon P[\varepsilon]
+  \prod_{r=1}^{R} \int_{-\infty}^{\infty} \mathrm{D}\varphi^r \,\varphi_n^r \varphi_m^r
+  \exp \left[-\I \varphi^{rT} \left( E-H[\varepsilon]+\I o \right) \varphi^r \right] \,, 
+    \label{alGrm}
+\end{equation}</div>
+<p>
+where we explicitly noted the dependency of the Hamiltonian on the random vector <span class="math">\(\varepsilon\)</span> of site disorder energies. The remarkable point about the Cauchy distributed disorder, is that the integral over the Lorentzian gives an exponential function, which naturally adds to form an effective disorder averaged Hamiltonian. Indeed, because of the independence of random energies, the term in <span class="math">\(\varepsilon_n\)</span> of <span class="math">\(H\)</span> can be integrated&nbsp;separately,
+</p>
+<div class="math">$$
+\frac{W}{2\pi} \int_{-\infty}^{\infty} \Di{\varepsilon_n} 
+\frac{\E^{\I \varphi_n\, \varepsilon_n\, \varphi_n}}{(W/2)^2 + \varepsilon_n^2}=
+\E^{-W \varphi_n^2/2}
+$$</div>
+<p>
+which results formally in replacing <span class="math">\(\varepsilon_n \rightarrow \I W/2\)</span> in <span class="math">\(H\)</span>, to obtain from the final expression of <span class="math">\(G\)</span>, the effective&nbsp;Hamiltonian:
+</p>
+<div class="math">\begin{equation}
+  \overline{G(E+ \I o)} = \frac{1}{E-  \overline{H} +\I o}\,, \quad
+  \overline{H_{nm}} = \frac{\I W}{2} \delta_{n,m} - \delta_{n,m+1} -
+  \delta_{n,m-1}
+\end{equation}</div>
+<p>
+The noteworthy point is that this effective Hamiltonian is a non-hermitian operator, underlining the &#8220;dissipative&#8221; aspect of the&nbsp;disorder.</p>
+<p>We need now to&nbsp;compute,
+</p>
+<div class="math">\begin{equation}
+  \mathrm{Tr}\, G = 
+  \sum_m \frac{\det(E-\overline{H})_{mm}}{\det(E-\overline{H})}\,.
+\end{equation}</div>
+<p>
+the resulting expression of the integral (<span class="math">\(\ref{alGrm}\)</span>). This equation is conveniently written using the well known matrix formula <span class="math">\(\mathrm{Tr}\,\ln M = \ln \det M\)</span>, for any matrix <span class="math">\(M\)</span>:
+</p>
+<div class="math">$$\mathrm{Tr}\, G = \frac{\partial}{\partial E} \ln \det(E - \overline{H})\,,$$</div>
+<p>
+which reduces the problem to the standard problem of computing the determinant of a tridiagonal matrix <span class="math">\(D_L = \det(E - \overline{H})\)</span>. It is obtained by simple&nbsp;recursion:
+</p>
+<div class="math">\begin{align*}
+  D_0 &amp;= 1 \\
+  D_1 &amp;= E - \frac{\I W}{2} \\
+  D_2 &amp;=  (E - \frac{\I W}{2})^2 - 1 \\
+  D_n &amp;=  (E - \frac{\I W}{2} )D_{n-1} - D_{n-2}\,.
+\end{align*}</div>
+<p>
+The ansatz <span class="math">\(D_n\sim x^n\)</span>, gives the two&nbsp;solutions
+</p>
+<div class="math">$$x_\pm = \frac{1}{2}
+\left[ E-\frac{\I W}{2} \pm \sqrt{(E-\I W/2)^2 - 4} \right]\,$$</div>
+<p>
+which leads&nbsp;to
+</p>
+<div class="math">$$D_L = \frac{x_+^{L+1} - x_-^{L+1} }{x_+ - x_-}\,.$$</div>
+<p>
+In the <span class="math">\(L\rightarrow\infty\)</span> limit, only the larger root survives. The final expression for the localization length&nbsp;is,
+</p>
+<div class="math">\begin{equation}
+  \frac{1}{\ell(E)} = \ln \frac{1}{2}\left| E-\I W/2 + \sqrt{(E-\I W/2)^2 - 4} \right|\,,
+\end{equation}</div>
+<p>
+or, in a more explicit&nbsp;form:
+</p>
+<div class="math">\begin{equation}
+  \cosh\left[ \frac{2}{\ell(E)} \right] =
+\frac{1}{4} \left( E^2 + \frac{W^2}{4} \right)+ \frac{1}{4} 
+\left[(E+2)^2 +  \frac{W^2}{4} \right]^{1/2} 
+\left[(E-2)^2 +  \frac{W^2}{4} \right]^{1/2}  \,.
+\end{equation}</div>
+<p>
+We observe that when the hopping energy dominates (in the present units this corresponds to <span class="math">\(E\rightarrow0\)</span> and <span class="math">\(W\rightarrow0\)</span>), the localization length diverges, and that for any value of <span class="math">\(W&gt;0\)</span>, <span class="math">\(\ell(E)\)</span> is finite, in accordance with the phenomenology of the kicked&nbsp;rotator.</p>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked.html">&raquo;kicked rotator</a><a href="/pages/rm.html">&raquo;random matrices</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

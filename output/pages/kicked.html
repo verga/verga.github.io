@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Quantum kicked rotator | Random physics
+</title>
+    <link rel="canonical" href="/pages/kicked.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="The quantum kicked rotator is the quantum analog of the standad map. Using Floquet theory to numerically explore its behavior, we observe a departure form the expected diffusion regime.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,}&nbsp;\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked-localization.html">&raquo;dynamical localization</a><a href="/pages/rm.html">&raquo;random matrices</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<h1>Kicked&nbsp;rotator</h1>
+<p>The evolution of a time dependent quantum system <span class="math">\(H(t)\)</span>, initially in state <span class="math">\(|\psi(0) \rangle\)</span>, 
+</p>
+<div class="math">$$
+\I \frac{\partial }{\partial t} |\psi(t)\rangle = H(t) |\psi(t)\rangle
+$$</div>
+<p>
+(<span class="math">\(\hbar=1\)</span>) can be described by an unitary operator <span class="math">\(U(t)\)</span>, 
+</p>
+<div class="math">$$|\psi(t) \rangle = U(t) |\psi(0)\rangle\,,\quad
+U(t) = \mathrm{T} \exp\left(-\I \int_0^t \Di{s} H(s) \right)\,,
+$$</div>
+<p>
+where <span class="math">\(\mathrm{T}\)</span> is the time ordering operator. In the important case of periodic systems <span class="math">\(H(t+T) = H(t)\)</span>, of period <span class="math">\(T\)</span>, the <em>Floquet operator</em> <span class="math">\(F\)</span> gives a stroboscopic view of the quantum&nbsp;dynamics:
+</p>
+<div class="math">$$F=U(T)\,, \quad |\psi(nT)\rangle = F^n |\psi(0)\rangle\,.
+$$</div>
+<p>
+The eigenvectors of <span class="math">\(F\)</span> form a suitable basis to represent the quantum state <span class="math">\(|\psi(nT)\rangle\)</span>:
+</p>
+<div class="math">$$F |\phi_k \rangle = \E^{-\I \phi_k} | \phi_k \rangle\,,\quad
+\psi(nT) = \sum_k \E^{-\I n \phi_k} 
+\langle\phi_k |\psi(0)\rangle |\phi_k\rangle\,,
+$$</div>
+<p>
+where <span class="math">\(\phi_k\)</span> are the eigenphases (or &#8220;quasi-energies&#8221;). In the particular case where the system is perturbed by a train of instantaneous kicks, the Hamiltonian is of the&nbsp;form:
+</p>
+<div class="math">$$H(t) = H_0 + V \sum_{-\infty}^{\infty} \delta(t - nT)\,,
+$$</div>
+<p>
+where <span class="math">\(H_0\)</span> is the unperturbed system, the Floquet operator splits into two exponential&nbsp;factors:
+</p>
+<div class="math">$$F = \E^{-\I V} \E^{-\I H_0 T}\,,$$</div>
+<p>
+here <span class="math">\(V\)</span> is the perturbation, it has the dimensions of an action, and may depend on the position, spin or other observables. <span class="math">\(F\)</span> describes the motion of the quantum system just after a kick, up to after the following&nbsp;kick.</p>
+<h3>Exercise</h3>
+<blockquote>
+<p>Show that the splitting of the Floquet operator is valid in the limit <span class="math">\(\Delta t \rightarrow 0\)</span> for a general pulsed system
+<div class="math">$$H(t) = H \begin{cases}
+  H_0, &amp;\text{ if } nT &lt; t &lt; (n+1)T-\Delta t\\
+  H_0 + V/\Delta  t, &amp;\text{ if } (n+1)T-\Delta t &lt; t &lt; (n+1)T
+\end{cases}\,.$$</div>
+</p>
+</blockquote>
+<p>The Hamiltonian of a kicked rotator is defined as the quantum version of the standard map classical&nbsp;Hamiltonian:
+</p>
+<div class="math">\begin{equation}
+  H = \frac{L_z^2}{2I} - JT \cos \varphi \, \delta_T(t)
+\end{equation}</div>
+<p>
+where the operators <span class="math">\(L_z\)</span> and <span class="math">\(\varphi\)</span> correspond to the <span class="math">\(z\)</span> component of the angular momentum and the angular direction in the perpendicular plane of the rotator, respectively; <span class="math">\(I\)</span> is the inertia moment, <span class="math">\(T\)</span> the kicking period, <span class="math">\(J\)</span> is an energy constant, and <span class="math">\(\delta_T\)</span> is the periodic Dirac function of period <span class="math">\(T\)</span>. The first term represent the unperturbed rotation, and the second one the time <span class="math">\(t\)</span> dependent perturbation. This model is suitable to describe the physics of ionization Rydberg states of the hydrogen atom in a microwave field, or laser excited ultracold trapped atoms, or nitrogen atoms kicked by a train of laser femtosecond pulses [<a href="http://dx.doi.org/10.1103/PhysRevLett.115.203002">Floss (2015) <span class="caps">PRL</span> 115, 203002</a>]</p>
+<p>From the set of parameters it is possible to form two nondimensional&nbsp;quantities: 
+</p>
+<div class="math">$$
+M = \frac{I}{\hbar T}\,, \quad
+k = \frac{J T}{\hbar}
+$$</div>
+<p>
+Without loss of generality we can take <span class="math">\(\hbar=T=1\)</span>. Using these units the nondimensional Hamiltonian (in units of energy <span class="math">\(\hbar/T\)</span>),&nbsp;writes
+</p>
+<div class="math">\begin{equation}
+  \label{krH}
+  H = \frac{p^2}{2M} + k \cos x \, \delta_1(t)\,,
+\end{equation}</div>
+<p>
+where we denoted <span class="math">\(p = L_z/\hbar\)</span> and <span class="math">\(x=\varphi \in (0,2\pi)\)</span>, which satisfy the usual commutation rule <span class="math">\([x,p]=\I\)</span>. The Heisenberg equations derived from this Hamiltonian are equivalent to the classical standard map with momentum <span class="math">\(P= p/M\)</span> and coupling constant <span class="math">\(K=k/M\)</span>; the classical limit is obtained for very large <span class="math">\((k,M) \rightarrow \infty\)</span>, keeping <span class="math">\(K=\text{const}\)</span>. Hoewever, major difference remains, in the quantum case the problem has a second nondimensional parameter, not present in the classical case, that manifests itself in the commutation relation <span class="math">\([P,x] = \I/M\)</span>. Therefore, the parameter <span class="math">\(M\)</span> is the inverse of an effective Planck constant: it controls the amplitude of quantum&nbsp;fluctuations.</p>
+<p>The evolution operator for one time period <span class="math">\(T=1\)</span>, the so-called Floquet unitary operator <span class="math">\(F\)</span>, is given&nbsp;by
+</p>
+<div class="math">\begin{equation}
+  \label{krF}
+  F = \E^{-\I k \cos x} \, \E^{-\I p^2/2M}\,, \quad
+  | \psi(t+1) \rangle = F | \psi(t) \rangle
+\end{equation}</div>
+<p>In momentum representation, the eigenvalues of the operator <span class="math">\(p\)</span> are integer numbers <span class="math">\(n \in \mathbb{Z}\)</span>, and the base functions are the kets <span class="math">\(|n\rangle\)</span>&nbsp;satisfying
+</p>
+<div class="math">\begin{equation}
+\label{krpx}
+p |n\rangle = n |n\rangle\,, \quad 
+\langle x| n\rangle = \frac{\E^{\I n x}}{\sqrt{2\pi}}\,,
+\end{equation}</div>
+<p>
+where <span class="math">\(|x\rangle\)</span> is a complete basis of the <span class="math">\(x\)</span>&nbsp;operator 
+</p>
+<div class="math">$$
+\int_{0}^{2\pi} \Di{x} |x\rangle \langle x| = 1\,.
+$$</div>
+<p>
+Using these definitions it is straightforward to find an explicit expression for the Floquet operator in the angular momentum&nbsp;base:
+</p>
+<div class="math">\begin{equation}
+  \label{krFn}
+  \langle n | F | m \rangle = \E^{-\I m^2/2M}\, \I^{m-n}\, J_{m-n}(k)\,,
+\end{equation}</div>
+<p>
+where <span class="math">\(J_n(k)\)</span> is the Bessel function of order <span class="math">\(n\)</span>:
+</p>
+<div class="math">$$
+J_n(z) = \frac{1}{\I^n \pi} \int_{0}^{\pi} \Di{\theta} \cos(n \theta) \,
+  \E^{\I z \cos \theta}\,.
+$$</div>
+<p>Within the momentum representation we can compute the expected value of <span class="math">\(p^2\)</span>, in order to compare it with the behavior of the classical system; for <span class="math">\(k\)</span> large enough we expect a diffusion regime characterized by a diffusion coefficient <span class="math">\(D=k^2/2\)</span>. After <span class="math">\(L\)</span> kicks the initial state <span class="math">\(|\psi_0\rangle\)</span> hop to <span class="math">\(\psi(t)\)</span>:
+</p>
+<div class="math">\begin{align}
+  \langle \psi(t)|p^2|\psi(t)\rangle &amp; =
+  \langle \psi_0 | F^{\dagger t} p^2 F^t | \psi_0 \rangle \nonumber\\
+  &amp; =
+  \sum_{p,n,m} \langle \psi_0| n \rangle 
+  \langle n | F^{\dagger t} | p \rangle
+  p^2 \langle p | F^{\dagger t} | m \rangle
+  \langle m | \psi_0 \rangle  \nonumber\\
+  &amp; =
+  \sum_{p,n,m} p^2 \psi^*_{0n} F^{\dagger t}_{np} F^t_{pm} \psi_{0m}
+\end{align}</div>
+<p>
+where <span class="math">\(F\)</span> is given by (<span class="math">\(\ref{krFn}\)</span>). This analytic (exact) expression for the second moment of the angular momentum probability distribution, is in fact useless. It is a sum over <span class="math">\(\mathbb{Z}^3\)</span> of highly oscillating functions, any truncation may give rise to uncontrolled errors. To compute <span class="math">\(\langle p^2\rangle\)</span> we need a smarter numerical&nbsp;method.</p>
+<h2>Numerical&nbsp;code</h2>
+<p><img src="/images/kr_w20-4.png" alt="iterates" style="width: 230px;"/>
+<img src="/images/kr_psi20-4.png" alt="bifurcations" style="width: 230px;"/>
+<img src="/images/kr_lpsi20-4.png" alt="bifurcations" style="width: 230px;"/></p>
+<p>To compute the evolution of the rotator, we use equation (<span class="math">\(\ref{krF}\)</span>), which is much more efficient than the evaluation of the Bessel&#8217;s sums [<a href="http://www.sciencedirect.com/science/article/pii/037015739090067C">Izrailev (1990), Phys. Rep. 196, 299</a>]. The Floquet operator is splitted into the kinetic term in angular momentum representation, and the potential part, in position representation. The change of representation is computed by fast fourier transforms (the transformation functions between the two representations (<span class="math">\(\ref{krpx}\)</span>) are plane waves). The figures show the results of a simulation with <span class="math">\(k=20\)</span> and <span class="math">\(M=4\)</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">krt</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">DIAG</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Quantum kicked rotartor: computes w = &lt;p^2&gt; and psi</span>
+
+<span class="sd">    Initial state $p[0] = 1$</span>
+<span class="sd">    Output:</span>
+<span class="sd">        w   : the variance of the angular momentum as</span>
+<span class="sd">              a function of time</span>
+<span class="sd">        p   : array with the momentum eigenvalues, </span>
+<span class="sd">              in the interval (-T,T), integers</span>
+<span class="sd">        psi : the wavefunction in momentum representation</span>
+<span class="sd">              array of shape (N=2T, T/DIAG)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">Up</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">p</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">M</span><span class="p">))</span>
+    <span class="n">Ux</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="c1">#</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="o">//</span><span class="n">DIAG</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+    <span class="n">psi_t</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+    <span class="n">psi_t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">#</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="n">psi_t</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">Ux</span> <span class="o">*</span> <span class="n">ifft</span><span class="p">(</span><span class="n">Up</span> <span class="o">*</span> <span class="n">psi_t</span><span class="p">))</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">psi_t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span><span class="o">%</span><span class="n">DIAG</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">psi</span><span class="p">[:,</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi_t</span>
+            <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Exercice</h3>
+<blockquote>
+<p>Compute the (classical) quasilinear diffusion coefficient for the standard map:
+<div class="math">$$ p_{n+1} = p_n + k \sin x_n\,, \quad x_{n+1} = x_n + p_{n+1}/M $$</div>
+</p>
+</blockquote>
+<h4>Solution:</h4>
+<p>In the quasilinear approximation (valid in the global chaotic regime) we assume the angle <span class="math">\(x \sim \mathcal{U}(0,2\pi)\)</span>, uniformly distributed on the&nbsp;circle:
+</p>
+<div class="math">\begin{align*} \langle (p_t - p_0)^2 \rangle &amp;= 
+  \big\langle \big[ \sum_n (p_{n+1} - p_n) \big]^2 \big\rangle \\
+  &amp; = \sum_{m,n} \langle (p_{m+1} -  p_m) (p_{n+1} - p_n) \rangle \\
+  &amp; = k^2 \sum_{m,n} \langle \sin x_m \sin x_n \rangle
+  \end{align*}</div>
+<p>Using the&nbsp;integral:
+</p>
+<div class="math">$$ \int_{0}^{2\pi} \frac{\Di{x_m}}{2\pi}\frac{\Di{x_n}}{2\pi}
+  \sin x_m \sin x_n = \frac{1}{2} \delta_{m,n} $$</div>
+<p>
+we obtain the quasilinear diffusion&nbsp;coefficient:
+</p>
+<div class="math">$$ D = \frac{k^2}{2}$$</div>
+<h3>Results</h3>
+<p>The numerical results (figure) show that the behavior of the quantum systems is strikingly different, even for large <span class="math">\(K=k/M\)</span>, to its classical counterpart. The simulation parameters are <span class="math">\(k=20\)</span>, <span class="math">\(M=4\)</span>, <span class="math">\(K=k/M=5\)</span>. After an initial transient where both systems follow the diffusion law, a significant departure arises: the quantum evolution tends to saturation <span class="math">\(\langle p^2 \rangle \rightarrow \text{const.}\)</span> and quantum diffusion is stopped. This phenomenon, discovered by <a href="http://dx.doi.org/10.1007/BFb0021757">Casati et al (1979)</a> and known as quantum suppression of classical chaos, can be attributed to the <em>localization</em> of the wave function, as seen in the figure, where the logarithmic scale reveals exponential&nbsp;tails.</p>
+<h3>Bibiliography</h3>
+<ul>
+<li><a href="/pdfs/Levi-2003.pdf">Lévi et al. (2003)</a> Quantum computing of quantum chaos in the kicked rotator model, Phys. Rev. E <strong>64</strong>, 046220&nbsp;(2003)</li>
+</ul>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked-localization.html">&raquo;dynamical localization</a><a href="/pages/rm.html">&raquo;random matrices</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

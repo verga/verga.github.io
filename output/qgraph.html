@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Disorder, interaction and quantum networks | Random physics
+</title>
+    <link rel="canonical" href="/qgraph.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Thesis subject on the relationships between disorder, interaction and statistical properties of quantum graphs.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-02-06T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        lun. 06 février 2017
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/teaching.html">teaching</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/quantum.html">#quantum</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+<h1>Interaction, dynamics and information on quantum&nbsp;networks</h1>
+<h2>Thesis&nbsp;subject</h2>
+<p>In recent years we were interested in topological properties of quantum condensed matter&nbsp;systems: </p>
+<ol>
+<li>
+<p>Micromagnetic textures in ferromagnets and chiral metals exhibit a rich phenomenology due to the competition between exchange, anisotropy and spin-orbit interactions. We studied the dynamics of skyrmions driven by spin polarized currents using a semiclassical approach to model the spin transfer torque together with methods issued from nonlinear physics <a href="http://link.aps.org/doi/10.1103/PhysRevB.90.174428">(Verga, 2014)</a>[1].</p>
+</li>
+<li>
+<p>Topological insulators possess an inverted electronic band structure, which results in the existence of robust edge states. We analyzed the quantization of the conductance in the presence of quenched magnetic impurities. We demonstrated the existence of a quantum phase transition induced by strong disorder, between a quantum spin Hall phase and a quantum anomalous Hall phase <a href="http://dx.doi.org/10.1103/PhysRevB.92.075101">(Raymond et al. 2015)</a>[2].</p>
+</li>
+<li>
+<p>More recently, we investigated the topologically protected edge states using discrete quantum walks of the same topological class than quantum Hall systems, in a two dimensional lattice <a href="https://arxiv.org/abs/1606.00613">(Verga, 2016)</a>[3]. This last work makes a first connexion, in our research, between materials systems and quantum information: a quantum walk is a succession of unitary gates applied to a quantum state, followed by a&nbsp;measurement.</p>
+</li>
+</ol>
+<p>The present thesis project aims at developing this relationship between the physics of topological nontrivial systems and quantum information&nbsp;concepts.</p>
+<p>We are in particular interested in the link between disorder, interactions and entanglement. Indeed, entanglement emerges as a central concept in the understanding of many-body interacting systems such as fractional Hall states, topological phases and non-thermal states in many-body localization. It is also central in quantum computing: correlations created by entanglement are an informational resource without classical equivalent; the speedup of quantum algorithms depends essentially on this resource. However, the physical mechanism producing entanglement is not so obvious: while entanglement of quantum states is nonlocal, interactions are strictly local, at least at the microscopic&nbsp;level. </p>
+<p>In fact, interaction creates long-range correlations through the generation of entanglement. These correlations characterize a kind of order, not directly related with symmetry breaking, beyond the usual Landau description in terms of order parameters. One example is given by the topological phases in spin liquids, satisfying the area law of entanglement. In this project we want to investigate the emergence of complexity in physical systems. To pursue this objective, we will exploit the observation that these special states of matter correspond to some sort of quantum <em>graph state</em>. Now, graph states are naturally associated with <em>quantum networks</em>.</p>
+<blockquote>
+<p><img src="/images/gr.png" alt="graph" style="height: 200px;"/><br>
+Quantum states are defined at each node: a superposition of product states gives a graph&nbsp;state.</p>
+</blockquote>
+<p>The candidate will start with the study of interacting quantum walks on graphs. This system is suitable to reveal the influence of interactions on entanglement, by changing the graph topology and the type of interaction; information-theoretic quantities, such as entanglement entropy and negativity, are appropriated to characterize the information content and the structure of the quantum state. A natural further development of this simple model, is to investigate <em>dynamical</em> quantum networks. We will introduce a local rule at the network nodes (the equivalent of coin operators of the quantum walk) analog to an effective hamiltonian describing the particle internal degrees of freedom and neighboring interactions, together with a dynamical local rule to rewire the network edges. The question to explore is: can this system, combining energy and evolving topology, self-organize into some hierarchical structure from which macroscopic correlations (phases, geometry) can&nbsp;emerge?</p>
+<h3>References</h3>
+<p>[1] Alberto D. Verga,  Skyrmion to ferromagnetic state transition: A description of the topological change as a finite-time singularity in the skyrmion dynamics, Phys. Rev. B, <strong>90</strong>, 174428,&nbsp;2014.</p>
+<p>[2] Laurent Raymond, Alberto D. Verga, and Arnaud Demion, Anomalous quantum {H}all effect induced by disorder in topological insulators, Phys. Rev. B, <strong>92</strong>, 075101,&nbsp;2015.</p>
+<p>[3] Alberto D. Verga, Edge states in a two-dimensional quantum walk with disorder, ArXiv e-prints: 1606.00613, June 2016 (to be published in <span class="caps">EPJB</span>,&nbsp;2017).</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

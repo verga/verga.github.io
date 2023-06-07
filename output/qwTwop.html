@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Two particle interaction in a topological quantum walk | Random physics
+</title>
+    <link rel="canonical" href="/qwTwop.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Quantum walk of two inteacting particles on a one dimensional lattice with an iterface at the origing separating two regions with different energy band topology.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2018-03-21T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        mer. 21 mars 2018
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/research.html">#research</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}
+\newcommand{\PL}{{\!+}}
+\newcommand{\MI}{{\!-}}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle#1|}&nbsp;\newcommand{\braket}[1]{\langle#1\rangle}\)</span></p>
+<blockquote>
+<p>Work in progress to investigate the interplay of topology and interaction in a simple quantum walk model. Work in collaboration with <a href="http://fisica.usach.cl">Gabriel Elías</a>, Universidad de Santiago. Now published in <a href="https://scipost.org/SciPostPhys.5.2.019">SciPost</a>&nbsp;(2018).</p>
+</blockquote>
+<h1>Interacting split-step quantum&nbsp;walk</h1>
+<p>A quantum system of two particles is defined by the set of base&nbsp;vectors,
+</p>
+<div class="math">$$\ket{x_1\,s_1}\otimes\ket{x_2\,s_2} = \ket{x_1\,s_1\,x_2\,s_2}$$</div>
+<p>
+where the indices 1 and 2 are for the particles, <span class="math">\(x\)</span> is the particle position and <span class="math">\(s\)</span> its spin. The two particles execute on the line a discrete quantum walk <span class="math">\(U=V(U_0\otimes U_0)\)</span>, defined by the composition of the split-step&nbsp;operator,
+</p>
+<div class="math">$$U_0 \ket{x\,s} = U_0 = T_\MI R(\theta_\MI) T_\PL R(\theta_\PL) \ket{x\,s}$$</div>
+<p>
+which depends on the two angles <span class="math">\(\theta_\pm\)</span>, and an interaction&nbsp;operator,
+</p>
+<div class="math">$$V\ket{x_1\,s_1\,x_2\,s_2} = \E^{\I \phi} \delta_{x_1,x_2} \ket{x_1\,s_1\,x_2\,s_2}.$$</div>
+<p>
+which adds a phase <span class="math">\(\phi\)</span> to the quantum state when the two particles are at the same&nbsp;site. </p>
+<p>The split-step operator rotates the particle&nbsp;spin,
+</p>
+<div class="math">$$R(\theta) = 1_x \otimes \exp(\I \sigma_y \theta)$$</div>
+<p>
+and translates the spin-up projection one lattice step to the&nbsp;right,
+</p>
+<div class="math">$$T_\PL = \sum_x \left( \ket{x+1} \bra{x} \otimes \ket{0} \bra{0} + \ket{x} \bra{x} \otimes \ket{1} \bra{1}  \right)\,,$$</div>
+<p>
+and the spin-down projection one step&nbsp;left,
+</p>
+<div class="math">$$T_\MI = \sum_x \left( \ket{x} \bra{x} \otimes \ket{0} \bra{0} + \ket{x-1} \bra{x} \otimes \ket{1} \bra{1} \right)\,.$$</div>
+<p>
+The interaction depends on the distance of the two particles, it breaks then the translation symmetry of the free system, but preserves the conservation of center of mass&nbsp;motion.</p>
+<p>One important property of the split-step quantum walk is that its energy bands structure possesses a nontrivial topology <a href="https://doi.org/10.1103/PhysRevB.82.235114">Kitagawa et al. (2010)</a>. Depending on the choice of the two rotation angles, a topological charge <span class="math">\(c=-1,0,1\)</span> can be defined, as showed by <a href="https://doi.org/10.1088/1751-8113/49/21/21LT01">Cedzich et al. (2016)</a>. We introduce in addition, an interface at <span class="math">\(x=0\)</span> separating a left region with topological charge <span class="math">\(c=0,1\)</span>, and a right region with charge <span class="math">\(c=-1,0,1\)</span> (figure&nbsp;below).</p>
+<blockquote>
+<p><img src="/images/2-params.png" alt="charges is parameter space" style="width: 250px;"/></p>
+<p>Topological charge in the plane defined by the two rotation angles. The dots are the angles used in the numerical calculations: 6 different types of interfaces are possible: left <span class="math">\(0\)</span> or <span class="math">\(1\)</span>, and right <span class="math">\(-1,0,1\)</span></td></p>
+</blockquote>
+<p>We fix <span class="math">\(\theta_\MI=\pi/4\)</span> for <span class="math">\(x&lt;0\)</span>, and choose <span class="math">\(\theta = \theta_\PL(x\ge 0)= (-\pi/3,\pi/16,3\pi/8)\)</span> for the corresponding three charges <span class="math">\((-1,0,1)\)</span> in the right region, and <span class="math">\(\theta_+(x&lt;0) = -\pi/16\)</span>, with charge <span class="math">\(0\)</span>, or <span class="math">\(\theta_+(x&lt;0) = \pi/2+\pi/16\)</span>, with charge <span class="math">\(1\)</span>, in the left region. The set of parameters are defined by the four labels code <span class="math">\((c,b,g,i)\)</span>,&nbsp;where:</p>
+<ul>
+<li>
+<p><span class="math">\(c = 0,1\)</span>: is the left region charge, <span class="math">\(0\)</span> or <span class="math">\(1\)</span>,</p>
+</li>
+<li>
+<p><span class="math">\(b = 0,\ldots,4\)</span>: labels the initial state, the four bell states <span class="math">\(\{\phi_\pm,\psi_\pm\}\)</span> with <span class="math">\(b=0,2\)</span> for the symmetric states and <span class="math">\(b=1,3\)</span> for the antisymmetric ones; <span class="math">\(b=4\)</span> corresponds to a separable state <span class="math">\(\ket{0000}\)</span>,</p>
+</li>
+<li>
+<p><span class="math">\(g = 0,\ldots,4\)</span>: labels the interaction &#8220;strength&#8221; <span class="math">\(\phi=0,\pi/3,\pi/2,3\pi/4,\pi\)</span>,&nbsp;and,</p>
+</li>
+<li>
+<p><span class="math">\(i = 0, 1, 2\)</span>: the three <span class="math">\(x&gt;0\)</span> different charges, <span class="math">\(-1,0,1\)</span>.</p>
+</li>
+</ul>
+<h2>Band&nbsp;structure</h2>
+<p>We compute the spectrum of the one step operator <span class="math">\(U\)</span>,
+</p>
+<div class="math">$$U\ket{E_n} = E_n \ket{E_n}$$</div>
+<p>
+by exact diagonalization, for the homogeneous (one phase) system. For the non interacting case, we find a gapped spectrum. This structure is preserved for the interacting case with however the appearance of bound modes within the gaps&nbsp;(figure).</p>
+<blockquote>
+<p><img src="/images/2-bands_0.png" alt="bands free" style="width: 250px;"/>
+<img src="/images/2-bands_1.png" alt="bands interaction" style="width: 250px;"/></p>
+<p>Energy bands for the non interacting case <span class="math">\(\phi=0\)</span> and interacting case <span class="math">\(\phi=\pi/3\)</span>. Note the appearance of bound states within the gap, in the intearcting case. The quasienergies are ordered by the value of the momentum of the center of mass of the two particles <span class="math">\(p_n\)</span>.</p>
+</blockquote>
+<p>The bounded state corresponds to the binding of the two particles in a &#8220;molecular&#8221; state <a href="https://doi.org/10.1088/1367-2630/14/7/073050">Ahlbrecht et al. (2012)</a>.</p>
+<h2>Phenomenology</h2>
+<blockquote>
+<p><img src="/images/2-im_0001.png" alt="0001" style="width: 200px;"/>
+<img src="/images/2-im_0002.png" alt="0002" style="width: 200px;"/></p>
+<p><img src="/images/2-im_0031.png" alt="0031" style="width: 200px;"/>
+<img src="/images/2-im_0032.png" alt="0032" style="width: 200px;"/></p>
+<p><img src="/images/2-im_0331.png" alt="0331" style="width: 200px;"/>
+<img src="/images/2-im_0332.png" alt="0332" style="width: 200px;"/></p>
+<p>Two particles probability distribution after <span class="math">\(60\)</span> walk steps. We compare the free and interacting case, for symmetric and antisymmetric initial conditions (see the four label code in each&nbsp;pannel).</p>
+</blockquote>
+<p>We investigate the evolution of the two particle probability <span class="math">\(P(t)\)</span> (images&nbsp;above):</p>
+<ul>
+<li>
+<p><span class="dquo">&#8220;</span>0001&#8221; free trivial case (there is no interaction or interface): the two particles spread together ballistically. This case follows the one particle quantum walk, without edge&nbsp;state.</p>
+</li>
+<li>
+<p><span class="dquo">&#8220;</span>0002&#8221; free, 01-interface: the presence of a localized state contributes to a finite probability <span class="math">\(P(t)\)</span> to find the two particles at the origin at long&nbsp;times.</p>
+</li>
+<li>
+<p><span class="dquo">&#8220;</span>0031&#8221; interaction, trivial: in a trivial topology, the interaction allows a binding of the two particles. In addition a localized state appears at the&nbsp;origin.</p>
+</li>
+<li>
+<p><span class="dquo">&#8220;</span>0032&#8221; interaction, 01-interface: the addition of the edge state suppress the antisymmetric spreading, observed in the &#8220;0031&#8221;&nbsp;case.</p>
+</li>
+<li>
+<p><span class="dquo">&#8220;</span>0331&#8221; interaction, trivial, antisymmetric: with an antisymmetric initial state the localization at the origin, present in the symmetric case &#8220;0031&#8221;, vanishes. However, in spite of the tendency of the two particles to avoid each other, a binding state is&nbsp;present.</p>
+</li>
+<li>
+<p><span class="dquo">&#8220;</span>0332&#8221; interaction, 01-interface, antisymmetric: the interaction suppress the localized state and modifies the velocity of propagation of the&nbsp;probability.</p>
+</li>
+</ul>
+<blockquote>
+<p><img src="/images/2-Pvt_00.png" alt="00" style="width: 200px;"/>
+<img src="/images/2-Pvt_03.png" alt="03" style="width: 200px;"/></p>
+<p><img src="/images/2-Pvt_10.png" alt="10" style="width: 200px;"/>
+<img src="/images/2-Pvt_13.png" alt="13" style="width: 200px;"/></p>
+<p>Angle-interaction phase space for left charge-initial state pairs <span class="math">\((cb)\)</span>: &#8220;00&#8221;, &#8220;03&#8221;, &#8220;10&#8221;, &#8220;13&#8221;. The colors are the probability at the origin, if grater than <span class="math">\(1/N\)</span> (<span class="math">\(N\)</span> is the number of steps), the state is said&nbsp;&#8220;localized&#8221;.</p>
+</blockquote>
+<p>From the observation of the phase space in the rotation angle-interaction strength parameters, one notice the appearance of localization-delocalization transitions induced by the interaction (images&nbsp;above).</p>
+<blockquote>
+<p><img src="/images/2-sl_0011.png" alt="entropy" style="width: 250px;"/>
+<img src="/images/2-sll_0010.png" alt="entropy" style="width: 250px;"/></p>
+<p>Entanglement entropy for the delocalized and localized cases: a transition between logharithmic and double logarithmic growth is&nbsp;observed.</p>
+</blockquote>
+<p>The existence of localized states has a profound impact on the behavior of the entanglement&nbsp;entropy:
+</p>
+<div class="math">$$S_x(t) = -\mathrm{Tr}\, \rho_x(t) \log \rho_x(t),\;
+  \rho_x(t) = \mathrm{Tr}_{\bar{x}} \rho_{x,\bar{x}}(t)$$</div>
+<p>
+Indeed, in the delocalized state it grows&nbsp;logarithmically,
+</p>
+<div class="math">$$S_x(t) \sim \alpha \log t\,,$$</div>
+<p>
+while in the localized case its growth is very slow, as an iterated&nbsp;logarithm,
+</p>
+<div class="math">$$S_x(t) \sim \log(\xi \log t)\,,$$</div>
+<p>
+(figure&nbsp;above).</p>
+<h2>Discussion</h2>
+<p>We noted that the evolution of the system depends on the type of the interface; interfaces between charge <span class="math">\(-1\)</span> and <span class="math">\(0\)</span> regions, or <span class="math">\(1\)</span> and <span class="math">\(0\)</span> are not equivalent. Furthermore, the overlapping of the initial state with the edge state (for example, putting the particles on the left or on the right of the interface), will affect the details of the system&#8217;s evolution. However, basic properties like localization and binding, are observed to be robust, they do not depend on the details of the initial condition. Antisymmetric states favor delocalization of the walk, and the unbinding of the molecule. Symmetric states, on the contrary, preserve the edge states and the molecular&nbsp;binding.</p>
+<p>One interesting effect of the interaction is that it can induce localized states, which are absent without interaction, even in the trivial topological state. This effect is present, for different values of the interaction strength, independently of the initial state. Moreover, the interaction can also destroy the edge states and allows the propagation of the information between regions with different topology. Therefore, the interaction can be used as a control parameter of the information&nbsp;transport.</p>
+<p>The molecular states, which can propagate along the line, compete with the localized state, which tends to sticks the particles at the interface. Depending on the phase of of the interaction, a delocalization is possible. For the particular value <span class="math">\(\phi=\pi\)</span>, strongly localized states are observed. For intermediate values, in the range <span class="math">\(\phi=(\pi/3,\pi/2)\)</span>, localized states in the free delocalized region appear, for symmetric states, but also for antisymmetric states depending on the&nbsp;topology.</p>
+<p>We measured the entanglement entropy of one particle and found that it steadily increases over time. However, at variance with other interacting systems, its growth is not simply proportional to time, but shows two different regimes according to the localization of the walk. For delocalized states the entropy growths logarithmically, while for localized states it growths as a doubly iterated&nbsp;logarithm.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

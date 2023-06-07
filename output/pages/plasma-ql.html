@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Plasma: Quasilinear theory | Random physics
+</title>
+    <link rel="canonical" href="/pages/plasma-ql.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Quasilinear theory of collisionless plasma instabilities.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,}&nbsp;\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
+<p><a href="/pages/CH-index.html">&raquo;chaos</a><a href="/pages/map.html">&raquo;maps</a><a href="/pages/cds.html">&raquo;stability</a><a href="/pages/hamilton.html">&raquo;hamiltonian systems</a><a href="/pages/plasma.html">&raquo;plasmas</a></p>
+<h1>Quasilinear&nbsp;theory</h1>
+<h2>Nonlinear saturation of&nbsp;instabilities</h2>
+<p>The Landau theory of electrostatic fluctuations around a stationary state <span class="math">\(F_0(v)\)</span> shows that a state possessing for same velocity range, a positive slope <span class="math">\(F'_0&gt;0\)</span>, is unstable with a rate proportional to this&nbsp;slope,
+</p>
+<div class="math">$$
+\gamma(k) =
+  \frac{\pi \omega^3}{2k^2}  \left. \frac{\partial F_0(v) }{\partial v}
+  \right|_{v=\frac{\omega}{k} }\,.
+$$</div>
+<p> 
+As a consequence, the amplitude of a fluctuation with wavenumber <span class="math">\(k\)</span> will grow exponentially in time. To describe the evolution of the instability, and eventually its saturation, we must explore the nonlinear effects. The idea is to split the distribution function in two parts, a slow uniform one <span class="math">\(f_0\)</span>, describing the dynamics of the mean value around a fluctuating part, the fast one <span class="math">\(\delta f\)</span>:
+</p>
+<div class="math">$$
+f(x,v,t) = f_0(v,t) + \delta f(x,v,t)\,, \quad
+\langle f(x,v,t) \rangle = f_0(v,t)
+$$</div>
+<p>
+and to limit the nonlinear description to the slow part: <span class="math">\(|\delta f| \ll |f_0|\)</span>. After substitution into the Vlasov equation, we&nbsp;have,
+</p>
+<div class="math">$$
+\frac{\partial f_0}{\partial t} + 
+\frac{\partial \delta f}{\partial t} +
+v\cdot \frac{\partial \delta f}{\partial x} - 
+\frac{e}{m} E \cdot \frac{\partial f_0}{\partial v} -
+\frac{e}{m} E \cdot \frac{\partial \delta f}{\partial v} = 0\,,
+$$</div>
+<p>
+where the electric field arises from the fluctuating&nbsp;part,
+</p>
+<div class="math">$$
+\nabla \cdot E = - \frac{e}{\epsilon_0} \int \Di{v} \delta f\,.
+$$</div>
+<p>
+Averaging the previous equation, and putting by definition <span class="math">\(\langle \delta f \rangle = 0\)</span>, we obtain the slow&nbsp;equation:
+</p>
+<div class="math">\begin{equation}
+  \label{ql}
+  \frac{\partial f_0 }{\partial t} = \frac{e}{m} \left\langle
+  E \cdot \frac{\partial \delta f}{\partial v} \right\rangle\,,
+  \quad
+  \langle \cdots \rangle = \frac{1}{\mathrm{Vol}} \int_{\mathrm{Vol}} \cdots
+\end{equation}</div>
+<p>
+Subtracting this equation from the Vlasov equation, and neglecting the nonlinear term in the fluctuations, we obtain the linearized equation for the rapid&nbsp;part,
+</p>
+<div class="math">$$
+\frac{\partial \delta f}{\partial t} +
+v\cdot \frac{\partial \delta f}{\partial x} -
+\frac{e}{m} E \cdot \frac{\partial}{\partial v} f_0(t) = 0\,,
+$$</div>
+<p>
+which can be solved by Fourier transform, in most the same way as we proceeded for the derivation of the Landau damping. This is possible because of the time scale separation between <span class="math">\(f_0\)</span> and <span class="math">\(\delta f\)</span>: during the characteristic time of variation of the fluctuations one can assume that the mean value is almost constant. Retaining only the resonant terms given by the imaginary part of the dispersion&nbsp;relation:
+</p>
+<div class="math">\begin{equation}
+  \label{qle}
+  \frac{\partial f_0}{\partial t} = \frac{\partial }{\partial v} \cdot D(t) \cdot \frac{\partial }{\partial v} f_0\,, \quad
+  D_{ij}(t) = \frac{\pi e^2}{m \mathrm{Vol}} 
+  \int dk \langle E_i(-k,t) E_j(k,t) \rangle \delta(\omega - k \cdot v)\,,
+\end{equation}</div>
+<p>
+where <span class="math">\(D=D(t)\)</span> is a time dependent diffusion coefficient that must be determined self-consistently. Considering a Fourier mode <span class="math">\(E \sim \E^{\I k\cdot x - \I \omega t}\)</span> we observe that only the imaginary part of the frequency (slow with respect to the waves frequencies) appears in the&nbsp;integral: 
+</p>
+<div class="math">$$
+\langle E_i(-k,t) E_j(k,t) \rangle = |E_k|^2 \E^{2\gamma_k t} \delta_{ij}
+$$</div>
+<p>
+(we use the fact that the electrostatic fluctuations are isotropic, this is no more true in presence of a magnetic field) or in a more general&nbsp;form:
+</p>
+<div class="math">\begin{equation}
+  \label{qlenergy}
+  \frac{\partial }{\partial t} \mathcal{E}(k,t) =  2 \gamma_k[f_0] \mathcal{E}(k,t)\,,
+\end{equation}</div>
+<p>
+with 
+</p>
+<div class="math">$$
+ W_\mathcal{E}(t) = \frac{\epsilon_0}{2} \langle E(x,t)^2 \rangle =
+ \int \Di{k} \mathcal{E}(k,t) = \frac{\epsilon_0}{4\pi \mathrm{Vol} } 
+ \int \Di{k} \langle E_i(-k,t) E_j(k,t) \rangle
+$$</div>
+<p>
+the electrostatic energy, and where we stressed the dependence of the growth instability rate <span class="math">\(\gamma_k\)</span> on the slow distribution&nbsp;function. </p>
+<p>It is interesting to verify that the total energy of the&nbsp;plasma:
+</p>
+<div class="math">$$
+W = \int \Di{v} \frac{mv^2}{2} f_0(v,t) + \int \Di{k} \mathcal{E} = \text{const.}
+$$</div>
+<p>
+is&nbsp;conserved.</p>
+<h2>Relaxation of the bump on tail&nbsp;instability</h2>
+<p>A plasma in thermal equilibrium is perturbed by a hot beam of fast particles: the typical form of its velocity distribution is a superposition of two gaussian functions, one centered at <span class="math">\(v=0\)</span>, and one centered at the beam mean velocity <span class="math">\(v=v_0\)</span>. The plasma will be unstable if the ratio of thermal velocities <span class="math">\(v_{0T}/v_T \ll 1\)</span> is small, ensuring the existence of a range of positive slope velocities in the distribution function <span class="math">\(f_0=f_0(v,0)\)</span>. It is a one-dimensional effect, only the velocity in the direction of the beam velocity is&nbsp;important.</p>
+<p>General considerations allows us deduce the form of the growth rate and the diffusion coefficient without a detailed computation. Indeed, the growth rate is proportional to the slope <span class="math">\(2\gamma_k = B(v) f'_0(v)\)</span> where <span class="math">\(B(v)\)</span> depends on the precise form of the distribution function. The diffusion coefficient is proportional to the electrostatic energy, computed at the particle-wave resonance: <span class="math">\(D=A(v) \mathcal{E}(\omega/v, t)\)</span>. With these definitions of the functions <span class="math">\(A(v)\)</span> and <span class="math">\(B(v)\)</span>, the quasilinear equations&nbsp;become,
+</p>
+<div class="math">\begin{align}
+  \frac{\partial }{\partial t}f_0(v,t) &amp;= 
+  \frac{\partial }{\partial v}A(v) \mathcal{E}(\omega/v,t) 
+  \frac{\partial }{\partial v}f_0(v,t)\,,  \\
+  \frac{\partial }{\partial t} \mathcal{E} &amp;= B(v) \mathcal{E}(\omega/v,t)
+  \frac{\partial }{\partial v} f_0(v,t)\,.
+\end{align}</div>
+<p>
+The asymptotic, independent of time <span class="math">\(t\rightarrow\infty\)</span>, solution&nbsp;is
+</p>
+<div class="math">\begin{align}
+\mathcal{E}(\omega/v, t) \frac{\partial }{\partial v} f_0(v, t) &amp;=0 \\
+\frac{\partial }{\partial v} \frac{A(v)}{B(v)} \mathcal{E} &amp; = f_0(v,0) - f_0(v, t)
+\end{align}</div>
+<p>
+Therefore, there exists a range of velocities where the electrostatic energy is finite <span class="math">\(\mathcal{E}\ne 0\)</span>, and the distribution function is constant <span class="math">\(f'_0=0\)</span>, and other region, outside this one, in which the system remains at equilibrium with <span class="math">\(\mathcal{E}=0\)</span> and a distribution with a stable&nbsp;slope.</p>
+<p>In the range of velocities <span class="math">\(v_- &lt; v &lt; v_+\)</span>, where the boundaries are determined by the conditions of continuity and conservation of the number of&nbsp;particles:
+</p>
+<div class="math">$$
+f(v_-) = f(v_+)\,, \quad
+\int_{v_-}^{v_+} \Di{v} f_0(v,0) = \int_{v_-}^{v_+} \Di{v} f_0(v,t)\,,
+$$</div>
+<p>
+the velocity distribution develops a plateau, by diffusion in velocity space around the initial region of unstable modes, for which the electrostatic waves are in resonance with the plasma&nbsp;particles.</p>
+<h3>Bibliography</h3>
+<ul>
+<li><a href="https://link-springer-com.lama.univ-amu.fr/chapter/10.1007/978-1-4615-7799-7_3">Vedenov</a> <em>Theory of a Weakly Turbulent Plasma</em>, Reviews of Plasma Physics, 1967. (<a href="/pdfs/Vedenov-1967uq.pdf">.pdf</a>)</li>
+</ul>
+<p><a href="/pages/CH-index.html">&raquo;chaos</a><a href="/pages/map.html">&raquo;maps</a><a href="/pages/cds.html">&raquo;stability</a><a href="/pages/hamilton.html">&raquo;hamiltonian systems</a><a href="/pages/plasma.html">&raquo;plasmas</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

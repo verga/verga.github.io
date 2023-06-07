@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: Quantum state teleportation | Random physics
+</title>
+    <link rel="canonical" href="/L3-telep.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="We explore, using the interesting example of teleportation, some elementary concepts of quantum information, from quantum circuits to graphs states.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-03-07T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        mar. 07 mars 2017
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}&nbsp;\newcommand{\K}[1]{\left|#1\right\rangle}\)</span></p>
+<blockquote>
+<p>This lecture is intended for students of the &#8220;Licence de physique&#8221;, and in particular to those interested in theoretical&nbsp;physics.</p>
+</blockquote>
+<p>In classical physics the unit of information is the <em>bit</em>. The number <span class="math">\(M\)</span> of different messages with <span class="math">\(n\)</span> letters <span class="math">\(x\)</span>, taken on an alphabet of two letters <span class="math">\(x=0,1\)</span> (bit), distributed according to the probability <span class="math">\(p(x)\)</span>&nbsp;is
+</p>
+<div class="math">$$M = 2^{nS(p)}, \quad S(p) = -\sum_x p(x)\log_2 p(x)$$</div>
+<p>
+where <span class="math">\(S\)</span> is the Shannon entropy. Hence, <span class="math">\(S\)</span> is the averaged content of information, measured in bits, of a single letter <span class="math">\(x\)</span>.</p>
+<p>In quantum physics the unit of information is the <em>qubit</em>. Physically a qubit can be carried by a spin <span class="math">\(1/2\)</span> particle. The quantum state <span class="math">\(|\psi\rangle\)</span> of this particle is in general a superposition of spin up <span class="math">\(\K{0}\)</span> and spin down <span class="math">\(\K{1}\)</span>&nbsp;states:
+</p>
+<div class="math">$$\K{\psi} = a\K{0} + b\K{1}$$</div>
+<p>
+with the complex amplitudes satisfying the normalization <span class="math">\(|a|^2 + |b|^2 = 1\)</span>. A mixture of such states <span class="math">\(|\psi_n\rangle\)</span>, can be described by the density&nbsp;matrix,
+</p>
+<div class="math">$$\rho = \sum_n p_n |\psi_n\rangle \langle \psi_n|\,.$$</div>
+<p>
+Von Neumann associated an <em>entropy</em> to a mixed quantum&nbsp;state,
+</p>
+<div class="math">$$S(\rho) = - \mathrm{Tr}\, \rho \ln \rho,$$</div>
+<p>
+which, by analogy with the Shannon entropy, is a measure of the information contained in the state <span class="math">\(\rho\)</span> (in quantum information one replaces the natural logarithm by the base 2 one). In particular, for a mixed system of spins up and down, the density matrix is given&nbsp;by
+</p>
+<div class="math">$$\rho = p |0\rangle \langle 0| + (1-p) |1\rangle \langle 1|,$$</div>
+<p>
+from which we obtain for the entropy, the same result as in the classical state: one qubit contains one bit of information. However, two qubits can contain more information than two bits, the difference comes from a quantum effect that do not have a classical counterpart: <em>entanglement</em>. Entangled states are states of a composite system that cannot be splitted into a tensor product of the component states. For instance there are two qubit states <span class="math">\(|\psi\rangle\)</span> that cannot be written as a product <span class="math">\(|\psi\rangle = |x\rangle \otimes |y\rangle\)</span>, where <span class="math">\(|x\rangle\)</span> and <span class="math">\(|y\rangle\)</span> are&nbsp;qubits.</p>
+<p>In the following we will use the entanglement as a <em>resource</em> to transfer a quantum state form one position to another one, this process is called <em>teleportation</em>. Why do we need entanglement? Because it is impossible, in general, to copy a quantum state. Indeed, we can demonstrate the <em>non-cloning</em>&nbsp;theorem:</p>
+<blockquote>
+<p><strong>Non-cloning theorem</strong> &nbsp; Cloning a state suppose the existence of an unitary <span class="math">\(U\)</span> such that, when applied to a state <span class="math">\(\K{\psi}\)</span> it gives
+<div class="math">$$U \K{\psi} \otimes \K{0} = \K{\psi} \otimes \K{\psi} = \K{\psi \psi}$$</div>
+Applying it to another state,
+<div class="math">$$U \K{\phi} \otimes \K{0} =  \K{\phi \phi},$$</div>
+and computing the scalar product of these two states, one gets:
+<div class="math">$$\langle \psi | \phi\rangle =\left(\langle \psi | \phi \rangle\right)^2$$</div>
+which cannot be satisfied by arbitrary&nbsp;states.</p>
+</blockquote>
+<p>Therefore, in order to transfer a quantum state we need a smarter&nbsp;recipe.</p>
+<p>The idea is to use the quantum correlation characteristic of an entangled state, which persists even if the corresponding qubits are spatially separated (nonlocality of the quantum state). Making at some place a measure on one of the entangled qubits, allows to predict the result on the measure of the pairing qubit, located at another&nbsp;place.</p>
+<p>A quantum state can be manipulated using unitary operators. A sequence of such operations (gates) form a <em>quantum circuit</em>. Some elementary one qubit gates are the Pauli matrices <span class="math">\(X,Y,Z\)</span>
+</p>
+<div class="math">$$X = \begin{pmatrix}
+  0 &amp; 1 \\ 1 &amp; 0
+\end{pmatrix}\,,\quad
+Y = \begin{pmatrix}
+  0 &amp; -\I \\ \I &amp; 0
+\end{pmatrix}\,,\quad
+Z = \begin{pmatrix}
+  1 &amp; 0 \\ 0 &amp; -1
+\end{pmatrix}\,,$$</div>
+<p>
+and the Hadamard matrix <span class="math">\(H\)</span>
+</p>
+<div class="math">$$ H = \frac{1}{\sqrt{2}} \begin{pmatrix}
+  1 &amp; 1 \\ 1 &amp; -1
+\end{pmatrix}$$</div>
+<p>
+For example, the Hadamard gate acts&nbsp;as:
+</p>
+<div class="math">$$H:\;\K{0}\rightarrow \frac{\K{0} + \K{1}}{\sqrt{2}} = \K{+},\quad
+\K{1}\rightarrow \frac{\K{0} - \K{1}}{\sqrt{2}} = \K{-}.$$</div>
+<p>
+The <em>controlled not</em> <span class="math">\(\mathrm{CNOT}\)</span> is a gate acting on two&nbsp;qubits:
+</p>
+<div class="math">$$\mathrm{CNOT}:\; \K{x,y} \rightarrow \K{x, x\oplus y}$$</div>
+<p>
+where <span class="math">\(\oplus\)</span> is the addition modulo&nbsp;2,
+</p>
+<div class="math">$$\mathrm{CNOT} = \begin{pmatrix}
+  1 &amp; 0 &amp; 0 &amp; 0 \\
+  0 &amp; 1 &amp; 0 &amp; 0 \\
+  0 &amp; 0 &amp; 0 &amp; 1 \\
+  0 &amp; 0 &amp; 1 &amp; 0 
+\end{pmatrix}\,.$$</div>
+<blockquote>
+<p><img src="/images/tp.png" alt="teleportation circuit" style="height: 420px;"/></p>
+</blockquote>
+<p>The teleportation algorithm can be implemented as a quantum circuit (see the figure above), consisting in the following&nbsp;steps:</p>
+<ul>
+<li>
+<p>Initial state, the quantum state we want to teleportate is qubit 1 (channel 1), the other two qubits are spins up (at channels 2 and&nbsp;3):</p>
+<p>
+<div class="math">$$\K{\psi_0} = \K{\psi}\K{00}=a\K{000}+b \K{100}$$</div>
+</p>
+</li>
+<li>
+<p>First, entangle qubits 2 and 3, initially <span class="math">\(|00\rangle\)</span>, using the Hadamard gate on channel 3 and a <span class="math">\(\mathrm{CNOT}\)</span> (controlled by the qubit in channel&nbsp;3):</p>
+<p>
+<div class="math">$$\K{00} \rightarrow H \rightarrow \frac{1}{\sqrt{2}}(\K{00} + \K{01}) \rightarrow \mathrm{CNOT} \rightarrow \frac{1}{\sqrt{2}}(\K{00} + \K{11}) = \K{B_{00}}$$</div>
+</p>
+</li>
+<li>
+<p>Now we have the unknown state <span class="math">\(|\psi\rangle\)</span> coupled with an entangled state (Bell state <span class="math">\(|B_{00}\rangle\)</span>):</p>
+<p>
+<div class="math">$$\K{\psi_1} = \frac{a}{\sqrt{2}} \left(\K{000} + \K{011}\right) + \frac{b}{\sqrt{2}} \left(\K{100} + \K{111}\right)$$</div>
+</p>
+</li>
+<li>
+<p>Apply the <span class="math">\(\mathrm{CNOT}\)</span> gate (control qubit&nbsp;1):</p>
+<p>
+<div class="math">$$\K{\psi_2} = \frac{a}{\sqrt{2}} \left(\K{000} + \K{011}\right) + \frac{b}{\sqrt{2}} \left(\K{110} + \K{101}\right)$$</div>
+</p>
+<p>this operation entangles the unknown state with the bell&nbsp;state.</p>
+</li>
+<li>
+<p>Apply the Hadamard gate (superposition of qubit&nbsp;1):</p>
+<p>
+<div class="math">$$\K{\psi_3} = \frac{a}{2}\left( \K{000} + \K{100} + \K{011} + \K{111}\right) + \frac{b}{2}\left( \K{010} - \K{110} + \K{001} - \K{101}\right)$$</div>
+</p>
+<p>The obtained state can be rewritten to factor out the <span class="math">\(a\)</span> and <span class="math">\(b\)</span> terms, and grouping terms in the two bit base <span class="math">\(|\cdot \cdot\rangle\)</span>:
+<div class="math">\begin{align*}
+\K{\psi_3} &amp; = \frac{\K{00}}{2}\left( a\K{0} + b \K{1} \right) \\
+&amp; + \frac{\K{10}}{2}\left( a\K{0} - b \K{1} \right) \\
+&amp; + \frac{\K{01}}{2}\left( a\K{1} + b \K{0} \right) \\
+&amp; + \frac{\K{11}}{2}\left( a\K{1} - b \K{0} \right) 
+\end{align*}</div>
+</p>
+</li>
+<li>
+<p>Now, measuring the first two qubits and transmitting this <em>classical</em> information to channel 3 (perhaps located far away channels 1 and 2), it is possible to obtain the state initially in channel 1. Depending on the measure results, say the pair of bits <span class="math">\([x]\)</span> and <span class="math">\([y]\)</span>, the channel 3 contains the&nbsp;vector</p>
+<p>
+<div class="math">$$\K{\psi_{33}} = a \K{y} + b (-1)^x \K{\bar{y}}$$</div>
+</p>
+</li>
+</ul>
+<p>with <span class="math">\(\bar{y}=-y\)</span> (the 3th channel part of the qubit <span class="math">\(|\psi_3\)</span>). Therefore, the&nbsp;transformation</p>
+<div class="math">$$Z^y X^x \K{\psi_{33}} = \K{\psi}$$</div>
+<p>finally gives the original state, now at channel&nbsp;3.</p>
+<h2>Bibliography and&nbsp;tools</h2>
+<blockquote>
+<p>Information theory and quantum&nbsp;computation</p>
+</blockquote>
+<ul>
+<li><a href="http://www.cambridge.org/fr/academic/subjects/physics/quantum-physics-quantum-information-and-quantum-computation/quantum-computation-and-quantum-information-10th-anniversary-edition?format=PB&amp;isbn=9781107002173">Nielsen, M. and Chuang, I.</a> &#8220;Quantum computation and quantum information&#8221;, Cambridge University Press&nbsp;(2010)</li>
+<li><a href="http://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1948.tb01338.x/abstract">Shannon, C.</a> &#8220;A mathematical theory of communication&#8221;, The Bell System Technical Journal <strong>27</strong>, 379 (1948) <a href="/pdfs/shannon.pdf">.pdf</a></li>
+</ul>
+<blockquote>
+<p>Quantum circuit&nbsp;drawing</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/qpic/qpic">Draper, T and Kutin, S.</a> &#8220;<span class="math">\(\langle q|pic\rangle\)</span>: Quantum circuit diagrams in LaTeX&#8221;&nbsp;(2016)</li>
+</ul>
+<blockquote>
+<p>Symbolic calculus, including quantum&nbsp;mechanics</p>
+</blockquote>
+<ul>
+<li><a href="https://peerj.com/articles/cs-103/">SymPy: symbolic computing in Python</a> PeerJ Computer Science 3:e103&nbsp;(2017)</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

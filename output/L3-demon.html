@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: Maxwell demon and Landauer principle | Random physics
+</title>
+    <link rel="canonical" href="/L3-demon.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="We explore in these introductory notes, the relation between information and physics through the investigation of the Maxwell demon paradox.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2018-10-15T00:00:00+02:00">
+        <i class="fa fa-clock-o"></i>
+        lun. 15 octobre 2018
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}\)</span></p>
+<blockquote>
+<p>This lecture is intended for students of the &#8220;Licence de physique&#8221;, and in particular to those interested in theoretical&nbsp;physics.</p>
+</blockquote>
+<h1>Maxwell demon and Landauer&nbsp;principle</h1>
+<p>Maxwell discusses in his <a href="https://archive.org/details/theoryofheat00maxwrich/page/n357">Theory of Heat</a> (1871) the validity of the second principle of thermodynamics using a thought experiment, in the following&nbsp;terms:</p>
+<blockquote>
+<p>[&#8230;] if we conceive of a being whose faculties are so sharpened that he can follow every molecule in its course, such a being, whose attributes are as essentially finite as our own, would be able to do what is impossible to us. For we have seen that molecules in a vessel full of air at uniform temperature are moving with velocities by no means uniform, though the mean velocity of any great number of them, arbitrarily selected, is almost exactly uniform. Now let us suppose that such a vessel is divided into two portions, A and B, by a division in which there is a small hole, and that a being, who can see the individual molecules, opens and closes this hole, so as to allow only the swifter molecules to pass from A to B, and only the slower molecules to pass from B to A. He will thus, without expenditure of work, raise the temperature of B and lower that of A, in contradiction to the second law of&nbsp;thermodynamics.</p>
+</blockquote>
+<p>This statement is known as the &#8220;Maxwell Demon&#8221;. Szilard (1937) gave a simplified version, schematically represented in the&nbsp;figure:</p>
+<blockquote>
+<p><img src="/images/PS-szilard.png" alt="Szilard engine" style="height: 250px;"/></p>
+</blockquote>
+<p>Initially a &#8220;gas&#8221; particle is inside a volume <span class="math">\(V\)</span> at temperature <span class="math">\(T\)</span> (a); in (b) a wall separating the volume in two equal compartments is introduced; (c) a demon records the position, left or right, of the particle in the box; if the particle is on the right, the demon places a piston, for instance linked to a resort, on the other side: the expansion from <span class="math">\(V/2\)</span> to <span class="math">\(V\)</span> of the particle (gas) exerts a force that can compress the resort; in the final state (d) we find, as in the initial state, a particle in <span class="math">\(V\)</span>. As a result we extracted work <span class="math">\(W\)</span> from the system at fixed temperature, decreasing then the system&#8217;s&nbsp;entropy
+</p>
+<div class="math">$$\Delta S = -k_\mathrm{B} \ln 2 = - W \quad (\text{particle}) \,,$$</div>
+<p>
+in apparent contradiction with the second principle. However, we must include in the analysis the state of the&nbsp;demon:</p>
+<blockquote>
+<p><img src="/images/PS-szilard-1.png" alt="Szilard engine plus demon" style="height: 250px;"/></p>
+</blockquote>
+<p>The demon starts in a state <span class="math">\((0,0)\)</span>, so its registers correspond to <span class="math">\(0\)</span> particles on the left and <span class="math">\(0\)</span> on the right (a); in (b) its state changes: the right compartment is filled with one particle <span class="math">\((0,1)\)</span>; its state do not change and in (d) it is always <span class="math">\((0,1)\)</span>. Therefore, the whole (isolated) system, consisting on the particle and the demon, do not return to its initial state in (d). In order to recover the initial state we need to <em>erase</em> the registers of the demon. This fundamental observation was first pointed out by Bennett in 1982<sup id="fnref:Bennett"><a class="footnote-ref" href="#fn:Bennett">1</a></sup>. Yet, erasure of a register implies entropy growth! This deep statement was first proposed by Landauer in 1961<sup id="fnref:Landauer"><a class="footnote-ref" href="#fn:Landauer">2</a></sup>, and is now known as the <em>Landauer principle</em>. It states that information is a physical property, it is always carried by some physical device; the physical action corresponding to erase a bit has a cost in&nbsp;entropy:
+</p>
+<div class="math">$$\Delta S = k_\mathrm{B} \ln 2 \quad (\text{demon}) \,.$$</div>
+<p>
+This increase in the entropy of the demon exactly compensates the entropy decrease in the system: hence, the whole system entropy remains constant, in accordance with the second&nbsp;principle:
+</p>
+<div class="math">$$\Delta S = 0 \quad (\text{whole system}) \,.$$</div>
+<p>
+An experimental confirmation of the Landauer principle was first demonstrated by Bérut et al. (2012)<sup id="fnref:Berut"><a class="footnote-ref" href="#fn:Berut">3</a></sup>, using a colloidal particle trapped in a double well potential as a stochastic model of a single&nbsp;bit.</p>
+<h2>Particle in a double well&nbsp;potential</h2>
+<p>A particle in a double well potential has two stable states that can be interpreted as a physical model of an information bit: the left well might represent a <span class="math">\(0\)</span> state, and the right well the <span class="math">\(1\)</span> state of the bit. Using a modulation of the potential parameters one can modify the respective deeps of the wells, and end up with say, the <span class="math">\(1\)</span> state, whatever the initial state <span class="math">\(0\)</span> or <span class="math">\(1\)</span>, erasing thus the information contained in the initial&nbsp;state.</p>
+<blockquote>
+<p><img src="/images/PS-berut.png" alt="Berut protocol" style="height: 300px;"/></p>
+<p>Particle in a double well potential <span class="math">\(V(x) = cx - ax^2 + bx^4\)</span> with <span class="math">\(a=3\)</span>, <span class="math">\(b=1\)</span> (a). The system can store a bit of information according to the position of the particle. The particle initial state is <span class="math">\(0\)</span>, and, after modulation of the potential shape (changing the parameter <span class="math">\(c\)</span>, in this case), the particle state changes to <span class="math">\(1\)</span>, <span class="math">\(c=0,-1,-3,0\)</span> for (a,b,c,d), respectively. If the particle had being at <span class="math">\(1\)</span> initially, the final result would be the same: the initial state is thus erased after a cycle (a,b,c,d). Adapted from Berut et al. (2012).<sup id="fnref3:Berut"><a class="footnote-ref" href="#fn:Berut">3</a></sup></p>
+</blockquote>
+<p>The system is considered in equilibrium with a thermal bath at fixed temperature <span class="math">\(T\)</span>. Therefore, the particle dynamics can be described by a Langevin&nbsp;equation:
+</p>
+<div class="math">$$\gamma\dot{x} = - \frac{\D V}{\D x} + F(t)$$</div>
+<p>
+where <span class="math">\(\gamma\)</span> is the friction coefficient with dimension of mass over time, and <span class="math">\(F(t)\)</span> represents the stochastic force, whose correlation function is proportional to the bath&nbsp;temperature:
+</p>
+<div class="math">$$\braket{F(t_1)F(t_2)} = 2k_\mathrm{B}T\gamma \delta(t_1-t_2)\,.$$</div>
+<p>
+The particle diffusion coefficient is given by the Einstein relation <span class="math">\(D = 2 k_\mathrm{B}T/\gamma\)</span>.</p>
+<p>An important property of the langevin equation is that, for time independent potential, the probability distribution of the random variable <span class="math">\(x\)</span> tends in the long time limit, to a stationary law, given by the boltzmann&nbsp;distribution:
+</p>
+<div class="math">$$\lim_{t-\infty} P(x,t) = P(x) =  \frac{\E^{-V(x)/k_\mathrm{B}T}}{Z}$$</div>
+<p>
+where <span class="math">\(Z\)</span> is a normalization constant. Indeed, on can demonstrate that the probability distribution satisfies the Fokker-Planck&nbsp;equation,
+</p>
+<div class="math">$$\frac{\partial }{\partial t}P + \frac{\partial }{\partial x}f(x)P = D \frac{\partial^2 }{\partial x^2}P\,,$$</div>
+<p>
+where 
+</p>
+<div class="math">$$f(x) = -\frac{\D V(x)}{\D x}$$</div>
+<p>
+is the deterministic force acting on the particle. For long times the stationary solution is precisely the boltzmann distribution <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>In our case, the force depends explicitly on time <span class="math">\(f=f(x,t)\)</span>, to take into account the shape deformation of the potential wells. One may investigate numerically the behavior of the particle for different temperatures. The lifetime <span class="math">\(\tau\)</span> of the bit, a colloidal particle in a double well, depends on the hight of the potential barrier <span class="math">\(\Delta E\)</span>, as given by an Arrhenius type law (which is a consequence of the boltzmann formula given&nbsp;above):
+</p>
+<div class="math">$$\tau \sim \E^{\Delta E/k_\mathrm{B}T}\,,$$</div>
+<p>
+it is then exponentially long at low temperatures <span class="math">\(\Delta E \ll k_\mathrm{B}T\)</span>, but rapidly decreases with the augmentation of the temperature. The energy barrier is roughly given by the difference in energy between the unstable state and the stable one of the potential&nbsp;energy.</p>
+<p>In the general case with a time dependent potential, it is convenient to use a numerical method to study the system&#8217;s behavior. The following python code integrates the langevin equation using a simple euler method. One can store the final position of the particle <span class="math">\(x_t\)</span> and plot its histogram to verify if the erasing is&nbsp;effective.</p>
+<div class="highlight"><pre><span></span><code><span class="n">T</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c1"># temperature</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># cycle time</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.5</span> <span class="c1"># intital position</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># time step</span>
+<span class="n">sdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">NT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">tf</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">xt</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2001</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># trajectory</span>
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NT</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">it</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">xt</span> <span class="o">+=</span> <span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="mf">12.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> \
+                              <span class="mi">8</span><span class="o">*</span><span class="n">xt</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">xt</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> \
+                              <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">sdt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Using the results of the numerical integration we observe that, depending on the temperature for fixed values of the potential parameters, the protocol is effective in erasing the initial&nbsp;position.</p>
+<blockquote>
+<p><img src="/images/PS-berut-h0.png" alt="langevin hist t=0.3" style="height: 200px;"/> <img src="/images/PS-berut-x0.png" alt="langevin x0" style="height: 200px;"/></p>
+<p><img src="/images/PS-berut-h1.png" alt="langevin h1" style="height: 200px;"/> <img src="/images/PS-berut-x1.png" alt="langevin x1" style="height: 200px;"/></p>
+<p>Histogram and typical trajectory of a colloidal particle at temperature <span class="math">\(T\)</span>, under the influence of a time dependent force that temporarily suppress the left well (the particle is initialized at this well), favoring the right well position at long times. At high temperature, spontaneous transition between the two wells can occur, introducing errors in the erasure process (as seen in the figures for <span class="math">\(T=0.4\)</span>).</p>
+</blockquote>
+<p>At <span class="math">\(T=0.3\)</span> all trajectories, initially on the left well (state <span class="math">\(0\)</span>), end at the right well (state <span class="math">\(1\)</span>). A small amount of error appears at <span class="math">\(T=0.4\)</span>.</p>
+<p>That the erasure is a dissipative process is demonstrated by the necessity to introduce, to modify the potential, an external time dependent force. The landauer principle says us that the concomitant entropy growth must be larger than <span class="math">\(\Delta S &gt; k_\mathrm{B}\ln 2\)</span>. It is precisely this fact that was verified by Berut et al. (2012) experiments.<sup id="fnref2:Berut"><a class="footnote-ref" href="#fn:Berut">3</a></sup> </p>
+<h3>Bibliography</h3>
+<ul>
+<li>
+<p>Plenio, M. B., and Vitelli, V., &#8220;The physics of forgetting: Landauer&#8217;s erasure principle and information theory,&#8221; Contemporary Physics <strong>42</strong>, 25 (2000) (<a href="/pdfs/Plenio-2001cz.pdf">.pdf</a>)</p>
+</li>
+<li>
+<p>Maruyama, K., Nori, F., and Vedral, V., &#8220;The physics of Maxwell&#8217;s demon and information,&#8221; Rev. Mod. Phys. <strong>81</strong>, 1 (2009) (<a href="/pdfs/Maruyama-2009fr.pdf">.pdf</a>)</p>
+</li>
+</ul>
+<h3>Notes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:Bennett">
+<p>Bennett, &#8220;The thermodynamics of computatio,&#8221; Int. J. Theor. Phys. <strong>21</strong>, 905 (1982) (<a href="/pdfs/Bennett-1982fk.pdf">.pdf</a>)&#160;<a class="footnote-backref" href="#fnref:Bennett" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Landauer">
+<p>Landauer, R. &#8220;Irreversibility and heat generation in the computing process,&#8221; <span class="caps">IBM</span> Journal of Research and Development <strong>5</strong>, 183 (1961) (<a href="/pdfs/Landauer-1961uq.pdf">.pdf</a>)&#160;<a class="footnote-backref" href="#fnref:Landauer" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Berut">
+<p>Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., and Lutz, E., &#8220;Experimental verification of Landauer&#8217;s principle linking information and thermodynamics,&#8221; Nature <strong>483</strong>, 7388 (2012) (<a href="/pdfs/Berut-2012yq.pdf">.pdf</a>)&#160;<a class="footnote-backref" href="#fnref:Berut" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:Berut" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:Berut" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

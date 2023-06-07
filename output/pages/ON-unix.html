@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Outils numériques: Unix | Random physics
+</title>
+    <link rel="canonical" href="/pages/ON-unix.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Commandes unix usuelles, outils de base, vim">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+<h1>Commandes unix de&nbsp;base</h1>
+<p>Le système d&#8217;exploitation linux, dérivé libre d&#8217;unix, est particulièrement adapté pour le travail en sciences. Les langages de programmation comme C, fortran, python, les compilateurs (e.g. gcc), les bibliothèques (e.g. linpack), ainsi que les technologies web (e.g. html), ou les outils d&#8217;édition scientifique come TeX, ont tous été développés dans le cadre&nbsp;d&#8217;unix.</p>
+<p>À la différence des systèmes dont le but est essentiellement de faire tourner une série (fixe) de logiciels, comme Windows par exemple pour le travail administratif avec Office, le système linux est ouvert: il permet de controller complètement le fonctionnement de votre&nbsp;ordinateur.</p>
+<p>L&#8217;interaction de l&#8217;utilisateur avec le système unix se fait à travers un terminal; le terminal  execute  un programme appelé <code>shell</code>, lequel interprète et exécute à son tour les commandes introduites par l&#8217;utilisateur avec le clavier. Les commandes unix de base sont généralement des mots de deux lettres: ls, cd, mv, rm, qui effectuent des tâches comme afficher la liste de fichiers, changer de dossier, déplacer un fichier ou le supprimer. Les commandes peuvent aussi ouvrir des logiciels, compiler un code, effectuer des mises à jour, ou par exemple, se connecter à un site extérieur pour récupérer des&nbsp;données.</p>
+<h4>Exercices:</h4>
+<ul>
+<li>
+<p>Ouvrez le terminal et tapez la commande d&#8217;aide <code>man man</code>, ici le commande <code>man</code> affiche les informations à propos de la commande <code>man</code>. Répondez aux questions: common avance-t-on d&#8217;une page? comment revient-on en arrière d&#8217;une page? comment quit-on la&nbsp;commande?</p>
+</li>
+<li>
+<p>Tapez la commande <code>ls</code> et notez la différence avec <code>ls -al</code></p>
+</li>
+</ul>
+<h2>Fichiers</h2>
+<p>Le système de fichiers d&#8217;unix est organisé selon une structure arborescente, la racine <code>/</code> est le &#8220;parent&#8221; de tous les autres dossiers, elle contienne, entre autres, les répertoires <code>/usr</code> avec les bibliothèques et les exécutable, et le dossier <code>/home</code> qui est la base des utilisateurs: par exemple le répertoire <code>/home/dupont</code> est le &#8220;home directory&#8221; de l&#8217;utilisateur Dupont (attention, unix distingue les majuscules). Un autre répertoire important est <code>/usr/bin</code>, lequel regroupe notamment les commandes du système. Le répertoire <code>/etc</code> contient les fichiers de configuration du&nbsp;système.</p>
+<p>En unix, les fichiers n&#8217;ont pas nécessairement d&#8217;extension (comme txt, pdf, c, png,&#8230;), pour afficher leur type on utilise la commande <code>file</code> suivie du nom du&nbsp;fichier.</p>
+<p>Le nom d&#8217;un fichier peut être absolu, quand il est spécifié par son chemin depuis la racine, par exemple <code>/home/dupont/Documents/Textes/notes.txt</code>, ou relatif, quand son chemin commence par le dossier courant; dans l&#8217;exemple précédent si on se trouve sur Documents, ce serait <code>Textes/notes.txt</code>. </p>
+<h3><code>ls, cd, pwd, du</code></h3>
+<p><code>ls</code> liste les fichiers du répertoire courant; pour savoir dans quel dossier vous êtes, tapez <code>pwd</code> (present working directory); pour changer de dossier tapez <code>cd</code> suivi du chemin de votre dossier (path). Le dossier présent est désigné par un point <code>.</code>, le dossier parent par <code>..</code>, le dossier parent du parent <code>../..</code>, la racine par <code>/</code>; le dossier home par <code>~</code>. Par exemple, le chemin vers votre dossier Documents est <code>/home/dupont/Documents</code> ou <code>~</code>. </p>
+<p>La commande <code>du</code> sert à afficher la taille des répertoires: <code>du -sh Documents/*</code> donne la taille totale (option -s) en unités lisibles (option -h); l&#8217;étoile (*) liste tous les sous-dossiers et fichiers dans&nbsp;Documents.</p>
+<h4>Exercices:</h4>
+<ul>
+<li>Tapez successivement <code>cd / &lt;CR&gt;</code> (<code>&lt;CR&gt;</code> c&#8217;est return &#8212;retour chariot), <code>pwd &lt;CR&gt;</code>, <code>cd &lt;CR&gt;</code> et enfin <code>pwd</code> Où est allez vous vous&nbsp;promener?</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><span class="caps">CMD</span></th>
+<th style="text-align: left;">&nbsp; <span class="caps">OPT</span> &nbsp;</th>
+<th style="text-align: left;">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ls</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">liste les fichiers du répertoire courant</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-a</td>
+<td style="text-align: left;">liste les fichiers cachés</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-l</td>
+<td style="text-align: left;">propriétés des fichiers, liste détaillée</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-t</td>
+<td style="text-align: left;">les plus récents en premier</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>ls -lh *.pdf</code> liste les fichiers pdf avec la taille exprimée en Kb, Mb, Gb (<code>-h</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">cd path</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">change de répertoire selon le chemin</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">~</td>
+<td style="text-align: left;">répertoire personnel (home)</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">..</td>
+<td style="text-align: left;">parent</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>~/.config/nvim</code>  va au sous-dossier nvim du répertoire caché .config de <code>/home/$USER</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">pwd</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">affiche le répertoire courant</td>
+</tr>
+<tr>
+<td style="text-align: left;">du</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">liste la taille des fichiers et dossiers donnés comme arguments</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-s</td>
+<td style="text-align: left;">(summarize) taille totale, autrement vous obtenez une liste exhaustive</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-h</td>
+<td style="text-align: left;">utilise les unités en K, M, G octets (bytes)</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-d n</td>
+<td style="text-align: left;">(depth) descend l&#8217;arborescence de n niveaux; -s est équivalent à -d 0</td>
+</tr>
+</tbody>
+</table>
+<h3><code>mkdir, cp, mv, rm, touch, source</code></h3>
+<p>Pour créer un dossier il suffit de taper <code>mkdir nomdudossier</code>. Si vous faites <code>mkdir nom du dossier</code> vous créez trois dossiers&#8230; Un nom avec espaces doit être mis entre guillemets, ou utiliser le caractère d&#8217;échappement <code>\</code> comme dans <code>nom\ du\ dossier</code>.</p>
+<p><code>cp fichier1 fichier2</code> crée le deuxième fichier, copie du premier; la commande <code>cp imgage1.png images/</code> copie &#8220;image1.png&#8221; dans le dossier &#8220;images&#8221; avec le même nom (notez, c&#8217;est important, que le chemin fini par un slash, ou barre, qui est le caractère de séparation des&nbsp;dossiers).</p>
+<p>Pour renommer ou transférer un fichier &#8220;file1.txt&#8221; vers un autre dossier on utilise <code>mv</code>: <code>mv file1.txt ../.</code> met le fichier dans le dossier parent; <code>mv file1.txt fichier1.txt</code> change le nom (en&nbsp;français).</p>
+<p>Le caractère <code>*</code> (wildcard pattern) remplace zero ou plus des caractères: par exemple, <code>*.pdf</code> désigne tous le noms de fishier avec extension <code>.pdf</code> (portable document file). Si vous voulez nommer les fichiers <code>a1, a2, a2, a4</code> vous pouvez ne pas répéter la partie commune avec <code>a{1,2,3,4}</code> ou encore <code>a{1..4}</code>. Ces raccourcis peuvent être utilisés avec les commandes de&nbsp;fichiers.</p>
+<p>La commande <code>rm</code> efface irréversiblement fichiers et dossiers: <code>rm *.pdf</code> efface du répertoire courant les fichiers dont le nom termine par <code>.pdf</code>; <code>rm -rf rep1/</code> efface l&#8217;arborescence commençant par le repertoire rep1 (sous-répertoire du répertoire&nbsp;courant).</p>
+<p>Pour créer un fichier vide on peut faire <code>touch nom</code> (cette commende actualise la date si nom existe déjà); un autre façon de créer un fichier vide est d&#8217;utiliser la redirection <code>&gt;</code>, par exemple <code>&gt; nom.txt</code> crée le fichier nom.txt en y ajoutant rien. Cette dernière recette vous permet par exemple, de créer un fichier contenant la sortie de ls: <code>ls -l Documents/* &gt; "liste de mes dossiers.txt"</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><span class="caps">CMD</span></th>
+<th style="text-align: left;">&nbsp; <span class="caps">OPT</span> &nbsp;</th>
+<th style="text-align: left;">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">mkdir</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">(make directory) crée le répertoire donné en argument</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-p</td>
+<td style="text-align: left;">crée les parents aussi: mkdir -p rep1/rep2 crée rep1 et rep2</td>
+</tr>
+<tr>
+<td style="text-align: left;">cp</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">copie des fichiers et dossiers</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-r</td>
+<td style="text-align: left;">copie récurrente des dossiers et tous ses sous-dossiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">mv</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">(move) déplace, ou renomme, fichiers et répertoires</td>
+</tr>
+<tr>
+<td style="text-align: left;">rm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">(remove) efface fichiers et dossiers <em>définitivement</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">-rf &nbsp;</td>
+<td style="text-align: left;">efface récursivement le dossier dans l&#8217;argument</td>
+</tr>
+<tr>
+<td style="text-align: left;">touch</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">crée un fichier vide: <code>touch note.txt</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">source</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sert à mettre à jour un script shell: <code>source ~/.config/nvim/init.vim</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>source ~/.bashrc</code> execute le script de configuration de votre session shell</td>
+</tr>
+</tbody>
+</table>
+<h3><code>tar, gzip</code></h3>
+<p>Pour créer un archive des fichiers et le compresser on utilise la commande <code>tar</code>; son format est <code>tar -options tarfile /path/dossier/</code> avec les options <code>-cf</code> pour créer (c) l&#8217;archive tar (f) nommé tarfile, avec les fichiers contenus dans /path/dossier/ (notez le slash final!). Si vous voulez compresser l&#8217;archive tarfile il suffit d&#8217;ajouter l&#8217;option <code>z</code>, qui applique la commande gzip&nbsp;automatiquement:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-cvzf<span class="w"> </span>mes_codes.tar.gz<span class="w"> </span>~/codes/
+</code></pre></div>
+
+<p>crée l&#8217;archive mes_codes (avec les extensions correspondant a <code>tar</code> et <code>gzip</code>) avec les fichiers dans votre dossier codes. La&nbsp;commande:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-xvf<span class="w"> </span>mes_codes.tar.gz
+</code></pre></div>
+
+<p>extrait les fichiers et les mets dans le dossier courant; si vous voulez décompresser dans un autre dossier vous pouvez utiliser l&#8217;option&nbsp;-C:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-xvf<span class="w"> </span>mes_codes.tar.gz<span class="w"> </span>-C<span class="w"> </span>codes_1
+</code></pre></div>
+
+<p>crée le dossier codes_1 avec les fichiers dans l&#8217;archive mes_codes.tar. L&#8217;option <code>-v</code> (verbose) affiche des information sur le résultat de la&nbsp;commande.</p>
+<h3><code>cat, more, head, tail</code></h3>
+<p>Souvent on veut inspecter le contenu d&#8217;un fichier sans l&#8217;ouvrir. <code>cat</code> affiche dans le terminal la totalité du fichier, <code>more</code> affiche page para page (on peut aussi utiliser <code>less</code> qui est plus souple); <code>head</code> and <code>tail</code> montrent le début et la fin du fichier (par défaut 10 ligne, avec l&#8217;option -n 12, vous affichez 12&nbsp;lignes).</p>
+<p>Si vous avez deux fichiers f1.txt et f2.txt et vous voulez créer un fichier contenant f1 et f2 à la suite vous&nbsp;faites:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>cat<span class="w"> </span>f1.txt<span class="w"> </span>f2.txt<span class="w"> </span>&gt;<span class="w"> </span>f3.txt
+</code></pre></div>
+
+<h3><code>find, grep</code></h3>
+<p><code>find</code> cherche fichiers dans la hiérarchie des&nbsp;dossiers:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>find<span class="w"> </span>Documents/codes<span class="w"> </span>-name<span class="w"> </span>f1.txt
+</code></pre></div>
+
+<p>suit le chemin &#8216;Documents/codes&#8217; et affiche les fichiers dont le nom est &#8216;f1.txt&#8217;, y compris dans tous les sous-dossiers de l&#8217;arborescence. Le nom du fichier peut contenir des&nbsp;jokers:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.dat&quot;</span><span class="w"> </span>-print
+</code></pre></div>
+
+<p><span class="quo">&#8216;</span>find&#8217; est la commande, &#8216;.&#8217; est le chemin (ici), &#8216;-type&#8217; est le type (f fichier, d dossier), &#8216;-name pattern&#8217; est le nom suivie du motif &#8216;&#8221;*.dat&#8221;&#8217;: les guillemets tiennent compte des espaces dans le nom des fichiers avec extension finale &#8216;.dat&#8217;, &#8216;-print&#8217; est une action (d&#8217;autres actions sont possible, par exemple -delete efface tout en dessous de ce qu&#8217;il trouve&#8212;danger!&#8212; ou &#8216;-exec command&#8217; pour exécuter la commande&nbsp;&#8216;command&#8217;)</p>
+<p><code>grep -options pattern path</code> cherche dans le fichiers dans &#8216;path&#8217; le motif donnée (pattern), les options les plus communes&nbsp;sont:</p>
+<ul>
+<li><code>-i</code> ignorer la case (cherche également Dossier et&nbsp;dossier)</li>
+<li><code>-r</code> cherche récursivement dans les&nbsp;sous-répertoires</li>
+<li><code>-l</code> affiche uniquement le nom du fichier où &#8216;pattern&#8217; est&nbsp;trouvé</li>
+</ul>
+<p>Le chemin peut être spécifié avec des&nbsp;wildcards: </p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>grep<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;&lt;strong&gt;&quot;</span><span class="w"> </span>codes/*.html
+</code></pre></div>
+
+<p>affiche la liste des fichiers .html contenant le tag &#8216;&lt;strong&gt;&#8217; (les guillemets sont nécessaires), du dossier&nbsp;&#8216;codes&#8217;.</p>
+<h2>Shell</h2>
+<p>Le shell, c&#8217;est-à-dire le logiciel qui tourne sur votre terminal (pour simplifier), vous permet de contrôler votre ordinateur. Comme on l&#8217;a vu vous pouvez explorer le système de fichiers, vous pouvez lancer l&#8217;exécution des applications, ou la compilation des vos codes python, fortran, C ou latex; vous pouvez créer des nouveaux fichiers en utilisant l&#8217;éditeur (par exemple <code>vim</code> ou <code>nvim</code>, si neovim est&nbsp;installé).</p>
+<p>Chaque programme actif est, sous unix, un processus contrôlé par le système (linux ou macos); pour obtenir une liste des processus on peut faire <code>top</code> (&#8216;q&#8217; pour quitter). <code>top</code> affiche le <span class="caps">PID</span> (process identifier), que vous permet de tuer un processus bloqué: <code>kill -9 1234</code> arrête le processus 1234 (où 1234 est, par exemple, le navigateur, ou la commande que vous avez lancée et que ne réponds&nbsp;plus).</p>
+<h2>Éditeur:&nbsp;vim</h2>
+<p>L&#8217;éditeur <code>vim</code> est accessible depuis le terminal; il est présent dans toute distribution unix. C&#8217;est l&#8217;éditeur de choix de beaucoup de développeurs, particulièrement adapté à la programmation (python, fortran, latex, par exemple). Sa caractéristique distinctive c&#8217;est qu&#8217;il possède différents&nbsp;modes:</p>
+<ul>
+<li>
+<p>le mode normal, auquel on accède en tapant vim dans le shell, attend des commandes; les commandes ont souvent la forme <code>ncm</code> avec <code>n</code> un nombre, <code>c</code> une commande (ou action) et <code>m</code> un mouvement (ou objet: ligne, mot, paragraphe&#8230;).  Par exemple, <code>3dw</code> efface (deletes) 3 mots (words). La commande <code>i</code> change en mode&nbsp;insertion;</p>
+</li>
+<li>
+<p>le mode insertion, qui correspond en fait au mode dans lequel on écrit son texte comme dans un éditeur usuel; on quite le mode d&#8217;insertion en frappant <code>&lt;ESC&gt;</code> (touche&nbsp;escape)</p>
+</li>
+<li>
+<p>le mode visuel, qui permet de sélectionner du texte (horizontalement et verticalement), auquel on accède depuis le mode normal en tapant <code>v</code>;</p>
+</li>
+<li>
+<p>le mode commande, accessible par <code>:</code>, qui sert à faire des recherches et remplacements, manipuler les lignes, ouvrir ou fermer des fichiers (buffers, windows,&nbsp;tabs)</p>
+</li>
+</ul>
+<p>On quite vim avec la commande <code>:wq</code> (on sauve <code>w</code> et on se sauve <code>q</code>). Notez que les commandes élémentaires n&#8217;ont qu&#8217;un caractère: en les combinant on peut effectuer des tâches complexes. Certaines commandes, commençant par <code>g</code> ou <code>z</code>, comportent deux&nbsp;caractères.</p>
+<h4>Exercice</h4>
+<p>Asseyez-vous. Tapez <code>vim</code> et une fois le logiciel ouvert (cet instantané) tapez <code>:Tutor</code> Levez vous une heure&nbsp;après.</p>
+<h4>Commandes&nbsp;basiques</h4>
+<dl>
+<dt><code>&lt;ESC&gt;</code></dt>
+<dd><span class="math">\(-\)</span> passe au mode normal (commande), depuis par exemple le mode&nbsp;d&#8217;insertion</dd>
+<dt><code>i a I A</code></dt>
+<dd><span class="math">\(-\)</span> passe au mode insertion, à la position du curseur (i), ou après le curseur (a), ou au début de la ligne (I), ou enfin à la fin de la ligne&nbsp;(A)</dd>
+<dt><code>o O</code></dt>
+<dd><span class="math">\(-\)</span> insère une ligne en dessous (o) ou au dessus (O), de la ligne&nbsp;courante</dd>
+<dt><code>h j k l</code></dt>
+<dd><span class="math">\(-\)</span> déplace le curseur un caractère vers la gauche (h) ou vers la droite (l), ou vers la ligne précédente (k) ou suivante&nbsp;(j)</dd>
+<dt><code>H M L</code></dt>
+<dd><span class="math">\(-\)</span> positionne le curseur en haut (H), au milieu (M) ou en bas (L) de&nbsp;l&#8217;écran.</dd>
+<dt><code>^u ^d ^b ^f</code></dt>
+<dd><span class="math">\(-\)</span> control u (^u) déplace le texte d&#8217;un demi écran vers le haut, (^l) le fait vers le bas; (^b) et (^f) font pareil, mais le déplacement se fait par écran entier (vers le haut et vers le bas,&nbsp;respectivement)</dd>
+<dt><code>gg G</code></dt>
+<dd><span class="math">\(-\)</span> début du document (gg), fin du document&nbsp;(G)</dd>
+<dt><code>^ $</code></dt>
+<dd><span class="math">\(-\)</span> début de la ligne (^) et fin de la ligne&nbsp;(\$)</dd>
+<dt><code>w b e W B E</code></dt>
+<dd><span class="math">\(-\)</span> permettent de déplacer le curseur d&#8217;un mot en avant (w), en arrière (b), ou à la fin (e) du mot; les versions majuscules définissent le mot comme une succession des caractères entre deux&nbsp;espaces</dd>
+<dt><code>f F t T</code></dt>
+<dd><span class="math">\(-\)</span> effectuent des mouvements du curseur sur la ligne: (fa) avance jusqu&#8217;au premier &#8216;a&#8217;, (F) va dans le sens opposé; (ta) avance jusqu&#8217;au caractère qui précède, et (T), va dans la direction&nbsp;opposée.</dd>
+<dt><code>x dd d</code></dt>
+<dd><span class="math">\(-\)</span> efface un caractère (x) ou n caratères (nx); (dd) efface la ligne, et (d) suivi d&#8217;un mouvement efface jusqu&#8217;à la nouvelle position du curseur: pour effacer un mot on fait <code>dw</code>, pour effacer 3 mots contenant de nombres <code>d3W</code> </dd>
+<dt><code>r s c C</code></dt>
+<dd><span class="math">\(-\)</span> (r) remplace un caractère et reste en mode normal, (s) substitue le caractère sous le curseur et passe en mode insertion; pour changer le mot entier on utilise <code>c</code> ou <code>C</code> pour une chaîne&nbsp;alpha-numérique.</dd>
+<dt><code>y yy p P</code></dt>
+<dd><span class="math">\(-\)</span> pour sélectionner un texte on fait <code>y</code> suivi d&#8217;un mouvement, par exemple <code>y$</code> copie le texte jusqu&#8217;à la fin de la ligne courante; <code>p</code> colle le texte sélectionné par <code>y</code> après le curseur et <code>P</code> à partir de la position du curseur; (yy) copie la ligne. Grosso modo, y correspond à copier et p a&nbsp;coller.</dd>
+<dt><code>u ^r</code></dt>
+<dd><span class="math">\(-\)</span> (undo) remonte la liste de tous les changements en remettant le texte dans son état précédent; control r remet l&#8217;état à l&#8217;état&nbsp;présent</dd>
+</dl>
+<h2>Notes</h2>
+<p>Voici quelques liens utiles sur&nbsp;unix:</p>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Linux_Guide">Linux&nbsp;guide</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Bash_Shell_Scripting">Bash shell&nbsp;scripting</a></li>
+<li><a href="https://vimhelp.org/">Vim&nbsp;help</a></li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

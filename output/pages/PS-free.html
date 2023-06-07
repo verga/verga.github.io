@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Free particles in the grand canonical ensemble | Random physics
+</title>
+    <link rel="canonical" href="/pages/PS-free.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Quantum free systems, identical particles, fermions and bosons statistics">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}&nbsp;\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
+<blockquote>
+<p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
+</blockquote>
+<h1>Non interacting bosons and&nbsp;fermions</h1>
+<p>In classical physics the thermodynamics of non interacting particles is essentially that of the ideal gas, described by the equation of state, <span class="math">\(PV = NT\)</span>, relating the intensive variables <span class="math">\(P\)</span> pressure and <span class="math">\(T\)</span> temperature to the extensive ones, <span class="math">\(N\)</span> the number of particles and <span class="math">\(V\)</span> the volume. Interesting new phenomena appear in the quantum realm, even in the non interacting case, as a result of one of the most fundamental laws of nature: the identity of elementary particles, and by extension, of elementary excitations in condensed&nbsp;matter.</p>
+<h2>Identity of&nbsp;particles</h2>
+<p>The identity of particles is a fundamental fact of quantum physics: the spectrum of solar hydrogen is identical to the one recorded in the laboratory; the exchange of particles of an ideal gas, even if they are distinguishable in classical mechanics, do not increase the entropy (Gibbs paradox). The identity of photons can be experimentally tested, as for instance in the interference of two photons in a beam splitter, the <a href="https://en.wikipedia.org/wiki/Hong–Ou–Mandel_effect">Hong-Ou-Mandel</a>&nbsp;effect.</p>
+<p>In order to understand the meaning and devise the physical consequences of the particles identity, let us consider a simple system consisting of two particles. Its hilbert space&nbsp;is 
+</p>
+<div class="math">$$\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1\,.$$</div>
+<p>
+where <span class="math">\(\mathcal{H}_1\)</span> is the one particle hilbert space. A two particle state is then of the&nbsp;form,
+</p>
+<div class="math">$$\ket{s_1} \otimes \ket{s_2} = \ket{1,2}\,,$$</div>
+<p>
+where we introduced the basis kets <span class="math">\(\ket{s}\)</span> for the single particle states with <span class="math">\(s\equiv 1,2,\ldots\)</span>, the labels associated to the set of quantum numbers (<em>i.e.</em> momentum, spin,&#8230;): particle 1 (slot one in the ket) is in state <span class="math">\(s_1=1\)</span> and particle 2 (slot two in the ket) is in state <span class="math">\(s_2 = 2\)</span>. Now, exchanging <span class="math">\(2\)</span> and <span class="math">\(1\)</span>, <span class="math">\(\ket{2,1}\)</span>, that is putting particle 1 in state <span class="math">\(2\)</span> and particle 2 in state <span class="math">\(1\)</span>, <span class="math">\(12\rightarrow21\)</span>, the physical properties of the system must be preserved. This exchange leads to the two&nbsp;possibilities:
+</p>
+<div class="math">$$\ket{1,2} = \ket{2,1},\; \text{or} \; \ket{1,2} = - \ket{2,1}\,,$$</div>
+<p>
+since both are compatible with the fact that another exchange returns the system to its initial state, <span class="math">\(12\rightarrow 21 \rightarrow 12\)</span>. The first case corresponds to <em>symmetric</em> states and the second one to antisymmetric states, their are related to the spin of the particles (in fact, it is a quantum <em>relativistic</em> phenomenon): integer spin particles, called <em>bosons</em>, have symmetric states under permutation of particles; half integer particles, <em>fermions</em>, have antisymmetric states. Photons are bosons of spin <span class="math">\(1\)</span>, electrons are fermions of spin <span class="math">\(1/2\)</span>.</p>
+<p>Instead of the hilbert space of <span class="math">\(N\)</span> particles <span class="math">\(\mathcal{H}_N\)</span>, it is possible to describe a system of an arbitrary number of particles using a representation in terms of <em>occupation numbers</em>, the so called <a href="https://en.wikipedia.org/wiki/Second_quantization">fock space</a> <span class="math">\(\mathcal{F}\)</span>, which is a direct sum of symmetrized hilbert&nbsp;spaces:
+</p>
+<div class="math">$$\mathcal{F} = \bigoplus_{N=0}^\infty \mathrm{S}_\pm\mathcal{H}_N\,,$$</div>
+<p>
+where <span class="math">\(\mathrm{S}_+\)</span> is the symmetrization operator for bosons and <span class="math">\(\mathrm{S}_-\)</span> is the fermion&#8217;s antisymmetrization operator, and <span class="math">\(N=0\)</span> corresponds to the vacuum state <span class="math">\(\ket{0}\)</span>. The occupation numbers <span class="math">\(n_s\)</span> are simply the number of particles in a given state <span class="math">\(s\)</span> (<span class="math">\(s=1,2,\ldots\)</span>, where each <span class="math">\(s\)</span> represents, in general, a set of quantum numbers; the number of states <span class="math">\(N_s\)</span> can obviously be&nbsp;infinity).</p>
+<p>A state in the fock space is defined by the corresponding set of occupation numbers <span class="math">\(\ket{n_1,n_2,\ldots}\)</span>. It can be build from the vacuum state applying successively creation and annihilation operators of particles at a given state (an abstract generalization of the harmonic oscillator operators <span class="math">\(a\)</span> and <span class="math">\(a^\dagger\)</span>, respectively). For instance, the state <span class="math">\(\ket{1,2}\)</span> of two bosons can be constructed&nbsp;as:
+</p>
+<div class="math">$$\ket{1,2} = a^\dagger_1 a^\dagger_2 \ket{0}=  a^\dagger_2 a^\dagger_1 \ket{0}= \ket{2,1}$$</div>
+<p>
+from which we obtain the <em>commutation</em>&nbsp;relations,
+</p>
+<div class="math">$$[a_s,a_r] = 0 = [a^\dagger_s, a^\dagger_r]$$</div>
+<p>
+(using that <span class="math">\(a\)</span> is the adjoint of <span class="math">\(a^\dagger\)</span>). A similar calculation for fermions leads to <em>anti</em>-commutation&nbsp;relations
+</p>
+<div class="math">$$\{c_s,c_r\} = 0 = \{c^\dagger_s, c^\dagger_r\}$$</div>
+<p>
+using <span class="math">\(c\)</span> and <span class="math">\(c^\dagger\)</span> for the fermionic operators. An immediate consequence of the anticommutation of fermions is that two fermions cannot be in the same state <span class="math">\(\ket{1,1}\)</span> (because it it symmetric!): this is the content of the Pauli <em>exclusion principle</em>. The occupation numbers <span class="math">\(n_s\)</span> are the eigenvalues of the operators <span class="math">\(a^\dagger_s a_s\)</span> for bosons and <span class="math">\(c^\dagger_s c_s\)</span> for fermions. The boson operator is similar to the harmonic oscillator, its spectrum are integers; the spectrum of fermion operator contains, in contrast, only the two values <span class="math">\(0,1\)</span>. Indeed, the algebra of boson and fermion operators is completed by the commutation&nbsp;relations
+</p>
+<div class="math">$$[a_s, a_s^\dagger] = 1, \quad {c_s, c_s^\dagger} = 1.$$</div>
+<p>
+As a consequence the occupation number&nbsp;operators
+</p>
+<div class="math">$$a_s^\dagger a_s = \hat{n}_s, \quad c_s^\dagger c_s = \hat{n}_s$$</div>
+<p>
+have the spectrum <span class="math">\(n_s=0,1,2,\ldots\)</span> for bosons and <span class="math">\(n_s=0,1\)</span> for&nbsp;fermions.</p>
+<p>Therefore, a <span class="math">\(N\)</span>-particles boson state can be&nbsp;written,
+</p>
+<div class="math">$$\ket{n_1,n_2,\ldots,n_{N_s}}\,,\quad \sum_{s=1}^{N_s} n_s = N\,,$$</div>
+<p>
+where particles in a similar state are grouped: the <span class="math">\(N\)</span>-state is thus given by the number <span class="math">\(n_s\)</span> of particles in each different state <span class="math">\(s\)</span>. For a fermion state we must track the order of the occupation numbers <span class="math">\(n=0,1\)</span>,
+</p>
+<div class="math">$$\ket{n_1,n_2,\ldots,n_{N_s}}\,,\quad n_s = 0,1\,,$$</div>
+<p>
+because the permutation of two occupation numbers change the state sign. For instance, a general boson state&nbsp;is,
+</p>
+<div class="math">$$(a_1^\dagger)^{n_1} (a_2^\dagger)^{n_2} \ldots \ket{0} = \ket{n_1, n_2, \ldots}$$</div>
+<p>
+and for fermions we&nbsp;have,
+</p>
+<div class="math">$$(c_1^\dagger)^{n_1} (c_2^\dagger)^{n_2} \ldots \ket{0} = \ket{n_1, n_2, \ldots}$$</div>
+<p>
+both states having automatically the correct symmetry, symmetric for bosons and antisymmetric for fermions; <span class="math">\(\ket{0}\)</span> is the vacuum state, the state without&nbsp;particles.</p>
+<blockquote>
+<p>The boson occupation numbers can be any integer number <span class="math">\(n_s=0,1,2,\ldots\)</span>, and the fermion occupation numbers can only take on two values <span class="math">\(n_s=0,1\)</span>.</p>
+</blockquote>
+<p>The fact that the number of particles is arbitrary, makes the fock space the natural framework for the grand canonical ensemble. The hamiltonian of free bosons has the general <em>diagonal</em>&nbsp;form,
+</p>
+<div class="math">$$H_B = \sum_s \epsilon_s a^\dagger_s a_s\,,$$</div>
+<p>
+where the <span class="math">\(\epsilon_s\)</span> are the energy levels and <span class="math">\(a^\dagger_s a_s\)</span> is a number operator with, as we said above, eigenvalues the occupation numbers <span class="math">\(n_s \in \mathbb{N}\)</span>. A similar expression holds for the free&nbsp;fermions,
+</p>
+<div class="math">$$H_F = \sum_s \epsilon_s c^\dagger_s c_s\,,$$</div>
+<p>
+where the number operator of state <span class="math">\(s\)</span>, <span class="math">\(c^\dagger_s c_s\)</span> has a spectrum of occupation numbers <span class="math">\(n_s=0,1\)</span> with two values. The respective grand partition functions&nbsp;are
+</p>
+<div class="math">$$Z_B(T,\mu) = \mathrm{Tr}\, \E^{-(H_B - \mu N_B)/T}\,,\quad N_B = \sum_s a^\dagger_s a_s\,,$$</div>
+<p>
+and
+</p>
+<div class="math">$$Z_F(T,\mu) = \mathrm{Tr}\, \E^{-(H_F - \mu N_F)/T}\,,\quad N_F = \sum_s c^\dagger_s c_s\,.$$</div>
+<p>
+Using the explicit form of <span class="math">\(H_B\)</span> and <span class="math">\(N_B\)</span>, and the properties of the fock states to exchange the trace and the product (the basis states are product states of the occupation numbers), we can put the grand partition function in the&nbsp;form,
+</p>
+<div class="math">$$Z_B= \mathrm{Tr}\,\exp\left(-\sum_s \frac{\epsilon_s - \mu}{T}a^\dagger_s a_s\right) = \mathrm{Tr}\,\bigotimes_s \exp\left(-\frac{\epsilon_s - \mu}{T} a^\dagger_s a_s\right) = \prod_s \sum_{n_s=0}^\infty \E^{-(\epsilon_s - \mu)n_s/T}$$</div>
+<p>
+which can be easily summed&nbsp;up,
+</p>
+<div class="math">$$Z_B(T,\mu) = \prod_s \frac{1}{1-\E^{-(\epsilon_s - \mu)/T} }\,.$$</div>
+<p>
+A similar calculation for the fermions, the only difference is in the values of <span class="math">\(n_s\)</span>, leads&nbsp;to,
+</p>
+<div class="math">$$Z_F(T,\mu) = \prod_s \sum_{n_s=0,1} \E^{-(\epsilon_s - \mu)n_s/T} = \prod_s \left(1 + \E^{-(\epsilon_s - \mu)/T} \right)\,.$$</div>
+<p>We remark that, in the boson case, the condition for convergence is ensured if the chemical potential is negative <span class="math">\(\mu &lt; 0\)</span> (<span class="math">\(\epsilon &gt; 0\)</span> for free particles), or more generally when the energy is bounded from below, <span class="math">\(\mu &lt; \min \epsilon_s\)</span>.</p>
+<blockquote>
+<p>The grand potential of non interacting bosons and fermions&nbsp;is</p>
+<p>
+<div class="math">$$\Phi(T, \mu, V) = \pm T \sum_s \ln \left( 1 \mp z \E^{-\epsilon_s/T} \right)\,,\quad z = \E^{\mu/T}$$</div>
+</p>
+<p>where <span class="math">\(\epsilon_s\)</span> is the energy spectrum, <span class="math">\(z\)</span> the fugacity, and the top sign is for bosons and the bottom one is for fermions. In the classical limit <span class="math">\(\E^{-(\epsilon_s-\mu)/T} \ll 1\)</span>, the grand potential reduces&nbsp;to</p>
+<p>
+<div class="math">$$\Phi = -T \sum_s \E^{-(\epsilon_s - \mu)/T}$$</div>
+</p>
+<p>which corresponds to the Boltzmann&nbsp;distribution.</p>
+</blockquote>
+<p>The expected values of the energy <span class="math">\(\braket{H}\)</span>  and the particle number <span class="math">\(\braket{\hat{N}}=N\)</span> are given by the bosons and fermions occupation numbers <span class="math">\(\braket{a^\dagger_s a_s}\)</span> and <span class="math">\(\braket{c^\dagger_s c_s}\)</span>,&nbsp;respectively:
+</p>
+<div class="math">$$\braket{n_s} = \frac{1}{\E^{(\epsilon_s - \mu)/T} \mp 1}\,, \quad \sum_s \braket{n_s} = \braket{\hat{N}}=N\,,$$</div>
+<p>
+and,
+</p>
+<div class="math">$$\braket{H} = \sum_s \epsilon_s \braket{n_s} \,,$$</div>
+<p>
+where <span class="math">\(\braket{n_s}\)</span> are the bose (upper sign) and fermi (lower sign) one particle distribution functions <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. (Notation: we sometimes may write <span class="math">\(\braket{n_s} = n_s\)</span>.)</p>
+<h3>Free particles: ideal boson and fermion&nbsp;gases</h3>
+<p>The state <span class="math">\(s = (s, \boldsymbol p)\)</span> of free particles is characterized by their spin <span class="math">\(s\)</span> and momentum <span class="math">\(\boldsymbol p\)</span>. The energy&nbsp;spectrum,
+</p>
+<div class="math">$$\epsilon_p = \frac{p^2}{2m} \,,$$</div>
+<p>
+possesses a <span class="math">\(g_s= 2s + 1\)</span> spin degeneracy (<span class="math">\(m\)</span> is the mass). Moreover, in a cubic box of volume <span class="math">\(V\)</span>, the momentum&nbsp;is
+</p>
+<div class="math">$$\boldsymbol p = \frac{2\pi \hbar}{V^{1/3}} \boldsymbol n\,,\quad \boldsymbol n \in \mathbb{Z}^3\,,$$</div>
+<p>
+which, in the limit <span class="math">\(V \rightarrow \infty\)</span> tends to a continuum, allowing the replacement of the sum over states by an&nbsp;integral:
+</p>
+<div class="math">$$ \sum_{(s,\boldsymbol p)} \ldots \rightarrow g_s \frac{V}{(2\pi \hbar)^3} \int_{\mathbb{R}^3} \D \boldsymbol p \, \dots$$</div>
+<p>
+We note that in this limit, the grand potential <span class="math">\(\Phi \sim V\)</span> is manifestly extensive. Therefore, the problem of the statistical properties of an ideal quantum gas reduces to the calculation of the&nbsp;integral:
+</p>
+<div class="math">$$\Phi(T,z,V) = \pm \frac{g_sVT}{(2\pi)^3} \int_{\mathbb{R}^3} \D \boldsymbol p \, \ln \left( 1 \mp z \E^{-\epsilon_{\boldsymbol p}/T} \right) = \pm \frac{g_sVT}{2\pi^2} \int_0^\infty p^2 \D p \, \ln \left( 1 \mp z \E^{-p^2/2T} \right)$$</div>
+<p>
+where we introduced units such that <span class="math">\(m=\hbar=1\)</span>. After a change of variables <span class="math">\(p^2/2T \rightarrow x\)</span> and one integration by parts, we&nbsp;obtain,
+</p>
+<div class="math">\begin{equation}
+  \Phi(T,z,V) = \mp \frac{g_s V T}{\lambda^3} \mathrm{Li}_{5/2}(\pm z)
+  \label{Phi}
+\end{equation}</div>
+<p>
+where <span class="math">\(\lambda = (2\pi/T)^{1/2}\)</span> is the de Broglie thermal length, and <span class="math">\(\mathrm{Li}_\nu(z)\)</span> is the <a href="https://en.wikipedia.org/wiki/Polylogarithm">polylogarithm</a> function <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\mathrm{Li}_{\nu}(z) = \frac{1}{\Gamma(\nu)} \int_0^\infty \D x \frac{x^{\nu-1}}{z^{-1}\E^x - 1}\,, \quad \mathrm{Li}_\nu(z) = \sum_{n=1}^\infty \frac{z^n}{n^\nu}\,,$$</div>
+<p>
+here <span class="math">\(\Gamma(\nu)\)</span> is the Euler gamma&nbsp;function,
+</p>
+<div class="math">$$\Gamma(\nu) = \int_0^\infty \D x \, x^{\nu-1}\E^{-x}\,,$$</div>
+<p>
+see the notes below. Usually, <span class="math">\(\pm\mathrm{Li}_{\nu+1}(\pm z)\)</span> are called <a href="https://dlmf.nist.gov/25.12">bose and fermi integrals</a>, respectively. (See the note below.)<sup id="fnref:NO"><a class="footnote-ref" href="#fn:NO">1</a></sup> </p>
+<p>Thermodynamic quantities are then obtained form the grand&nbsp;potential:
+</p>
+<div class="math">$$E = -T^2 \frac{\partial}{\partial T} \frac{\Phi(T,z)}{T}\,, \quad
+N = -z \frac{\partial}{\partial z} \frac{\Phi(T,z)}{T}\,, $$</div>
+<p>
+for the energy and the number of particles, where, when deriving with respect to <span class="math">\(T\)</span> one considers <span class="math">\(V=\text{const.}\)</span> and <span class="math">\(z=\text{const.}\)</span>, and when deriving with respect to <span class="math">\(z\)</span>, <span class="math">\(T=\text{const}\)</span>;&nbsp;and
+</p>
+<div class="math">$$S = \frac{E - \mu N - \Phi}{T} = -\left. \frac{\partial\Phi}{\partial T}\right|_z + \left. \frac{\mu z}{T^2} \frac{\partial \Phi}{\partial z}\right|_T = -\left. \frac{\partial \Phi(T,\mu)}{\partial T}\right|_{V,\mu}$$</div>
+<p>
+for the entropy. An immediate consequence of these formulas is that the ideal gas&nbsp;relation,
+</p>
+<div class="math">$$E = \frac{3}{2} PV$$</div>
+<p>
+is satisfied for the free quantum gases <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>We can immediately compute the&nbsp;density,
+</p>
+<div class="math">$$\frac{N}{V} = -\frac{z}{VT} \frac{\partial \Phi}{\partial z} = \frac{g_s}{\lambda^3} \mathrm{Li}_{3/2}(z) \approx \frac{g_s}{\lambda^3} \left( z \pm \frac{z^2}{2^{3/2}} \right)$$</div>
+<p>
+we used in the last equation the approximation for <span class="math">\(z\ll 1\)</span> (the few first terms of the series defining the <span class="math">\(\mathrm{Li}_\nu\)</span> function), near the classical limit of high temperature (<span class="math">\(T \gg \mu\)</span>); iteratively inverting this last approximation we obtain the fugacity as a power series of the density <span class="math">\(N/V=n\)</span>,
+</p>
+<div class="math">$$z \approx \frac{\lambda^3 n}{g_s} \left( 1 \mp \frac{1}{2^{3/2}} \frac{\lambda^3n}{g_s} \right)$$</div>
+<p>
+from which we derive an approximated expression for the pressure <span class="math">\(P = -\Phi/V\)</span>,
+</p>
+<div class="math">$$P \approx nT \left(1 \mp \frac{1}{2^{5/3}} \frac{\lambda^3 n}{g_s} \right)$$</div>
+<p>
+We observe that the effect of the exchange of identical particles is to decrease the pressure of the boson gas with respect to the classical one, and to increase the pressure of the fermion gas. These effectives attraction and repulsion, are not related to particle interactions (of course, the particles are free), they are the result of an <em>entropic effect</em>, the identity of particles increases the disorder, or in other terms, it decreases the quantity of information with respect to a system of distinguishable particles. Indeed, the entropy of a system of bosons or fermions is (<strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>):
+</p>
+<div class="math">$$ S/G = -\sum_s \left[ n_s \ln n_s \mp (1 \pm n_s) \ln (1 \pm n_s)\right]\,,$$</div>
+<p>
+(<span class="math">\(G\)</span> is the total number of states such that <span class="math">\(N=G\sum_s n_s\)</span>) using the bose and fermi distributions: the first term corresponds to the classical entropy, to which a second term is added, <em>increasing</em> the value of <span class="math">\(S\)</span>. The classical limit, valid for bosons and fermions, is recovered when <span class="math">\(n_s \ll 1\)</span>, when the temperature is large with respect to any microscopic&nbsp;energy.</p>
+<h3>Black body and bose degenerate&nbsp;gas</h3>
+<p>In the limit of low temperature or high density, when the energy per particle is larger than the thermal one, new quantum effects appear in non interacting systems. One of such effects, the black body radiation, is even at the origin of quantum&nbsp;mechanics.</p>
+<p>The photon, first described by Einstein (1905) in his work on the photoelectric effect, is a <em>massless</em> boson of spin <span class="math">\(1\)</span>, it has hence only two internal degrees of freedom or polarizations (which are perpendicular to its momentum), it is the quanta of the electromagnetic field. The photon energy <span class="math">\(\hbar \omega\)</span> is proportional to the photon momentum <span class="math">\(\boldsymbol p = \hbar \boldsymbol k\)</span>, where <span class="math">\(\omega\)</span> and <span class="math">\(\boldsymbol k\)</span> are the frequency (multiplied by <span class="math">\(2\pi\)</span>) and the wavevector,&nbsp;respectively:
+</p>
+<div class="math">$$\omega = c |\boldsymbol k|$$</div>
+<p>
+with <span class="math">\(c = 299\, 792\, 458 \, \mathrm{m\,s^{-1}}\)</span> the speed of light (exact value in <span class="caps">SI</span> units). The interaction of the electromagnetic field with matter realizes, in particular, through the emission and absorption of photons by the matter atoms; the balance of these processes, controled exclusively by the temperature, determines the thermodynamical equilibrium: this specific state of matter-radiation equilibrium, is called a &#8220;black body&#8221;. As a consequence of the exchange of photons with matter, the number of photons in a cavity maintained at a fixed temperature is not conserved, and the equilibrium condition leads to the constraint of zero chemical potential <span class="math">\(\mu = 0\)</span>. Under such constraint the canonical and grand canonical ensembles are&nbsp;identical.</p>
+<p>Non interacting massive bosons also show an interesting quantum phenomenon when the energy per particle is much larger than the thermal energy: the ground state energy level <span class="math">\(\epsilon_0\)</span>, tends to populate at a macroscopic scale. This contrast with the behavior at high temperature where the levels occupation follows the Boltzmann law <span class="math">\(n_s \sim \E^{-\epsilon_s/T}\)</span>, and equipartition of the energy over all degrees of freedom dominates. This phenomenon, the <a href="/pdfs/PS-BEC.pdf">Bose-Einstein condensation</a>, was observed in the laboratory for the first time at the end of the twenty century, 70 years after their theoretical&nbsp;prediction.</p>
+<h4>Black body&nbsp;radiation</h4>
+<p>The partition function (it is convenient to introduce units such that <span class="math">\(k_{\mathrm{B}}=\hbar=c=1\)</span>)&nbsp;is,
+</p>
+<div class="math">$$\ln Z = 2 \sum_{\boldsymbol k \ne 0} \ln (1 - \E^{\omega_{\boldsymbol k}/T} ) = \frac{2V}{(2\pi)^3} \int_0^\infty 4\pi k^2 \D k\, \ln(1 - \E^{-\omega_{\boldsymbol k}/T} )$$</div>
+<p>
+(the factor <span class="math">\(2\)</span> accounts for the two polarizations) which, after a change of variable from the wavenumber to the frequency <span class="math">\(k = \omega/c = \omega\)</span> together with the substitution <span class="math">\(x =\hbar \omega/k_BT = \omega/T\)</span>, and an integration by parts, gives <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$\ln Z = \frac{VT^3}{3\pi^2} \int_0^\infty \D x \frac{x^3}{\E^{x}-1}= \frac{2V}{\pi^2}T^3 \mathrm{Li}_4(1) = \frac{\pi^2V}{45}T^3\,.$$</div>
+<p>
+The free energy is&nbsp;therefore,
+</p>
+<div class="math">$$F = - \frac{\pi^2V}{45}T^4 = -\frac{\pi^2V}{45(\hbar c)^3}T^4\,,$$</div>
+<p>
+from which one obtains the entropy and&nbsp;energy:
+</p>
+<div class="math">$$\frac{S}{V} = \frac{16\sigma}{3c} T^3 \,, \quad \frac{E}{V} = \frac{4\sigma}{c} T^4 \, \quad \sigma = \frac{\pi^2 c k_{\mathrm{B}}^4}{60(\hbar c)^3}\,,$$</div>
+<p>
+where the expression for the energy is the <em>Stefan law</em> and <span class="math">\(\sigma\)</span> the Stefan&nbsp;constant.</p>
+<p>To compute the energy distribution of the radiation, we need to count the number of electromagnetic modes in a cavity of volume <span class="math">\(V\)</span>; this is naturally given by the wavenumber, <span class="math">\(k/2\pi \sim n \in \mathbb{N}\)</span>:
+</p>
+<div class="math">$$\text{modes } \sim V \times 2 \times \frac{\D \boldsymbol k}{(2\pi)^3} \;\rightarrow\; V \times \,2 \times 4\pi k^2 \frac{\D k}{(2\pi)^3}\,,$$</div>
+<p>
+where the factor <span class="math">\(2\)</span> comes from the two possible polarizations, and the last expression make use of the isotropy of the radiation field by counting the number of modes in a spherical shell of width <span class="math">\(\D k\)</span>. Note that the number of modes corresponds to the expression we used to replace the summation over the discrete wavenumbers to the integral: <span class="math">\(V \D \boldsymbol p/(2\pi \hbar)^3\)</span>.</p>
+<p>Using the results of the grand canonical ensemble, we find the the average occupation number of photons of energy <span class="math">\(\omega\)</span>&nbsp;is,
+</p>
+<div class="math">$$n_\omega = \frac{1}{\E^{\omega/T} - 1},$$</div>
+<p>
+which gives the energy distribution (replacing <span class="math">\(k=\omega/c\)</span> in the formula for the number of&nbsp;modes):
+</p>
+<div class="math">$$E(\omega) \D \omega = \frac{VT}{\pi^2} \frac{\omega^3 \D \omega}{\E^{\omega/T} - 1}\,,$$</div>
+<p>
+the <em>Planck radiation law</em> (1900). Note that, after integration, one obtains the Stefan law <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$E = \frac{V}{\pi^2} \int_0^\infty \D \omega\, \frac{\omega^3}{\E^{\omega/T} - 1} = \frac{6V}{\pi^2} T^4 \mathrm{Li}_4(1) = \frac{\pi^2 V}{15} T^4\,,$$</div>
+<p>
+or in Si&nbsp;units:
+</p>
+<div class="math">$$E = \frac{\pi^2 V k_\mathrm{B}^4}{15 (\hbar c)^3} T^4\,,$$</div>
+<p>
+in accordance with the previous result. (See the note below, on the choice of units.)<sup id="fnref:UN"><a class="footnote-ref" href="#fn:UN">2</a></sup></p>
+<h4>Bose-Einstein&nbsp;condensation</h4>
+<p>The density <span class="math">\(n = N/V\)</span> of a free boson gas obeys the formula we derived previously using (<span class="math">\(\ref{Phi}\)</span>),
+</p>
+<div class="math">$$n = \left(\frac{T}{2\pi}\right)^{3/2} \mathrm{Li}_{3/2}(\E^{\mu/T}) = \left(\frac{T}{2\pi}\right)^{3/2} \sum_{k=1}^\infty \frac{\E^{k\mu/T}}{k^{3/2}}$$</div>
+<p>
+(for spinless particles, <span class="math">\(g_s = 1\)</span>) that fails to converge for chemical potentials above <span class="math">\(\mu = 0\)</span>. At the threshold the temperature as a function of the density is given&nbsp;by:
+</p>
+<div class="math">$$T_c = \frac{2\pi}{\zeta(3/2)^{2/3}} n^{2/3} = 3.3125 n^{2/3}\,,$$</div>
+<p>
+lowering further the temperature, at fixed density, would make the chemical potential positive (<span class="math">\(\zeta_{3/2}= \zeta(3/2)\)</span> is the Riemann zeta function). The problem is that for <span class="math">\(T&lt;T_c\)</span>, the approximation consisting in the replacement of the sum over the energy levels by an integral is no longer justified, because a fraction of the particles condenses into the ground state (<span class="math">\(\epsilon_{\boldsymbol p} = 0\)</span>), the first term of the sum. Indeed, the number of particle residing in the ground state&nbsp;is,
+</p>
+<div class="math">$$N_0= \braket{a^\dagger_0 a_0} = \frac{1}{\E^{\mu/T}-1} = \frac{z}{1-z} \,,$$</div>
+<p>
+which increases to infinity, or becomes negative, at <span class="math">\(\mu=0\)</span>. Therefore, to avoid the divergences we split the sum into a ground energy term and the rest, the excited states that can be approximated by an integral, to obtain the fraction of particles in the condensate <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\frac{N_0}{N} = 1 - \left(\frac{T}{T_c}\right)^{3/2} \,, \quad T \le T_c\,.$$</div>
+<p>
+The Bose-Einstein condensation is just the appearance of a macroscopic fraction of bosons occupying the zero energy ground state. One interesting prediction is that there is a sharp value of the temperature (<span class="math">\(=T_c\)</span>) at which the transition between the normal state and the condensate happens; in addition, this critical temperature depends on the particle&nbsp;density.</p>
+<p>In experiments, boson atoms are trapped in an external potential created by lasers. In a first approximation this potential is harmonic, and thus the energy levels turn to be of the&nbsp;form,
+</p>
+<div class="math">$$\epsilon_{\boldsymbol n} = \hbar \omega\, (n_x + n_y + n_z + 3/2)\,,\quad \boldsymbol n \in \mathbb{N}^3\,,$$</div>
+<p>
+in three dimensions, where the characteristic frequency <span class="math">\(\omega\)</span> depends on the curvature of the potential minimum. This expression differs notably with the free particle energy, which is quadratic in the momentum. However, the qualitative picture depicted above, remains true; even if important quantitative differences appear. Let us calculate the thermodynamics of a system of <span class="math">\(N\)</span> bosons in a harmonic trap, with energies given by <span class="math">\(\epsilon_{\boldsymbol n}\)</span>.</p>
+<p>The relation between the chemical potential <span class="math">\(\mu\)</span> and the number of bosons <span class="math">\(N\)</span> is obtained from the summation of the occupation numbers <span class="math">\(n_\epsilon\)</span>,
+</p>
+<div class="math">$$N = \sum_{\boldsymbol n} \frac{1}{\E^{-\mu/T}\E^{\omega(n_x + n_y + n_z + 3/2)/T} - 1}$$</div>
+<p>
+(as usual we have <span class="math">\(k_{\mathrm{B}} = \hbar = 1\)</span>). The critical value of the chemical potential is, instead of&nbsp;zero,
+</p>
+<div class="math">$$\mu_c = 3\omega/2\,,$$</div>
+<p>
+for chemical potentials larger than this one, the number of particle would be negative. The number of particles in the ground state <span class="math">\(N_0\)</span>, <span class="math">\(\epsilon_{\boldsymbol n}=\epsilon_0\)</span>, is then determined&nbsp;by,
+</p>
+<div class="math">$$ N - N_0 = \sum_{\boldsymbol n \ne 0} \frac{1}{\E^{\omega(n_x + n_y + n_z)/T} - 1}\,,$$</div>
+<p>
+which is the number of particles in the excited states. This sum, being convergent, can safely be approximated by an integral in the limit of large <span class="math">\(N\rightarrow\infty\)</span>:
+</p>
+<div class="math">$$N-N_0 = \int_0^\infty \frac{\D \boldsymbol n}{\E^{\omega(n_x + n_y + n_z)/T} - 1}\,.$$</div>
+<p>
+The integral can be done transforming the integrand into a power series <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>; however, it is more useful to calculate the density of states <span class="math">\(\nu(\epsilon)\)</span> in order to change the <span class="math">\(\boldsymbol n\)</span> variable by the energy <span class="math">\(\epsilon_{\boldsymbol n}\)</span>. In the continuous limit, which is our present approximation, the number of energy levels smaller than <span class="math">\(n = \epsilon/\omega\)</span> is the volume <span class="math">\(\Omega(n)\)</span> defined&nbsp;by:
+</p>
+<div class="math">$$\Omega(n) = \{n_x \ge 0,\; n_y \ge 0,\; n_z \ge 0,\;\text{with }\, n_x + n_y + n_z \le n\}\,,$$</div>
+<p>
+that is the volume of a pyramid of base a triangle of&nbsp;area,
+</p>
+<div class="math">$$\frac{1}{2}\sqrt{2} \frac{\sqrt{2}}{2} n^2$$</div>
+<p>
+and height <span class="math">\(n\)</span>, giving a volume <span class="math">\(V(n) = \text{area}\times \text{height}/3\)</span>,
+</p>
+<div class="math">$$\Omega(n)=\frac{n^3}{6}\,,$$</div>
+<p>
+the sixth of the cube of edge <span class="math">\(n\)</span>; using&nbsp;that 
+</p>
+<div class="math">$$d\Omega(n) = \frac{n^2}{2} \D n = \frac{\epsilon^2}{2\omega^2} \frac{\D \epsilon}{\omega} = \nu(\epsilon) \D \epsilon\,,$$</div>
+<p>
+we find the density of states of a three dimensional harmonic&nbsp;oscillator,
+</p>
+<div class="math">$$\nu(\epsilon) = \frac{\epsilon^2}{2\omega^3}$$</div>
+<p>
+up to subdominant terms <span class="math">\(\mathcal{O(\epsilon/\omega)}\)</span> (our approximation is consistent with the limit <span class="math">\(\epsilon/\omega \gg 1\)</span>). Therefore, the integral over <span class="math">\(\boldsymbol n\)</span>&nbsp;becomes,
+</p>
+<div class="math">$$N-N_0 = \int_0^\infty \D \epsilon\, \nu(\epsilon)n_\epsilon = \int_0^\infty \frac{\D \epsilon}{2\omega^3} \frac{\epsilon^2}{\E^{\epsilon/T} - 1} = \frac{\zeta(3)}{\omega^3} T^3\,.$$</div>
+<p>
+The critical temperature corresponds to the threshold below which the ground state is populated with a macroscopic number of particles. It is then the temperature at which <span class="math">\(N_0=0\)</span>,&nbsp;or,
+</p>
+<div class="math">$$T_c = \frac{ \hbar \omega}{k_\mathrm{B}} \left( \frac{N}{\zeta(3)}  \right)^{1/3} \,,$$</div>
+<p>
+similar to the free case with, instead of the power <span class="math">\(2/3\)</span>, we obtain a <span class="math">\(1/3\)</span> exponent. The main qualitative difference is that now the critical temperature depens on the number of trapped particles and not, as before, on the particle <em>density</em>.</p>
+<blockquote>
+<p><img src="/images/PS-bcondensate.svg" height="200"></p>
+<p>Franction of condensed particles as a function of the temperature; the dashed line corresponds to the free bosons and the continuous one to the trapped&nbsp;ones.</p>
+</blockquote>
+<p>An analogous computation gives the energy for <span class="math">\(T \le T_c\)</span> (<span class="math">\(\mu = 3\omega/2\)</span>):
+</p>
+<div class="math">$$E = \int_0^\infty \D \epsilon\, \nu(\epsilon)n_\epsilon \epsilon = \int_0^\infty \frac{\D \epsilon}{2\omega^3} \frac{\epsilon^3}{\E^{\epsilon/T} - 1} = \frac{3\zeta(4)}{\omega^3} T^4$$</div>
+<p>
+which obviously determined by exclusively by the excited states <span class="math">\(\epsilon &gt; 0\)</span>. Using these two last equations, we can write the energy of the condensate&nbsp;as,
+</p>
+<div class="math">$$\frac{E}{NT_c} = \frac{3\zeta(4)}{\zeta(3)} \left( \frac{T}{T_c}\right)^4\,.$$</div>
+<p>
+Note that for free bosons the exponent of the temperature is <span class="math">\(5/2\)</span>, rather than <span class="math">\(4\)</span> for the bosons in a trap. It is also worth mentioning that the harmonic trap makes the bosons behave much like a relativistic degenerate gas, for which the energy is linear in the momentum: <span class="math">\(\epsilon_{\boldsymbol p} \sim |\boldsymbol p|\)</span> (compare with the black body expression of the thermodynamic energy, also proportional to the power four of the temperature <span class="math">\(E \sim T^4\)</span>).</p>
+<h3>Degenerate fermions <span class="math">\(z \rightarrow&nbsp;\infty\)</span></h3>
+<p>The occupation number of a fermi gas at energy <span class="math">\(\epsilon\)</span> 
+</p>
+<div class="math">$$n_\epsilon = \frac{1}{\E^{(\epsilon - \mu)/T} + 1}$$</div>
+<p>
+and at low temperature <span class="math">\(T \ll \mu\)</span>, tends to zero if <span class="math">\(\epsilon &gt; \mu\)</span> and to one if <span class="math">\(\epsilon &lt; 0\)</span>:
+</p>
+<div class="math">$$ n_\epsilon = \theta(\epsilon_F - \epsilon),\quad \epsilon_F = \left.\mu\right|_{T=0}$$</div>
+<p>
+at <span class="math">\(T=0\)</span>, where we defined the fermi energy <span class="math">\(\epsilon_F\)</span> as the chemical potential separating the low energy region of occupied levels, to the high energy region of unoccupied levels. The existence of this energy is a result of the exclusion principle: adding fermions to a system a zero temperature, must be done by occupying progressively higher energy unoccupied states. This is in contrast to the bosons, for which increasing the population of the fundamental level do not contribute to the&nbsp;energy.</p>
+<p>Using the free particle <span class="math">\(\epsilon = p^2/2m\)</span> density of states (take <span class="math">\(m=1\)</span>) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$\nu(\epsilon) = \frac{V\sqrt{2}}{\pi^2} \epsilon^{1/2} \left[ \frac{m}{\hbar^2} \right]^{3/2} \,,$$</div>
+<p>
+(standard units in brackets) we can calculate the number of particles below the fermi level <span class="math">\(\epsilon_F\)</span>
+</p>
+<div class="math">$$N = \int_0^\infty \D \epsilon\, \nu(\epsilon) n_\epsilon = \frac{V\sqrt{2}}{\pi^2} \int_0^\infty \D \epsilon \, \epsilon^{1/2} \theta(\epsilon_F - \epsilon) = \frac{2}{3} V \frac{\sqrt{2}}{\pi^2} \epsilon_F^{3/2} \,,\quad (T=0)$$</div>
+<p>
+at zero temperature. This formula relates the gas density to the fermi&nbsp;energy:
+</p>
+<div class="math">$$\epsilon_F = \frac{(3\pi^2)^{2/3}}{2} n^{2/3} \; [\hbar^2/m] = T_F \, [k_\mathrm{B}]\,,$$</div>
+<p>
+where we indicate in square brackets the dimensional factor, and defined the fermi temperature <span class="math">\(T_F\)</span> (in kelvin). It is also useful to write the density of state in the&nbsp;form,
+</p>
+<div class="math">$$\nu(\epsilon) = \frac{3N}{2} \frac{\epsilon^{1/2}}{\epsilon_F^{3/2}}\,,$$</div>
+<p>
+where we replaced the volume by the number of&nbsp;particles:
+</p>
+<div class="math">$$V = \frac{3\pi^2}{2^{3/2}} \frac{N}{\epsilon_F^{3/2}} \, [\hbar^2/m]^{3/2}\,.$$</div>
+<p>In a similar way we calculate the&nbsp;energy,
+</p>
+<div class="math">$$E = \int_0^\infty \D \epsilon\, \nu(\epsilon) n_\epsilon \epsilon = \frac{V\sqrt{2}}{\pi^2} \int_0^{\epsilon_F} \D \epsilon \, \epsilon^{3/2} = \frac{2}{5} V \frac{\sqrt{2}}{\pi^2} \epsilon_F^{5/2}\,, \quad (T=0)$$</div>
+<p>
+or, using the expression of <span class="math">\(N\)</span>,
+</p>
+<div class="math">$$\frac{E}{N} = \frac{3}{5} \epsilon_F \,.$$</div>
+<p>These expressions are valid at <span class="math">\(T=0\)</span>, the behavior of the degenerated fermi gas at low temperature can be obtained using the asymptotic expansion of the polylogarithm function. In fact, keeping two terms of this expansion,<sup id="fnref2:NO"><a class="footnote-ref" href="#fn:NO">1</a></sup>
+</p>
+<div class="math">$$-\mathrm{Li}_s(-z) = \frac{(\ln z)^s}{\Gamma(s+1)} + \frac{\pi^2}{6} \frac{(\ln z)^{s-2}}{\Gamma(s-1)}  \,,$$</div>
+<p>
+is enough to estimate the corrections to the zero temperature calculations. The exact formula for the energy&nbsp;is,
+</p>
+<div class="math">$$E = \frac{3}{2}PV = -\frac{3}{2}\Phi = \frac{3}{2} \frac{N}{\epsilon_F^{3/2}} T^{5/2} \int_0^\infty \D x \frac{x^{3/2}}{z^{-1}\E^x + 1}\,,$$</div>
+<p>
+where we substituted the volume <span class="math">\(V\)</span> by its expression in terms of the fermi&nbsp;energy,
+</p>
+<div class="math">$$V = \frac{3}{2} \frac{\pi^2}{\sqrt{2}} \frac{N}{\epsilon_F^{3/2}}\,,$$</div>
+<p>
+and the integral is <span class="math">\(-\Gamma(5/2) \mathrm{Li}_{5/2}(-z)\)</span>.&nbsp;Therefore,
+</p>
+<div class="math">$$E = \frac{3}{2} \frac{N}{\epsilon_F^{3/2}} \left( \frac{2}{5} \mu^{5/2} + \frac{\pi^2}{4} T^2 \mu^{1/2} \right)\,.$$</div>
+<p>
+The grand potential in the gran canonical natural variables is&nbsp;then,
+</p>
+<div class="math">$$\Phi(T,\mu,V) = -\frac{2\sqrt{2}}{3\pi^2} V \left( \frac{2}{5} \mu^{5/2} + \frac{\pi^2}{4} T^2 \mu^{1/2} \right)\,.$$</div>
+<p>
+Now, the equation of <span class="math">\(N\)</span> at finite temperature gives an implicit formula for the chemical&nbsp;potential:
+</p>
+<div class="math">$$N= \frac{3}{2} \frac{N}{\epsilon_F^{3/2}} T^{3/2} \int_0^\infty \D x \frac{x^{1/2}}{z^{-1}\E^x + 1} = -\frac{3}{2} \frac{N}{\epsilon_F^{3/2}} T^{3/2} \Gamma(3/2) \mathrm{Li}_{3/2}(-z)\,,$$</div>
+<p>
+or, substituting the asymptotic&nbsp;expansion,
+</p>
+<div class="math">$$1 = \frac{\mu^{3/2}}{\epsilon_F^{3/2}} \left[ 1 + \frac{\pi^2}{8} \left( \frac{T}{\mu}\right)^2\right]\,,$$</div>
+<p>
+which is readily inverted to&nbsp;obtain,
+</p>
+<div class="math">$$\mu = \epsilon_F \left[ 1 - \frac{\pi^2}{12} \left( \frac{T}{\epsilon_F}\right)^2\right]\,,$$</div>
+<p>
+in agreement with the definition <span class="math">\(\mu = \epsilon_F\)</span> at <span class="math">\(T=0\)</span>, plus a quadratic correction in the temperature. Note that to obtain this relation <span class="math">\(N=N(\mu\)</span>) we also could use more straightforwardly <span class="math">\(N=-\partial \Phi/\partial \mu\)</span>.</p>
+<p>Putting the value of <span class="math">\(\mu\)</span> in the formula for <span class="math">\(E\)</span>, we finally get an explicit expression of the energy in the range <span class="math">\(T \ll \epsilon_F\)</span>,
+</p>
+<div class="math">$$E = \frac{3}{5} N \epsilon_F \left[ 1 + \frac{5\pi^2}{12} \left( \frac{T}{\epsilon_F}\right)^2\right]\,.$$</div>
+<div class="math">$$\frac{C_V}{N} = \frac{\pi^2}{2} \frac{T}{\epsilon_F}\,,$$</div>
+<p>
+linear in <span class="math">\(T\)</span>, and similarly for the&nbsp;entropy,
+</p>
+<div class="math">$$S = -\frac{\partial \Phi}{\partial T} = N \frac{\pi^2}{2} \frac{T}{\epsilon_F}\,,$$</div>
+<p>
+This is an important result, showing that the specific heat and the entropy at low temperatures of a fermi gas, tend to zero in accordance with the Nernst&nbsp;principle.</p>
+<h2>Notes</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:NO">
+<p><strong>Polylogarithmic</strong>&nbsp;function</p>
+<p>The polylogarithmic function is defined be the series,
+<div class="math">$$\mathrm{Li}_\nu(z) = \sum_{n=1}^\infty \frac{z^n}{n^\nu}\,,$$</div>
+which can be viewed as a generalization of the Riemann zeta function,
+<div class="math">$$\zeta(\nu) = \mathrm{Li}_\nu(1) = \sum_{n=1}^\infty \frac{1}{n^\nu}\,.$$</div>
+Analytic continuation gives the integral&nbsp;formula,</p>
+<p>
+<div class="math">$$\mathrm{Li}_{\nu}(z) = \frac{1}{\Gamma(\nu)} \int_0^\infty \D x \frac{x^{\nu-1}}{z^{-1}\E^x - 1}\,.$$</div>
+</p>
+<p>The asymptotic expansion for large <span class="math">\(z\)</span> of the polylogarithm&nbsp;is,</p>
+<p>
+<div class="math">$$\mathrm{Li}_s(-z) = -2 \sum_{k=0}^\infty \eta(2k) \frac{(\ln z)^{s-2k}}{\Gamma(s-2k+1)}\,$$</div>
+</p>
+<p>where the Dirichlet function <span class="math">\(\eta\)</span> is related to the Riemann&nbsp;zeta:</p>
+<p>
+<div class="math">$$\eta(s) = (1-2^{1-s}) \zeta(s)\,,\quad \eta(1) = \ln 2$$</div>
+</p>
+<p>and </p>
+<p>
+<div class="math">$$\zeta(2k) = -\frac{1}{2} (2\pi)^{2k} \frac{(-1)^{k} B_{2k}}{(2k)!}, \quad \zeta(2) = \frac{\pi^2}{6},\; \zeta(4) = \frac{\pi^4}{90}$$</div>
+</p>
+<p>where <span class="math">\(B_n\)</span> are the Bernoulli numbers. This asymptotic expansion can be obtained using the Sommerfeld method <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>The two first terms of the asymptotic&nbsp;expansion,</p>
+<p>
+<div class="math">$$-\mathrm{Li}_s(-z) = \frac{(\ln z)^s}{\Gamma(s+1)} + \frac{\pi^2}{6} \frac{(\ln z)^{s-2}}{\Gamma(s-1)}  \,,$$</div>
+</p>
+<p>The derivative of the polylogarithmic function of order <span class="math">\(\nu\)</span> depends on the function of order <span class="math">\(\nu-1\)</span>:</p>
+<p>
+<div class="math">$$z \frac{\partial}{\partial z} \mathrm{Li}_\nu(z)  = \mathrm{Li}_{\nu-1}(z)\,.$$</div>
+</p>
+<p>Explicit values of the Gamma&nbsp;function,</p>
+<p>
+<div class="math">$$n! = \Gamma(n+1)\,, \quad \Gamma(n+ 1/2) = \frac{(2n)!}{4^nn!}\sqrt{\pi}$$</div>&#160;<a class="footnote-backref" href="#fnref:NO" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:NO" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:UN">
+<p>Note on the choice of <strong>units</strong></p>
+<p>With the convention <span class="math">\(k_\mathrm{B} = \hbar = c = 1\)</span>, one may apply the conversion&nbsp;factors:</p>
+<p>
+<div class="math">$$1\,[\mathrm{m}] = \frac{1}{c}\,[\mathrm{s}], \quad 1 [\mathrm{m^{-1}}] = \frac{\hbar}{c}\,[\mathrm{kg}] = \hbar c\,[\mathrm{J}] = \frac{\hbar c}{k_{\mathrm{B}}} \, [\mathrm{K}]$$</div>
+</p>
+<p>using the <span class="caps">SI</span> numerical values of the physical constants. For instance, to recover the Stefan constant from its value, one introduces the dimensional units <span class="math">\(\mathrm{J/s\, m^2\, K^4}\)</span> using the above&nbsp;factors:</p>
+<p>
+<div class="math">$$\frac{k_\mathrm{B}^4}{c^2\hbar^3} =  3.44716123286048\,10^{-7} \frac{\mathrm{J}}{\mathrm{s\, m^2\, K^4}}$$</div>
+</p>
+<p>from which one&nbsp;obtains</p>
+<p>
+<div class="math">$$\sigma = \frac{\pi^2}{60} \frac{k_\mathrm{B}^4}{c^2\hbar^3} = 5.67035294585\,10^{-8} \, \mathrm{J/s\, m^2\, K^4}$$</div>
+</p>
+<p>Consider the nondimensional expresion <span class="math">\(V T^3\)</span> and note that <span class="math">\(\hbar c\)</span> is an energy times length,&nbsp;then:</p>
+<p>
+<div class="math">$$VT^3 \rightarrow V \left( \frac{ k_B T}{\hbar c} \right)^3\,.$$</div>
+</p>
+<p>This trick allows recovering of the <span class="caps">SI</span> units easily.&#160;<a class="footnote-backref" href="#fnref:UN" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

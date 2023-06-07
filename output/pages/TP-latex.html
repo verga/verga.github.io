@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>LaTeX recipes | Random physics
+</title>
+    <link rel="canonical" href="/pages/TP-latex.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="A practical introduction to the numerical tools for scientific writing">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/ON-index.html">Workshop</a> on scientific&nbsp;typesetting.</p>
+</blockquote>
+<h1>Scientific writing with <span class="math">\(\LaTeX\)</span></h1>
+<p>The goal of this course is to learn how to use the tools allowing to write scientific documents of high quality. The <span class="math">\(\LaTeX\)</span> typesetting system is universally used in the scientific and technical literature; it is based on the language <span class="math">\(\TeX\)</span> created by <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>.</p>
+<p>You will <em>write a short article</em> using your own lecture notes from one of the license or master courses you attended. Typically you take a simple subject, like the pendulum, the Carnot cycle, or the electric field of a dipole, and write a self-contained text in the form of a scientific paper. Your document should comply with the standards of the scientific papers: front matter, abstract, introduction, main content, conclusion, and&nbsp;references.</p>
+<p>A reasonable, minimal, scientific computing environment might consist&nbsp;in:</p>
+<ul>
+<li>A <span class="math">\(\LaTeX\)</span> distribution (TeXLive, see the references at the end of this page, is the standard&nbsp;one)</li>
+<li>An editor: <a href="https://www.xm1math.net/texmaker/">TeXMaker</a>, <a href="https://www.vim.org/">vim</a>, or&nbsp;equivalent</li>
+<li>A <code>python</code> programming environment (you may use <a href="https://www.anaconda.com/">Anaconda</a>)</li>
+</ul>
+<p>(preferably in a unix-like&nbsp;system!).</p>
+<h2>LaTeX&nbsp;langage</h2>
+<p>A LaTeX document is written in plain text using an editor like &#8220;vim&#8221;. The file name extension is <code>.tex</code>. Once compiled, it produces an output file, generally in the <code>.pdf</code> format:</p>
+<div class="highlight"><pre><span></span><code>$&gt; pdflatex filename.tex
+</code></pre></div>
+
+<p>where <code>$&gt;</code> is the unix shell prompt and <code>pdflatex</code> the TeX compilation command. Instead, you may also use <a href="http://www.luatex.org/"><code>lualatex</code></a> command if you want for instance, write your text with the system&#8217;s fonts or implement modern language features. If the compilation stops in an error, you may recover your session using <code>crtl-D</code>. In practice, the compilation of the source file <code>.tex</code> can be done directly from the text editor, without the need of a&nbsp;terminal. </p>
+<p>The complex compilation process, for documents containing table of contents, <code>tikz</code> or <code>asymptote</code> graphs and bibliography, for example, can be automated using the <a href="https://mg.readthedocs.io/latexmk.html"><code>latexmk</code></a>&nbsp;tool.</p>
+<p>The LaTeX source files start with a <code>\documentclass[options]{class}</code> command. Every <code>tex</code> <em>command</em> starts with a backslash <code>\</code>, and may contain <em>options</em> (within square brackets <code>[]</code>) and <em>arguments</em> (within curly brackets <code>{}</code>). The head of the source file is called the <em>preamble</em>, and contains a series of commands to load the LaTeX <em>packages</em> (utility libraries). The body of the document is written in the <em>document environment</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[opt]</span><span class="nb">{</span>arg<span class="nb">}</span>
+.
+.
+.
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+.
+.
+.
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+<p>An environment has the structure <code>\begin{cmd}...\end{cmd}</code>, and is used for equations, lists, figures,&nbsp;etc.</p>
+<p>The title, author and date are filled in the preamble, and generated by <code>\maketitle</code>, just after the begin document&nbsp;environment.</p>
+<p>The text is structured in sections <code>\section{Title}</code> (chapters for a book), subsections, etc.; paragraphs are separated by a blank line. Spaces and tabs are treated as single spaces. A single &#8220;line break&#8221; (return or enter) does not change the line; to change the line (within the same paragraph, for example in a poem) you may use a double backslash <code>\\</code>. Comments are lines starting with a percentage <code>%</code>. The reserved language characters&nbsp;are:</p>
+<div class="highlight"><pre><span></span><code># $ % ^ &amp; _ { } ~ \
+</code></pre></div>
+
+<p>to write these symbols in your text you prepend them with a backslash (e.g. <code>\%</code>).</p>
+<p>List environments are <code>itemize</code>, <code>enumerate</code> and <code>description</code>. Mathematics is written inline using single dollars <code>$...$</code>, or preferably <code>\(...\)</code>, and displayed (in their own line) using double dollars <code>$$...$$</code>, or preferably <code>\[...\]</code>; equation environments (with label and number)
+are <code>equation</code>, <code>align</code>,&nbsp;etc.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>eq<span class="nb">}</span>
+....
+<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</code></pre></div>
+
+<p>Reference to the equation, in this example, is made by <code>\ref{eq}</code>.</p>
+<p>Tables are typeset with the <code>tabular</code> environment; each item is separated by <code>&amp;</code>; each line is terminated be <code>\\</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}</span>[htb]<span class="nb">{</span>columns spec<span class="nb">}</span>
+<span class="k">\hline</span>
+... <span class="nb">&amp;</span> ... <span class="k">\\</span>
+<span class="k">\haline</span>
+...
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+</code></pre></div>
+
+<p>Tabular is a floating environment, its position in the page depends on the context. Another floating is <code>figure</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[htb]
+  <span class="k">\centering</span>
+  <span class="k">\includegraphics</span><span class="na">[width=0.8\textwidth]</span><span class="nb">{</span>fig<span class="nb">_</span>name<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>fig<span class="nb">_</span>name has extension pdf, png or jpg; options include width, height, scale, etc.
+    <span class="k">\label</span><span class="nb">{</span>f:your<span class="nb">_</span>label<span class="nb">}}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</code></pre></div>
+
+<p>used to insert a figure, the command <code>\includegraphics</code> belong to the <code>graphicx</code> package.</p>
+<p>To emphasize text use <code>\emph{...}</code>; <code>\textbf{...}</code> is bold&nbsp;text. </p>
+<p>Typesetting mathematics is&nbsp;straightforward:</p>
+<ul>
+<li>Inline formula <code>\(...\)</code>, displayed <code>\[...\]</code></li>
+<li>Equation with number <code>\begin{equation}...\end{equation}</code></li>
+<li>Sequence of centered formulas <code>\begin{gather}...\end{gather}</code>, aligned at <code>&amp;</code>, <code>\begin{align}...\end{align}</code></li>
+<li>Raw formulas <code>a+b=c</code>: <span class="math">\(a+b=c\)</span></li>
+<li>Sub and superscripts <code>_</code> and <code>^</code>, <code>a_2x^2+a_1x+a_0=0</code>: <span class="math">\(a_2x^2+a_1x+a_0=0\)</span> (spaces are not significant in math&nbsp;formulas)</li>
+<li>Fractions <code>\frac{a}{b+c}</code>: 
+    <div class="math">$$\frac{a}{b+c}$$</div>
+</li>
+<li>Integrals and sums <code>\int_0^1 dx f(x) = 1</code>, <code>\sum_{n=0}^\infty \frac{x^n}{n!}= \mathrm{e}^x</code>
+    <div class="math">\begin{gather*}
+      \int_0^1 dx f(x) = 1 \\
+      \sum_{n=0}^\infty \frac{x^n}{n!}= \mathrm{e}^x
+    \end{gather*}</div>
+</li>
+<li>Limits <code>\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1</code>
+    <div class="math">$$\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1$$</div>
+</li>
+<li>Greek letters <code>\alpha, \beta, \gamma, \ldots</code>: <span class="math">\(\alpha, \beta, \gamma,&nbsp;\ldots\)</span></li>
+<li>roman, blackboard and calligraphic symbols <code>\mathrm{i},\mathbb{R},\mathcal{L}</code>: <span class="math">\(\mathrm{i},\mathbb{R},\mathcal{L}\)</span></li>
+<li>Vectors (bold mathematics <code>\usepackage{bm}</code>),<code>\bm{a = b \times c}</code> <span class="math">\(\bm{a = b \times&nbsp;c}\)</span></li>
+<li>Square root <code>\sqrt{1+ \mathrm{i}}</code>: <span class="math">\(\sqrt{1+\mathrm{i}}\)</span></li>
+<li>Large parenthesis <code>\left(1+\frac{x}{n}\right)^n \rightarrow \mathrm{e}^{-x}</code>:
+    <div class="math">$$\left(1-\frac{x}{n}\right)^n \rightarrow \mathrm{e}^{-x}$$</div>
+</li>
+</ul>
+<h2>LaTeX&nbsp;template</h2>
+<p><strong>Important advice:</strong> do not try by any means to format your text, use exclusively the latex environments for your layout. Avoid <code>\\</code>, <code>vspace</code>, <code>clearpage</code>; do not modify the margin sizes (the use of the geometry package must not break the basic <a href="https://en.wikipedia.org/wiki/Typography">typographic rules</a>).</p>
+<p>Define the document class: article, report, book, standalone,&nbsp;etc.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[a4paper, 11pt, twoside]</span><span class="nb">{</span>article<span class="nb">}</span>
+</code></pre></div>
+
+<p>Define the text encoding as <code>utf8</code>, and fonts: <a href="http://www.gust.org.pl/projects/e-foundry/latin-modern"><code>lmodern</code>, latin modern</a> is the standard font, based on the famous &#8220;Computer Modern&#8221; font designed by Donald Knuth. You may choose other fonts (see the <a href="https://www.tug.org/FontCatalogue/"><span class="math">\(\LaTeX\)</span> fonts catalogue</a>); a modern complete set of font is <a href="https://www.stixfonts.org/"><span class="caps">STIX</span></a>. The package <code>babel</code> defines specific language typesettings; the last one in the list (here <code>english</code>) is the active one. To activate <code>french</code> use the command <code>\selectlanguage{french}</code>. You may toggle between languages using <code>\selectlanguage</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c">%</span>
+<span class="c">% fonts and languages</span>
+    <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[french,english]</span><span class="nb">{</span>babel<span class="nb">}</span>
+<span class="c">%</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src='/images/TP-1.png' style="width:520px;"\img></p>
+</blockquote>
+<p>The first part of the source document, after the <code>documentclass</code> declaration, is the &#8220;preamble&#8221;; the text body is written inside the <code>document</code> environment:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+  The default text is in ``English:&#39;&#39; the last choice in
+  the <span class="k">\texttt</span><span class="nb">{</span>babel<span class="nb">}</span> package!
+
+  <span class="k">\selectlanguage</span><span class="nb">{</span>french<span class="nb">}</span>
+  Mais vous pouvez le changer avec <span class="k">\verb</span>+selectlanguage<span class="nb">{</span>french<span class="nb">}</span>+:
+  observez les <span class="k">\og</span> deux points <span class="k">\fg</span>!
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+<p>The preamble contains the list of packages, tex libraries necessary to type complex mathematics, insert figures, or customize the text layout, the bibliography,&nbsp;etc.:</p>
+<div class="highlight"><pre><span></span><code><span class="c">%</span>
+<span class="c">% AMS math</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
+</code></pre></div>
+
+<p>These packages define a large set of mathematical constructions, like the <code>align</code>, <code>gather</code> or <code>multiline</code> environments, and adds special symbols (<span class="math">\(\mathfrak{H}\)</span>) and bold mathematics (<code>\bm y</code>: <span class="math">\(\boldsymbol y\)</span>):</p>
+<div class="highlight"><pre><span></span><code>  Maxwell equations,
+  <span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>
+    <span class="k">\label</span><span class="nb">{</span>e:ME<span class="nb">}</span>
+    <span class="k">\nabla</span> <span class="k">\cdot</span> <span class="k">\bm</span> E = <span class="k">\frac</span><span class="nb">{</span><span class="k">\rho</span><span class="nb">}{</span><span class="k">\epsilon</span><span class="nb">_</span>0<span class="nb">}</span><span class="k">\,</span>, <span class="k">\\</span>
+    <span class="k">\nabla</span> <span class="k">\times</span> E = -<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> <span class="k">\bm</span> B<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="k">\\</span>
+    <span class="k">\nabla</span> <span class="k">\cdot</span> <span class="k">\bm</span> B = 0 <span class="k">\\</span>
+    <span class="k">\nabla</span> <span class="k">\times</span> <span class="k">\bm</span> B = <span class="k">\mu</span><span class="nb">_</span>0 <span class="k">\bm</span> j - 
+               <span class="k">\mu</span><span class="nb">_</span>0<span class="k">\epsilon</span><span class="nb">_</span>0 <span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> <span class="k">\bm</span> E<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span>
+  <span class="k">\end</span><span class="nb">{</span>gather<span class="nb">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src='/images/TP-2.png' style="width:520px;"\img></p>
+</blockquote>
+<p>Equations numbers can be referred using <code>\eqref{label}</code> (ams&nbsp;package).</p>
+<p>The package <a href="http://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/siunitx/siunitx.pdf"><code>siunitx</code></a> setup numbers and units (<span class="caps">SI</span>&nbsp;system): </p>
+<div class="highlight"><pre><span></span><code>  <span class="k">\usepackage</span><span class="nb">{</span>siunitx<span class="nb">}</span>
+  .
+  .
+  .
+  <span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+  <span class="k">\centering</span>
+  <span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>lr<span class="nb">}</span>
+    <span class="k">\hline</span>
+    Constant <span class="nb">&amp;</span> value <span class="k">\\</span>
+    <span class="k">\hline</span>
+    <span class="s">$</span><span class="nv">\hbar</span><span class="s">$</span> <span class="nb">&amp;</span> <span class="k">\SI</span><span class="nb">{</span>1.054571817E-34<span class="nb">}{</span><span class="k">\kilogram</span> <span class="k">\square\meter</span> <span class="k">\per</span> <span class="k">\second</span><span class="nb">}</span><span class="k">\\</span>
+    <span class="s">$</span><span class="nb">c</span><span class="s">$</span>     <span class="nb">&amp;</span> <span class="k">\SI</span><span class="nb">{</span>299 792 458<span class="nb">}{</span><span class="k">\meter</span> <span class="k">\per</span> <span class="k">\second</span><span class="nb">}</span><span class="k">\\</span>
+    <span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span>Universal constants<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>t:h<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src='/images/TP-siunitx.png' style="width:300px;"\img></p>
+</blockquote>
+<p>Utility packages, as the small <code>braket</code> one, helps to specific&nbsp;needs:</p>
+<div class="highlight"><pre><span></span><code>  <span class="k">\usepackage</span><span class="nb">{</span>braket<span class="nb">}</span>
+  .
+  .
+  .
+  Bell state of two qubits:
+  <span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+    <span class="k">\label</span><span class="nb">{</span>e:q<span class="nb">}</span>
+    <span class="k">\ket</span><span class="nb">{</span><span class="k">\phi</span><span class="nb">}</span> = <span class="k">\frac</span><span class="nb">{</span><span class="k">\ket</span><span class="nb">{</span>0<span class="nb">}</span> <span class="k">\otimes</span> <span class="k">\ket</span><span class="nb">{</span>1<span class="nb">}</span> - 
+                       <span class="k">\ket</span><span class="nb">{</span>1<span class="nb">}</span> <span class="k">\otimes</span> <span class="k">\ket</span><span class="nb">{</span>0<span class="nb">}}{</span><span class="k">\sqrt</span><span class="nb">{</span>2<span class="nb">}}</span>
+  <span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src='/images/TP-3.png' style="width:520px;"\img></p>
+</blockquote>
+<p>Figures are loaded with the <code>graphicx</code> package; hyperlinks are managed by <code>hyperref</code>; coloring text and boxes is done with <a href="https://en.wikipedia.org/wiki/X11_color_names"><code>xcolor</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="c">%</span>
+<span class="c">% Graphics</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[x11names,table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+<span class="c">%</span>
+<span class="c">% References and links</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>url<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>doi<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+    <span class="k">\hypersetup</span><span class="nb">{</span>colorlinks,<span class="c">%</span>
+      linkcolor=SkyBlue4,<span class="c">%</span>
+      urlcolor=Blue4,<span class="c">%</span>
+      citecolor=Red4,<span class="c">%</span>
+      filecolor=Green4<span class="nb">}</span>
+</code></pre></div>
+
+<p>Aliases to often used commands can be defined with <code>\newcommand</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c">%</span>
+<span class="c">% New commands</span>
+<span class="c">% language</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\FRA</span><span class="nb">}{</span><span class="c">%</span>
+    <span class="k">\selectlanguage</span><span class="nb">{</span>french<span class="nb">}}</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ENG</span><span class="nb">}{</span><span class="c">%</span>
+        <span class="k">\selectlanguage</span><span class="nb">{</span>english<span class="nb">}}</span>
+<span class="c">% math</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\I</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>i<span class="nb">}}</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\E</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>e<span class="nb">}}</span>
+    <span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\D</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{}</span><span class="k">\!\mathrm</span><span class="nb">{</span>d<span class="nb">}}</span>
+<span class="c">% constants</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\kB</span><span class="nb">}{</span>k<span class="nb">_</span><span class="k">\textsc</span><span class="nb">{</span>b<span class="nb">}}</span>
+    <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\NA</span><span class="nb">}{</span>N<span class="nb">_</span><span class="k">\textsc</span><span class="nb">{</span>a<span class="nb">}}</span>
+</code></pre></div>
+
+<p>The following code inserts a floating&nbsp;figure:</p>
+<div class="highlight"><pre><span></span><code>A graph is a set <span class="s">\(</span><span class="nb">G </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="nb">V,E</span><span class="o">)</span><span class="s">\)</span> of vertices <span class="s">\(</span><span class="nb">V</span><span class="s">\)</span> and edges
+<span class="s">\(</span><span class="nb">E</span><span class="s">\)</span> (see Fig.~<span class="k">\ref</span><span class="nb">{</span>f:grg<span class="nb">}</span>).
+
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[h]
+  <span class="k">\centering</span>
+  <span class="k">\includegraphics</span><span class="na">[width=0.49\textwidth]</span><span class="nb">{</span>grg.png<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>Random geometric graph generated with the python
+  package <span class="k">\texttt</span><span class="nb">{</span>networkx<span class="nb">}</span>.
+  <span class="k">\label</span><span class="nb">{</span>f:grg<span class="nb">}}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src='/images/TP-5.png' style="width:520px;"\img></p>
+</blockquote>
+<h2>References</h2>
+<ul>
+<li>Minimal templates of <a href="/pdfs/min.tex">pdflatex</a> and <a href="/pdfs/min-lua.tex">lualatex</a>.</li>
+</ul>
+<h3>Installation</h3>
+<ul>
+<li>In Linux <a href="https://www.tug.org/texlive/acquire-netinstall.html">install TeX Live</a> over the internet: download the <a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">TeX Live installer</a>, untar it <code>tar xvf install-tl-unx.tar.gz</code>, change directory and run the perl script: <code>cd install-tl-20191109</code> and <code>./install-tl</code>; you may also need to update your path variable <code>export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH</code></li>
+<li>For MacOs install <a href="https://tug.org/mactex/mactex-download.html">MacTex</a></li>
+<li>For Windows install <a href="https://miktex.org/download">MikTeX</a>. Use the net installer (instead of the basic one) to get a full distribution (<a href="https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/setup-4.1-x64.exe">Net Installer</a>, <span class="caps">CAUTION</span> this is an executable file). <strong>Remark</strong>: you should launch the installer <em>twice</em>: first you download all packages, then you install the packages using the same Installer 64-bit! (instructions en français: <a href="https://www.xm1math.net/doculatex/install_miktex.html">https://www.xm1math.net/doculatex/install_miktex.html</a>)</li>
+<li>To manage efficiently the <strong>bibliography</strong> you may use <a href="https://www.zotero.org/">Zotero</a> with the bibtex plugin <a href="https://github.com/retorquere/zotero-better-bibtex&lt;Paste&gt;">Better Bibtex</a> and the files plugin <a href="http://zotfile.com/">ZotFile</a>.</li>
+<li>Installing <strong>python</strong> is easy with Anaconda: choose the <a href="https://www.anaconda.com/products/individual">installer</a> for your&nbsp;system.</li>
+</ul>
+<h3>Documentation</h3>
+<ul>
+<li>Full archive of latex resources <a href="https://www.ctan.org"><span class="caps">CTAN</span></a></li>
+<li><a href="http://mirrors.ctan.org/info/lshort/english/lshort.pdf">A not so short introduction to <span class="math">\(\LaTeX\)</span></a>, by by Tobias&nbsp;Oetiker.</li>
+<li><a href="http://mirrors.ctan.org/info/short-math-guide/short-math-guide.pdf">Short guide to typset mathematics</a>, by Michael Downes, updated by Barbara&nbsp;Beeton.</li>
+<li><a href="http://www.cpt.univ-mrs.fr/~masson/latex/Cours-LaTeX-A4.pdf">Exposé sur <span class="math">\(\LaTeX\)</span></a>, par Thierry&nbsp;Masson.</li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX">Wikibook LaTeX</a>, highly&nbsp;recommended.</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
