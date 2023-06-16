@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}| {{ SITENAME }}{% endblock %}</title>
+    <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
+
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('default') }}.min.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="{{ SITEURL }}/extras/rphys.png" sizes="64x64">
+    {% block head %}{% endblock %}
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-{% if SITEIMAGE %}8{% else %}12{% endif %}">
+            <h1 class="title"><a href="/">{{ SITENAME }}</a></h1>
+            {% if SITESUBTITLE %}
+            <p class="text-muted">{{ SITESUBTITLE }}</p>
+            {% endif %}
+            {% if MENUITMES or (DISPLAY_PAGES_ON_MENU and pages) or ICONS %}
+              <ul class="list-inline">
+                {% for title, link in MENUITEMS %}
+                  <li class="list-inline-item"><a href="{{ link }}">{{ title }}</a></li>
+                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for page in pages %}
+                    {% if MENUITEMS and loop.first %}
+                      <li class="list-inline-item text-muted">|</li>
+                    {% endif %}
+                      <li class="list-inline-item"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="{{ SITEURL }}/categories.html">Categories</a></li>
+            {% if tags|length %}
+              <li class="list-inline-item"><a href="{{ SITEURL }}/tags.html">Tags</a></li>
+            {% endif %}
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="{{ SITEURL }}/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

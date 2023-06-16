@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Random matrices | Random physics
+</title>
+    <link rel="canonical" href="/pages/rm.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Quantum chaos can be defined using the statistical properties of the system’s energy spectrum: random matrices are the natural framework allowing a systematic classification in terms of the Hamiltonian (or related unitary evolution operator) symmetries.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked.html">&raquo;kicked rotator</a><a href="/pages/kicked-localization.html">&raquo;dynamical localization</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<h1>Random&nbsp;matrices</h1>
+<h2>Symmetry</h2>
+<p>We investigate the analog of classical canonical transformations, transformations preserving the hamiltonian structure in classical mechanics, to a quantum hamiltonian <span class="math">\(H\)</span>. We are in particular interested in time reversal symmetry, which we use as a classifying criterion of different quantum&nbsp;systems.</p>
+<p>Time reversal symmetry is, in quantum mechanics, associated with an antiunitary operator <span class="math">\(\mathrm{T}\)</span> such that it commutes with the hamiltonian and squares to one (integer spin) or minus one (half-integer&nbsp;spin):
+</p>
+<div class="math">$$[H,\mathrm{T}] = 0,\quad \mathrm{T}^2 = \pm 1\; .$$</div>
+<p>
+As every antiunitary operator it can be written in terms of an unitary <span class="math">\(U\)</span> and the complex conjugation operator <span class="math">\(\mathrm{K}\)</span>, <span class="math">\(\mathrm{T} = U \mathrm{K}\)</span>. Its action renverses the sign of time, momentum, as ensured by the complex conjugation operator, and spin, as ensured by an unitary operator of spin&nbsp;rotation. </p>
+<p>For a spinless particle <span class="math">\(\mathrm{T} = \mathrm{K}\)</span>, as can be easily verified from the Schrödinger equation. For a spin <span class="math">\(1/2\)</span> particle a useful representation of the time reversal operator&nbsp;is
+</p>
+<div class="math">$$\mathrm{T} = \I\sigma_y \mathrm{K} = \E^{ \I \pi \sigma_y/2} \mathrm{K}\,.$$</div>
+<p>General hamiltonians, unrestricted by antiunitary symmetries, belong to the <em>unitary class</em>. Indeed, a&nbsp;transformation
+</p>
+<div class="math">$$H\rightarrow AHA^{-1}$$</div>
+<p>
+preserves the spectrum of <span class="math">\(H\)</span>; imposing in addition that the transformed hamiltonian must also be hermitian leads to the condition of&nbsp;unitarity:
+</p>
+<div class="math">$$A^\dagger A = 1\,.$$</div>
+<p>
+If the hamiltonian is time reversal symmetric with <span class="math">\(\mathrm{T}^2=1\)</span>, it belongs to the <em>orthogonal class</em>, and can be written as a real matrix&nbsp;(operator):
+</p>
+<div class="math">$$H_{nm} = \langle n|H m\rangle = \langle \mathrm{T} n| \mathrm{T} H m\rangle^* = \langle \mathrm{T} n| \mathrm{T} H \mathrm{T}^2 m\rangle^* = \langle n|H m\rangle^*  = H^*_{nm} $$</div>
+<p>
+for a <span class="math">\(\mathrm{T}\)</span>-invariant base <span class="math">\(n,m,\ldots\)</span>, <span class="math">\(\mathrm{T}|n\rangle=|n\rangle\)</span>.</p>
+<p>When <span class="math">\(\mathrm{T}^2=-1\)</span>, as in the one-half spin case, the energy levels are doubly degenerate (Kramers&#8217; degeneracy): if <span class="math">\(|n\rangle\)</span> is an eigenstate of the hamiltonian then <span class="math">\(|\mathrm{T} n\rangle\)</span> is also an eigenstate, orthogonal to <span class="math">\(|n\rangle\)</span>:
+</p>
+<div class="math">$$\langle n|\mathrm{T}n\rangle = \langle \mathrm{T} n|\mathrm{T}^2 n\rangle^* = -\langle \mathrm{T} n| n\rangle^* = -\langle n|\mathrm{T}n\rangle = 0\,.$$</div>
+<p>
+In this case (without supplementary symmetries), a convenient basis of <span class="math">\(H\)</span> is given by <span class="math">\(|1\rangle, \mathrm{T} |1\rangle,\ldots\)</span>. Therefore, the hamiltonian matrix can be decomposed in blocks of the&nbsp;form:
+</p>
+<div class="math">$$ h_{nm} = \begin{pmatrix} \langle n|H| m \rangle &amp; \langle n|H| \mathrm{T} m \rangle\\
+\langle \mathrm{T} n|H| m \rangle &amp; \langle \mathrm{T} n|H| \mathrm{T} m \rangle
+\end{pmatrix}\,. $$</div>
+<p>
+The time reversal operator can be written as <span class="math">\(\mathrm{T} = \Omega \mathrm{K}\)</span>,&nbsp;where
+</p>
+<div class="math">$$ \Omega_{nn} = \begin{pmatrix} 0 &amp; -1\\ 1 &amp; 0\end{pmatrix}\,,\quad 
+\Omega_{nm} = 0\,,\; n \ne m\,,$$</div>
+<p>
+using the fact&nbsp;that
+</p>
+<div class="math">$$ |\psi\rangle = a|1\rangle + b|T1\rangle \rightarrow 
+|\mathrm{T} \psi\rangle = a^*|\mathrm{T} 1\rangle - b^*|1\rangle \,.$$</div>
+<p>
+Applying this to <span class="math">\(H = \mathrm{T} H \mathrm{T}\)</span> one obtains that the block <span class="math">\(h\)</span> is of the&nbsp;form:
+</p>
+<div class="math">$$h = a \tau_0 + \boldsymbol{b}\cdot \boldsymbol{\tau}, \quad \text{with}\; a, \boldsymbol{b}\in \mathbb{R},$$</div>
+<p>
+where <span class="math">\(\boldsymbol{\tau} = -\I \boldsymbol{\sigma}\)</span> are antihermitian matrices (<span class="math">\(h\)</span> can be represented by a quaternion&nbsp;number).</p>
+<p>Hamiltonians whose elements are quaternions belong to the <em>symplectic class</em>. A matrix <span class="math">\(S\)</span> that preserves the structure of the hamiltonian base <span class="math">\(|1\rangle,|\mathrm{T} 1\rangle,\ldots\)</span>, so <span class="math">\(S\Omega S^T = \Omega\)</span>, is a symplectic matrix; such a matrix commutes with the time reversal operator: <span class="math">\(\mathrm{T} = S \mathrm{T} S^{-1}\)</span>:
+</p>
+<div class="math">$$S \mathrm{T} S^{-1} = S\Omega \mathrm{K} S^{-1} =  S \Omega S^T \mathrm{K}= \Omega K\,.$$</div>
+<p>In summary, according to its properties with respect to time reversal, we identified three board hamiltonian&nbsp;classes:</p>
+<ul>
+<li>Unitary class, for systems without time reversal&nbsp;symmetry</li>
+<li>Orthogonal class, for real hamiltonians, invariant with respect to time reversal with <span class="math">\(\mathrm{T}^2=1\)</span> </li>
+<li>Symplectic class, for time reversal symmetric hamiltonians with <span class="math">\(\mathrm{T}^2 = -1\)</span>. </li>
+</ul>
+<p>By considering other symmetries, say chiral or particle-hole that are important, for instance, in superconductors and topological insulators, more classes can be identified, see the review by <a href="http://dx.doi.org/10.1103/RevModPhys.88.035005">Chiu et al. (2016)</a> (<a href="/pdfs/Chiu-1505.03535.pdf">arXiv .pdf</a>).</p>
+<h2>Level&nbsp;repulsion</h2>
+<p>The symmetry class of the hamiltonian, orthogonal, unitary or symplectic, reflects in its spectral properties through the behavior of level crossings. Indeed, the number of parameters to specify the hamiltonian matrix, one real (orthogonal class), one complex (two reals, for the unitary class), and one quaternion (four reals, for the symplectic class), is related to the degree of level repulsion: an experimentally observable feature of the spectrum. From elementary quantum mechanics we know that integrable systems often show a high degree of degeneracy; for instance the hydrogen atom in a magnetic field shows levels crossing of Zeeman multiplets for increasing magnetic field. In general the behavior of levels as a function of a parameter on which the hamiltonian depends, it is different for a completely integrable case and for a generic&nbsp;case. </p>
+<p>Consider the simplest two dimensional Hilbert space with one degenerate energy level <span class="math">\(E_0\)</span> perturbed by a potential <span class="math">\(V\)</span> of strength <span class="math">\(|\lambda|\)</span>
+</p>
+<div class="math">$$H=\begin{pmatrix}E_0 &amp; \lambda V \\ \lambda^* V^* &amp; E_0\end{pmatrix}\,,
+\quad E_\pm = E_0 \pm |\lambda V|$$</div>
+<p>
+for the orthogonal class, the single condition <span class="math">\(\lambda = 0\)</span> suffices to restore the degeneracy; for the unitary case two conditions are instead necessary <span class="math">\(\mathrm{Re}\,\lambda = \mathrm{Im}\,\lambda = 0\)</span>. The degree <span class="math">\(\beta\)</span> of level repulsion is said to be <span class="math">\(\beta=1\)</span> and <span class="math">\(\beta=2\)</span> for the orthogonal and unitary classes, respectively. A similar reasoning shows that <span class="math">\(\beta=4\)</span> for the symplectic&nbsp;class.</p>
+<p>As a consequence of level repulsion, the probability P(s) to find a vanishing spacing <span class="math">\(s\)</span> between two levels must tend to&nbsp;zero:
+</p>
+<div class="math">$$P(s) \sim s^\beta\,,\quad s\rightarrow0\,.$$</div>
+<p>
+To see this, consider two neighboring levels of a generic hamiltonian (in the orthogonal class, to be specific), near the crossing we&nbsp;have,
+</p>
+<div class="math">$$H \sim E_0 \begin{pmatrix}x &amp; y \\ y &amp; -x\end{pmatrix}\,,\quad
+E_\pm = \pm E_0 \sqrt{x^2 + y^2}\,,$$</div>
+<p>
+where both parameters <span class="math">\(x,y\)</span> are small; the two eigenvalues <span class="math">\(E_\pm\)</span> can be represented, as a function of the two parameters <span class="math">\(x,y\)</span>, as a cone in the three dimensional space <span class="math">\((x,y,E)\)</span>. This is what is called a diabolic point. For the whole hamiltonian we have a set of crossings with a joint probability <span class="math">\(W=W(x,y)\)</span>. The spacing distribution (in units of the mean spacing) is thus given&nbsp;by
+</p>
+<div class="math">$$p(s) = \int \D x \D y\, W(x,y) \delta\left(s - \Delta E(x,y)\right)\,.$$</div>
+<p>
+where <span class="math">\(\Delta E = (E_+ - E_-)/2E_0\)</span> is the normalized energy gap. After a change of variables <span class="math">\(\boldsymbol x \rightarrow s\boldsymbol x\)</span> we&nbsp;obtain,
+</p>
+<div class="math">$$p(s) = s \int \D x \D y\, W(sx,sy) \delta\left(1 - \sqrt{x^2+y^2}\right) \sim s^\beta,\;\beta=1\,,$$</div>
+<p>
+the probability goes linearly to zero for vanishing spacing (provided that <span class="math">\(W(0)\ne 0)\)</span>. The value of the exponent is related to the dimension <span class="math">\(d\)</span> of the diabolic point, <span class="math">\(\beta = d-1\)</span>; <span class="math">\(d=3,5\)</span> for the unitary and symplectic&nbsp;classes.</p>
+<h2>Gaussian&nbsp;ensembles</h2>
+<p>The statistical ensembles of hamiltonian matrices, supposed to describe the discrete spectrum of complex quantum systems, can be determined from a minimal set of&nbsp;hypothesis:</p>
+<ol>
+<li>The elements <span class="math">\(H_{nm}\)</span> are identically distributed with probability <span class="math">\(p(H_{nm})\)</span></li>
+<li>The symmetries of the hamiltonian are respected: for instance, the elements of the orthogonal class are real and the matrix&nbsp;symmetric.</li>
+<li>
+<p>A change of basis do not change the statistical properties of the ensemble. Therefore we must have, for the orthogonal&nbsp;class</p>
+<p>
+<div class="math">$$P(H) = P(OHO^T)$$</div>
+</p>
+<p>where <span class="math">\(O\)</span> is an orthogonal matrix; and similarly for the other classes: the probability must be invariant under canonical&nbsp;transformations.</p>
+</li>
+</ol>
+<p>The third condition means that <span class="math">\(P(H)\)</span> must be a function of invariants like the trace <span class="math">\(\mathrm{Tr} \, H\)</span>, and the determinant <span class="math">\(\det(H)\)</span>. These assumptions are enough to show&nbsp;that 
+</p>
+<div class="math">\begin{equation}
+    \label{e1}
+    P(H) = C \E^{-A \mathrm{Tr}\,H^2}\,,
+\end{equation}</div>
+<p>
+the probability distribution of the hamiltonian matrices is gaussian (<span class="math">\(A,C\)</span> are&nbsp;constants).</p>
+<p>To illustrate this result we consider the case of a <span class="math">\(2\times2\)</span> matrix in the <span class="math">\(O(2)\)</span> class. We want to&nbsp;compute
+</p>
+<div class="math">$$P(H) = p(H_{11}) p(H_{22}) p(H_{12})= p_1 p_2 p_{12} = P(OHO^T) = P(H')\,,$$</div>
+<p>
+where the orthogonal (rotation) matrix has the&nbsp;form,
+</p>
+<div class="math">$$O(\theta) = 1 + \begin{pmatrix} 0 &amp; -\theta \\ \theta &amp; 0 \end{pmatrix}$$</div>
+<p>
+(near the identity). The transformed hamiltonian is (to first order in <span class="math">\(\theta\)</span>)
+</p>
+<div class="math">$$ H'_{11} = H_{11} - 2\theta H_{12} \;\rightarrow\; 
+p'_1 = p_1 - 2 \theta H_{12} \frac{\D p_{1}}{\D H_{11}}$$</div>
+<p>
+and analogously for <span class="math">\(p'_2\)</span> and <span class="math">\(p'_{12}\)</span>. The invariance condition&nbsp;becomes,
+</p>
+<div class="math">$$ 0= \frac{1}{H_{12}} \frac{\D \ln p_{12}}{\D H_{12}} -
+\frac{2}{H_{11}-H_{22}} \left(\frac{\D \ln p_{1}}{\D H_{11}} -\frac{\D \ln p_{2}}{\D H_{22}}\right) $$</div>
+<p>
+whose solution can be obtained&nbsp;using
+</p>
+<div class="math">$$ \frac{1}{H_{nm}} \frac{\D \ln p_{nm}}{\D H_{nm}} = \text{const.} $$</div>
+<p>
+which immediately gives <span class="math">\(p(H_{nm}) = a \exp(-b H_{nm}^2+cH_{nm})\)</span>, leading to the gaussian distribution <span class="math">\(\eqref{e1}\)</span> (choosing a zero of energy such that <span class="math">\(H_{11}+H_{22} = 0\)</span>).</p>
+<h3>Level spacing&nbsp;distribution</h3>
+<p>As a straightforward application, we consider the level spacing distribution <span class="math">\(p(s)\)</span>, using the same <span class="math">\(2\times2\)</span> approximation. If <span class="math">\(\Delta E\)</span> is the energy difference between two consecutive levels, the normalized spacing <span class="math">\(s \sim \Delta E\)</span> is defined so that its mean is&nbsp;one:
+</p>
+<div class="math">$$\int_0^\infty \D s \, p(s) = 1,\quad \int_0^\infty \D s \,s p(s) = 1\,.$$</div>
+<p>The eigenvalues of the hamiltonian&nbsp;read,
+</p>
+<div class="math">$$E_\pm = \frac{H_{11}+H_{22}}{2} \pm \frac{1}{2}
+\sqrt{(H_{11}-H_{22})^2 + H_{12}^2}$$</div>
+<p>
+In the diagonal base, obtained by a rotation of angle <span class="math">\(\theta \rightarrow O(\theta)\)</span>, 
+</p>
+<div class="math">$$H = O \,\mathrm{diag}H\,O^T,\quad O = \begin{pmatrix} \cos \theta &amp; - \sin \theta \\ \sin \theta &amp; \cos \theta \end{pmatrix}$$</div>
+<p>
+we&nbsp;have,
+</p>
+<div class="math">\begin{align*}
+H_{11} &amp;= E_+ \cos^2 \theta + E_- \sin^2 \theta \\
+H_{22} &amp;= E_+ \sin^2 \theta + E_- \cos^2 \theta \\
+H_{12} &amp;= (E_+ - E_-) \cos \theta \sin \theta 
+\end{align*}</div>
+<p>
+from which we can easily compute the&nbsp;jacobian:
+</p>
+<div class="math">$$ p(E_+,E_-,\theta) = P(H) \left| \frac{\partial(H_{11},H_{22},H_{12})}{\partial (E_+,E_-,\theta)} \right| = C |E_+-E_-| \E^{-A(E_+^2 + E_-^2)}
+$$</div>
+<p>
+Taking <span class="math">\(E_+ + E_- = 2 E_0\)</span> and <span class="math">\(E_+ - E_- = 2 D s\)</span> (where <span class="math">\(D\)</span> is to be determined by imposing <span class="math">\(\langle s\rangle = 1\)</span>), substituting these values into <span class="math">\(p(E_+,E_-) = p(E_+(s, E_0), E_-(s, E_0))\)</span>, and using the normalization of <span class="math">\(p(s)\)</span>, we finally&nbsp;obtain,
+</p>
+<div class="math">$$p(s) = \frac{\pi s}{2} \E^{-\pi s^2/4}\,.$$</div>
+<p>
+This formula is known as the Wigner surmise; it is a remarkably good approximation for the general <span class="math">\(N\rightarrow\infty\)</span> case (figure and code&nbsp;below).</p>
+<blockquote>
+<p><img src="/images/goe.png" alt="GOE" style="height: 200px;"/> </p>
+<p>Wigner surmise (red line) and histogram of a <em>single</em> large&nbsp;matrix.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Compute the level spacings of a matrix in the GOE&quot;&quot;&quot;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span> <span class="c1"># matrix size</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># real symmetric</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="c1"># eigenvalues</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="c1"># level spacings</span>
+</code></pre></div>
+
+<p>The level spacings probability distribution is more generally obtained from the&nbsp;integral, 
+</p>
+<div class="math">$$p(s) = C \int_{-\infty}^\infty \D E_+ \D E_-\, |E_+ - E_-|^\beta \E^{-A(E_+^2 + E_-^2)}\,\delta(s - |E_+ - E_-|)$$</div>
+<p>
+which gives, for the unitary and symplectic classes the&nbsp;formulas
+</p>
+<div class="math">$$p(s) = \frac{32 s^2}{\pi^2} \E^{-4 s^2/\pi} $$</div>
+<p>
+and
+</p>
+<div class="math">$$p(s) = \frac{2^{18} s^3}{3^6 \pi^3} \E^{-64 s^2/9\pi} \,,$$</div>
+<p>
+respectively. For the &#8220;integrable&#8221; case, when the distribution of spacings is not restricted by repulsion, one has the Poisson&nbsp;distribution:
+</p>
+<div class="math">$$p(s) = \E^{-s}\,.$$</div>
+<h2>Exercices</h2>
+<ol>
+<li>
+<p>Compare the Wigner surmise with numerical simulations of the three gaussian&nbsp;ensembles</p>
+</li>
+<li>
+<p>Show that the average distribution of energy levels for the gaussian orthogonal ensemble satisfies the Wigner semicircle&nbsp;law:</p>
+<p>
+<div class="math">$$\langle \rho(E) \rangle = \frac{1}{2\pi} \sqrt{4 - E^2}$$</div>
+</p>
+<p>where <span class="math">\(E\)</span> is the normalized&nbsp;energy.</p>
+</li>
+<li>
+<p>Investigate the distribution of the largest eigenvalue <span class="math">\(\lambda =  E_{\text{max}}\)</span>, of a hamiltonian matrix in the gaussian unitary ensemble, and verify that it follows the Tracy-Widom law <span class="math">\(F_2\)</span>:</p>
+<p>
+<div class="math">$$ F_2(\lambda) = \frac{\D}{\D \lambda}\exp\left[ -\int_{\lambda}^\infty \D t\, (t-\lambda) q(t)^2  \right] $$</div>
+</p>
+<p>where <span class="math">\(q(t)\)</span> is a solution of the Painlevé <span class="caps">II</span> differential&nbsp;equation</p>
+<p>
+<div class="math">$$\ddot q(t) = t q(t) + 2 q(t)^3 $$</div>
+</p>
+<p>with the asymptote <span class="math">\(q(t) \rightarrow \mathrm{Ai}(t)\)</span> as <span class="math">\(t \rightarrow \infty\)</span>, the Airy function. See <a href="http://www-math.mit.edu/~edelman/publications.php">Edelman et al. (2014)</a> (<a href="/pdfs/Edelman-2014xy.pdf">.pdf</a>)</p>
+</li>
+</ol>
+<h2>Energy level distribution: the semicircle&nbsp;law</h2>
+<p>We consider the energy eigenvalues of a large <span class="math">\(N\)</span> hamiltonian matrix <span class="math">\(H\)</span> in the gaussian orthogonal ensemble. It is reasonable to think, by analogy with the Brownian motion, that the variance of <span class="math">\(H\)</span> increase with <span class="math">\(N\)</span>, or equivalently that each matrix element is of order, <span class="math">\(H_{nm}\sim \sqrt{N}\)</span>. Therefore, taking the constant <span class="math">\(A\)</span> in the probability distribution as <span class="math">\(A \sim N\)</span>, ensures that the matrix elements are order one: <span class="math">\(H/\sqrt{N} \sim \mathcal{O}(1)\)</span>. The gaussian orthogonal ensemble probability, after a simple rescaling of the hamiltonian, is then conveniently written&nbsp;as,
+</p>
+<div class="math">$$P(H) = c_N \exp\left[-\frac{N}{4}\mathrm{Tr}\,H^2\right]\,, \quad c_N = \frac{1}{2^{N/2}} \left( \frac{N}{2\pi} \right)^{N(N+1)/4}$$</div>
+<p>
+where <span class="math">\(N(N+1)/2\)</span> is the number of independent elements of <span class="math">\(H\)</span>; we also&nbsp;used 
+</p>
+<div class="math">$$\mathrm{Tr}\,H^2 = \sum_n H_{nn}^2 + 2 \sum_{nm} H_{nm}^2\,.$$</div>
+<p>We are interested in the statistical properties of the eigenvalues of <span class="math">\(H\)</span>. The simplest quantity characterizing the distribution of energy levels is the density of states, defined&nbsp;by:
+</p>
+<div class="math">$$\langle\rho(E)\rangle = \frac{1}{N} \sum_{n=1}^N \langle\delta(E - E_n\rangle)\,,$$</div>
+<p>
+where the angle brackets are for the averaging over the gaussian ensemble. We compute this quantity using its representation by a green function, and the <em>replica method</em> (see the references at the end of this section). We will demonstrate the Wigner semicircle law, as shown in the figure below (see also the exercise in the preceding&nbsp;section).</p>
+<p><img src="/images/semicircle.png" alt="Wigner semicircle law" style="height: 200px;"/></p>
+<p>The retarded green function is defined&nbsp;by
+</p>
+<div class="math">$$G^R(E) = \frac{1}{E + \I o - H}$$</div>
+<p>
+where <span class="math">\(\I o \rightarrow 0\)</span> ensures the convergence of the time dependent green function (fourier transform of <span class="math">\(G^R(E)\)</span>) for past times (<span class="math">\(t\rightarrow -\infty\)</span>). The retarded green function is analytic in the upper-half complex energy plane. The trace of the green function can be split into real and imaginary parts using the Plemelj&nbsp;formula
+</p>
+<div class="math">$$\mathrm{Tr}\, G^R(E) = \sum_n \frac{1}{E + \I o - E_n} = \sum_n \frac{\mathcal{P}}{E - E_n} - \I \pi \delta(E - E_na\,.)$$</div>
+<p>
+Comparing this formula with the definition of the density of states, we&nbsp;obtain,
+</p>
+<div class="math">$$\langle \rho(E) \rangle = \frac{-1}{\pi N} \mathrm{Im} \mathrm{Tr}\,G^R(E)\,.$$</div>
+<p>
+The trace of the green function can be written in terms of a&nbsp;determinant,
+</p>
+<div class="math">$$\mathrm{Tr}\, G^R(E) = \sum_n \frac{1}{E + \I o - E_n} = \frac{\partial }{\partial E} \sum_n \ln(E + \I o - E_n) = \frac{\partial }{\partial E} \ln \det(E + \I o - H)$$</div>
+<p>
+Using this expression, we arrive at a formula of the averaged density of&nbsp;states,
+</p>
+<div class="math">$$\langle \rho(E) \rangle = \frac{-1}{\pi N} \mathrm{Im}  \frac{\partial }{\partial E} \langle \ln \det(E + \I o - H)\rangle$$</div>
+<p> 
+whose computation reduces to the computation of the logarithm of a determinant. Now, to compute the determinant of a symmetric real matrix <span class="math">\(A=A^T\)</span>, we can use its gaussian integral&nbsp;representation,
+</p>
+<div class="math">$$\frac{1}{(\det A)^{1/2}} = \int \D [x] \E^{-\frac{1}{2} x^T A x},\quad \D [x] = \prod_{n=1}^N \frac{\D x_n}{\sqrt{2\pi}}$$</div>
+<p>
+where <span class="math">\(x^T = (x_1 x_2 \ldots x_N)\)</span> is a row vector. Once the determinant known it would remain the calculation of the mean of the logarithm over the random distribution of energies. A method to compute this averaging is to replace the logarithm by a simple power, using the elementary&nbsp;relation
+</p>
+<div class="math">$$\ln Z = \lim_{R\rightarrow0} \frac{Z^R-1}{R} = \left.\frac{\partial }{\partial R}\right|_{R=0} \, Z^R\,.$$</div>
+<p>
+Therefore <span class="math">\(\langle \ln Z \rangle \rightarrow \langle Z^R \rangle\)</span>, averaging of the logarithm becomes averaging over <span class="math">\(R\)</span> <em>replicas</em> of the original system (here described by <span class="math">\(Z\)</span>).  From this formula,&nbsp;defining
+</p>
+<div class="math">$$Z=[\det (E^+ -H)]^{-1/2}\,,$$</div>
+<p>
+(<span class="math">\(E^+= E + \I o\)</span>) we finally obtain a suitable relation to compute the density of states averaged over the gaussian&nbsp;probability:
+</p>
+<div class="math">$$\langle \rho(E) \rangle = \frac{2}{\pi N} \mathrm{Im} \left.\frac{\partial} {\partial R}\right|_{R=0} \, \frac{\partial }{\partial E}\langle Z^R \rangle\,.$$</div>
+<p>The explicit form of the determinant, incorporating the probability distribution of the hamiltonian matrix,&nbsp;is,
+</p>
+<div class="math">$$\langle Z^R \rangle =  \int \prod_{r=1}^R \D[x_r] \int \D[H]\, \E^{-\frac{N}{4}\mathrm{Tr}\,H^2} \E^{-\frac{1}{2}\sum_{r=1}^R x^T_r (E^+ - H) x_r}$$</div>
+<p>
+where
+</p>
+<div class="math">$$\D[H] = c_N \prod_{n,m}^N \D H_{nm}\,,$$</div>
+<p>
+includes the probability normalization constant <span class="math">\(c_N\)</span>. The gaussian integration is readily performed (completing the square, as&nbsp;usual):
+</p>
+<div class="math">$$\langle Z^R \rangle = \int \prod_{r=1}^R \D[x_r]\, \exp\left[- \frac{E^+}{2} \sum_{r=1}^R x^T_r x_r + \frac{1}{4N} \sum_{r,s=1}^R x^T_r x_r x^T_s x_s \right]$$</div>
+<p>
+The fourth order term can be transformed into a second order term coupled to a <span class="math">\(R\times R\)</span> matrix <span class="math">\(Q\)</span> in the replica&nbsp;space,
+</p>
+<div class="math">$$\exp\left[ \frac{1}{4N} \sum_{r,s=1}^R x^T_r x_r x^T_s x_s \right] = 
+\int \D[Q] \exp\left[ -\frac{N}{4} \mathrm{Tr}\,Q^2 \right] \exp\left[ \frac{1}{2} \sum_{r,s=1}^R x^T_r Q_{rs} x_s \right]\,,$$</div>
+<p>
+this transformation leads to a gaussian integral over the vector <span class="math">\(x\)</span>,
+</p>
+<div class="math">$$\langle Z^R \rangle = \int \D[Q] \E^{ -\frac{N}{4} \mathrm{Tr}\,Q^2 } \int \prod_{r=1}^R \D[x_r]\, \exp\left[- \frac{1}{2} \sum_{rs=1}^R x^T_r (E^+ \delta_{rs} - Q_{rs} ) x_s \right] $$</div>
+<p>
+that can be readily evaluated,&nbsp;giving
+</p>
+<div class="math">$$\langle Z^R \rangle = \int \D[Q] \, \exp\left[-\frac{N}{4} \mathrm{Tr}\,Q^2 - \frac{N}{2} \mathrm{Tr}\, \ln (E^+\mathbb{1}_R - Q)\right] $$</div>
+<p>
+Up to now all these formal calculations were exact: we transformed the original problem into an integral over replica matrices. The exponent of such integral contains a large parameter <span class="math">\(N\)</span>, suggesting that the saddle point will give a solution in the limit <span class="math">\(N \rightarrow \infty\)</span>. In addition, we also must calculate the limit of the replica parameter <span class="math">\(R \rightarrow 0\)</span>, a kind of analytical continuation. Now, the first term in the exponential contains a diagonal term with <span class="math">\(R\)</span> terms, and a non-diagonal term with <span class="math">\(R^2\)</span> terms; the second term also contains <span class="math">\(R\)</span> terms. Therefore, we can assume that in the limit of <span class="math">\(N \rightarrow \infty\)</span> and small <span class="math">\(R\)</span>, only the diagonal terms contribute to the saddle&nbsp;point:
+</p>
+<div class="math">$$Q_{rs} = q \delta_{rs}$$</div>
+<p>
+this is the so-called <em>replica symmetric</em> ansatz, and in the present case it leads to the correct result. However, if we wanted to know the fluctuations at finite <span class="math">\(N\)</span>, the replica symmetric assumption is no longer valid, and a more complete account of all the saddle points must be taken. Using the previous ansatz we&nbsp;have,
+</p>
+<div class="math">$$\langle Z^R \rangle \approx \left[ \int_{-\infty}^\infty \D q\, \E^{-\frac{N}{2}g(E,q)} \right]^R \approx \exp\left[ -\frac{NR}{2}g(E,q_*)  \right]$$</div>
+<p>
+where we neglected prefactor terms (subdominant), and <span class="math">\(q_* = q_*(E)\)</span> is the saddle point value of the&nbsp;exponent
+</p>
+<div class="math">$$g(E,q) = \frac{q^2}{2} + \ln(E^+ - q)\,.$$</div>
+<p>
+For large values of <span class="math">\(N\)</span> the integral is dominated by the saddles in the complex <span class="math">\(q\)</span> plane of the exponent function <span class="math">\(g(q)\)</span>. These saddle points are obtained from the condition <span class="math">\(g'(q_*) = 0\)</span>,
+</p>
+<div class="math">$$q - \frac{1}{E^+ - q} = 0, \quad q_\pm = \frac{E^+}{2} \pm \frac{1}{2} \sqrt{E^{+2}-4}$$</div>
+<p>
+The figures below show the saddles for <span class="math">\(E^+=1.2+\I 0.1\)</span> (left) and <span class="math">\(E^+=2.5+\I 0.1\)</span> (right), of the function <span class="math">\(\mathrm{Re}\, g(E^+,q)\)</span> in the complex <span class="math">\(q\)</span> plane. For <span class="math">\(|E|&lt;2\)</span>, the pole at <span class="math">\(q=E\)</span> is shifted towards the upper half-plane by the positive small imaginary part of the energy; therefore, we can follow a path from <span class="math">\(q\rightarrow-\infty\)</span> to <span class="math">\(q\rightarrow+\infty\)</span> through the saddle <span class="math">\(q_-\)</span>, along the lower half-plane. The other saddle, <span class="math">\(q_+\)</span>, do not contribute to the integral, because a path passing through <span class="math">\(q_+\)</span> cannot be deformed back to the real axis without crossing the pole at <span class="math">\(q=E\)</span>.</p>
+<p>If <span class="math">\(|E|&gt;2\)</span> the two saddles are on the real axis, and as we see below, the density of states is given by <span class="math">\(\mathrm{Im}\,q_*\)</span>, hence they do not&nbsp;contribute.</p>
+<blockquote>
+<p><img src="/images/rm_saddle_m.png" alt="saddles for small E" style="height: 200px;"/>
+<img src="/images/rm_saddle_p.png" alt="saddles for large E" style="height: 200px;"/></p>
+</blockquote>
+<p>We conclude that the integral is dominated by the <span class="math">\(q_* = q_-(E)\)</span> saddle point. Noting&nbsp;that
+</p>
+<div class="math">$$\frac{\partial }{\partial E} \left. \frac{\partial }{\partial R} \right|_{R=0} \langle Z^R \rangle = -\frac{N}{2}\frac{1}{q_* - E} = -\frac{N}{E+\I \sqrt{4-E^2}}  \,,$$</div>
+<p> 
+we finally obtain the density of&nbsp;states,
+</p>
+<div class="math">$$ \langle\rho(E)\rangle = \frac{2}{\pi N} \mathrm{Im} \frac{\partial }{\partial E} \left. \frac{\partial }{\partial R} \right|_{R=0} \langle Z^R \rangle = \frac{1}{2\pi} \sqrt{4-E^2}\,, $$</div>
+<p>
+the <em>semicircle Wigner</em>&nbsp;law.</p>
+<h3>Bibliography</h3>
+<ul>
+<li>
+<p>Edwards and Jones (1976) <a href="http://stacks.iop.org/0305-4470/9/i=10/a=011">The eigenvalue spectrum of a large symmetric random&nbsp;matrix</a></p>
+</li>
+<li>
+<p>Parisi et al. (2014) <a href="https://arxiv.org/abs/1409.2722">Replica Theory and Spin&nbsp;Glasses</a></p>
+</li>
+</ul>
+<p><a href="/pages/qc.html">&raquo;quantum chaos</a><a href="/pages/kicked.html">&raquo;kicked rotator</a><a href="/pages/kicked-localization.html">&raquo;dynamical localization</a><a href="/pages/qrw.html">&raquo;quantum&nbsp;walk</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

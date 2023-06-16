@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Entanglement transition in the dynamics of the cluster spin chain | Random physics
+</title>
+    <link rel="canonical" href="/hexa2023.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Conference “chats2023” Trends in Hamiltonian systems, chaos and its applications, Luminy, Marseille 2023">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2023-05-24T00:00:00+02:00">
+        <i class="fa fa-clock-o"></i>
+        mer. 24 mai 2023
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/research.html">#research</a>,         <a href="/tag/conference.html">#conference</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\Tr}{\mathrm{tr}}
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}[1]{\boldsymbol{#1}}\)</span></p>
+<blockquote>
+<p>Talk based on the paper appeared in <a href="https://doi.org/10.1103/PhysRevB.107.085116">Phys. Rev. B 107, 085116 (2023)</a>, which also contains a complete bibliography. Conference <a href="https://chats2023.sciencesconf.org/">&#8220;chats2023&#8221;</a> <em>Trends in Hamiltonian systems, chaos and its applications</em>, Luminy, Marseille&nbsp;2023.</p>
+</blockquote>
+<p><strong>Abstract</strong>: We propose a mechanism of dynamical ergodicity breaking driven by the interaction of a cluster spin chain (topological phase) with a chiral particle (quantum walker). The broken ergodic phase is characterized by an emergent magnetic field. We discuss the differences between the near integrable case and the strong interacting&nbsp;one. </p>
+<p><strong>Synopsis</strong>: One of the challenges in quantum information is to create quantum states that can be used as resources, for instance, in the measurement-based model of quantum computing. Here, I investigate the generation, through a dynamical phase transition, of a topological entangled state, by the Floquet evolution of a chain of spins, whose ground state is the so-called cluster state, acted upon by a quantum walker. The nonergodic phase is characterized by the emergence of magnetic order, persistent at long times.<sup id="fnref:V"><a class="footnote-ref" href="#fn:V">1</a></sup></p>
+<h1>Entanglement transition in the dynamics of the cluster spin&nbsp;chain</h1>
+<p>Subsystems of an isolated quantum system generically evolve, under a discrete time dynamics driven by a unitary operator (Floquet), towards an equilibrium thermodynamic state of infinite temperature (energy is not conserved). Their entanglement cannot be distinguished from the entanglement of a genuinely random state and as a consequence it cannot be a useful resource for quantum computations. Typical useful states are those ground states associated with a topological phase protected by symmetry and satisfying the area law of the entanglement&nbsp;entropy. </p>
+<p>However, even if these states are robust against errors, their entanglement properties degrade rapidly at finite temperature. It is therefore of interest to find nonergodic states, characterized by nonlocal entanglement, at high energy. Here we propose a model, related to the cluster states introduced in the measurement-based quantum computation model, which can evolve towards a highly entangled state through a dynamical quantum phase transition. We investigate the mechanism of ergodicity breaking and the entanglement properties of the asymptotic stationary&nbsp;states.</p>
+<h2>Cluster dynamical&nbsp;model</h2>
+<p>We consider a chain of <span class="math">\(1/2\)</span>-spins</p>
+<blockquote>
+<p><img src="/images/hexa-schain.svg" alt="spin chain" style="width: 250px;"/></p>
+</blockquote>
+<p>of <span class="math">\(L\)</span> sites <span class="math">\(x=0,\ldots, L-1\)</span>; the hilbert space is spanned by the basis vectors <span class="math">\(\ket{s}\)</span>, where the integer label <span class="math">\(s\)</span> has the binary decomposition <span class="math">\(s = s_0 \cdots s_{L-1}\)</span>, where <span class="math">\(s_x \in \{0,1\}\)</span>:
+</p>
+<div class="math">$$\ket{s} = \ket{s_0} \otimes \cdots \otimes \ket{s_{L-1}} = \ket{s_0 \cdots s_{L-1}}.$$</div>
+<p>Each spin <span class="math">\(x\)</span> of the chain interacts with its neighbors through the exchange of strength <span class="math">\(J\)</span>
+</p>
+<div class="math">\begin{equation}
+-J Z_{x-1}X_x Z_{x+1},
+\end{equation}</div>
+<p>
+where <span class="math">\(\bm \sigma = (X,Y,Z)\)</span> are the pauli matrices. This operator is a <em>stabilizer</em> of the cluster state <span class="math">\(\ket{C}\)</span>:
+</p>
+<div class="math">\begin{equation}
+ \ket{C} = \frac{1}{2^{L/2}} \prod_x \big(1 + Z_{x-1}X_x Z_{x+1} \big) \ket{0}^L
+\end{equation}</div>
+<p>
+with <span class="math">\(\ket{0}^L\)</span> the tensor product state of <span class="math">\(L\)</span> spins up (<span class="math">\(s=0\cdots0 = 0\)</span>). Moreover, <span class="math">\(\ket{C}\)</span> is the ground state of the &#8220;cluster&#8221;&nbsp;Hamiltonian
+</p>
+<div class="math">\begin{equation}
+  H_C = - \frac{J}{2} \sum_x Z_{x-1}X_x Z_{x+1}
+\end{equation}</div>
+<p>
+a topological phase protected by the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> symmetry (generated by the string operators <span class="math">\(\prod_x X_x\)</span>, with <span class="math">\(x\)</span> odd and even). In addition to the exchange interaction each spin is subject to an external field <span class="math">\(B\)</span> in the <span class="math">\(x\)</span>&nbsp;direction
+</p>
+<div class="math">\begin{equation}
+  H_B = - \frac{B}{2} \sum_x X_x.
+\end{equation}</div>
+<p>
+The cluster model, associated with the <span class="math">\(H_C+H_B\)</span> hamiltonian, describes a system that undergoes a quantum phase transition when varying the external field from zero (the cluster state) to <span class="math">\(B&gt;J\)</span> (the paramagnetic state). The cluster state (whose magnetization is zero) differs from the paramagnetic state in its entanglement properties. The cluster state satisfies the area law of the entanglement entropy. It is a topological phase protected by symmetry, excitations are separated from the ground state by an energy gap. These properties make the cluster state an interesting resource of quantum information, and it is the base of the so called &#8220;measurement based quantum&nbsp;computation&#8221;. </p>
+<p>Instead of considering the hamiltonian system <span class="math">\(H_C+H_B\)</span>, whose ground state is precisely <span class="math">\(\ket{C}\)</span>, we impose a discrete time dynamics generated by the floquet unitary <span class="math">\(F(J,B)\)</span>
+</p>
+<div class="math">\begin{equation}
+  \ket{\psi(t+\Delta t)} = F(J,B) \ket{\psi(t)}, \quad F(J,B) = \E^{- \I H_C \Delta t} \E^{- \I H_B \Delta t} 
+\end{equation}</div>
+<p>
+where <span class="math">\(\ket{\psi(t)}\)</span> is the system&#8217;s state at time <span class="math">\(t \in \mathbb{Z}\)</span>, and the time interval <span class="math">\(\Delta t = 1\)</span> is our unit of time (we also choose <span class="math">\(\hbar = 1\)</span>); note that <span class="math">\(H_B\)</span> do not commute with <span class="math">\(H_B\)</span>.</p>
+<p>The dynamics generated by <span class="math">\(F(J,B)\)</span> is completely integrable, as can be shown using the Jordan-Wigner transformation
+It is defined&nbsp;by
+</p>
+<div class="math">\begin{equation}
+    \begin{split}
+        X_x &amp;= 1 - 2 f^\dagger_x f_x, \\
+        Y_x &amp;= \I K_x (f^\dagger_x - f_x), \\
+        Z_x &amp;= -K_x (f^\dagger_x + f_x),
+    \end{split}
+    \label{e:JW}
+\end{equation}</div>
+<p>
+where
+</p>
+<div class="math">\begin{equation}
+    \label{e:Kff}
+    K_x = \prod_{y=0}^{x-1} \E^{\I \pi f^\dagger_y f_y} = \prod_{y=0}^{x-1}( 1 - 2 f^\dagger_y f_y ).
+\end{equation}</div>
+<p>
+and 
+</p>
+<div class="math">\begin{equation}
+    \label{e:ff}
+    \{f_x,f_y\} = \{f_x^\dagger,f_y^\dagger\}, \quad \{f_x,f_y^\dagger\} = \delta_{xy}.
+\end{equation}</div>
+<p>
+are the commutation relations of the fermion annihilation and creation&nbsp;operators.</p>
+<p>This transformation, together with a fourier transform (the system is translation invariant), leads to the effective hamiltonian <span class="math">\(H_F = \I \ln F\)</span> representation of the floquet&nbsp;operator:
+</p>
+<div class="math">\begin{equation}
+    \label{e:HF}
+    H_F = -\sum_k C^\dagger h_k C_k, \quad
+    C_k = \begin{pmatrix} f_k \\ f^\dagger_{-k} \end{pmatrix}, 
+\end{equation}</div>
+<p>
+where
+</p>
+<div class="math">\begin{equation}
+    \label{e:hk}
+    h_k = \epsilon_k \bm n_k \cdot \bm \sigma ,
+\end{equation}</div>
+<p>
+<span class="math">\(\epsilon_k\)</span> gives the energy bands (figure&nbsp;below)
+</p>
+<div class="math">\begin{equation}
+    \label{e:ek}
+    \cos(\epsilon_k) = \cos J \cos B - \sin J \sin B \cos 2k;
+\end{equation}</div>
+<p>
+and the unit&nbsp;vector
+</p>
+<div class="math">\begin{equation}
+    \label{e:nk}
+    \bm n_k = \frac{1}{\big| \sin \epsilon_k \big|} \begin{pmatrix}
+        \sin J \cos B \sin 2k \\
+        \sin J \sin B \sin 2k \\
+        \sin J \cos B \cos 2k + \cos J \sin B\end{pmatrix}
+\end{equation}</div>
+<p>
+whose rotation gives the winding number <span class="math">\(\nu\)</span>. The winding number characterize the topology of the energy&nbsp;bands.</p>
+<h3>Energy bands and topology of the integrable cluster&nbsp;system</h3>
+<p>An exact calculation gives the evolution of the initial all <span class="math">\(\ket{+}\)</span> spins&nbsp;state:
+</p>
+<div class="math">\begin{equation}
+    \label{e:0t}
+    \ket{t} = \prod_k \big[ \cos(\epsilon_k t) + \I n_z(k) \sin(\epsilon_k t) 
+        + \I n_-(k) \sin(\epsilon_k t) f_{-k}^\dagger f_k^\dagger \big] \ket{0} .
+\end{equation}</div>
+<p>
+at time <span class="math">\(t\)</span>, where <span class="math">\(n_\pm = n_x \pm \I n_y\)</span>, and <span class="math">\(\bm n = (n_x, n_y, n_z)\)</span>. Therefore, we can compute the Loschmidt echo ratio <span class="math">\(\lambda(t)\)</span> and the multipartite entanglement measure <span class="math">\(\mathcal{Q}(t)\)</span>.</p>
+<blockquote>
+<p><img src="/images/hexa-eBJ.svg" alt="energy bands" style="height: 350px;"/></p>
+<p>Quasi-energy bands as a function of the exchange <span class="math">\(J\)</span> and wavenumber <span class="math">\(k\)</span> for a fixed field <span class="math">\(B = 1.1\)</span>. For <span class="math">\(J=B\)</span> dirac points appear, signaling the possibility of phase&nbsp;transitions.</p>
+</blockquote>
+<p>It is straightforward to demonstrate that the effective hamiltonian supports chiral modes, in particular there exists a gauge vector potential that allows <span class="math">\(H_F\)</span> be written in explicit chiral form. Using this form one may compute exactly the winding number of the energy bands, as shown in the figure&nbsp;below.</p>
+<blockquote>
+<p><img src="/images/hexa-JB.svg" alt="winding" style="height: 250px;"/></p>
+<p>In the <span class="math">\((J,B)\)</span> plane the lines <span class="math">\(J=\pm B\)</span> separate trivial to topological phases, as measured by the value of the electronic bands winding number (here associated to the effective&nbsp;hamiltonian).</p>
+</blockquote>
+<p>To analyse the dynamics of the phase transition between the <span class="math">\(J &lt; B\)</span> and <span class="math">\(J &gt; B\)</span> cases, we introduce the loschmidt&nbsp;ratio,
+</p>
+<div class="math">\begin{equation}
+    \label{e:lambda}
+    \lambda(t) = - \frac{1}{L} \ln \mathcal{L}(t) , \quad \mathcal{L}(t) = |\braket{0 | t}|^2 ,
+\end{equation}</div>
+<p>
+which is an intensive quantity (it has a finite limit when the size of the system tends to infinity); it is related to the Loschmidt echo, which measures the overlap between the initial and evolved states. The loschmidt ratio presents singularities at the dynamical phase&nbsp;transitions.</p>
+<blockquote>
+<p><img src="/images/hexa-ll.svg" alt="loschmidt" style="height: 250px;"/></p>
+<p>In analogy with the thermodynamic free energy, the singularities of the loschmidt ratio evidence dynamical transitions. When <span class="math">\(J&gt;B\)</span> the initial product state evolves towards a highly entangles state through a dyanamical phase&nbsp;transition.</p>
+<p><img src="/images/hexa-q0.svg" alt="enanglement Q0" style="height: 250px;"/></p>
+<p>The dynamical transition characterize by different entanglement levels. For <span class="math">\(B&gt;J\)</span> the entanglement remains weak, in accordance with the absence of&nbsp;transitions.</p>
+</blockquote>
+<div class="math">\begin{equation}
+    \label{e:Qpure}
+    \mathcal{Q}(t) = 2 - \frac{2}{L} \sum_{x=0}^{L-1} \Tr \rho^2_x(t) = 1 - \frac{1}{L} \sum_x \braket{\psi(t)|\bm \sigma_x |\psi(t)}^2,
+\end{equation}</div>
+<h2>Spin-particle&nbsp;interaction</h2>
+<p>A natural question arises about the fate of the (dynamical) cluster state when integrability is broken. Is it possible to generate useful entangled states in the case of a chaotic dynamics? Is it possible to obtain at high energy nontrivial topological states, even when the external field is larger than the exchange&nbsp;coupling?</p>
+<p>To answer these questions we modify the cluster model by adding a particle (like a quantum walker) that, jumping from site to site, exchanges its spin with the fixed spins of the chain. One interesting aspect of this modification is that it adds to the well localized spin degrees of freedom the delocalized degrees of freedom of a particle (the support of the particle wave function naturally extends to the whole system). The second important property of the modified model is that it preserves, with a good choice of the particle-spin interaction, the original symmetries of the cluster model. This is essential to ensure the possible existence of nontrivial topological phases, protected by the same symmetries as the ones of the cluster&nbsp;state.</p>
+<blockquote>
+<p><img src="/images/hexa-spchain.png" alt="spin chain and walker" style="width: 250px;"/></p>
+<p>The original chain (<span class="math">\(J\)</span>) is modified by the presence of a jumping particle (the colors around each site represent the particle position distribution), which in addition, exchange (<span class="math">\(J_w\)</span>) its internal spin (coin value) with each spin of the chain. The particle creates an &#8220;environmnet&#8221; around the fixed&nbsp;spins.</p>
+</blockquote>
+<p>The presence of the walker leads to an enlarged hilbert space: a basis vector has now the&nbsp;form
+</p>
+<div class="math">\begin{equation}
+    \label{e:xcs}
+    \ket{xcs} = \ket{x} \otimes \ket{c} \otimes \ket{s} \in \mathcal{H}, \quad x \in \{0,\ldots,L-1\}, \\ c \in \{0,1\}, \; s \in \{0,\ldots,2^L-1\} ,
+\end{equation}</div>
+<p>
+where <span class="math">\(x\)</span> and <span class="math">\(c\)</span> are the position and spin (or &#8220;coin&#8221;) of the particle, and <span class="math">\(s\)</span> is as before, the set of fixed&nbsp;spins.</p>
+<p>The particle-spin interaction is defined&nbsp;by
+</p>
+<div class="math">\begin{equation}
+    \label{e:Jex}
+    W_x(J_w) = \exp\big( \I J_w \tau^{(x)} X_x\big)  ,
+\end{equation}</div>
+<p>
+where <span class="math">\(J_w\)</span> is the coupling energy, and <span class="math">\(\bm \tau\)</span> the pauli coin operator. The fact that it depends only on the <span class="math">\(X\)</span> spin component, ensures that the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> symmetry is preserved. The new floquet operator&nbsp;is
+</p>
+<div class="math">\begin{equation}
+    \label{e:Fqw}
+    F_\text{QW} = F(J,B)W(J_w)MC(\theta) ,
+\end{equation}</div>
+<p>
+where <span class="math">\(M\)</span> (motion) is the particle shift operator <span class="math">\(x \rightarrow x+1\)</span>, and <span class="math">\(C\)</span> (coin) rotates the particle spin by an angle <span class="math">\(\theta\)</span> around the <span class="math">\(x\)</span> axis. The combined operator <span class="math">\(MC(\theta)\)</span> corresponds to the quantum walk of a particle on the line, whose continuum limit gives the Dirac equation (with a <span class="math">\(\theta\)</span> dependent effective mass): when <span class="math">\(\theta \approx \pi/2\)</span> the group velocity of the particle is near its phase velocity of 1, while when <span class="math">\(\theta\approx \pi/4\)</span> the group velocity is much smaller than the phase velocity, increasing the effect of&nbsp;dispersion.</p>
+<p>Our task now is to generalize the loschmidt and entanglement measures to the mixed state case. Indeed, the addition of the walker transform the spin chain into an &#8220;open&#8221; system, whose hilbert space is a subspace of the total (particle plus spin) hilbert space. The spin subsystem is then described by the reduced density&nbsp;matrix
+</p>
+<div class="math">\begin{equation}
+    \label{e:rhos}
+    \rho_s(t) = \Tr_{xc} \rho(t), \; \rho(t) = \ket{\psi(t)} \bra{\psi(t)}   ,
+\end{equation}</div>
+<p>
+where <span class="math">\(\ket{\psi(t)}\)</span> is the state that has evolved from the initial <span class="math">\(\ket{\psi(0)}\)</span>&nbsp;state,
+</p>
+<div class="math">\begin{equation}
+    \label{e:Fpsi0}
+    \ket{\psi(t)} = F_\text{QW}^t \ket{\psi(0)} .
+\end{equation}</div>
+<p>
+The loschmidt ratio is defined in terms of the spin density matrix (instead of the spin&nbsp;state),
+</p>
+<div class="math">\begin{equation}
+    \label{e:peres}
+    \mathcal{L}_s(t) = \frac{\Tr \rho_s(0) \rho_s(t)}{\Tr \rho_s(0)^2} ,\quad
+    \lambda_s(t) = - \frac{1}{L} \ln \mathcal{L}_s(t) ,
+\end{equation}</div>
+<p>
+and the multipartite entanglement is given by the local (dependent on the lattice site) spin density&nbsp;matrix
+</p>
+<div class="math">\begin{equation}
+    \label{e:Qmix}
+    \mathcal{Q}_s(t) = \frac{1}{L} \sum_{x=1}^L \tau_s(x,t), \quad
+    \tau_s(x,t) = 4 \det \rho_s(x,t),
+\end{equation}</div>
+<p>
+where <span class="math">\(\tau_s\)</span> is the so called one-tangle,&nbsp;and
+</p>
+<div class="math">$$\rho_s(x,t) = \Tr_{\bar{s}_x}\rho_s(t), \quad \bar{s}_x = s_1 \ldots s_{x-1} s_{x+1} \ldots s_L$$</div>
+<p>
+is the one spin density matrix. This quantity is related to the expected value of the <span class="math">\(X\)</span>&nbsp;magnetization.</p>
+<p>One may think the influence of the particle as an effective magnetic field which adds to the already present external <span class="math">\(B\)</span>, or, depending on the localization of the particle, as a source of decoherence of the spin subsystem, which can eventually lead the spin chain to a thermal&nbsp;state.</p>
+<h3>Near integrable&nbsp;case</h3>
+<p>We first observe that the dynamical phase transition toward a topological entangled phase we analysed in the integrable case, is also present in the interacting spin-particle system. When both <span class="math">\((J,B)\)</span> are small, the discrete time dynamics tends to a continuous time evolution associated with the combined spin-chain and walker&nbsp;hamiltonians. </p>
+<p>A rather interesting new effect is the <em>interaction induced</em> localization of the particle around its initial position, depending on the spin chain parameters&nbsp;(figure).</p>
+<blockquote>
+<p><img src="/images/hexa-ab_pq.svg" alt="(ab) particle and tangle" style="height: 400px;"/></p>
+<p>Square of the particle wave function and spin tangle in the near integrable case. (a) <span class="math">\(J=0.03\)</span>, <span class="math">\(B=0.01\)</span>; (b) <span class="math">\(J=0.01\)</span>, <span class="math">\(B=0.03\)</span>. </p>
+</blockquote>
+<p>We observe localization of the walker when <span class="math">\(J&gt;B\)</span>, and strong spatial fluctuations of the entanglement. In fact the tangle <span class="math">\(\tau(x,t)\)</span> reflects the behavior of the <span class="math">\(x\)</span>-magnetization. In the integrable case a strong magnetization signals a near product unentangled state. In contrast, here an emergent magnetization is correlated with an entangled state. This property is also present in the strong interacting&nbsp;case.</p>
+<blockquote>
+<p><img src="/images/hexa-ab_ql.svg" alt="(ab) lambda and Q" style="height: 250px;"/></p>
+<p>Loschmidt ratio and entanglement comparison between <span class="math">\(J&gt;B\)</span> (a) and <span class="math">\(J&lt;B\)</span> (b) cases (parameters as in the previous&nbsp;figure). </p>
+</blockquote>
+<p>In analogy with the integrable case, we find a highly entangled phase that follows a dynamical phase transition, as probed by <span class="math">\(\lambda(t)\)</span>, which shows a kink (taking into account that the number of spins is <span class="math">\(L=14\)</span>, one may not expect a neat&nbsp;singularity).</p>
+<h3>Strongly interacting&nbsp;regime</h3>
+<p>The behavior of the system in the strongly interacting case is very rich, and many different regimes are observed depending on the four parameters <span class="math">\(J,B,J_w\)</span> and <span class="math">\(\theta\)</span>. First, the &#8220;normal&#8221; behavior of relaxation to a thermal state is found in the case <span class="math">\(B&gt;J\)</span> and strong particle coupling <span class="math">\(J_w \approx \pi/2\)</span>, where the interaction is essentially a swapping between the coin and the spin (figure&nbsp;below).</p>
+<blockquote>
+<p><img src="/images/hexa-d_ent.svg" alt="(d) entanglement" style="height: 300px;"/></p>
+<p>Thermal state obtained in the strong coupling regime <span class="math">\(J_w =1.5\)</span>, <span class="math">\(\theta=\pi/4\)</span>, and <span class="math">\((J,B)= (0.2,0.6)\)</span>. (a) Subsystem entropy of the <span class="math">\(x\)</span>, <span class="math">\(c\)</span> and <span class="math">\(s\)</span> degrees of freedom; (b) loschmidt ratio of the spin subsystem; (c) von Newmann entropy of partition A with <span class="math">\(L/2\)</span> spins (half system); (d) multipartite entanglement of the spin&nbsp;subsystem.</p>
+</blockquote>
+<p>In this case the entanglement rapidly grows toward its maximum value, corresponding to a random quantum state. In particular the von Newman&nbsp;entropy
+</p>
+<div class="math">$$\mathcal{S}[\rho] = -\Tr \rho \log \rho$$</div>
+<p>
+which is a functional of the density matrix (<span class="math">\(\log\)</span> is base 2), for the different subsystems, <span class="math">\(\{x,c,s\}\)</span> and half-chain <span class="math">\(x \in A\)</span>, saturates to its maximum equal probability value. At the same time the <span class="math">\(x\)</span>-magnetization tends to zero: the reached thermal state is paramagnetic. It is worth noting that the remnant magnetization even smaller than the corresponding to the applied field which confirms the ability of the walker to randomize the spin&nbsp;chain.</p>
+<blockquote>
+<p><img src="/images/hexa-n_ent.svg" alt="(n) entanglement" style="height: 300px;"/></p>
+<p>Non-thermal state obtained in the <span class="math">\(J&lt;B\)</span> case for a spin-particle coupling <span class="math">\(J_w = 0.5\)</span>. Panels (a-d) as in the previous&nbsp;figure.</p>
+</blockquote>
+<p>Second, we find a dynamical transition towards a highly entangled state and finite magnetization, in the <span class="math">\(J&lt;B\)</span> case &#8220;balanced&#8221; spin-particle coupling <span class="math">\(J_w = 0.5\)</span>, which is impossible without the interaction with the walker (figure above). Here, the remarkable point is that the observed magnetization cannot be solely explained by the applied field, which would lead to a trivial paramagnetic phase of negligible entanglement. On the contrary, the emergent magnetization is here correlated with a highly entangled&nbsp;state.</p>
+<blockquote>
+<p><img src="/images/hexa-n_psx1.svg" alt="(n) position and spin" style="height: 250px;"/></p>
+<p>Particle motion (position probability distribution) (a), and magnetization distribution (b) in the non-thermal case with <span class="math">\(J&lt;B\)</span> and <span class="math">\(J_w=0.5\)</span>.</p>
+</blockquote>
+<p>This emerging magnetization is in fact a measure of the <em>ergodicity breaking</em> associated with the system&#8217;s dynamics. Moreover, in contrast to the thermal state, persistent spatial fluctuation remain at long times (figure&nbsp;above).</p>
+<p>Another important difference between the integrable (I), non-thermal (<span class="caps">NT</span>), and thermal (T) cases, is related with the way entanglement grows. While the usual area (rapid saturation) and volume (ballistic) laws are followed by I  and T, the nonergodic <span class="caps">NT</span> regime is characterized by a <em>logarithmic</em> entanglement growth law, as observed in same critical quantum random networks (at the separation of the area to volume&nbsp;transition). </p>
+<h2>Conclusion</h2>
+<p>We showed that an isolated quantum system subject to a discrete time dynamics can evolve to a chaotic state different to a thermal state, characterized by a finite magnetization and high entanglement. Ergodicity breaking and its associated dynamical entanglement transition are driven only by unitary transformations, in which a particle (quantum walker) plays the role of the environment to the spin&nbsp;chain.  </p>
+<h3>Notes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:V">
+<p>Verga, <span class="caps">A.D.</span> <em>Entanglement dynamics and phase transitions of the Floquet cluster spin chain</em> Phys. Rev. B <strong>107</strong>, 085116 (2023) <a href="http://arxiv.org/abs/2208.01706">arXiv:2208.01706</a>, and references therein.&#160;<a class="footnote-backref" href="#fnref:V" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

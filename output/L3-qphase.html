@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: Quantum phase transitions | Random physics
+</title>
+    <link rel="canonical" href="/L3-qphase.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="We explore in these introductory notes, quantum phase transitions with a focus on dynamics.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2023-03-02T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        jeu. 02 mars 2023
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}[1]{\boldsymbol{#1}}\)</span></p>
+<blockquote>
+<p>This lecture is intended for students of the &#8220;Licence de physique&#8221;, and in particular to those interested in theoretical&nbsp;physics.</p>
+</blockquote>
+<h1>Quantum phase&nbsp;transitions</h1>
+<p>At zero temperature <span class="math">\(T=0\)</span> an isolated quantum system, described by a hamiltonian operator <span class="math">\(H(\lambda)\)</span>, should be in its ground state <span class="math">\(\ket{0\lambda}\)</span>. In general the hamiltonian depends on a set of parameters, labelled by <span class="math">\(\lambda\)</span>, which characterize the state of the system. A quantum phase transition refers to a drastic qualitative change of the ground state physical properties when the parameter <span class="math">\(\lambda\)</span> is smoothly changed around a <em>critical</em> value <span class="math">\(\lambda_c\)</span>.</p>
+<p>The quantum phase transition can also manifest dynamically, for instance after the quench of a system initially in the ground state of a hamiltonian, say <span class="math">\(H_0\)</span>, which subsequently evolves with another hamiltonian, <span class="math">\(H_1\)</span>, possessing a different ground&nbsp;state.</p>
+<p>Driven systems, in which energy is no longer conserved, quantum phase transition can be also present. In this case the natural evolution, for an isolated system, is towards an infinite temperature ergodic state. However, ergodicity breaking dynamical transitions may lead the system towards a stationary quantum phase, whose properties are not related to its thermodynamic equilibrium&nbsp;phases. </p>
+<p>In this <em>Leçon</em> we explore the notion of quantum phase transition, with a focus on&nbsp;dynamics.</p>
+<h2>Bifurcation</h2>
+<p>The simplest model of a qualitative change driven by the continuous tuning of a parameter is the dynamical system <span class="math">\(x(t)\)</span> described by the one-dimensional ordinary differential&nbsp;equation
+</p>
+<div class="math">\begin{equation}\label{e:xt}
+\dot{x}(t) = \lambda x(t) - x(t)^3.
+\end{equation}</div>
+<p>
+In this model <span class="math">\(x\)</span> represents the state of the system, which evolves in time <span class="math">\(t\)</span> and depends on the value of the (external) parameter <span class="math">\(\lambda\)</span>. There is a unique fixed point for <span class="math">\(\lambda &lt;0\)</span> and three for <span class="math">\(\lambda&gt;0\)</span>:
+</p>
+<div class="math">\begin{equation}\label{e:x0}
+x(\infty) = x_\lambda = \begin{cases} 0 &amp; \text{if } \lambda&gt;0 \\ \pm\sqrt{\lambda} &amp; \text{if } \lambda&gt;0 \end{cases}.
+\end{equation}</div>
+<blockquote>
+<p><img src="/images/L3-qp_bifurcation.svg" alt="Bifurcation" style="height: 200px;"/></p>
+<p>Bifurcation&nbsp;diagram.</p>
+</blockquote>
+<p>Here the &#8220;critical&#8221; behavior is related to the behavior of the roots of the polynomial <span class="math">\(\lambda x - x^3\)</span>: the two complex conjugate roots present when <span class="math">\(\lambda&lt;0\)</span> collide on the real axis at the critical point <span class="math">\(\lambda_c=0\)</span> and start to follow the real axis for <span class="math">\(\lambda&gt;0\)</span>. </p>
+<h2>Quantum transition:&nbsp;Landau-Zener</h2>
+<p>Consider the hamiltonian <span class="math">\(H(\lambda)\)</span> of a spin in a longitudinal (<span class="math">\(z\)</span>) magnetic field, here proportional to <span class="math">\(\lambda\)</span>, superposed to a fixed transversal (<span class="math">\(x\)</span>) field of intensity <span class="math">\(\Delta\)</span>
+</p>
+<div class="math">\begin{equation}
+  \label{e:Hl}
+  H(\lambda) = \Delta \sigma_x + \lambda \sigma_z.
+\end{equation}</div>
+<p>
+When <span class="math">\(\Delta = 0\)</span>, <span class="math">\(H\)</span> describes a two energy levels system <span class="math">\(\pm \lambda\)</span>. The term in <span class="math">\(\Delta\)</span> mixes the two levels leading to the&nbsp;spectrum
+</p>
+<div class="math">\begin{equation}
+  \label{e:sp}
+  H(\lambda) \ket{\pm} = E_\pm \ket{\pm}, \quad E_\pm = \pm \sqrt{\lambda^2 + \Delta^2},
+\end{equation}</div>
+<p>
+and corresponding&nbsp;eigenstates
+</p>
+<div class="math">\begin{equation}
+  \label{e:spv}
+  \ket{+} = \begin{pmatrix} \cos\theta/2 \\ \sin\theta/2
+  \end{pmatrix}, \quad
+  \ket{-} = \begin{pmatrix} -\sin\theta/2 \\ \cos\theta/2
+  \end{pmatrix},
+\end{equation}</div>
+<p>
+where,
+</p>
+<div class="math">\begin{equation}
+  \label{e:th}
+  \cos \theta = \frac{\lambda}{\sqrt{\lambda^2 + \Delta^2}}, \quad
+  \sin \theta = \frac{\Delta}{\sqrt{\lambda^2 + \Delta^2}}.
+\end{equation}</div>
+<p>
+See the figure&nbsp;below.</p>
+<blockquote>
+<p><img src="/images/L3-qp_LZ.svg" alt="Landau-Zener" style="height: 200px;"/></p>
+<p>Spectrum of the spin hamiltonian. In the absence of the transverse field the two levels <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span> crosses at <span class="math">\(\lambda=0\)</span>. For any other value of <span class="math">\(\Delta\)</span>, the level crossing is avoided. The two levels <span class="math">\(E_\pm\)</span>, corresponding to the eigenstates <span class="math">\(\ket{\pm}\)</span>, are separated by a gap <span class="math">\(2\Delta\)</span>.</p>
+</blockquote>
+<p>We observe that the topology of the spectrum change between the two cases <span class="math">\(\Delta=0\)</span> and <span class="math">\(\Delta \ne 0\)</span>; in the former case there is level crossing which disappears for any finite transversal field. As in the case of the bifurcation there is a loss of analyticity, here in the spectrum of the hamiltonian, for a particular value of the parameters. Note however that when <span class="math">\(\Delta \ne 0\)</span> transition between the positive and negative energy levels is&nbsp;impossible.</p>
+<p>Now assume that <span class="math">\(\lambda=\lambda(t)\)</span> becomes a time dependent&nbsp;parameter
+</p>
+<div class="math">\begin{equation}
+  \label{e:lt}
+  \lambda(t) = \frac{vt}{2}
+\end{equation}</div>
+<p>
+where <span class="math">\(v\)</span> characterizes the variation of <span class="math">\(\lambda\)</span> by time unit (we take <span class="math">\(\hbar=1\)</span>). The time dependence of the hamiltonian allows the emergence of a new effect, the transition between the two levels <span class="math">\(E_+\)</span> and <span class="math">\(E_-\)</span>, absent in the static case. This is the effect discovered by Landau, Zener, Majorana and Stückelberg (1932), independently. They found that the transition probability between the two adiabatic levels <span class="math">\(E_\pm\)</span> (for the linear time dependency of <span class="math">\(\lambda\)</span>) is exponentially&nbsp;small
+</p>
+<div class="math">\begin{equation}
+  \label{e:lz}
+  p_{+-} = \E^{-\pi \Delta^2/v}.
+\end{equation}</div>
+<p>
+This expression gives the transition probability at infinite time (<span class="math">\(t \rightarrow \infty\)</span>), when the initial state was on one of the <span class="math">\(E_\pm\)</span> levels, at <span class="math">\(t\rightarrow -\infty\)</span>. </p>
+<h2>Quantum&nbsp;phase</h2>
+<p>A quantum phase is a state of matter at zero temperature. It can be an equilibrium state that naturally connects with a thermal phase at finite temperature. For example, the superfluid phase of liquid helium extends to <span class="math">\(T=0\)</span>: there, changing the pressure a transition to a solid (supersolid) state is&nbsp;possible.</p>
+<p>Quantum phases are ground states with specific correlations, and in particular, specific entanglement properties. Consider the case of a ferromagnet, a material whose spins are aligned at <span class="math">\(T=0\)</span> (the ground state is twice fold degenerated, the full up and the full down states having the same energy). When it is placed in a external transverse magnetic field of enough strength (the <span class="math">\(\lambda\)</span> parameter), intense tunneling (between up an down states) destroy the magnetic order, leading the system to a paramagnetic state. Therefore, the strength of the applied field controls a transition between ferro- and paramagnetic&nbsp;states.</p>
+<h3>Transverse field Ising&nbsp;model</h3>
+<p>The hamiltonian describing this order-disorder transition, in its simplest form, can be written&nbsp;as
+</p>
+<div class="math">\begin{equation}
+  \label{e:tih}
+  H = -\sum_x Z_x Z_{x+1} - \lambda \sum_x X_x, \quad x \in \mathbb{Z}
+\end{equation}</div>
+<p>
+where we denote by <span class="math">\(XYZ\)</span> the three pauli matrices. The first term, the quantum Ising hamiltonian, describes the ferromagnetic interaction between neighboring spins in the one-dimensional lattice; the second term describes the applied field (in the <span class="math">\(x\)</span>&nbsp;direction).</p>
+<p>For <span class="math">\(\lambda = 0\)</span> the ground state is&nbsp;ordered,
+</p>
+<div class="math">\begin{equation}
+  \label{e:ti0}
+  \ket{\uparrow} = \prod_x \ket{0},
+\end{equation}</div>
+<p>
+where <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span> are the eigenvectors of <span class="math">\(Z\)</span>; while when <span class="math">\(\lambda \rightarrow \infty\)</span> the ground state is&nbsp;disordered
+</p>
+<div class="math">\begin{equation}
+  \label{e:ti1}
+  \ket{\uparrow} = \prod_x \frac{1}{\sqrt{2}} \big( \ket{0} + \ket{1}  \big);
+\end{equation}</div>
+<p>
+between these extreme cases, a transition produces at <span class="math">\(\lambda = 1\)</span>, which corresponds then to the critical point. Note that in the state <span class="math">\(\ref{e:ti1}\)</span> the spatial correlation function&nbsp;satisfy
+</p>
+<div class="math">\begin{equation}
+  \label{e:tic}
+  \braket{Z_xZ_y} = \delta_{xy}
+\end{equation}</div>
+<p>
+which differs to its value in the ordered state <span class="math">\(\braket{Z_x Z_y}=1\)</span>, showing that the <span class="math">\(Z\)</span> spins are, in this phase, perfectly independent. At finite values of <span class="math">\(\lambda\)</span>, the generic behavior of the correlation function is&nbsp;exponential 
+</p>
+<div class="math">\begin{equation}
+  \label{e:tix}
+  \braket{Z_xZ_y} = \E^{-|x-y|/\xi},
+\end{equation}</div>
+<p>
+where <span class="math">\(\xi\)</span> is called the correlation length. On important property of the critical point is that in its neighborhood the correlation length diverges as a <em>power&nbsp;law</em>
+</p>
+<div class="math">\begin{equation}
+  \label{e:tixx}
+  \xi \sim |\lambda- \lambda_c|^{-\nu}
+\end{equation}</div>
+<p>
+characterized by the exponent <span class="math">\(\nu\)</span>. A detailed calculation gives <span class="math">\(\nu = 1\)</span>.<sup id="fnref:S"><a class="footnote-ref" href="#fn:S">1</a></sup></p>
+<h3>Symmetry&nbsp;breaking</h3>
+<p>Quantum phases, as classical thermodynamic phases, possess specific symmetry properties that, at the transition, change. In the previous example the disordered phase is isotropic (the paramagnet do not have a privileged orientation of the spins), while the ferromagnetic phase broke the rotation symmetry (here privileging the <span class="math">\(z\)</span>-direction). In addition, although the ground state is degenerate, allowing in principle both <span class="math">\(\pm z\)</span>-orientations, the interaction of the system with the environment can select one particular unique ground state, even in the limit of a vanishing coupling strength. The non analytic behavior of the ground state (the equivalent of the free energy at <span class="math">\(T=0\)</span>) at the transition is strictly valid only in the <span class="math">\(N \rightarrow \infty\)</span> thermodynamic limit. A remarkable consequence of this limit, is that two states (in our case <span class="math">\(\ket{\uparrow}\)</span> and <span class="math">\(\downarrow\)</span>) unitary related for finite hilbert space, may become unitary unrelated in the infinite hilbert&nbsp;space.</p>
+<p>To see the unitary inequivalence of two states when the number of degrees of freedom tends to infinity, let us rotate the ferromagnetic state <span class="math">\(\ket{\uparrow}\)</span> by an angle <span class="math">\(\theta\)</span> around the <span class="math">\(y\)</span>-axis,
+</p>
+<div class="math">\begin{equation}
+  \label{e:sbr}
+  \ket{\theta} = U(\theta) \ket{\uparrow}, \quad U = \exp\left[- \frac{\I \theta}{2} \sum_{x=1}^N Y_x \right],
+\end{equation}</div>
+<p>
+where <span class="math">\(\theta \in (0,\pi]\)</span>. We compute now the overlap of the two&nbsp;states
+</p>
+<div class="math">\begin{equation}
+  \label{e:sbo}
+  \braket{0|\theta} = \left( \cos \frac{\theta}{2} \right)^N \rightarrow 0 \; (N \rightarrow \infty )
+\end{equation}</div>
+<p>
+and find that it vanishes for arbitrary small <span class="math">\(\theta\)</span>. In fact, using the lowering operator <span class="math">\(\sigma_- = (X-\I Y)/2\)</span> one can build a complete basis of the hilbert space from the up state, and equivalently we can buid another hilbert space from <span class="math">\(\ket{\theta} = U(\theta) \ket{\uparrow}\)</span>, using the rotated pauli&nbsp;matrices
+</p>
+<div class="math">$$
+\bm \tau = U(\theta) \bm \sigma U^\dagger(\theta).
+$$</div>
+<p>
+These two hilbert spaces are then inequivalent: any scalar product between vectors of the two spaces should vanish in the limit <span class="math">\(N \rightarrow \infty\)</span> (remember that unitary operators preserve the value of the scalar&nbsp;product). </p>
+<h2>Dynamical&nbsp;transition</h2>
+<p>We consider a <span class="math">\(N\)</span>-body system initially in the ground state <span class="math">\(\ket{0}\)</span> of some hamiltonian <span class="math">\(H_0 = H(\lambda_0)\)</span>. At time zero we change <span class="math">\(\lambda\)</span> to a new value, and let the system evolve with the new hamiltonian <span class="math">\(H(\lambda)\)</span>,&nbsp;therefore 
+</p>
+<div class="math">\begin{equation}
+  \label{e:dt0}
+  \ket{t} = \E^{-\I H t} \ket{0}
+\end{equation}</div>
+<p>
+is the state at time <span class="math">\(t\)</span>, evolved from the ground state of <span class="math">\(H_0\)</span>. The square of the transition&nbsp;amplitude 
+</p>
+<div class="math">\begin{equation}
+  \label{e:dtl}
+  \mathcal{L}(t) = \big| \braket{0| t} \big|^2 = \big| \braket{0| \E^{-\I H t} |0} \big|^2 
+\end{equation}</div>
+<p>
+is called the <em>Loschmidt echo</em>,&nbsp;and 
+</p>
+<div class="math">\begin{equation}
+  \label{e:dtr}
+  r(t) = -\lim_{N \rightarrow \infty} \frac{1}{N} \ln \mathcal{L}(t)
+\end{equation}</div>
+<p>
+the <em>rate function</em>, which can be viewed as a well defined intensive quantity (contrary to <span class="math">\(\mathcal{L}\)</span>, which generically tends to zero in the thermodynamic limit). The rate function represents the probability density to return to the initial states after a time <span class="math">\(t\)</span>.</p>
+<p>It is interesting to note the analogy of the return (echo) amplitude with the partition function in thermodynamics <span class="math">\(Z(T) = \mathrm{tr}\, \E^{-H T}\)</span>,
+</p>
+<div class="math">$$G(t) = \braket{0| t} = \braket{0|\E^{-\I t H}|0}$$</div>
+<p>
+if one replaces <span class="math">\(T \rightarrow \I t\)</span> (formally considering complex temperatures). In the same way that zeros of the partition function correspond to critical points separating different thermodynamic phases, zeros of the amplitude would indicate <em>dynamical</em> quantum phase transitions.<sup id="fnref:H"><a class="footnote-ref" href="#fn:H">2</a></sup></p>
+<h3>Discrete time cluster&nbsp;model</h3>
+<p>One of the challenges in quantum information is to create quantum states that can be used as resources, for instance, in the measurement-based model of quantum computing. For instance, one can imagine that the successive application of a local unitary operator can entangle neighboring spins (in the simplest case on a one-dimensional lattice), and can then transform an initial product state into a useful entangled&nbsp;one. </p>
+<p>An example of the basic entanglement mechanism can be illustrated by the quantum circuit where the entangling gate is the controlled not <span class="math">\(\mathsf{cnot}\)</span>,</p>
+<p><img src="/images/AQ-cbell0.svg" alt="bell state" style="height: 80px;"/></p>
+<p>where the unitary operator that transforms the initial <span class="math">\(\ket{00}\)</span> state into the bell state is the product of the hadamard <span class="math">\(\mathsf{h} = (X+Y)/\sqrt{2}\)</span>, and controlled not&nbsp;gates:
+</p>
+<div class="math">$$ U = (1\otimes \mathsf{h}) \exp\left[ \I \pi \frac{1-Z}{2} \otimes \frac{1-X}{2} \right].$$</div>
+<p>
+A similar entangled state can be obtained using the basic circuit using the controlled phase gate <span class="math">\(\mathsf{cz}\)</span>
+</p>
+<div class="math">$$\mathsf{cz} \ket{++} = \exp\left[ \I \pi \frac{1-Z}{2} \otimes \frac{1-Z}{2} \right] \ket{+} \ket{+},$$</div>
+<p>
+that can be translated into the&nbsp;circuit</p>
+<p><img src="/images/AQ-cbell1.svg" alt="cluster state CZ" style="height: 80px;"/></p>
+<p>which create the two qubits <em>cluster</em> state. The generalization of this state to a two-dimensional square lattice, provides a universal resource to quantum computing. It is in fact the ground state of the&nbsp;hamiltonian,
+</p>
+<div class="math">\begin{equation}
+  \label{e:cmh0}
+  H_C = -J\sum_x Z_{x-1} X_x Z_{x+1}.
+\end{equation}</div>
+<blockquote>
+<p><img src="/images/L3-qp_ll.svg" alt="loschmidt rate" style="height: 200px;"/></p>
+<p>Behavior of the loschmidt rate in two different quantum phases as a function of time in the Floquet cluster model. The non-analytic time evolution occurs when <span class="math">\(J&gt;B\)</span>, which corresponds to the cluster phase. The trivial phase is present when <span class="math">\(B&gt;J\)</span>, leading to a smooth regular loschmidt&nbsp;rate.</p>
+</blockquote>
+<p>To construct the unitary operator we complement this hamiltonian with an external field&nbsp;term:
+</p>
+<div class="math">\begin{equation}
+  \label{e:cmUx}
+  U(J,B) = \E^{\I \Delta t J \sum_x Z_{x-1} X_x Z_{x+1}} \E^{\I \Delta t B \sum_x X_x}.
+\end{equation}</div>
+<p>
+In the limit <span class="math">\(\Delta t \rightarrow 0\)</span>, this evlution operator reduces to the evolution of the cluster hamiltonian in a field <span class="math">\(B\)</span>. For <span class="math">\(\Delta t = 1\)</span>, the model descibes a discret time (Floquet)&nbsp;dynamics. </p>
+<p>If the apllied field becomes dominant (<span class="math">\(J&lt;B\)</span>) the entangled cluster state is destroyed and the system enters a low entanglement magnetic phase. In the opposite case (<span class="math">\(J&gt;B\)</span>), the cluster state prevails. This &#8220;disordered&#8221;, albeit highly entangled state, is called a topopogical phase. The dynamical transition between the two is illustrated in the above figure, wher we plot the loschmidt ratio for the two cases.<sup id="fnref:V"><a class="footnote-ref" href="#fn:V">3</a></sup></p>
+<h3>Notes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:S">
+<p>Sachdev, S. <em>Quantum Phase Transitions</em> (Cambridge, 1999); see also Dutta, A. et al. <em>Quantum Phase Transitions in Transverse Field Spin Models</em> (2015) <a href="https://arxiv.org/abs/1012.0653">arXiv:1012:0653</a>&#160;<a class="footnote-backref" href="#fnref:S" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:H">
+<p>Heyl, M. <em>Dynamical Quantum Phase transition</em> Rep. Prog. Phys. <strong>81</strong>, 054001 (2018) <a href="https://arxiv.org/abs/1709.07461">arXiv:1709.07461</a>&#160;<a class="footnote-backref" href="#fnref:H" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:V">
+<p>Verga, <span class="caps">A.D.</span> <em>Entanglement dynamics and phase transitions of the Floquet cluster spin chain</em> Phys. Rev. B <strong>107</strong>, 085116 (2023) <a href="http://arxiv.org/abs/2208.01706">arXiv:2208.01706</a>&#160;<a class="footnote-backref" href="#fnref:V" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

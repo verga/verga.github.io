@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Chaos | Random physics
+</title>
+    <link rel="canonical" href="/pages/CH-index.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Classical and quantum chaos">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}} 
+\newcommand{\kB}{k_\textsc{b}}&nbsp;\newcommand{\NA}{N_\textsc{a}}\)</span></p>
+<p>Graduate course on classical chaos, plasmas, and quantum chaos. The approach is phenomenological, with a brief presentation of the theoretical concepts in parallel with computations (mostly numerical) of specific systems. Given at the Aix-Marseille University, January - February 2016-2018, &#8220;Master de physique théorique&#8221; <a href="http://physique-sciences.univ-amu.fr/master2-physique/P3TMA"><span class="caps">P3TMA</span></a>.</p>
+<h1>Chaos, classical and&nbsp;quantum</h1>
+<ul>
+<li>Alberto Verga, <a href="mailto:alberto.verga@univ-amu.fr">alberto.verga@univ-amu.fr</a></li>
+<li><span class="caps">CPT</span> bureau&nbsp;623</li>
+</ul>
+<h2>Summary</h2>
+<ol>
+<li><a href="/pages/map.html">Maps</a><ul>
+<li>dyadic map and the sensitivity to initial&nbsp;conditions</li>
+<li>logistic map, stable and instable orbits, bifurcations, periodic orbits, chaotic&nbsp;orbits</li>
+<li><a href="/pages/hamilton.html">Hamiltonian formalism</a>: Liouville, <span class="caps">KAM</span> and <span class="caps">PB</span>&nbsp;theorems.</li>
+<li>standard map: a chaotic Hamiltonian system, fixed points and Chirikov stochasticity criterion; quasilinear&nbsp;diffusion.</li>
+<li><a href="/pages/cds.html">Stability and bifurcation</a> of dynamical&nbsp;systems</li>
+</ul>
+</li>
+<li><a href="/pages/plasma.html">Plasmas</a><ul>
+<li>Vlasov equation, Landau&nbsp;damping</li>
+<li>Numerical simulation of the collisionless plasma (particle in&nbsp;cell)</li>
+<li><a href="/pages/plasma-ql.html">Quasilinear&nbsp;diffusion</a></li>
+</ul>
+</li>
+<li><a href="/pages/qc.html">Quantum chaos</a><ul>
+<li><a href="/pages/kicked.html">kicked rotator</a>, <a href="/pages/kicked-localization.html">dynamical localization</a> (localization&nbsp;length)</li>
+<li><a href="/pages/rm.html">random matrices, level&nbsp;statistics</a></li>
+<li><a href="/pages/qrw.html">quantum random&nbsp;walk</a></li>
+<li><a href="/pages/CH-entangle.html">Quantum&nbsp;entanglement</a></li>
+</ul>
+</li>
+<li><a href="/pages/CH-exercises.html">Exercises</a></li>
+</ol>
+<p>Among different possible classifications of classical physical systems, we may distinguish dynamics and thermodynamics; although both are related to changes driven by forces, <em>dynamics</em> refers to the change in time of mechanical systems, while <em>thermodynamics</em> refers to the change of state without reference to time. In some sense, time is external in dynamic systems, but it is intrinsic in thermodynamic systems. Of course, these two categories are related by the laws of statistical physics: the dynamics of a large number of microscopic systems manifests macroscopically as a thermodynamic&nbsp;system. </p>
+<p>However, in the case of a <em>quantum system</em>, we must be cautious about their description within the conceptual framework of dynamical systems. Indeed, a quantum system cannot be reduced to the paradigm of <em>dynamics</em>, even if one principle of quantum mechanics is its unitary evolution (with time as a parameter). The state of the system cannot be defined by a set of initial conditions, but it is necessary to specify the Hilbert space and a set of observables, without equivalent in classical systems. In addition, the state of a quantum system has associated a von Neumann <em>entropy</em> that grows in the measurement process. Classical mechanical system do not have an entropy <em>naturally</em> associated with them; it is necessary to introduce same coarse-graining into the phase space to define a probability distribution (Kolmogorov). Under this perspective, quantum systems share some fundamental properties of thermodynamic systems, in particular both are related to <em>information</em>.</p>
+<p>It is the purpose of this course to explore dynamical systems, from the logistic map to plasmas, and to enlarge the perspective to investigate complex behavior in quantum systems, from kicked rotators to quantum walks. In addition to the more traditional description in terms of sensitivity to initial conditions, we show that <em>classical chaos</em> is basically related to statistical properties of trajectories. This point of view will allow us to extend some notions to the realm of <em>chaotic quantum systems</em>. </p>
+<p>The simple idea behind <em>chaos</em> is that deterministic systems behave as stochastic&nbsp;systems:</p>
+<ul>
+<li>nuclear levels can be described by hermitian random matrices (quantum&nbsp;chaos)</li>
+<li>Lyapounov exponents in chaotic systems can be modeled by products of identically distributed random matrices (classical&nbsp;chaos)</li>
+</ul>
+<h3>Bibliography</h3>
+<ul>
+<li>Wimberger (2015) &#8220;Nonlinear Dynamics and Quantum&nbsp;Chaos&#8221;</li>
+<li>Stöckmann (1999) &#8220;Quantum&nbsp;Chaos&#8221;</li>
+<li>Haake (2010) &#8220;Quantum Signatures of&nbsp;Chaos&#8221;</li>
+<li>Boyd (2003) &#8220;The Physics of&nbsp;Plasma&#8221;</li>
+</ul>
+<h4>Miscellaneous&nbsp;papers</h4>
+<ul>
+<li><a href="http://dx.doi.org/10.1103/PhysRevLett.115.203002">Floss (2015)</a> experiments demonstrating dynamical localization <a href="/pdfs/Floss-2015kx.pdf">.pdf</a></li>
+<li><a href="http://dx.doi.org/10.1103/PhysRevLett.74.3963">Robinson (1999)</a> kicked rotator&nbsp;experiment</li>
+<li><a href="http://dx.doi.org/10.1016/0370-1573(90)90067-C">Izrailev (1990)</a> &#8220;Simple models of quantum chaos: Spectrum and eigenfunctions&#8221; <a href="/pdfs/Izrailev-1990yg.pdf">.pdf</a></li>
+<li><a href="http://dx.doi.org/10.1007/s11128-012-0425-4">Kitagawa (2012)</a> &#8220;Topological phenomena in quantum walks&#8221; <a href="/pdfs/Kitagawa-2012fk.pdf">.pdf</a></li>
+</ul>
+<h3>Index</h3>
+<ul>
+<li><a href="/pages/map.html">Maps</a></li>
+<li><a href="/pages/cds.html">Stability, bifurcations,&nbsp;&#8230;</a></li>
+<li><a href="/pages/hamilton.html">Hamiltonian&nbsp;formalism</a></li>
+<li><a href="/pages/plasma.html">Plasmas</a></li>
+<li><a href="/pages/plasma-ql.html">Plasmas, quasilinear&nbsp;theory</a></li>
+<li><a href="/pages/qc.html">Quantum&nbsp;chaos</a></li>
+<li><a href="/pages/kicked.html">Kicked&nbsp;rotator</a></li>
+<li><a href="/pages/kicked-localization.html">Dynamical&nbsp;localization</a></li>
+<li><a href="/pages/rm.html">Random&nbsp;matrices</a></li>
+<li><a href="/pages/qrw.html">Quantum&nbsp;walk</a></li>
+<li><a href="/pages/CH-entangle.html">Quantum&nbsp;entanglement</a></li>
+<li><a href="/pages/CH-exercises.html">Exercises</a></li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

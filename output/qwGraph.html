@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Interacting quantum walk on a graph | Random physics
+</title>
+    <link rel="canonical" href="/qwGraph.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Simple model of a complex quantum system: a particle interacting with spins on a graph.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-06-10T00:00:00+02:00">
+        <i class="fa fa-clock-o"></i>
+        sam. 10 juin 2017
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/research.html">#research</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+<blockquote>
+<p>Work in progress to investigate the complexity of a quantum particle interacting with spins located at the vertices of a graph (<a href="http://arxiv.org/abs/1805.02929">arXiv</a>) Now published in <a href="https://dx.doi.org/10.1103/PhysRevE.99.012127">Phys. Rev. E <strong>99</strong>, 012127&nbsp;(2019)</a></p>
+</blockquote>
+<p>The discovery by Planck (1900) that the quantification of the energy solved the long standing problem of the black body radiation, opened the way to a completely unexpected description of the physical world: the laws of nature are quantum. The principles of quantum mechanics were established in the first third of the twenty century by Born, Heisenberg, Jordan, Schrödinger and Dirac (uncertainty and superposition principles, matrix calculus, wave equation), and von Neumann (Hilbert space of states, measurement), who worked on the ideas developed by Einstein (the photon), de Broglie (particle-wave duality), and Bohr (complementarity). It is a remarquable fact that the principles of quantum mechanics can be stated in a very compact and simple&nbsp;form: </p>
+<p>(i) a quantum state is a vector of a linear space on complex numbers (the Hilbert&nbsp;space); </p>
+<p>(ii) physical quantities (observables using Bohr terminology) are operators over this linear vector&nbsp;space;</p>
+<p>(iii) the measure of an observable gives one of its eigenvalues with probability the square of the amplitude of the corresponding eigenvector (in absolute&nbsp;value);</p>
+<p>(iv) the change of the quantum state is unitary (it conserves the norm of the vectors); quantum dynamics is governed by the Schrödinger&nbsp;equation;</p>
+<p>(v) the space of a mixture of quantum systems is the (Kronecker) product of the component&nbsp;systems.</p>
+<p>An immediate consequence of these principles is that a system composed by two particles, two spins say, can be in a state that cannot be separated into two states (corresponding to each spin); such states are <em>entangled</em>, a property that does not has a classical (Newton mechanics) analogue. For instance, we can prepare the system with the two spins up; then, apply a unitary transformation such that the new state is a superposition of spins up an down. In such a state we cannot assign to each particle a specific value of its spin, even if their positions (another quantum property) are well separated. In addition, and according to the measurement principle, any interaction with one of the spins will affect the other one in a predictable way, whatever distance separates the&nbsp;particles. </p>
+<p>A rough description of a quantum system consists in a set of labels (the quantum numbers specifying the state) that can be permuted and combined (the action of the unitary operator) and eventually selected to obtain a particular label (measure). At this very fundamental level one may forget about the usual notions of space and time, and think on neighborhood relations and sequence of transformations, in order to ensure local rules and well defined states at each&nbsp;step.</p>
+<p>At variance with the usual approach in which one defines the quantum system by a hamiltonian and solves the Schrödinger equation to obtain the energy levels and states, we are more interested in the properties of &#8220;typical&#8221; quantum states; we want to explore the possibility of constructing these states from a series of <em>local</em> unitary operations applied to an initially particular state, which &#8220;evolves&#8221; to a generic one, as for example a <em>thermal</em>&nbsp;state.</p>
+<h2>Simple model of a complex quantum&nbsp;system</h2>
+<p>In this work we propose quantum systems defined on a network (a graph of nodes and links), with two kinds of degrees of freedom: an itinerant one, we call a particle (or walker) that can jump between neighboring nodes, and fixed ones, attached to each node, we call spins (or qubits). The &#8220;space&#8221; is specified by the topology of the graph; &#8220;time&#8221; is counted in steps, where the unitary transformation of the previous state is applied. One can arbitrarily choose a unit of speed: one for the time step and one for the distance to a neighbor. We also take the Planck constant unity (<span class="math">\(\hbar=1\)</span>).</p>
+<p>The model can be viewed from the point of view of quantum information, and in particular, the so-called one-way quantum computer, in which a highly entangled <em>cluster state</em> is the resource on which a measurement protocol drives the computation (<a href="http://dx.doi.org/10.1103/PhysRevA.68.022312">Raussendorf, 2003</a>). We replaced the projective operation (measure) on the cluster state (a set of interacting qubits) with the interaction of the graph state with a quantum walker. One interesting question we want to investigate is whether a highly entangled state can be obtained, starting from a graph product state, by the interaction of the particle with this graph&nbsp;state.</p>
+<p>The state transforms following the&nbsp;rules:</p>
+<ul>
+<li>the motion of the walker is conditioned by its color state, one color for each link to its neighbors: at each step the two nodes of a link exchange their&nbsp;states;</li>
+<li>the spins interact only with their neighbors through a magnetic like&nbsp;coupling; </li>
+<li>the particle and spins interact through an in situ exchange between color and&nbsp;spin.</li>
+</ul>
+<p>As we will see, this model is rich enough to investigate some fundamental concepts, such&nbsp;as</p>
+<ul>
+<li>
+<p>the relationship between interaction and&nbsp;entanglement; </p>
+</li>
+<li>
+<p>the evolution of a quantum state towards some stationary state, in particular, a thermal state, that is a state having enough complexity to reproduce the behavior of observables (local, hermitian operators) when measured in the actual&nbsp;state;</p>
+</li>
+<li>
+<p>the influence of the graph connectivity (topology) in the &#8220;magnetic&#8221; properties of the nodes: can a modification of the graph induce a phase&nbsp;transition?</p>
+</li>
+</ul>
+<blockquote>
+<h4>Remark</h4>
+<p>The concept of thermalization in the context of quantum mechanics has been traditionally treated within the semiclassical framework (<a href="http://dx.doi.org/10.1098/rspa.1987.0109">Berry</a>, <a href="http://dx.doi.org/10.1103/PhysRevA.30.1610">Peres</a>); we want to investigate this issue in genuine quantum systems, where all reference with classical mechanics is absent (<a href="http://dx.doi.org/10.1038/nature06838">Rigol</a>, <a href="http://dx.doi.org/10.1016/j.physrep.2016.02.005">Borgonovi</a>).</p>
+</blockquote>
+<h3>Quantum&nbsp;graph</h3>
+<p>A graph <span class="math">\(G\)</span> is defined as a set of vertices <span class="math">\(V\)</span> and edges <span class="math">\(E\)</span>, 
+</p>
+<div class="math">$$G = (V,E),\;x,y,\ldots \in V,\; x,y,\ldots = 0,1,\ldots,N-1,\;(x,y)\in E$$</div>
+<p>
+each vertex is indexed by <span class="math">\(x\)</span> the node number, and the set <span class="math">\(E\)</span> of edges is labeled by the pairs <span class="math">\((x,y)\)</span>. </p>
+<p>The degree (number of neighbors) of vertex <span class="math">\(x\)</span> is <span class="math">\(d_x\)</span>, each incoming edge is labeled&nbsp;by
+</p>
+<div class="math">$$c=0,\ldots,d_x-1$$</div>
+<p>
+that we call the <em>subnode</em> number or &#8220;color&#8221;,&nbsp;and
+</p>
+<div class="math">$$y \in Y_x,\; \mathrm{dim}\,Y_x = d_x$$</div>
+<p>
+are the neighboring vertices of <span class="math">\(x\)</span> (their set is <span class="math">\(Y_x\)</span>); the maximum degree is denoted <span class="math">\(d_M=\max d_x\)</span>. The edges are labeled with the subnode numbers of the incoming (at <span class="math">\(x\)</span>) and outgoing nodes (<span class="math">\(y\)</span>). The outgoing labels&nbsp;are
+</p>
+<div class="math">$$c = c(y), \; \forall \, y\in Y_x\,,$$</div>
+<p>
+and form the set of <em>subnodes</em> <span class="math">\(S\)</span>.</p>
+<p>Therefore, the graph is defined by the following&nbsp;sets:</p>
+<ul>
+<li>
+<p>a set of neighbors of each node <span class="math">\(G = \{y \in Y_x, x \in V\}\)</span>, from which one can compute the adjacency matrix of the&nbsp;graph;</p>
+</li>
+<li>
+<p>a list of outgoing subnodes <span class="math">\(S = \{c(y),\; y \in Y_x, x \in V\}\)</span> associated to the neighbors of each node <span class="math">\(x\)</span>; the shape of <span class="math">\(S\)</span> is the same as the one of <span class="math">\(G\)</span>;</p>
+</li>
+<li>
+<p>a list of the number of neighbors (which is called the degree distribution of the graph) <span class="math">\(D = \{d_x,\; x \in V\}\)</span>.</p>
+</li>
+</ul>
+<blockquote>
+<p><img src="/images/g_bull_graph.png" alt="bull graph with subnode labels" style="height: 300px;"/></p>
+</blockquote>
+<p>The figure shows a &#8220;bull&#8221; graph with the coding of&nbsp;nodes,
+</p>
+<div class="math">$$G = \{(1,3,4), (0), (4), (0,4), (0,2,3)\}\,,$$</div>
+<p>
+and the corresponding connecting subnodes&nbsp;colors,
+</p>
+<div class="math">$$S = \{(0, 0, 0), (0), (1), (1, 2), (2, 0, 1)\}\,.$$</div>
+<p>
+The distribution of degree&nbsp;is,
+</p>
+<div class="math">$$D = \{3,1,1,2,3\}\,.$$</div>
+<h3>Quantum&nbsp;state</h3>
+<ul>
+<li>
+<p>The particle state is defined by two quantum numbers: position (vertex <span class="math">\(x\)</span>) and internal state (coin state <span class="math">\(c\)</span>).</p>
+<p>
+<div class="math">$$|x,c\rangle \in \mathcal{H}_x \otimes \mathcal{H}_c$$</div>
+</p>
+<p>where <span class="math">\(x=0,\ldots,N-1\)</span> and <span class="math">\(c=0,\ldots,d_x-1\)</span>.</p>
+</li>
+<li>
+<p>We associate to each node of <span class="math">\(G\)</span> a spin state <span class="math">\(|s_x\rangle\)</span> that can take two values <span class="math">\(s_x = \{0,1\}\)</span>. The spin state of the graph can be encoded by a binary&nbsp;string:</p>
+<p>
+<div class="math">$$|s\rangle =  |s_0\ldots s_x \ldots s_{2^N-1}\rangle$$</div>
+</p>
+</li>
+<li>
+<p>The basis vectors of the system&#8217;s quantum state is then defined by the&nbsp;kets,</p>
+<p>
+<div class="math">$$|xcs\rangle$$</div>
+</p>
+<p>from which an arbitrary state can be written as a superposition of complex amplitudes <span class="math">\(\psi_{xcs}\)</span>:</p>
+<p>
+<div class="math">$$|\psi\rangle = \sum_{x,c,s} \psi_{xcs} |xcs\rangle$$</div>
+</p>
+</li>
+</ul>
+<blockquote>
+<h4>Remark</h4>
+<p>In order to define the hilbert space the coin number is extended at each node to <span class="math">\(d_{M}\)</span> values; operators will act as the identity over the (unphysical) extra degrees of freedom (<span class="math">\(d_x,\ldots, d_{M}-1\)</span>), and the amplitudes corresponding to these base states, set equal to&nbsp;zero.</p>
+</blockquote>
+<h3>The coin and motion&nbsp;operator</h3>
+<p>Two interesting choices for the coin operator are the grover <span class="math">\(\mathrm{GR}\)</span> and fourier <span class="math">\(\mathrm{FR}\)</span> operators. The grover operator do not change the amplitudes of an equally weighted subnode state (it is not a balanced coin, but it is symmetric and respects the symmetries of the graph); the fourier operator equally distributes the amplitude at <span class="math">\(x\)</span> over the subnodes (it is a balanced coin, like the one used in the classical random&nbsp;walk).</p>
+<p>For a node with <span class="math">\(d_x\)</span> incident edges, the elements of the grover matrix are defined&nbsp;by
+</p>
+<div class="math">$$\langle c |\mathrm{GR} | c' \rangle = \frac{2}{d_x} - \delta_{c,c'}$$</div>
+<p>
+where <span class="math">\(c,c'=0,\ldots,d_x-1\)</span> are colors of node <span class="math">\(x\)</span>.</p>
+<p>The elements of the fourier matrix&nbsp;are,
+</p>
+<div class="math">$$\langle c |\mathrm{FT}| c' \rangle = \frac{1}{\sqrt{d_x}} \exp (\I 2 \pi c c' / d_x)\,.$$</div>
+<p>The position operator (motion) swaps the state between two vertices <span class="math">\((x,y)\)</span> of an edge according to the respective values of its subnodes <span class="math">\(c(y)\)</span> (pointing to the <span class="math">\(y\)</span> neighbor of <span class="math">\(x\)</span>) and <span class="math">\(c(x)\)</span> (pointing to the <span class="math">\(y\)</span> neighbor <span class="math">\(x\)</span>):
+</p>
+<div class="math">$$|xc(y)\rangle\; \rightarrow \;|yc(x)\rangle\,, \quad \forall y \in Y_x$$</div>
+<p>
+where <span class="math">\(Y_x\)</span> is the set of neighboring vertices of vertex <span class="math">\(x\)</span>.</p>
+<h3>The particle-spin and spin-spin&nbsp;interactions</h3>
+<p>We consider, at each vertex <span class="math">\(x\in V\)</span>, a <span class="math">\(1/2\)</span>-spin interacting with its neighbors <span class="math">\(y \in Y_x \subset V\)</span>. The spin-spin interaction is of the magnetic exchange type, and is represented by the unitary operator <em>controlled phase</em> <span class="math">\(\mathrm{CZ}\)</span>:
+</p>
+<div class="math">$$\mathrm{CZ} = \mathrm{diag}\,(1,1,1,-1)$$</div>
+<p>
+that acts on pairs of qubits, taking the first one as control; it changes <span class="math">\(|11\rangle\;\rightarrow\;-|11\rangle\)</span>, letting the others pairs&nbsp;unchanged.</p>
+<p>In general the spin state local to a vertex is a superposition of base&nbsp;states:
+</p>
+<div class="math">$$|s\rangle = |s_0 s_1\ldots s_{N-1}\rangle,\quad s = s_0 + s_1 2 + s_2 2^2 + \cdots + s_{N-1} 2^{N-1}$$</div>
+<p>The spin-particle interaction is given by a swap&nbsp;gate:
+</p>
+<div class="math">$$\mathrm{SWAP} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</div>
+<p>
+extended to the appropriated dimension, depending on the node degree <span class="math">\(d_x\)</span>. Its action on the base state is to exchange the <em>first</em> coin qubit <span class="math">\(c=0,1\)</span>, with the local spin <span class="math">\(s_x=0,1\)</span>,&nbsp;qubit,
+</p>
+<div class="math">$$|x,c=1,s_0 s_1 \ldots s_x=0 \ldots s_{N-1}\rangle \; \rightarrow\; |x,0,s_0s_1\ldots 1 \ldots s_{N-1}\rangle$$</div>
+<p>
+and similarly with <span class="math">\(c = 0 \rightarrow s_x=1\)</span>.</p>
+<h3>Summary</h3>
+<p>Therefore, the hilbert space is spaned by base states of the&nbsp;form,
+</p>
+<div class="math">$$|xcs\rangle\,,$$</div>
+<p>
+with</p>
+<ul>
+<li>
+<p>a node (position) number <span class="math">\(x = 0,\ldots, N-1\)</span>;</p>
+</li>
+<li>
+<p>a coin number <span class="math">\(c = 0, \ldots, d_x-1\)</span> (extended to <span class="math">\(d_M=\max{d_x}\)</span>);</p>
+</li>
+<li>
+<p>and a the set of binary digits <span class="math">\(s=0,\ldots, 2^N-1\)</span>,
+defined on a graph <span class="math">\(G=(V,E)\)</span></p>
+</li>
+</ul>
+<p>The evolution of the quantum state is ruled by (schematically) the following&nbsp;operations:</p>
+<ul>
+<li>
+<p>a mixing of the color state <span class="math">\(|xcs\rangle\rightarrow \sum_c |xcs\rangle\)</span>;</p>
+</li>
+<li>
+<p>an interchange of the states of two adjacent nodes, <span class="math">\(|xc(y)s\rangle \rightarrow |yc(x)s\rangle\)</span>;</p>
+</li>
+<li>
+<p>a swap of color and spin at each node, <span class="math">\(|xcs_x\rangle \rightarrow |xs_xc\rangle\)</span>;</p>
+</li>
+<li>
+<p>and a phase <span class="math">\(-1\)</span> for two neighboring down spins, <span class="math">\(|xc1\ldots 1 \rangle \rightarrow -|xc1 \ldots 1\rangle\)</span>.</p>
+</li>
+</ul>
+<h2>Evolution of the quantum&nbsp;state</h2>
+<h3>Graphs</h3>
+<ul>
+<li>Some typical&nbsp;graphs:</li>
+</ul>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_l_graph.png" alt="l" style="height: 150px;"/></td>
+<td><img src="/images/g_c_graph.png" alt="c" style="height: 150px;"/></td>
+<td><img src="/images/g_t_graph.png" alt="t" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>&#8220;ladder&#8221;</td>
+<td>&#8220;cube&#8221;</td>
+<td>&#8220;moebius&#8221;</td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_ER_graph.png" alt="ER" style="height: 150px;"/></td>
+<td><img src="/images/g_K_graph.png" alt="K" style="height: 150px;"/></td>
+<td><img src="/images/g_X_graph.png" alt="X" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>&#8220;random&#8221;</td>
+<td>&#8220;kite&#8221;</td>
+<td>&#8220;chain&#8221;</td>
+</tr>
+</table>
+
+<h3>Position and spin&nbsp;distributions</h3>
+<ul>
+<li>The initial state is <span class="math">\(|000\rangle\)</span>. After a transient, the state evolves towards a stationary state with a definite mean spin and a stable probability distribution over the nodes (which may be a&nbsp;cycle)</li>
+</ul>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_l_im_s.png" alt="s" style="height: 150px;"/></td>
+<td><img src="/images/g_l_sm.png" alt="sm" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td colspan="2">&#8220;ladder&#8221;</td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_ERS_im_s.png" alt="s" style="height: 250px;"/></td>
+<td><img src="/images/g_ERS_sm.png" alt="sm" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td colspan="2">&#8220;random&#8221;</td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_X_im_s.png" alt="s" style="height: 150px;"/></td>
+<td><img src="/images/g_X_sm.png" alt="sm" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td colspan="2">&#8220;chain&#8221;</td>
+</tr>
+<tr style="text-align:center">
+<td>First steps of the spin distribution over the nodes (horizontal axis is time, vertical axis is node)</td>
+<td>Mean spin</td>
+</tr>
+</table>
+
+<p>The position probability at node <span class="math">\(x\)</span> and step <span class="math">\(t\)</span>&nbsp;is,
+</p>
+<div class="math">$$p(x,t) = \sum_{cs} |\psi_{xcs}(t)|^2\,,$$</div>
+<p>
+the spin&nbsp;distribution, 
+</p>
+<div class="math">$$s(x,t) = \langle\sigma_z\rangle (x,t) = \sum_{yc} \big(\sum_{ \{s,s_x=0\} } |\psi_{ycs}(t)|^2- \sum_{ \{s,s_x=1\} } |\psi_{ycs}(t)|^2 \big) \,,$$</div>
+<p>Using the density matrix <span class="math">\(\rho = |\psi(t)\rangle \langle \psi(t)|\)</span>, we may write the above equations in a compact&nbsp;form,
+</p>
+<div class="math">$$p(x,t) = \mathrm{Tr}_{cs}\, \rho\,,\quad s(x,t) = \mathrm{Tr}_{xc} \, \rho \sigma_z$$</div>
+<p>
+where <span class="math">\(\mathrm{Tr}_x\)</span> is the partial trace over the <span class="math">\(x\)</span> hilbert&nbsp;space.</p>
+<h3>Exact spectrum of <span class="math">\(U\)</span></h3>
+<ul>
+<li>The spectral properties of the evolution operator correspond to random matrix ensembles. For most graphs, the level spacing distribution is well fitted by the Wigner surmise of the gaussian unitary&nbsp;ensemble.</li>
+</ul>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_l_hist.png" alt="h" style="height: 150px;"/></td>
+<td><img src="/images/g_ER9-hist.png" alt="h" style="height: 150px;"/></td>
+<td><img src="/images/g_X_hist.png" alt="h" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>&#8220;ladder&#8221;</td>
+<td>&#8220;random&#8221;</td>
+<td>&#8220;chain&#8221;</td>
+</tr>
+</table>
+
+<p>We compute numerically the exact spectrum of the operator <span class="math">\(U\)</span>:
+</p>
+<div class="math">$$U|n\rangle = \E^{-\I E_n} |n\rangle$$</div>
+<p>
+where <span class="math">\(E_n\)</span> is the quasi-energy <span class="math">\(E_n\in[-\pi,\pi]\)</span>, and <span class="math">\(|n\rangle\)</span> the corresponding eigenstate. We denote <span class="math">\(v_n\)</span> the complex eigenvector of level <span class="math">\(n\)</span> in the <span class="math">\(|xcs\rangle\)</span>&nbsp;representation:
+</p>
+<div class="math">$$v_n(xcs) = \langle xcs | n \rangle$$</div>
+<p>
+which are the columns of the change of base matrix (from <span class="math">\(|xcs\rangle\)</span> to <span class="math">\(|n\rangle\)</span>).</p>
+<ul>
+<li>
+<p>The spectrum <span class="math">\(E_n\)</span> may contain a mixture of degenerate eigenvalues (in particular at <span class="math">\(E_n=-\pi,-\pi/2,0,\pi/2,\pi\)</span>) and randomly spaced eigenvalues filling the circle; eigenvectors corresponding to degenerate eigenvalues are localized while a typical eigenvector is&nbsp;&#8220;thermal&#8221;.</p>
+</li>
+<li>
+<p>From the eigenvectors of <span class="math">\(U\)</span>, we can define a Shannon entropy using <span class="math">\(p_n=|v_n|^2\)</span> as the probability distribution. The Shannon entropy <span class="math">\(\mathrm{SHA}\)</span>, is a measure of the&nbsp;typicality: </p>
+<p>
+<div class="math">$$\mathrm{SHA}(n) = - \sum_{xcs} |v_n(xcs)|^2 \log|v_n(xcs)|^2$$</div>
+</p>
+<p>We adopt as a definition of &#8220;thermal eigenvectors&#8221; such corresponding to a maximum Shannon&nbsp;entropy.</p>
+</li>
+</ul>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_l_vn0.png" alt="vn" style="height: 150px;"/></td>
+<td><img src="/images/g_l_vn.png" alt="vn" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>&#8220;ladder&#8221; $E_n = 0$ eigenvector</td>
+<td>&#8220;ladder&#8221; maximum Shannon <br> entropy eigenvector</td>
+</tr>
+</table>
+
+<h3>Thermalization</h3>
+<ul>
+<li>
+<p>Thermal eigenvector hypothesis. It was originally formulated by <a href="http://dx.doi.org/10.1103/PhysRevE.50.888">Srednicki</a> and <a href="http://dx.doi.org/10.1103/PhysRevA.43.2046">Deutsch</a>. According to this hypothesis the relaxed (long time) value of an observable <span class="math">\(M\)</span> coincides with its expectation value in one <em>typical</em> energy&nbsp;eigenstate:</p>
+<p>
+<div class="math">$$\langle \psi(t)|M|\psi(t)\rangle \approx \langle n|M|n\rangle\,.$$</div>
+</p>
+</li>
+</ul>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_lct_th-l.png" alt="th" style="height: 150px;"/></td>
+<td><img src="/images/g_l_sha.png" alt="th" style="height: 150px;"/></td>
+</tr>
+</table>
+
+<p>The figure shows the position probability distribution of the ladder graph, numerically computed using the evolution operator and averaged over time (red points); and computed using only one eigenvector (solid line, black points). The selected eigenvector is the one having maximum Shannon&nbsp;entropy. </p>
+<blockquote>
+<h4>Remark</h4>
+<p>One usual requirement of (thermal) equilibrium is homogeneity. In the present model &#8220;homogeneity&#8221; must be understood as uniformity compatible with the graph connectivity. In the case of the grover coin, the equilibrium distribution of the position probability depends on the degree distribution:
+<div class="math">$$p(x) = d_x/\sum_x d_x$$</div>
+</p>
+</blockquote>
+<h3>The cube and moebius&nbsp;graphs</h3>
+<p>The entanglement and thermalization properties depend on the topology of the graph. A comparison of the &#8220;cube&#8221; and &#8220;moebius&#8221; graphs illustrate this&nbsp;effect.</p>
+<p>To characterize the entanglement between the walker and the graph spins, we measure the von Neumann&nbsp;entropy
+</p>
+<div class="math">$$\mathrm{ENT}x(t) = - \mathrm{Tr}\, \rho(x,t) \log \rho(x,t)\,,\quad \rho(x,t) = \mathrm{Tr}_{cs}\,\rho(t)$$</div>
+<p>
+for the particle entanglement entropy, and similar formulas for <span class="math">\(\mathrm{ENT}c\)</span> (coin entropy) and <span class="math">\(\mathrm{ENT}s\)</span> (spin&nbsp;entropy).</p>
+<p>The cube (as well as the ladder graph) tends to a paramagnetic state (mean zero spin, uniform distribution) while the moebius tends to a ferromagnetic state (finite positive magnetization, uniform distribution over the nodes). These differences in the magnetic properties go together with a difference in the entanglement&nbsp;(figure).</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td rowspan = "3"><img src="/images/g_lct_ent.png" alt="lct" style="height: 330px;"/></td>
+<td><img src="/images/g_lct_p.png" alt="lct" style="height: 110px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_lct_s.png" alt="lct" style="height: 110px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_lct_sm-l.png" alt="lct" style="height: 110px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td colspan = "2">Entropy of the &#8220;position&#8221;, &#8220;color&#8221; and &#8220;spin&#8221; subsystems (left); mean position and spin probabilities over the nodes, and averaged spin (right), for the ladder, cube and moebius graphs.</td>
+</tr>
+</table>
+
+<p>Adopting for the moment a classical statistical mechanics reasoning, one notes that the relaxation of the initial state (particle at node <span class="math">\(x=0\)</span>, and uniform spin up distribution over the graph, <span class="math">\(s=0\)</span>) follows the behavior of a system governed by ferromagnetic interactions, no staggered magnetization is observed.  In addition, the system behaves as if there were an effective finite temperature depending on the graph&#8217;s topology. Actually, both graphs have the same degree distribution and connectivity, but the cube is a plane graph, but not the moebius which possesses one crossing. However, this &#8220;explanation&#8221; is not well justified for the present model. Indeed, the model being defined by a unitary operator split into elementary transformations acting on the quantum state, the existence of a (local) hamiltonian from which a standard thermodynamic argument might be build, is not guaranteed. One may, instead, think the apparent thermodynamic behavior as emerging form the system&#8217;s&nbsp;&#8220;dynamics&#8221;.</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_GR-52_px_g.png" alt="52g" style="height: 150px;"/></td>
+<td><img src="/images/g_GR-52_px_sm.png" alt="52sm" style="height: 150px;"/></td>
+<td><img src="/images/g_GR-52_px_ENTx.png" alt="52ent" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_GR-62_px_g.png" alt="62g" style="height: 150px;"/></td>
+<td><img src="/images/g_GR-62_px_sm.png" alt="62sm" style="height: 150px;"/></td>
+<td><img src="/images/g_GR-62_px_ENTx.png" alt="62ent" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td colspan = "3">Periodic and crossed ladder graphs with 10 and 12 nodes. For the 10 node graph an increase of magnetization for the crossed graph is correlated with a decrease of the position entanglement entropy. The opposite effect is observed for the 12 node graph: in this case, periodic and crossed graphs behave similarly to the cube and moebius graphs, respectively</td>
+</tr>
+</table>
+
+<p>In fact the relation interaction-entanglement is more complex. Considering the same type of graphs, a ladder with periodic (i.e. cube) or crossed (i.e. moebius) boundary edges, but with increasing number of nodes, one observes two distinct effects of the interaction: it can be related to entangled magnetic order, or to unentangled magnetic order. Indeed, depending on the number of nodes, entanglement entropy and magnetization are correlated or anticorrelated, as shown in the above figure. However, in both cases the magnetization is the same for the respective, periodic or crossed, graphs, and the <em>change</em> in the entanglement entropy is of the same <em>magnitude</em>, <span class="math">\(\Delta \mathrm{ENT} = \pm 1\)</span>; the plus sign applies to the 8 and 12 graphs and the minus sign to the 10 nodes&nbsp;graph.</p>
+<h3>The kite&nbsp;graph</h3>
+<p>The magnetic relaxation depend not only on the graph topology (as in the case of the cube and moebius) but on the coin operator. For the &#8220;kite&#8221; graph the relaxation towards the paramagnetic state is much slower for the fourier coin than for the grover one, even if in the two cases the state tends to be paramagnetic at long&nbsp;times.</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_K-G_sm.png" alt="K-Gsm" style="height: 150px;"/></td>
+<td><img src="/images/g_K-D_sm.png" alt="K-Dsm" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>Grover coin</td>
+<td>Fourier coin</td>
+</tr>
+</table>
+
+<p>At variance to the cube-moebius case for which the entanglement entropy differs between the two magnetic states, in the present case, the entropy remains of the same order for the two coins, in agreement with the observation that the asymptotic state is&nbsp;paramagnetic.</p>
+<p>The coin also has an influence on the degeneracy of levels; in particular the fourier coin breaks the geometric symmetries of the graph, suppressing almost completely the degeneracy of the&nbsp;spectrum.</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_K-G_en.png" alt="K-Gen" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_K-D_en.png" alt="K-Den" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>Grover coin (top) and fourier coin (bottom)</td>
+</tr>
+</table>
+
+<p>Shannon entropy and probability distribution compared with one eigenstate estimation (thermal&nbsp;hypothesis)</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_K-G_sha.png" alt="K-Gsha" style="height: 150px;"/></td>
+<td><img src="/images/g_K-D_sha.png" alt="K-Dsha" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td><img src="/images/g_K-G_th.png" alt="K-Gth" style="height: 150px;"/></td>
+<td><img src="/images/g_K-D_th.png" alt="K-Dth" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>Grover coin</td>
+<td>Fourier coin</td>
+</tr>
+</table>
+
+<p>Although the kite graph with a fourier coin slowly relax, it approaches at finite times, a thermal state with small fluctuations related to a (decaying) overlap with the initial&nbsp;state.</p>
+<p>One condition for thermalization is the random nature of energy (here quasi-energies) eigenvectors: the effective hamiltonian behaves as a random matrix. We verified that the phase distribution of the complex vectors is effectively random, and uniformly distributed on the&nbsp;circle.</p>
+<h2>Discussion</h2>
+<p>The origin of the thermalization (we call it thermalization, even if the reached stationary state is not the Gibbs one) is the interplay between the <em>local</em> rules governing the interaction and change of the quantum state, and the <em>nonlocal</em> entanglement these same rules create. The rules are strictly local: motion by swaps between neighbors, spin-spin and spin-particle exchange, however the quantum dynamics, the action of the unitary <span class="math">\(U\)</span> operator, is global, it applies on the full hilbert space. The grow of the quantum state complexity is measured by the entanglement entropy, larger the entanglement, more complex stationary states are possible. For instance, the difference of one qubit between the thermal state of the cube and the asymptotic state of the moebius, translates in a trivial paramagnetic state for the cube and a ferromagnetic state (with finite effective temperature) for the moebius. The shuffle of the amplitudes ensured by the (parallel) unitary step operator, associated with the specific geometric properties of the graph, create an entangled state whose complexity increases without the need of external perturbations or quenched randomness, or even averaging over initial&nbsp;conditions. </p>
+<p>Measures are local, but depend through the actual quantum state on the whole effective hilbert space (and on the whole history of the interactions). The system <em>statistically</em> projects under successive application of <span class="math">\(U\)</span>, into one of the <em>typical</em> eigenvectors of <span class="math">\(U\)</span>, which are by definition <em>invariant</em> under the evolution. As a consequence, a measure that is also by definition local, results in an averaging (partial trace) over a complex (thermal) whole hilbert space eigenvector. Accessibility of local information of a nonlocal entangled state (partial information of a global correlated system) is at the heart of the effective thermal behavior of&nbsp;observables.</p>
+<p>It worth noting that the usual definition of thermalization in isolated quantum systems is based on the microcanonical ensemble, and therefore it is tightly related to the system&#8217;s energy: the thermal state is a hamiltonian eigenstate corresponding to the neighborhood of the mean energy eigenvalue. In our model there is no local hamiltonian, and no obvious energy related to the initial configuration. However, the natural definition of a thermal state in terms of the entropy maximization, revealed to be sufficient to identify the <em>thermal state</em>. </p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_Ul.png" alt="l" style="height: 150px;"/></td>
+<td><img src="/images/g_Uc.png" alt="c" style="height: 150px;"/></td>
+<td><img src="/images/g_Ut.png" alt="t" style="height: 150px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>&#8220;ladder&#8221;</td>
+<td>&#8220;cube&#8221;</td>
+<td>&#8220;moebius&#8221;</td>
+</tr>
+</table>
+
+<p>To explore the structure of the hilbert space we associate to the step operator <span class="math">\(U\)</span> a graph <span class="math">\(G(U)\)</span>; the elements of the matrix representing <span class="math">\(U\)</span> are associated with the nodes of <span class="math">\(G(U)\)</span>. The question is whether the statistical properties of <span class="math">\(G(U)\)</span> are related to the thermalization properties of <span class="math">\(U\)</span>.</p>
+<blockquote></blockquote>
+<table>
+<tr style="text-align:center">
+<td><img src="/images/g_UK-G.png" alt="K" style="height: 220px;"/></td>
+<td><img src="/images/g_UK-D.png" alt="K" style="height: 220px;"/></td>
+</tr>
+<tr style="text-align:center">
+<td>Kite graph (grover), nodes are colored by degree \(d=\{2,4,7,8,9\}\)</td>
+<td>(fourier), \(d=\{3,4,5,7,8,9\}\) (black, red, bleu, green, yellow, cyan)</td>
+</tr>
+</table>
+
+<p>The role of interactions in establishing a &#8220;generic&#8221; or &#8220;typical&#8221; state is double. Interaction can, on one side, generate entanglement, leading to correlated ordered macroscopic states (uniform density and finite magnetization), but, on the other side, interaction can destroy entanglement and favor an ordered state (with finite magnetization) which is closer to a product state. Order is no synonym of entanglement, nor it is synonym of interaction (as in the mean field description of thermodynamic&nbsp;phases).</p>
+<h2>Conclusion</h2>
+<p>A traditional approach to quantum systems is to start from a classical point of view (Bohr); within this framework, supported by the correspondence principle, a classical hamiltonian is transformed into a quantum one by replacing the Poisson bracket between canonical variables by the <em>corresponding</em> commutator between operators (Dirac). However, the reasoning consisting in comparing classical and quantum systems obviously has its limitations. For instance, after the discovery of chaos in simple dynamical systems, it appeared as natural to ask whether the associated quantum systems also showed chaotic behavior (<a href="http://dx.doi.org/10.1098/rspa.1987.0109">Berry, 1987</a>). Soon it was apparent that new phenomena arised in quantum systems without equivalent with classical mechanisms (dynamical localization in the kicked rotator, for example, <a href="http://dx.doi.org/10.1007/BFb0021757">Casati</a> and <a href="http://dx.doi.org/10.1016/0370-1573(90)90067-C">Izrailev</a>).</p>
+<p>Our starting point in this work reverses this traditional approach: we define, using the elementary principles of quantum mechanics, a system satisfying a set of simple unitary transformation rules, and ask whether it can exhibit some ordered collective behavior. We observed that the interplay of interaction and entanglement, respectively local and nonlocal mechanisms, lead the system to a variety of states that can be characterized by well defined measurable properties: spatial distribution of the probability, magnetic order,&nbsp;thermalization.</p>
+<p>It is yet an open question to explain by which specific mechanisms the topology of the hilbert space graph does influence these&nbsp;properties.</p>
+<h3>Notes</h3>
+<ul>
+<li>
+<p><strong>Chaos</strong>: in a very schematic way, valid in the semiclassical approximation, one may say that the signature of integrability is a Poisson distribution of the level spacings; and that quantum chaos is instead characterized by the Wigner-Dyson ensembles (see for instance <a href="https://link.springer.com/book/10.1007/978-3-642-05428-0">Haake, Qunatum signature of chaos</a>). Beyond this operational definition, quantum chaos can be related to the <em>cause a quantum system behaves statistically</em> as stated by <a href="http://dx.doi.org/10.1007/978-1-4613-2443-0_21">van Kampen</a>. Definitions based on the semiclassical limit are not relevant: the long time and high quantum numbers (or formally <span class="math">\(\hbar \rightarrow 0\)</span>) limits do not commute;&nbsp;moreover</p>
+<blockquote>
+<p>The process of quantizing a classical Hamilton system is not unique and does not correspond to anything in nature, which is fundamentally quantum mechanical (<a href="http://dx.doi.org/10.1007/978-1-4613-2443-0_21">van Kampen, 1985</a>).</p>
+</blockquote>
+<p>We retain as a definition of quantum chaos the statistical behavior of the eigenvalues and eigenvectors (amenable to a description in terms of random matrices) of the system&#8217;s hamiltonian, and extend it to the unitary evolution operator (for systems where the hamiltonian is unknown or do not exists as a local operator, <a href="http://dx.doi.org/10.1063/1.1703773">Dyson, 1962</a>).</p>
+<p>It is worth noting that integrability and statistical behavior are not related in quantum systems as in classical ones: observables may converge to their statistical (microcanonical) expectation value even for <em>integrable</em> systems. Indeed, the mechanism by which the system approach equilibrium is phase mixing, and it can take place for generic initial states in integrable systems, which negligible overlap with any of the hamiltonian eigenfunctions (<a href="http://dx.doi.org/10.1103/PhysRevLett.54.1879">Jansen <span class="amp">&amp;</span> Shenkar, 1985</a>]). </p>
+</li>
+<li>
+<p><strong>Ergodicity</strong>: for a closed classical system the time average of the trajectory <span class="math">\(X(t)\)</span> in phase-space (having energy <span class="math">\(E\)</span>) is equivalent to the microcanonical expectation value of the density <span class="math">\(\rho\)</span>,</p>
+<p>
+<div class="math">$$\overline{\delta(x - X(t,E))} = \rho_E\,.$$</div>
+</p>
+<p>The straightforward generalization to quantum isolated&nbsp;systems, </p>
+<p>
+<div class="math">$$\overline{|\psi(t)\rangle \langle \psi(t)|} = \sum_{n \in I(E)} |\psi_n|^2 |n\rangle \langle n| = \rho_\mathrm{diag} \,\overset{?}{=}\, \rho_E, \quad |\psi(0)\rangle = \sum_{n \in I(E)} \psi_n |n\rangle$$</div>
+</p>
+<p>is almost <em>never</em> realized, where we defined the so called &#8220;diagonal ensemble&#8221; <span class="math">\(\rho_\mathrm{diag}\)</span>, which is in general distinct to the microcanonical one, <span class="math">\(I(E)\)</span> is a &#8220;small&#8221; interval around <span class="math">\(E\)</span>, and <span class="math">\(|n\rangle\)</span> the energy eigenvectors. Von Neumann introduced the concept of quantum ergodicity at the level of <em>observables</em>:</p>
+<p>
+<div class="math">$$\overline{\langle \psi(t)|M|\psi(t)\rangle } = \sum_{n \in I(E)} |\psi_n|^2 \langle n| M |n \rangle = \mathrm{Tr}\,\rho_\mathrm{diag}M = \mathrm{Tr}\,\rho_E M$$</div>
+</p>
+<p>where <span class="math">\(M\)</span> is a macroscopic (coarse-grained) observable (<a href="http://dx.doi.org/10.1103/RevModPhys.83.863">Polkovnikov et al. 2011</a>).</p>
+</li>
+<li>
+<p><strong>Eigenstate thermalization hypothesis</strong>: for a <em>chaotic</em> isolated quantum system with energy <span class="math">\(E\)</span>, the microcanonical expectation of a macroscopic observable, coincides with the expectation obtained from a single energy&nbsp;eigenstate:</p>
+<p>
+<div class="math">$$\langle M \rangle = \mathrm{Tr}\, \rho_E M = \langle n|M|n\rangle$$</div>
+</p>
+<p>which means that the diagonal terms (in the energy base) of the observable <span class="math">\(M\)</span> are slowly and weakly varying, and that the off diagonal elements vanish in the thermodynamic limit. The thermal eigenstate hypothesis can be seen as a condition to the more stringent quantum ergodicity (<a href="http://dx.doi.org/10.1103/PhysRevLett.108.110601">Rigol and Srednicki, 2012</a>). This hypothesis was numerically (<a href="http://dx.doi.org/10.1038/nature06838">Rigol, 2008</a>) and experimentally (<a href="http://dx.doi.org/10.1126/science.aaf6725">Kaufman, 2016</a>)&nbsp;verified.</p>
+</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

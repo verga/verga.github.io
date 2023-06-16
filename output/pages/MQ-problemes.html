@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Problèmes et exercices | Random physics
+</title>
+    <link rel="canonical" href="/pages/MQ-problemes.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Corrigé des problèmes de mécanique quantique pour la licence de physique">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}}
+\newcommand{\E}{\mathrm{e}}
+\newcommand{\D}{\mathop{}\!\mathrm{d}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<h2>Niveaux de&nbsp;Landau</h2>
+<p>Trouvez les niveaux d&#8217;énergie d&#8217;une particule de masse <span class="math">\(m\)</span> et charge <span class="math">\(-e\)</span> confinée dans le plan <span class="math">\((x,y)\)</span> et soumise à l&#8217;action d&#8217;un champ magnétique constant <span class="math">\(\bm B\)</span> dirigé selon <span class="math">\(z\)</span>.</p>
+<p>Montrez que le potentiel vecteur peut s&#8217;écrire <span class="math">\(\bm A = (-By,0,0)\)</span>
+Écrivez le&nbsp;hamiltonien 
+</p>
+<div class="math">$$H = \frac{1}{2m}\big(\bm p + e \bm A \big)^2$$</div>
+<p>
+explicitement, en fonction des coordonnées de l&#8217;impulsion et de la postion
+Montrez que la solution de l&#8217;équation de Schrödinger se ramène à celle d&#8217;un oscillateur dans la direction <span class="math">\(y\)</span> dont la position d&#8217;équilibre&nbsp;est:
+</p>
+<div class="math">$$y_0 = \frac{p_x}{eB}$$</div>
+<p>
+Calculez la fréquence d&#8217;un tel oscillateur.
+Trouvez les niveaux d&#8217;énergie (Landau)
+Si l&#8217;aire du système est <span class="math">\(S=L_xL_y\)</span>, montrez que la dégénérescence du niveau fondamental&nbsp;est
+</p>
+<div class="math">$$\nu_0 = \frac{L_y}{2\pi \hbar / e B L_x}  = \frac{BS}{\Phi_0} = \frac{\Phi}{\Phi_0}$$</div>
+<p>
+avec <span class="math">\(\Phi_0 = h/e\)</span> le quantum de flux magnétique et <span class="math">\(\Phi\)</span> le flux&nbsp;magnétique.</p>
+<h3>Solution</h3>
+<p>Avec le choix de jauge du potentiel vecteur <span class="math">\(\bm A = (-By,0,0)\)</span> le système est invariant par translation selon la coordonné <span class="math">\(x\)</span>; le&nbsp;hamiltonien
+</p>
+<div class="math">$$H = \frac{1}{2m} \left[ (p_x-eBy)^2 + p_y^2 \right]$$</div>
+<p>
+est indépendant de l&#8217;opérateur <span class="math">\(x\)</span>. Le système défini par <span class="math">\(H\)</span> contient les paramètres dimensionnels <span class="math">\(m,B\)</span> et <span class="math">\(\hbar\)</span>; il convient donc de définir des unités&nbsp;appropriées:</p>
+<ul>
+<li>masse <span class="math">\(m\)</span></li>
+<li>temps <span class="math">\(\omega_c^{-1}\)</span>, avec <span class="math">\(\omega_c = eB/m\)</span> la fréquence de cyclotron (rappelons que le mouvement classique d&#8217;une charge dans un champ magnétique constant est une trajectoire&nbsp;circulaire)</li>
+<li>longueur <span class="math">\(\ell =&nbsp;\sqrt{\hbar/m\omega_c}\)</span></li>
+</ul>
+<p>Dans la suite on travaille avec ces unités (<span class="math">\(m=e=\hbar=1\)</span>), avec <span class="math">\(B\)</span> la fréquence et <span class="math">\(\sqrt{1/B}\)</span> la longueur. Le hamiltonien devient, en complétant le&nbsp;carré:
+</p>
+<div class="math">$$H = \frac{p_y^2}{2} + \frac{B^2}{2}(y - Bp_x)^2 = \frac{p_y^2}{2} + \frac{B^2Y^2}{2} $$</div>
+<p>
+avec <span class="math">\(Y=y - p_x/B\)</span>, qui est analogue au hamiltonien d&#8217;un oscillateur unidimensionel de fréquence <span class="math">\(B\)</span>. Les niveaux d&#8217;énergie sont par&nbsp;conséquent:
+</p>
+<div class="math">$$E_n = B \left( n + \frac{1}{2} \right) = \hbar \omega_c \left(n + \frac{1}{2} \right), \; n = 0, 1, 2, \ldots$$</div>
+<p>
+où <span class="math">\(n\)</span> est le niveau de&nbsp;Landau.</p>
+<p>Si on considère le système comme étant un rectangle d&#8217;aire <span class="math">\(L_xL_y\)</span> avec des conditions de bord périodiques dans la direction invariante par translation <span class="math">\(x\)</span>, l&#8217;impulsion <span class="math">\(p_x = 2\pi i/L_x,\, i = 0,1,2, \ldots\)</span> est quantifié. Ce qui implique que la position de l&#8217;oscillateur <span class="math">\(y_0=p_x/B = 2\pi i/L_x B\)</span> doit satisfaire <span class="math">\(y_0 &lt; L_y\)</span>. Le nombre possible d&#8217;états <span class="math">\(i\)</span> est&nbsp;donc,
+</p>
+<div class="math">$$i &lt; \frac{L_xL_yB}{2\pi} = \nu, \; \nu = \frac{\Phi}{\Phi_0}$$</div>
+<p>
+où <span class="math">\(\Phi = BL_xL_y\)</span> est le flux à travers la surface et <span class="math">\(\Phi_0 = 2\pi\hbar/e\)</span> le flux magnétique élémentaire (par spin).
+avec <span class="math">\(\nu\)</span> la dégénérescence du niveau&nbsp;d&#8217;énergie.</p>
+<p>On s&#8217;est limité à analyser le problème en choisissant une jauge particulier de <span class="math">\(\bm A\)</span>, or les propriétés du système doivent être indépendantes d&#8217;un tel choix. Notons toutefois  que ce choix peut être dicté par, par exemple, la géométrie et les symétries du problème: le choix fait de jauge est particulièrement intéressant si un courant est présent dans la direction <span class="math">\(x\)</span>, qui est la situation pertinente pour l&#8217;effet hall quantique. Prenons donc le hamiltonien de l&#8217;électron dans un champ <span class="math">\(B=B_z=\mathrm{const}\)</span>,
+</p>
+<div class="math">$$H = \frac{1}{2} \big( P_x^2 + P_y^2 \big), \quad P_x = p_x + A_x,\; P_y = p_y + A_y$$</div>
+<p>
+où nous avons introduit les opérateurs <span class="math">\(\bm P\)</span> proportionnels à la vitesse (dans la description classique lagrangienne). Il est intéressant de calculer le&nbsp;commutateur,
+</p>
+<div class="math">$$[P_x, P_y] = -\I B$$</div>
+<p>
+En effet, dans la représentation des coordonnées on a <span class="math">\([p_x, f(x)] = -\I\partial_x f\)</span>, ce qui&nbsp;donne,
+</p>
+<div class="math">$$[p_x + A_x, p_y + A_y] = [p_x,A_y] + [A_x, p_y] = -\I(\partial_x A_y - \partial_y A_x)$$</div>
+<p>
+qui eat la composante <span class="math">\(z\)</span> de <span class="math">\(\nabla \wedge \bm A\)</span>. Par conséquent on peut introduire les opérateurs d&#8217;annihilation et de création, équivalents à ceux de l&#8217;oscillateur&nbsp;harmonique:
+</p>
+<div class="math">$$a = \frac{1}{\sqrt{2B}} (P_x - \I P_y), \;  a^\dagger = \frac{1}{\sqrt{2B}} (P_x + \I P_y)$$</div>
+<p>
+définition qui permet de récrire <span class="math">\(H\)</span> sous la&nbsp;forme,
+</p>
+<div class="math">$$H = B \left( a^\dagger a + \frac{1}{2} \right)$$</div>
+<p>
+puisque leur commutateur suit la&nbsp;règle
+</p>
+<div class="math">$$[a,a^\dagger] = 1$$</div>
+<p>
+On en déduit que le spectre est bien <span class="math">\(E_n = B(n+1/2)\)</span> indépendant du choix de&nbsp;jauge.</p>
+<p>Notez cependant qu&#8217;on est parti d&#8217;un problème en deux dimensions et que pour le moment on n&#8217;a qu&#8217;une description semblable à un oscillateur unidimensionnel: il nous manque quelque chose! Effectivement, on peut définir deux autres opérateurs indépendants, liées non pas à la &#8220;vitesse&#8221;, mais à la position par rapport au &#8220;centre de&nbsp;masse&#8221;:
+</p>
+<div class="math">\begin{equation}
+  \label{XY}
+  X= x + \frac{P_y}{B}, \; Y = y - \frac{P_x}{B}
+\end{equation}</div>
+<p>
+Ces formules correspondent au formules du mouvement classique, c&#8217;est-à-dire à la trajectoire circulaire de rayon <span class="math">\(r\)</span> et fréquence <span class="math">\(\omega_c\)</span>, autour du centre de masse <span class="math">\((X,Y)\)</span>
+</p>
+<div class="math">$$x(t) = X + r \cos \omega_c t,\; y = Y - r \sin \omega_c t$$</div>
+<p>
+formules qu&#8217;avec la condition <span class="math">\(\dot{X} = \dot{Y} = 0\)</span>, donnent précisément la définition <span class="math">\(\eqref{XY}\)</span> des opérateurs&nbsp;quantiques.</p>
+<p>Ces deux opérateurs suivent la règle de&nbsp;commutation,
+</p>
+<div class="math">$$[X,Y] = \I/B$$</div>
+<p>
+et permettent donc d&#8217;introduire une <em>nouvelle</em> paire&nbsp;d&#8217;opérateurs,
+</p>
+<div class="math">$$b = \sqrt{\frac{B}{2}} (X + \I Y), \; b^\dagger = \sqrt{\frac{B}{2}} (X - \I Y)$$</div>
+<p>
+satisfaisant la règle de&nbsp;commutation,
+</p>
+<div class="math">$$[b,b^\dagger]=1$$</div>
+<p>
+L&#8217;opérateur 
+</p>
+<div class="math">$$R^2 = X^2 + Y^2 = \frac{2}{B} \left( b^\dagger b + \frac{1}{2} \right)$$</div>
+<p>
+nous donne les valeurs possibles du centre de&nbsp;masse:
+</p>
+<div class="math">$$r_0^2 = \frac{2}{B} \left( i + \frac{1}{2} \right)$$</div>
+<p>
+avec <span class="math">\(i = 0, 1, \ldots\)</span>. Cet opérateur commute avec le hamiltonien <span class="math">\([H,R^2]=0\)</span>, on a donc deux entiers <span class="math">\((n,i)\)</span> qui caractérisent ensemble les états de&nbsp;l&#8217;électron.</p>
+<p>Si on considère un système d&#8217;aire <span class="math">\(S = \pi a^2\)</span> (cercle de rayon <span class="math">\(a\)</span>) les valeurs possibles de <span class="math">\(i\)</span>&nbsp;seront,
+</p>
+<div class="math">$$r_0 &lt; a \; \Rightarrow \; i &lt; \frac{B}{2} a^2 = \frac{B S}{2\pi} = \frac{\Phi}{\Phi_0} = \nu$$</div>
+<p>
+résultat qui coïncide avec le calcul précédent de la&nbsp;dégénérescence.</p>
+<h2>Deux&nbsp;spins</h2>
+<p>Trouvez les niveaux d&#8217;énergie et les vecteurs propres d&#8217;un système constitué de deux spin <span class="math">\(1/2\)</span>, dont le hamiltonien&nbsp;est</p>
+<div class="math">$$H = - \frac{J}{\hbar^2} \bm{S}_1 \cdot \bm{S}_2$$</div>
+<h3>Solution</h3>
+<p>L&#8217;interaction d&#8217;échange entre deux spins proches <span class="math">\(\bm S_1\)</span> et <span class="math">\(\bm S_2\)</span>, peut être décrite par le hamiltonien de&nbsp;Heisenberg:
+</p>
+<div class="math">$$H = -\frac{J}{\hbar^2} \bm S_1 \cdot \bm S_2$$</div>
+<p>
+où <span class="math">\(J\)</span> est la constante de couplage mesuré en unités d&#8217;énergie. L&#8217;opérateur de spin est proportionnel aux matrices de&nbsp;pauli:
+</p>
+<div class="math">$$\bm S_i = \frac{\hbar}{2} (X_i,Y_i,Z_i),\; i=1,2$$</div>
+<p>
+qu&#8217;une fois substitué dans <span class="math">\(H\)</span>,&nbsp;donne:
+</p>
+<div class="math">$$H = -\frac{J}{4} (X\otimes X + Y\otimes Y + Z\otimes Z)\,.$$</div>
+<p>Pour représenter le hamiltonien par une matrice, on définit une base de l&#8217;espace de hilbert à quatre dimensions de deux spins à partir des vecteurs canoniques du spin <span class="math">\(1/2\)</span>:
+</p>
+<div class="math">$$\ket{0}=\begin{pmatrix}1\\0\end{pmatrix}\,,\quad \ket{0}=\begin{pmatrix}0\\1\end{pmatrix},$$</div>
+<p>
+On&nbsp;obtient:
+</p>
+<div class="math">$$\ket{00} = \ket{0}\otimes\ket{0},\,
+  \ket{01} = \ket{0}\otimes\ket{1},\,
+  \ket{10} = \ket{1}\otimes\ket{0},\,
+  \ket{11} = \ket{1}\otimes\ket{1}.$$</div>
+<p>
+Dans cette base, le hamiltonien s&#8217;écrit&nbsp;explicitement:
+</p>
+<div class="math">$$H = -\frac{J}{4}\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; -1 &amp; 2 &amp; 0\\0 &amp; 2 &amp; -1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{pmatrix}$$</div>
+<p>L&#8217;utilisation de la bibliothèque <code>sympy</code> nous permet de résoudre le problème à valeurs propres <span class="math">\(H \ket{n} = E_n \ket{n}\)</span>, avec <span class="math">\(n = 0, 1, 2, 3\)</span>, le quatre niveaux d&#8217;énergie possibles. La diagonalization directe de <span class="math">\(H\)</span> determine les valeurs&nbsp;propres:
+</p>
+<div class="math">$$E = \{(-J/4,3),(3J/4,1)\}$$</div>
+<p>
+où la première valeur <span class="math">\(E=E_t=-J/4\)</span> correspond à l&#8217;état triplet (puisqu&#8217;il est trois fois dégénéré), et la deuxième valeur <span class="math">\(E=E_s=3J/4\)</span>, correspond à l&#8217;état singlet. Si l&#8217;interaction spin-spin est de type ferromagnétique (<span class="math">\(J&gt;0\)</span>), l&#8217;état triplet est celui de plus basse énergie, dans le cas contraire, si l&#8217;interaction est anti-ferromagnétique (<span class="math">\(J&lt;0\)</span>), le singlet correspond à l&#8217;état&nbsp;fondamental.</p>
+<p>Les vecteurs propres respectifs sont: pour <span class="math">\(E_t = -J/4\)</span>&nbsp;(triplet),
+</p>
+<div class="math">$$\begin{pmatrix}1\\0\\0\\0\end{pmatrix} = \ket{00}, \,
+  \begin{pmatrix}0\\0\\0\\1\end{pmatrix} = \ket{11}, \,
+  \frac{1}{\sqrt{2}}\begin{pmatrix}0\\1\\1\\0\end{pmatrix} = \frac{\ket{01} + \ket{10}}{\sqrt{2}}$$</div>
+<p>
+et pour le niveau <span class="math">\(E_t = 3J/4\)</span>&nbsp;(singlet),
+</p>
+<div class="math">$$\frac{1}{\sqrt{2}}\begin{pmatrix}0\\1\\-1\\0\end{pmatrix} = \frac{\ket{01} - \ket{10}}{\sqrt{2}}$$</div>
+<p>En fait, la structure de la matrice <span class="math">\(H\)</span> est telle qu&#8217;une résolution directe est facile; en effet, <span class="math">\(H\)</span> peut s&#8217;écrire comme la somme directe de trois&nbsp;matrices:
+</p>
+<div class="math">$$H = -\frac{J}{4}\left[ (1) \oplus \begin{pmatrix}-1&amp;2 \\ 2&amp;-1\end{pmatrix} \oplus (1) \right]$$</div>
+<p>
+ce qui nous donne immédiatement deux valuers propres <span class="math">\(-J/4\)</span> avec les vecteurs propres <span class="math">\(\ket{00}\)</span> et <span class="math">\(\ket{11}\)</span>. Le polynoôme caractéristique de la matrice deux par deux restante&nbsp;est,
+</p>
+<div class="math">$$(J/4 - E)^2 - J^2/4 =0$$</div>
+<p>
+dont les racines sont <span class="math">\(E= -J/4, 3J/4\)</span>. Les vecteurs propres s&#8217;obtiennent sans&nbsp;effort.</p>
+<h4>Code</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">I</span><span class="p">,</span> <span class="n">Rational</span><span class="p">,</span> <span class="n">Matrix</span>
+<span class="kn">from</span> <span class="nn">sympy.physics.quantum</span> <span class="kn">import</span> <span class="n">TensorProduct</span>
+<span class="c1">#</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">I</span><span class="p">],[</span><span class="n">I</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">TensorProduct</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="o">+</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">))</span>
+<span class="n">h</span>
+</code></pre></div>
+
+<div class="math">$$\frac{1}{4}\left[\begin{matrix}-1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -2 &amp; 0\\0 &amp; -2 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; -1\end{matrix}\right]$$</div>
+<div class="highlight"><pre><span></span><code><span class="n">vn</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
+<span class="n">vn</span>
+</code></pre></div>
+
+<div class="math">$$\left[ \left( - \frac{1}{4}, \  3, \  \left[ \left[\begin{matrix}1\\0\\0\\0\end{matrix}\right], \  \left[\begin{matrix}0\\1\\1\\0\end{matrix}\right], \  \left[\begin{matrix}0\\0\\0\\1\end{matrix}\right]\right]\right), \  \left( \frac{3}{4}, \  1, \  \left[ \left[\begin{matrix}0\\-1\\1\\0\end{matrix}\right]\right]\right)\right]
+$$</div>
+<h4>Note</h4>
+<p>Le hamiltonien peut aussi s&#8217;écrire à l&#8217;aide de&nbsp;l&#8217;opérateur 
+</p>
+<div class="math">$$\bm S = \bm S_1 + \bm S_2$$</div>
+<p>
+de spin total. On remarque&nbsp;que,
+</p>
+<div class="math">$$2 \bm S_1 \cdot \bm S_2 = \bm S^2 - \bm S_1^2 - \bm S_2^2\,.$$</div>
+<p>
+Or, les deux derniers termes sont&nbsp;diagonaux:
+</p>
+<div class="math">$$\bm S_i^2 = \frac{3\hbar^2}{4} I$$</div>
+<p>
+avec <span class="math">\(I\)</span> l&#8217;opérateur identité. On a donc&nbsp;trivialement:
+</p>
+<div class="math">$$[H, \bm S^2] = 0, \; [H, S_z] = 0$$</div>
+<p>
+avec <span class="math">\(S_z = S_{z1} + S_{z2}\)</span>, la composante <span class="math">\(z\)</span> du spin total. Ceci signifie qu&#8217;on peut définir une base <span class="math">\(\ket{sm}\)</span>&nbsp;avec
+</p>
+<div class="math">$$\bm S^2 \ket{sm} = \hbar^2 s(s+1) \ket{sm}, \; S_z \ket{sm} = \hbar m \ket{sm}$$</div>
+<p>
+qui est aussi base de <span class="math">\(H\)</span> (les opérateurs sont compatibles). Applicant <span class="math">\(\bm S^2\)</span> et <span class="math">\(S_z\)</span> aux vecteurs de la base canonique, il est facile de retrouver les résultats de la première partie de&nbsp;l&#8217;exercice:
+</p>
+<div class="math">$$\ket{s=0, m=0} = \frac{1}{\sqrt{2}}\left( \ket{10} - \ket{01} \right)$$</div>
+<p>
+est le singlet; le triplet correspond aux trois vecteurs avec <span class="math">\(s=1\)</span> et les projections <span class="math">\(-1,0,1\)</span> de <span class="math">\(S_z\)</span>:
+</p>
+<div class="math">$$\ket{s=1,m=-1} = \ket{11},\; \ket{s=1,m=0} = \frac{1}{\sqrt{2}}\left( \ket{10} + \ket{01} \right)\, \; \ket{s=1,m=1} = \ket{00}.$$</div>
+<h2>Effet relativiste sur l&#8217;atome&nbsp;d&#8217;hydrogène</h2>
+<p>On considère l&#8217;atome H dans l&#8217;approximation du noyau fixe (on néglige la différence entre la masse réduite et la masse de l&#8217;électron). Montrez que pour des vitesses petites devant celle de la lumière <span class="math">\(c\)</span>, l&#8217;énergie cinétique peut être approximée, en tenant compte de la première correction&nbsp;relativiste:
+</p>
+<div class="math">$$K \approx \frac{p^2}{2m} - \frac{p^4}{8m^3c^2}$$</div>
+<p>
+où <span class="math">\(p^4 = \bm p^2 \bm p^2\)</span>. On suppose le hamiltonien non perturbé celui de l&#8217;atome d&#8217;hydrogène non&nbsp;relativiste:
+</p>
+<div class="math">$$H_0 = \frac{p^2}{2m} - \frac{e^2}{4\pi \varepsilon_0 r}$$</div>
+<p>
+calculez en utilisant la théorie de perturbations la correction relativiste du spectre&nbsp;d&#8217;énergie:
+</p>
+<div class="math">$$E^{(1)}_n = - \frac{1}{2} mc^2 \alpha^4 \left[ -\frac{3}{4n^4} + \frac{1}{n^3(l+1/2)} \right]$$</div>
+<p>
+Pour cela utilisez la&nbsp;relation:
+</p>
+<div class="math">$$\left( \frac{p^2}{2m} \right)^2 = \left( H_0 + \frac{e^2}{4\pi\varepsilon_0 r} \right) \left( H_0 + \frac{e^2}{4\pi\varepsilon_0 r} \right)$$</div>
+<p>
+et&nbsp;calculez 
+</p>
+<div class="math">$$\left\langle \frac{1}{r^k} \right\rangle, \; k=1,2$$</div>
+<p>
+dans la base <span class="math">\(\ket{nlm}\)</span> de <span class="math">\(H_0\)</span>.</p>
+<h3>Solution</h3>
+<p>On spécifie d&#8217;abord les unités. On choisit l&#8217;unité de masse celle de l&#8217;électron <span class="math">\(m\)</span> (on considère le proton fixe, autrement on remplace <span class="math">\(m\)</span> par la masse réduite); l&#8217;unité de longueur est le rayon de Bohr <span class="math">\(a_0\)</span>:
+</p>
+<div class="math">$$\frac{e^2}{4\pi \varepsilon_0 a_0} = \frac{\hbar^2}{m a_0^2}, \quad a_0 = \frac{4\pi\varepsilon_0}{e^2} \frac{\hbar^2}{m}$$</div>
+<p>
+et l&#8217;unité d&#8217;énergie est le Hartree <span class="math">\(\mathrm{Ha}=2\mathrm{Ry}\)</span>:
+</p>
+<div class="math">$$\mathrm{Ha} = \frac{\hbar^2}{ma_0^2}$$</div>
+<p>
+ce qui est équivalent à <span class="math">\(m=e^2/4\pi \varepsilon_0=\hbar=1\)</span>. La constante de structure fine <span class="math">\(\alpha\)</span> est définie par le rapport entre l&#8217;énergie de couloumb et l&#8217;énergie au repos <span class="math">\(mc^2\)</span> de&nbsp;l&#8217;électron:
+</p>
+<div class="math">$$\alpha^2 = \frac{\hbar^2}{ma_0^2} \frac{1}{mc^2} = \left( \frac{\hbar}{mca_0} \right)^2$$</div>
+<p>
+ou,
+</p>
+<div class="math">$$\alpha = \frac{\hbar}{mc} \frac{e^2}{4\pi \varepsilon_0} \frac{m}{\hbar^2}= \frac{e^2}{4\pi\varepsilon_0 \hbar c}$$</div>
+<p>
+ce qui est équivalent au rapport de la longueur d&#8217;onde de Compton de l&#8217;électron <span class="math">\(\lambda_e = \hbar/mc\)</span> et du rayon de&nbsp;Bohr:
+</p>
+<div class="math">$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = 7.2973\,5256\,93\times 10^{-3}$$</div>
+<p>
+Dans les <a href="https://en.wikipedia.org/wiki/Hartree_atomic_units">unités atomiques</a> <span class="math">\(a_0=m=\hbar=e=4\pi\varepsilon_0=1\)</span> la vitesse de la lumière&nbsp;vaut
+</p>
+<div class="math">$$c = 1/\alpha = 137.035\,999\,084\,.$$</div>
+<p>L&#8217;énergie cinétique relativiste&nbsp;est,
+</p>
+<div class="math">$$K = \sqrt{c^2 {\bm p}^2 + m^2 c^4} - mc^2 = mc^2 \left(\sqrt{1 + (\bm p/mc)^2} - 1\right)$$</div>
+<p>
+ou, dans les unités atomiques, qu&#8217;on utilise&nbsp;désormais,
+</p>
+<div class="math">$$K = \frac{1}{\alpha^2}\left(\sqrt{1 + (\alpha p)^2} - 1\right)$$</div>
+<p>
+On vérifie que pour le régime non relativiste <span class="math">\(p \ll mc = 1/\alpha\)</span>, le second terme dans la racine satisfait <span class="math">\(\alpha p \ll 1\)</span>, on peut donc envisager un développement en puissance de <span class="math">\(\alpha\)</span>. Le développement limité de la&nbsp;racine,
+</p>
+<div class="math">$$\sqrt{1 + (\alpha \bm p)^2} = 1 + \alpha^2 \frac{\bm p^2}{2} - \frac{\alpha^4 \bm p^4}{8} + \cdots$$</div>
+<p>
+donne,
+</p>
+<div class="math">$$K = \frac{\bm p^2}{2} - \alpha^2\frac{\bm p^4}{8} + \cdots$$</div>
+<p>
+Le deuxième terme apparaît comme une perturbation de l&#8217;énergie cinétique classique, dont le paramètre est <span class="math">\(\alpha^2\)</span>. Dans cette approximation le hamiltonien&nbsp;s&#8217;écrit:
+</p>
+<div class="math">$$H = H_0  - \alpha^2\frac{p^4}{8}$$</div>
+<p>
+avec
+</p>
+<div class="math">$$H_0 = \frac{\bm p^2}{2} - \frac{1}{r}$$</div>
+<p>
+le hamiltonien de l&#8217;atome H non perturbé. Les états d&#8217;énergie non perturbés <span class="math">\(\ket{nlm}\)</span> satisfont l&#8217;équation de&nbsp;Schrödinger,
+</p>
+<div class="math">$$H_0 \ket{nlm} = \epsilon_{n} \ket{nlm}, \quad \epsilon_n = -\frac{1}{2n^2}\, [\mathrm{Ha}]$$</div>
+<p>
+avec <span class="math">\(n = 1, 2,\ldots\)</span> le niveau d&#8217;énergie (nombre quantique principal) et <span class="math">\((l,m)\)</span> les nombres quantiques du moment angulaire: <span class="math">\(l=0,1,\ldots &lt; n\)</span>, <span class="math">\(-l \le m \le l\)</span>. En négligeant le spin, les états d&#8217;énergie <span class="math">\(\epsilon_n\)</span>&nbsp;son
+</p>
+<div class="math">$$\sum_{l=0}^{n-1}(2l+1) = 2 \frac{n(n-1)}{2} + n = n^2$$</div>
+<p>
+fois dégénérés (comme vous pouvez le démontrer par recurrence). On peut encore noter que le terme de perturbation commute avec le moment&nbsp;angulaire,
+</p>
+<div class="math">$$[\bm L, \bm p^4]=0$$</div>
+<p>
+ce qui signifie que l&#8217;opérateur <span class="math">\(\bm p^4\)</span> est diagonal dans la base non perturbée <span class="math">\(\ket{nlm}\)</span>. Au premier ordre on a&nbsp;donc,
+</p>
+<div class="math">$$E^{(1)}_{nl} = -\frac{\alpha^2}{8} \braket{nlm|\bm p^4|nlm}\,.$$</div>
+<p>
+Le calcul direct des intégrales est difficile; le calcul se simplifie si on exprime <span class="math">\(p^2\)</span> en termes de <span class="math">\(H\)</span>:
+</p>
+<div class="math">$$\alpha^2\frac{\bm p^4}{8} = \frac{\alpha^2}{2} \left(\frac{p^2}{2}\right)^2 = \frac{\alpha}{2} \left(H_0 + \frac{1}{r}\right)^2$$</div>
+<p>
+(on note <span class="math">\(p^2=\bm p^2 = \bm p \cdot \bm p\)</span>). Ou, après expansion du&nbsp;produit,
+</p>
+<div class="math">$$E^{(1)}_{nl} = - \frac{\alpha^2}{2}\left( \epsilon_n^2 + 2\epsilon_n \braket{nlm| \frac{1}{r} |nlm} + \braket{nlm| \frac{1}{r^2} |nlm} \right)$$</div>
+<p>
+Le calcul des niveaux d&#8217;énergie perturbés se réduit donc au calcul de valeurs espérées de <span class="math">\(1/r\)</span> et <span class="math">\(1/r^2\)</span>; on remarque que ces deux opérateurs sont proportionnels aux termes de coulomb et du moment angulaire de <span class="math">\(H_0\)</span>,&nbsp;respectivement. </p>
+<p>Le premier terme se calcule directement, il donne une correction de la&nbsp;forme:
+</p>
+<div class="math">$$\Delta E = -\frac{\alpha^2}{2}\epsilon_n^2 = -\frac{\alpha^2}{8n^4}\,.$$</div>
+<p>
+Avant the passer au calcul de <span class="math">\(\braket{1/r}\)</span>, rappelons le théorème du viriel (valable en classique et quantique&#8212;pour les valeurs moyennes). Si l&#8217;énergie potentielle est une puissance de la position <span class="math">\(V \sim r^k\)</span>, on&nbsp;a
+</p>
+<div class="math">$$0 = \braket{\frac{\D \bm r \cdot \bm p}{\D t}} = \braket{\dot{\bm r} \cdot \bm p} +  \braket{\bm r \cdot \dot{\bm p}} = \braket{\frac{\partial H}{\partial \bm p} \cdot p} - \braket{\bm r \cdot \frac{\partial H}{\partial \bm r}}$$</div>
+<p>
+ce qui revient&nbsp;à
+</p>
+<div class="math">$$0 = \braket{p^2} - \braket{\bm r \cdot \frac{\partial V}{\partial \bm r}}$$</div>
+<p>
+ou en posant <span class="math">\(K = p^2/2\)</span> et <span class="math">\(V \sim r^k\)</span>,
+</p>
+<div class="math">$$2\braket{K} = k \braket{V}$$</div>
+<p>
+le théorème du viriel (voir la discussion de ce théorème dans le Landau-Lifshitz de&nbsp;Mécanique).</p>
+<p>On peut maintenant appliquer ce résultat au cas coulombien <span class="math">\(k = -1\)</span>,
+</p>
+<div class="math">$$\braket{H_0} = - \braket{K} = \frac{1}{2} \braket{V}$$</div>
+<p>
+d&#8217;où on&nbsp;déduit:
+</p>
+<div class="math">$$\braket{\frac{1}{r}} = \frac{1}{n^2}$$</div>
+<p>
+puisque <span class="math">\(\braket{H} = -1/2n^2\)</span>. On a&nbsp;donc,
+</p>
+<div class="math">$$\Delta E = -\braket{\frac{\alpha^2\epsilon_n}{r}} = \frac{\alpha^2}{2n^4}$$</div>
+<p>Concernant le terme <span class="math">\(\braket{1/r^2}\)</span>, en comparant avec le terme en <span class="math">\(l(l+1)/2r^2\)</span>, on constate que le paramètre <span class="math">\(l\)</span>, en présence de la perturbation, change de&nbsp;valeur:
+</p>
+<div class="math">$$l(l+1) \rightarrow l(l+1) - \alpha^2 = l'(l'+1)$$</div>
+<p>
+où <span class="math">\(l'\)</span> est le nouveau nombre quantique orbital. Si on se rappelle que le nombre quantique principal peut s&#8217;écrire comme <span class="math">\(n = n_r + l + 1\)</span>, avec <span class="math">\(n_r\)</span> le nombre quantique radial, le spectre d&#8217;énergie&nbsp;devient,
+</p>
+<div class="math">$$E = \frac{1}{2(n_r+l'+1)^2}$$</div>
+<p>
+Le terme proportionnel à <span class="math">\(\alpha^2\)</span> (l&#8217;ordre de la perturbation) est donc calculé par un développement&nbsp;limité:
+</p>
+<div class="math">$$\Delta E = \alpha^2 \left. \frac{\D E}{\D \alpha^2} \right|_{\alpha^2=0} = \alpha^2 \left. \frac{\D E}{\D l'} \right|_{l'=l} \left. \frac{\D l'}{\D \alpha^2} \right|_{l'=l}$$</div>
+<p>
+L&#8217;application de la formule&nbsp;donne,
+</p>
+<div class="math">$$\Delta E = \braket{\frac{-\alpha^2}{2r^2}} = -\frac{\alpha^2}{n^3(2l+1)}$$</div>
+<blockquote>
+<p><strong>Théorème de <a href="https://en.wikipedia.org/wiki/Hellmann%E2%80%93Feynman_theorem">Hellmann-Feynman</a></strong>
+Soit un hamiltonien qui dépend d&#8217;un paramètre <span class="math">\(a\)</span>, <span class="math">\(H_a\)</span>; les valeurs propres et les vecteurs propres seront également fonction du&nbsp;paramètre:</p>
+<p>
+<div class="math">$$H_a \ket{a} = E_a \ket{a},\quad \braket{a|a} = 1$$</div>
+</p>
+<p>Calculons la dérivée par rapport au paramètre <span class="math">\(a\)</span> de la valeur espérée <span class="math">\(\braket{a|H_a|a}= E_a\)</span>:</p>
+<p>
+<div class="math">$$\frac{\D \bra{a}}{\D a} H_a \ket{a} + \bra{a} H_a \frac{\D \ket{a}}{\D a} + \braket{a|\dot{H}_a|a} = \dot{E}_a$$</div>
+</p>
+<p>en utilisant l&#8217;équation de Schrödinger des vecteurs propres, le côté gauche de la formule précédente&nbsp;devient,</p>
+<p>
+<div class="math">$$ E_a \frac{\D \bra{a}}{\D a} \ket{a} + E_a \bra{a} \frac{\D \ket{a}}{\D a} + \braket{a|\dot{H}_a|a} = \dot{E}_a$$</div>
+</p>
+<p>or, en vu&nbsp;de</p>
+<p>
+<div class="math">$$0= \frac{\D}{\D a} \braket{a|a} = \frac{\D \bra{a}}{\D a} \ket{a} + \bra{a} \frac{\D \ket{a}}{\D a}$$</div>
+</p>
+<p>les deux premières termes se cancellent, nous amenant au&nbsp;résultat:</p>
+<p>
+<div class="math">$$\braket{a|\dot{H}_a|a} = \dot{E}_a$$</div>
+</p>
+<p>qui est connu comme le théorème de Hellmann-Feynman. (Le point est la dérivée par rapport au&nbsp;paramètre.)</p>
+</blockquote>
+<p>On peut retrouver le résultat sur la moyenne de <span class="math">\(1/r^2\)</span> à partir du théorème en l&#8217;appliquant à <span class="math">\(H_0\)</span>, en particulier au terme du moment angulaire en choisissant <span class="math">\(l\)</span> comme paramètre à varier (les autres termes sont indépendants de <span class="math">\(l\)</span>):
+</p>
+<div class="math">\begin{align*}
+\frac{\D}{\D l} E_{nl} &amp;= -\frac{\D}{\D l} \frac{1}{2(n_r + l + 1)^2}\\
+&amp;= \frac{1}{n^3} \\
+&amp;= \bra{nlm} \frac{\D}{\D l} H_0 \ket{nlm}\\
+&amp;= \bra{nlm} \frac{\D}{\D l} \frac{l(l+1)}{2r^2}\ket{nlm} \\ 
+&amp;=  \bra{nlm} \frac{2l+1}{2r^2}\ket{nlm}
+\end{align*}</div>
+<p>
+où on a encore utilisé <span class="math">\(n = n(l) = n_r + l + 1\)</span>, ce qui conduit au&nbsp;résultat:
+</p>
+<div class="math">$$\braket{nlm| \frac{1}{r^2} |nlm} = \frac{1}{n^3(l + 1/2)}$$</div>
+<p>En collectant les différents résultats, on obtient la correction des niveaux d&#8217;énergie au premier ordre de la théorie des&nbsp;perturbations:
+</p>
+<div class="math">$$E^{(1)}_{nl} = \frac{3\alpha^2}{8n^4} -  \frac{\alpha^2}{n^3(2l+1)} \, [\mathrm{Ha}]$$</div>
+<p>
+Le résultat dans les unités d&#8217;origine contient le factor <span class="math">\(\hbar^2/ma_0^2 = mc^2\alpha^2 = \mathrm{Ha}\)</span>, qui restitue l&#8217;unité&nbsp;d&#8217;énergie.</p>
+<p>On constate que la correction relativiste de l&#8217;énergie cinétique modifie la position de niveaux ainsi qu&#8217;elle enlève une partie de la dégénérescence, puisque maintenant l&#8217;énergie dépend aussi du nombre orbital <span class="math">\(l\)</span>; cependant, dû à la symétrie de la perturbation, la dégénérescence magnétique (en <span class="math">\(m\)</span>)&nbsp;persiste.</p>
+<p>Un calcul numérique nous montre que la correction de l&#8217;état fondamental est de l&#8217;ordre de <span class="math">\(-3.328\,\mathrm{Ha}\)</span>. Les corrections sont négatives: les niveaux non perturbés se décalent ver le&nbsp;bas.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">def</span> <span class="nf">energy0</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">energy1</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">n</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="n">e0</span> <span class="o">=</span> <span class="p">[</span><span class="n">energy0</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="p">[</span><span class="n">energy1</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">level</span> <span class="o">=</span> <span class="p">[[</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)];</span>
+</code></pre></div>
+
+<table class="table table-striped" style="width: 400px">
+<thead class="thead-dark">
+<tr>
+<th>\((n,l)\) </th>
+<th>\(\epsilon_n\) </th>
+<th>\(E_{nl}^{(1)}\) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\((1,0)\)</td>
+<td>\(-0.5\)</td>
+<td>\(-3.328\,10^{-5}\)</td>
+</tr>
+<tr>
+<td>\((2,0)\)</td>
+<td>\(-0.125\)</td>
+<td>\(-5.408\,10^{-6}\)</td>
+</tr>
+<tr>
+<td>\((2,1)\)</td>
+<td>\(-0.125\)</td>
+<td>\(-9.707\,10^{-7}\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Dans le tableau, pour chaque niveau <span class="math">\((n,l)\)</span> on montre l&#8217;énergie non perturbé <span class="math">\(\epsilon_n\)</span> et la correction relativiste <span class="math">\(E^{(1)}\)</span> en <span class="math">\(\mathrm{Ha} = 27.2\,\mathrm{eV}\)</span>.</p>
+<h2>Oscillateur soumis à une force dépendante du&nbsp;temps</h2>
+<p>Un oscillateur quantique qui se trouve initialement dans son état fondamental, est perturbé par une&nbsp;force,</p>
+<div class="math">$$F(t) = F_0 \E^{-t/\tau}, \quad (t&gt;0)$$</div>
+<p>Calculez au premier ordre de la théorie de perturbations dépendante du temps la probabilité d&#8217;excitation de l&#8217;oscillateur vers des états de plus haute&nbsp;énergie.</p>
+<h3>Solution</h3>
+<p>Notons d&#8217;abord que la perturbation du hamiltonien de l&#8217;oscillateur harmonique de masse <span class="math">\(m\)</span> et fréquence <span class="math">\(\omega\)</span>,
+</p>
+<div class="math">$$H_0 = \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2}$$</div>
+<p>
+est
+</p>
+<div class="math">$$F(x,t) = - \frac{\D}{\D x}V(x,t), \quad V(x,t) = -F_0 x \E^{-t/\tau}, \; t&gt;0$$</div>
+<p>
+linéaire dans l&#8217;opérateur position <span class="math">\(x\)</span>. Le hamiltonien total est&nbsp;donc
+</p>
+<div class="math">$$H = H_0 + V = \frac{p^2}{2} + \frac{x^2}{2} - \lambda x \E^{t/\tau}, \; \lambda= \frac{F_0}{\sqrt{\hbar m \omega^3}}$$</div>
+<p>
+dans les unités <span class="math">\(m=\omega=\hbar=1\)</span>. La valeur de <span class="math">\(\lambda\)</span> est facilement calculée en utilisant les&nbsp;unités:
+</p>
+<div class="math">$$\mathrm{L} = \sqrt{\frac{\hbar}{m\omega}},\; \mathrm{T} = 1/\omega,\; \mathrm{M} = m, \mathrm{E} = \hbar \omega$$</div>
+<p>
+et en notant les dimensions de la force  <span class="math">\(F_0 =&nbsp;\mathrm{MLT^{-2}}\)</span>
+</p>
+<div class="math">$$\lambda = \frac{F_0}{[F_0]}= F_0 \frac{1}{m \omega^2}\sqrt{\frac{m\omega}{\hbar}}\,.$$</div>
+<p>Avant de traiter la perturbation rappelons les propriétés de <span class="math">\(H_0\)</span>. En terme des opérateurs de création <span class="math">\(a\)</span> et annihilation <span class="math">\(a^\dagger\)</span>,
+</p>
+<div class="math">$$a = \frac{x + \I p}{\sqrt{2}},\quad a^\dagger = \frac{x - \I p}{\sqrt{2}}$$</div>
+<p>
+le hamiltonien se réduit&nbsp;à,
+</p>
+<div class="math">$$H_0 = a^\dagger a + \frac{1}{2}.$$</div>
+<p>
+Les valeurs et vecteurs propres de l&#8217;oscillateur sont solution&nbsp;de
+</p>
+<div class="math">$$H_0 \ket{n} = \epsilon_n \ket{n},$$</div>
+<p>
+ce qui&nbsp;donne,
+</p>
+<div class="math">$$\epsilon_n = n + \frac{1}{2}$$</div>
+<p>
+avec <span class="math">\(n = 0, 1, \ldots\)</span>, les niveaux d&#8217;énergie. On a encore les&nbsp;relations,
+</p>
+<div class="math">$$a \ket{n} = \sqrt{n} \ket{n-1},\quad a^\dagger \ket{n} = \sqrt{n+1} \ket{n+1}\,,$$</div>
+<p>
+qui nous renseignent sur la façon dont les opérateurs <span class="math">\(a\)</span> et <span class="math">\(a^\dagger\)</span> agissent sur l&#8217;état de l&#8217;oscillateur <span class="math">\(\ket{n}\)</span>.</p>
+<p>En présence de la perturbation temporelle les états d&#8217;énergie ne sont plus stationnaires et des transitions entre les niveaux d&#8217;énergie peuvent se produire. La conséquence est que l&#8217;état devient en général une superposition de la&nbsp;forme:
+</p>
+<div class="math">$$\ket{\psi(t)} = \sum_n \psi_n(t) \E^{-\I \epsilon_n t} \ket{n}$$</div>
+<p>
+lequel satisfait l&#8217;équation de&nbsp;Schrödinger:
+</p>
+<div class="math">\begin{align*}
+\I \frac{\partial }{\partial t}\ket{\psi(t)} &amp;= \sum_n \epsilon_n \psi_n(t) \E^{-\I \epsilon_n t} \ket{n} + \I \sum_n \dot{\psi}_n(t) \E^{-\I \epsilon_n t} \ket{n} \\ &amp;= H_0 \ket{\psi(t)} + \sum_n \psi_n(t) \E^{-\I \epsilon_n t} V(x,t) \ket{n}
+\end{align*}</div>
+<p>
+ou, après simplification du terme <span class="math">\(H_0\)</span>:
+</p>
+<div class="math">$$\I \sum_n \dot{\psi}_n(t) \E^{-\I \epsilon_n t} \ket{n} = \sum_n \psi_n(t) \E^{-\I \epsilon_n t} V(x,t) \ket{n}$$</div>
+<p>
+On multiplie cette équation par le bra <span class="math">\(\bra{m}\)</span>, et on utilise l&#8217;orthonormalisation <span class="math">\(\braket{m|n} = \delta_{mn}\)</span>, pour&nbsp;obtenir,
+</p>
+<div class="math">$$\I \dot{\psi}_m(t) \E^{-\I \epsilon_m t}= \sum_n \psi_n(t) \E^{-\I \epsilon_n t} \braket{m|V(x,t)|n}\,.$$</div>
+<p> 
+En intégrant sur le temps, on transforme l&#8217;équation différentielle en&nbsp;intégrale:
+</p>
+<div class="math">$$\psi_m(t) = \psi_m(t_i) + \frac{1}{\I}\sum_n \int_{t_i}^t \D t' \E^{\I(\epsilon_m-\epsilon_n)t'} \braket{m|V(x,t')|n}\psi_n(t')$$</div>
+<p>
+(<span class="math">\(t_i\)</span> est le temps de référence) qu&#8217;on résout par itération; au premier ordre dans la perturbation on&nbsp;a,
+</p>
+<div class="math">$$\psi_m(t) = \psi_m(t_i) + \frac{1}{\I} \sum_n \int_{t_i}^t \D t' \E^{\I(\epsilon_m-\epsilon_n)t'} \braket{m|V(x,t')|n}\psi_n(t_i)\,.$$</div>
+<p>
+On suppose qu&#8217;avant la perturbation le système se trouvait dans un état d&#8217;énergie bien défini <span class="math">\(\ket{i}\)</span>:
+</p>
+<div class="math">$$\ket{\psi(t_i)} = \ket{i}, \quad \psi_m(t_i) = \delta_{im}$$</div>
+<p>
+ce qui permet de simplifier l&#8217;équation de l&#8217;amplitude de la perturbation <span class="math">\(\psi_m(t)\)</span>:
+</p>
+<div class="math">$$\psi_m(t) = \delta_{im} + \frac{1}{\I}\int_{t_i}^t \D t' \E^{\I(\epsilon_m-\epsilon_i)t'} \braket{m|V(x,t')|i}\,.$$</div>
+<p>
+En général l&#8217;état final <span class="math">\(\ket{\psi(t)} = \ket{f}\)</span> est différent de <span class="math">\(\ket{i}\)</span>:
+</p>
+<div class="math">$$\psi_f(t) = \frac{1}{\I}\int_{t_i}^t \D t' \E^{\I(\epsilon_f-\epsilon_i)t'} \braket{f|V(x,t')|i}\,.$$</div>
+<p>
+La probabilité de transition <span class="math">\(P_{fi}\)</span> entre l&#8217;état initial <span class="math">\(\ket{i}\)</span> et l&#8217;état final <span class="math">\(\ket{f}\)</span>, est simplement donnée par le carré de&nbsp;l&#8217;amplitude:
+</p>
+<div class="math">$$P_{fi}(t) = |\psi_f(t)|^2 = \left| \int_{t_i}^t \D t' \E^{\I(\epsilon_f-\epsilon_i)t'} \braket{f|V(x,t')|i} \right|^2\,,$$</div>
+<p>
+qui se calcule une fois déterminés les éléments de matrice de la perturbation dans la base du hamiltonien non perturbé: <span class="math">\(\braket{f|V|i}\)</span>.</p>
+<p>Dans notre cas on doit calculer <span class="math">\(\braket{n|x|0}\)</span>, puisque l&#8217;état initial est l&#8217;état fondamental et l&#8217;état final un certain niveau excité qu&#8217;on va&nbsp;déterminer,
+</p>
+<div class="math">$$\braket{n|x|0} = \frac{1}{\sqrt{2}} \braket{n| a + a^\dagger | 0} = \frac{1}{\sqrt{2}} \braket{n|1}=\frac{\delta_{n1}}{\sqrt{2}}$$</div>
+<p>
+(bien évidement <span class="math">\(a\ket{0} = 0\)</span> et <span class="math">\(a^\dagger \ket{0} = \ket{1}\)</span>). On trouve que la seule amplitude non nulle est celle de la transition entre l&#8217;état fondamental et le premier état excité. La probabilité de transition est par&nbsp;conséquent:
+</p>
+<div class="math">\begin{align*}
+P_{10}(t) &amp;= \frac{\lambda^2}{2} \left| \int_0^t \D t' \E^{\I t'} \E^{-t'/\tau} \right|^2 \\
+&amp;= \frac{\lambda^2}{2} \left| \frac{\E^{\I t - t/\tau} - 1}{\I - 1/\tau}  \right|^2 \\
+&amp;= \frac{\lambda^2}{2} \frac{\E^{-2t/\tau} - 2 \E^{-t/\tau} \cos(t) + 1}{1 + 1/\tau^2}
+\end{align*}</div>
+<p>
+qu&#8217;on obtient en séparant partie réelle et imaginaire <span class="math">\(\E{\I x} = \cos x + \I \sin x\)</span> et utilisant <span class="math">\(|a + \I b|^2 = |a|^2 + |b|^2\)</span> ainsi que <span class="math">\(|z_1/z_2| = |z_1|/z_2|\)</span>. Dans la limite <span class="math">\(t \gg \tau\)</span>, on&nbsp;trouve,
+</p>
+<div class="math">$$P_{10}(t) = \frac{\lambda^2}{2} \frac{\tau^2}{1 + \tau^2}$$</div>
+<p>
+qui est indépendante du temps. On remarque que pour <span class="math">\(\tau \rightarrow \infty\)</span> le maximum de la probabilité tends&nbsp;vers,
+</p>
+<div class="math">$$\lim_{\tau \rightarrow \infty} \lim_{t \rightarrow \infty} P_{10}(t) = \frac{\lambda^2}{2}$$</div>
+<blockquote>
+<p><img src="/images/MQ-p10t.svg" alt="probabilité de transition" style="height: 230px;"/></p>
+<p>La probabilité d&#8217;excitation de l&#8217;état fondamental d&#8217;un oscillateur harmonique, en unités de <span class="math">\(\lambda^2 = F_0^2/m\omega^3\hbar\)</span>, et pour différentes valeurs de <span class="math">\(\tau\)</span>; <span class="math">\(\tau\)</span> est le paramètre de relaxation de la force <span class="math">\(F=F_0\E^{-t/\tau}\)</span>. On montre la valeur asymptotique <span class="math">\(t \rightarrow \infty\)</span>: bien après l&#8217;application de la force <span class="math">\(t \gg \tau\)</span> on a unejj probabilité <span class="math">\((\lambda \tau)^2/2(1+\tau^2)\)</span> de trouver l&#8217;oscillateur, initialement à l&#8217;état fondamental, dans le premier état excité <span class="math">\(n = 1\)</span>. Le temps est mesuré en unités de la pulsation de&nbsp;l&#8217;oscillateur.</p>
+</blockquote>
+<p>Si au contraire, on fixe la valeur du temps et on fait tendre <span class="math">\(\tau \rightarrow \infty\)</span> on obtient une probabilité qui varie périodiquement, avec la période de&nbsp;l&#8217;oscillateur:
+</p>
+<div class="math">$$\lim_{\tau \rightarrow \infty} P_{10}(t) = \lambda^2(1-\cos t)$$</div>
+<p>
+(rappelez vous que la méthode suppose <span class="math">\(\lambda \ll 1\)</span>), ce qui correspond à l&#8217;application d&#8217;une force constante à partir de <span class="math">\(t = 0\)</span>.</p>
+<h2>Diffusion par une sphère&nbsp;rigide</h2>
+<p>Montrez que la section efficace de la diffusion par une sphère rigide de rayon <span class="math">\(a\)</span>,
+</p>
+<div class="math">$$V(r) = \begin{cases} \infty\,, &amp; r \le a\\ 0\,, &amp; r \ge a \end{cases}$$</div>
+<p>
+est
+</p>
+<div class="math">$$\sigma = \frac{4\pi}{k^2} \sum_{l=0}^\infty (2l+1) \left| \frac{\mathrm{j}_l(ka)}{\mathrm{h}_l(ka)}  \right|^2$$</div>
+<p>
+Étudiez la limite <span class="math">\(ka \ll 1\)</span>; quelle est la valeur de <span class="math">\(l\)</span> qui contribue davantage à la&nbsp;diffusion?</p>
+<h3>Solution</h3>
+<blockquote>
+<p><img src="/images/MQ-diff_Sph.svg" alt="rigid sphere scattering" style="height: 250px;"/></p>
+<p>La sphère rigide est représentée par un potentiel infini à l&#8217;intérieur et nul à&nbsp;l&#8217;extérieur.</p>
+</blockquote>
+<p>On commence avec quelques rappels sur l&#8217;équation de Schrödinger en coordonnées sphériques <span class="math">\((r,\theta,\phi)\)</span>. Pour la particule libre de masse <span class="math">\(m=1\)</span> le hamiltonien est <span class="math">\(H = p^2/2\)</span>, et les états stationnaires sont les solutions de l&#8217;équation à valeurs et vecteurs propres <span class="math">\(H\ket{\psi} = E \ket{\psi}\)</span>. En représentation position on&nbsp;a:
+</p>
+<div class="math">\begin{equation} \label{p2} p^2 = p_r^2 + \frac{L^2}{r^2}, \quad p_r^2 = -\frac{1}{r^2} \frac{\partial }{\partial r} r^2 \frac{\partial }{\partial r}\end{equation}</div>
+<p>
+et <span class="math">\(\bm L\)</span> le moment cinétique, dont les vecteurs propres sont les harmoniques&nbsp;sphériques:
+</p>
+<div class="math">$$Y_{lm}(\theta,\phi) = \braket{\theta\phi|lm}$$</div>
+<p>
+où (<span class="math">\(\hbar=1\)</span>),
+</p>
+<div class="math">\begin{equation} \label{L2} L^2 \ket{lm} = l(l+1) \ket{lm}, \quad L_z \ket{lm} = m \ket{lm} \end{equation}</div>
+<p>
+sont les nombres quantiques orbital (<span class="math">\(l=0,1, \ldots\)</span>) et magnétique (<span class="math">\(m\)</span>, <span class="math">\(-l \le m \le m\)</span>). En coordonnées on&nbsp;a:
+</p>
+<div class="math">$$L^2 = \frac{1}{\sin \theta} \frac{\partial }{\partial \theta } \sin \theta \frac{\partial }{\partial \theta } + \frac{1}{\sin^2 \theta } \frac{\partial^2 }{\partial \phi^2}$$</div>
+<p>
+et
+</p>
+<div class="math">$$L_z = -\I \frac{\partial }{\partial \phi}$$</div>
+<p>
+Comme le hamiltonien commute avec <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>, les vecteurs propres <span class="math">\(\ket{lm}\)</span> sont aussi vecteurs propres de <span class="math">\(H\)</span>. La fonction d&#8217;onde peut donc s&#8217;écrire&nbsp;comme:
+</p>
+<div class="math">$$\psi(r,\theta,\phi) = R_{l}(r) Y_{lm}(\theta,\phi) = \braket{r\theta\phi|\psi}$$</div>
+<p>
+avec <span class="math">\(R\)</span> la fonction d&#8217;onde radial (<span class="math">\(R\)</span> dépend des paramètres <span class="math">\(l\)</span> et de <span class="math">\(E\)</span>). Elle satisfait, en substituant <span class="math">\(\psi\)</span> dans <span class="math">\(H \psi = E \psi\)</span>, l&#8217;équation&nbsp;différentielle:
+</p>
+<div class="math">$$\frac{p_r^2}{2} R_{l}(r) + \frac{l(l+1)}{2} R_{l}(r) = E R_{l}(r)$$</div>
+<p>
+où on a utilisé <span class="math">\(\eqref{p2}\)</span> et <span class="math">\(\eqref{L2}\)</span>. La solution de cette équation dépend de deux constantes (c&#8217;est une équation de deuxième degré), et peut s&#8217;écrire comme une superposition de fonctions de bessel&nbsp;sphériques:
+</p>
+<div class="math">$$R_{l} = A_l \mathrm{j}_l(kr) + B_l \mathrm{n}_l(kr)$$</div>
+<p>
+En effet, l&#8217;équation&nbsp;radiale,
+</p>
+<div class="math">$$R'' + \frac{2}{r}R' - \frac{l(l+1)}{r^2} + k^2 R = 0, \quad k = \sqrt{2E}$$</div>
+<p>
+(<span class="math">\(R' = \D R / \D r\)</span>) se réduit pour <span class="math">\(l=0\)</span>,&nbsp;à
+</p>
+<div class="math">$$(rR)'' + k^2 rR = 0$$</div>
+<p>
+où on s&#8217;est servi&nbsp;de
+</p>
+<div class="math">$$(rR)'' = R' + (rR')' = 2R' + rR''$$</div>
+<p>
+Or cette équation est&nbsp;élémentaire:
+</p>
+<div class="math">$$R_0 = A_0 \mathrm{j}_0(kr) + B_0 \mathrm{n}_0(kr)$$</div>
+<p>
+avec,
+</p>
+<div class="math">$$\mathrm{j}_0(r) = \frac{\sin r}{r}, \quad  \mathrm{n}_0(kr) = - \frac{\cos r}{r}$$</div>
+<p>
+Notez que la solution en <span class="math">\(\mathrm{n}_0(kr)\)</span> est singulière à l&#8217;origine, tandis que les deux décroissent à l&#8217;infini comme <span class="math">\(\sim 1/r\)</span>.</p>
+<p>La solution pour <span class="math">\(l=1,2,\ldots\)</span>, s&#8217;obtient par recurrence. En effet, posant <span class="math">\(R_l(r) = r^l w_l(r)\)</span>, on peut&nbsp;démontrer:
+</p>
+<div class="math">$$w_{l+1} = \frac{1}{r} \frac{\D}{\D r} w_l$$</div>
+<p>
+ou,
+</p>
+<div class="math">$$w_{l} = \left( \frac{1}{r} \frac{\D}{\D r} \right)^l w_0\,.$$</div>
+<p>
+Ce qui donne (en ajoutant le facteur <span class="math">\(r^l\)</span>):
+</p>
+<div class="math">$$\mathrm{j}_{l} = (-r)^l \left( \frac{1}{r} \frac{\D}{\D r} \right)^l \frac{\sin r}{r}\,, \quad \mathrm{j}_{l} = -(-r)^l \left( \frac{1}{r} \frac{\D}{\D r} \right)^l \frac{\cos r}{r}$$</div>
+<p>
+(le facteur <span class="math">\((-1)^l\)</span> est introduit par&nbsp;convention).</p>
+<p>Pour <span class="math">\(r\rightarrow 0\)</span> on a le&nbsp;comportement,
+</p>
+<div class="math">$$\mathrm{j}_l(r) = \frac{r^l}{1\times3\times \ldots \times (2l+1)} = \frac{r^l}{(2l+1)!!}$$</div>
+<p>
+et
+</p>
+<div class="math">$$\mathrm{n}_l(r) = -\frac{1\times3\times \ldots \times (2l-1)}{r^{L+1}} = \frac{(2l-1)!!}{r^{l+1}}$$</div>
+<p>
+et pour <span class="math">\(r\rightarrow\infty\)</span>,
+</p>
+<div class="math">$$\mathrm{j}_l(r) = \frac{1}{r} \sin\left( r - \frac{\pi l}{2} \right),\quad \mathrm{n}_l(r) = -\frac{1}{r} \cos\left( r - \frac{\pi l}{2} \right)$$</div>
+<p>
+La combinaison&nbsp;complexe:
+</p>
+<div class="math">$$\mathrm{h}_l(r) = \mathrm{j}_l(r) + \I \mathrm{n}_l(r)$$</div>
+<p>
+la fonction de hankel, se comporte asymptotiquement&nbsp;comme,
+</p>
+<div class="math">\begin{equation} \label{hinfty} \mathrm{h}_l(r) = \frac{\E^{\I r - \I \pi l/2}}{\I r}\end{equation}</div>
+<p>On a maintenant l&#8217;expression générale de la fonction d&#8217;onde pour une particule libre en coordonnées&nbsp;sphériques: 
+</p>
+<div class="math">\begin{equation} \label{psir} \psi(r,\theta,\phi) = \sum_l [A_l \mathrm{j}_l(kr) + B_l \mathrm{n}_l(kr)] P_l(\cos \theta) \end{equation}</div>
+<p>
+où les polynômes de legendre <span class="math">\(P_l\)</span> sont reliés aux harmonique sphériques par la&nbsp;formule:
+</p>
+<div class="math">$$Y_{l0} = \sqrt{\frac{2l + 1}{4\pi}} P_l(\cos \theta)$$</div>
+<p>
+(dans notre problème toute dépendance de <span class="math">\(\phi\)</span> doit disparaître par symétrie, on pose donc <span class="math">\(m=0\)</span>).</p>
+<p>Comme le potentiel de la sphère rigide s&#8217;annule pour <span class="math">\(r&gt;a\)</span>, il nous suffit de nous assurer de la continuité de la fonction d&#8217;onde en <span class="math">\(r=a\)</span>, avec la solution à l&#8217;intérieur de la sphere, qui doit être nulle: <span class="math">\(\psi(r,\theta,\phi) = 0\)</span> (<span class="math">\(r &lt; a\)</span>). En outre, loin de l&#8217;origine (centre de diffusion), la fonction d&#8217;onde de l&#8217;onde diffusée, doit correspondre à une onde sphérique sortante, telle que la fonction d&#8217;onde à grande distance de l&#8217;origine (<span class="math">\(r \gg a\)</span>) soit de la&nbsp;forme:
+</p>
+<div class="math">\begin{equation} \label{asymp} \psi \sim \E^{\I k z} + f(\theta) \frac{\E^{\I kr}}{r}\end{equation}</div>
+<p>
+avec <span class="math">\(f(\theta)\)</span> l&#8217;amplitude de diffusion (elle dépend aussi de l&#8217;orbital <span class="math">\(l\)</span> et de l&#8217;énergie <span class="math">\(E\)</span>). L&#8217;onde sphérique sortante se superpose à l&#8217;onde plane d&#8217;énergie <span class="math">\(E\)</span> incidente <span class="math">\(\E^{\I k z}\)</span>, avec <span class="math">\(k = \sqrt{2E}\)</span>.</p>
+<p>La difficulté qui se présente pour satisfaire ces conditions asymptotiques (onde incidente et diffusée) et de bord (continuité de la fonction d&#8217;onde, dans le cas présent), c&#8217;est que le potentiel est bien à symétrie sphérique mais l&#8217;onde incidente ne l&#8217;est pas, elle brise cette symétrie puisqu&#8217;elle définie une direction privilégiée (on en a choisi <span class="math">\(z\)</span> pour la direction de l&#8217;onde incidente). Pour pouvoir raccorder la solution sphérique du potentiel à l&#8217;onde incidente, on l&#8217;exprime à l&#8217;aide d&#8217;un développement en polynômes de legendre (en analogie avec la fonction d&#8217;onde <span class="math">\(\eqref{psir}\)</span>):
+</p>
+<div class="math">\begin{equation} \label{oi} \E^{\I k z} = \sum_l \I^l (2l+1) \mathrm{j}_l(kr) P_l(\cos \theta)\end{equation}</div>
+<p>
+On voudrait que pour <span class="math">\(r \gg a\)</span> la solution générale <span class="math">\(\eqref{psir}\)</span> se comporte comme <span class="math">\(\E^{\I kr}/r\)</span>, ce qui correspond à la fonction de hankel <span class="math">\(\eqref{hinfty}\)</span>, on choisit <span class="math">\(B_l = \I A_l\)</span>:
+</p>
+<div class="math">$$\psi(r,\theta) = \E^{\I k z} + \sum_l A_l \mathrm{h}_l(kr) P_l(\cos \theta)$$</div>
+<p>
+qu&#8217;on peut récrire en utilisant <span class="math">\(\eqref{oi}\)</span>:
+</p>
+<div class="math">\begin{equation} \label{os} \psi(r,\theta) = \sum_l \I^l (2l+1)\left[ \mathrm{j}_l(kr) + \I C_l \mathrm{h}_l(kr) \right] P_l(\cos \theta)\end{equation}</div>
+<p>
+où on a redéfini les constantes <span class="math">\(A_l\)</span> au profit de <span class="math">\(C_l\)</span>. Notez que <span class="math">\(\psi\)</span> est une superposition d&#8217;une exponentielle (onde plane) et des bessel spériques, elle est donc solution de l&#8217;équation de Schrödinger avec potentiel nul (région extérieure à la sphère rigide). Elle satisfait par construction la condition asymptotique <span class="math">\(\eqref{asymp}\)</span>. On fixe <span class="math">\(A_l\)</span> en observant que pour <span class="math">\(r = a\)</span> on a <span class="math">\(\psi = 0\)</span>:
+</p>
+<div class="math">$$C_l = - \frac{\mathrm{j}_(ka)}{\mathrm{h}_l(ka)}$$</div>
+<p>Si maintenant on compare <span class="math">\(\eqref{asymp}\)</span> et <span class="math">\(\eqref{os}\)</span> on&nbsp;déduit:
+</p>
+<div class="math">$$f_l(k,\theta) = \sum_l \frac{2l+1}{k} C_l P_l(\cos\theta)$$</div>
+<p>
+qu&#8217;on sait est reliée à la section efficace par la&nbsp;formule:
+</p>
+<div class="math">$$\frac{\D \sigma_l}{\D \theta} = 2\pi |f_l(k,\theta)|^2$$</div>
+<p> 
+ou
+</p>
+<div class="math">$$\sigma(k) = \frac{4\pi}{k^2}\sum_l (2l+1) |C_l|^2$$</div>
+<p>
+où on a utilisé la relation d&#8217;orthogonalité des&nbsp;polynômes:
+</p>
+<div class="math">$$\int_{-1}^{1} \D x \, P_l(x) P_{l'}(x) = \frac{2}{2l+1} \delta_{ll'}$$</div>
+<p>
+on arrive au résultat&nbsp;recherché:
+</p>
+<div class="math">$$\sigma(k) =  \frac{4\pi}{k^2}\sum_l (2l+1) \left| \frac{\mathrm{j}_(ka)}{\mathrm{h}_l(ka)} \right|^2$$</div>
+<p>Le premier terme de la somme, <span class="math">\(l = 0\)</span>&nbsp;est,
+</p>
+<div class="math">$$\sigma_0(k) = \frac{4\pi}{k^2} (ka)^2 \frac{\sin^2(ka)}{(ka)^2} \approx 4\pi a^2$$</div>
+<p>
+où la dernière approximation correspond au résultat en supposant basse énergie <span class="math">\(1/k \ll a\)</span> (la longueur d&#8217;onde de la particule est plus grande que la taille de la&nbsp;sphère). </p>
+<p>Dans cette limite de basse énergie, on peut utiliser le développement limité des fonctions de bessel&nbsp;sphériques:
+</p>
+<div class="math">$$\frac{\mathrm{j}_l^2}{\mathrm{j}_l^2 + \mathrm{n}_l^2} \approx \frac{\mathrm{j}_l^2}{\mathrm{n}_l^2} \approx \frac{(ka)^{2(2l+1)}}{(2l+1)^2 [(2l-1)!!]^4}$$</div>
+<p>
+ce qui décroit rapidement avec <span class="math">\(l\)</span> (<span class="math">\(ka &lt; 1\)</span>). On en déduit que le terme en <span class="math">\(l=0\)</span> domine la diffusion à basse énergie. Cette observation est valable pour tout potentiel central de porté de l&#8217;ordre de <span class="math">\(a\)</span>. On peut aussi remarquer que le résultat classique de la diffusion par une sphère dure est <span class="math">\(\sigma_c= \pi r^2\)</span> (l&#8217;aire projetée de la sphère sur la direction de la particule incidente), 4 fois plus petit que le cas&nbsp;quantique.</p>
+<blockquote>
+<p><img src="/images/MQ-diffS0.svg" alt="cross section small k" style="height: 230px;"/>
+<img src="/images/MQ-diffS1.svg" alt="cross section large k" style="height: 230px;"/></p>
+<p>Section efficace en fonction de l&#8217;énergie. À basse énergie elle approche <span class="math">\(4\pi a^2\)</span>, tandis qu&#8217;à haute énergie elle tend asymptotiquement vers <span class="math">\(2\pi a^2\)</span>.</p>
+</blockquote>
+<h4>Codes:</h4>
+<p>Voici le code de la figure du potentiel (diffusion), écrit en <a href="https://ctan.org/pkg/asymptote?lang=en"><code>asymptote</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="n">solids</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">graph3</span><span class="p">;</span>
+<span class="nv">settings</span><span class="p">.</span><span class="n">render</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="nv">settings</span><span class="p">.</span><span class="nf">prc</span><span class="o">=</span><span class="k">false</span><span class="p">;</span>
+
+<span class="nf">size</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="nv">IgnoreAspect</span><span class="p">);</span>
+
+<span class="c">// define axes</span>
+<span class="kt">real</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.7</span><span class="p">;</span>
+<span class="nf">xaxis3</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$x$&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">yaxis3</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$y$&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">zaxis3</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$z$&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">dot</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+
+<span class="c">// draw the sphere</span>
+<span class="kt">revolution</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sphere</span><span class="p">(</span><span class="n">O</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="nf">draw</span><span class="p">(</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">longitudinalpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nullpen</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">draw</span><span class="p">(</span><span class="w"> </span><span class="n">V</span><span class="p">.</span><span class="n">silhouette</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+
+<span class="c">// put labels</span>
+<span class="kt">real</span><span class="w"> </span><span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mf">1.1</span><span class="p">;</span>
+<span class="kt">real</span><span class="w"> </span><span class="nv">phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span>
+<span class="kt">real</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.02</span><span class="p">;</span>
+<span class="kt">triple</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="nv">phi</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="nv">phi</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">));</span>
+<span class="nf">label</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$r = a$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="nf">gray</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">label</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$V = \infty$&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<span class="nf">label</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;$V = 0$&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.6</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+</code></pre></div>
+
+<p>Code python pour les figures de la section&nbsp;efficace:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">scat</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="c1"># computes the cross section</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">j2</span> <span class="o">=</span> <span class="n">spherical_jn</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">spherical_yn</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">j2</span> <span class="o">+</span> <span class="n">n2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="nb">sum</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">j2</span><span class="o">/</span><span class="n">h2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sect</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="c1"># test convergence as a function of N = max(l)</span>
+    <span class="k">return</span> <span class="n">array</span><span class="p">([</span><span class="n">scat</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)])</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">o</span> <span class="o">=</span> <span class="mi">35</span><span class="p">):</span>
+    <span class="c1"># cross section as a function of k</span>
+    <span class="k">return</span> <span class="n">array</span><span class="p">([</span><span class="n">scat</span><span class="p">(</span><span class="n">kn</span><span class="p">,</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">kn</span> <span class="ow">in</span> <span class="n">k</span><span class="p">])</span>
+<span class="c1">#</span>
+<span class="c1"># k &lt;&lt; 1</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">sigma</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">),</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$ka$&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\sigma_l/4\pi a^2$&quot;</span><span class="p">);</span>
+<span class="c1">#</span>
+<span class="c1"># k &gt;&gt; 1</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">sigma</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">),</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">([</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span><span class="s1">&#39;k:&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$ka$&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\sigma_l/4\pi a^2$&quot;</span><span class="p">);</span>
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+</code></pre></div>
+
+<h2>Intrication et inégalité de&nbsp;Bell</h2>
+<h3>Matrice densité et&nbsp;intrication</h3>
+<p>La matrice densité d&#8217;un système composite est définie par (voir le&nbsp;cours)
+</p>
+<div class="math">$$\rho=\sum_i p_i \ket{\psi_i}\bra{\psi_i}, \; \sum_i p_i = 1$$</div>
+<p>
+Un système est pur si <span class="math">\(\rho = \ket{psi}\bra{\psi}\)</span>. Soit un système pur formé de deux qubits A et B, son espace de hilbert est le produit tensoriel <span class="math">\(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1\)</span>, des espaces de chaque qubit.  L&#8217;état <span class="math">\(\psi \in \mathcal{H}\)</span> n&#8217;est pas intriqué s&#8217;il peut s&#8217;écrire comme un&nbsp;produit:
+</p>
+<div class="math">$$\ket{\psi} = \ket{A} \otimes \ket{B}$$</div>
+<p>
+autrement <span class="math">\(\ket{\psi}\)</span> est&nbsp;intriqué.</p>
+<p>Pour tester la pureté d&#8217;un état on utilise le fait que pour un état pur <span class="math">\(\Tr \, \rho^2 = 1\)</span> et pour un état mixte (celui d&#8217;un système composite où chaque composante à une probabilité <span class="math">\(p_i\)</span> de se trouver dans l&#8217;état <span class="math">\(\psi_i\)</span>) la trace du carré de la matrice densité est strictement inférieure à&nbsp;1:
+</p>
+<div class="math">$$\Tr \, \rho^2 &lt; 1$$</div>
+<p>
+(état&nbsp;mixte).</p>
+<p>Un qubit peut se trouver dans un superposition de deux états <span class="math">\(\ket{0}\)</span> (spin up) et <span class="math">\(\ket{1}\)</span> (spin down), éléments de la base canonique et vecteurs propres de la matrice de pauli <span class="math">\(\sigma_z = Z\)</span>.</p>
+<ul>
+<li>Calculez la matrice densité d&#8217;un système d&#8217;un seul qubit dans l&#8217;état 
+    <div class="math">$$\ket{+} = \frac{1}{\sqrt{2}} (\ket{0} + \ket{1})$$</div>
+    qui est un vecteur propre de <span class="math">\(\sigma_x = X\)</span>.</li>
+<li>Calculez la matrice densité d&#8217;un système de deux qubits se trouvant dans l&#8217;état
+    <div class="math">$$\ket{\psi} = \ket{+} \otimes \ket{+} = \ket{++}$$</div> 
+    (on omet le symbole <span class="math">\(\otimes\)</span> pour simplifier la notation, notez que le premier <span class="math">\(+\)</span> correspond au sous-système A, et le second au&nbsp;B)</li>
+<li>Appliquez l&#8217;opérateur représenté par la matrice diagonale (<span class="math">\(4\times4\)</span>):
+    <div class="math">$$\mathrm{CZ} = \mathrm{diag}(1,1,1,-1)$$</div>
+    à l&#8217;état <span class="math">\(\ket{++}\)</span>. Montrez que l&#8217;état résultant <span class="math">\(\ket{\psi} = \mathrm{CZ} \ket{++}\)</span> est&nbsp;intriqué.</li>
+<li>Calculez la matrice densité <span class="math">\(\rho =&nbsp;\ket{\psi}\bra{\psi}\)</span></li>
+</ul>
+<p>L&#8217;état général d&#8217;un système de deux qubits&nbsp;est,
+</p>
+<div class="math">$$\ket{\psi} = \sum_{i,j} \psi_{ij} \ket{a_i} \otimes \ket{b_j} = \Psi \ket{A} \otimes \ket{B},\; i,j=0,1$$</div>
+<p>
+où la matrice <span class="math">\(\Psi\)</span> représente l&#8217;état <span class="math">\(\ket{\psi}\)</span> (oui, on peut représenter un vecteur par une matrice!) . Avec cette notation la matrice densité correspondante&nbsp;est,
+</p>
+<div class="math">$$\rho = ket{A} \otimes \ket{B} \Psi \Psi^\dagger \bra{B} \otimes \bra{A}$$</div>
+<p>
+(les <span class="math">\(\Psi\)</span> commutent avec les kets). La matrice densité réduite de A est la trace partielle sur B de <span class="math">\(\rho\)</span>:
+</p>
+<div class="math">$$\rho_A = \Tr_B \rho = \ket{A} \Psi \Psi^\dagger \bra{A} = \sum_{ii'} (\Psi \Psi^\dagger)_{ii'} \ket{a_i}\bra{a_{i'}}$$</div>
+<ul>
+<li>Calculez la trace partielle de <span class="math">\(\rho\)</span> est montrez que la matrice densité réduite du premier qubit est
+    <div class="math">$$\rho_A = \frac{1}{2} I$$</div>
+    avec <span class="math">\(I = \mathrm{diag}(1,1)\)</span> la matrice&nbsp;identité</li>
+<li>Discutez (point important!) la différence physique entre l&#8217;état <span class="math">\(\ket{+}\)</span> et l&#8217;état <span class="math">\(\rho_A\)</span> (le deux se réfèrent à un&nbsp;qubit).</li>
+</ul>
+<p>On est maintenant en position d&#8217;étudier le théorème de Bell, qui nous montre qu&#8217;un état intriqué contient des corrélations non classiques (une sorte de preuve que la nature est&nbsp;quantique!).</p>
+<h3>Inégalité de&nbsp;Bell</h3>
+<p>Alice (A) et Bob (B) ont chacun une particule (un qubit dans le cas quantique); Alice fait deux mesures sur les propriétés <span class="math">\(Q\)</span> et <span class="math">\(R\)</span> de sa particule (par exemple deux orientations du moment cinétique, ou spin dans le cas quantique) et Bob mesure <span class="math">\(S\)</span> et <span class="math">\(T\)</span>; on suppose que ces propriétés ne prennent que les valeurs <span class="math">\(+1\)</span> ou <span class="math">\(-1\)</span>. On s&#8217;intéresse à la&nbsp;grandeur 
+</p>
+<div class="math">$$O=QS + RS + RT - QT$$</div>
+<p>
+La distribution de probabilité <span class="math">\(p(q,r,s,t)\)</span> que <span class="math">\(Q=q\)</span>, <span class="math">\(R=r\)</span>, <span class="math">\(S=s\)</span> et <span class="math">\(T=t\)</span> est&nbsp;arbitraire.</p>
+<ul>
+<li>Montrez que la valeur espérée <span class="math">\(\mathrm{E}(O)  = \braket{O} \le 2\)</span> (résultat&nbsp;classique)</li>
+</ul>
+<p>Supposons maintenant que les propriétés de la particule correspondent à des opérateurs quantiques et que l&#8217;état de deux particules (deux qubits, ou deux spins) est l&#8217;état de&nbsp;Bell:
+</p>
+<div class="math">$$\ket{\Phi} = \frac{1}{\sqrt{2}} (\ket{01} - \ket{10})$$</div>
+<p>
+Alice mesure les propriétés <span class="math">\(Q\)</span> et <span class="math">\(R\)</span> définies par les&nbsp;opérateurs:
+</p>
+<div class="math">$$Q = Z_A, \quad R = X_A$$</div>
+<p>
+et Bob mesure <span class="math">\(S\)</span> et <span class="math">\(T\)</span>:
+</p>
+<div class="math">$$S = -\frac{1}{\sqrt{2}} ( Z_B + X_B), \quad T = \frac{1}{\sqrt{2}} ( Z_B - X_B)$$</div>
+<ul>
+<li>Montrez que 
+    <div class="math">$$\braket{O} = 2 \sqrt{2}$$</div>
+</li>
+<li>Discutez ce&nbsp;résultat!</li>
+</ul>
+<p>Notez que l&#8217;état quantique distribué à Alice et Bob est un état intriqué; changez-le par un quelconque état produit et voyez le&nbsp;résultat:</p>
+<ul>
+<li>est-il en contradiction avec le résultat&nbsp;classique?</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

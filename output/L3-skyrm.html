@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: Magnetic skyrmions | Random physics
+</title>
+    <link rel="canonical" href="/L3-skyrm.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="We explore, using the interesting example of skyrmions in magnetic materials, some elementary concepts of topological phases in condensed matter. We proceed by traveling over different scales form macroscopic to microscopic and back.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2018-02-18T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        dim. 18 février 2018
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}&nbsp;\newcommand{\K}[1]{\left|#1\right\rangle}\)</span></p>
+<blockquote>
+<p>This lecture is intended for students of the &#8220;Licence de physique&#8221;, and in particular to those interested in theoretical physics. (<a href="/pdfs/L3-skyrm.pdf">.pdf</a>)</p>
+</blockquote>
+<h1>Skyrmion in magnetic&nbsp;nanostructures</h1>
+<h2>Thermodynamics</h2>
+<p>Thermodynamics investigates macroscopic systems in equilibrium. A magnetic material such iron, exhibits a state with definite magnetization at temperatures below the Curie critical temperature (the ferromagnetic state), and a paramagnetic state with vanishing magnetization, above the critical temperature. The equation of&nbsp;state:
+</p>
+<div class="math">$$\boldsymbol{M} = \boldsymbol{M}(T,\boldsymbol{H})$$</div>
+<p>
+relates the magnetization <span class="math">\(\boldsymbol{M}\)</span> to the temperature <span class="math">\(T\)</span> and the applied magnetic field <span class="math">\(\boldsymbol{H}\)</span>. A simple form is given by the implicit&nbsp;function:
+</p>
+<div class="math">\begin{equation}
+\label{mm0}
+m = m_0\tanh\left(\frac{Jm}{T} + \frac{\mu_B\mu_0 H}{T}\right),
+\end{equation}</div>
+<p>
+where <span class="math">\(m = M/M_s\)</span> is the magnetization in units of its saturation value and in the direction of the applied field, <span class="math">\(M_s = M(0,0)\)</span>, <span class="math">\(m_0\)</span> is the normalized magnetization for infinite field, and, <span class="math">\(J\)</span> and <span class="math">\(\mu_B\)</span> are two material parameters with units of energy and magnetic moment (Bohr magneton), respectively (<span class="math">\(\mu_0\)</span> is the vacuum permeability, and we set the Boltzmann constant to one, <span class="math">\(k_B=1\)</span>). For <span class="math">\(J=0\)</span> and weak magnetic field, <span class="math">\(M \sim H/T\)</span> the Curie law for a paramagnet. For zero field <span class="math">\(H=0\)</span> and <span class="math">\(T&lt;T_c=J\)</span>, the implicit equation (\ref{mm0}) has nonvanishing solutions, thus giving an equilibrium finite magnetization, the material is in its ferromagnetic&nbsp;state.</p>
+<blockquote>
+<p><img src="/images/L3-Ms.png" alt="hysteresis" style="height: 200px;"/></p>
+<p>Schematic hysteresis loop of a ferromagnetic&nbsp;material.</p>
+</blockquote>
+<p><strong>Remark</strong>: Dimensions of magnetic quantities: magnetic field <span class="math">\([B]=M/eT\)</span>, magnetization <span class="math">\([M]=[H]=e/LT\)</span>, magnetic moment <span class="math">\([\mu]=[\mu_B]=eL^2/T\)</span>, permeability <span class="math">\([\mu_0]=[B/M]= ML/e^2\)</span>.</p>
+<h2>Statistical&nbsp;mechanics</h2>
+<p>Ferromagnetism is a quantum effect. Form a microscopic point of view, ferromagnetism is the result of the exchange interaction between spins. One simple effective model of this interaction is given by the Heisenberg&nbsp;hamiltonian:</p>
+<blockquote>
+<p><img src="/images/L3-ising_spins.png" alt="ising spins" style="height: 200px;"/> </p>
+<p>Spins in a square lattice; the gray region is a domain of equally oriented&nbsp;spins</p>
+</blockquote>
+<div class="math">$$\mathcal{H}_\text{ex} = -J\sum_{\langle i,j \rangle} \boldsymbol{S}_i \cdot \boldsymbol{S}_j$$</div>
+<p>
+where <span class="math">\(J\)</span> is the exchange coupling constant (we take <span class="math">\(\hbar = 1\)</span>), and <span class="math">\(\boldsymbol{S}_i\)</span> is the spin of site <span class="math">\(i\)</span> in the crystal lattice; the sum is over nearest neighbors. The minimum of energy is reached when all spins are aligned, the ferromagnetic state. In fact, equation (\ref{mm0}) is obtained from a mean field approximation of the Heisenberg model, using the tools of statistical&nbsp;physics.</p>
+<p>In the framework of the Gibbs canonical ensemble, the free energy <span class="math">\(F\)</span> is computed from the partition function <span class="math">\(Z\)</span>,
+</p>
+<div class="math">$$F(T,\boldsymbol{H}) = -T \ln Z(T,\boldsymbol{H})$$</div>
+<p>
+in the thermodynamic limit. The partition function is a sum over all microscopic energy states of the macroscopic&nbsp;system,
+</p>
+<div class="math">$$Z(T,\boldsymbol{H}) = \sum_{\{\boldsymbol{S}_i\}} \E^{-\mathcal{H}[\boldsymbol{S}_i]/T},$$</div>
+<p>
+where
+</p>
+<div class="math">$$\mathcal{H} = \mathcal{H}_\text{ex} - \mu_B\mu_0 \sum_i \boldsymbol{H} \cdot \boldsymbol{S}_i.$$</div>
+<p>
+contains the interaction between the material spins and the applied field. The probability of a microscopic configuration <span class="math">\(S = \{\boldsymbol{S}_i\}\)</span>&nbsp;is,
+</p>
+<div class="math">$$P(S) = \frac{\E^{-\mathcal{H}[S]/T}}{Z}$$</div>
+<p>
+The magnetization is readily computed using the partition&nbsp;function:
+</p>
+<div class="math">$$\boldsymbol M = -\frac{1}{\mu_0 V Z} \frac{\partial }{\partial \boldsymbol{H}}Z = \frac{\mu_B}{V} \sum_i \langle\boldsymbol{S_i}\rangle$$</div>
+<p>
+(<span class="math">\(V\)</span> is the volume) and the brackets are for the average with the probability <span class="math">\(P(S)\)</span>. We observe that the macroscopic magnetization is the thermal averaging of the microscopic spins; each spin being associated with an elementary magnetic moment <span class="math">\(\mu_B\)</span>. Introducing an effective magnetic&nbsp;field:
+</p>
+<div class="math">$$H_\text{eff} = H + \frac{J}{\mu_B\mu_0} \sum_i \langle S_i \rangle$$</div>
+<p>
+(with axes oriented in the direction of the magnetic field), and assuming that the spin can take only two values <span class="math">\(S_i = \pm 1/2\)</span>, one finds the mean field state equation&nbsp;(\ref{mm0}).</p>
+<h2>Quantum&nbsp;mechanics</h2>
+<p>The value of the exchange energy <span class="math">\(J\)</span> depends on the electronic structure of the ferromagnetic material; therefore its computation is quantum mechanical, we need to solve the Schrödinger equation to find the matrix&nbsp;element,
+</p>
+<div class="math">$$J = \langle \boldsymbol{x}_1 \boldsymbol{x}_2| U | \boldsymbol{x}_2 \boldsymbol{x}_1\rangle$$</div>
+<p>
+where <span class="math">\(U\)</span> is the Coulomb interaction (operator) and <span class="math">\(\K{\boldsymbol{x}_1 \boldsymbol{x}_2} = \K{\boldsymbol{x}_1} \otimes \K{\boldsymbol{x}_2}\)</span> is the position two particle&nbsp;state.</p>
+<h2>Micromagnetics</h2>
+<p>The Curie temperature of magnetic materials is much larger than the standard normal temperature implying that their natural state is ferromagnetic (<span class="math">\(T_c\approx 1000\,\mathrm{K}\)</span> for iron). As such one may think that natural magnets must posses a magnetization of the order of <span class="math">\(M_s\)</span>, the saturation value at low temperature and magnetic field.  However, natural materials are not strongly magnetized. The absence of spontaneous magnetization is due to the existence of magnetic domains. Natural ferromagnets are composed by regions where the magnetization is uniform, but each one may have a different magnetization direction. In a celebrated paper <a href="/pdfs/Landau-1935fk.pdf">Landau and Lifshitz</a>, developed a theory of these micromagnetic&nbsp;domains. </p>
+<p>Micromagnetic theory describes scales intermediate between the microscopic scales of the Heisenberg model, and the macroscopic scales of the thermodynamic model. At these scales, the characteristic length of the magnetization gradients are much larger than the atomic scale (the crystal cell size <span class="math">\(a\)</span>), and a continuum approximation (or coarse-graining) of the microscopic Heisenberg model becomes relevant. The idea of coarse-graining is to take a bunch of spins of size <span class="math">\(\ell\)</span> around a point <span class="math">\(\boldsymbol{x}\)</span> and define a local magnetization by the&nbsp;formula,
+</p>
+<div class="math">$$\boldsymbol{M}(\boldsymbol{x},t) \sim \frac{1}{V(\ell)} \sum_{i\in B_\boldsymbol{x}(\ell)} \langle \boldsymbol{S}_i(t) \rangle$$</div>
+<p>
+where <span class="math">\(B_\boldsymbol{x}(\ell)\)</span> is a ball of radius <span class="math">\(\ell\)</span> and center <span class="math">\(\boldsymbol{x}\)</span>, <span class="math">\(V(\ell)\)</span> is its volume, and where <span class="math">\(t\)</span> accounts for the time variation, due to the presence of an external time dependent field, or more generally, to the evolution of a non-equilibrium state. The coarse-grained magnetization is called the <em>order parameter</em> of the magnetic material within the Landau theory of phase transition, and can be used in a form equivalent to the hydrodynamics quantities, such the velocity field or the pressure of a&nbsp;fluid.</p>
+<p>In the continuum limit the magnetic hamiltonien becomes a <em>free energy</em> depending on the order parameter <span class="math">\(F[\boldsymbol{M}]\)</span> whose minimization gives the evolution equation of the magnetization. For instance, near the ferromagnetic-paramagnetic transition, the mean field behavior (we used in the thermodynamic section), is essentially recovered with the Landau free&nbsp;energy:
+</p>
+<div class="math">$$F(M,H) = F_0(T) +  a(T) M^2 + b M^4 - \mu_0 M H$$</div>
+<p>
+where <span class="math">\(a,b\)</span> are phenomenological coefficient, which can be deduced from a microscopic calculation, and, near the transition <span class="math">\(a\sim T - T_c\)</span> change sign. The Landau free energy can be easily generalized to take into account spatial inhomogeneities and temporal variation of the order&nbsp;parameter.</p>
+<p>The Heisenberg part of the magnetic Landau free energy&nbsp;is,
+</p>
+<div class="math">$$F_\text{ex} = \int_V \D V\, A |\nabla \boldsymbol M|^2,$$</div>
+<p>
+where <span class="math">\(A \sim J/aM_s^2\)</span> is the exchange parameter, related to <span class="math">\(J\)</span>. This exchange term can be completed with other terms taking into account the magnetic anisotropy, the spin orbit coupling (Dzyaloshinskii-Moryia) or the magnetic dipole&nbsp;energy.</p>
+<p>The general form of the Landau-Lifshitz equation&nbsp;is,
+</p>
+<div class="math">\begin{equation}
+\label{LL}
+\frac{\partial }{\partial t} \boldsymbol{m} = -\frac{\gamma}{M_s} \boldsymbol{m} \times \frac{\delta F }{\delta \boldsymbol{m}}
+\end{equation}</div>
+<p>
+written in terms of the normalized magnetization <span class="math">\(\boldsymbol{m} = \boldsymbol{M}/M_s\)</span>, and ensuring that the norm <span class="math">\(|\boldsymbol{m}| = 1\)</span> is conserved. Here,
+<span class="math">\(\gamma\)</span> is the gyromagnetic ratio (it has units of charge over mass, <span class="math">\(e/M\)</span>), which gives the characteristic time scale <span class="math">\(\tau_0 = \mu_0 M_s/\gamma\)</span>. Using for the free energy the exchange term, one&nbsp;obtains,
+</p>
+<div class="math">$$ \frac{\partial }{\partial t} \boldsymbol{m} = \kappa \boldsymbol{m} \times \nabla^2 \boldsymbol{m}, \quad \kappa = 2\gamma A M_s$$</div>
+<p>
+where <span class="math">\(\kappa\)</span> is a parameter with the dimensions <span class="math">\(L^2/T\)</span> (angular momentum per unit mass). The Landau-Lifshitz equation is reminiscent of the Euler equation describing the rotation of a rigid body&nbsp;rotation:
+</p>
+<div class="math">$$\frac{\D \boldsymbol{L}}{\D t} = \boldsymbol{L} \times \boldsymbol{\omega},$$</div>
+<p>
+to which one may add the applied torques; where <span class="math">\(\boldsymbol{L}\)</span> is the angular momentum and <span class="math">\(\boldsymbol{\omega}\)</span> the rotation&nbsp;frequency.</p>
+<p>Our goal now is to find explicit solutions of the Landau-Lifshitz equation in the case of <em>magnetic films</em>: almost two dimensional layers of magnetic material deposited on a substrate. The motivation to study thin films is provided by the experimental discovery of a <a href="/pdfs/Muhlbauer-2009vn0.pdf">skyrmion lattice</a> phase in MnSi. Skyrmions phases were found in other chiral metals, and insulating magnetic&nbsp;films.</p>
+<p>A <em>skyrmion</em> is a helical arrangement of spins, with a central core pointing up, say, inside a region of uniform down magnetization (figure below). The whole magnetization texture covers all space directions (solid angle swept by <span class="math">\(\boldsymbol{m}\)</span> is <span class="math">\(4\pi\)</span>). In a real material the skyrmions are stabilized by a weak magnetic field, spin-orbit coupling or anisotropy, here we shall neglect these effects to concentrate in the topology of the magnetic texture, which depends essentially on the exchange&nbsp;interaction.</p>
+<blockquote>
+<p><img src="/images/L3-stereo-1.png" alt="skyrmion" style="height: 250px;"/></p>
+<p>Stereographic projection: each point of the spher (or equivalently each orientation <span class="math">\(\boldsymbol{n}\)</span>) is mapped to a point in the complex plane (<span class="math">\(z = x + \I y\)</span>).</p>
+</blockquote>
+<p>It is convenient to map the magnetization defined on the Bloch sphere, to a complex function  <span class="math">\(w = w(z)\)</span>, with <span class="math">\(z = x + \I y\)</span>. The stereographic projection of the unit vector on the sphere <span class="math">\(\boldsymbol{m} = (\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta)\)</span> to the complex plane <span class="math">\(w = \mathrm{Re}\, w + \I \mathrm{Im}\, w\)</span> is given&nbsp;by,
+</p>
+<div class="math">$$w = \frac{m_x+\I m_y}{1+m_z} = \tan \frac{\theta}{2} \E^{\I \phi}\,,$$</div>
+<p>
+which gives the inverse&nbsp;relations,
+</p>
+<div class="math">$$m_x = \frac{w+\bar{w}}{1+|w|^2}\,,\;
+  m_y = \frac{1}{\I} \frac{w-\bar{w}}{1+|w|^2}\,,\;
+  m_z = \frac{1-|w|^2}{1+|w|^2}\,,$$</div>
+<p>
+where the over bar represents complex conjugation. The Landau-Lifshitz equation in the new function <span class="math">\(w\)</span>,&nbsp;becomes:
+</p>
+<div class="math">$$\I \partial_t w = -\kappa\partial \bar{\partial} w + 
+  \frac{2 \kappa \bar{w}}{1+|w|^2} \partial w \bar{\partial} w$$</div>
+<p>
+where <span class="math">\(\partial=\partial/\partial z=(\partial/\partial x- \I \partial/\partial y)/2\)</span>. One immediately observes that any harmonic function is a stationary solution (<a href="/pdfs/Belavin-1975xw.pdf">Belavin and Poliakov, 1975</a>):
+</p>
+<div class="math">$$\bar{\partial} w(z) = 0\,.$$</div>
+<p>
+The physical relevant solutions are those that minimize the total energy. One of such solutions is the trivial <span class="math">\(w = 0\)</span>, corresponding to a uniform magnetization (the ferromagnetic state), which has vanishing energy. Other finite energy solution can be obtained by noting that the Landau-Lifshitz equation conserves the topological&nbsp;charge:
+</p>
+<div class="math">$$Q = \int \frac{\D\boldsymbol x}{4\pi} \boldsymbol m\cdot\partial_x\boldsymbol m\times \partial_y \boldsymbol m\,.$$</div>
+<p>
+By putting the integral in spherical&nbsp;coordinates,
+</p>
+<div class="math">$$Q=\frac{1}{4\pi}\int \D \theta(\boldsymbol x) \D \phi(\boldsymbol x) \sin\theta(\boldsymbol x)$$</div>
+<p>
+we find that <span class="math">\(Q\)</span> is related to the number of times that the magnetic texture covers the solid angle <span class="math">\(4\pi\)</span>; <span class="math">\(Q\)</span> only depends on the <em>topology</em> of the vector field <span class="math">\(\boldsymbol{m}\)</span>. In the stereographic projection, the topological charge&nbsp;reads,
+</p>
+<div class="math">$$Q = \int \frac{\D x \D y}{\pi}
+      \frac{|\partial w|^2 - |\bar \partial w|^2}{(1+|w|^2)^2}\,.$$</div>
+<p>
+The energy (per unit height of the film), in the same variables&nbsp;is,
+</p>
+<div class="math">$$E = 4A M_s^2\int \D x \D y
+      \frac{|\partial w|^2 + |\bar \partial w|^2}{(1+|w|^2)^2}\,.$$</div>
+<p>
+Comparing the <span class="math">\(Q\)</span> and <span class="math">\(E\)</span> equations for harmonic <span class="math">\(w\)</span>, we find the&nbsp;relation,
+</p>
+<div class="math">$$E = 4\pi AM_s^2 Q\,,$$</div>
+<p>
+showing that analytic functions give a finite energy, depending only on their topological charge. This charge will be given by the number of zeros and poles of the analytic function <span class="math">\(w = w(z)\)</span>.</p>
+<blockquote>
+<p><img src="/images/L3-sky-z.png" alt="skyrmion" style="height: 250px;"/>
+<img src="/images/L3-sky-cn.png" alt="skyrmion lattice" style="height: 250px;"/></p>
+<p>Isolated skyrmion and skyrmion lattice, obtained from two different choices of <span class="math">\(w = w(z)\)</span>, the stereographic representation of the unit magnetization vector. The arrows are the projection of the magnetization vector on the plane <span class="math">\((x,y)\)</span>, and the colors map the <span class="math">\(z\)</span>-component of the spin (one at the center, and minus one at&nbsp;infinity).</p>
+</blockquote>
+<p>The simplest nontrivial solution is then a polynomial with a single zero, representing an isolated&nbsp;skyrmion,
+</p>
+<div class="math">$$w(z) = \frac{z}{\lambda}$$</div>
+<p>
+where the parameter <span class="math">\(\lambda\)</span> fixes the size of the skyrmion: once mapped onto the sphere it has a pure radial distribution (hedgehog). A more complex texture is obtained using the elliptic <a href="https://dlmf.nist.gov">Jacobi functions</a>, to represent a <em>lattice</em> of&nbsp;skyrmions,
+</p>
+<div class="math">$$w(z) = \E^{-\I \alpha}\mathrm{cn}(z/\lambda, q),$$</div>
+<p>
+of parameters <span class="math">\(\alpha = \pi/3\)</span> and <span class="math">\(q = 1/2\)</span>, we plotted in the above&nbsp;figure.</p>
+<h2>Applications</h2>
+<p>Nanometric magnetic structures like skyrmions are good candidates to create ultradense memories (<a href="/pdfs/Fert-2013fk.pdf">Fert et al. 2013</a>), and other spintronic devices (<a href="/pdfs/Rosch-2016uq.pdf">Rosch, 2016</a>). To achieve such goal it is important to find physical effects allowing the manipulation of skyrmions to control their nucleation, destruction and motion. One possibility is to interact with the skyrmion through a spin polarized current: the itinerant spins can exerce a torque on the fixed magnetization, and hence change their orientation. This effect was discovered by Slonczewski in 1996 and is called the spin transfer&nbsp;torque.</p>
+<p>Another possibility is to build heterostructures with a layer of a <a href="/pdfs/Moore-2010uq.pdf">topological insulator</a> in contact with a magnetic film, to manipulate the skyrmion using electric fields. A topological insulator is a bulk insulator that supports spin polarized conducting channels at their surface; this effect is related to the topology of the electronic bands, which in a topological insulator are inverted (the valence band is above the conducting one, separated by a large gap), combined with a strong spin-orbit coupling. In these heterostructures, one can use the <a href="/pdfs/Qi-2009ly.pdf">magnetoelectric effect</a>, intrinsic in three dimensional topological insulators, to interact with the skyrmion. Under the influence of the helical electronic modes of the surface polarized currents, a charge is induced in the skyrmion, which then can be displaced by an electric&nbsp;field.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

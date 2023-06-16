@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Quantum principles | Random physics
+</title>
+    <link rel="canonical" href="/pages/AQ-principles.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Generalized quantum principles for mixed states; density matrix, measurement.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
+</blockquote>
+<h1>Principles of quantum&nbsp;mechanics</h1>
+<p>The basic postulates of quantum mechanics set the concepts of a quantum system, its state and evolution, and define the nature of&nbsp;observables.</p>
+<ul>
+<li>
+<p>The <em>state space</em> of a, possibly composite, quantum system is a vectorial space over complex numbers, the hilbert space <span class="math">\(\mathcal{H}\)</span>. The <em>state</em> of a general, possibly mixed, quantum system is given by its <em>density operator</em> <span class="math">\(\rho\)</span>:
+    <div class="math">$$\rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}$$</div>
+    where <span class="math">\(\ket{\psi_n} \in \mathcal{H}_n\)</span> and <span class="math">\(p_n \in [0,1]\)</span> satisfying
+    <div class="math">$$\sum_n p_n = 1\,.$$</div>
+    Each <span class="math">\(n\)</span> can be interpreted in two equivalent ways: (i) as a member of a composite quantum system; (ii) as a subsystem of a larger system, the whole system being in a <em>pure</em> state 
+    <div class="math">$$\ket{\psi} \in \mathcal{H} = \bigotimes_n \mathcal{H}_n\,.$$</div>
+    A state which is not pure, is <em>mixed</em>. The hilbert state of an ensemble is then the kronecker product of the hilbert spaces of its&nbsp;elements.</p>
+</li>
+<li>
+<p>Physical quantities are hermitian operators over the system&#8217;s hilbert space. Examples are the position and momentum of an oscillator, the total angular momentum of an atom or the spin of the electron; they are usually called <em>observables</em>. The spectrum <span class="math">\(o_n\)</span> of a hermitian operator <span class="math">\(O\)</span> is real and its eigenvectors form an orthonormal basis of the hilbert space:
+    <div class="math">$$O \ket{o_n} = o_n \ket{o_n}, \quad \braket{o_n|o_m} = \delta_{nm}\,.$$</div>
+    The expected value of an observable of a system in state <span class="math">\(\rho\)</span> is,
+    <div class="math">$$\braket{O} = \Tr O \rho\,,$$</div>
+    which reduces to <span class="math">\(\braket{O} = \braket{\psi|O|\psi}\)</span> in the case of a pure state <span class="math">\(\ket{\psi}\)</span>.</p>
+</li>
+<li>
+<p>The evolution of the quantum state is <em>unitary</em>
+    <div class="math">$$\rho(t) = U(t,t_0) \rho(t_0) U^\dagger(t,t_0) \,;$$</div>
+    the unitary operator <span class="math">\(U(t,t_0)\)</span> evolves the system from time <span class="math">\(t_0\)</span> to <span class="math">\(t\)</span>. In the case that the quantum system is described by a hamiltonian <span class="math">\(H\)</span>, independent of time,
+    <div class="math">$$U(t) = \E^{-\I H t}\,.$$</div>
+    In this case the quantum state satisfies the Schrödinger equation:
+    <div class="math">$$\I \frac{\partial }{\partial t} \rho = [H,\rho],.$$</div>
+</p>
+</li>
+</ul>
+<p>This basic principles are complemented with an empirical theory of the <em>measurement</em>. In addition, for systems of identical particles, one distinguishes bosons and fermions according to the symmetry of the quantum state under particle permutations: fermion states are completely antisymmetric; boson states are completely&nbsp;symmetric.</p>
+<h2>Measurement</h2>
+<p>In the case of a quantum system in a pure state we have the usual Born&nbsp;rule:</p>
+<ul>
+<li>A projective or <em>orthogonal measurement</em> of a system in a quantum state <span class="math">\(\ket{\psi}\)</span>, is the projection <span class="math">\(P_n\)</span> into an eigenstate <span class="math">\(o_n\)</span> of the observable <span class="math">\(O\)</span>:
+    <div class="math">$$P_n \ket{\psi} = \psi_n\ket{o_n}\,,$$</div>
+    where <span class="math">\(\psi_n\)</span> is the complex amplitude corresponding to the state <span class="math">\(o_n\)</span>. It is important to note that the projected &#8220;state&#8221; resulting is not normalized (obviously <span class="math">\(P\)</span> is not unitary). A projection operator satisfies <span class="math">\(P^2 = P\)</span>; its eigenvalues are then <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. The result of the projective measurement is the eigenvalue <span class="math">\(o_n\)</span> with probability (Born rule):
+    <div class="math">$$p(o_n) = p_n = \braket{\psi|P_n|\psi} = |\braket{o_n|\psi}|^2 = |\psi_n|^2\,.$$</div>
+    The post-measurement state (&#8220;collapse&#8221;) becomes,
+    <div class="math">$$\ket{\psi} \rightarrow \frac{P_n\ket{\psi}}{\braket{\psi|P_n|\psi}} = \ket{o_n}\,.$$</div>
+</li>
+</ul>
+<p>This rule generalizes trivially to mixed states: the probability to measure the property <span class="math">\(n\)</span> in the state <span class="math">\(\rho\)</span> is&nbsp;simply,
+</p>
+<div class="math">$$p_n = \Tr P_n\rho \,,$$</div>
+<p>
+and the quantum state becomes, after the&nbsp;measurement,
+</p>
+<div class="math">$$\rho_n = \frac{P_n \rho P_n}{\Tr P_n \rho}\,,$$</div>
+<p>
+if the outcome is <span class="math">\(o_n\)</span>. The measurement action itself changes the state&nbsp;into:
+</p>
+<div class="math">$$\rho \rightarrow \rho_M = \sum_n p_n \rho_n = \sum_n P_n \rho P_n\,.$$</div>
+<p>More generally, we consider a measurement to be the result of the interaction of the system of interest with an apparatus. The total hilbert space is then the product of the system&#8217;s space and an &#8220;ancilla&#8221; space which is spanned by the measuring basis. This is essentially the von Neumann model of the measurement <em>process</em>.<sup id="fnref:p"><a class="footnote-ref" href="#fn:p">1</a></sup> A &#8220;measurement&#8221; <span class="math">\(M\)</span> can then be made via a unitary operator <span class="math">\(U_M\)</span> which acts on a product space <span class="math">\(\mathcal{H}_S \otimes \mathcal{H}_A\)</span> of the system <span class="math">\(S\)</span> and an ancilla space <span class="math">\(A\)</span> spanned by the set <span class="math">\(\ket{n}\)</span>, which is in one to one correspondence with the set of the possible measurement outcomes <span class="math">\(\ket{o_n}\)</span>. Therefore, the measurement consists in the&nbsp;action:
+</p>
+<div class="math">$$U_M\ket{\psi} \otimes \ket{0} = \sum_n M_n \ket{\psi} \otimes \ket{n}\,,$$</div>
+<p>
+here <span class="math">\(\ket{\psi}\)</span> is the state of <span class="math">\(S\)</span> and <span class="math">\(\ket{0}\)</span> is a fixed state of <span class="math">\(A\)</span>. The system state after selection of the outcome, say <span class="math">\(\ket{m}\)</span> for some <span class="math">\(n=m\)</span>, transforms into the post-measurement&nbsp;state:
+</p>
+<div class="math">$$\ket{\psi} \rightarrow \ket{\psi}_M =  \frac{M_m \ket{\psi}}{\braket{\psi | M^\dagger_m M_m | \psi}}\,.$$</div>
+<p>
+In addition, unitarity of <span class="math">\(U_M\)</span> implies that the set of operators <span class="math">\(M_n\)</span> is&nbsp;complete:
+</p>
+<div class="math">$$\sum_n M_n^\dagger M_n = \sum_n E_n = 1$$</div>
+<p>
+where 1 is here the identity operator; <span class="math">\(M_n\)</span> are called Kraus operators, and the set of <em>positive</em> operators <span class="math">\(E_n = M_n^\dagger M_n\)</span> form a complete set that generalizes the set of projectors <span class="math">\(P_n\)</span> of the orthogonal&nbsp;measure.</p>
+<p>Previous to the selection, if initially the system&#8217;s state was <span class="math">\(\rho\)</span>, the interaction with the apparatus leaves the system in a mixed&nbsp;state:
+</p>
+<div class="math">$$\rho_M = \sum_n M_n \rho M_n^\dagger\,;$$</div>
+<p>
+after selection, the outcome <span class="math">\(n\)</span> of the measurement is the&nbsp;state
+</p>
+<div class="math">$$\rho_n = \frac{M_n \rho M_n^\dagger}{\Tr M_n \rho M_n^\dagger}\,,$$</div>
+<p>
+which generalizes the projective measurement to the case of a set of measurement operators <span class="math">\(M_n\)</span>.</p>
+<p>Let us illustrate the measurement process through a unitary transformation. We consider an initial state <span class="math">\(\ket{\psi} = a \ket{0} + b \ket{1}\)</span>, with <span class="math">\(|a|^2 + |b|^2 = 1\)</span>, and complement it with an ancilla&nbsp;state:
+</p>
+<div class="math">$$\ket{\mathrm{in}} = \ket{\psi} \otimes \ket{0},$$</div>
+<p>
+We also introduce a unitary operator <span class="math">\(Z\)</span>
+</p>
+<div class="math">$$Z = \mathrm{diag}(1, -1)$$</div>
+<p>
+with eigenvalues <span class="math">\(\pm1\)</span> (it is both unitary and hermitian, then it also is an observable). Instead of applying a projector, as for example <span class="math">\(\ket{0}\bra{0}\ket{\psi}\)</span> to obtain, with probability <span class="math">\(p(1)=|a|^2\)</span>, the eigenvalue 1 state <span class="math">\(\ket{0}\)</span>, we will use a controlled version of the <span class="math">\(Z\)</span>&nbsp;operator:
+</p>
+<div class="math">$$U_M = \mathrm{ctrl}Z: \begin{cases}\ket{00}  \rightarrow &amp; \ket{00}\\ 
+\ket{01} \rightarrow &amp; \ket{01}\\ \ket{10} \rightarrow &amp; \ket{10}\\ \ket{11} \rightarrow &amp; -\ket{11} 
+\end{cases} \,.$$</div>
+<p>
+The first step (<span class="math">\(s_1\)</span>), in the measurement protocol, is to apply the operator <span class="math">\(H\)</span> defined&nbsp;by
+</p>
+<div class="math">$$H: \begin{cases} \ket{0} \rightarrow \frac{\ket{0} + \ket{1}}{\sqrt{2}} \\  \ket{1} \rightarrow \frac{\ket{0} - \ket{1}}{\sqrt{2}}  \end{cases}\,,$$</div>
+<p> 
+which transform a vector of the twodimensional ancilla basis into a superposition, to the ancilla state <span class="math">\(\ket{0}\)</span>:
+</p>
+<div class="math">$$\ket{\mathrm{in}} \rightarrow \ket{s_1} = 1\otimes H \ket{\psi}\otimes\ket{0}$$</div>
+<p>
+In the second step <span class="math">\(s_2\)</span>, we apply <span class="math">\(U_M\)</span>
+</p>
+<div class="math">$$\ket{s_1} \rightarrow \ket{s_2} = \mathrm{ctrl}Z \ket{s_1},$$</div>
+<p>
+and then third, <span class="math">\(s_3\)</span>, we apply <span class="math">\(1\otimes H\)</span>&nbsp;again:
+</p>
+<div class="math">$$\ket{s_2} \rightarrow \ket{s_3} = 1\otimes H \ket{\psi}\otimes\ket{0}.$$</div>
+<p>
+We finally get <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{s_3} = \ket{\mathrm{out}} = (a \ket{0}) \otimes \ket{0} + (b \ket{1}) \otimes \ket{1} \,. $$</div>
+<p>
+Therefore, a projective measurement of the ancilla gives us a post-measurement output state <span class="math">\(\ket{0}\)</span> with probability <span class="math">\(|a|^2\)</span>, or <span class="math">\(\ket{1}\)</span> with probability <span class="math">\(|b|^2\)</span>. As we will study later, the output state is an <em>entangled</em> state; its entanglement allows the measurement protocole using a unitary&nbsp;operator.</p>
+<p>In summary, for a pure or mixed system in state <span class="math">\(\rho\)</span>, a quantum measurement is realized with the aid of a Kraus operator <span class="math">\(M_n\)</span>, which measures property <span class="math">\(n\)</span> with&nbsp;probability,
+</p>
+<div class="math">$$p_n = \Tr M_n \rho M_n^\dagger = \Tr E_n \rho\,.$$</div>
+<p>
+The measurement modifies the state&nbsp;into,
+</p>
+<div class="math">$$\rho_M = \sum_n M_n \rho M_n^\dagger\,,$$</div>
+<p>
+and the post-measurement state&nbsp;is,
+</p>
+<div class="math">$$\rho_n = \frac{M_n \rho M_n^\dagger}{\Tr E_n \rho}\,,$$</div>
+<p>
+therefore, one may say that the Kraus operators <span class="math">\(M_n\)</span> are the generators of the post-measurement state, they are sometimes called the detection operators. In the quantum information literature the complete set <span class="math">\(E_n\)</span> is called a <em>positive operator valued measure</em> or <span class="caps">POVM</span>.</p>
+<h3>Ideal measurement, Cini&nbsp;model</h3>
+<p>One interesting and thorough example of non-intrusive measurement is the Cini<sup id="fnref:c"><a class="footnote-ref" href="#fn:c">2</a></sup> model: a two state system <span class="math">\(\sigma_z = Z\)</span> (<span class="math">\(S\)</span>, up and down) is in contact with an apparatus (<span class="math">\(A\)</span>) consisting in a set of <span class="math">\(N\)</span> bosons (eventually macroscopic) that can occupy a ground state <span class="math">\(0\)</span> or an excited one <span class="math">\(1\)</span> (see&nbsp;figure).</p>
+<p><img src="/images/AQ-cini.svg" alt="cini model" style="width: 250px;"/></p>
+<blockquote>
+<p>A two level system <span class="math">\(S\)</span> (atom) is put in interaction with an apparatus <span class="math">\(A\)</span> (ancilla space) consisting in <span class="math">\(N\)</span> bosons that can be in two states <span class="math">\(0\)</span> and <span class="math">\(1\)</span>. The interaction is tuned in such a way that the population of the excited level depends on the amplitude of the up atom&nbsp;state.</p>
+</blockquote>
+<p>The interaction hamiltonian&nbsp;is,
+</p>
+<div class="math">$$H_{SA} = \frac{J}{2\sqrt{N}} (1 + Z) (a^\dagger_0 a_1 + a_0 a^\dagger_1)\,,$$</div>
+<p>
+where <span class="math">\(J\)</span> is the coupling constant and <span class="math">\(a^\dagger_s,a_s\)</span> are creation and annihilations operators of the states <span class="math">\(s = 0,1\)</span>, they satisfy the usual boson commutation&nbsp;relations,
+</p>
+<div class="math">$$[a_s,a^\dagger_s] = 1, \quad [a_0,a_1] = [a_0^\dagger,a_1^\dagger] = 0\,.$$</div>
+<p>
+Note that in the <span class="math">\(S\)</span> down state the interaction energy vanishes and is proportional to <span class="math">\(J\)</span> in the up state. Therefore, the apparatus can distinguishes between the up and down states, which is precisely the goal a measuring device. An ancilla state depends on the number <span class="math">\(n\)</span> of bosons in the ground&nbsp;state:
+</p>
+<div class="math">$$\ket{n, N-n} = \frac{(a^\dagger_0)^n (a^\dagger_1)^{N-n} }{\sqrt{n!(N-n)!}}\ket{00}\,.$$</div>
+<p>
+The energy associated to the excitation of one mode is given by the matrix&nbsp;element,
+</p>
+<div class="math">$$\bra{N,0}\braket{\uparrow|H_{SA}|\uparrow}\ket{N-1,1} = J\,,$$</div>
+<p>
+which justifies the <span class="math">\(\sqrt{N}\)</span> factor in the definition of the coupling interaction; indeed, using the uncertainty energy relation we obtain that the one mode excitation time is <span class="math">\(\tau \sim 1/J\)</span>, independent of <span class="math">\(N\)</span>, as it&nbsp;should.</p>
+<p>We compute now the evolution of the initial product&nbsp;state,
+</p>
+<div class="math">$$\ket{\psi(0)} = \big(c_\uparrow \ket{\uparrow} + c_\downarrow \ket{\downarrow}\big) \ket{N0}$$</div>
+<p>
+in which the system is in an arbitrary superposition and the apparatus in its ground state. After a time <span class="math">\(t\)</span> the state evolves to <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:<sup id="fnref:cini"><a class="footnote-ref" href="#fn:cini">3</a></sup>
+</p>
+<div class="math">$$\ket{\psi(t)} = c_\uparrow \ket{\uparrow} \sum_{n=0}^N A_n(t) \ket{n\,N-n} + c_\downarrow \ket{\downarrow}\ket{N0}\,,$$</div>
+<p>
+where
+</p>
+<div class="math">$$A_n(t) = \frac{\I^{N-n} \sqrt{N!}}{\sqrt{n!(N-n)!}} \cos^n \frac{Jt}{\sqrt{N}} \sin^{N-n} \frac{Jt}{\sqrt{N}} \,.$$</div>
+<p>
+The probability <span class="math">\(P_n = |A_n|^2\)</span> of finding <span class="math">\(n\)</span> bosons in the ground state&nbsp;is,
+</p>
+<div class="math">$$P_n = \binom{N}{n} p(t)^n q(t)^{N-n}\,,$$</div>
+<p>
+where
+</p>
+<div class="math">$$p_n(t) = \cos^2 \frac{Jt}{\sqrt{N}}, \quad q_n(t) = \sin^2 \frac{Jt}{\sqrt{N}}\,.$$</div>
+<p>
+The binomial distribution is strongly concentrated around its maximum: for large <span class="math">\(N\)</span> its approaches a gaussian distribution (<a href="https://en.wikipedia.org/wiki/De_Moivre-Laplace_theorem">de Moivre-Laplace</a> theorem). Therefore, at some time, when <span class="math">\(n(t) = N p(t) = \braket{n}\)</span>, one&nbsp;finds
+</p>
+<div class="math">$$P_\braket{n} = \binom{N}{\braket{n}} \left( \frac{\braket{n}}{N} \right)^\braket{n} \left( \frac{N - \braket{n}}{N} \right)^{N-\braket{n}} \sim \mathcal{N}(Np,Npq)\,,$$</div>
+<p>
+or using the stirling formula <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$P_\bar{n} \approx 1\,.$$</div>
+<p>
+Therefore, the contribution to the total probability of the states other than those near <span class="math">\(n \approx \braket{n}\)</span> is negligible. Initially <span class="math">\(t=0\)</span>, <span class="math">\(P_n(0)=\delta_{nN}\)</span>, and at <span class="math">\(t^\star = (\pi/2) N^{1/2}/J\)</span>, the whole set of bosons is in the excited&nbsp;state
+</p>
+<div class="math">$$P_n(t^\star) = \delta_{n0},\; t^\star \sim \sqrt{N}\,,$$</div>
+<p>
+which gives us an order of magnitude of the needed time to populate macroscopically the excited state. However, the time to correlate the system with apparatus is much smaller, of the order of <span class="math">\(1/J\)</span>. As a consequence, for large <span class="math">\(N\)</span> the combined system state can be written&nbsp;as,
+</p>
+<div class="math">$$\ket{\psi(t)} = c_\uparrow \ket{\uparrow} \ket{\braket{n}(t), N - \braket{n}(t)} + c_\downarrow \ket{\downarrow} \ket{N,0}\,.$$</div>
+<p>
+This state establishes a one to one correspondance between system and apparatus: an excited apparatus corresponds to the system in the up state, and the apparatus in the ground state corresponds to the system in the down state. Note that the final state is not a product state, as it would be in the case of collapse, it is entangled; however, the interference terms, which are proportional to the&nbsp;overlap,
+</p>
+<div class="math">$$\sum_n A_n \braket{n,N - n|N,0} \sim \braket{\braket{n}, N- \braket{n}|N,0}=0$$</div>
+<p>
+are vanishingly small. We may see the measuring process as a way to amplify the microscopic state of the system, into a macroscopically distinguishable superposition of&nbsp;states.</p>
+<h3>Exercises</h3>
+<ol>
+<li>
+<p>Demonstrate the following properties of the density&nbsp;matrix</p>
+<ul>
+<li><span class="math">\(\rho =&nbsp;\rho^\dagger\)</span></li>
+<li><span class="math">\(\Tr \rho&nbsp;=1\)</span></li>
+<li><span class="math">\(\rho\)</span> is&nbsp;positive</li>
+<li><span class="math">\(\Tr \rho^2 \le&nbsp;1\)</span></li>
+</ul>
+</li>
+<li>
+<p>Consider a bipartite system <span class="math">\(AB\)</span> of two two level atoms, and the unitary operator:
+    <div class="math">$$U: (a\ket{0} + b\ket{1})_A \otimes \ket{0} \, \rightarrow \, a\ket{0}_A \otimes \ket{0}_B + b \ket{1}_A \otimes \ket{1}_B$$</div>
+    Find a matrix representation of <span class="math">\(U\)</span>. Calculate the probability <span class="math">\(p_A(0)\)</span> to find the atom <span class="math">\(A\)</span> in the ground state, using a measure of the second atom <span class="math">\(B\)</span>.</p>
+<p>If the measure of the <span class="math">\(B\)</span> atom is made in the basis of <span class="math">\(\sigma_x = X\)</span>, <span class="math">\(\ket{\pm}\)</span>, what are the post-measurement states of <span class="math">\(A\)</span>?</p>
+<p>Show that the operator <span class="math">\(U\)</span> can be also defined by the rule
+<div class="math">$$U: \ket{\psi}_A \otimes \ket{0}_B \,\rightarrow \, M_+ \ket{\psi}_A \otimes \ket{+}_B + M_- \ket{-} \ket{\psi}_A \otimes \ket{-}_B\,,$$</div>
+where
+<div class="math">$$M_+ = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\,,
+  M_- = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\,,$$</div>
+Show that the set <span class="math">\(M\)</span> is complete. Compute <span class="math">\(M_\pm^\dagger \ket{\psi}_A\)</span> and compare with the post-measurement states obtained before. Calculate the norm of these two vectors <span class="math">\(|M_\pm^\dagger\ket{\psi}_A|^2\)</span> and compare the results with <span class="math">\(p_A(\pm)\)</span>.</p>
+</li>
+</ol>
+<h2>Notes</h2>
+<p>A concise and useful book&nbsp;is,</p>
+<ul>
+<li><span class="caps">J. A.</span> Bergou, and M. Hillery, <em>Introduction to the Theory of Quantum Information Processing</em> (Springer,&nbsp;2013)</li>
+</ul>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:p">
+<p>J. Preskill, <em>Lecture notes on Quantum Information</em> (Caltech, 1997-) <a href="http://theory.caltech.edu/~preskill/ph219/index.html">web</a>&#160;<a class="footnote-backref" href="#fnref:p" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:c">
+<p>M. Cini, <em>Quantum theory of measurment without wave packet collapse</em>, Nuovo Cimento B <strong>73</strong>, 27 (1983) <a href="/pdfs/Cini-1983yq.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:c" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cini">
+<p>Note that the bosonic part of the interaction hamiltonian,
+<div class="math">$$H \sim a^\dagger_0 a_1 + a_0 a^\dagger_1$$</div>
+is diagonalized by the linear transformation (with unit jacobian, then preserving the commutation relations),
+<div class="math">$$a_0 = \frac{b_0 - b_1}{\sqrt{2}}, \quad a_1 = \frac{b_0 + b_1}{\sqrt{2}}.$$</div>
+The new hamiltonian is
+<div class="math">$$\bar{H} \sim b^\dagger_0 b_0 - b^\dagger_1 b_1\,.$$</div>
+Its eigenvalues are integers <span class="math">\(\bar{n}\)</span>, and its eigenvectors are (it is enough to change <span class="math">\(n\)</span> by <span class="math">\(\bar{n}\)</span> in the expression of the harmonic oscillator eigenvectors):
+<div class="math">$$\ket{\bar{n}, N - \bar{n}} = \frac{(b^\dagger_0)^\bar{n} (b^\dagger_1)^{N-\bar{n}}}{\sqrt{\bar{n}!(N-\bar{n})!}} \ket{0}$$</div>
+Now we want to express the old eigenvectors in terms of the new ones; the initial state reads,
+<div class="math">\begin{align*}
+\ket{N,0} &amp;= \frac{(a^\dagger_0)^N}{\sqrt{N!}} \ket{0} \\
+  &amp;= \frac{1}{\sqrt{N!}} \frac{(b_0 - b^\dagger_1)^N}{\sqrt{2}} \ket{0} \\
+  &amp;= \frac{1}{2^{N/2} \sqrt{N!}} \sum_{\bar{n}} \binom{N}{\bar{n}} (-1)^{N-\bar{n}} (b^\dagger_0)^\bar{n} (b^\dagger_1)^{N-\bar{n}} \ket{0} \\
+  &amp;= \frac{1}{2^{N/2} \sqrt{N!}} \sum_{\bar{n}} \frac{N! (-1)^{N - \bar{n}}}{\bar{n}! (N - \bar{n})!} \sqrt{\bar{n}!} \sqrt{(N-\bar{n})!} \ket{\bar{n}, N - \bar{n}} \\
+  &amp;= \frac{1}{2^{N/2}} \sum_{\bar{n}} \frac{(-1)^{N-\bar{n}} \sqrt{N!}}{\sqrt{\bar{n}!} \sqrt{(N - \bar{n})!}} \ket{\bar{n}, N - \bar{n}}
+\end{align*}</div>&#160;<a class="footnote-backref" href="#fnref:cini" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

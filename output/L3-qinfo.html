@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: Quelques éléments d’information quantique | Random physics
+</title>
+    <link rel="canonical" href="/L3-qinfo.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="On introduit quelques notions élémentaires de l’information quantique à partir d’un qubit.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2023-03-22T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        mer. 22 mars 2023
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <!--toc:start-->
+<ul>
+<li><a href="#linformation-quantique-du-qubit-a-lintrication">L&#8217;information quantique: du qubit a l&#8217;intrication</a><ul>
+<li><a href="#pause-mathématique-lespace-de-hilbert">Pause mathématique: l&#8217;espace de&nbsp;hilbert</a></li>
+<li><a href="#principes-de-la-mécanique-quantique">Principes de la mécanique&nbsp;quantique</a></li>
+</ul>
+</li>
+<li><a href="#le-qubit">Le qubit</a><ul>
+<li><a href="#deux-qubits-intrication">Deux qubits:&nbsp;intrication</a></li>
+<li><a href="#la-matrice-densité">La matrice&nbsp;densité</a></li>
+<li><a href="#lintrication-est-quantique">L&#8217;intrication est&nbsp;quantique</a></li>
+</ul>
+</li>
+<li><a href="#mini-projet">Mini-projet</a></li>
+<li><a href="#états-intriqués-sur-graphe">États intriqués sur&nbsp;graphe</a></li>
+<li><a href="#codes">Codes</a><ul>
+<li><a href="#intrication">Intrication</a></li>
+<li><a href="#état-graphe-cluster">État graphe&nbsp;(cluster)</a></li>
+</ul>
+</li>
+<li><a href="#bibliographie">Bibliographie</a></li>
+</ul>
+<!--toc:end-->
+
+<p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\Tr}{\mathrm{tr}}
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}[1]{\boldsymbol{#1}}\)</span></p>
+<blockquote>
+<p>Work in progress!
+This lecture is intended for students of the &#8220;Licence de physique&#8221;, and in particular to those interested in theoretical&nbsp;physics.</p>
+</blockquote>
+<h1 id="linformation-quantique-du-qubit-a-lintrication">L&#8217;information quantique: du qubit a&nbsp;l&#8217;intrication</h1>
+<p>En informatique, quand on parle d&#8217;information on se réfère essentiellement à la théorie de Shannon. En effet, Shannon définit une mesure de la <em>quantité d&#8217;information</em> d&#8217;un message en unités du <em>bit</em>. Il partît du fait qu&#8217;un message peut être codé par un alphabet de deux symboles 0 et 1, ce qui correspond précisément à <span class="math">\(1\, \mathrm{bit}\)</span> d&#8217;information. Par conséquent, un message de <span class="math">\(N\)</span> caractères, donc un message parmi <span class="math">\(2^N\)</span> possibles, contiendrait <span class="math">\(N\)</span> bits&nbsp;d&#8217;information:
+</p>
+<div class="math">$$N = \log\big(2^N\big)$$</div>
+<p>
+(où on note <span class="math">\(\log\)</span> le logarithme de base 2) puisqu&#8217;en principe il faut préciser les les <span class="math">\(N\,\mathrm{bit}\)</span> pour reproduire le message. L&#8217;idée de Shannon est de considérer un message comme étant un élément d&#8217;un ensemble, auquel on attribue une <em>probabilité</em>. Cet exemple nous permet de comprendre que la quantité d&#8217;information serait quelque chose comme le <em>logarithme</em> de la taille de l&#8217;ensemble de messages exprimée en bits. Cette intuition est juste pourvu que les symboles du message puissent être considérés comme n&#8217;ayant aucune corrélation. Le cas extrême d&#8217;un message de longueur <span class="math">\(N\)</span> constitué exclusivement de 0, ne contiendrait pas plus d&#8217;information que s&#8217;il avait une longueur de <span class="math">\(2N\)</span>. Pour tenir compte des corrélations entre les symboles d&#8217;un message, Shannon introduisit la notion de distribution de probabilité <span class="math">\(p_n\)</span> associée a l&#8217;ensemble de messages <span class="math">\(n=1,2,\ldots, 2^N\)</span>. Il démontra que la quantité d&#8217;information est donnée par la&nbsp;formule
+</p>
+<div class="math">$$S = - \sum_n p_n \log p_n$$</div>
+<p>
+qu&#8217;on appelle l&#8217;<em>entropie</em> de Shannon (1948). Cet un fait remarquable que Gibbs (1902) arriva à une formule équivalente en physique statistique, pour l&#8217;entropie thermodynamique, en assignant une distribution de probabilité aux configurations d&#8217;un système constitué d&#8217;un grand nombre de&nbsp;particules.</p>
+<blockquote>
+<p><strong>Exercice</strong> Montrez que l&#8217;entropie de Shannon pour une distribution uniforme coïncide avec le résultat précédent: <span class="math">\(S = N \, \mathrm{bit}\)</span>.</p>
+<p><strong>Exercice</strong> Considérez un ensemble de messages écrits avec quatre symboles <span class="math">\(1,2,3,4\)</span>; la fréquence des <span class="math">\(1\)</span> est <span class="math">\(p_1=1/2\)</span>, celle des <span class="math">\(2\)</span>, <span class="math">\(p_2 = 1/4\)</span>, et celle des <span class="math">\(3\)</span> et <span class="math">\(4\)</span>, <span class="math">\(p_3 =p_4 = 1/8\)</span>. Si pour coder ces messages on utilise deux bits <span class="math">\(00, 01, 10, 11\)</span>, montrez que la longueur typique d&#8217;un messages est de <span class="math">\(2\,\mathrm{bit}\)</span> par caractère. Par contre si l&#8217;on code les messages avec un bit pour le 1, <span class="math">\(0\)</span>, 2 bits pour le 2, <span class="math">\(10\)</span>, et trois bits pour 3 et 4, <span class="math">\(110\)</span> et <span class="math">\(111\)</span>, montrez que la longueur est de <span class="math">\(7/4\)</span> par caractère. Calculez l&#8217;entropie de Shannon et comparez avec les résultats&nbsp;précédents. </p>
+<p><em>Solution</em> <span class="math">\((1/2+1/4+1/8+1/8) \times 2 \, \mathrm{bit} = 2 \, \mathrm{bit}\)</span> et <span class="math">\(1/2 \times 1 + 1/4 \times 2 + 1/8 \times 3 + 1/8 \times 3 \, \mathrm{bit} = 7/4 \, \mathrm{bit}\)</span>. (On utilise &#8220;bit&#8221; pour l&#8217;unité, comme toute autre unité elle est&nbsp;invariable.)</p>
+</blockquote>
+<p>La notion mathématique d&#8217;unité d&#8217;information (le bit, comme l&#8217;information, est une grandeur adimensionnelle) peut être réalisée physiquement par un quelconque système ayant deux phases stables, comme par exemple un aimant dont l&#8217;aimantation peut pointer vers deux directions opposées, et dont le changement de direction ne peut pas s&#8217;effectuer spontanément. C&#8217;est le principe d&#8217;une mémoire magnétique. Un autre exemple c&#8217;est le transistor, qui peut passer d&#8217;un état conducteur à un état isolant, selon la tension&nbsp;appliquée.</p>
+<p>En mécanique quantique l&#8217;information apparaît naturellement comme étant une propriété physique. Elle est intimement associée à l&#8217;état quantique. Il nous faut donc étudier ce qu&#8217;est qu&#8217;un état quantique. On commence par le système le plus simple possible: le&nbsp;qubit.</p>
+<h3 id="pause-mathématique-lespace-de-hilbert">Pause mathématique: l&#8217;espace de&nbsp;hilbert</h3>
+<p>L&#8217;espace de hilbert <span class="math">\(\mathcal{H}\)</span> à deux dimensions est l&#8217;espace vectoriel complexe <span class="math">\(\mathbb{C}^2\)</span>. Il est la généralisation des vecteurs de <span class="math">\(\mathbb{R}^2\)</span> avec des coefficients complexes. On note les éléments <span class="math">\(\mathcal{H}\)</span> avec des <em>kets</em>
+</p>
+<div class="math">$$\ket{\psi} \in \mathcal{H},$$</div>
+<p>
+ils sont constitués d&#8217;une étiquette, ici <span class="math">\(\psi\)</span>, laquelle évoque la grandeur physique décrite par l&#8217;état, et du symbole <span class="math">\(|\cdots\rangle\)</span>. La généralisation à la dimension <span class="math">\(N\)</span> est immédiate <span class="math">\(\mathcal{H} \sim \mathbb{C}^N\)</span>.</p>
+<p>À chaque ket <span class="math">\(\ket{\psi}\)</span> on associe un <em>bra</em>, <span class="math">\(\bra{\psi}\)</span>, tel que leur produit nous donne la norme du&nbsp;vecteur:
+</p>
+<div class="math">$$\braket{\psi|\psi} = \big| \ket{\psi} \big|^2,$$</div>
+<p>
+ou plus généralement, on peut former le produit des deux kets quelconques, appelé <em>braket</em>,
+</p>
+<div class="math">$$\braket{\phi|\psi} = \braket{\psi|\phi}^\star \in \mathbb{C}.$$</div>
+<p>
+Il s&#8217;agit donc de la généralisation du <em>produit scalaire</em> des vecteurs réels. Le bra <span class="math">\(\bra{\psi}\)</span> associé au ket <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> appartient à l&#8217;espace dual <span class="math">\(\mathcal{H}^\dagger\)</span>, obtenu par transposition et conjugaison de l&#8217;espace <span class="math">\(\mathcal{H}\)</span>:
+</p>
+<div class="math">$$\bra{\psi} = (\ket{\psi}^\star)^T = (\ket{\psi})^\dagger$$</div>
+<p>
+avec <span class="math">\(\star\)</span> la conjugaison, <span class="math">\(T\)</span> la transposition, et <span class="math">\(\dagger\)</span> leur&nbsp;combinaison.</p>
+<p>Une base orthonormale <span class="math">\(\ket{n}\)</span> d&#8217;un espace à deux dimensions est constituée de deux vecteurs <span class="math">\(n=0,1\)</span>; elle peut être <em>représentée</em> par les vecteurs colonne de la base&nbsp;canonique:
+</p>
+<div class="math">$$\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad \ket{1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix},$$</div>
+<p>
+où 
+</p>
+<div class="math">$$\braket{0|0} = \braket{1|1} = 1,  \quad \braket{0|1} = 0.$$</div>
+<p>
+Les bras <span class="math">\(\bra{0}\)</span> et <span class="math">\(\bra{1}\)</span> sont donc les vecteurs&nbsp;ligne:
+</p>
+<div class="math">$$\bra {0} = \begin{pmatrix} 1 &amp; 0 \end{pmatrix}, \quad \bra{1} = \begin{pmatrix} 0 &amp; 1 \end{pmatrix}.$$</div>
+<p>Tout vecteur de <span class="math">\(\mathcal{H}\)</span> bi-dimensionnel peut s&#8217;écrire comme la superposition des deux vecteurs de la&nbsp;base:
+</p>
+<div class="math">$$\ket{\psi} = a \ket{0} + b \ket{1} = \begin{pmatrix} a \\ b \end{pmatrix}, \quad |a|^2 + |b|^2 = 1,$$</div>
+<p>
+où on a supposé que la norme de <span class="math">\(\ket{\psi}\)</span> est 1. Les &#8220;coordonnées&#8221; du <span class="math">\(\ket{\psi}\)</span> s&#8217;obtiennent par produit scalaire avec les vecteurs de la&nbsp;base:
+</p>
+<div class="math">$$\braket{0|\psi} = a, \quad \braket{1|\psi} = b.$$</div>
+<p>
+Notez que le bra correspondant&nbsp;est 
+</p>
+<div class="math">$$\bra{\psi} = a^\star \bra{0} + b^\star \bra{1}.$$</div>
+<p>
+Dans le cas de dimension <span class="math">\(N\)</span> on&nbsp;aurait:
+</p>
+<div class="math">$$\ket{\psi} = \sum_{n=1}^{N} \psi_n \ket{n}$$</div>
+<p>
+avec <span class="math">\(\{\ket{n}\}\)</span> la base canonique de dimension <span class="math">\(N\)</span>:
+</p>
+<div class="math">$$\braket{n|m} = \delta_{nm}$$</div>
+<p>
+où <span class="math">\(\delta\)</span> est la &#8220;delta&#8221; de kronecker, <span class="math">\(\delta_{nn} = 1\)</span> et <span class="math">\(\delta_{nm} = 0\)</span> pour <span class="math">\(n \ne m\)</span>.</p>
+<p>Les applications linéaires sur l&#8217;espace de hilbert sont les <em>opérateurs</em>, ils transforment un vecteur de <span class="math">\(\mathcal{H}\)</span> dans un autre vecteur du même&nbsp;espace:
+</p>
+<div class="math">$$\ket{\phi} = O \ket{\psi}$$</div>
+<p>
+avec <span class="math">\(O\)</span> un opérateur et <span class="math">\(\ket{\psi}, \ket{\phi} \in \mathcal{H}\)</span>. Le transposé et conjugué <span class="math">\(O^\dagger = O^{\star T}\)</span> est l&#8217;adjoint de <span class="math">\(O\)</span>. La composition d&#8217;opérateurs est aussi un&nbsp;opérateur.</p>
+<p>On représente les opérateurs à l&#8217;aide de matrices de nombres complexes, dans une base donnée. Par exemple si la base est <span class="math">\(\ket{n}\)</span>, la base canonique de <span class="math">\(\mathcal{H}\)</span>
+</p>
+<div class="math">$$\braket{n | O | m} = O_{nm}$$</div>
+<p>
+est l&#8217;élément de matrice de la ligne <span class="math">\(n\)</span> et de la colonne <span class="math">\(m\)</span>.</p>
+<ul>
+<li>un opérateur <span class="math">\(O\)</span> est <em>hermitien</em> si <span class="math">\(O^\dagger = O\)</span>,</li>
+<li>un opérateur <span class="math">\(U\)</span> est <em>unitaire</em> si <span class="math">\(U^\dagger U = 1\)</span> (avec 1 la matrice&nbsp;unité), </li>
+<li>un opérateur <span class="math">\(P\)</span> qui satisfait <span class="math">\(P^2 = P\)</span> est un <em>projecteur</em>.</li>
+</ul>
+<p>L&#8217;équation des valeurs propres d&#8217;un opérateur hermitien <span class="math">\(O\)</span>&nbsp;est
+</p>
+<div class="math">$$O \ket{n} = o_n \ket{n}$$</div>
+<p>
+où <span class="math">\(\ket{n}\)</span> est le vecteur propre de valeur propre réel <span class="math">\(o_n\)</span>. Évidemment, dans la base de vecteurs propres de <span class="math">\(O\)</span>, sa matrice associée est diagonale: <span class="math">\(O_{nm} = o_n \delta_{nm}\)</span>.</p>
+<p>Par exemple les <em>matrices de Pauli</em>,
+</p>
+<div class="math">$$X = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad Y = \begin{pmatrix} 0 &amp; -\I \\ \I &amp; 0 \end{pmatrix}, \quad Z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix},$$</div>
+<p>
+sont à la fois hermitiennes et unitaires <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>Les matrices de pauli sont de trace nulle et de déterminant <span class="math">\(1\)</span>. Les valeurs propres des ces trois matrices sont <span class="math">\(\{1,-1\}\)</span>; par&nbsp;exemple 
+</p>
+<div class="math">$$X \ket{+} = \ket{+}, \quad \ket{+} = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\ 1 \end{pmatrix}$$</div>
+<p>
+et
+</p>
+<div class="math">$$X \ket{-} = -\ket{-}, \quad \ket{-} = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\ -1 \end{pmatrix}$$</div>
+<p>
+avec <span class="math">\(\ket{+}\)</span> le vecteur propre de valeur propre <span class="math">\(1\)</span> et <span class="math">\(\ket{-}\)</span> celui de valeur propre <span class="math">\(-1\)</span>; notez que <span class="math">\(\braket{+|-} = 0\)</span> et qu&#8217;ils sont normalisés: ils forment donc une base de <span class="math">\(\mathcal{H}\)</span> (espace de hilbert à deux&nbsp;dimensions).</p>
+<p>L&#8217;opérateur <span class="math">\(P = \ket{0} \bra{0}\)</span> est un&nbsp;projecteur:
+</p>
+<div class="math">$$P^2 = (\ket{0} \bra{0}) (\ket{0} \bra{0}) = \ket{0} \braket{0|0} \bra{0} = \ket{0} \bra{0} = P.$$</div>
+<p>
+appliqué aux éléments de la base, on&nbsp;obtient
+</p>
+<div class="math">$$P \ket{0} = \ket{0}, \quad P \ket{1} = 0.$$</div>
+<p>Le produit de kronecker <span class="math">\(\otimes\)</span> de deux matrices <span class="math">\(A\)</span> de dimensions <span class="math">\(n \times m\)</span> et <span class="math">\(B\)</span>, de dimension <span class="math">\(n' \times m'\)</span> est une autre matrice <span class="math">\(C\)</span> de dimension <span class="math">\(nn' \times mm'\)</span>: <span class="math">\(C_{n'i+j,m'k+l} = A_{ij} B_{kl}\)</span>. Par&nbsp;exemple 
+</p>
+<div class="math">$$X \otimes Z = \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \otimes \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} = \begin{pmatrix} 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 &amp; 0 \end{pmatrix} = \begin{pmatrix} 0 &amp; Z \\ Z &amp; 0 \end{pmatrix}$$</div>
+<p>
+où on a utilisé l&#8217;écriture d&#8217;une matrice par blocs. Le produit de kronecker n&#8217;est pas commutatif <span class="math">\(A \otimes B \ne B \otimes A\)</span>. En outre, une propriété importante&nbsp;est
+</p>
+<div class="math">$$(A \otimes B) (C \otimes D) = (AC) \otimes (BD)$$</div>
+<p>
+avec <span class="math">\(A,C\)</span> deux matrices appartenant au premier espace et <span class="math">\(B,D\)</span> au&nbsp;deuxième.</p>
+<h3 id="principes-de-la-mécanique-quantique">Principes de la mécanique&nbsp;quantique</h3>
+<ul>
+<li>L&#8217;état quantique est un ket de norme 1, appartenant à un espace de hilbert
+<div class="math">$$\ket{\psi} \in \mathcal{H}, \quad \braket{\psi | \psi} = 1.$$</div>
+</li>
+<li>Les grandeurs physiques, ou <em>observables</em>, sont des opérateurs hermitiens:
+<div class="math">$$O \ket{n} = o_n \ket{n}, \quad o_n \in \mathbb{R}, \; \braket{n|m} = \delta_{nm}.$$</div>
+</li>
+<li>La valeur espérée d&#8217;une observable <span class="math">\(O\)</span> dans état <span class="math">\(\ket{\psi}\)</span> est <span class="math">\(\braket{O} = \braket{\psi | O | \psi}\)</span>.</li>
+<li>Les résultats de la mesure d&#8217;une observable <span class="math">\(O\)</span> sont ses valuers propres <span class="math">\(o_n\)</span>. La probabilité de trouver <span class="math">\(o_n\)</span> est 
+<div class="math">$$p(n) = \big| \braket{n|\psi} \big|^2$$</div>
+si l&#8217;état de système est <span class="math">\(\ket{\psi}\)</span>.</li>
+<li>La transformation entre deux états d&#8217;un système est un opérateur unitaire.
+<div class="math">$$\ket{\phi} = U \ket{\psi}, \quad \braket{\phi|\phi} = \braket{\psi|\psi} = 1.$$</div>
+</li>
+<li>L&#8217;espace de hilbert d&#8217;un système composite est le produit de kronecker des espaces de chaque&nbsp;système.</li>
+</ul>
+<blockquote>
+<p><img src="/images/MQ-mz.svg" alt="Mach-Zehnder" style="height: 200px;"/></p>
+<p>Interféromètre de Mach-Zehnder, avec un déphasage <span class="math">\(\delta\)</span> entre les deux chemins. Il est composé de deux lames semi-transparentes et de deux miroirs. <span class="math">\(D\)</span> et <span class="math">\(D'\)</span> détectent le photon initial <span class="math">\(\ket{0}\)</span>. <span class="math">\(r\)</span> et <span class="math">\(t\)</span> sont les amplitudes de réflexion et de transmission, que l&#8217;on suppose telles que <span class="math">\(|r|^2 = |t|^2 = 1/2\)</span>.</p>
+</blockquote>
+<p>Pour illustrer ces principes analysons le comportement d&#8217;un photon. Le &#8220;principe de superposition&#8221;, le fait que les états sont des vecteurs &#8220;complexes&#8221;, traduit les observations expérimentales, comme celle de l&#8217;interférence à un photon. Le photon est le quantum de lumière. Il a été postulé au début du XXème siècle pour expliquer le rayonnement du corps noir (Planck 1900) et l&#8217;effet photoélectrique (Einstein 1905). Quand on fait passer un photon à travers une lame semi-transparente on le détecte toujours sur un détecteur, soit qu&#8217;il a été réfléchi ou qu&#8217;il a été transmis, mais jamais simultanément sur les deux détecteurs (placés sur les deux chemins possibles). Si maintenant on le fait passer par deux lames, comme dans la figure de l&#8217;interféromètre de Mach-Zehnder, le résultat est surprenant: le photon interfère avec &#8220;lui même&#8221;, il se comporte comme s&#8217;il avait &#8220;emprunté&#8221; les deux chemins avant d&#8217;arriver au détecteur. Notez que ces phrases n&#8217;ont pas beaucoup de sens, du point de vue de la sémantique elles sont même contradictoires: pour &#8220;expliquer&#8221; le phénomène mesuré au laboratoire on doit appliquer les principes de la mécanique&nbsp;quantique.</p>
+<p>Il s&#8217;agit donc d&#8217;un système quantique avec deux états, transmis ou réfléchi, <span class="math">\(\ket{0}\)</span> et <span class="math">\(\ket{1}\)</span>. L&#8217;expérience avec une lame nous montre qu&#8217;en fait <span class="math">\(0\)</span> est un état arbitraire, mais il doit être orthogonal à celui réfléchi (<span class="math">\(\braket{0|1} = 0\)</span>). On suppose maintenant, que la transmission ne change pas l&#8217;état, mais introduit une amplitude <span class="math">\(t=1/\sqrt{2}\)</span>, tandis que la réflexion change l&#8217;état et introduit un déphasage, <span class="math">\(r = \I/\sqrt{2}\)</span>. On respecte bien que <span class="math">\(|r|^2+|t|^2=1\)</span> (d&#8217;où les racines carrées de 2). Supposons que l&#8217;état initial est <span class="math">\(\ket{0}\)</span>, en suivant le chemin dans l&#8217;appareil on a les transformations suivantes <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$\ket{0} \xrightarrow{\text{lame 1}} t \ket{0} + r \ket{1} \xrightarrow{\text{lame 2}} t(t\ket{0} + r\ket{1}) + r(r\ket{0} + t\ket{1}) = \I \ket{1} = \ket{\psi}.$$</div>
+<p>Nous déduisons que la probabilité d&#8217;observer le photon initialement dans l&#8217;état <span class="math">\(0\)</span>, sur le détecteur <span class="math">\(D\)</span>,
+</p>
+<div class="math">$$p_0(1) = \big| \braket{1 | \psi} \big|^2 = 1$$</div>
+<p>
+est 1, et donc zéro la probabilité de le détecter en <span class="math">\(D'\)</span>. Notez que les chemins qui mènent à <span class="math">\(D\)</span> ont une réflexion (<span class="math">\(rt\)</span> ou <span class="math">\(tr\)</span>), tandis que ceux qui mènent à <span class="math">\(D'\)</span> n&#8217;ont pas eu ou en ont eu deux réflexions (<span class="math">\(tt\)</span>, ou <span class="math">\(rr\)</span>).</p>
+<p>En conclusion, l&#8217;application du principe de superposition (le fait que l&#8217;état du photon après passage à travers la lame soit une superposition de &#8220;réfléchi&#8221; et &#8220;transmis&#8221;), en conjunction avec des transformations unitaires (qui, par conséquent, conservent la probabilité) conduisent naturellement (selon les lois de la nature!) au résultat d&#8217;interférence: l&#8217;amplitude de probabilité d&#8217;un photon deux fois réfléchi ou deux fois transmis, s&#8217;annule nous donnant une probabilité 1 de le détecter en <span class="math">\(D\)</span>.</p>
+<p>Si on ajoute le déphasage <span class="math">\(\delta\)</span>, le même calcul conduit au résultat <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$p_0(1) = \big| \braket{1|\psi} \big|^2 = \cos^2(\delta/2).$$</div>
+<p>La transformation réalisée par l&#8217;action de la lame semi-transparente sur l&#8217;état du photon peut être formalisée par l&#8217;opérateur&nbsp;unitaire:
+</p>
+<div class="math">$$B = \frac{1}{\sqrt{2}} \begin{pmatrix}
+  1 &amp; \I \\ \I &amp; 1
+\end{pmatrix}.$$</div>
+<p>
+En effet, cet opérateur realise la transformation <span class="math">\(\ket{0} \rightarrow t \ket{0} + r \ket{1}\)</span>:
+</p>
+<div class="math">$$B \ket{0} = \frac{\ket{0} + \I \ket{1}}{\sqrt{2}}.$$</div>
+<p>
+À l&#8217;aide de <span class="math">\(B\)</span> le résultat précédent s&#8217;obtient&nbsp;par
+</p>
+<div class="math">$$\ket{\text{out}} = BB \ket{0} = \I \ket{1} = \ket{\psi}.$$</div>
+<p>
+Maintenant, si nous ajoutons comme avant, un déphasage <span class="math">\(\delta\)</span>, on constate qu&#8217;il peut être représenté par l&#8217;opérateur (toujours&nbsp;unitaire)
+</p>
+<div class="math">$$S=\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \E^{\I \delta} \end{pmatrix}$$</div>
+<p>
+l&#8217;interféromètre et simplement décrit par l&#8217;action de l&#8217;opérateur <span class="math">\(BSB\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{\psi} = B S B \ket{0} = \frac{\I \E^{\I\delta/2}}{2} \big( -\sin(\delta/2) \ket{0} + \cos(\delta/2) \ket{1} \big).$$</div>
+<p>
+Par conséquent la probabilité d&#8217;observer le photon dans l&#8217;état <span class="math">\(1\)</span> (en <span class="math">\(D\)</span>)&nbsp;est
+</p>
+<div class="math">$$p_0(1) = \big| \braket{1 | \psi} \big|^2 = \cos^2(\delta/2),$$</div>
+<p>
+et
+</p>
+<div class="math">$$p_0(0) = \big| \braket{0 | \psi} \big|^2 = \sin^2(\delta/2),$$</div>
+<p>
+(en <span class="math">\(D'\)</span>), quand <span class="math">\(\delta = 0\)</span> on retrouve bien le résultat&nbsp;précédent.</p>
+<blockquote>
+<p><strong>Exercice</strong> Montrez que <span class="math">\(B = \E^{\I \pi X/4}\)</span>: elle représente une rotation autour de l&#8217;axe <span class="math">\(x\)</span> et d&#8217;angle <span class="math">\(\pi/2\)</span>.</p>
+</blockquote>
+<h2 id="le-qubit">Le&nbsp;qubit</h2>
+<p>On appelle qubit l&#8217;état quantique d&#8217;un système physique dont l&#8217;espace de hilbert est bi-dimensionnel. L&#8217;exemple typique est celui d&#8217;un spin <span class="math">\(1/2\)</span>, comme celui de l&#8217;électron, mais aussi la polarisation du photon, ou deux niveaux d&#8217;énergie d&#8217;un atome qu&#8217;on contrôle à l&#8217;aide des lasers, ou enfin la charge d&#8217;une jonction de Josephson&nbsp;supraconductrice. </p>
+<blockquote>
+<p><img src="/images/AQ-sbloch.png" alt="sphère de bloch" style="height: 200px;"/></p>
+<p>Sphère de Bloch: chaque point <span class="math">\((\theta, \varphi)\)</span> de sa surface represente l&#8217;état d&#8217;un quibit; tout état peut s&#8217;écrire comme la superposition des états <span class="math">\(\ket{0}\)</span> (<span class="math">\(\theta = 0\)</span>) et <span class="math">\(\ket{1}\)</span> (<span class="math">\(\theta = \pi\)</span>).</p>
+</blockquote>
+<p>L&#8217;espace des états d&#8217;un qubit, est l&#8217;espace de hilbert bi-dimensionnel; comme tout état <span class="math">\(\ket{\psi}\)</span> est de norme 1, et il ne change pas si on le multiplie par une phase totale (<span class="math">\(\ket{\psi}\)</span> et <span class="math">\(\E^{\I \alpha} \ket{\psi}\)</span> sont le même état, quelque soit <span class="math">\(\alpha \in \mathbb{R}\)</span>), le nombre de paramètres nécessaires pour le représenter se réduit à 2: les deux angles <span class="math">\((\theta, \varphi)\)</span> qui déterminent l&#8217;orientation du &#8220;vecteur&#8221; autour de la sphère&nbsp;unité,
+</p>
+<div class="math">$$\ket{\psi} = \cos(\theta/2) \ket{0} + \sin(\theta/2) \E^{\I \varphi} \ket{1}$$</div>
+<blockquote>
+<p><strong>Exercice</strong> Calculez les composantes du vecteur <span class="math">\(\bm n = \braket{\psi| \bm \sigma | \psi} = \big( \braket{X}, \braket{Y}, \braket{Z} \big)\)</span>.</p>
+</blockquote>
+<p>L&#8217;état d&#8217;un qubit peut être modifié par l&#8217;application d&#8217;opérateurs unitaires, comme par exemple les matrices de pauli, que dans le contexte de l&#8217;information quantique on appelle <em>gates</em> (ou portes logiques). Nous avons donné un exemple avec l&#8217;interféromètre, lequel pouvait se décrire par un opérateur unitaire <span class="math">\(U = BSB\)</span>; cette suite des transformations unitaires d&#8217;un état &#8220;input&#8221; dans un état &#8220;output&#8221; peut se traduire dans le langage des <em>circuits&nbsp;quantiques</em></p>
+<p><img src="/images/L3-c_mz.svg" alt="circuit MZ" style="height: 24px;"/></p>
+<p>ici l&#8217;input est <span class="math">\(\ket{0}\)</span> et l&#8217;output est <span class="math">\(\ket{\psi}\)</span>. Géométriquement, les transformations unitaires d&#8217;un qubit correspondent à des réflexions et rotations dans la sphère de bloch. Par conséquent la transformation la plus générale d&#8217;un qubit peut se décomposer essentiellement en trois rotations (à une phase multiplicative près), par exemple en utilisant les angles d&#8217;Euler (le curieux peut regarder le site <a href="https://mathworld.wolfram.com/EulerAngles.html">angles d&#8217;Euler</a>).</p>
+<h3 id="deux-qubits-intrication">Deux qubits:&nbsp;intrication</h3>
+<p>L&#8217;espace de hilbert de deux qubits <span class="math">\(\mathcal{H}\)</span> est le produit de kronecker des espaces de hilbert d&#8217;un qubit <span class="math">\(\mathcal{H}_1\)</span>; sa dimensions est donc <span class="math">\(2^2 = 4\)</span>. Un état de <span class="math">\(\mathcal{H}\)</span>&nbsp;s&#8217;écrit 
+</p>
+<div class="math">$$\ket{\psi} = \sum_{n,m = 0,1} \psi_{nm} \ket{n} \otimes \ket{m} = \psi_{00} \ket{00} + \psi_{01} \ket{01} + \psi_{10} \ket{10} + \psi_{11} \ket{11} \in \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1$$</div>
+<p>
+où on a utilisé le raccourci <span class="math">\(\ket{nm} = \ket{n} \otimes \ket{m}\)</span> pour désigner les quatre vecteurs de la base, numérotés avec les chiffres binaires <span class="math">\(\{00, 01, 10, 11\}\)</span>.</p>
+<p>Voyons deux exemples de circuit quantique sur deux qubits: dans le premier exemple on applique sur chaque qubit indépendamment la porte de <em>Hadamard</em>
+</p>
+<div class="math">$$\mathsf{H} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix},$$</div>
+<p>
+(désormais on désigne les gates par de caractères sans sérif), notez que la trace de <span class="math">\(\mathsf{H}\)</span> est nulle (elle peut s&#8217;écrire <span class="math">\(\mathsf{H} = (X+Z)/\sqrt{2}\)</span>), mais son déterminant est <span class="math">\(-1\)</span>; comme les matrices de pauli elle est hermitienne et unitaire (elle est sa propre inverse <span class="math">\(\mathsf{H}^2=1_2\)</span>):</p>
+<p><img src="/images/L3-c_H.svg" alt="circuit H" style="height: 52px;"/></p>
+<p>Notre deuxième exemple applique aux deux qubits, initialement dans l&#8217;état <span class="math">\(\ket{00}\)</span>, la porte <em>controlled&nbsp;not</em> 
+</p>
+<div class="math">$$\mathsf{CNOT} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix}$$</div>
+<p>
+cette porte agit comme l&#8217;unité si le premier qubit est <span class="math">\(0\)</span> est elle inverse le deuxieme quibit si le premier est <span class="math">\(1\)</span>. </p>
+<p><img src="/images/L3-c_bell.svg" alt="circuit bell" style="height: 48px;"/></p>
+<p>où
+</p>
+<div class="math">$$\ket{\Phi_+} = \frac{\ket{00} + \ket{11}}{\sqrt{2}}$$</div>
+<p>
+est un <em>état de Bell</em>.</p>
+<blockquote>
+<p><strong>Exercice</strong> Montrez que 
+<div class="math">$$\mathsf{CNOT} = \frac{1_2 + Z}{2} \otimes 1_2 + \frac{1_2-Z}{2} \otimes X$$</div>
+</p>
+</blockquote>
+<p>Il existe une différence fondamentale entre les deux états <span class="math">\(\ket{++}\)</span> et <span class="math">\(\ket{\Phi_+}\)</span>. L&#8217;état de bell ne peut pas se factoriser en un produit d&#8217;un vecteur de l&#8217;espace du premier qubit par un vecteur du second qubit <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. On dit que l&#8217;état est <em>intriqué</em> (&#8220;entangled&#8221; en anglais). Les implications physiques de l&#8217;intrication quantique sont fondamentales. L&#8217;intrication implique notamment qu&#8217;une description complète d&#8217;un système quantique, ici celui formé par deux spins, n&#8217;implique pas la connaissance de chacune de ses parties, ici ceci signifie que même si on connaît l&#8217;état de deux spins <span class="math">\(\ket{\Phi_+}\)</span>, on ne peut rien dire sur l&#8217;état, par exemple, du premier spin. Par contre, dans un état produit comme <span class="math">\(\ket{++}\)</span>, on peut dire (avec certitude) que le premier spin est dans l&#8217;état <span class="math">\(\ket{+}\)</span>. Comment donc décrire l&#8217;état du premier spin dans l&#8217;état de Bell? Il nous faut généraliser la notion d&#8217;<em>état quantique</em>. C&#8217;est le rôle de la <em>matrice densité</em>.</p>
+<h3 id="la-matrice-densité">La matrice&nbsp;densité</h3>
+<p>Il nous faut d&#8217;abord maîtriser deux opérations sur les matrices: la trace et la trace partielle. Nous savons que la trace d&#8217;une matrice <span class="math">\(A\)</span> est la somme de ses éléments&nbsp;diagonaux:
+</p>
+<div class="math">$$\Tr A = \sum_n A_{nn} = \sum_n a_n$$</div>
+<p>
+où dans la première égalité <span class="math">\(A_{nn}\)</span> sont les éléments de la diagonale de <span class="math">\(A\)</span>, et dans la deuxième égalité <span class="math">\(a_n\)</span> sont les valeurs propres de <span class="math">\(A\)</span>: la trace ne dépend pas de la&nbsp;base:
+</p>
+<div class="math">$$\Tr A = \Tr (U A U^\dagger)$$</div>
+<p>
+avec <span class="math">\(U\)</span> la matrice (unitaire) de changement de base. Ceci est une conséquence de la propriété <em>cyclique</em> de la&nbsp;trace:
+</p>
+<div class="math">$$\Tr(ABC) = \Tr(CAB) = \Tr(BCA).$$</div>
+<p>
+En particulier le produit scalaire peut donc s&#8217;exprimer par une&nbsp;trace:
+</p>
+<div class="math">$$\braket{\phi|\psi} = \Tr \ket{\psi} \bra{\phi}$$</div>
+<p>
+ou
+</p>
+<div class="math">$$\braket{O} = \braket{\psi|O|\psi} = \Tr(\ket{\psi} \bra{\psi} O) = \Tr(\rho O)$$</div>
+<p>
+avec <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>, comme on va le voir, la matrice&nbsp;densité.</p>
+<p>Dans le cas où l&#8217;espace vectoriel peut s&#8217;écrire comme le produit de kronecker de deux espaces vectoriels on peut faire la trace sur l&#8217;un de sous-espaces, c&#8217;est la trace partielle. Soient <span class="math">\(A \in \mathcal{H}_A\)</span> est <span class="math">\(B \in \mathcal{H}_B\)</span> deux matrices des espaces <span class="math">\(A\)</span> et <span class="math">\(B\)</span>, respectivement, on&nbsp;a
+</p>
+<div class="math">$$\Tr_B A \otimes B = A \Tr(B), \quad \Tr_A A \otimes B = B \Tr(A)$$</div>
+<p>
+les traces partielles par rapport à <span class="math">\(B\)</span> et <span class="math">\(A\)</span>. Par exemple <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$\Tr_B (\ket{\Phi_+} \bra{\Phi_+}) = \frac{1}{2} 1_2.$$</div>
+<blockquote>
+<p><img src="/images/L3-f_2l.svg" alt="two levels atom" style="height: 150px;"/></p>
+<p>Niveaux d&#8217;énergie d&#8217;un système de deux spins: l&#8217;état fondamental <span class="math">\(-3\)</span> est non-dégénéré, tandis que l&#8217;état excité est dégénéré trois fois, et d&#8217;énergie <span class="math">\(1\)</span>. On considère une transition de l&#8217;état excité vers l&#8217;état fondamental due aux interaction du système avec, par exemple un&nbsp;laser.</p>
+</blockquote>
+<p>En 1927, Landau publia un papier dans lequel il montra qu&#8217;à la suite des interactions un système composite, initialement dans un état produit, c&#8217;est-à-dire un état dans lequel chaque composant se trouve dans un état quantique bien défini, évolue vers un état <em>intriqué</em>: les interactions créent des corrélations quantiques qui interdissent toute spécification de l&#8217;état des sous-systèmes. Alors même que le système total reste dans un <em>état pur</em> (vecteur de l&#8217;espace de hilbert, de norme 1), l&#8217;état des sous-sytèmes suit une distribution de probabilité. Pour décrire cette état statistique (et non plus &#8220;déterministe&#8221;) des sous-systèmes Landau introduisit la matrice densité. Voyons avec un exemple de quoi il&nbsp;s&#8217;agit.</p>
+<p>Nous allons étudier deux spins <span class="math">\(1/2\)</span> dont l&#8217;interaction est décrite par le <em>hamiltonien</em> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$H = X \otimes X + Y \otimes Y + Z \otimes Z = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 2 &amp; 0 \\ 0 &amp; 2 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{pmatrix}.$$</div>
+<p>
+Nous avons représenté dans la figure ci-dessus, les niveaux d&#8217;énergie (eigenvalues) ainsi que deux vecteurs propres (eigenvectors) correspondants <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong> (notez que la matrice est constituée de trois blocs). Supposons que l&#8217;état initial de deux spins est <span class="math">\(\ket{00}\)</span>, et qu&#8217;on applique un pulse laser tel que le système transite vers l&#8217;état de basse&nbsp;énergie
+</p>
+<div class="math">$$\ket{s} = (\ket{01} - \ket{10})/\sqrt{2},$$</div>
+<p>
+qu&#8217;on va appeler état singulet. Notre objectif est de caractériser l&#8217;état final de chaque spin, en particulier de <em>mesurer</em> leur&nbsp;intrication.</p>
+<p>Voyons comment le laser transforme l&#8217;état initial avec les deux spins &#8220;up&#8221; dans l&#8217;état final &#8220;singulet&#8221;. On peut décrire l&#8217;action du laser par un circuit quantique (bien évidemment il s&#8217;agit d&#8217;un modèle <em>ad hoc</em>) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong></p>
+<p><img src="/images/L3-c_ss.svg" alt="two level system" style="height: 60px;"/></p>
+<blockquote>
+<p>Système de deux spins ayant deux niveaux d&#8217;énergie: l&#8217;état excité (ici <span class="math">\(\ket{00}\)</span>) triplement dégénéré, et l&#8217;état fondamental, le singulet <span class="math">\(\ket{s}\)</span>. Celui-ci est un état intriqué qui peut être obtenu à partir de l&#8217;état produit par application d&#8217;un pulse laser bien&nbsp;choisi.</p>
+</blockquote>
+<p>Nous remarquons que <span class="math">\(\ket{s}\)</span> c&#8217;est un état de bell, qu&#8217;on ne peu pas factoriser dans un produit de l&#8217;état du premier spin par le deuxième. Cependant, chacun des deux spins doit avoir une valeur (espérée) de <span class="math">\(\bm \sigma\)</span> (l&#8217;observable spin est <span class="math">\(\bm \sigma/2\)</span>, en unités de <span class="math">\(\hbar\)</span>); le problème est donc de calculer <span class="math">\(\braket{\bm \sigma}\)</span>, or pour cela il nous faut l&#8217;état du premier spin! Il se trouve que la seule façon de calculer la valeur espérée du premier spin est d&#8217;introduire la trace partielle de l&#8217;état pur (celui du système&nbsp;total):
+</p>
+<div class="math">$$\braket{\bm \sigma} = \Tr(\rho_1 \bm \sigma), \quad \rho_1 = \Tr_2 \ket{s} \bra{s}$$</div>
+<p>
+où on a <span class="math">\(\rho = \ket{s} \bra{s}\)</span> la matrice densité du système total, et <span class="math">\(\rho_1 = \Tr_2 \rho\)</span> la trace partielle, sur le spin 2 (sur son espace de hilbert), de l&#8217;état <span class="math">\(\rho\)</span>. Avec cette définition on généralise la notion de valeur observée d&#8217;une observable dans un état pur, au cas d&#8217;un <em>état mixte</em>, celui d&#8217;un sous-système d&#8217;un système dans un état pur. Le calcul de la trace partielle donne (voir l&#8217;exemple de l&#8217;état de bell plus&nbsp;haut)
+</p>
+<div class="math">$$\rho_1 = \frac{1}{2} 1_2 = \begin{pmatrix} \frac{1}{2} &amp; 0 \\ 0 &amp; \frac{1}{2} \end{pmatrix}.$$</div>
+<p>
+Par conséquent, le spin de 1 est <span class="math">\(\braket{\bm \sigma} = 0\)</span>: la superposition de deux spins nous donne un spin nul dans l&#8217;état <span class="math">\(\ket{s}\)</span>. Vous pouvez vérifier que le spin de l&#8217;état initial est bien <span class="math">\(1/2 = (1/2) \braket{0|\bm \sigma|0}\)</span>.  </p>
+<p>Nous avons donc maintenant l&#8217;état de chaque spin (<span class="math">\(\rho_1 = \rho_2\)</span>) sous la forme d&#8217;un état&nbsp;mixte:
+</p>
+<div class="math">$$\rho_1 = \frac{1}{2} \ket{0} \bra{0} + \frac{1}{2} \ket{1} \bra{1};$$</div>
+<p>
+tout état mixte <span class="math">\(\rho\)</span> peut s&#8217;écrire sous la&nbsp;forme
+</p>
+<div class="math">$$\rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1$$</div>
+<p>
+avec <span class="math">\(\ket{\psi_n}\)</span> les états (pas forcément orthogonaux) des composantes et <span class="math">\(p_n\)</span> la <em>probabilité</em> de cette état: l&#8217;état mixte est donc une distribution probabiliste d&#8217;états quantiques (comme par exemple l&#8217;ensemble de photons issues d&#8217;une&nbsp;source).</p>
+<p>Notez que <span class="math">\(\rho_1\)</span> n&#8217;est pas une superposition quantique, mais un &#8220;ensemble&#8221; dont les fréquences de spin up ou down sont juste <span class="math">\(1/2\)</span>. La conséquence de cet état statistique c&#8217;est qu&#8217;une succession de mesures du premier spin va nous donner une séquence aléatoire de 0 et 1 (up et down), comme si on jouait à jeter une pièce à pile ou face. Cependant, si corrélativement on obtient aussi une séquence de la mesure du second spin, elle sera le complément de la première séquence: si le premier spin est up, le second sera forcément down. Cette corrélation parfaite de deux séquences aléatoires est la manifestation de l&#8217;intrication du singulet, dont les deux spins sont&nbsp;&#8220;issus&#8221;.</p>
+<p>Récapitulant, nous sommes partis d&#8217;un état produit de deux spins &#8220;up&#8221; <span class="math">\(\ket{00}\)</span>, et après l&#8217;application d&#8217;une transformation unitaire nous avons obtenu l&#8217;état de bell <span class="math">\(\ket{\Phi_+}\)</span>. Le fait que cet état ne puisse pas être factorisé, nous empêche de répondre simplement à la question &#8220;quel est l&#8217;état du, par exemple, le premier spin?&#8221;. Pour y répondre, nous avons introduit la trace partielle de l&#8217;état du système total (les deux spins), ce qui nous permet de établir&nbsp;l&#8217;identité
+</p>
+<div class="math">$$\braket{\bm \sigma} = \Tr \big( \bm \sigma \otimes 1_2 \ket{\Phi_+}\bra{\Phi_+}) = \Tr \bm \sigma \rho_1.$$</div>
+<p>La matrice densité <span class="math">\(\rho\)</span> généralise la notion d&#8217;état quantique aux systèmes mixtes. Ses propriétés principales&nbsp;sont</p>
+<ul>
+<li><span class="math">\(\rho = \rho^\dagger\)</span>&nbsp;(hermitienne)</li>
+<li><span class="math">\(\Tr \rho = 1\)</span>&nbsp;(normalisée)</li>
+<li><span class="math">\(\braket{\psi | \rho | \psi} \ge 0\)</span> pour tout état <span class="math">\(\ket{\psi}\)</span>&nbsp;(positive)</li>
+<li>La valeur espérée de l&#8217;observable <span class="math">\(O\)</span> est <span class="math">\(\braket{O} = \Tr (O \rho)\)</span>; pour un état pur <span class="math">\(\rho= \ket{\psi} \bra{\psi}\)</span> on a <span class="math">\(\braket{O} = \Tr(O \ket{\psi} \bra{\psi}) = \braket{\psi|O|\psi}\)</span>.</li>
+</ul>
+<p>Comment caractériser l&#8217;intrication d&#8217;un état quantique, comme celui dont les composantes ne peuvent pas être associées à un état pur (même si l&#8217;état du système est pur)? Une découverte essentielle de la mécanique quantique, due à von Neumann autour de 1930, est qu&#8217;on peut associer une <em>entropie</em> à un <em>état quantique</em> <span class="math">\(\rho\)</span>:
+</p>
+<div class="math">$$S = - \Tr\big( \rho \log \rho \big).$$</div>
+<p>
+En diagonalisant la matrice&nbsp;densité
+</p>
+<div class="math">$$\rho = \sum_n p_n \ket{n} \bra{n}$$</div>
+<p>
+où <span class="math">\(\{\ket{n}\}\)</span> est une base complète et <span class="math">\(\{p_n\}\)</span> l&#8217;ensemble de valeurs propres, on peut réécrire la formule de von Neumann sous la forme de l&#8217;entropie de&nbsp;Shannon:
+</p>
+<div class="math">$$S = -\sum_n p_n \log p_n.$$</div>
+<p>
+L&#8217;entropie <span class="math">\(S\)</span> est une mesure de l&#8217;intrication entre deux parties <span class="math">\(A\)</span> et <span class="math">\(B\)</span> d&#8217;un état pur <span class="math">\(\ket{\psi}\)</span> de <span class="math">\(AB\)</span>. En effet, en prenant la trace partielle sur <span class="math">\(B\)</span> de <span class="math">\(\rho_{AB} = \ket{\psi} \bra{\psi}\)</span>, le système total, nous avons l&#8217;état de <span class="math">\(A\)</span>, ce qui nous permet de calculer l&#8217;entropie de <span class="math">\(A\)</span>
+</p>
+<div class="math">$$S_A = -\Tr \rho_A \log \rho_A, \quad \rho_A = \Tr_B \rho_A.$$</div>
+<p>
+Le calcul de <span class="math">\(\rho_1\)</span> dans l&#8217;état <span class="math">\(\ket{s}\bra{s}\)</span> nous donne <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$S_1 = 1$$</div>
+<p>
+le maximum de l&#8217;entropie d&#8217;un qubit; on en conclue que le singulet est un état d&#8217;<em>intrication maximale</em>.</p>
+<h3 id="lintrication-est-quantique">L&#8217;intrication est&nbsp;quantique</h3>
+<p>Prenons un état de trois qubits <span class="math">\(ABC\)</span>
+</p>
+<div class="math">$$\ket{Q} = \frac{\ket{000} + \ket{111}}{\sqrt{2}}$$</div>
+<p>
+où &#8220;Q&#8221; c&#8217;est pour quantique intriqué. Et considérons les observables <span class="math">\(O\)</span> de l&#8217;espace <span class="math">\(\mathcal{H}_A \mathcal{H}_B \mathcal{H}_C\)</span> définis&nbsp;par
+</p>
+<div class="math">$$O \in \{X \otimes Y \otimes Y, Y \otimes X \otimes Y, Y \otimes Y \otimes X\};$$</div>
+<p>
+il est facile de vérifier que <span class="math">\(\ket{Q}\)</span> est un vecteur propre de <span class="math">\(O\)</span> avec valeur propre <span class="math">\(-1\)</span>
+</p>
+<div class="math">$$O\ket{Q} = - \ket{Q};$$</div>
+<p>
+ceci implique qu&#8217;une mesure <span class="math">\(m(O)\)</span> de l&#8217;observable doit résulter en la valeur observée de <span class="math">\(-1\)</span>:
+</p>
+<div class="math">$$m_A(X) m_B(Y) m_C(Y) = -1$$</div>
+<p>
+ce qui signifie que classiquement il existe une corrélation entre les mesures telle que quand on mesure deux <span class="math">\(Y\)</span> et un <span class="math">\(X\)</span> sur les trois appareils, le résultat est systématiquement <span class="math">\(-1\)</span>, même si les mesures de <span class="math">\(X\)</span> ou de <span class="math">\(Y\)</span>, par exemple, peuvent résulter individuellement en <span class="math">\(1\)</span> ou <span class="math">\(-1\)</span>. On en déduit la relation&nbsp;classique:
+</p>
+<div class="math">$$\big(m_A(X) m_B(Y) m_C(Y)\big) \big(m_A(Y) m_B(X) m_C(Y)\big) \big(m_A(Y) m_B(Y) m_C(X)\big) = m_A(X) m_B(X) m_C(X) = -1,$$</div>
+<p>
+où on a utilisé le fait que <span class="math">\(m_A(Y)^2 = 1\)</span>, etc. En outre, l&#8217;opérateur quantique&nbsp;satisfait 
+</p>
+<div class="math">$$\big(XYY\big) \big(YXY\big) \big(YYX) = -XXX$$</div>
+<p>
+avec
+</p>
+<div class="math">$$XXX\ket{Q} = \ket{Q}$$</div>
+<p>
+vecteur propre de <span class="math">\(\ket{Q}\)</span> avec valeur propre <span class="math">\(1\)</span> (on a omis les <span class="math">\(\otimes\)</span> pour plus de clarté). Nous arrivons à une&nbsp;contradiction:
+</p>
+<div class="math">$$-1 = m_A(X) m_B(X) m_C(X) = 1.$$</div>
+<p>
+Classiquement cette observable est <span class="math">\(1\)</span> est <span class="math">\(-1\)</span>. L&#8217;hypothèse des corrélations entre les mesures ne peut donc pas expliquer les résultats de la mesure de l&#8217;ensemble d&#8217;observables <span class="math">\(O\)</span> et <span class="math">\(XXX\)</span>. En résumé le raisonnement&nbsp;&#8220;classique&#8221;
+</p>
+<div class="math">$$\text{corrélations } + \text{condition } \big( XYY  \rightarrow -1 \big) \Rightarrow \big( XXX \rightarrow -1 \big)$$</div>
+<p>
+est en contradiction avec le fait que <span class="math">\(XXX \rightarrow 1\)</span>. Il faut insister que le résultat obtenu est une propriété de l&#8217;ëtat <span class="math">\(\ket{Q}\)</span>, et non pas des observables qu&#8217;on a choisi pour révéler sa&nbsp;structure.</p>
+<p>Cet exemple illustre le fait que la propriété intrinsèque des états quantiques qu&#8217;est l&#8217;intrication ne peut pas se ramener à une quelconque corrélation classique. En fait, si on utilise la mesure d&#8217;intrication de von Neumann, l&#8217;entropie de chaque spin, on trouve que l&#8217;intrication de chaque spin est&nbsp;maximale.</p>
+<h1 id="mini-projet">Mini-projet</h1>
+<h2 id="états-intriqués-sur-graphe">États intriqués sur&nbsp;graphe</h2>
+<p>Dans ce mini-projet de recherche nous allons étudier les états &#8220;cluster&#8221;, des état quantiques définis sur un graphe. Ceux-ci possèdent les propriétés physiques nécessaires pour pouvoir être utilisés comme ressource d&#8217;information dans le calcul&nbsp;quantique.</p>
+<p>Effectivement, en plus de son intérêt fondamental l&#8217;information quantique s&#8217;applique au <em>calcul quantique</em> (quantum computation). En pratique le circuit quantique que transforme un état produit initial en état intriqué, lequel sert de ressource algorithmique, est un modèle de calcul quantique. Un exemple paradigmatique est l&#8217;algorithme de <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm">Shor (1994)</a> de factorisation d&#8217;un entier; cet algorithme démontra les possibilités d&#8217;un éventuel ordinateur quantique. L&#8217;élément essentiel de tout algorithme quantique est un état intriqué. Un exemple représentatif est celui de la <a href="/L3-telep.html">téléportation</a>. Nôtre tâche sera maintenant de créer des états intriqués définis sur un <em>graphe</em>. Ces états sont, pour un graphe suffisamment complexe, une ressource <em>universelle</em> du calcul quantique; grosso modo ceci signifie qu&#8217;on peut implémenter n&#8217;importe quel unitaire sur <span class="math">\(N\)</span> qubits, par une séquence de mesures et de transformations à un qubit, de cet&nbsp;état. </p>
+<p>Commençons par définir un graphe: c&#8217;est un ensemble de points, les nœuds, qu&#8217;on relie par de segments, les liens. L&#8217;ensemble de nœuds est <span class="math">\(V\)</span>, et celui de liens <span class="math">\(E\)</span>; on note <span class="math">\(x\in V\)</span> un élément de <span class="math">\(V\)</span> et la paire <span class="math">\((x,y)\in E\)</span>, un élément de <span class="math">\(E\)</span>. Par exemple le&nbsp;graphe</p>
+<p><img src="/images/L3-g_1.svg" alt="graph diagonale" style="height: 100px;"/></p>
+<p>est défini par le couple <span class="math">\((V,E)\)</span>:
+</p>
+<div class="math">$$V = \{0, 1, 2, 3\}, \quad E = \{(0,1), (0,2), (0,3), (1,2), (2,3)\},$$</div>
+<p>
+le nombre de nœuds est <span class="math">\(|V| = N = 4\)</span> et celui de liens <span class="math">\(|E| = 5\)</span>. Nous allons associer un qubit à chaque nœud, ce qui nous permet d&#8217;associer l&#8217;état de ces <span class="math">\(N\)</span> qubits à un état du graphe. Initialement, cet état est un produit des états propres de <span class="math">\(X\)</span>, <span class="math">\(\ket{+}\)</span>:
+</p>
+<div class="math">$$\ket{++\ldots} = \ket{+} \otimes \ket{+} \otimes \ldots = \ket{+}^{\otimes N}.$$</div>
+<p>
+L&#8217;état cluster <span class="math">\(\ket{C}\)</span>, résulte de &#8220;l&#8217;interaction&#8221; des qubits voisins (reliés par un lien); on choisit pour cette interaction la porte&nbsp;phase-contrôlée:
+</p>
+<div class="math">$$\mathsf{CZ} = \mathrm{diag}(1,1,1,-1),$$</div>
+<p>
+c&#8217;est-à-dire
+</p>
+<div class="math">$$\ket{C} = \prod_{(x,y) \in E} \mathsf{CZ}(x,y) \ket{+}^{N}$$</div>
+<p>
+(comprenez le produit comme produit tensoriel). Cette &#8220;gate&#8221;, apparenté à l&#8217;interaction <span class="math">\(ZZ\)</span> (d&#8217;Ising), produit de l&#8217;intrication. L&#8217;exemple le plus simple est celui de deux qubits <span class="math">\(\ket{++}\)</span>:</p>
+<p><img src="/images/L3-c_cz.svg" alt="cphase ++" style="height: 48px;"/></p>
+<div class="math">$$\mathsf{CZ}\ket{++} = \frac{1}{2}\big( \ket{00} + \ket{01} + \ket{10} - \ket{11} \big) = \frac{\ket{0+} + \ket{0-}}{\sqrt{2}} = \ket{C_2}$$</div>
+<p>
+donc, après l&#8217;application de <span class="math">\(\mathsf{CZ}\)</span> on obtient le cluster <span class="math">\(\ket{C_2}\)</span> de deux qubits (remarquez la similitude de l&#8217;action de la phase contrôlée sur la base <span class="math">\(\ket{\pm}\)</span> avec celle du non contrôlé sur la base <span class="math">\(\ket{0}\)</span>, <span class="math">\(\ket{1}\)</span>).</p>
+<h3>Sujet</h3>
+<p>Nous allons explorer les propriétés d&#8217;intrication des états cluster sur différents graphes, avec un premier objectif de caractériser leur intrication en fonction de la géométrie du graphe: est-ce l&#8217;entropie d&#8217;intrication une grandeur extensive, comme en&nbsp;thermodynamique?</p>
+<h1 id="codes">Codes</h1>
+<p>Voici quelques exemples <code>python</code> qui pourront vous être utiles dans la résolution des&nbsp;exercices.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span> 
+<span class="c1">#</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;theta, varphi&quot;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Base de l&#39;espace de hilbert fe</span>
+<span class="n">ket_0</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">ket_1</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+<span class="c1"># Definition des matrices</span>
+
+<span class="c1"># un</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">I</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span> <span class="p">)</span>
+
+<span class="c1"># pauli</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span> <span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span> <span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="p">)</span>
+
+<span class="c1"># phase</span>
+<span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">phi</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">phi</span><span class="p">)]]</span> <span class="p">)</span>
+
+<span class="c1"># qubit</span>
+<span class="n">ket_psi</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">ket_0</span> <span class="o">+</span> <span class="n">sy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">ket_1</span>
+<span class="c1"># bloch shpère</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span> <span class="n">ket_psi</span><span class="o">.</span><span class="n">H</span> <span class="o">*</span> <span class="n">X</span> <span class="o">*</span> <span class="n">ket_psi</span> <span class="p">)</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span> <span class="n">ket_psi</span><span class="o">.</span><span class="n">H</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">ket_psi</span> <span class="p">)</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span> <span class="n">ket_psi</span><span class="o">.</span><span class="n">H</span> <span class="o">*</span> <span class="n">Z</span> <span class="o">*</span> <span class="n">ket_psi</span> <span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nz</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># interféroèmtre</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="n">sy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">B</span><span class="o">*</span><span class="n">S</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">B</span> <span class="o">*</span> <span class="n">ket_0</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="n">ket_1</span><span class="o">.</span><span class="n">H</span> <span class="o">*</span> <span class="n">out</span>
+<span class="c1"># probabilité en D = 1</span>
+<span class="n">p_1</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span><span class="o">*</span><span class="n">amplitude</span><span class="p">))</span>
+
+<span class="c1">### DEUX SPINS</span>
+<span class="kn">from</span> <span class="nn">sympy.physics.quantum</span> <span class="kn">import</span> <span class="n">TensorProduct</span> <span class="k">as</span> <span class="n">TP</span>
+<span class="c1"># TP est le produit de kronecker</span>
+<span class="c1"># base de hilbert dim = 4</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">TP</span><span class="p">(</span><span class="n">ket_0</span><span class="p">,</span><span class="n">ket_0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">TP</span><span class="p">(</span><span class="n">ket_0</span><span class="p">,</span><span class="n">ket_1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+                 <span class="n">TP</span><span class="p">(</span><span class="n">ket_1</span><span class="p">,</span><span class="n">ket_0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">TP</span><span class="p">(</span><span class="n">ket_1</span><span class="p">,</span><span class="n">ket_1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
+<span class="c1"># interaction sigma.sigma</span>
+<span class="n">ising</span> <span class="o">=</span> <span class="n">TP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">TP</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="o">+</span> <span class="n">TP</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+<span class="c1"># calcul du &quot;spectre&quot;</span>
+<span class="n">spectre</span> <span class="o">=</span> <span class="n">ising</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="intrication">Intrication</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span><span class="p">,</span> <span class="n">svdvals</span>
+
+<span class="k">def</span> <span class="nf">np_a</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="c1"># conversion d&#39;une matrice sympy en un tableau numpy</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">partial_tr</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c1"># dim a = N = 2^L, pour L qubits</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">aa</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># partition en deux parties égales    </span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ijkj-&gt;ik&#39;</span><span class="p">,</span> <span class="n">aa</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">entropy_vn</span><span class="p">(</span><span class="n">rho</span><span class="p">):</span>
+    <span class="c1"># entropy de von Neumann (non optimisée)</span>
+    <span class="n">rho_1</span> <span class="o">=</span> <span class="n">partial_tr</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+    <span class="n">pn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">eigvals</span><span class="p">(</span><span class="n">rho_1</span><span class="p">))</span> <span class="c1"># valeurs propres</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">pn</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1"># test si valeurs propres 0</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">pn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">pn</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># p log p = 0 if p = 0</span>
+    <span class="k">return</span> <span class="n">S</span>
+
+<span class="c1"># singulet</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">base</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">sy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">np_a</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">s</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+<span class="n">rho_1</span> <span class="o">=</span> <span class="n">partial_tr</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="c1"># -&gt; 0.5 Id</span>
+<span class="n">entropy_vn</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="c1"># -&gt; 1 intrication maximale!</span>
+</code></pre></div>
+
+<h3 id="état-graphe-cluster">État graphe&nbsp;(cluster)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span><span class="p">,</span> <span class="n">svdvals</span>
+
+<span class="c1">#</span>
+<span class="c1"># ETAT CLUSTER</span>
+<span class="c1"># spin indices</span>
+<span class="k">def</span> <span class="nf">s_dd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;liste de configurations (s_0...s_{2^N-1}) de N qubits </span>
+<span class="sd">    avec s_x = 1 et s_y = 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">N</span><span class="p">)</span> <span class="c1"># set of spin configurations</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">s</span><span class="o">//</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span> <span class="p">)</span> <span class="c1"># adresse du spin x (s_x = 0,1)</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span> <span class="n">s</span><span class="o">//</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="mi">2</span> <span class="p">)</span> <span class="c1"># adresse du spin y (s_y = 0,1)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">sx</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">sy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># état C = Prod CPHASE(edges) |+++...&gt;</span>
+<span class="k">def</span> <span class="nf">cluster_C</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;état cluster d&#39;un graphe E (liens)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="n">N</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">N</span><span class="p">)</span> <span class="c1"># produit tensoriel |++++...&gt;</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">E</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">s_dd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">C</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">C</span>
+<span class="c1"># entropy</span>
+<span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;on utilise la décomposition en valeurs singulières</span>
+<span class="sd">       de l&#39;état pur; entropie de N//2 qubits</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">ev</span> <span class="o">=</span> <span class="n">svdvals</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">pn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">ev</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">pn</span> <span class="o">=</span> <span class="n">pn</span><span class="p">[</span><span class="n">pn</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">pn</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">pn</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="c1"># application: triangle</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span> <span class="c1"># liens</span>
+<span class="n">entropy</span><span class="p">(</span><span class="n">cluster_C</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+</code></pre></div>
+
+<h1 id="bibliographie">Bibliographie</h1>
+<ul>
+<li>Holbrow, <span class="caps">CH</span>, Galvez, E and Parks, <span class="caps">ME</span> <a href="/pdfs/MZ-splitter.pdf">Photon quantum mechanics and beam splitters</a> Am. J. Phys. <strong>70</strong>, 260&nbsp;(2002) </li>
+<li>Grangier, P, Roger, G and Aspect, A <a href="/pdfs/Grangier-1986.pdf">Experimental Evidence for a Photon Anticorrelation Effect on a Beam Splitter: A New Light on Single-Photon Interferences</a> Europhys. Lett. <strong>1</strong>, 173&nbsp;(1986)</li>
+<li>Aspect, A, Grangier, P and Roger, G <a href="/pdfs/Aspect-1982sf.pdf">Experimental Realization of Einstein-Podolsky-Rosen-Bohm Gedankenexperiment: A New Violation of Bell&#8217;s Inequalities</a> Phys. Rev. Lett. <strong>49</strong>, 91&nbsp;(1982)</li>
+<li>Mermin, <span class="caps">ND</span> <a href="/pdfs/Mermin-1990.pdf">Quantum mysteries revisited</a> Am. J. Phys. <strong>58</strong>, 731&nbsp;(1990)</li>
+</ul>
+<h3>Index</h3>
+<!--toc:start-->
+<ul>
+<li><a href="#linformation-quantique-du-qubit-a-lintrication">L&#8217;information quantique: du qubit a l&#8217;intrication</a><ul>
+<li><a href="#pause-mathématique-lespace-de-hilbert">Pause mathématique: l&#8217;espace de&nbsp;hilbert</a></li>
+<li><a href="#principes-de-la-mécanique-quantique">Principes de la mécanique&nbsp;quantique</a></li>
+</ul>
+</li>
+<li><a href="#le-qubit">Le qubit</a><ul>
+<li><a href="#deux-qubits-intrication">Deux qubits:&nbsp;intrication</a></li>
+<li><a href="#la-matrice-densité">La matrice&nbsp;densité</a></li>
+<li><a href="#lintrication-est-quantique">L&#8217;intrication est&nbsp;quantique</a></li>
+</ul>
+</li>
+<li><a href="#mini-projet">Mini-projet</a></li>
+<li><a href="#états-intriqués-sur-graphe">États intriqués sur&nbsp;graphe</a></li>
+<li><a href="#codes">Codes</a><ul>
+<li><a href="#intrication">Intrication</a></li>
+<li><a href="#état-graphe-cluster">État graphe&nbsp;(cluster)</a></li>
+</ul>
+</li>
+<li><a href="#bibliographie">Bibliographie</a></li>
+</ul>
+<!--toc:end-->
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

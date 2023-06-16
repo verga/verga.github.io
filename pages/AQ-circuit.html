@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Quantum circuits | Random physics
+</title>
+    <link rel="canonical" href="/pages/AQ-circuit.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Circuit model of quantum computation, gates, universality and simple circuits.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
+</blockquote>
+<h1>Circuit computational&nbsp;model</h1>
+<h2>Quantum&nbsp;gates</h2>
+<p>Quantum gates are simple one and two qubits unitary operators that allow the construction of much more complex, in fact arbitrary, unitary operators acting on a <span class="math">\(N\)</span>-qubit system. The ability to model an arbitrary <span class="math">\(U\)</span> by a product of single and two qubits unitary operators is known as universality, and the corresponding set of gates as&nbsp;universal.</p>
+<p>One qubit gates are essentially constructed from the pauli matrices, which generate arbitrary rotations in the natural <span class="math">\(SU(2)\)</span> space of the qubit (bloch sphere),<sup id="fnref:bb"><a class="footnote-ref" href="#fn:bb">1</a></sup>
+</p>
+<div class="math">$$R(\varphi,\theta,\psi) = \E^{-\I \psi Z/2} \E^{-\I \theta Y/2} \E^{-\I \varphi Z/2} = R_z(\psi) R_y(\theta) R_z(\phi)\,,$$</div>
+<p>
+where
+</p>
+<div class="math">$$R_n(a) = \E^{-\I \hat{\bm n} \cdot \bm \sigma \, a/2}\,,$$</div>
+<p>
+is the rotation matrix of angle <span class="math">\(a\)</span> and axis <span class="math">\(\hat{\bm n}\)</span>. Some particular cases are physically important. For instance the Hadamard&nbsp;gate,
+</p>
+<div class="math">$$H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}$$</div>
+<p>
+represents, in quantum optics, a lossless symmetric beam splitter. Logical &#8220;not&#8221; can be implemented by the <span class="math">\(X\)</span> matrix that exchanges <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span>:
+</p>
+<div class="math">$$X = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\,.$$</div>
+<p>
+The action of the hadamard gate can be also&nbsp;written,
+</p>
+<div class="math">$$H: \ket{x} \rightarrow \frac{1}{\sqrt{2}} (\ket{0} + (-1)^x \ket{1})$$</div>
+<p>
+where <span class="math">\(x = 0, 1\)</span>,&nbsp;analogously
+</p>
+<div class="math">$$X: \ket{x} \rightarrow \ket{1 \oplus x}$$</div>
+<p>
+where <span class="math">\(\oplus\)</span> is for the addition modulo&nbsp;2.</p>
+<p>An important two qubit gate is the controlled&nbsp;not:
+</p>
+<div class="math">$$\mathsf{CNOT}: \ket{x} \otimes \ket{y} \rightarrow \ket{x} \otimes \ket{y \oplus x}\,.$$</div>
+<p>
+Its matrix representations&nbsp;is,
+</p>
+<div class="math">$$\mathsf{CNOT} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix}\,,$$</div>
+<p>
+which exchange the values of the second qubit if the first one is in the 1 state, without modifying the first&nbsp;qubit.</p>
+<p>A general controlled unitary <span class="math">\(U\)</span> has the form given by the&nbsp;circuit,</p>
+<p><img src="/images/AQ-ccu.svg" alt="control U" style="width: 250px;"/></p>
+<p>note the power <span class="math">\(x\)</span>: if <span class="math">\(x=0\)</span> the input state do not change, otherwise <span class="math">\(x=1\)</span> we apply <span class="math">\(U\)</span> to de second&nbsp;qubit.</p>
+<h3>Universal gate&nbsp;set</h3>
+<p>One qubit gates and the <span class="math">\(\mathsf{CNOT}\)</span> two qubits gate form a set of <em>universal</em> gates: any <span class="math">\(n\)</span>-qubit operator can be written as a circuit of this set of&nbsp;gates.</p>
+<p>The general expression of a qubit unitary&nbsp;is
+</p>
+<div class="math">$$U = \E^{\I \alpha} \mathsf{R}(\varphi, \theta, \psi)\,.$$</div>
+<p>
+In fact, we need at most four complex numbers to write any two by two matrix; however, the unitary condition restrict the number to independent parameters to four reals <span class="math">\(\alpha, \varphi, \theta, \psi \in \mathbb{R}\)</span>. In addition to the global phase <span class="math">\(\alpha\)</span>, the three euler angles allow a general rotation <span class="math">\(SU(2) \sim SO(3)\)</span>:
+</p>
+<div class="math">$$U = \begin{pmatrix} \E^{ \I (\alpha - \psi/2 - \phi/2) } \cos \theta/2 &amp; -\E^{ \I (\alpha - \psi/2 + \phi/2) } \sin \theta/2 \\ \E^{ \I (\alpha + \psi/2 - \phi/2) } \sin \theta/2 &amp; -\E^{ \I (\alpha + \psi/2 + \phi/2) } \cos \theta/2 \end{pmatrix}\,,$$</div>
+<p>
+that can be written as the <span class="math">\(\mathsf{R}\)</span> product of rotations <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>A useful particular form of the general decomposition of <span class="math">\(U\)</span>&nbsp;is
+</p>
+<div class="math">$$U = \E^{\I \alpha} A X B X C, \quad ABC = 1\,,$$</div>
+<p>
+as can be verified&nbsp;writing 
+</p>
+<div class="math">\begin{align*}
+A &amp;= R_z(\psi) R_y(\theta/2)\\
+B &amp;= R_y(-\theta/2) R_z\left( -\frac{\phi + \psi}{2}\right)\\
+C &amp;= R_z\left( \frac{\phi - \psi}{2}\right)
+\end{align*}</div>
+<p>
+<strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>, which we use to write a general controlled <span class="math">\(U\)</span> two qubit&nbsp;operator:</p>
+<p><img src="/images/AQ-ccuU.svg" alt="control U universal" style="width: 400px;"/></p>
+<p>where the last gate <span class="math">\(\Phi\)</span> takes into account the phase <span class="math">\(\alpha\)</span>:
+</p>
+<div class="math">$$\Phi(\alpha) = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \E^{\I \alpha} \end{pmatrix}\,.$$</div>
+<p>
+Therefore, any controlled operation can be implemented using the <span class="math">\(\mathsf{CNOT}\)</span> gate with well chosen one qubit&nbsp;operators.</p>
+<p>One possible demonstration of the universality of the set mentioned is using the classical result that the toffoli gate is universal, and showing that the toffoli gate can be written in terms of the cnot gate, together with one quibit&nbsp;gates.</p>
+<h2>Quantum&nbsp;Circuits</h2>
+<p>We show through some simple circuits the entanglement mechanisms and we illustrate the related notion of entanglement as a resource. We also discuss the measurement process in the context of quantum&nbsp;circuits.</p>
+<h3>Deutsch&nbsp;algorithm</h3>
+<p>The Deutsch algorithm circuit aims at determining if a boolean function is balanced or constant. We take <span class="math">\(f\)</span> to be a function whose range and domain are one&nbsp;bit:
+</p>
+<div class="math">$$f: \{0,1\} \rightarrow \{0,1\}\,.$$</div>
+<p>
+One says that a general boolean function (with domain <span class="math">\(n\)</span> bits and range one bit) <span class="math">\(f\)</span> is <em>balanced</em> if <span class="math">\(f(x)\)</span> evaluates to 0 for half of the inputs, and 1 for the other half; in addition, one says that <span class="math">\(f\)</span> is constant if, whatever the input, the output is 0 or 1, exclusively. In the case of a one bit to one bit function, it is balanced if <span class="math">\(f(0) \ne f(1)\)</span> and constant if <span class="math">\(f(0) = f(1)\)</span>.&nbsp;Therefore,
+</p>
+<div class="math">$$f(0) \oplus f(1) = \begin{cases} 0 &amp; \text{if constant} \\ 1 &amp; \text{if balanced} \end{cases}\,.$$</div>
+<p>
+The circuit is shown below. It is implemented with a controlled unitary operator <span class="math">\(U_f\)</span>:
+</p>
+<div class="math">$$U : \ket{xy} \rightarrow \ket{xy\oplus f(x)}\,.$$</div>
+<p><img src="/images/AQ-cdeutsch.svg" alt="Deutsch circuit" style="width: 400px;"/></p>
+<p>It is easy to show that <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{\psi_3} = \pm \ket{f(0) \oplus f(1)}\otimes \ket{-}, \quad \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}\,.$$</div>
+<p>
+As a consequence, a measurement of the first qubit gives information about a <em>global</em> property <span class="math">\(f\)</span>: the result 0 means that it is constant and the result 1 that it is balanced. This answers the question computing <span class="math">\(U_f\)</span> only once: a unique (quantum) evaluation of <span class="math">\(f\)</span> is then enough. Classically we would had to use two evaluations of <span class="math">\(f\)</span> to determine if <span class="math">\(f\)</span> is balanced or constant. This circuit illustrates a quantum advantage over the classical one, where the extra resource is the inherent quantum parallelism (superposition and interference of states). Remark that this result is obtained without resorting to entanglement of the two&nbsp;qubits.</p>
+<h3>Bell&nbsp;states</h3>
+<p>The bell state can be generated using a simple circuit with one hadamard gate, which prepares the qubit into a superposition, and a cnot gate, which is responsible of the&nbsp;entanglement:</p>
+<p><img src="/images/AQ-cbell.svg" alt="Bell states circuit" style="width: 200px;"/></p>
+<p>or in a compact&nbsp;notation
+</p>
+<div class="math">$$\ket{b_{xy}} = \frac{1}{\sqrt{2}} \left( \ket{0y} + (-1)^x \ket{1 y \oplus 1} \right)$$</div>
+<p>
+The bell states correspond&nbsp;to
+</p>
+<div class="math">$$\ket{\Phi_+} = \ket{b_{00}} \,, \quad \ket{\Phi_-} = \ket{b_{10}}$$</div>
+<p>
+and
+</p>
+<div class="math">$$\ket{\Psi_+} = \ket{b_{01}} \,, \quad \ket{\Psi_-} = \ket{b_{11}}$$</div>
+<h3>Dense&nbsp;coding</h3>
+<p>It is possible to communicate two bits of classical information using only one qubit from a pair of entangled qubits. Dense coding provides the simplest example showing entanglement as a computational resource; with <span class="math">\(n\)</span> qubits we can code <span class="math">\(2^n\)</span> bits of information (the dimension of their hilbert space), thus opening the way to an exponential increase in the performance of the quantum information&nbsp;processing.</p>
+<p><img src="/images/AQ-cdc.svg" alt="dense coding" style="width: 350px;"/></p>
+<p>Two qubits are initialized in the <span class="math">\(\ket{0}\)</span> state and entangled to form a bell state <span class="math">\(\ket{\Phi_+}\)</span>; this entangled state is shared by Alice and Bob. Alice want to send a two bits message to Bob, then she applies the following operator to her first&nbsp;qubit:
+</p>
+<div class="math">$$Z^{b_2} X^{b_1}$$</div>
+<p>
+as a result, the initial bell state change into one of the four basis&nbsp;states:
+</p>
+<div class="math">\begin{align*}
+00 &amp; \rightarrow 1 &amp;\rightarrow \ket{\Phi_+} \\
+01 &amp; \rightarrow Z &amp;\rightarrow \ket{\Phi_-} \\
+10 &amp; \rightarrow X &amp;\rightarrow \ket{\Psi_+} \\
+11 &amp; \rightarrow ZX &amp;\rightarrow \ket{\Psi_-}
+\end{align*}</div>
+<p>
+After applying a different operator for each possible message, she send her qubit to Bob. Bob applies the inverse transformation <span class="math">\(\mathsf{CNOT} \, \mathsf{H}\)</span> to <em>disentangle</em> them, and finally he measures the two qubits: the result of the measurement is the message. In conclusion, using one operation on only one qubit, Alice send a message of two bits through a quantum channel to Bob; the last operation is a measurement of the two&nbsp;qubits.</p>
+<h3>Teleportation</h3>
+<p>An interesting and enlightening application of the entanglement of two qubits, like in the bell states, is the possibility of quantum state teleportation. It is easy to demonstrate that the linearity of quantum laws forbids to copy a state, or state <em>cloning</em>.</p>
+<p>Indeed, we can use as a resource the entanglement of Bell states, to teleport an unknown qubit <span class="math">\(\ket{\psi}\)</span>, as shown it the circuit&nbsp;below. </p>
+<p><img src="/images/AQ-ctele.svg" alt="teleportation" style="width: 350px;"/></p>
+<p>We observe that the entanglement is created by a mechanism of <em>interaction</em> of the two qubits. To show this, let us write the cnot unitary as a product of one qubit operators and one ising-like unitary <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\E^{\I Z \otimes Z \pi/2},$$</div>
+<p>
+we&nbsp;get,
+</p>
+<div class="math">$$\mathsf{CNOT} = U(1, Y, \pi/2)\, \mathsf{CZ}\, U(1, Y, -\pi/2)\,,$$</div>
+<p>
+where
+</p>
+<div class="math">$$\mathsf{CZ} = \E^{\I \pi/4} U(Z,Z, -\pi/2) U(Z,1,\pi/2) U(1,Z,\pi/2)\,,$$</div>
+<p>
+is the control-<span class="math">\(Z\)</span> or controlled phase two qubit gate,&nbsp;and
+</p>
+<div class="math">$$U(A,B,\theta) = \exp\left( -\I A \otimes B \,\theta/2 \right) \,.$$</div>
+<p>
+We observe that, up to one qubit rotations, the interaction between the two qubits has the generic form of the ising hamiltonian <span class="math">\(H \sim Z \otimes Z\)</span> of two spins. Is just this type of interacting mechanism which is at the origin of the two qubits&nbsp;entanglement.</p>
+<h3>Exercises</h3>
+<ol>
+<li>
+<p>Show that the following circuit represents a generalized measurement; <span class="math">\(U_M\)</span> is unitary, its eigenvalues are supposed to be <span class="math">\(1\)</span> and <span class="math">\(-1\)</span> (for the states <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span>,&nbsp;respectively)</p>
+<p><img src="/images/AQ-cm.svg" alt="measurment U" style="width: 300px;"/></p>
+</li>
+<li>
+<p>Demonstrate that cloning a quantum state is in contradiction with quantum&nbsp;mechanics.</p>
+</li>
+<li>
+<p>Compute the successive states of the teleportation circuit; analyze in particular how are used the measurement&nbsp;results.</p>
+</li>
+<li>
+<p>Show that the modified teleportation circuit with deferred measurement (figure below), transfers an unknown quantum state <span class="math">\(\ket{\psi}\)</span> from one quantum channel to another one; explain why this version, even if equivalent to the bell measurement based teleportation from the quantum point of view, cannot be considered as a real&nbsp;teleportation.</p>
+<p><img src="/images/AQ-cteleU.svg" alt="teleportation U" style="width: 350px;"/></p>
+</li>
+<li>
+<p>Write the <span class="math">\(\mathsf{CZ}\)</span> two qubits gate in terms of an effective hamiltonian <span class="math">\(\hat{H}\)</span> (not to be confused with the hadamard gate),
+    <div class="math">$$\mathsf{CZ} = \E^{-\I \hat{H}}$$</div>
+    and discuss the&nbsp;result.</p>
+</li>
+<li>
+<p>Show that,
+    <div class="math">$$\mathsf{CNOT} = (1\otimes H) \mathsf{CZ} (1\otimes H)$$</div>
+    and write the corresponding&nbsp;circuit.</p>
+</li>
+</ol>
+<h2>Notes</h2>
+<p>An interesting account of teleportation in the language of quantum computing can be found in the web site <a href="https://qiskit.org/textbook/ch-algorithms/teleportation.html">Qiskit</a>. You can also find a practical implementation of the <a href="https://qiskit.org/textbook/ch-algorithms/superdense-coding.html">dense coding</a> algorithm, showing the influence of errors in the transmitted&nbsp;message.</p>
+<p>The diagrams of quantum circuits were drawn using the latex package <a href="https://ctan.org/pkg/quantikz"><code>quantikz</code></a> written by Alastair Kay <a href="https://arxiv.org/abs/1809.03842">arXiv:1809.03842</a> v.4&nbsp;(2020)</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:bb">
+<p>Barenco, A., Bennett, C. H., DiVincenzo, D., Margolus, N., Shor, P. Sleator, T., Simolin, J., and Weinfurter, H., <em>Elementary gaters for quantum computation,</em> Phys. Rev. A <strong>52</strong>, 3457 (1995) <a href="/pdfs/Barenco-1995.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:bb" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

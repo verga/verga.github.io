@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Leçon de physique théorique: la marche aléatoire | Random physics
+</title>
+    <link rel="canonical" href="/L3-phys.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="La physique théorique établit les concepts physiques et exprime mathématiquement les lois de la nature en accord avec les mesures expérimentales.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2016-02-25T09:30:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        jeu. 25 février 2016
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/teaching.html">#teaching</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,}&nbsp;\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
+<blockquote>
+<p>Texte destiné aux étudiants de la troisième année de la licence de physique particulièrement intéressés par la physique&nbsp;théorique.</p>
+</blockquote>
+<p>La physique est une science quantitative, l&#8217;expérimentateur étudie les phénomènes de la nature mettant en évidence des propriétés mesurables et dégageant des régularités qui peuvent s&#8217;exprimer sous la forme des <em>lois empiriques</em>. La physique théorique a pour objectif d&#8217;inférer à partir des données de l&#8217;expérience, mais aussi avec le cadre théorique déjà établit, les concepts scientifiques; sa tâche est de <em>relier les concepts physiques par des lois mathématiques</em>. Nous voyons que la physique se construit historiquement: les connaissances expérimentales (mesures) et leur expression théorique (concepts) et mathématique (lois) s&#8217;élargissent en fonction des découvertes, parfois même en remettant en cause les bases établies par des nouvelles observations, et montrant donc la nécessité de reviser les fondements jusqu&#8217;alors considérés comme&nbsp;justes.</p>
+<p>La physique s&#8217;occupe donc des phénomènes mesurables, ce qui s&#8217;exprime par le fait que les grandeurs physiques ont des <em>dimensions</em>, comme les grandeurs mécaniques (longueur, temps, masse, énergie) ou thermodynamiques (température, pression, entropie). Or, les lois de la physique sont indépendantes du système d&#8217;unités utilisé pour mesurer ces grandeurs (mètre, seconde, kilogramme, joule,&nbsp;etc.).</p>
+<p>Nous avons défini la physique théorique, faisons en maintenant usage: posons nous la question si c&#8217;est possible de traduire par une loi mathématique cette indépendance vis-à-vis de l&#8217;unité des lois&nbsp;physiques.</p>
+<p>Pensons à deux grandeurs <span class="math">\(x\)</span> et <span class="math">\(y\)</span>; la loi physique est mathématiquement une <em>fonction</em>
+</p>
+<div class="math">$$y=f(x)\,.$$</div>
+<p>
+Changer les unités revient à une&nbsp;homothétie: 
+</p>
+<div class="math">$$x\rightarrow X=ax\,,\quad y\rightarrow Y=by\,.$$</div>
+<p>
+L&#8217;indépendance de la loi s&#8217;exprime par l&#8217;invariance de la fonction <span class="math">\(f\)</span> vis-à-vis de&nbsp;l&#8217;homothétie:
+</p>
+<div class="math">$$y=f(x) \quad \Rightarrow \quad Y=f(X)=bf \left(\frac{X}{a}\right)\,.$$</div>
+<p>
+Nous avons obtenu une equation dont la solution à trouver est la fonction <span class="math">\(f\)</span>; nous constatons qu&#8217;elle implique une certaine relation entre les paramètres, au départ arbitraires, <span class="math">\(a\)</span> et <span class="math">\(b\)</span>; en effet, après calcul nous trouvons que la solution&nbsp;s&#8217;écrit,
+</p>
+<div class="math">$$f(x) = f(1) x^\alpha\,,\quad \alpha = \frac{\ln b}{\ln a}\,,$$</div>
+<p>
+c&#8217;est-à-dire, une <em>loi de puissance</em> (<span class="math">\(f(1)\)</span> est une constante, bien sûr). Nous avons donc établi une loi de la nature: les grandeurs physiques (dimensionnées) sont reliées par des lois de&nbsp;puissance!</p>
+<p>Nous illustrons maintenant, à travers l&#8217;exemple de la marche aléatoire, une caractéristique de la physique, et en particulier, de la façon dont la physique théorique se construit: un problème simple et apparemment sans connexion évidente avec la complexité de la nature, permet d&#8217;expliquer des phénomènes comme la diffusion, mais aussi, en généralisant au monde quantique, d&#8217;aborder le domaine de l&#8217;informatique quantique. Voyez vous un rapport entre les&nbsp;deux?</p>
+<h2>La marche&nbsp;aléatoire</h2>
+<p>Un marcheur a le choix, selon le résultat pile ou face du jet d&#8217;une pièce de monnaie, de faire un pas vers la gauche ou vers la droite. Voici posé le problème: quelle est la position du marcheur parti de l&#8217;origine <span class="math">\(x=0\)</span>, au bout de <span class="math">\(t\)</span> jets? La réponse ne peut être que probabiliste, puisque sa position va dépendre de l&#8217;évènement <em>aléatoire</em> de la séquence&nbsp;pile-face.</p>
+<p>Nous pouvons aborder le problème à partir de différents points de vue; nous pouvons par exemple, calculer la valeur moyenne de la position <span class="math">\(\overline{x}(t)\)</span> ou sa variance <span class="math">\(\overline{x^2}(t)\)</span> en fonction du nombre de pas (temps); ou nous pouvons aussi essayer de calculer la probabilité <span class="math">\(P(x,t)\)</span> de trouver le marcheur en <span class="math">\(x\)</span> au temps <span class="math">\(t\)</span>.</p>
+<p>Nous allons supposer dans un premier temps que la position et le temps sont des entiers <span class="math">\(x,t\in \mathbb{Z}\)</span> (marche discrète), ce qui revient à mesurer les longueurs en unités de pas <span class="math">\(\Delta x\)</span> et le temps en unités de la durée entre deux jets <span class="math">\(\Delta t\)</span>. La position à <span class="math">\(t+1\)</span>&nbsp;est
+</p>
+<div class="math">$$x(t+1) = x(t) + b(t)\,, \quad
+b(t)= \begin{cases}
+  1, &amp;\text{ si }p=1/2\\
+  -1, &amp;\text{ si }p=1/2
+\end{cases}\,,$$</div>
+<p>
+où <span class="math">\(b(t)\)</span> est un &#8220;processus stochastique&#8221;, qu&#8217;on appelle parfois un bruit blanc (dans la limite où le temps est continu, <span class="math">\(|\Delta t \rightarrow 0\)</span>):
+</p>
+<div class="math">$$\overline{b(n)}=0\,,\quad
+\overline{b(n)b(m)}=\delta_{n,m}$$</div>
+<p>
+où <span class="math">\(n=0,1,\ldots,t\)</span> et <span class="math">\(\delta_{n,m}\)</span> la delta de&nbsp;Kronecker.</p>
+<p>La position au bout de <span class="math">\(t\)</span> jets est par&nbsp;conséquent,
+</p>
+<div class="math">$$x(t) = \sum_{n=1}^{t} b(n)\,.$$</div>
+<p>
+La valeur moyenne est immédiatement calculée en utilisant <span class="math">\(\overline{b}=0\)</span>, ou d&#8217;une façon équivalente, en remarquant que pour chaque temps on a <span class="math">\(\overline{x}(t+1)= (x(t)-1)/2 + (x(t)+1)/2=x(t)=x(0)=0\)</span>.</p>
+<p>La variance se déduit de l&#8217;indépendance des&nbsp;jets:
+</p>
+<div class="math">$$\overline{x^2}(t)=\sum_{n,m}^{t}\overline{b(n)b(m)}= 
+\sum_{n,m}^{t}\delta_{n,m}=t\,.$$</div>
+<p>
+Avec ce simple calcul nous avons un résultat important: le marcheur s&#8217;éloigne de l&#8217;origine non pas comme un mobile ayant une vitesse constante <span class="math">\(x\sim t\)</span>, mais en raison de la <em>racine</em> du&nbsp;temps
+</p>
+<div class="math">$$x \sim \sqrt t\,,$$</div>
+<p>
+c&#8217;est-à-dire, une loi de puissance. Cette loi est caractéristique de la <em>diffusion</em>, le phénomène de mélange d&#8217;un polluant dans l&#8217;air, ou de la chaleur dans un métal. Si on rétablit les unités, on obtient la&nbsp;relation,
+</p>
+<div class="math">$$ \overline{x^2}(t) = \frac{(\Delta x)^2}{\Delta t} t \equiv D t$$</div>
+<p>
+où nous avons introduit le <em>coefficient de diffusion</em> <span class="math">\(D\)</span>.</p>
+<p>Le lien avec la diffusion devient plus évident quand on calcule la probabilité <span class="math">\(P(x,t)\)</span>. En effet, la définition de la marche aléatoire se traduit dans l&#8217;équation de&nbsp;recurrence,
+</p>
+<div class="math">$$P(x,t+\Delta t) = \frac{1}{2}P(x+\Delta x,t) + \frac{1}{2}P(x-\Delta x,t)\,,$$</div>
+<p>
+pour la distribution de probabilité de la position. Cette équation peut être utilisée pour calculer la limite continue de la marche&nbsp;aléatoire:
+</p>
+<div class="math">$$\Delta x \rightarrow 0\,,\quad \Delta t \rightarrow 0\,.$$</div>
+<p>
+Dans cette limite nous obtenons effectivement l&#8217;équation de la <em>diffusion</em>
+</p>
+<div class="math">$$\frac{\partial }{\partial t}f(x,t) = \frac{D}{2} \frac{\partial^2 }{\partial x^2} f(x,t)$$</div>
+<p>
+avec
+</p>
+<div class="math">$$D= \lim_{\Delta x, \Delta t \rightarrow 0} \frac{(\Delta x)^2}{\Delta t}$$</div>
+<p>
+le coefficient de diffusion, et la condition de&nbsp;normalisation,
+</p>
+<div class="math">$$\int_{-\infty}^{\infty} \Di{x} f(x,t) =1$$</div>
+<p>
+de la fonction de distribution <span class="math">\(f=\lim P/\Delta x\)</span> de la&nbsp;position.</p>
+<blockquote>
+<p><img src="/images/rw3d-h.jpg" alt="random walk" style="height: 400px;"/></p>
+</blockquote>
+<p>La figure montre la projection sur le plan des positions de 10000 marcheurs dans l&#8217;espace, se trouvant au pas 1 dans le cube de côté 1, et à temps 10 dans une sphère. La distribution de postions, initialement uniforme dans le carré, devient rapidement proche de sa valeur &#8220;continue&#8221;, c&#8217;est-à-dire gaussienne, comme le montre l&#8217;histogramme. L&#8217;étalement des marcheurs est caractéristique du phénomène de&nbsp;diffusion.</p>
+<h2>Marche&nbsp;quantique</h2>
+<p>Une démarche habituelle de la physique théorique est d&#8217;utiliser un résultat connu et de l&#8217;appliquer dans un autre contexte physique (analogie) ou de le rendre applicable à un autre domaine expérimental (généralisation). Dans notre exemple, nous allons généraliser la marche aléatoire discrète au cas quantique en utilisant un raisonnement par&nbsp;analogie. </p>
+<p>À la place du marcheur, nous considérons un état quantique <span class="math">\(|\psi(t)\rangle\)</span> qui dépend à la fois de la position, que nous allons changer à l&#8217;aide d&#8217;un opérateur <span class="math">\(S\)</span> de translation spatiale d&#8217;une unité, et d&#8217;un degré de liberté interne, comme le spin, qui nous servira pour décider la direction à prendre. La pièce de monnaie peut-être donc remplacée par un opérateur qui agit sur le spin. Les ingrédients de la marche quantique&nbsp;sont:</p>
+<ul>
+<li>
+<p>Marcheur: l&#8217;état quantique <span class="math">\(|\psi\rangle = |x\rangle \otimes |s\rangle\)</span>, produit tensoriel des états de position <span class="math">\(x \in \mathbb{Z}\)</span> et de spin <span class="math">\(s=\uparrow,\downarrow\)</span>. Cet état va évoluer selon un temps discret <span class="math">\(t \in \mathbb{Z}\)</span>.</p>
+</li>
+<li>
+<p>Pièce de monnaie: opérateur de Hadamard représenté par la matrice
+<div class="math">$$A = \frac{1}{\sqrt{2}} \begin{pmatrix}
+1 &amp; 1 \\ 1 &amp; -1
+\end{pmatrix} \,.$$</div>
+Une fois appliquée sur, par exemple, un état pur
+<div class="math">$$A|\uparrow\rangle= A\begin{pmatrix}
+  1\\0
+\end{pmatrix}= \frac{1}{\sqrt{2}} \begin{pmatrix}
+  1\\1
+\end{pmatrix}\,,$$</div>
+nous obtenons un état de <em>superposition</em> de deux orientations du spin. Cette état superposé est une caractéristique quantique, sans équivalent&nbsp;classique.</p>
+</li>
+<li>
+<p>Pas de la marche: l&#8217;opérateur
+<div class="math">$$S=\sum_x \left( |x+1\rangle \langle x|\otimes |\uparrow\rangle\langle\uparrow| + |x-1\rangle \langle x|\otimes |\downarrow\rangle\langle\downarrow| \right)$$</div> 
+déplace l&#8217;état vers la gauche si le spin est down et vers la droite s&#8217;il est up. Il conduit aussi vers un état de superposition, cette fois sur la position du marcheur (qui fini par se &#8220;trouver&#8221; sur plusieurs positions au pas <span class="math">\(t\)</span>).</p>
+</li>
+<li>
+<p>Évolution: le produit des opérateurs &#8220;pièce&#8221; et &#8220;déplacement&#8221;, nous donne l&#8217;opérateur,
+<div class="math">$$U = S(I \otimes A)$$</div>
+qui determine un pas de la marche (l&#8217;unité <span class="math">\(I\)</span> a la dimension de l&#8217;espace de positions):
+<div class="math">$$|\psi(t+1)\rangle = U |\psi(t)\rangle\,.$$</div>
+Cet opérateur étant unitaire, détermine bien une dynamique&nbsp;quantique.</p>
+</li>
+<li>
+<p>Mesure: au bout d&#8217;un nombre de pas <span class="math">\(t\)</span> l&#8217;état du marcheur est mesuré par le projecteur <span class="math">\(M\)</span> sur la position <span class="math">\(|y\rangle\)</span>:
+<div class="math">$$M = |y \uparrow\rangle \langle y \uparrow | + 
+|y \downarrow\rangle \langle y \downarrow|\,.$$</div>
+C&#8217;est précisément cette mesure qui révèle le caractère aléatoire quantique de la marche: elle permet d&#8217;obtenir la probabilité pour le marcheur de se trouver en <span class="math">\(y\)</span> au pas <span class="math">\(t\)</span>:
+<div class="math">$$ P(y,t) = \langle\psi(t)|M|\psi(t)\rangle\,.$$</div>
+</p>
+</li>
+</ul>
+<p>Le code suivant, montre une implémentation numérique en langage <code>python</code> de la marche&nbsp;quantique.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hadamard</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">array</span><span class="p">([[</span><span class="n">u</span><span class="p">,</span><span class="n">u</span><span class="p">],[</span><span class="n">u</span><span class="p">,</span><span class="o">-</span><span class="n">u</span><span class="p">]])</span> <span class="c1"># spin x spin x pos</span>
+
+<span class="k">def</span> <span class="nf">init_psi</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initial state $x = 0, x \in [-N, N]$&quot;&quot;&quot;</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># norm</span>
+    <span class="n">psi</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">A</span> <span class="c1"># x[N] = 0</span>
+    <span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">/</span><span class="n">A</span>
+    <span class="k">return</span> <span class="n">psi</span> <span class="c1"># spin x pos</span>
+
+<span class="k">def</span> <span class="nf">qw_hadamard</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hadamard quantum walk.</span>
+
+<span class="sd">    Ex: N = 60 steps with initial state |0&gt;:</span>
+<span class="sd">        psi_t = qw_hadamard(60, a = 1, b = 0)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">hadamard</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">init_psi</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="c1"># </span>
+    <span class="n">psi_t</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">)</span>
+    <span class="n">psi_t</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">psi1</span> <span class="o">=</span> <span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ijk,jk-&gt;ik&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">psi</span><span class="p">)</span> <span class="c1"># coin step</span>
+        <span class="n">psi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">roll</span><span class="p">(</span><span class="n">psi1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># shift step (up)</span>
+        <span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">roll</span><span class="p">(</span><span class="n">psi1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># shift step (down)</span>
+        <span class="n">psi_t</span><span class="p">[:,:,</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi</span>
+    <span class="k">return</span> <span class="n">psi_t</span> <span class="c1"># spin x pos x time</span>
+
+<span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">psi</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+</code></pre></div>
+
+<blockquote>
+<p><img src="/images/qw-H.png" alt="Hadamard quantum walk: probability" style="height: 200px;"/>
+<img src="/images/qw-W.png" alt="Hadamard quantum walk: width" style="height: 200px;"/></p>
+</blockquote>
+<p>Les figures montrent la distribution de probabilité de la position du marcheur et l&#8217;écart type en fonction du temps. Nous avons choisi un état initial pur avec un spin up en <span class="math">\(x=0\)</span>; cela se traduit par un mouvement dont la probabilité se concentre à droite de l&#8217;origine. La première figure montre la probabilité à deux temps (<span class="math">\(t=60,100\)</span>), où nous remarquons l&#8217;asymétrie introduite par la condition initiale (phénomène exclusivement quantique). Nous voyons en plus que l&#8217;écart type de la deuxième figure croît comme <span class="math">\(t\)</span>, en non en <span class="math">\(\sqrt(t)\)</span>, comme dans le cas&nbsp;classique.</p>
+<h3>Conclusion</h3>
+<p>À travers l&#8217;exemple de la marche aléatoire nous pouvons dégager un aspect caractéristique de la démarche théorique en physique: une formulation simple d&#8217;un problème bien posé, inspiré de l&#8217;observation ou de l&#8217;expérience, sert de point d&#8217;appui à des généralisations capables de révéler des phénomènes et des effets insoupçonnés. La cohérence de la démarche est assurée par la cohérence mathématique. L&#8217;intérêt et la validité des résultats dépendent de leur capacité à rendre compte des phénomènes observés tout comme à leurs possibilités d&#8217;application et d&#8217;extension à des problèmes hors de leur cadre&nbsp;initial.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

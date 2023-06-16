@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Outils numériques | Random physics
+</title>
+    <link rel="canonical" href="/pages/ON-index.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Travaux pratiques sur les méthodes numériques, unix, python, introduction aux algorithmes de calcul">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+<blockquote>
+<p>Work in&nbsp;progress</p>
+</blockquote>
+<h1>TeX: scientific&nbsp;typesetting</h1>
+<p>This course consists in three tutorials on the <span class="math">\(\LaTeX\)</span> typesetting system, with focus on the structure of a scientific report and the use of the corresponding tools, necessary to build a bibliography data base, draw sketchy diagrams and&nbsp;plots.</p>
+<ul>
+<li>Introduction to LaTeX, <a href="/pages/TP-latex.html">scientific&nbsp;typesetting</a></li>
+<li>Guidelines to write a <a href="/pages/TP-latex1.html">scientific&nbsp;document</a></li>
+<li><a href="/pages/TP-latex2.html">Graphic tools</a> (tikz,&nbsp;matplotlib)</li>
+<li><a href="/pages/TP-latex3.html">Presentations with&nbsp;beamer</a></li>
+</ul>
+<p><strong>Exam</strong>: report of 4-6 pages, about, preferentially, a subject on a simple physical system or mathematical tool (oscillator, lenses, coulomb, carnot cycle, fourier transform, special functions, etc.), including a tikz diagram, a matplotlib figure, bibtex references, and code&nbsp;listings.</p>
+<h1>Outils&nbsp;numériques</h1>
+<p>Cette série de travaux pratiques sur ordinateur ont pour but de nous familiariser avec l&#8217;environnement de travail numérique utilisé en laboratoire, et d&#8217;introduire le langage python pour l&#8217;appliquer au calcul scientifique et au traitement des&nbsp;données.</p>
+<p>Programme des séances de travaux pratiques&nbsp;(30h):</p>
+<ul>
+<li>
+<p>Révisions - environnement <span class="caps">UNIX</span> et commandes shell, notions de bases en programmation Python: types de base et les collections; structures de contrôle de condition et de répétition; fonctions; modules <a href="https://numpy.org/doc/stable/">numpy</a>, <a href="https://docs.scipy.org/doc/scipy/reference/">scipy</a> et <a href="https://matplotlib.org/contents.html">matplotib</a>;</p>
+</li>
+<li>
+<p>Application à des calculs numériques élémentaires sur, e.g. des suites définies par récurrence, des séries de&nbsp;fonction;</p>
+</li>
+<li>
+<p>Tableaux du module numpy et fonctions associées, manipulations de tableaux et slicing, et exemple d&#8217;application manipulation&nbsp;d&#8217;images;</p>
+</li>
+<li>
+<p>Calcul d’intégrale avec les méthodes usuelles: rectangles, trapèze, Simpson, introduction de la méthode de Monte Carlo. Importance de la discrétisation et notion de&nbsp;convergence.</p>
+</li>
+<li>
+<p>Méthode des moindres carrés. Application à la régression&nbsp;linéaire;</p>
+</li>
+<li>
+<p>Équations différentielles ordinaires. Schéma d&#8217;intégration explicite-implicite. Les méthodes méthodes de Newton et de Runge Kutta d&#8217;ordre 2 sont reprogrammées et appliquées à un problème de type ballistique. Introduction des fonctions ad hoc du module&nbsp;scipy;</p>
+</li>
+<li>
+<p>Décomposition en série de Fourier, illustration du phénomène de&nbsp;Gibbs;</p>
+</li>
+<li>
+<p>Générateur nombre aléatoire, marche aléatoire,&nbsp;diffusion.</p>
+</li>
+</ul>
+<p>Ressources en ligne: <a href="/pages/ON-unix.html">unix</a>, <a href="/pages/ON-python.html">python</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

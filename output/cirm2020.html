@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>CIRM 2020: Quantum walks conference | Random physics
+</title>
+    <link rel="canonical" href="/cirm2020.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Talk given at the Centre international de rencontres mathématiques, January 2020, on Quantum Walks and Computation">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2020-01-23T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        jeu. 23 janvier 2020
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/research.html">#research</a>,         <a href="/tag/conference.html">#conference</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\GR}{\mathrm{GR}} 
+\newcommand{\FT}{\mathrm{FT}} 
+\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\len}{\mathrm{len}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}
+\newcommand{\bm}[1]{\boldsymbol&nbsp;#1}\)</span></p>
+<h1>Interacting quantum walk on graphs: thermalization and&nbsp;entanglement</h1>
+<h4>in collaboration with <span class="caps">R.G.</span> Elías (Santiago, Chile) and K. Sellapillay&nbsp;(Aix-Marseille)</h4>
+<p><a href="/pdfs/cirm2020.pdf">[Slides of the talk <code>.pdf</code>]</a></p>
+<h3>Abstract</h3>
+<blockquote>
+<p>We extend quantum walks by introducing an interaction of the particle degrees of freedom with local spins sitting on the nodes of a graph. This system allows us to investigate, in an isolated quantum system, the appearance of a thermal state and its entanglement properties. A modification of the model, in which the spins are on the network edges, exhibit a rich dynamical behavior in simple lattices, including oscillations, relaxation and localization of&nbsp;states.</p>
+</blockquote>
+<h2>Introduction</h2>
+<p>In a simple quantum walk, the particle motion is determined by an internal degree of freedom (we call color), however, the geometry of the motion is imposed in the form of a lattice or more generally a graph. The position amplitudes are then distributed over the neighbors of each node. We can make an analogy with a tight binding model, in which an electron jumps between sites of a crystal. The main physical difference is that the crystal is itself a lattice of ions whose intricate interaction with the electron gas (for instance in a semiconductor) gives rise to both, the crystal structure and the characteristic energies of the electron hopping. This observation motivates our choice of assigning a material support to the graph in which the walker moves. A natural way is to associate a spin degree of freedom to the graph nodes (our first model) or to the links between nodes (our second model): the particle is there or the particle transit there. The interaction of the walker (position and color degrees of freedom) with the geometry (spin degrees of freedom) give rise to an extension of the simple quantum walk to an interacting one. The main consequence of this generalization is that we leave the simple world of one particle to the complex many&#8212;body interacting quantum&nbsp;system.</p>
+<blockquote>
+<ul>
+<li>
+<p>Entanglement and thermalization of an isolated&nbsp;system</p>
+</li>
+<li>
+<p>Structure of the thermal state and eigenstate thermalization&nbsp;hypothesis</p>
+</li>
+<li>
+<p>Entanglement dynamics in spin networks induced by an itinerant&nbsp;particle</p>
+</li>
+</ul>
+</blockquote>
+<h2>Node spin model: entanglement and&nbsp;thermalization</h2>
+<blockquote>
+<p>A walker jumps between the nodes of a graph of interacting spins; the particle color interacts with the local spin favoring entanglement along graph&nbsp;paths</p>
+<p><img src="/images/cirm2020-bull.svg" height="250"></p>
+<p>Hilbert space <span class="math">\(\ket{xcs} = \ket{x} \otimes \ket{c} \otimes \ket{s_0s_1\ldots&nbsp;s_{N-1}}\)</span></p>
+<p>Coin operator <span class="math">\(C\)</span></p>
+<p>
+<div class="math">\begin{align*}
+  \braket{x'c's'| \GR |x c s} &amp;= \left(\frac{2}{d_x} - \delta_{c,c'}\right)
+    \delta_{x,x'} \delta_{s,s'}\\
+  \braket{x'c's'| \FT |x c s} &amp;= \frac{1}{\sqrt{d_x}} \exp (\I 2 \pi c c' / d_x)
+    \delta_{x,x'} \delta_{s,s'}
+\end{align*}</div>
+</p>
+<p>Motion&nbsp;operator</p>
+<p>
+<div class="math">\begin{equation*}
+  M \ket{x c_y s} = \ket{y c_x s},\quad (x,y)\in E
+\end{equation*}</div>
+</p>
+</blockquote>
+<h3>Quantum walk on a graph of interacting&nbsp;spins</h3>
+<p>We consider a graph <span class="math">\(G=(V,E)\)</span> of vertices <span class="math">\(x\in V\)</span> and edges <span class="math">\(e=(x,y) \in E\)</span>. The particle degrees of freedom are its position <span class="math">\(x=0,\ldots,|V|-1\)</span> and its color, which takes values according to the number of neighbors of each node <span class="math">\(d=0,\ldots,d_x-1\)</span>. On each node resides a spin, whose state is labeled by a binary number <span class="math">\(s_x=0,1\)</span>; a spin configuration is then given by the binary representation of a number <span class="math">\(s=s_0\cdots s_{|V|-1}\)</span>. In summary, the hilbert space is deployed by the basis <span class="math">\(\ket{xcs}\)</span>.</p>
+<p>The walk is defined by a unitary operator <span class="math">\(U=ZXMC\)</span> that can be split into a coin <span class="math">\(C\)</span>, which we choose to be either a grover or a fourier one, a motion <span class="math">\(M\)</span> which exchange the amplitudes between neighboring nodes, and two interaction operators, one <span class="math">\(X\)</span> between the particle and the node spin (local to the node), and the other <span class="math">\(Z\)</span> which introduces an ising&#8212;like exchange between spins. These interaction operators are local: they apply to two&nbsp;qubits.</p>
+<blockquote>
+<p>Interaction operator: spin&#8212;particle&nbsp;(color)</p>
+<p>
+<div class="math">\begin{align*}
+  X \ket{x,0,\ldots s_x=1 \ldots} &amp; = \ket{x,1,\ldots 0 \ldots}\\
+  X \ket{x,1,\ldots s_x=0 \ldots} &amp; = \ket{x,0,\ldots 1 \ldots}
+\end{align*}</div>
+Interaction operator: spin&#8212;spin (Ising type)
+<div class="math">\begin{equation*}
+  Z \ket{xc,s=\ldots s_x \ldots s_y \ldots} = \begin{cases} - \ket{xcs} &amp; \text{if } s_x= s_y = 1  \\  \ket{xcs} &amp; \text{otherwise} \end{cases}
+\end{equation*}</div>
+</p>
+<p><img src="/images/cirm2020-figure0.svg" height="100"></p>
+<p>Walk operator <span class="math">\(U=ZXMC\)</span>, <span class="math">\(\ket{\psi(t+1)} = U \ket{\psi(t)}\)</span>.</p>
+</blockquote>
+<h3>Entanglement and thermalization of an isolated&nbsp;system</h3>
+<p>Many&#8212;body systems at low energy are described by their ground state and excitations, emerging quasiparticles, quantum phase transitions, localization and topological nontrivial band structure; high energy behavior includes thermal properties, linear response, relaxation and transport. Some important properties of these systems are related with quantum entanglement: the spin liquid ground state can be thought as strings of entangled spins, and the thermalization as a process of entanglement of subsystems with the whole, perhaps closed,&nbsp;system.</p>
+<p>In particular, thermalization of a quantum isolated system can be related with the properties of chaotic high energy eigenstates, which is the so called <em>eigenstate thermalization hypothesis</em>. We show that our model of interacting quantum walk is able to account for this thermalization&nbsp;scenario.</p>
+<p>The thermalization hypothesis says that the expected value of most observables <span class="math">\(O\)</span>, given by the microcanonical distribution at thermodynamic energy <span class="math">\(E\)</span> inside a band of energy <span class="math">\(\Delta\)</span>, having, in the thermodynamic limit, an infinity of levels such that <span class="math">\(\Delta(N)/N \rightarrow 0\)</span>, is well approximated  by the expected value of <span class="math">\(O\)</span> in an arbitrary eigenenergy vector <span class="math">\(\ket{n}\)</span> within the <span class="math">\(\Delta(E)\)</span> band. Fluctuations are of the same order as ordinary thermodynamic&nbsp;fluctuations.</p>
+<blockquote>
+<p>Isolated many&#8212;body system with hamiltonian <span class="math">\(H\)</span>,</p>
+<p>
+<div class="math">$$H \ket{n} = E_n \ket{n}$$</div>
+</p>
+<p>in a <em>chaotic</em> sate <span class="math">\(\ket{\psi}\)</span> </p>
+<p>The (local) observable <span class="math">\(O\)</span>&nbsp;satisfies</p>
+<p>
+<div class="math">$$\braket{\psi|O|\psi} \approx \braket{n|O|n} \approx \Tr \rho_{MC} O(E)$$</div>
+</p>
+<p>for <span class="math">\(E \approx E_n\)</span>.</p>
+<p>We say that <span class="math">\(\ket{\psi}\)</span> is a <em>thermal</em> state: most observables satisfy <span class="caps">ETH</span>.</p>
+<p>Position distribution in a random graph (Fourier&nbsp;coin):</p>
+<p>
+<div class="math">$$ \rho(t) = \ket{\psi(t)}\bra{\psi(t)}, \quad \ket{\psi(t)} = \sum_{xcs}(t) \psi_{xcs} \ket{xcs}    $$</div>
+</p>
+<p><img src="/images/cirm2020-R8.svg" height="250">
+<img src="/images/cirm2020-R8px.svg" height="250"></p>
+<p>
+<div class="math">$$p(x,t) = \Tr_{\bar{x}} \rho(t) = \sum_{cs} |\psi_{xcs}(t)|^2$$</div>
+</p>
+</blockquote>
+<p>Using exact numerical computation of the quantum state evolution, from an initial localized product state, we observe that the long time behavior of the system is well described by the microcanonical ensemble. For instance, the position distribution is uniform over the graph: node to node variation is proportional to the node&nbsp;degree.</p>
+<p>A more straightforward test of the eigenstate thermalization is given by the Shannon entropy and the distribution of the eigenvalues <span class="math">\(E_n\)</span> of <span class="math">\(U\)</span>.</p>
+<blockquote>
+<p>Shannon&nbsp;entropy:</p>
+<p>
+<div class="math">$$ S(n) = - \sum_{xcs} |v_n(xcs)|^2 \log|v_n(xcs)|^2,\; v_n(xcs) = \braket{ xcs | n }$$</div>
+</p>
+<p><img src="/images/cirm2020-R8sha.svg" height="250">
+<img src="/images/cirm2020-R8hist.svg" height="250"></p>
+<p>Gaussian unitary ensemble distribution of eigenvalues spacing <span class="math">\(s\)</span>:</p>
+<p>
+<div class="math">$$ p(s) = \frac{32 s^2}{\pi^2} \E^{-4 s^2/\pi}$$</div>
+</p>
+</blockquote>
+<p>The Shannon entropy constructed with the energy eigenvectors amplitudes is uniformly distributed over the whole energy range. The expected value of the observable do not depend on the specific eigenvector we choose. We may say that the overlap between the initial state and <span class="math">\(\ket{n}\)</span> is, in the thermodynamic sense, negligible: the expectation <span class="math">\(\braket{O}\)</span> do not depend on the initial condition. Even if the whole system is always in a <em>pure state</em>.</p>
+<p>The spectrum of <span class="math">\(U\)</span> is almost flat, and, using a fourier coin, the levels are non degenerate. The histogram of the quasienergies separation <span class="math">\(s\sim \Delta E_n\)</span>, is perfectly fitted by the Wigner surmise corresponding to the unitary gaussian ensemble (<span class="caps">GUE</span>).</p>
+<p>This result might be rather surprising, because the <span class="caps">GUE</span> applies to gaussian random matrices. In contrast, <span class="math">\(U\)</span> is a rather sparse matrix, filled with simple numbers (mostly 1) related to the coin operator. Note, however, that even if <span class="math">\(U\)</span> is a simple matrix, <span class="math">\(H=\I \ln(U)\)</span>, the effective hamiltonian is, in general, a much more complicate and dense&nbsp;matrix.</p>
+<h3>Structure of the thermal state and the eigenstate thermalization&nbsp;hypothesis</h3>
+<p>One may think that the thermal state should be completely random, however, in analogy with for instance the spin liquid topological ground state, some entanglement structure may be present. We show that the specific interactions between the walker and the spins, yields an interesting structure, related with the graph cycles, revealed by the entanglement entropy of the&nbsp;spins.</p>
+<blockquote>
+<p>The particle color&#8212;spin interaction favors one dimensional paths drown on the graph. We show that the von Neumann&nbsp;entropy</p>
+<p>
+<div class="math">$$S_l(t) = - \Tr \rho_l(t) \log \rho_l(t) \le \log D_l - \frac{D_l^2}{2D\ln(2)}$$</div>
+</p>
+<p>(<span class="math">\(l = \{x,c,s\}\)</span>) is related with the \emph{minimal cycle basis} entropy:
+<div class="math">$$S_s \approx  S_C = \log\left[ \sum_{n = 1}^{|B^\star|} \len(b^\star_n)\right]$$</div>
+</p>
+<p>where
+<div class="math">$$B^\star = \left\{ b_n^\star \,\big|\, \sum_n\len b_n^\star = \min_B \len(B) \right\}$$</div>
+</p>
+<p>and <span class="math">\(B = \{b_n \in B_C,\; n=1,\ldots,|B| = |E| - |V| + 1\}\)</span> is the cycle basis associated with <span class="math">\(G\)</span>.</p>
+<p><img src="/images/cirm2020-figure2.svg" height="40">
+The graph on the left has a cycle basis of dimension 2, a rectangle and a triangle; a linear combination of the two basis cycles gives another cycle in the set of cycles in <span class="math">\(G\)</span></p>
+</blockquote>
+<p>The formula of <span class="math">\(S_C\)</span> means that the spin entanglement entropy can be computed from the graph <em>cycle</em> structure. This is related with color&#8212;spin interaction with favors one dimensional paths of particle&#8212;spin entanglement. Therefore, the thermal state, which is close to the maximum entangled state predicted by Don Page, can be described as a superposition of entangled spins&nbsp;chains.</p>
+<h3>Strings of entangled&nbsp;spins</h3>
+<blockquote>
+<p><img src="/images/cirm2020-WS15.svg" height="250"> <span class="caps">WS</span>
+<img src="/images/cirm2020-ER15.svg" height="250"> <span class="caps">ER</span></p>
+<p><img src="/images/cirm2020-cy_Ss.svg" height="300"> <span class="math">\(|V|=5,\ldots,15\)</span>&nbsp;nodes</p>
+</blockquote>
+<p>Application of the <span class="math">\(S_C\)</span> formula to a series of random graphs having a number of vertices between 5 and 15, shows good agreement with the numerical&nbsp;results.</p>
+<h3>Edge spin model:&nbsp;dynamics</h3>
+<p>A different model can be constructed assuming that the spins represent the edges, and not the nodes, of the geometry where the quantum walker moves. As a first step towards the construction of this model, we suppress the spin&#8212;spin interaction, and modify the spin&#8212;color interaction, using the notion of edge basis states. For instance, the spin on edge <span class="math">\(e=(x,y)\)</span> interacts with the color of a particle passing across this edge, <span class="math">\(c_e=(c_y,c_x)\)</span>; this allows us to introduce an ising&#8212;type interaction between the edge coler <span class="math">\(c_e\)</span> and the local spin <span class="math">\(s_e\)</span>.</p>
+<blockquote>
+<p>Hilbert space <span class="math">\(\ket{xcs} = \ket{x} \otimes \ket{c} \otimes \ket{ s_0 \ldots s_{|E|-1} } \in&nbsp;\mathcal{H}_G\)</span></p>
+<p><img src="/images/cirm2020-figure1.svg" height="100"></p>
+<p>Spin&#8212;color interaction on edge <span class="math">\(e=(x,y)\)</span>:</p>
+<p>
+<div class="math">$$S(J) = \exp(-\I H),\; H = -\frac{J}{4} \bm{\tau}_e \cdot \bm{\sigma}_e$$</div>
+</p>
+<p>Quantum walk step&nbsp;operator:</p>
+<p>
+<div class="math">$$U = SMC$$</div>
+</p>
+</blockquote>
+<p>One dimensional quantum walks with a rotation coin operator <span class="math">\(R(\theta)=\exp(-\I\sigma_y \theta)\)</span>, show interesting topological properties. We investigate, in our interacting case, the motion of a quantum walker in a line having two topologically different&nbsp;regions. </p>
+<blockquote>
+<p>One dimensional lattice walk with a rotation coin <span class="math">\(R(\theta)=\exp(\I\sigma_y \theta)\)</span>. In the free case (<span class="math">\(J=0\)</span>) a change of topology arises at <span class="math">\(\theta=\pi/2\)</span>.</p>
+<p>We introduce an interface at the center of the lattice separating a left and right regions with different coin angles. In the trivial case <span class="math">\(\theta_L, \theta_R &lt;\pi/2\)</span> and in the topological case <span class="math">\(\theta_L &lt; \pi/2 &lt; \theta_R\)</span>.</p>
+<p><img src="/images/cirm2020-tSSx0.2_p.svg" height="250">
+<img src="/images/cirm2020-tSGx0.2_p.svg" height="250"></p>
+</blockquote>
+<p>We observe clearly that in the topologically trivial case there is no edge channel; in contrast with the topological case, in which, in addition to the traveling modes, a concentration of the position probability is present at the&nbsp;interface.</p>
+<blockquote>
+<p><img src="/images/cirm2020-tSSx0.2_SA.svg" height="250">
+<img src="/images/cirm2020-tSGx0.2_SA.svg" height="250"></p>
+</blockquote>
+<p>Other interesting observation is that the entanglement of one or two (separated) spins with the other spins (and the particle) grows linearly in time and reach, for long times, almost its maximum&nbsp;value.</p>
+<h2>Conclusion</h2>
+<p>The interacting quantum walk allows us to investigate, within a simple framework, fundamental physical mechanisms arising in condensed&nbsp;matter.</p>
+<h4>References:</h4>
+<ul>
+<li>
+<p>Interacting quantum walk on a graph, <span class="caps">A.D.</span> Verga, Phys. Rev. E <strong>99</strong>, 012127&nbsp;(2019)</p>
+</li>
+<li>
+<p>Thermal state entanglement entropy on a quantum graph, <span class="caps">A.D.</span> Verga and <span class="caps">R.G.</span> Elías, Phys. Rev. E <strong>100</strong>, 062137&nbsp;(2019)</p>
+</li>
+<li>
+<p>Dynamics of an interacting quantum quantum walk on a graph, K. Sellapillay, this conference. <a href="https://arxiv.org/abs/2006.14883">arXiv</a></p>
+</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

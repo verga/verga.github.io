@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Qubit: the quantum of information | Random physics
+</title>
+    <link rel="canonical" href="/pages/AQ-qubit.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Introduction to quantum information, qubit, von Neumann entropy.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
+</blockquote>
+<h1>Qubit: the quantum of&nbsp;information</h1>
+<p>There is a deep difference between the classical unit of information and its quantum counterpart. A qubit corresponds to the state of a quantum system having two levels (a hilbert space of dimension 2); therefore, the qubit is physical. A bit, or binary digit, is related to a logical state, true or false; its physical implementation as a system having two equilibrium states, is not essential in its&nbsp;definition.</p>
+<p>In 1995, Schumacher<sup id="fnref:SM"><a class="footnote-ref" href="#fn:SM">1</a></sup> demonstrated the quantum version of the noiseless coding theorem of Shannon (see the lecture on <a href="/pages/AQ-classical.html">classical information</a>). He showed that the von Neumann entropy is the mean number of <em>qubits</em> necessary to encode the states of an ensemble or composite quantum system. Therefore, a quantum state carries an amount of information that can be measured using the von Neumann&nbsp;entropy.</p>
+<p>A general qubit, a two dimensional ket <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> (<span class="math">\(\mathrm{dim} \mathcal{H} = 2\)</span>), can be written using the spherical polar <span class="math">\(\varphi \in (0,2\pi)\)</span> and azimutal <span class="math">\(\theta \in (0,\pi)\)</span>&nbsp;angles:
+</p>
+<div class="math">$$\ket{\psi} = \cos \frac{\theta}{2} \ket{0} + \E^{\I \varphi} \sin \frac{\theta}{2} \ket{1}$$</div>
+<p>
+where <span class="math">\(\{\ket{0}, \ket{1}\}\)</span> is the canonical basis of <span class="math">\(\mathcal{H}\)</span>. This representation identifies the qubit state as a direction on the unit sphere, so called the Bloch sphere. The north pole corresponds to <span class="math">\(\ket{0}\)</span> and the south pole to <span class="math">\(\ket{1}\)</span>. Orthogonal vectors are opposite points in the bloch sphere: <span class="math">\((\theta \rightarrow \pi - \theta, \phi \rightarrow -\varphi)\)</span>.</p>
+<blockquote>
+<p><img src="/images/AQ-sbloch.png" alt="Bloch sphere" style="height: 250px;"/></p>
+<p>Bloch sphere: Hilbert space of one&nbsp;qubit.</p>
+</blockquote>
+<p>The density matrix of one qubit is <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>, or using the bloch&nbsp;parametrization:
+</p>
+<div class="math">\begin{align*}
+\rho &amp;= \begin{pmatrix} \cos \theta/2 \\ \E^{\I \varphi} \sin \theta/2 \end{pmatrix}
+        \begin{pmatrix} \cos \theta/2 &amp; \E^{-\I \varphi} \sin \theta/2 \end{pmatrix} \\ 
+     &amp;= \frac{1}{2}
+        \begin{pmatrix} 1 + \cos \theta &amp; \E^{-\I \varphi} \sin\theta \\ 
+          \E^{\I \varphi} \sin \theta &amp; 1 - \cos \theta \end{pmatrix}
+\end{align*}</div>
+<p>
+or&nbsp;equivalently
+</p>
+<div class="math">$$\rho = \frac{1+\bm n \cdot \bm \sigma}{2}, \quad \bm n = (\sin\theta \cos \varphi, \sin \theta \sin \varphi, \cos\theta)\,,$$</div>
+<p>
+where <span class="math">\(\bm \sigma = (X, Y, Z)\)</span> is the vector of <a href="https://en.wikipedia.org/wiki/Pauli_matrices">pauli matrices</a>. This form allows a compact representation of a general mixed state of&nbsp;qubits:
+</p>
+<div class="math">$$\rho = \frac{1 + r \bm n \cdot \bm \sigma}{2}, \quad r \le 1\,,$$</div>
+<p>
+where <span class="math">\(r=1\)</span> is the pure state and <span class="math">\(r&lt;1\)</span> a mixed state, which lies then inside the unit bloch&nbsp;sphere.</p>
+<p>The hilbert space of a system of <span class="math">\(N\)</span> qubits, is the tensor or Kronecker product of one-qubit&nbsp;spaces:
+</p>
+<div class="math">$$\mathcal{H} = \bigotimes_{n=1}^N \mathcal{H}_n$$</div>
+<p>
+and
+</p>
+<div class="math">$$\ket{s_1}\otimes \ket{s_2} \otimes \ldots \times \otimes \ket{s_N} = \ket{s_1 s_2 \ldots s_N}, \quad s_n=0,1\,,$$</div>
+<p>
+is an element of the canonical basis; sometimes it is convenient to write simply <span class="math">\(\ket{s}\)</span>, where <span class="math">\(s\)</span> is the decimal representation of the binary string <span class="math">\(s_1\ldots s_N\)</span>:
+</p>
+<div class="math">$$\ket{\psi} = \sum_{s=0}^{2^N - 1}  \psi_s \ket{s}\,,$$</div>
+<p>
+is a general expression of a ket,&nbsp;where
+</p>
+<div class="math">$$\sum_s |\psi_s|^2 = 1 \,.$$</div>
+<p>
+Important two qubit states are the Bell&nbsp;states:
+</p>
+<div class="math">\begin{align*}
+  \ket{\Phi_\pm} &amp;= \frac{\ket{00} \pm \ket{11}}{\sqrt{2}} \\
+  \ket{\Psi_\pm} &amp;= \frac{\ket{01} \pm \ket{10}}{\sqrt{2}} \,.
+\end{align*}</div>
+<h2>von Neumann entropy and&nbsp;entanglement</h2>
+<p>One of the deepest facts about the quantum state was discovered by von Neumann in his investigation of the measurement process: one can associate to a quantum state <span class="math">\(\rho\)</span> an <em>entropy</em>:
+</p>
+<div class="math">$$S(\rho) = - \Tr \rho \log \rho\,.$$</div>
+<p>
+This equation defines a fundamental relationship between quantum states and <em>information</em>.</p>
+<h3>Partial&nbsp;trace</h3>
+<p>Consider a bipartite system <span class="math">\(AB\)</span> whose hilbert space is <span class="math">\(\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B\)</span>, the <span class="math">\(B\)</span> partial trace <span class="math">\(\Tr_B\)</span> is a linear operation mapping <span class="math">\(\mathcal{H}\)</span> to <span class="math">\(\mathcal{H}_A\)</span>, such that the expected value of an arbitrary operator <span class="math">\(O_A\)</span>&nbsp;satisfies:
+</p>
+<div class="math">$$\braket{O_A} = \Tr O_A \rho_A = \Tr (O_A \otimes 1_B) \rho \,, \rho_A = \Tr_B \rho\,,$$</div>
+<p>
+where <span class="math">\(\rho\)</span> is <span class="math">\(AB\)</span> state and <span class="math">\(\rho_A\)</span> is the state of the subsystem <span class="math">\(A\)</span> (note that the first trace is over <span class="math">\(A\)</span> space, and the second is on the whole&nbsp;space).</p>
+<p>For instance the partial trace over a fourth order tensor <span class="math">\(T_{km,ln}\)</span> where the indices <span class="math">\(k,l=1, \ldots, L\)</span> refer to space <span class="math">\(A\)</span> and the indices <span class="math">\(m,n = 1, \ldots, N\)</span> to space <span class="math">\(B\)</span>, corresponds to the contractions over <span class="math">\(B\)</span> indices, <span class="math">\(\Tr_B T = T_A\)</span> with <span class="math">\(T_A(k,l) = T_{kn,ln}\)</span> (using the einstein convention), or over the <span class="math">\(A\)</span> indices <span class="math">\(\Tr_A T = T_B\)</span> with <span class="math">\(T_B(n,m) = T_{kn,km}\)</span>.</p>
+<p>Let us apply the partial trace to the Bell state <span class="math">\(\ket{\Psi_-}\)</span>, which is a state of two qubits <span class="math">\(A\)</span> and <span class="math">\(B\)</span>:
+</p>
+<div class="math">\begin{align*}
+\rho_A &amp; = \Tr_B \ket{\Psi_-}\bra{\Psi_-} = \frac{1}{2} \Tr_B \left( \ket{01}\bra{01} - \ket{01}\bra{10} - \ket{10}\bra{01} + \ket{10}\bra{10} \right) \\
+       &amp; = \frac{1}{2} \left( \ket{0}\bra{0}\braket{1|1} + \ket{1}\bra{1}\braket{0|0} \right) \\
+       &amp; = \frac{1}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
+\end{align*}</div>
+<p>
+terms with <span class="math">\(\braket{0|1}\)</span> vanish; therefore the reduced density matrix is proportional to the identity. <span class="math">\(\rho_A\)</span> corresponds then to a mixed state of equally probable <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span> states. We conclude that in general the state of a subsystem of a pure state system is&nbsp;mixed.</p>
+<p>We can compute the von Neumann entropy of the whole system and the one of its&nbsp;sybsystems:
+</p>
+<div class="math">$$S(AB) = -\Tr \rho \log \rho = -\Tr \ket{\psi} \braket{\psi|\psi} \log(1) \bra{\psi} = 0$$</div>
+<p>
+and
+</p>
+<div class="math">$$S(A) = -\Tr \rho_A \log \rho_A = \frac{1}{2} \log 2 + \frac{1}{2} \log 2 = \log 2 = 1\,.$$</div>
+<p>
+The entropy of the pure state is <span class="math">\(0\)</span>, while the entropy of its subsystems is <span class="math">\(S(A) = S(B) = 1\)</span>, the maximum possible value of a twodimensional system. If we apply a classical reasoning to understand this result we arrive at a contradiction. The entropy of a given system is zero, meaning that it is perfectly ordered, or analogously that we have a perfect knowledge of its state (the equivalence of the two statements derives from the equivalence of the entropy and information), however, the entropy of its subsystems is maximal, meaning that its subsystems are perfectly disordered. This contradiction was first put forward by Schrödinger in his famous response to Einstein, Podolsky and&nbsp;Rose:</p>
+<blockquote>
+<p>the best possible knowledge of a whole does not necessarily include the best possible knowledge of all its parts, even though they may be entirely separated and therefore virtually capable of being &#8220;best possibly known&#8221; <sup id="fnref:s"><a class="footnote-ref" href="#fn:s">2</a></sup></p>
+</blockquote>
+<p>Therefore the Bell state contains correlations that cannot be accounted by classical laws (in this respect we discuss later the Bell theorem), this purely quantum information resource is the <em>entanglement</em> inherent of interacting multiparticle quantum states, a concept first introduced by Schrödinger in the previous&nbsp;paper.</p>
+<p>We observe that the von Neumann entropy can be used to measure the entanglement of quantum states. We will illustrate the entanglement as an information resource using a few simple quantum circuits. Before that we introduce the basic elements of a quantum circuits, the quantum&nbsp;gates.</p>
+<p>It is also worth mentioning that the reduced density matrix of a pure state corresponds to a mixed state. This is a general fact, one can always enlarge the hilbert space of a composite system in a mixed state <span class="math">\(\bar{\rho}\)</span>, in such a way&nbsp;that
+</p>
+<div class="math">$$\bar{\rho} = \Tr_A \rho\,,\quad \rho = \ket{\psi} \bra{\psi} \in \bar{\mathcal{H}} \otimes \mathcal{H}_A \,,$$</div>
+<p>
+where the trace is over the ancillary space <span class="math">\(\mathcal{H}_A\)</span>.</p>
+<h3>Entangled&nbsp;states</h3>
+<p>The hilbert space of a general quantum system <span class="math">\(\mathcal{H}\)</span> has the structure of a product of hilbert spaces corresponding to its&nbsp;subsystems
+</p>
+<div class="math">$$\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \ldots$$</div>
+<p>
+For instance, <span class="math">\(\mathcal{H}\)</span> represents a set of qubits, of atoms in a condensate, or of spins in a lattice, for which each <span class="math">\(\mathcal{H}_n\)</span> stands for a qubit, an atom or a spin, respectively. Often the ground state of these systems has a very simple form: it can be factorized in a product of states of its individual components (or subsystems), like the ferromagnetic phase in which all spins are&nbsp;up:
+</p>
+<div class="math">$$\ket{G} = \ket{0} \otimes \ket{0} \otimes \ldots\,;$$</div>
+<p>
+however, excitations at finite temperature and interactions build much more complex states that cannot be written as a product of basic states belonging to each subsystem. Non factorizable states are <em>entangled</em> states. The bell states are examples of non factorizable two qubit&nbsp;states.</p>
+<p>Therefore, not entangled pure states of a bipartite system can be expressed as a&nbsp;product,
+</p>
+<div class="math">$$\ket{\psi}^{AB} = \ket{\psi^A} \otimes \ket{\psi^B}\,.$$</div>
+<p>
+The von Neumann entropy of the corresponding parties vanishes, <span class="math">\(S(A) = S(B) = 0\)</span>.</p>
+<p>The density matrix of a two parties system can be decomposed in terms of orthonormal basis vectors, the <em>Schmidt decomposition</em>. It is convenient to write a general pure bipartite state <span class="math">\(\ket{\psi}\)</span>,
+</p>
+<div class="math">$$\ket{\psi} = \sum_{n^An^B} x_{n^An^B} \ket{a_{n^A}} \otimes \ket{b_{n^B}}$$</div>
+<p>
+using its matrix representation <span class="math">\(X\)</span>,
+</p>
+<div class="math">$$\ket{\psi} \doteq X$$</div>
+<p>
+where <span class="math">\(\mathrm{dim}X= N_A \times N_B\)</span>, whose elements&nbsp;are 
+</p>
+<div class="math">$$x_{n^An^B} = \braket{\psi|a_{n^A} b_{n^B}}\,,$$</div>
+<p>
+with <span class="math">\(\ket{a_{n^A}}\)</span> and <span class="math">\(\ket{b_{n^B}}\)</span> the basis vectors of the two parties; we assume <span class="math">\(N_A \le N_B\)</span>. Consequently, the reduced density matrix of subsystem <span class="math">\(A\)</span> is simply the <span class="math">\(N_A \times N_A\)</span>&nbsp;matrix,
+</p>
+<div class="math">$$\rho_A \doteq XX^\dagger\,,$$</div>
+<p>
+and similarly for <span class="math">\(B\)</span>:
+</p>
+<div class="math">$$\rho_B \doteq X^\dagger X\,.$$</div>
+<p>
+Let us diagonalize <span class="math">\(\rho_A\)</span>,
+</p>
+<div class="math">$$\rho_A \doteq U P U^\dagger, \quad P = \mathrm{diag}(p_{n^A}),\; \mathrm{dim} P = N_A\,,$$</div>
+<p>
+where
+</p>
+<div class="math">$$U = \sum_{n^A} \ket{u_{n^A}} \bra{a_{n^A}}\,, \quad \rho_A \ket{u_{n^A}} = p_{n^A}\ket{u_{n^A}}   $$</div>
+<p>
+is the unitary that transforms the <span class="math">\(\ket{a}\)</span> basis to the <span class="math">\(\ket{u^A}\)</span> basis in which <span class="math">\(\rho_A\)</span> is diagonal (note that <span class="math">\(\sum_{n^A} p_{n^A} = 1\)</span>). We can proceed similarly with the <span class="math">\(B\)</span> subsystem, to obtain the reduced matrices in the&nbsp;form:
+</p>
+<div class="math">$$\rho_A = \sum_n p_n \ket{u^A_n}\bra{u^A_n}\,, \quad \rho_B = \sum_n p_n \ket{u^B_n}\bra{u^B_n}$$</div>
+<p>
+where <span class="math">\(p_n\)</span> are the nonzero eigenvalues (common to both <span class="math">\(A\)</span> and <span class="math">\(B\)</span>), and <span class="math">\(\ket{u_n^B}\)</span> the corresponding <span class="math">\(N_A\)</span> eigenvectors of <span class="math">\(X^\dagger X\)</span> (whose numbers is <span class="math">\(N \le N_A\)</span>). In conclusion, we can rewrite the pure state in the&nbsp;form:
+</p>
+<div class="math">$$\ket{\psi} \doteq \sqrt{P}, \quad \ket{\psi} = \sum_n \sqrt{p_n} \ket{u^A_n} \otimes \ket{u^B_n}\,,$$</div>
+<p>
+which is just the schmidt decomposition. Note that the trick to represent the state by a matrix does not work for, for example, a tripartite system; the schmidt decomposition is thus only appropriate for systems divided in two&nbsp;parts.</p>
+<p>The schmidt decomposition of a bipartite pure state <span class="math">\(\ket{\psi_{AB}}\)</span> gives an explicit expression of the entanglement&nbsp;entropy:
+</p>
+<div class="math">$$S_A = -\sum_n p_n \log p_n$$</div>
+<p>
+where <span class="math">\(\sqrt{p_n}\)</span> are the schmidt coefficients in the expansion of <span class="math">\(\ket{\psi_{AB}}\)</span>. Note that the <span class="math">\(S_A\)</span> contains information about the full spectrum of the corresponding density matrix (in the schmidt&nbsp;basis).</p>
+<h3>Entropy&nbsp;properties</h3>
+<ul>
+<li><span class="math">\(S(\rho) \ge 0\)</span> and is zero for pure&nbsp;states.</li>
+<li>The entropy of a uniformly mixed state of <span class="math">\(N\)</span> qubits <span class="math">\(\rho = 1_d/d\)</span>, where <span class="math">\(\mathrm{dim}\mathcal{H}=d= 2^N\)</span> is the number of qubits <span class="math">\(N\)</span>.</li>
+<li>The entropy of the reduced density matrix of a bipartite system <span class="math">\(AB\)</span> are equal <span class="math">\(S(\rho_A)=S(\rho_B)\)</span>.</li>
+<li>Let <span class="math">\(p_n\)</span> be a probability distribution and <span class="math">\(\ket{n} \bra{n}\)</span> orthogonal states of system <span class="math">\(A\)</span>; suppose <span class="math">\(\rho_n\)</span> are states of <span class="math">\(B\)</span>, then
+    <div class="math">$$S\left( \sum_n p_n \ket{n} \bra{n} \otimes \rho_n \right) = H(p_n) + \sum_n p_n S(\rho_n)\,,$$</div>
+    where <span class="math">\(H\)</span> is the Shannon&nbsp;entropy.</li>
+<li>The entropy is subadditive
+    <div class="math">$$S(AB) \le S(A) + S(B)$$</div>
+</li>
+<li>The entropy is concave
+    <div class="math">$$\sum_n p_n S(\rho_n) \le S\left(\sum_n p_n \rho_n \right)\,.$$</div>
+</li>
+</ul>
+<p>To prove the joint entropy formula we solve the eigenvalue equation <span class="math">\(\rho_n \ket{u_n^k} = \lambda_n^k \ket{u_n^k}\)</span>, which leads&nbsp;to,
+</p>
+<div class="math">$$S\left( \sum_n p_n \rho_n \right) = - \sum_{nk} p_n \lambda_n^k \log p_n \lambda_n^k$$</div>
+<p>
+from which we&nbsp;obtain 
+</p>
+<div class="math">$$S\left( \sum_n p_n \rho_n \right) = H(p_n) + \sum_{n} p_n S(\rho_n)$$</div>
+<p>The subadditivity of the entropy can be proved using the Klein&nbsp;inequality:
+</p>
+<div class="math">$$\Tr(\rho \log \rho) - \Tr(\rho \log \sigma) \ge 0$$</div>
+<p>
+for arbitrary density matrices <span class="math">\(\rho\)</span> and <span class="math">\(\sigma\)</span>.</p>
+<p>Using the joint probability formula and its subadditivity one can demonstrate the concavity&nbsp;property.</p>
+<h2>Entanglement&nbsp;nonlocality</h2>
+<p>Some very basic properties of quantum states conflict classical physics. Einstein, Podolsky and Rosen noted&nbsp;that</p>
+<blockquote>
+<p>In quantum mechanics in the case of two physical quantities the knowledge of one precludes the knowledge of the other.<sup id="fnref:ei"><a class="footnote-ref" href="#fn:ei">4</a></sup></p>
+</blockquote>
+<p>We verified this statement using the bell state and showing that specifying the reduced state of one qubit (say a physical spin for concreteness) destroys the information on the other one. Thus, in apparent contradiction with the fact that the whole system is in a pure state, and then perfectly known. &#8220;Apparent&#8221; because the physical reality is quantum, not classical, as results form experiments on bell inequalities.<sup id="fnref:as"><a class="footnote-ref" href="#fn:as">5</a></sup></p>
+<p>In fact, suppose as before that the two spin system is the <span class="math">\(\ket{\Psi_-}\)</span> state; a measurement of <span class="math">\(Z_A\otimes 1_2\)</span> projects <span class="math">\(\ket{\Psi_-}\)</span> to either <span class="math">\(\ket{01}\)</span> or <span class="math">\(\ket{10}\)</span>, and the result is <span class="math">\(1\)</span> or <span class="math">\(-1\)</span> with probability <span class="math">\(1/2\)</span>; therefore, if one measures the second spin <span class="math">\(1_2 \otimes Z_B\)</span> the results are similar. However, if the <span class="math">\(A\)</span> spin is found to be in the up state <span class="math">\(1\)</span>, the measure of the second spin <span class="math">\(B\)</span> gives <span class="math">\(-1\)</span>. (Note that these results do not depend on the order of the measurement.) Leading thus to a perfect anti-correlation of both measurements. The question posed by Einstein, Podolsky and Rosen is whether this correlation arises from some hidden&nbsp;reality.</p>
+<p>Bell devised a test to verify if the supposed &#8220;uncertainty&#8221; of quantum mechanics is only due to the existence of a classical underlying physical mechanism, described by a set of hidden variables. We follow here the version of the Bell theorem proposed by Clauser et al.<sup id="fnref:cl"><a class="footnote-ref" href="#fn:cl">6</a></sup></p>
+<p>We consider two agents Alice <span class="math">\(A\)</span> and Bob <span class="math">\(B\)</span>. We discuss first the classical approach. Assume a source ot two-particle states. Alice measures the <span class="math">\(A_1\)</span> and <span class="math">\(A_2\)</span>, two physical quantities related to the first particle and taking the values <span class="math">\(a_1,a_2=-1,1\)</span>; Bob measures the second particle properties <span class="math">\(B_1\)</span> and <span class="math">\(B_2\)</span> taking the values <span class="math">\(b_1,b_2=-1,1\)</span>. We also assume, and this is the connexion with the hidden variables, the source produces its output following some rule to which one can associate certain probability distribution <span class="math">\(P(a_1,a_2; b_1,b_2)\)</span>. (Remark that a deterministic rule is a special case of probability one.) Therefore, two particle correlations are given by the expectations <span class="math">\(\braket{a_i b_j}\)</span> with <span class="math">\(i,j=1,2\)</span> (over the probability <span class="math">\(P\)</span>). Therefore, the quantity <span class="math">\(S\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$S = \braket{a_1b_1} + \braket{a_1b_2} + \braket{a_2b_1} - \braket{a_2b_2}$$</div>
+<p>
+satisfies the <em>classical</em>&nbsp;inequality
+</p>
+<div class="math">$$S \le 2\,.$$</div>
+<p>
+We discuss now the quantum approach. The analog quantum setup is a two spin system whose observables&nbsp;are,
+</p>
+<div class="math">$$A_1 = X_A,\; A_2 = Y_A$$</div>
+<p>
+and
+</p>
+<div class="math">$$B_1 = X_B,\; B_2 = Y_B\,,$$</div>
+<p>
+and the quantum state produced by the source&nbsp;is
+</p>
+<div class="math">$$\ket{\psi} = \frac{1}{\sqrt{2}} \ket{00} + \frac{\E^{\I \pi/4}}{\sqrt{2}} \ket{11}.$$</div>
+<p>
+A simple exercise show that the quantum correlation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$S = 2 \sqrt{2} &gt; 2$$</div>
+<p>
+in contradiction with the classical expectation. The experimental result refutes the hidden variable hypothesis. In addition, quantum correlations are stronger than classical ones, and their nature is nonlocal: independent measurements of spatially separated qubits can be perfectly correlated. The origin of purely quantum correlations, with no classical equivalent, is the entanglement of composite quantum&nbsp;states.</p>
+<p>As an aside remark, let us note that the impossibility to account for quantum properties in terms of classical physics is often the source of the misleading statements, sometimes presented as &#8220;quantum paradoxes&#8221;: they are much &#8220;classical paradoxes&#8221; than quantum ones. What we must retain here is that entanglement is a quantum resource of information, with the potential to overcome classical constraints or&nbsp;limitations.</p>
+<h2>Exercises</h2>
+<ol>
+<li>Prove the entropy&nbsp;properties.</li>
+<li>Show that the measurement of the two qubits of a bell state on an arbitrary direction <span class="math">\(\bm n\)</span>, leads to perfectly correlated&nbsp;results.</li>
+</ol>
+<h3>Useful&nbsp;formulas</h3>
+<blockquote>
+<p><img src="/images/AQ-convex.svg" alt="convex function" style="height: 250px;"/></p>
+<p>Convex function <span class="math">\(f(x)\)</span>.</p>
+</blockquote>
+<ul>
+<li>Gibbs inequality:
+    <div class="math">$$-\sum_n p_n \log p_n \le -\sum_n p_n \log q_n$$</div>
+    where <span class="math">\(p\)</span> and <span class="math">\(q\)</span> are two probability&nbsp;distributions.</li>
+<li>Jensen inequality:
+    <div class="math">$$f(\braket{x}) \le \braket{f(x)}$$</div>
+    if <span class="math">\(f\)</span> is <em>convex</em>; in general, for positive <span class="math">\(p_n\)</span> and <span class="math">\(f\)</span> convexity implies,
+    <div class="math">$$f\left(\sum_n p_n x_n \right) \le \sum_n p_n f(x_n)$$</div>
+    Remember that a function <span class="math">\(f\)</span> is convex if for <span class="math">\(l\in [0,1]\)</span>,
+    <div class="math">$$f\left(\lambda x_1 + (1-\lambda)x\right) \le \lambda f(x_1) + (1 - \lambda) f(x_2)$$</div>
+    (then <span class="math">\(-f\)</span> is concave, see figure&nbsp;above).</li>
+<li>Klein inequality:
+    <div class="math">$$\Tr \rho \log \frac{\rho}{\chi} \ge 0$$</div>
+    where <span class="math">\(\rho\)</span> and <span class="math">\(\chi\)</span> are two arbitrary density matrices; the quantity on the left is the <em>relative entropy</em>. Indeed, using well suited orthonormal basis,
+    <div class="math">$$\rho = \sum_k p_k \ket{p_k}\bra{p_k},\quad \chi = \sum_l q_l \ket{q_l}\bra{q_l},$$</div>
+    we write,
+    <div class="math">$$-\Tr \rho \log \chi = - \sum_{kl} p_k |\braket{q_l|p_k}|^2 \log q_l$$</div>
+    or equivalently, noting that <span class="math">\(X_{lk} = |\braket{q_l|p_k}|^2\)</span> is a double stochastic matrix (their marginal sums are probability distributions),
+    <div class="math">$$-\Tr \rho \log \chi = -\sum_k p_k \left( \sum_l X_{lk} \log q_l \right)$$</div>
+    from which, using the jenssen inequality, we obtain,
+    <div class="math">$$-\Tr \rho \log \chi \ge -\sum_k p_k \sum_l \log \left( \sum_l X_{lk} q_l \right)$$</div>
+    We apply now the gibbs inequality to the last term (we can put <span class="math">\(\sigma_k = \sum_l X_{lk} q_l\)</span>, with <span class="math">\(\sum_k \sigma_k = 1\)</span>), 
+    <div class="math">$$-\sum_k p_k \sum_l \log \left( \sum_l X_{lk} q_l \right) \ge -\sum_k p_k \log p_k$$</div>
+    to arrive at
+    <div class="math">$$-\Tr \rho \log \chi \ge - \Tr \rho \log \rho\,.$$</div>
+</li>
+</ul>
+<h2>Notes</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:SM">
+<p>B. Schumacher, <em>Quantum coding</em>, Phys. Rev. A <strong>51</strong>, 2738 (1995). <a href="/pdfs/Schumacher-1995uq.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:SM" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:s">
+<p>E. Schrödinger, <em>Discussion of probability relations between separated systems</em>, Mathematical Proceedings of the Cambridge Philosophical Society <strong>31</strong>, 555 (1935) <a href="/pdfs/Schrodinger-1935.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:s" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:bb">
+<p>A. Barenco et al., <em>Elementary gates for quantum computation</em>, Phys. Rev. A <strong>52</strong>, 3457 (1995). Universality of the set one qubit and controlled not gates.&#160;<a class="footnote-backref" href="#fnref:bb" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ei">
+<p>A. Einstein, B. Podolsky, and N. Rosen, <em>Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?</em> Phys. Rev. <strong>47</strong>, 777 (1935)&#160;<a class="footnote-backref" href="#fnref:ei" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:as">
+<p>A. Aspect, <em>Closing the door of Einstein and Bohr quantum debate,</em> Physics (<span class="caps">APS</span>) <strong>8</strong>, 123 (2015) <a href="/pdfs/Aspect-2015.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:as" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cl">
+<p>J. Clauser, M. Horne, A. Shimony, and R. Holt, <em>Proposed Experiment to Test Local Hidden-Variable Theories,</em> Phys. Rev. Lett. <strong>23</strong>, 880 (1969)&#160;<a class="footnote-backref" href="#fnref:cl" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

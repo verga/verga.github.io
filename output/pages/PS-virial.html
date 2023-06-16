@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Interacting gases: virial expansion | Random physics
+</title>
+    <link rel="canonical" href="/pages/PS-virial.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Virial expansion of interacting gases, van der Waals equation of state; molecular dynamics.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}\)</span></p>
+<blockquote>
+<p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
+</blockquote>
+<h1>Molecular&nbsp;interactions</h1>
+<p>The pressure of the ideal gas is essentially due to the entropy, which leads to an effective repulsive force. In real gases molecular attractive and repulsive interactions do also contribute to the pressure, modifying the equation of state. The origin of molecular forces is mainly electrostatic: coulomb forces between the positively charged nucleus and negatively charged orbital electrons are eventually responsible for the large variety of molecular interactions not only in rarefied media but also in condensed matter. Examples are ionic and covalent bonds, van der Waals forces, long range dipole interactions, molecule-solvent or colloidal interactions.<sup id="fnref:IS"><a class="footnote-ref" href="#fn:IS">1</a></sup> Other forces include exchange (related to the identity of particles) and spin interactions that are generally important at very short distances, of the order of the separation of atoms in a crystal structure. In neutral gases, the interactions are of the van der Waals type; their strength is controlled by the polarizability of the molecules, they are repulsive at short distances and attractive at long distances. A rather universal interaction energy is given by the Lennard-Jones&nbsp;potential,
+</p>
+<div class="math">$$w(r) = \frac{A}{r^{12}} - \frac{B}{r^6} = 4\epsilon \left[ \left(\frac{r_0}{r}\right)^{12} - \left(\frac{r_0}{r}\right)^{6} \right]\,,$$</div>
+<p>
+where <span class="math">\(r\)</span> is the distance between the atoms; the power <span class="math">\(6\)</span> of the attractive part is the London dispersion force between two induced dipoles, and the repulsive exponent is phenomenological. The order of magnitude of the coefficients is <span class="math">\(A=10^{-134} \, \mathrm{J\, m^{12}}\)</span> and <span class="math">\(B=10^{-77} \, \mathrm{J\, m^{6}}\)</span>; this gives a repulsive core size <span class="math">\(r_0 \approx 0.3\, \mathrm{nm}\)</span>, and a binding energy <span class="math">\(\epsilon \approx 16\,\mathrm{meV}\)</span>.</p>
+<p>We may distinguish short and long range interactions by considering the family of&nbsp;potentials,
+</p>
+<div class="math">$$w(r) = -\frac{C}{r^n} \,, \quad R &gt; r_0\,,$$</div>
+<p>
+parametrized by <span class="math">\(n\)</span>, a positive number, where <span class="math">\(C\)</span> is a dimensional constant and <span class="math">\(r_0\)</span> the short distance cutoff (the atom &#8220;size&#8221;). The total energy of interaction of one atom with all the others, assuming a uniform distribution of density <span class="math">\(\rho\)</span>,&nbsp;is
+</p>
+<div class="math">$$E = \int_{r_0}^L \D r\, 4\pi r^2\, w(r) = -4\pi C \rho \int_{r_0}^L \D r \, r^{2-n} = -\frac{4\pi C \rho}{(n-3) r_0^{n-3}} \left[ 1 - \left(\frac{r_0}{L}\right)^{n-3} \right]\,,$$</div>
+<p>
+from which we deduce that if <span class="math">\(n\le 3\)</span> the total size of the system <span class="math">\(L\)</span> must be taken into account <span class="math">\(E = E(L)\)</span>, while in the other case <span class="math">\(n&gt;3\)</span>, the total energy is independent on <span class="math">\(L\)</span>. Therefore, an interaction energy decreasing faster than <span class="math">\(r^{-3}\)</span> is short range, while for slower decrease, as in the important case of the unscreened coulomb potential <span class="math">\(r^{-1}\)</span>, it is long range. Note that we computed the energy in three dimensions, the classification of the range of the interaction depends also on the dimensionality of the system (one may substitute <span class="math">\(3 \rightarrow d\)</span> by the dimension <span class="math">\(d\)</span> in the previous formulas). Note also that the limiting case <span class="math">\(n=3\)</span> is long range (the energy is logarithmic in <span class="math">\(L\)</span>).</p>
+<p>The role of interactions is fundamental in determining the wealth of properties of materials and their transformations. Mechanical, magnetic, electrical and thermodynamical properties of matter depend on the interactions of its constituents, notably their diluted or condensed phases and the mechanisms of their transitions. The general framework to study the physical properties of matter is just the theory of statistical mechanics, we are left to compute, for a given model hamiltonian, and using appropriated approximations for each experimental situation, the (grand) partition function. Indeed, there is no universal method allowing the computation of the partition function, or equivalent statistical quantities; a large variety of methods, based on different assumptions, should be devised to solve specific problems. Here we study the cluster or virial expansion of the pressure in powers of density <span class="math">\(N/V\)</span> normalized to the size of the interacting atoms <span class="math">\(v_0 \sim r_0^3\)</span>:
+</p>
+<div class="math">$$P \approx P_0 \left[1 + p_1 \frac{Nv_0}{V} + p_2 \left(\frac{Nv_0}{V}\right)^2 \ldots \right]$$</div>
+<p>
+where <span class="math">\(P_0\)</span> is the ideal gas, and <span class="math">\(B_2(T) = p_1 v_0\)</span>, <span class="math">\(B_3(T) = p_2 v_0^2\)</span>, etc. are called the <em>virial coefficients</em>.<sup id="fnref:LL"><a class="footnote-ref" href="#fn:LL">2</a></sup> The idea is to find, as a first step, corrections to the ideal gas equation of state, and then, to extend the range of validity of the expansion using for instance, some type of resummation of a special kind of terms, or some phenomenological rule, in order to describe the transition of the gas to the liquid phase. In addition to this classical system, quantum states can also be studied using the same approach, to investigate the behavior of gases at very low temperatures. More explicitly, the grand partition function can be written as a series in the fugacity <span class="math">\(z=\E^{\mu/T}\)</span>,
+</p>
+<div class="math">$$Z = \mathrm{Tr}\, \E^{-(H - \mu \hat{N})/T} = \sum_{N=0}^\infty \E^{\mu N/T}\, \mathrm{Tr}\, \E^{-H_N/T} = \sum_{N=0}^\infty z^N Z_N\,,$$</div>
+<p>
+where <span class="math">\(H_N\)</span> is the hamiltonian of <span class="math">\(N\)</span> particles, and <span class="math">\(Z_N = \mathrm{Tr}\,\E^{-H_N/T}\)</span> is the &#8220;configuration&#8221; partition function. The thermodynamic&nbsp;potential,
+</p>
+<div class="math">$$\Phi = -T \ln Z = - T \ln \sum_{N=0}^\infty z^N Z_N$$</div>
+<p>
+can also be written as a power series in the fugacity using the taylor expansion of the&nbsp;logarithm,
+</p>
+<div class="math">$$\Phi \sim \sum_N b_N z^N \,,$$</div>
+<p>
+where <span class="math">\(b_N = b_N(T,V)\)</span> are so called &#8220;cluster&#8221; coefficients that should be determined at each order. Finally, using <span class="math">\(N\)</span> to eliminate the fugacity one eventually finds the searched coefficients <span class="math">\(p_N\)</span> in the expansion of the&nbsp;pressure.</p>
+<p>Expansions of the form of <span class="math">\(\Phi\)</span> in powers of the fugacity or equivalently, <span class="math">\(P = P(Nv_0/V)\)</span> in powers of the density, are known in the theory of probability as a <a href="/pages/PS-A_proba.html"><em>cumulant expansion</em></a>.<sup id="fnref:SH"><a class="footnote-ref" href="#fn:SH">3</a></sup></p>
+<h2>The virial&nbsp;expansion</h2>
+<p>We investigate the thermodynamics of a real gas whose hamiltonian contains two particle interactions <span class="math">\(w\)</span> depending on the distance between the gas&nbsp;atoms,
+</p>
+<div class="math">$$H_N = \sum_{n=1}^N \frac{p_n^2}{2m} + \sum_{n &lt; m}^N w(|\boldsymbol x_n - \boldsymbol x_m|)\,,$$</div>
+<p>
+where <span class="math">\(\boldsymbol p_n\)</span> and <span class="math">\(\boldsymbol x_n\)</span> are the momentum and position operators and <span class="math">\(m\)</span> the atom&#8217;s mass, and the sum is over the pairs of atoms (counted once and avoiding self-interaction, the number of terms is <span class="math">\(N(N-1)/2\)</span>). The Lennard-Jones potential is a paradigmatic model of <span class="math">\(w\)</span>. We shall discuss the classical case in parallel with the quantum&nbsp;one.</p>
+<p>We implicitly assume that the interaction potential <span class="math">\(w\)</span> defines a characteristic length <span class="math">\(r_0\)</span>, a short distance cutoff, associated to the atom&#8217;s volume <span class="math">\(v_0 \sim r_0^3\)</span>, below which repulsion is strong. Another important property of <span class="math">\(w\)</span> is that it is an interaction aver all particle pairs; even if it is supposed to be short range, correlations between distant particles are possible by the superposition and propagation of near neighbors interactions (particles inside a sphere of radius the range of the&nbsp;interaction).</p>
+<p>We start by writing the grand partition function in a form reminiscent to the exponential characteristic function in probability&nbsp;theory,
+</p>
+<div class="math">\begin{align}
+Z(T,\mu,V) &amp; = \sum_{N=0}^\infty Z_N(T,V) z^N \nonumber\\
+  &amp; = 1 + \sum_{N=1}^\infty \frac{M_N(T,V)}{N!} z^N\,,
+\end{align}</div>
+<p>
+where we defined the &#8220;moments&#8221; <span class="math">\(M_N\)</span>,
+</p>
+<div class="math">\begin{equation}
+M_N = N! \mathrm{Tr}\, \E^{-H_N/T} = N! \sum_n \E^{-E^{(N)}_n/T} \,,
+\end{equation}</div>
+<p>
+where <span class="math">\(E^{(N)}_n\)</span> are the energy eigenvalues of the <span class="math">\(N\)</span>-particles hamiltonian. It is useful to introduce, in the position representation, the nondimensional functions<sup id="fnref:KU"><a class="footnote-ref" href="#fn:KU">4</a></sup> <span class="math">\(W_N\)</span> of the &#8220;configuration&#8221; <span class="math">\(x = \boldsymbol x_1, \ldots, \boldsymbol x_N\)</span>:
+</p>
+<div class="math">\begin{equation}
+W_N(x) =  N! \lambda^{3N} \braket{x|\E^{-H_N/T}|x} = N! \lambda^{3N} \sum_n\E^{-E^{(N)}_n/T} \phi^*_n(x)\phi_n(x)\,,\quad \,,
+\end{equation}</div>
+<p>
+where <span class="math">\(\lambda^2 = 2\pi \hbar/mT\)</span> is the thermal length, such&nbsp;that,
+</p>
+<div class="math">\begin{equation}
+M_N = \int_{V^N} \prod_{n=1}^N \left(\frac{\D \boldsymbol x_n}{\lambda^3} \right) \, W_N(\boldsymbol x_1, \ldots, \boldsymbol x_N)\,,
+\end{equation}</div>
+<p>
+where we used a properly symmetrized energy basis <span class="math">\(\phi_n(x)\)</span>; <span class="math">\(W_N\)</span> represents the probability of the configuration <span class="math">\(x\)</span> in position space. The short range of molecular interactions ensures that in the extreme dilute limit, when the distances between the particles tend to infinity, <span class="math">\(W_N \rightarrow 1\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>The thermodynamic&nbsp;potential
+</p>
+<div class="math">$$\Phi(T,\mu,V) = -T \ln \left( 1 + \sum_{N = 1}^\infty \frac{M_N}{N!} z^N  \right)\,,$$</div>
+<p>
+can be expanded in terms of the &#8220;cumulants&#8221; <span class="math">\(C_N=C_N(T,V)\)</span>:
+</p>
+<div class="math">\begin{equation}
+\Phi = -T \sum_{N=1}^\infty \frac{C_N}{N!} z^N\,.
+\end{equation}</div>
+<p>
+In analogy with the moments, we define &#8220;Ursell functions&#8221; <span class="math">\(U_N\)</span> such that the cumulants <span class="math">\(C_N\)</span> correspond to the configuration integral of <span class="math">\(U_N\)</span>,
+</p>
+<div class="math">\begin{equation}
+C_N = \int_{V^N} \prod_{n=1}^N \left(\frac{\D \boldsymbol x_n}{\lambda^3} \right) \,U_N(\boldsymbol x_1, \ldots, \boldsymbol x_N)\,.
+\end{equation}</div>
+<p>
+The cumulants can readily be written in terms of the moments using the Bell&nbsp;polynomials:
+</p>
+<div class="math">$$C_N = \sum_{n=1}^N (-1)^{n-1} (n-1)! B_{N,n}(M_1,\ldots,M_{N-n+1})\,.$$</div>
+<p>
+Therefore, for <span class="math">\(N=1,2,3\)</span>,
+</p>
+<div class="math">\begin{align*}
+C_1 &amp; = M_1 = 1\\
+C_2 &amp; = M_2 - M_1^2\\
+C_3 &amp; = M_3 - 3M_2 M_1 + M_1^3\,, \; \text{etc.}
+\end{align*}</div>
+<p>
+The inverse formula, giving the moments as a combination of cumulants,&nbsp;reads,
+</p>
+<div class="math">$$M_N = \sum_{n=1}^N B_{N,n}(C_1,\ldots,C_{N-n+1})\,.$$</div>
+<p>
+For <span class="math">\(N=1,2,3\)</span> we&nbsp;find,
+</p>
+<div class="math">\begin{align*}
+M_1 &amp; = C_1 = 1 \\
+M_2 &amp; = C_2 + C_1^2 \\
+M_3 &amp; = C_3 + 3C_2 C_1 + 2C_1^3\,, \; \text{etc.}
+\end{align*}</div>
+<p>The functions <span class="math">\(U\)</span> are related to the functions <span class="math">\(W\)</span> through the relation between their respective moments <span class="math">\(M\)</span> and cumulants <span class="math">\(C\)</span>:
+</p>
+<div class="math">\begin{align*}
+W_1(\boldsymbol x_1) &amp; = U_1(\boldsymbol x_1) = 1 \\
+W_2(\boldsymbol x_1, \boldsymbol x_2) &amp; = U_2(\boldsymbol x_1, \boldsymbol x_2) + U(\boldsymbol x_1) U(\boldsymbol x_2)\\
+W_3(\boldsymbol x_1, \boldsymbol x_2, \boldsymbol x_3) &amp; = U(\boldsymbol x_1, \boldsymbol x_2, \boldsymbol x_3) \\
+ &amp; \qquad + U(\boldsymbol x_1, \boldsymbol x_2) U(\boldsymbol x_3) + U(\boldsymbol x_1, \boldsymbol x_3) U(\boldsymbol x_2) + U(\boldsymbol x_2, \boldsymbol x_3) U(\boldsymbol x_1) \\
+ &amp; \qquad + U(\boldsymbol x_1) U(\boldsymbol x_2) U(\boldsymbol x_3) \,,
+\end{align*}</div>
+<p>
+for <span class="math">\(N = 1,2,3\)</span>. Indeed, the coefficients in the formula for the moments, the numbers <span class="math">\(B_{N,n}\)</span> give all the combinations of the position labels into clusters of <span class="math">\(n\)</span> particles, that once integrated out, give the same contribution to the corresponding moment. Therefore, their general expression contains the partitions <span class="math">\(\mathcal{P}\)</span> of the set <span class="math">\(\mathcal{N} = \{1,\ldots,N\}\)</span> and the blocks <span class="math">\(s\)</span> belonging to each&nbsp;partition, 
+</p>
+<div class="math">$$W_N(\boldsymbol x_1,\ldots,\boldsymbol x_N) = \sum_{\mathcal{P} \in \mathcal{P}_N} \prod_{s \in \mathcal{P} } U_{|s|}(\boldsymbol x_{s})\,,$$</div>
+<p>
+and the inverse&nbsp;formula,
+</p>
+<div class="math">$$U_N(\boldsymbol x_1,\ldots,\boldsymbol x_N) = \sum_{\mathcal{P} \in \mathcal{P}_N} \prod_{s \in \mathcal{P} } (-1)^{|\mathcal{P}|-1} (|\mathcal{P}|-1)! W_{|s|}(\boldsymbol x_{s}) \,,$$</div>
+<p>
+where, explicitly, <span class="math">\(\mathcal{P} = \{s_1,\ldots, s_K\}\)</span> is a partition of the set <span class="math">\(\mathcal{N}\)</span> into disjoint subsets <span class="math">\(s_k\)</span>, such&nbsp;that
+</p>
+<div class="math">$$\mathcal{N} = \bigcup_{k=1}^K s_k,\quad K = |\mathcal{P}|\,,$$</div>
+<p> 
+<span class="math">\(\mathcal{P}_N\)</span> is the set of all partitions of <span class="math">\(\mathcal{N}\)</span>; <span class="math">\(|\ldots|\)</span> is the cardinal of the given set; <span class="math">\(\boldsymbol x_s\)</span> is the list of positions indexed by the subset <span class="math">\(s\)</span>. Obviously, the indexes in <span class="math">\(s\)</span> are all different (self-interaction is absent). Then, the cumulants are specified by the irreducible correlations, interactions between a set of particles <span class="math">\(s\)</span> that cannot be decomposed into separated subsets of interacting particles (we can take this statement as a definition of a&nbsp;cluster).</p>
+<p>Therefore, the grand partition function can be expanded in powers of the&nbsp;fugacity,
+</p>
+<div class="math">\begin{equation}
+\label{e:vThPot}
+\Phi(T,\mu,V) = -T \ln Z(T,\mu.V) = -T \frac{V}{\lambda^3} \sum_{N=1}^\infty b_N z^N\,,
+\end{equation}</div>
+<p>
+using the cumulants of <span class="math">\(N\)</span> particles <span class="math">\(C_N\)</span>, or equivalently the &#8220;cluster&nbsp;integrals&#8221;
+</p>
+<div class="math">\begin{equation}
+b_N(T,V) = \frac{\lambda^3}{VN!} C_N(T,V) \,.
+\end{equation}</div>
+<p>
+The normalization of the cluster integrals is such that the&nbsp;limit
+</p>
+<div class="math">$$b_N(T) = \lim_{V\rightarrow\infty} b_N(T,V)\,,$$</div>
+<p>
+is well&nbsp;defined.</p>
+<p>The equation of the particle number of a diluted gas (<span class="math">\(V \rightarrow \infty\)</span>,&nbsp;limit),
+</p>
+<div class="math">\begin{equation}
+  \label{e:vPressure}
+\end{equation}</div>
+<div class="math">$$N = - \frac{\partial \Phi}{\partial \mu} = \frac{V}{\lambda^3} \sum_{N=1}^\infty N b_N(T) z^N\,, \quad b_N(T) = \lim_{V\rightarrow\infty} b_N(T,V)\,,$$</div>
+<p>
+can be used to eliminate the fugacity by inverting the series, and replacing it into the thermodynamic potential <span class="math">\(\eqref{e:vThPot}\)</span>, one obtains the equation of state <span class="math">\(P=P(T,V,N)\)</span>. The final result is a series in the&nbsp;density,
+</p>
+<div class="math">\begin{equation}
+\label{e:vEqofState}
+P = \frac{NT}{V} \left(1 + B_2(T) \frac{N}{V} + B_3(T) \frac{N^2}{V^2} + \cdots \right)
+\end{equation}</div>
+<p>
+whose coefficients are the &#8220;virial coefficients&#8221; <span class="math">\(B_{N}(T)\)</span>. In particular, the second order virial coefficient&nbsp;is,
+</p>
+<div class="math">$$B_2(T) = -b_2(T) \lambda^3\,.$$</div>
+<p>
+Note that at variance to the <span class="math">\(b_N(T)\)</span>, the virial coefficients have dimensions of a power of a volume <span class="math">\(B_N \sim v_0^{N-1}\)</span>.</p>
+<p>As an example let us obtain the thermodynamics quantities of a system in terms of the second cluster coefficient <span class="math">\(b_2\)</span>. We start with the number of particles as a function of the&nbsp;fugacity,
+</p>
+<div class="math">$$N = \frac{V}{\lambda^3}(z + 2 b_2 z^2)$$</div>
+<p>
+which gives by inversion of the series, the fugacity in powers of <span class="math">\(N/V\)</span>:
+</p>
+<div class="math">$$z = \frac{\lambda^3}{V} \left( 1 - 2 b_2\frac{\lambda^3 N}{V} \right)\,.$$</div>
+<p>
+Replacing this last expansion into <span class="math">\(\Phi\)</span> one obtains the equation of state (valid to second order in the&nbsp;density),
+</p>
+<div class="math">$$PV = NT \left( 1 - b_2 \frac{\lambda^3N}{V} \right)\,.$$</div>
+<p>
+We note that the virial coefficient <span class="math">\(B_2(T)=-b_2(T) \lambda^3\)</span>. It is also useful to write the free energy <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$F(T,V,N) =  -NT \ln \frac{\E V}{\lambda^3N} - \frac{N^2T}{V} \lambda^3b_2\,,$$</div>
+<p>
+from which one may obtain the entropy, thermodynamic energy and heat capacity at constant volume. (Of course, the first term is the ideal gas free energy.) For instance, the energy is given&nbsp;by,
+</p>
+<div class="math">$$E = \frac{3NT}{2} + \frac{3NT}{2} \frac{N\lambda^3}{V} \left( \frac{2T}{3} \frac{\D b_2}{\D T} - b_2   \right)\,.$$</div>
+<p>All the above formulas are equally valid irrespective of the statistics. The specificity of the statistics appears as a property of the states <span class="math">\(\ket{\boldsymbol x_1,\ldots,\boldsymbol x_N}\)</span> symmetry: symmetric or antisymmetric for bosons or fermions, without restrictions for the Boltzmann statistics. We shall discuss first the classical case, in which the hamiltonian reduces to a phase-space&nbsp;function. </p>
+<h3>Mayer classical cluster&nbsp;expansion</h3>
+<p>The classical expression for <span class="math">\(M_N\)</span>, taking into account that <span class="math">\(W_N \sim \E^{-w/T}\)</span> and that the momentum integrations are included in the expression of <span class="math">\(Z_1\)</span>, can be written as a product of pair interactions using the <em>Mayer functions</em> <span class="math">\(f_{mn}\)</span>
+</p>
+<div class="math">$$M_N = \int_{V^N} \prod_{n=1}^N \frac{\D \boldsymbol x_n}{\lambda^3} \, W_N \,,\quad W_N = \prod_{m&lt;n}^N (1+f_{mn})\,,$$</div>
+<p>
+where,
+</p>
+<div class="math">$$f_{mn} = \exp\big[-w(|\boldsymbol x_m - \boldsymbol x_n)/T \big] - 1\,.$$</div>
+<p>
+These functions have the desirable properties of being for small distances between the two atoms <span class="math">\(m\)</span> and <span class="math">\(n\)</span>, <span class="math">\(f(r) \rightarrow -1\)</span>, and for large distances, <span class="math">\(f(r) \rightarrow 0\)</span> (contrary to the simple <span class="math">\(W\)</span> that is finite at large distances, making its integral divergent with the system&#8217;s&nbsp;size).</p>
+<p>Developing the product, we observe that the functions <span class="math">\(W_N\)</span> contains terms without pairings, with the pairing of two particles <span class="math">\(\sim f\)</span>, three particles <span class="math">\(\sim ff\)</span> up to <span class="math">\(N\)</span> particles <span class="math">\(ff\ldots f\)</span> (the length of this last term is <span class="math">\(N(N-1)/2\)</span>, the total number of pairs). A graphical visualization is useful: representing a particle by a node, and an interaction <span class="math">\(f_{mn}\)</span> by a link between nodes <span class="math">\(m\)</span> and <span class="math">\(n\)</span>, we can associate a graph of nodes and links to each different product <span class="math">\(f\ldots f\)</span>:</p>
+<blockquote>
+<p><img src="/images/PS-c3.png" style="height:70px; margin:0 8px 8px 0;" align = "left"> Three particles diagrams. The first graph contains one two-particle cluster and one unlinked particle, it corresponds to <span class="math">\(f_{12}\)</span>; the two other graphs are connected: <span class="math">\(f_{12}f_{23}\)</span> and <span class="math">\(f_{12}f_{23}f_{13}\)</span>, respectively. The second diagram is &#8220;reducible&#8221; (it decomposes into lower order clusters): if one cuts a link a it becomes disconnected. The third diagram is &#8220;irreducible&#8221;: cutting a link do not disconnect the cluster. A cluster is a set of linked&nbsp;nodes.</p>
+</blockquote>
+<p>The above figure is part of the function <span class="math">\(W_3\)</span>:
+</p>
+<div class="math">$$W_3 = 1 + f_{12} + f_{13} + f_{23} + f_{12}f_{23} + f_{13}f_{23} + f_{12}f_{13} + f_{12}f_{23}f_{13}\,,$$</div>
+<p> 
+which corresponds to the sum of <em>all</em> graphs with three particles. The <span class="math">\(U\)</span> functions are given by the sum of the <em>connected</em>&nbsp;graphs:
+</p>
+<div class="math">\begin{align*}
+U_1 &amp; = 1 \\
+U_2 &amp; = f_{12} \\
+U_3 &amp; = f_{12}f_{23} + f_{13}f_{23} + f_{12}f_{13} + f_{12}f_{23}f_{13}\,,
+\end{align*}</div>
+<p>
+here, the clusters of three&nbsp;particles.</p>
+<p>Qualitatively, we can say that the partition function can be decomposed in a sum of unrestricted graphs, while the cumulants are a sum of <em>connected</em>&nbsp;graphs,
+</p>
+<div class="math">$$Z\sim \sum\; \text{graphs} \sim \exp{\big( \text{connected graphs} \big)} \sim \exp\left( -\frac{\Phi}{T} \right)\,.$$</div>
+<p>Let us apply the above formalist to the computation of the firsts cumulants <span class="math">\(C_N\)</span> in the classical case. The general form of the cumulants&nbsp;is,
+</p>
+<div class="math">$$C_N = \int_{V^N} \frac{\D \boldsymbol x_1 \ldots \boldsymbol x_N}{\lambda^{3N}} \sum\left( \text{connected graphs}\right) \sim \int f_{12} f_{13} \ldots f_{N-1,N} + \ldots$$</div>
+<p>
+They are dimensionless, and have the important property that they converge in the thermodynamic&nbsp;limit,
+</p>
+<div class="math">$$\lim_{V\rightarrow\infty} \frac{\lambda^3}{VN!} C_N = \lim_{V \rightarrow \infty} b_N(T,V) \equiv b(T)\,,$$</div>
+<p>
+where we defined the <span class="math">\(b(T)\)</span> as the limit <span class="math">\(V\rightarrow\infty\)</span> of the cluster integrals, which are useful in the case of a dilute gas, to obtain the virial expansion of the pressure in powers of the density (or specific&nbsp;volume).</p>
+<p>We start with <span class="math">\(b_2 = \lambda^3 C_2/2V\)</span>,
+</p>
+<div class="math">$$b_2 = \frac{1}{2V\lambda^3} \int_{V^2} \D \boldsymbol x_1 \D \boldsymbol x_2 \, U_2(\boldsymbol x_1, \boldsymbol x_2) = \frac{1}{2\lambda^3} \int_0^\infty 4\pi r^2 \D r\, f_{12}(r) = -\frac{B_2(T)}{\lambda^3}\,,$$</div>
+<p>
+where we used the isotropy of the interaction, which depends only on the distance <span class="math">\(r=|\boldsymbol x_1 - \boldsymbol x_2|\)</span>. The last equality introduces the second virial coefficient <span class="math">\(B_2\)</span> of the pressure expansion <span class="math">\(\eqref{e:vPressure}\)</span>:
+</p>
+<div class="math">$$B_2(T) = \frac{1}{2} \int_0^\infty 4\pi r^2 \D r\, \left(1 - \E^{-w(r)/T} \right)\,,$$</div>
+<p>
+for particles interacting through a spherical symmetric potential <span class="math">\(w(r)\)</span>.</p>
+<h3>van der Waals equation of&nbsp;state</h3>
+<p>The simplest case is the rigid sphere interaction, consisting in a hard core <span class="math">\(w=\infty\)</span> if <span class="math">\(r&lt;r_0\)</span>, and no interaction for larger distances. In this case the evaluation of the integral is&nbsp;trivial,
+</p>
+<div class="math">$$\int_0^\infty \D r\, r^2 (\E^{-w(r)/T} - 1) = - \int_0^{r_0} \D r\, r^2 = - \frac{r_0^3}{3}\,,$$</div>
+<p>
+and the&nbsp;cumulant,
+</p>
+<div class="math">$$b_2 = - \frac{v_0}{2\lambda^3},\quad v_0 = \frac{4}{3}\pi r_0^3\,.$$</div>
+<p>
+Putting this result in the equation for the thermodynamic&nbsp;potential,
+</p>
+<div class="math">$$\Phi = -PV = -T \frac{V}{\lambda^3} z\left(1 - \frac{v_0 }{\lambda^3} \frac{z}{2}\right)\,,$$</div>
+<p>
+we can derive the equation of state eliminating the fugacity. The number of particles is given by the logarithmic derivative of <span class="math">\(\Phi\)</span> with respect to the&nbsp;fugacity,
+</p>
+<div class="math">$$N = \frac{V}{\lambda^3}\left(z - \frac{v_0}{\lambda^3} z^2 \right)\,.$$</div>
+<p>
+Using <span class="math">\(z \approx \lambda^3 (N/V) = \lambda^3 n\)</span>, one&nbsp;obtains
+</p>
+<div class="math">$$PV = NT (1 + b n), \quad b = \frac{v_0}{2}\,,$$</div>
+<p>
+where <span class="math">\(b = -VC_2/2=B_2\)</span> is the second virial coefficient, in this case independent of the temperature. We found that the presence of a repulsion force between atoms at short distances leads to a correction to the ideal gas equation of state that essentially reducing the available volume <span class="math">\(V \rightarrow V(1-bn)\)</span>. We can rewrite the correction in a more explicit&nbsp;form,
+</p>
+<div class="math">$$PV = N T (1 + bn) = NT \frac{1}{1-bn}\,,$$</div>
+<p>
+(to the same order)&nbsp;or
+</p>
+<div class="math">$$P(V-bN) = NT\,,$$</div>
+<p>
+where the coefficient <span class="math">\(b\)</span> appears clearly as an <em>excluded volume</em> per atom. In order to find this effect we used a method of resummation of one particular class of terms in the virial expansion, whose validity is mostly&nbsp;phenomenological.</p>
+<p>In real (neutral) gases a long distance attractive force is present, due to the induced polarizability of the&nbsp;atoms,
+</p>
+<div class="math">$$w(r) \sim -\epsilon(r_0/r)^6\,,$$</div>
+<p>
+as in the Lennard-Jones potential. This attractive effect also leads to a modification of the pressure, purely repulsive and entropic in an ideal gas. Its contribution to the second cumulant&nbsp;is,
+</p>
+<div class="math">\begin{align*}
+b_2 &amp; = \frac{4\pi}{2\lambda^3} \int_0^\infty r^2 \D r\, \left( \E^{-w(r)/T} - 1 \right) \\
+&amp; \approx -\frac{2\pi}{\lambda^3} \int_0^{r_0} r^2 \D r + \frac{2\pi}{\lambda^3} \int_{r_0}^\infty r^2 \D r \left( \E^{\epsilon r_0^6/r^6 T} - 1 \right)\,,
+\end{align*}</div>
+<p>
+where we split the integral into a hard core part and an attractive force part. The second integral is readily evaluated for <span class="math">\(\epsilon &lt; T\)</span> as a power series (high temperature expansion, valid in the gas phase) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">\begin{align*}
+b_2 &amp; = -\frac{v_0}{2\lambda^3} + \frac{v_0}{2\lambda^3}  \sum_{n=1}^\infty \frac{1}{2n-1} \left(\frac{\epsilon}{T}\right)^n \\
+&amp; \approx \frac{v_0}{2\lambda^3} \left(-1 + \frac{\epsilon}{T} \right)\,,
+\end{align*}</div>
+<p>
+(note that the two contributions have opposite signs). Keeping the first term in the temperature expansion, we obtain the second virial&nbsp;coefficient
+</p>
+<div class="math">$$B_2(T) = \frac{v_0}{2} \left(1 - \frac{\epsilon}{T} \right)$$</div>
+<p>
+from which we get the <em>van der Waals equation of state</em>,
+</p>
+<div class="math">$$\left(P + \frac{N^2 a}{V^2} \right) (V-Nb) = NT,$$</div>
+<p>
+where the (phenomenological) parameters are related, in the present model, to the parameters of the microscopic potential by <span class="math">\(b=v_0/2\)</span> and <span class="math">\(a=v_0 \epsilon/2\)</span>. The temperature dependent part of the correction is due to the attractive forces between atoms at long distances, which results in a weakening of the pressure the gas exerts to the exterior (e.g. enclosing&nbsp;walls).</p>
+<h3>Interacting fermi&nbsp;gas</h3>
+<p>It is possible, using magneto-optical traps, to confine a <em>gas</em> of fermions at temperatures of the order of the fermi temperature (e.g Li<span class="math">\(^6\)</span> at <span class="math">\(T_F\approx 8\,\mu\mathrm{K}\)</span>).<sup id="fnref:BO"><a class="footnote-ref" href="#fn:BO">5</a></sup> The experimental setup allow to tune the strength and range of the interaction using an external magnetic field <span class="math">\(B \sim 10\!-\!\!100 \, \mathrm{mT}\)</span>, arround the <em>Feshbach resonance</em>, and therefore to explore the physics of strongly interacting quantum systems. We shall investigate the thermodynamic properties of the fermi gas near the resonance, using a virial expansion to second order. The degeneracy of the gas and the strong van der Waals interactions impose a quantum&nbsp;calculation.</p>
+<p>The thermodynamic potential, expanded to quadratic terms in the fugacity <span class="math">\(z=\E^{\mu/T}\)</span>,&nbsp;is
+</p>
+<div class="math">$$\Phi = - \frac{TV}{\lambda^3}(z + b_2 z^2)$$</div>
+<p>
+where <span class="math">\(b_2\)</span> is the second cluster&nbsp;coefficient,
+</p>
+<div class="math">$$b_2 = \frac{\lambda^3}{2V} C_2 = \frac{\lambda^3}{2V} (M_2 - M_1^2)\,, \quad M_2 = 2\sum_n \E^{-E^{(2)}_n/T}\,. $$</div>
+<p>
+The spectrum of the two body hamiltonian depends on the total momentum eigenvalues <span class="math">\(P\)</span> and the quantum numbers <span class="math">\(n\)</span> of the relative motion eigenfunctions. It can be&nbsp;written,
+</p>
+<div class="math">$$E^{(2)}(P,n) = \frac{P^2}{4m} + \epsilon_n$$</div>
+<p>
+where <span class="math">\(2m\)</span> is the total mass and the energy levels are obtained from the solution of the reduced Schrödinger&nbsp;equation,
+</p>
+<div class="math">$$\left[- \frac{\hbar^2}{m}\nabla^2 + w(r) \right]\phi_n(\boldsymbol x) = \epsilon_n \phi_n(\boldsymbol x)\,,$$</div>
+<p>
+where <span class="math">\(\boldsymbol x = \boldsymbol x_1 - \boldsymbol x_2\)</span> and <span class="math">\(r = |\boldsymbol x|\)</span>,  <span class="math">\(m/2 = m^2/2m\)</span> is the reduced mass and <span class="math">\(\phi_n\)</span> are the eigenfunction of the energy state <span class="math">\(n\)</span> (discrete or continuous). In the absence of interaction, the free particle energies are labelled by the wavevector <span class="math">\(k_n\)</span>,
+</p>
+<div class="math">$$\epsilon^{(0)}_n = \frac{\hbar^2 k_n^2}{m}\,,$$</div>
+<p>
+where the index <span class="math">\((0)\)</span> refers to the noninteracting system <span class="math">\(w\rightarrow0\)</span>, we will use as a&nbsp;reference.</p>
+<p>The contribution of the center of mass motion to the second moment can be readily&nbsp;computed,
+</p>
+<div class="math">$$\sum_P \E^{-P^2/4mT} = \frac{V}{(2\pi\hbar)^3} \int_0^\infty 4\pi P^2 \D P\, \E^{-P^2/4mT} = 2^{3/2} \frac{V}{\lambda^3}$$</div>
+<p>
+which&nbsp;gives,
+</p>
+<div class="math">$$M_2 = 2^{5/2} \frac{V}{\lambda^3} \sum_n \E^{-\epsilon_n/T}\,.$$</div>
+<p>
+The shift of the second cluster coefficient <span class="math">\(\Delta b\)</span> with respect to the noninteracting case, is&nbsp;therefore,
+</p>
+<div class="math">$$\Delta b = b_2 - b_2^{(0)} = 2^{3/2} \sum_n \left( \E^{-\epsilon_n/T} - \E^{-\epsilon_n^{(0)}/T} \right)\,.$$</div>
+<p>
+The coefficient <span class="math">\(b_n^{(0)}\)</span> are, for free fermions <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$b_n^{(0)} = - \frac{(-1)^n}{n^{5/2}}\,.$$</div>
+<p>
+(Note that &#8220;free&#8221; fermions, as well as bosons, are in fact correlated by the symmetry constraint on their quantum state, i.e. particles&#8217;&nbsp;identity.)</p>
+<p>For a diluted system, like a gas, the particle interactions can be well described in the framework of scattering theory:<sup id="fnref:LB"><a class="footnote-ref" href="#fn:LB">6</a></sup> interactions are essentially due to particle collisions. The interacting spectrum <span class="math">\(\epsilon_n\)</span> contains, in general, a set of bound states <span class="math">\(-\epsilon_B&gt;0\)</span> and a continuum spectrum <span class="math">\(\hbar^2 k^2/2m\)</span> (<span class="math">\(k\in \mathbb{R}\)</span>). Note however that bound states in the continuum are also possible, like in the case of diffusion resonances (Fano, Feshbach). The discrete part of the spectrum appears only in the interaction part of the thermodynamic potential, while the continuum spectrum appears in both <span class="math">\(b_2\)</span> and <span class="math">\(b_2^{(0)}\)</span>. The asymptotic form of the radial wavefunction <span class="math">\(u(r)\)</span>, in the partial wave decomposition of <span class="math">\(\phi(\boldsymbol x) \sim u(r) Y_{lm}(\theta,\varphi)\)</span>,&nbsp;is
+</p>
+<div class="math">$$u(r) \sim \frac{\text{const.}}{r} \sin(kr - \pi l/2 + \delta_l)\,,$$</div>
+<p>
+where <span class="math">\(\delta_l(k)\)</span> is the scattering phase shift of the <span class="math">\(l\)</span>-wave (angular momentum). Inside a volume of radius <span class="math">\(R\)</span>, the boundary condition&nbsp;imposes,
+</p>
+<div class="math">$$kR - \pi l / 2 + \delta_l = n\pi, \quad n \in \mathbb{N}\,.$$</div>
+<p>
+For a large <span class="math">\(R\)</span> the difference between consecutive <span class="math">\(k\)</span> is small, to first order we&nbsp;have,
+</p>
+<div class="math">$$dn = \frac{R}{\pi} \D k + \frac{1}{\pi} \frac{\D \delta_l}{\D k} \D k \,,$$</div>
+<p>
+from which we may define <span class="math">\(g(k)\)</span> the density of states of wavenumber <span class="math">\(k\)</span>
+</p>
+<div class="math">$$g(k) = \frac{1}{\pi} \sum_l (2l+1) \left( R + \frac{\D \delta_l}{\D k}  \right)\,,$$</div>
+<p>
+where the sum is over all the two fermions angular momentum states: <span class="math">\(l=1,3,\ldots \in 2\mathbb{N}+1\)</span> for fermions, and <span class="math">\(l=2,4,\ldots \in 2\mathbb{N}\)</span> for bosons. Therefore, using the&nbsp;replacement,
+</p>
+<div class="math">$$\sum_n \ldots \rightarrow \int_0^\infty \D k g(k) \ldots$$</div>
+<p>
+in the formula of <span class="math">\(\Delta b\)</span>, we obtain the <em>Beth-Uhlenbeck</em> (1937)&nbsp;formula,
+</p>
+<div class="math">$$ \Delta b = 2^{3/2} \sum_B \E^{-\epsilon_B/T} + \frac{2^{3/2}}{\pi} \sum_{l \in 2 \mathbb{N} + 1} (2l+1) \int_0^\infty \D k \, \E^{-\lambda^2 k^2/2\pi} \frac{\D \delta_l(k)}{\D k}$$</div>
+<p>
+where the term proportional to <span class="math">\(R\)</span> cancels with the noninteracting term (<span class="math">\(\delta_l \rightarrow 0\)</span>). The first term is the contribution of the bound states, and the second one, of the scattering states (with the free states contribution substracted). This is a general formula that can also be applied to bosons if the sum is effected on even <span class="math">\(l\)</span> orbital numbers. Using the value of the second cluster coefficient <span class="math">\(b_2 = b_2^{(0)} + \Delta b\)</span>, we can calculate the thermodynamics of the&nbsp;system.</p>
+<p>Now, we apply the Beth-Uhlenbeck formula to the case of a gas of fermions near the Feshbach resonance. As we said before, one important property of the Feshbach resonance is that the diffusion length <span class="math">\(a\)</span>, and hence the type of interaction (from attractive to repulsive), can be modified by an applied magnetic field <span class="math">\(B\)</span>:
+</p>
+<div class="math">$$a(B) = a_0 - \frac{a_0}{\mu_\mathrm{B}}\frac{\Delta}{B-B_0}\,,$$</div>
+<p>
+(<span class="math">\(\mu_\mathrm{B}\)</span> is a magnetic moment) where <span class="math">\(a_0\)</span> is the &#8220;background channel&#8221; diffusion length (see the figure), and <span class="math">\(B_0\)</span> the resonant&nbsp;field.</p>
+<blockquote>
+<p><img src="/images/PS-feshbach.png" style="height:250px;" alt = "feshbach resonance"> 
+<img src="/images/PS-feshbach-eff.png" style="height:250px;" alt = "feshbach resonance"> </p>
+<p>Feshbach resonance mechanism. (first) Two particles having different magnetic moments (like a proton and a neutron) collide (open channel <span class="math">\(E\approx 0\)</span>) at low energy; the pair of particles support a bound state (closed channel, like a deuterium state) whose energy is slightly positive (<span class="math">\(\epsilon_B &gt;0\)</span>, is a metastable state). (second) Near the resonance, the scattering process can be described by an effective potential with a metastable bound state. For a gas of strongly interacting fermions, the Feshbach resonance is a many-body effect that change the macroscopic behavior of the system.<sup id="fnref:CH"><a class="footnote-ref" href="#fn:CH">7</a></sup></p>
+</blockquote>
+<p>The presence of the resonance simplifies the analysis, because it is not necessary to completely solve the two body problem to find the behavior of the phase shift <span class="math">\(\delta_l\)</span>. First, we consider the low energy scattering s-wave limit (<span class="math">\(l=0\)</span>), which is the relevant one in experiments; the phase shift can be parametrized by the diffusion length <span class="math">\(a\)</span> and the interaction range length <span class="math">\(r_0\)</span>:
+</p>
+<div class="math">$$k \cot \delta_0(k) = -\frac{1}{a} + \frac{r_0}{2} k^2\,,$$</div>
+<p>
+which leads&nbsp;to,
+</p>
+<div class="math">$$\frac{\D \delta_0}{\D k} = -a\frac{1 + ar_0 k^2/2}{(1 - ar_0 k^2/2)^2 + a^2k^2}\,.$$</div>
+<p>
+Replacing this derivative into the integral, and changing to the variable <span class="math">\(x = |a|k\)</span>,
+the integral&nbsp;becomes,
+</p>
+<div class="math">$$I = -\mathrm{sgn}(a) \int_0^\infty \D x \, \frac{1 + \alpha x^2}{(1- \alpha x^2)^2 + x^2} \E^{-\beta x^2} \,, \quad \alpha = \frac{r_0}{2a},\; \beta = \frac{\lambda^2}{2\pi a^2} \,.$$</div>
+<p>
+The virial coefficient is then given&nbsp;by,
+</p>
+<div class="math">\begin{equation}
+\label{Ho}
+\Delta b_2(T) = 2^{3/2}\E^{-\epsilon_B/T} + \frac{2^{3/2}}{\pi} I \,.
+\end{equation}</div>
+<p>Near the resonance <span class="math">\(\alpha \ll 1\)</span>, which allows an asymptotic calculation of the integral. To first order in <span class="math">\(\alpha\)</span>, we&nbsp;find,
+</p>
+<div class="math">$$I \approx I^{(0)} + I^{(1)}\,,$$</div>
+<p>
+with
+</p>
+<div class="math">$$I^{(0)} = -\mathrm{sgn}(a) \frac{\pi}{2} \E^{\lambda^2/2\pi a^2} \mathrm{erfc}\left(\frac{\lambda}{\sqrt{2\pi}|a|}\right)\,, $$</div>
+<p>
+and
+</p>
+<div class="math">$$I^{(1)} = -\frac{\pi}{2^{3/2}} \frac{r_0}{\lambda} \left(1 - \frac{\lambda^2}{\pi a^2} \right) - \frac{r_0}{4|a|} \frac{\lambda^2}{a^2} \E^{\lambda^2/2\pi a^2} \mathrm{erfc}\left(\frac{\lambda}{\sqrt{2\pi}|a|}\right)\,. $$</div>
+<p>Taking into account the first correction in <span class="math">\(r_0\)</span>, we&nbsp;have,
+</p>
+<div class="math">$$I \approx -\frac{\pi \mathrm{sgn}(a)}{2} + \frac{\lambda}{\sqrt{2}a} - \frac{\pi r_0}{2^{3/2}\lambda}\,,$$</div>
+<p>
+where we used the approximation <span class="math">\(\mathrm{erfc}(x) \approx 1- 2x/\sqrt{\pi}\)</span>, which leads to a virial&nbsp;coefficient,
+</p>
+<div class="math">$$\Delta b_2 = 2^{3/2} \E^{-\epsilon_B/T}  - \sqrt{2} \mathrm{sgn}(a) + \frac{4}{\sqrt{\pi} a k_F} \sqrt{\frac{T_F}{T}} - \frac{r_0k_F}{2\sqrt{\pi}} \sqrt{\frac{T}{T_F}}\,, $$</div>
+<p>
+where we used the notation <span class="math">\(T_F = \hbar^2 k_F^2/2m\)</span>, for the fermi temperature and wavenumber. Using the experimental data, this expression gives the order of magnitude of the corrections to the thermodynamic quantities due to the particles&nbsp;interactions. </p>
+<p>A comparison of the virial expansion of the interaction energy,<sup id="fnref:HO"><a class="footnote-ref" href="#fn:HO">8</a></sup> 
+</p>
+<div class="math">$$E_{\text{int}} = \frac{3NT}{2} \frac{N\lambda^3}{V} \left( \frac{2T}{3} \frac{\D b_2(T)}{\D T} - b_2(T)   \right)\,,$$</div>
+<p>
+where <span class="math">\(b_2\)</span> is given by (<span class="math">\(\ref{Ho}\)</span>), gives an excellent qualitative agreement with the experiments of Bourdel et al.<sup id="fnref2:BO"><a class="footnote-ref" href="#fn:BO">5</a></sup>.</p>
+<h3>Notes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:IS">
+<p>Israelachvili, J. N., Intermolecular and Surface Forces (2011).&#160;<a class="footnote-backref" href="#fnref:IS" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:LL">
+<p>Landau, L.D., and Lifshitz, E. M., Statistical Physics (1980).&#160;<a class="footnote-backref" href="#fnref:LL" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SH">
+<p>Shiryaev, A. N., Probability (1996).&#160;<a class="footnote-backref" href="#fnref:SH" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:KU">
+<p>Kahn, B. and Uhlenbeck, G. E., <a href="/pdfs/Kahn-1938uq.pdf">On the theory of condensation</a>, Physica <strong>5</strong>, 399 (1938)&#160;<a class="footnote-backref" href="#fnref:KU" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:BO">
+<p>Bourdel, T., Cubizolles, J., Khaykovich, L., Magalhães, <span class="caps">K. M.</span> F., Kokkelmans, <span class="caps">S. J. J. M.</span> F., Shlyapnikov, G. V., and Salomon, C., <a href="/pdfs/Bourdel-2003qq.pdf">Measurement of the interaction energy near a Feshbach resonance in a <span class="math">\(^6\)</span>Li fermi gas</a>, Phys. Rev. Lett. <strong>91</strong>, 020402 (2002).&#160;<a class="footnote-backref" href="#fnref:BO" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:BO" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:LB">
+<p>Le Bellac, M., Physique quantique (2007).&#160;<a class="footnote-backref" href="#fnref:LB" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:CH">
+<p>Chin, Cheng and Grimm, R., Julienne, P., and Tiesinga, E., Feshbach resonances in ultracold gases, Rev. Mod. Phys. <strong>82</strong>, 1225 (2010).&#160;<a class="footnote-backref" href="#fnref:CH" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:HO">
+<p>Ho, Tin-Lun, and Mueller, E. J., <a href="/pdfs/Ho-2004kx.pdf">High Temperature Expansion Applied to Fermions near Feshbach Resonance</a>, Phys. Rev. Lett. <strong>92</strong>, 160404 (2004).&#160;<a class="footnote-backref" href="#fnref:HO" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
