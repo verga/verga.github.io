@@ -58,7 +58,43 @@
 </blockquote>
 <h1>Cluster state and quantum&nbsp;computation</h1>
 <p>The most basic model of quantum computation is the <em>circuit</em>, in which an initial state, usually a product state <span class="math">\(\ket{0}^N\)</span> of <span class="math">\(N\)</span> qubits, is acted upon by a sequence of universal one and two qubits gates; for instance the pauli <span class="math">\(\bm \sigma = (X,Y,Z)\)</span>, hadamard <span class="math">\(\mathsf{H}\)</span>, the phase <span class="math">\(\mathsf{S}\)</span>, and <span class="math">\(\pi/4\)</span> phase <span class="math">\(\mathsf{T}\)</span> one qubit gates, complemented with the two qubits <span class="math">\(\mathsf{CNOT}\)</span> gate. Because of its universality the circuit model is also useful as a representation of other quantum computation models. Another important class is the <em>topological</em> model, whose first formulation is based on the <a href="/pages/AQ-toric.html">toric code</a> of Kitaev. In this case the computational resource is an entangled quantum state, the ground state of a many-body hamiltonian. Excitations of the toric code ground state are anyons, topological &#8220;particles&#8221; that take a phase when exchanged (not necessarily 0, as for bosons, or <span class="math">\(\pi\)</span>, as for fermions). Braiding these quasiparticles is thus used to implement logical gates. A third important quantum computational model is the cellular <em>automaton</em>. The idea is to apply a local unitary to a set of qubits (arranged in a line or a lattice) to an initial state, in order to, by discrete time iteration, update the state of the systems to eventually get a useful entangled state. The unitary generally implements a simple rule, in analogy with the classical cellular automata, and is applied in parallel; its homogeneity ensures translational invariance. The three models of quantum computation, circuit, topological, and automaton, are equivalently universal, in the sense that they can implement any <span class="math">\(N\)</span>-body unitary&nbsp;operator.</p>
-<p>A variant of the topological quantum model of computation is the one based on teleportation; it is called <em>measurement based</em> quantum&nbsp;computation. </p>
+<p>A variant of the topological quantum model of computation is the one based on teleportation; it is called <em>measurement based</em> quantum computation. Let us start with an&nbsp;example:</p>
+<blockquote>
+<p><img src="/images/AQ-c_gtz.svg" alt="teleportation of Z" style="height: 50px;"/></p>
+</blockquote>
+<p>The initial state is the product <span class="math">\(\ket{t_0} = \ket{\psi}\otimes\ket{0} = a\ket{00} + b \ket{10}\)</span>, after the <span class="math">\(\mathsf{CNOT}\)</span> we get the <em>entangled</em>&nbsp;state
+</p>
+<div class="math">$$\ket{t_1} = a \ket{00} + b \ket{11},$$</div>
+<p>
+which is our computational resource. To exploit this resource we <em>measure</em> the first qubit in the base <span class="math">\(\ket{\pm}\)</span> of the <span class="math">\(X\)</span> operator. Note that <span class="math">\(\ket{t_1}\)</span> writes <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$\ket{t_1} = P_+ \ket{t_1} + P_- \ket{t_1} = \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} + b \ket{1}\big) + \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} - b \ket{1}\big)$$</div>
+<p>
+where we used the projectors <span class="math">\(P_\pm  = \ket{\pm}\bra{\pm}\)</span>, the pre-measurement&nbsp;state:
+</p>
+<div class="math">$$\frac{\ket{+}}{\sqrt{2}}\ket{\psi} + \frac{\ket{+}}{\sqrt{2}} Z\ket{\psi}.$$</div>
+<p>
+The final state of the second qubit, after the measurement, is&nbsp;then
+</p>
+<div class="math">$$Z^b \ket{\psi}$$</div>
+<p>
+according to the result <span class="math">\(b\)</span> of the first qubit measurement. As a result the circuit teleports the <span class="math">\(\ket{\psi}\)</span> state, possibly modified by the gate <span class="math">\(Z\)</span>. Had we measured the first qubit in other basis, we could obtain other one qubit gate applied to the teleported state. Indeed, the slightly modified&nbsp;circuit</p>
+<blockquote>
+<p><img src="/images/AQ-c_gtr.svg" alt="teleportation of R" style="height: 50px;"/></p>
+</blockquote>
+<p>in which we measure the first qubit in the base of the operator <span class="math">\(O = \bm{n} \cdot \bm \sigma\)</span>, and <span class="math">\(\bm n = (\cos\theta, \sin\theta,0)\)</span>, leads to the output state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{\mathrm{out}} = \E^{-\I \theta Z/2} Z^b \ket{\mathrm{in}}.$$</div>
+<p>
+<em>Hint</em>. Use the&nbsp;eigenvectors
+</p>
+<div class="math">$$\ket{\theta_\pm} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+  \E^{-\I\theta/2} \\ \pm\E^{\I\theta/2}
+\end{pmatrix}$$</div>
+<p>
+of the <span class="math">\(O\)</span> and the corresponding projectors to write the state just before the measure, as in the previous&nbsp;calculation.</p>
+<p>We observe that an appropriated measurement of on a single qubit on a previously prepared entangled state, is a computational resource that can be used to effectively apply a logical gate to an initial state; in the case of the last circuit we transformed the initial arbitrary state <span class="math">\(\ket{\mathrm{in}}\)</span>, into a rotated output one. As a result of the measurement, the entanglement in the system decreases, which is consistent with the notion of entanglement as a resource. In addition, too much entanglement, as for instance a thermal state (maximally entangled), would not be useful because the sequence of measurements cannot be distinguished from a random processes, which in fact can be efficiently implemented by a classical computer. Therefore, we need a <em>useful</em> entangled state: the cluster state satisfies these requirements, one qubits measurements can implement in it one qubit gates and the <span class="math">\(\mathsf{CNOT}\)</span> gate, leading to universal&nbsp;computing.</p>
+<h2>Cluster state on a&nbsp;graph</h2>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
