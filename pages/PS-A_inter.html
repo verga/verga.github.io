@@ -56,6 +56,25 @@
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
+<h3>1</h3>
+<p>The interactions of argon atoms in a classical gas is roughly approximated by the&nbsp;potential,
+</p>
+<div class="math">$$w(r) = \begin{cases} \infty &amp; \text{if } r &lt; a \\ -\epsilon &amp; \text{if } x \in (a,b) \\ 0 &amp; \text{if } x &gt; b \end{cases}\,,$$</div>
+<p>
+where <span class="math">\(r\)</span> is the interparticle distance, <span class="math">\(a\)</span> is the repulsion radius, and <span class="math">\(b\)</span> the range of the attractive energy, of the order of <span class="math">\(\epsilon\)</span>. Compute the second virial coefficient <span class="math">\(B_2(T)\)</span>, 
+</p>
+<div class="math">$$B_2(T) = 2\pi \int_0^\infty r^2 \D r\, \left(1 - \E^{-w(r)/T} \right)\,,$$</div>
+<p>
+and discuss its behavior as a function of the temperature <span class="math">\(T\)</span>.</p>
+<p>Using the experimental values of the Boyle temperature <span class="math">\(T_B = 410\,\mathrm{K}\)</span>, and the Joule-Thomson inversion temperature <span class="math">\(T_i=720\,\mathrm{K}\)</span>, find approximate values of the interaction parameters <span class="math">\(\epsilon\)</span> and <span class="math">\(a/b\)</span>. At the Boyle temperature <span class="math">\(B_2=0\)</span>, the virial coefficient vanishes (ideal gas behavior due to the balance between attractive and repulsive molecular forces). At the inversion temperature the thermal expansion coefficient&nbsp;satisfies,
+</p>
+<div class="math">$$\alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T} \right)_P = \frac{1}{T} \,,\quad T = T_i\,,$$</div>
+<p>
+which is true for an ideal gas; this condition is equivalent&nbsp;to:
+</p>
+<div class="math">$$\frac{\D B_2(T)}{\D T} = \frac{B_2(T)}{T}\,,$$</div>
+<p>
+defining the Joule-Thomson temperature. Above this inversion temperature, a free expanding gas raises its temperature, in contrast to the usual freezing&nbsp;effect.</p>
 <p><strong>1</strong> Virial second order coefficient for a stepwise interaction potential. A straightforward calculation of the&nbsp;integral,
 </p>
 <div class="math">$$B_2(T) = 2\pi\int_0^\infty r^2 \D r\, \left(1 - \E^{-w(r)/T}\right)$$</div>
@@ -87,6 +106,17 @@ from which one deduces <span class="math">\(x\approx 0.69\)</span>,&nbsp;and
 <p>
 Therefore, we obtained informations about the range and strength of the microscopic interatomic forces from bulk thermodynamic&nbsp;measurements.</p>
 <hr>
+<h3>2</h3>
+<p>Compute the second virial coefficient far a classical gas whose interaction is the purely repulsion&nbsp;potential,
+</p>
+<div class="math">$$w(r) = \frac{A}{r^\alpha}, \quad \alpha &gt; 3\,.$$</div>
+<p>
+Derive the expressions for the free energy, the entropy and the internal energy; calculate the equation of&nbsp;state.</p>
+<p>Hint:
+</p>
+<div class="math">$$F = F_I + NT\sum_{k \ge 2} B_k(T) \frac{n^{k-1}}{k-1} \approx F_I + T B_2(T) \frac{N^2}{V}$$</div>
+<p>
+where <span class="math">\(F_I = NT \ln(n/\E \lambda^3)\)</span> (<span class="math">\(\lambda\)</span> is the thermal length), with <span class="math">\(n=N/V\)</span>, is the ideal gas free&nbsp;energy. </p>
 <p><strong>2</strong> Thermodynamics of a gas with repulsive forces. An integration by parts, leads to the following&nbsp;expression,
 </p>
 <div class="math">$$B_2(T) = \frac{2\pi \alpha A}{3T} \int_0^\infty \D r \, r^{2-\alpha} \E^{-A/r^\alpha T}$$</div>
@@ -123,6 +153,17 @@ The entropy is then given by <span class="math">\(F = U - TS\)</span>,
 </p>
 <div class="math">$$S - S_0 \approx - \frac{N^2}{V} \frac{\D}{\D T} [T B_2(T)]\,.$$</div>
 <hr>
+<h3>3</h3>
+<p>The hamiltonian of the Potts model, a generalization of the ising model for <span class="math">\(q\)</span>-states atoms, is&nbsp;written,
+</p>
+<div class="math">$$H = -J \sum_{x=1}^N \delta(s_x,s_{x+1}),\quad s_x = 1,\ldots,q$$</div>
+<p>
+where <span class="math">\(\delta\)</span> is the kronecker symbol, for a one-dimensional system with periodic boundary conditions (and the number of lattice sites is macroscopic, <span class="math">\(N \rightarrow \infty\)</span>).</p>
+<p>Find the partition function using the transfer matrix method. Find the free energy for arbitrary <span class="math">\(q\)</span>, starting with the special (ising) case <span class="math">\(q=2\)</span>. Compute the energy and discuss the low and high temperature limits. Using the definition of the correlation length in terms of the first two largest eigenvalues <span class="math">\(\lambda_1 &gt; \lambda_2\)</span>, of the transfer&nbsp;matrix:
+</p>
+<div class="math">$$\xi^{-1} = \ln(\lambda_1/\lambda_2)$$</div>
+<p>
+Analyse the behavior of <span class="math">\(\xi = \xi(T)\)</span>, and show that there is no phase transition at finite&nbsp;temperature.</p>
 <p><strong>3</strong> Potts model. The partition function is a sum over all&nbsp;configurations,
 </p>
 <div class="math">$$S = \{s_x,\; x=1,\ldots,N\,|\, s_x = 1,\ldots,q\}$$</div>
@@ -195,7 +236,18 @@ and in the low temperature&nbsp;limit,
 <p>
 which grows exponentially but does not diverge (for <span class="math">\(T&gt;0\)</span>). This means that there is no phase transition en the one-dimensional potts&nbsp;model.</p>
 <hr>
-<p><strong>5</strong> Stoner model of magnetism. Free electrons in a metal are described by a fermi distribution with states occupied up to the fermi level (chemical&nbsp;potential),
+<h3>6</h3>
+<p>Stoner model of magnetism. In an electron gas the fermi statistics repulsion (antisymmetric wave function) favors spin alignement (symmetric wave function). A simple expression of the spin-dependent repulsion energy&nbsp;is,
+</p>
+<div class="math">$$w = \frac{\alpha}{V} N_+ N_-, \quad N=N_+ + N_-\,,$$</div>
+<p>
+where <span class="math">\(\alpha\)</span> is a phenomenological energy parameter and <span class="math">\(N\)</span> the total number of particles, sum of spin up <span class="math">\(N_+\)</span> and spin down <span class="math">\(N_-\)</span> electron numbers (the volume factor ensures that <span class="math">\(U\)</span> is&nbsp;extensive). </p>
+<ul>
+<li>Calculate the fermi energy of the spin up and down electrons (assume low temperature <span class="math">\(T\)</span>). Deduce the expression of the total kinetic energy as a function of the up and down&nbsp;densities.</li>
+<li>Assume that the density difference <span class="math">\(\Delta n\)</span> with respect to the non magnetic state <span class="math">\(N_+=N_-=N/2\)</span>, <span class="math">\(n_\pm = n/2 \pm \Delta n/2\)</span>, is small <span class="math">\(\Delta=\Delta n/n \ll 1\)</span>. Compute the total energy as an expansion to fourth order in <span class="math">\(\Delta n\)</span>.</li>
+<li>Show that the paramagnetic state is <em>unstable</em> for some <span class="math">\(\alpha &gt; \alpha_c\)</span>, compute the critical interaction <span class="math">\(\alpha_c\)</span>, indicating the presence of a quantum phase transition. Investigate the behavior of the magnetization around the transition as a function of <span class="math">\(\alpha\)</span>, <span class="math">\(M = M(\alpha)\)</span>.</li>
+</ul>
+<p><strong>6</strong> Stoner model of magnetism. Free electrons in a metal are described by a fermi distribution with states occupied up to the fermi level (chemical&nbsp;potential),
 </p>
 <div class="math">$$\epsilon_F = \frac{(3\pi^2)^{2/3}}{2} \frac{\hbar^2}{m} n^{2/3}$$</div>
 <p>
