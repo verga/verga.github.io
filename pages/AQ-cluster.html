@@ -95,6 +95,13 @@ according to the result <span class="math">\(b\)</span> of the first qubit measu
 of the <span class="math">\(O\)</span> and the corresponding projectors to write the state just before the measure, as in the previous&nbsp;calculation.</p>
 <p>We observe that an appropriated measurement of on a single qubit on a previously prepared entangled state, is a computational resource that can be used to effectively apply a logical gate to an initial state; in the case of the last circuit we transformed the initial arbitrary state <span class="math">\(\ket{\mathrm{in}}\)</span>, into a rotated output one. As a result of the measurement, the entanglement in the system decreases, which is consistent with the notion of entanglement as a resource. In addition, too much entanglement, as for instance a thermal state (maximally entangled), would not be useful because the sequence of measurements cannot be distinguished from a random processes, which in fact can be efficiently implemented by a classical computer. Therefore, we need a <em>useful</em> entangled state: the cluster state satisfies these requirements, one qubits measurements can implement in it one qubit gates and the <span class="math">\(\mathsf{CNOT}\)</span> gate, leading to universal&nbsp;computing.</p>
 <h2>Cluster state on a&nbsp;graph</h2>
+<p>A graph <span class="math">\(G=(V,E)\)</span> is a set of <span class="math">\(|V|\)</span> vertices <span class="math">\(x \in V\)</span> linked by edges <span class="math">\(E = \{(x,y) \mid x, y \in V\}\)</span>:</p>
+<blockquote>
+<p><img src="/images/AQ-VE.svg" alt="graph VE" style="height: 250px;"/>
+<img src="/images/AQ-VEcz.svg" alt="graph VE CZ" style="height: 250px;"/></p>
+<p>(left) A graph <span class="math">\(G=(V,E)\)</span> of <span class="math">\(|V| = 5\)</span> qubits, initially in the state <span class="math">\(\ket{+}\)</span>; (right) a cluster state obtained by application of the gate <span class="math">\(\mathsf{CZ}\)</span> to each edge in <span class="math">\(E\)</span>.</p>
+</blockquote>
+<p>The graph <span class="math">\(G\)</span> of the figure corresponds to the set of vertices <span class="math">\(V=\{0,1,2,3,4\}\)</span> and the set of edges <span class="math">\(E =&nbsp;\{(0,1),(0,4),(1,2),(2,3),(2,4),(3,4)\}\)</span></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
