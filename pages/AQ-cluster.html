@@ -97,11 +97,54 @@ of the <span class="math">\(O\)</span> and the corresponding projectors to write
 <h2>Cluster state on a&nbsp;graph</h2>
 <p>A graph <span class="math">\(G=(V,E)\)</span> is a set of <span class="math">\(|V|\)</span> vertices <span class="math">\(x \in V\)</span> linked by edges <span class="math">\(E = \{(x,y) \mid x, y \in V\}\)</span>:</p>
 <blockquote>
-<p><img src="/images/AQ-VE.svg" alt="graph VE" style="width: 200px;"/>
-<img src="/images/AQ-VEcz.svg" alt="graph VE CZ" style="width: 200px;"/></p>
+<p><img src="/images/AQ-VE.svg" alt="graph VE" style="height: 120px;"/>
+<img src="/images/AQ-VEcz.svg" alt="graph VE CZ" style="height: 120px;"/></p>
 <p>(left) A graph <span class="math">\(G=(V,E)\)</span> of <span class="math">\(|V| = 5\)</span> qubits, initially in the state <span class="math">\(\ket{+}\)</span>; (right) a cluster state obtained by application of the gate <span class="math">\(\mathsf{CZ}\)</span> to each edge in <span class="math">\(E\)</span>.</p>
 </blockquote>
-<p>The graph <span class="math">\(G\)</span> of the figure corresponds to the set of vertices <span class="math">\(V=\{0,1,2,3,4\}\)</span> and the set of edges <span class="math">\(E =&nbsp;\{(0,1),(0,4),(1,2),(2,3),(2,4),(3,4)\}\)</span></p>
+<p>The graph <span class="math">\(G\)</span> of the figure corresponds to the set of vertices <span class="math">\(V=\{0,1,2,3,4\}\)</span> and the set of edges <span class="math">\(E = \{(0,1),(0,4),(1,2),(2,3),(2,4),(3,4)\}\)</span>. To construct the <em>cluster</em> state we associate to each node <span class="math">\(x \in V\)</span> a quantum state <span class="math">\(\ket{+}\)</span> (the 1 eigenvalue eigenvector of <span class="math">\(X\)</span>), then we apply the controlled phase&nbsp;gate
+</p>
+<div class="math">$$\mathsf{CZ}(x,y) = \frac{1+Z_x}{2} \otimes 1_y + \frac{1-Z_x}{2} \otimes Z_y = \mathrm{diag}(1,1,1,-1),$$</div>
+<p>
+which change the sign of the <span class="math">\(\ket{11}\)</span> amplitude, to each edge <span class="math">\((x,y) \in E\)</span>;&nbsp;therefore,
+</p>
+<div class="math">\begin{equation}
+\label{e:C}
+  \ket{C} = \prod_{(x,y)\in E} \mathsf{CZ}(x,y) \ket{+}^N
+\end{equation}</div>
+<p>
+where <span class="math">\(N = |V|\)</span> is the number of qubits, and to simplify the notation we write the kronecker product as a product of&nbsp;kets. </p>
+<p>The hilbert space of the graph is spanned by the&nbsp;vectors
+</p>
+<div class="math">$$\ket{s} = \ket{s_0} \otimes \cdots \otimes \ket{s_{N-1}} = \ket{s_0\ldots s_{N-1}}, \; s_x=\{0,1\}, \; x = 0,\ldots,N-1.$$</div>
+<p>
+In this basis the action of the controlled phase gate&nbsp;is
+</p>
+<div class="math">$$\mathsf{CZ}(x,y) \ket{\ldots s_x \ldots s_y \ldots} = (-1)^{s_x s_y}\ket{\ldots s_x \ldots s_y \ldots}.$$</div>
+<p>
+The string <span class="math">\(\{s_0\ldots s_{N-!}\}\)</span> is the binary representation of the integer <span class="math">\(s \in [0, 2^N -1]\)</span> (the equivalent of the classical configuration of a set of <span class="math">\(N\)</span> ising&nbsp;spins).</p>
+<h3>Example: two and three&nbsp;qubits</h3>
+<p>The simplest cluster state is the one formed by two&nbsp;qubits:
+</p>
+<div class="math">$$\ket{C_2} = \mathsf{CZ}(0,1) \ket{++} = \frac{1}{2} \big( \ket{00} + \ket{01} + \ket{10} - \ket{11}\big) = \mathsf{H} \otimes \mathsf{H} \ket{\Phi_+}$$</div>
+<p>
+where the last equality shows that the <span class="math">\(\ket{C_2}\)</span> state is equivalent to a bell state up to one qubit operations (here the hadamard gate <span class="math">\(\mathsf{H}\)</span> product). It is straightforward to show that the schmidt decomposition of <span class="math">\(\ket{C_2}\)</span> leads to two <span class="math">\(p_n = 1/2\)</span> (<span class="math">\(n=1,2\)</span>) eigenvalues of the reduced density matrix, which implies that the von Neumann entropy is&nbsp;maximal:
+</p>
+<div class="math">$$S_1[C_2] = -\sum_{n=\{1,2\}} p_n \log p_n = 1.$$</div>
+<p>The case of three qubits can be represented by the&nbsp;circuit</p>
+<blockquote>
+<p><img src="/images/AQ-C3.svg" alt="C3" style="height: 60px;"/></p>
+</blockquote>
+<p>which gives <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$\ket{C_3} = \frac{1}{2^{3/2}} \sum_{s_0, s_1, s_2} (-1)^{s_0 s_1 + s_0 s_2 + s_1 s_2} \ket{s_0 s_1 s_2},$$</div>
+<p>
+or&nbsp;explicitly
+</p>
+<div class="math">$$\ket{C_3} = \frac{1}{2^{3/2}} \big( \ket{000} + \ket{001} + \ket{010} - \ket{011} + \ket{100} - \ket{101} - \ket{110} - \ket{111} \big).$$</div>
+<p>
+Note that in the sum, the exponent is computed using operations in the finite field <span class="math">\(\mathrm{GF}(2)\)</span>, addition and multiplication modulo&nbsp;2.</p>
+<h3>Hamiltonian and&nbsp;stabilizers</h3>
+<p>The stabilizer of a state <span class="math">\(\ket{\psi}\)</span> is a subgroup <span class="math">\(\mathcal{S}\)</span> of the pauli group <span class="math">\(\mathcal{P}\)</span> generated by a set of operators <span class="math">\(\{g_0, g_1, \ldots\}\)</span> (essentially products of pauli matrices) satisfying <span class="math">\(g_n \ket{\psi} = \ket{\psi}\)</span> for all <span class="math">\(n\)</span>: whence the quantum state <span class="math">\(\ket{\psi}\)</span> is a common eigenvector of the stabilizers with eigenvalue 1 (the subgroup <span class="math">\(\mathcal{S}\)</span> do not contain the matrix <span class="math">\(-1\)</span>). We explore now the rich structure of the cluster state <span class="math">\(\eqref{e:C}\)</span> using its relation with a stabilizer&nbsp;code.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
