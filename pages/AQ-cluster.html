@@ -161,17 +161,41 @@ of the stabilizer operator associated to vertex <span class="math">\(x\)</span>,
 </p>
 <div class="math">$$K_x \ket{C} = \ket{C}, \; \forall x,$$</div>
 <p>
-is unique (degeneracy is possible, depending on the boundary conditions, for instance on a regular&nbsp;lattice).</p>
-<p>As a consequence, we find the <span class="math">\(\ket{C}\)</span> is the unique ground state of the&nbsp;hamiltonian
+is unique. We can then write the stabilizer set&nbsp;explicitly
 </p>
-<div class="math">$$H_C = -J \sum_x K_x = -J \sum_x \prod_{y \in N_x} X_x Z_y$$</div>
+<div class="math">$$\mathcal{S} = \{K \mid [K,K_x] = 0, \forall x \in V\}, \; |\mathcal{S}| = N.$$</div>
 <p>
-formed by a sum over the stabilizers of <span class="math">\(\ket{C}\)</span>. We remark that each term of <span class="math">\(H_C\)</span> is a local multibody interaction of neighboring qubits; <span class="math">\(J=1\)</span> is the energy scale, which can be taken as the energy unit. We may then, think the cluster state as a genuine phase of matter, since it is a ground state of a local&nbsp;hamiltonian.</p>
-<p>Of course each <span class="math">\(K_x\)</span> is an integral of motion of <span class="math">\(H_C\)</span> (the <a href="/hexa2023.html">spin <span class="math">\(1/2\)</span> chain</a> with the cluster interaction is completely integrable, in the sense that it can be transformed into a system of free particles), in addition we find two global&nbsp;symmetries
+Because <span class="math">\(\mathcal{S} = N\)</span> the dimension of the logical subspace is 0, and the cluster state do not code any logical qubit. We show below that a modification of the set of stabilizers may lead to a &#8220;degeneracy&#8221; of the cluster state which results in a nontrivial logical subspace: we can associate a <em>hamiltonian</em> to the graph <span class="math">\(G\)</span> and the corresponding cluster state <span class="math">\(\ket{C}\)</span>.</p>
+<p>As a matter of fact, we find that <span class="math">\(\ket{C}\)</span> is the unique <em>ground state</em> of the&nbsp;hamiltonian
+</p>
+<div class="math">$$H_C = -J \sum_{x \in V} K_x = -J \sum_x \prod_{y \in N_x} X_x Z_y$$</div>
+<p>
+formed by a sum over the stabilizers of <span class="math">\(\ket{C}\)</span>:
+</p>
+<div class="math">$$H_C \ket{C} = -NJ \ket{C},$$</div>
+<p>
+where <span class="math">\(-NJ\)</span> is the lowest possible energy. We remark that each term of <span class="math">\(H_C\)</span> is a local multibody interaction of neighboring qubits; <span class="math">\(J=1\)</span> is the energy scale, which can be taken as the energy unit. We may then, think the cluster state as a genuine phase of matter, since it is a ground state of a local hamiltonian. It is worth noting that, although the cluster state is unique, in the framework of a system defined by a hamiltonian, degeneracy is possible, depending on the boundary conditions: for instance on a regular lattice, where the boundary stabilizers are set to&nbsp;zero.</p>
+<h4>The one dimensional cluster&nbsp;hamiltonian</h4>
+<p>In the special case of the one dimensional lattice with open boundary&nbsp;conditions
+</p>
+<div class="math">$$H_C^{(1)} = - \sum_{x=1}^{N-2} Z_{x-1} X_x Z_{x+1}$$</div>
+<p>
+the cluster state <span class="math">\(\ket{C^{(1)}}\)</span> is 4-fold degenerate, as can be seen by the fact that it is stabilized by <span class="math">\(N-2\)</span> operators <span class="math">\(K_x\)</span> (<span class="math">\(x=1,\ldots,N-2\)</span>), thus leaving free two qubits. Of course each <span class="math">\(K_x\)</span> is an integral of motion of <span class="math">\(H_C^{(1)}\)</span>. The <a href="/hexa2023.html">spin <span class="math">\(1/2\)</span> chain</a> with the cluster interaction, with open or periodic boundary conditions, is completely integrable, in the sense that it can be transformed into a system of free&nbsp;particles.</p>
+<p>We also find two global&nbsp;symmetries
 </p>
 <div class="math">$$P_e = \prod_{x \in e} X_x, \; P_o = \prod_{x \in o} X_x, \quad e = \{0,2,4, \ldots\}, \; o = \{1,3,5, \ldots\}$$</div>
 <p>
-It is easy to verify that reversing the direction of every two spins left invariant the system, the two (parity symmetry) operators <span class="math">\(P_{e,o}\)</span> commute with the hamiltonian <span class="math">\(H_C\)</span>. The parity symmetry is associated with the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> group (for example, the quantum ising model has a <span class="math">\(\mathbb{Z}_2\)</span>&nbsp;symmetry).</p>
+It is easy to verify that reversing the direction of every two spins leaves invariant the system, the two (parity symmetry) operators <span class="math">\(P_{e,o}\)</span> commute with the hamiltonian <span class="math">\(H_C^{(1)}\)</span>. The parity symmetry is associated with the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> group whose generators are precisely <span class="math">\(P_{e,o}\)</span> (for example, the quantum ising model has a <span class="math">\(\mathbb{Z}_2\)</span>&nbsp;symmetry).</p>
+<p>In addition we observe that the operators <span class="math">\(P_{e,o}\)</span> commute with <span class="math">\(K_x\)</span>, however <span class="math">\(\ket{C^{(1)}}\)</span> is not in their eigenstate space, we can therefore view these symmetries as the <em>logical</em> operators of the &#8220;cluster&#8221; code, spanned by the 4-fold degenerated ground state.&nbsp;Indeed,
+</p>
+<div class="math">$$[P_{e,o}, \mathsf{CZ}] = 0, \quad \mathsf{CZ} = \prod_{(x,y) \in E} \mathsf{CZ}(x,y)$$</div>
+<p>
+which implies that   <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$\braket{C^{(1)} | P_n | C^{(1)}} = 0,  \; P_n \in \{P_e, P_o, P_eP_o\}$$</div>
+<p>
+which shows that the four states <span class="math">\(\{\ket{C^{(1)}}, P_n \ket{C^{(1)}}\}\)</span> are orthogonal and therefore span the ground state subspace of <span class="math">\(H^{(1)_C}\)</span>.</p>
+<h2>Entanglement&nbsp;entropy</h2>
 <h2>Notes</h2>
 <ul>
 <li>
