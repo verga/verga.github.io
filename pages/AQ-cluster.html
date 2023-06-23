@@ -217,6 +217,36 @@ which shows that the four states <span class="math">\(\{\ket{C^{(1)}}, P_n \ket{
 <div class="math">$$S_A = -\Tr \rho_A \log \rho_A, \; \rho_A = \Tr_B \ket{C} \bra{C}$$</div>
 <p>
 where <span class="math">\(\Tr_B\)</span> is the partial trace over the set <span class="math">\(B\)</span> (<span class="math">\(\log 2 = 1\)</span>). For an isolated system in thermodynamic equilibrium <span class="math">\(\rho_A\)</span> is the microcanonical density matrix, and the entropy is <em>extensive</em>, its value is proportional to the system&#8217;s size (<span class="math">\(|A| = N_A\)</span>, the number of sites in the partition <span class="math">\(A\)</span>). We do not expect for our system, which is in the ground state of <span class="math">\(H_C\)</span>, to satisfy this law. In fact, invoking the third law of thermodynamics (Nernst theorem), we would expect that the entropy of a <em>unique</em> state should be zero: the zero temperature state is dominated by the energy of the system, and the minimum energy configuration is unique. However, it is known that the ground state of some quantum systems can be disordered and therefore have a finite entropy. One example is the Heisenberg antiferromagnet. We show now that the cluster state satisfy an <em>area law</em> for the entanglement entropy: it is proportional to the size of the boundary <span class="math">\(\partial A\)</span> between the two&nbsp;regions.</p>
+<p>The product <span class="math">\(\eqref{e:CK}\)</span> can be transformed into a sum over the whole stabilizer&nbsp;group
+</p>
+<div class="math">$$\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in V} \big(1 + K_x\big) \ket{0}^{|V|} = \frac{1}{2^{|V|/2}} \sum_{K \in \mathcal{S}} K \ket{0}^{|V|},$$</div>
+<p>
+where <span class="math">\(|\mathcal{S}| = 2^{|V|}\)</span>. Each <span class="math">\(K\)</span> is a product of pauli&nbsp;matrices:
+</p>
+<div class="math">$$K = \sigma_0^{b_0} \sigma_1^{b_1} \ldots \sigma_{|V|-1}^{b_{|V|-1|}} = \sigma^b$$</div>
+<p>
+where we introduced the notation <span class="math">\(\sigma_x = 1_2, X, Y, Z\)</span> is one of the pauli matrices (including the identity) of vertex <span class="math">\(x\)</span>, <span class="math">\(\sigma = (\sigma_0, \ldots, \sigma_{|V|-1})\)</span> and  <span class="math">\(b = (b_0, \ldots, b_{|V|-1})\)</span> are vectors of pauli and  binary numbers, and the notation <span class="math">\(\sigma^b\)</span> stands for the kronecker product of paulis each of which to the power <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. Using this notation it is easy to write <span class="math">\(\ket{C}\)</span> as a superposition of terms belonging to different subsets of <span class="math">\(V\)</span>. We also introduce the notion of support of an&nbsp;operator:
+</p>
+<div class="math">$$\mathrm{supp} K = \{x \in V \mid \sigma_x^{b_x} \ne 1_2\}$$</div>
+<p>
+it is then the set of nodes over which <span class="math">\(K\)</span> acts on&nbsp;nontrivially.</p>
+<p>We partition the graph <span class="math">\(G\)</span> into two domains <span class="math">\(A\)</span> and <span class="math">\(B\)</span>. The boundary between <span class="math">\(A\)</span> and <span class="math">\(B\)</span> cut the edges <span class="math">\((x,y)\)</span> with <span class="math">\(x \in A\)</span> and <span class="math">\(y \in B\)</span>. We distinguish among the stabilizers <span class="math">\(K\)</span> those <span class="math">\(K_{A_\circ}\)</span> whose support is entirely within <span class="math">\(A\)</span>, this set of nodes is called <span class="math">\(A_\circ\)</span> (the interior of <span class="math">\(A\)</span>), those <span class="math">\(K_{B_\circ}\)</span>,  equivalently, with support in <span class="math">\(B_\circ\)</span>, and finally <span class="math">\(K_{AB}\)</span> whose support belong to the interface between <span class="math">\(A\)</span> and <span class="math">\(B\)</span>.  We can split the domain <span class="math">\(V\)</span> into three nonoverlapping sets of nodes <span class="math">\(V = A_\circ \cup AB \cup B_\circ\)</span> according to the support of <span class="math">\(K\)</span>. The product <span class="math">\(\eqref{e:CK}\)</span> can then be written as a product of three nonoverlapping sets of nodes <span class="math">\(A_\circ, AB, B_\circ\)</span>:
+</p>
+<div class="math">$$\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in AB} \big(1 + K_x\big) \prod_{x \in A_\circ} (1 + K_x\big) \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|A|} \ket{0}^{|B|}.$$</div>
+<p>
+Noting that the last two products&nbsp;give
+</p>
+<div class="math">$$\ket{C_{A_\circ}} = \frac{1}{2^{|A_\circ|/2}} \prod_{x \in A} (1 + K_x\big) \ket{0}^{|A|},\quad \ket{C_{B_\circ}} = \frac{1}{2^{|B_\circ|/2}} \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|B|} $$</div>
+<p>
+the cluster states of the subgraphs <span class="math">\(A_\circ\)</span> and <span class="math">\(B_\circ\)</span> we&nbsp;get
+</p>
+<div class="math">$$\ket{C} = \frac{1}{2^{|AB|/2}} \prod_{x \in \partial A} (1 + K_x\big) \ket{C_A} \ket{C_B},$$</div>
+<p>
+note the change in the normalization factor: this last product has <span class="math">\(|AB|\)</span> terms, corresponding to the set of nodes adjacent to the interface of <span class="math">\(A\)</span> and <span class="math">\(B\)</span>. Note also that <span class="math">\(\ket{C}\)</span> belongs to <span class="math">\(\mathcal{H}(G)= \mathcal{H}_A \otimes \mathcal{H}_B\)</span> and <span class="math">\(\ket{C_{A_\circ}} \in \mathcal{H}_A\)</span> and <span class="math">\(\ket{C_{B_\circ}} \in \mathcal{H}_B\)</span> are cluster states of open boundary graphs. This last expression is in fact the schmidt decomposition of the cluster state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{C} = \frac{1}{2^{|AB|/2}} \sum_{K \in \mathcal{S}_{AB}} K \ket{C_A} \ket{C_B} = \frac{1}{2^{|AB|/2}} \sum_{b_A,b_B} \ket{b_A} \ket{b_B},$$</div>
+<p>
+where <span class="math">\(\ket{b_A}\)</span> and <span class="math">\(\ket{b_B}\)</span> are basis vectors of <span class="math">\(\mathcal{H}_A\)</span> and <span class="math">\(\mathcal{H}_B\)</span>, respectively. Their are constructed from the <span class="math">\(K\)</span> operators by separating them into a product of pauli matrices in <span class="math">\(A\)</span> and in <span class="math">\(B\)</span>: <span class="math">\(K = \sigma_A^{b_A} \sigma_B^{b_B}\)</span>.</p>
 <h2>Notes</h2>
 <ul>
 <li>
