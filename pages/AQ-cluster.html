@@ -212,11 +212,11 @@ which implies that   <strong style="color:DarkSlateBlue; background-color:LightG
 <p>
 which shows that the four states <span class="math">\(\{\ket{C^{(1)}}, P_n \ket{C^{(1)}}\}\)</span> are orthogonal and therefore span the ground state subspace of <span class="math">\(H^{(1)}_C\)</span>.</p>
 <h2>Entanglement&nbsp;entropy</h2>
-<p>To measure the entanglement of the cluster state <span class="math">\(\eqref{e:C}\)</span>, which is a pure state that can be associated to a time independent hamiltonian of an isolated system, we may use the von Neumann entropy: we partition the system into two set of nodes <span class="math">\(x \in A\)</span> and <span class="math">\(x \in B\)</span>, such that <span class="math">\(A \cap B = V\)</span>, and&nbsp;compute
+<p>To measure the entanglement of the cluster state <span class="math">\(\eqref{e:C}\)</span>, which is a pure state that can be associated to the time independent hamiltonian <span class="math">\(\eqref{e:H}\)</span>, we may use the von Neumann entropy: we partition the system into two sets of nodes <span class="math">\(x \in A\)</span> and <span class="math">\(x \in B\)</span>, such that <span class="math">\(A \cup B = V\)</span>, and&nbsp;compute
 </p>
 <div class="math">$$S_A = -\Tr \rho_A \log \rho_A, \; \rho_A = \Tr_B \ket{C} \bra{C}$$</div>
 <p>
-where <span class="math">\(\Tr_B\)</span> is the partial trace over the set <span class="math">\(B\)</span> (<span class="math">\(\log 2 = 1\)</span>).</p>
+where <span class="math">\(\Tr_B\)</span> is the partial trace over the set <span class="math">\(B\)</span> (<span class="math">\(\log 2 = 1\)</span>). For an isolated system in thermodynamic equilibrium <span class="math">\(\rho_A\)</span> is the microcanonical density matrix, and the entropy is <em>extensive</em>, its value is proportional to the system&#8217;s size (<span class="math">\(|A| = N_A\)</span>, the number of sites in the partition <span class="math">\(A\)</span>). We do not expect for our system, which is in the ground state of <span class="math">\(H_C\)</span>, to satisfy this law. In fact, invoking the third law of thermodynamics (Nernst theorem), we would expect that the entropy of a <em>unique</em> state should be zero: the zero temperature state is dominated by the energy of the system, and the minimum energy configuration is unique. However, it is known that the ground state of some quantum systems can be disordered and therefore have a finite entropy. One example is the Heisenberg antiferromagnet. We show now that the cluster state satisfy an <em>area law</em> for the entanglement entropy: it is proportional to the size of the boundary <span class="math">\(\partial A\)</span> between the two&nbsp;regions.</p>
 <h2>Notes</h2>
 <ul>
 <li>
