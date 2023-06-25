@@ -259,6 +259,24 @@ and thus, the entanglement&nbsp;entropy
 <div class="math">$$S_A = L.$$</div>
 <p>
 This is precisely what the <em>entanglement area law</em> states for the cluster ground state <span class="math">\(\ket{C}\)</span> of the graph hamiltonian system <span class="math">\(H_C(G)\)</span>.</p>
+<h4>Problem</h4>
+<p>Demonstrate that the density matrix associated to the cluster state can be written as a superposition of the stabilizers <span class="math">\(K = \sigma^b\)</span> (in the notation we introduced&nbsp;above)
+</p>
+<div class="math">$$\rho = \ket{C}\bra{C} = \frac{1}{|\mathcal{S}|} \sum_{K \in \mathcal{S}} K, |\mathcal{S}| = 2^{|V|}$$</div>
+<p>
+Using this expression show that the reduced density matrix of the subgraph <span class="math">\(A\)</span>&nbsp;is
+</p>
+<div class="math">$$\rho_A = \frac{1}{2^{|A|}} \sum_{K \in \mathcal{S}_A} K, \quad \mathcal{S}_A = \{K \in \mathcal{S} \mid \mathrm{supp}(K) \subseteq A \}.$$</div>
+<p>
+Explain why <span class="math">\(2^{|A|} \ne |\mathcal{S}_A\)</span> in general, and compute the square of <span class="math">\(\rho_A\)</span>:
+</p>
+<div class="math">$$\rho_A^2 = \frac{|\mathcal{S}_A|}{2^{|A|}} \rho_A.$$</div>
+<p>
+Deduce from this result the entanglement&nbsp;entropy:
+</p>
+<div class="math">$$S_A = -\log\frac{|\mathcal{S}_A|}{2^{|A|}},$$</div>
+<p>
+compare with the result in the main&nbsp;text.</p>
 <h2>Notes</h2>
 <ul>
 <li>
