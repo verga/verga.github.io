@@ -56,10 +56,11 @@
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
 <h1>Introduction</h1>
-<p><em>Thermodynamics</em> is a phenomenological theory that describes (macroscopic) physical systems in equilibrium; equilibrium itself is defined as a stationary state whose properties are determined by a set of intensive and extensive quantities, such as the temperature, pressure, volume, or perhaps applied fields, such as a magnetic field. One important characteristic of the <em>thermal</em> equilibrium is that, if a change is produced by an external force, the response of the system do not depend on the strength of the perturbation in the limit of vanishing force, or, in other words, the response would solely depend upon the system&#8217;s <em>equilibrium</em> properties.<sup id="fnref:0"><a class="footnote-ref" href="#fn:0">1</a></sup>  </p>
-<p>Thermodynamics is based on the experimental fact that the <em>state</em> of a homogeneous phase (a liquid, gas or solid), is completely determined by a few set of independent quantities. Extensive ones, like energy or volume, are additive, if one doubles the size of the system, extensive quantities double, and intensive ones, like temperature or pressure, whose value is constant over the entire system; if one divides a system into two parts, intensive quantities, remain the same in each&nbsp;part.</p>
-<p>The goal of thermodynamics is to account for the exchanges of heat and work a system undergoes when external conditions vary; the total energy balance and the direction of the possible changes are constrained by the laws of <em>energy conservation</em> and <em>entropy increase</em>: the first and second principles, respectively. Indeed, an isolated system consisting in two parts, initially at different temperatures, will evolve towards a state with uniform temperature through heat exchange between the two parts, and this evolution is irreversible: no spontaneous macroscopic temperature difference will&nbsp;appear.</p>
-<p>The central concept of thermodynamics is <em>entropy</em> <span class="math">\(S\)</span>. The main problem of thermodynamics, the specification of the state variables of a system at equilibrium, is solved by the entropy&nbsp;postulate:</p>
+<p><em>Thermodynamics</em> is a phenomenological theory that describes (macroscopic) physical systems in equilibrium and their transformations; equilibrium itself is defined as a stationary state whose properties are determined by a set of intensive and extensive quantities, such as the temperature, pressure, volume, or perhaps applied fields, such as a magnetic field. One important characteristic of the <em>thermal</em> equilibrium is that, if a change is produced by an external force, the response of the system do not depend on the strength of the perturbation in the limit of vanishing force, or, in other words, the response would solely depend upon the system&#8217;s <em>equilibrium</em> properties.<sup id="fnref:0"><a class="footnote-ref" href="#fn:0">1</a></sup>  </p>
+<p>Thermodynamics is based on the experimental fact that the <em>state</em> of a homogeneous phase (a liquid, gas or solid), is completely determined by a set of few independent quantities. Extensive ones, like energy or volume, are additive, if one doubles the size of the system, extensive quantities double, and intensive ones, like temperature or pressure, whose value is constant over the entire system; if one divides a system into two parts, intensive quantities, remain the same in each&nbsp;part.</p>
+<p>The goal of thermodynamics is to account for the exchanges of heat and work a system undergoes when external conditions vary; the total energy balance and the direction of the possible changes are constrained by the laws of <em>energy conservation</em> and <em>entropy increase</em>: the first and second principles, respectively. Indeed, an isolated system consisting in two parts, initially at different temperatures, will evolve towards a state with uniform temperature through heat exchange between the two parts, and this evolution is irreversible: no spontaneous macroscopic temperature difference will appear.
+//
+The central concept of thermodynamics is <em>entropy</em> <span class="math">\(S\)</span>. The main problem of thermodynamics, the specification of the state variables of a system at equilibrium, is solved by the entropy&nbsp;postulate:</p>
 <p>The entropy <span class="math">\(S\)</span> is a function of extensive variables <span class="math">\(X\)</span> that reach its <em>maximum</em> value at the state of equilibrium, among all other possible states. Entropy&nbsp;is:</p>
 <ul>
 <li>
@@ -90,15 +91,35 @@
 <p>a condition of positivity of the temperature <span class="math">\(T\)</span>  (see below the <a href="#notes">note</a> on the two level system.) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">2</a></sup> </p>
 </li>
 </ul>
-<p>We take the Boltzmann constant equal to&nbsp;one:
+<p>More specifically, let us consider a system defined by its energy <span class="math">\(E\)</span> and volume <span class="math">\(V\)</span>; its <em>thermodynamic</em> entropy is then function of these <em>mechanical</em> extensive variables, <span class="math">\(S=S(E,V)\)</span>. Equivalently, we may consider the energy as a function of the entropy and the volume, <span class="math">\(E=E(S,V)\)</span>. At equilibrium and for fixed volume, the entropy of an isolated system is maximal (second principle), <span class="math">\(dS = 0\)</span>. Divide the system into two parts, 1 and 2, such that the total energy (which is constant) is <span class="math">\(E = E_1 + E_2\)</span>; therefore, a change of the entropy <span class="math">\(S = S(E) = S(E_1 + E_2)\)</span> is given&nbsp;by
+</p>
+<div class="math">$$
+dS = \frac{\partial S}{\partial E_1} dE_1 + \frac{\partial S}{\partial E_2} dE_2 = \left( \frac{1}{T_1} - \frac{1}{T_2} \right) dE_1 = 0,
+$$</div>
+<p>
+which means that at equilibrium the temperature of two different regions of an isolated system must be the&nbsp;same.</p>
+<p>Furthermore, a change in the energy <span class="math">\(\Delta E\)</span> related to a change in the system&#8217;s volume <span class="math">\(\Delta V\)</span>, due for example by the application of an external force (one may imagine a gas compressed by a piston), results in a thermodynamic <em>pressure</em>
+</p>
+<div class="math">$$
+P = - \left. \frac{\partial E}{\partial V} \right|_S
+$$</div>
+<p>
+where we specified that the state transformation is at constant entropy (adiabatic transformation). This equation combined with the definition of the <em>temperature</em> leads&nbsp;to
+</p>
+<div class="math">$$
+\begin{equation} dE = \left. \frac{\partial E}{\partial S} \right|_V dS + \left. \frac{\partial E}{\partial V} \right|_S dV = T dS - P dV \end{equation}
+$$</div>
+<p>
+which is a form of the energy conservation principle of thermodynamics: a change of the energy can be decomposed into an exchange of heat <span class="math">\(TdS\)</span> (irreversible transformation according to the second principle), and an exchange of mechanical work <span class="math">\(-PdV\)</span> (reversible&nbsp;transformation).</p>
+<p>Note that we take throughout the Boltzmann constant equal to&nbsp;one:
 </p>
 <div class="math">$$k_{\mathrm{B}}  = 1.380\,649\times 10^{-23}\,\mathrm{J/K} = 1,$$</div>
 <p>
-and then the temperature is measured in energy units; to restore the kelvin it is enough to replace <span class="math">\(T\)</span> by <span class="math">\(k_\mathrm{B}T\)</span>:
+and then the temperature is measured in energy units, and more significantly, the entropy is dimensionless; to restore the kelvin it is enough to replace <span class="math">\(T\)</span> by <span class="math">\(k_\mathrm{B}T\)</span>:
 </p>
 <div class="math">$$T[\mathrm{K}] = \frac{T[\mathrm{J}]}{k_\mathrm{B}}, \quad
 S[\mathrm{JK^{-1}}] = k_\mathrm{B} S\,.$$</div>
-<p>Thermodynamics deals with <em>macroscopic</em> systems. We understand &#8216;macroscopic&#8217; as large systems, with respect to the characteristic scale of their constituents, which can be separated in subsystems that are themselves macroscopic. The main property of a macroscopic system is that it can be characterized by well defined mean quantities, which implies that relative fluctuations are small. Therefore, when speaking on a thermodynamic state as being an equilibrium state, this equilibrium must be understood as a <em>statistical</em> one, in the sense that reducing the size should lead to an increase in the relative fluctuation amplitudes, eventually ruining the notion of well defined physical properties. At these scales, the system would be dominated by the <em>microscopic</em> laws, specific of the constituents properties. The link between the physics at the microscopic scale (the microstate) and the system&#8217;s macrostate is the object of the statistical&nbsp;mechanics.</p>
+<p>Thermodynamics deals with <em>macroscopic</em> systems. We understand &#8216;macroscopic&#8217; as large systems, with respect to the characteristic scale of their constituents, which can be separated in subsystems that are themselves macroscopic. The main property of a macroscopic system is that it can be characterized by well-defined mean quantities, which implies that relative fluctuations are small. Therefore, when speaking on a thermodynamic state as being an equilibrium state, this equilibrium must be understood as a <em>statistical</em> one, in the sense that reducing the size should lead to an increase in the relative fluctuation amplitudes, eventually ruining the notion of well-defined physical properties. At these scales, the system would be dominated by the <em>microscopic</em> laws, specific of the constituents properties. The link between the physics at the microscopic scale (the microstate) and the system&#8217;s macrostate is the object of the statistical&nbsp;mechanics.</p>
 <p><em>Statistical mechanics</em> is the microscopic theory of thermodynamic systems. From the point of view of statistical mechanics, thermodynamics is an emergent theory arising from the laws governing the elementary constituents, atoms and molecules, of the physical system. Its main problem is then to account for the reduction of the infinity of parameters needed to define the microscopic state into a set of thermodynamic variables characterizing the macroscopic state. The first step in formulating the laws of statistical systems is then to describe the physics of these elementary&nbsp;constituents.</p>
 <p>Nature is quantum. The principles ruling the structure and properties of matter are those of quantum&nbsp;mechanics:</p>
 <ul>
@@ -166,20 +187,24 @@ where the notation <span class="math">\(\rho = \rho_{12}\)</span> explicitly spe
 is also a density matrix. This is a property of <strong>convexity</strong> of the set of density matrices. The same relation can be understood as a decomposition of a state into two states with probability <span class="math">\(a\)</span> and <span class="math">\(1-a\)</span>; such a decomposition would not affect the expectation value of observables of the mixed system. Therefore the density matrix is not unique, differently prepared quantum systems may have the same density matrix (see the <a href="#notes">notes</a><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">6</a></sup> below).</p>
 <p>Within the quantum framework, it is possible to associate an entropy to a quantum state <span class="math">\(\rho\)</span>:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     S=- \mathrm{Tr}\, \rho \ln \rho.
     \label{vnS}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 This is the von Neumann entropy, he introduced to show that the measurement of an observable is an irreversible process and that this irreversibility produces an increase of <span class="math">\(S\)</span>. More significantly we may say that this formula shows that <em>entropy is a property of the quantum state</em>. In the statistical mechanics framework, one may think that formula (<span class="math">\(\ref{vnS}\)</span>) applies to a subsystem, and then that the trace is a partial trace (over the complement of the set of the subsystem&#8217;s degrees of freedom); in such a case <span class="math">\(S\)</span> becomes a measure of the given subsystem <em>entanglement</em> with the rest of the system. In a quantum system interference and interactions contribute to the generation of entanglement, and then to the increase of the entropy (in fact, the entanglement entropy but, for short, we will use &#8220;entropy&#8221;, and we will add &#8220;of the whole system&#8221; when necessary). Therefore, the von Neumann entropy provides a bridge between quantum mechanics, and the probabilistic nature of the quantum state, and statistical mechanics, and the probability distribution of subsystems states as a function of the thermodynamic&nbsp;variables.</p>
 <h2>Formalism</h2>
 <p>Like Kadanoff, we give an <em>operational</em> definition of statistical mechanics [<a href="#refs">K</a>].</p>
 <p>For an isolated system in <em>equilibrium</em> with fixed energy <span class="math">\(E_n\)</span>, the appropriated statistical operator is the <em>microcanonical</em>&nbsp;one: 
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     \rho(E_n)=\frac{P_\Delta(E)}{\Omega(E)},
     \label{micro}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 for which the energy <span class="math">\(E_n\)</span> is within a band of width <span class="math">\(\Delta\)</span>:
 </p>
@@ -187,22 +212,28 @@ for which the energy <span class="math">\(E_n\)</span> is within a band of width
 <p>
 with <span class="math">\(\Delta\)</span> vanishing in the thermodynamic limit (when the size of the system tends to infinity), and  where <span class="math">\(\Omega(E)\)</span> is the number of energy states and <span class="math">\(P_\Delta\)</span> is the projector into the energy subset <span class="math">\(I_\Delta(E)\)</span>. Using the energy basis corresponding to the system&#8217;s hamiltonian <span class="math">\(H\)</span>,
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     H \ket{n} = E_n \ket{n}\,,
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where <span class="math">\(E_n\)</span>, and <span class="math">\(\ket{n}\)</span> are the energy levels and vectors, the mean value of an observable <span class="math">\(M\)</span> is given&nbsp;by,
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \braket{M} = \mathrm{Tr}\, \rho M = 
   \frac{1}{\Omega(E)}\sum_{n \in I_\Delta} \braket{n|M|n}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>We observe that <span class="math">\(\rho = \rho(E)\)</span> is uniformly distributed in the interval <span class="math">\(I_\Delta\)</span>. A macroscopic quantum system has eigenenergies <span class="math">\(E_n\)</span> whose spacing exponentially shrinks with the number <span class="math">\(N\)</span> of the system&#8217;s number of particles. Therefore, &#8220;microscopic&#8221; transitions within the band of width <span class="math">\(\Delta\)</span> does not change the &#8220;macroscopic&#8221; properties of the system, justifying the uniform probability distribution of the energy levels in this band. The entropy of the system is related with the number of the microscopic states <span class="math">\(\Omega(E)\)</span> compatibles with the macrostate of energy <span class="math">\(E\)</span>; the extensive quantity associated with this number is the statistical&nbsp;entropy:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   S(E) = \ln \Omega(E)\,.
   \label{SE}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 Using the extensivity of <span class="math">\(S \sim N\)</span>, we demonstrate that the energy spacing is indeed exponentially&nbsp;small:
 </p>
@@ -211,33 +242,41 @@ Using the extensivity of <span class="math">\(S \sim N\)</span>, we demonstrate 
 <blockquote>
 <p>The statistical operator of a system in thermodynamic equilibrium at temperature <span class="math">\(T\)</span>&nbsp;is</p>
 <p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \rho = \frac{\E^{-H/T}}{Z}, \quad
   Z = \mathrm{Tr}\, \E^{-H/T}\,,
   \label{canon}
-\end{equation}</div>
+\end{equation}
+$$</div>
 </p>
 <p>where <span class="math">\(Z=Z(T,N,V)\)</span> is the partition function, which depends only on the thermodynamic variables (temperature, <span class="math">\(N\)</span> number of particle, <span class="math">\(V\)</span> volume). In the energy basis, <span class="math">\(\rho\)</span> can be written in terms of the probability <span class="math">\(P(E_n)\)</span> to be in the state <span class="math">\(n\)</span>:</p>
 <p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     \rho = \sum_n P(E_n) \ket{n}\bra{n}, \quad
     P(E_n) = \frac{\E^{-E_n/T}}{Z},\quad
     Z = \sum_n \E^{-E_n/T}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 </p>
 <p>The expected value of an observable <span class="math">\(M\)</span> is given by the von Neumann formula; in the energy basis it&nbsp;becomes:</p>
 <p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     \braket{M} = \sum_n \braket{n|M|n} P_n,
-\end{equation}</div>
+\end{equation}
+$$</div>
 </p>
 <p>which depends only on the diagonal elements of the matrix <span class="math">\(M\)</span>. <span class="math">\(\rho\)</span> defined by (<span class="math">\(\ref{canon}\)</span>), is called the canonical density operator, it it relevant for subsystems that exchange energy with their&nbsp;environment.</p>
 <p>The canonical entropy is given&nbsp;by,</p>
 <p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   S = -\sum_n p_n \ln p_n\,,
   \label{S}
-\end{equation}</div>
+\end{equation}
+$$</div>
 </p>
 <p>where <span class="math">\(p_n = P(E_n)\)</span>.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">7</a></sup></p>
 </blockquote>
@@ -282,16 +321,20 @@ where <span class="math">\(\psi_n\)</span> are the complex amplitudes in the ene
 <p>
 In order to obtain from this general (exact) equation the thermodynamic expected value in the microcanonical&nbsp;ensemble, 
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \braket{M(t)}_E = \mathrm{Tr}\, \rho_E M
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where <span class="math">\(\rho_E\)</span> is the density matrix given by (<span class="math">\(\ref{micro}\)</span>), it is necessary that (i) the first term be independent of the arbitrary initial amplitudes defining the whole system pure state <span class="math">\(|\psi_n|^2\)</span>, 
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \sum_n \braket{n|M|n} |\psi_n|^2 \approx \braket{n_E|M|n_E} \sum_n |\psi_n|^2 = \braket{n_E|M|n_E}
   \label{nn}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 (we used the normalization condition, <span class="math">\(\sum_n |\psi_n|^2= 1\)</span>) for some <em>typical</em> <span class="math">\(n_E\)</span> <em>near</em> the energy <span class="math">\(E\)</span>; and that (ii) the second term vanishes in the thermodynamic&nbsp;limit. </p>
 <p>The first condition means that the diagonal elements of the observable <span class="math">\(M\)</span> in the energy basis, are a smooth function of the energy, thus can be extracted from the sum which contains terms around <span class="math">\(E\)</span>, inside the relevant energy shell of width <span class="math">\(\Delta\)</span>. This is essentially the contents of the &#8220;eigenvector thermal&nbsp;hypothesis&#8221;:
@@ -301,6 +344,7 @@ where <span class="math">\(\rho_E\)</span> is the density matrix given by (<span
 for a closed quantum&nbsp;system.</p>
 <p>The second condition supposes first that there is no significant degeneracy of the energy spectrum. In addition, it is a condition on the amplitudes of fluctuations around the dominant term (<span class="math">\(\ref{nn}\)</span>).</p>
 <p>Both conditions can be demonstrated to be a consequence of the statistical properties associated to the energy spectrum of a chaotic <span class="math">\(H\)</span>, which should be <em>equivalent</em> to the statistical properties of a <strong>random matrix</strong> hamiltonian. Now, as a special case, this should also be true in the semiclassical limit regime of classically chaotic dynamical systems. As a matter of fact, the eigenvectors of a random matrix are gaussianly distributed, one can therefore use the laws of large numbers and the central limit theorem to show that the mean of an operator is dominated by the diagonal terms (condition i) and that the fluctuations around the mean rapidly decrease (condition ii) with the dimension of the matrix (the number of degrees of&nbsp;freedom).</p>
+<h2>Notes <a name="notes"></a></h2>
 <h3>References <a name="refs"></a></h3>
 <p>[<span class="caps">DA</span>] D&#8217;Alessio, Kafri, Polkovnikov and Rigol, &#8220;From quantum chaos and eigenstate thermalization to statistical mechanics and thermodynamics&#8221;, Advances in Physics, <strong>65</strong>, 239 (2016) (<a href="/pdfs/dalessio.pdf">.pdf</a>)</p>
 <p>[K] Kadanoff, &#8220;Statistical Physics: Statics, Dynamics and Renormalization&#8221; (Singapore,&nbsp;2000)</p>
@@ -309,14 +353,14 @@ for a closed quantum&nbsp;system.</p>
 <p>[P] Peres, &#8220;Quantum Theory: Concepts and Methods&#8221; (Kluwer,&nbsp;2002)</p>
 <p>[<span class="caps">SW</span>] Schumacher and Westmoreland, &#8220;Quantum Processes, Systems and Information&#8221; (Cambridge,&nbsp;2010)</p>
 <p>[S] Stöckmann, &#8220;Quantum chaos&#8221; (Cambridge,&nbsp;1999)</p>
-<h2>Bibliography</h2>
+<h3>Bibliography</h3>
 <ul>
 <li><a href="https://archive.org/details/ost-physics-landaulifshitz-statisticalphysics">Landau, D. and Lifshitz</a>, E., Statistical Physics (Pergamon Oxford, 1980). The classical text on statistical&nbsp;physics.</li>
 <li><a href="/pdfs/schwabl.pdf">Schwabl, F.</a>, Statistical Mechanics (Springer, 2006). Concise presentation of the basis of statistical physics. This book, primary addressed to undergraduate students, deals with more advanced subjects through well chosen&nbsp;applications.</li>
 <li><a href="https://ocw.mit.edu/courses/physics/8-333-statistical-mechanics-i-statistical-mechanics-of-particles-fall-2013/lecture-notes/">Kardar, M.</a>, Statistical Physics, vol. 1 Particles, vol. 2 Fields (Cambridge, 2007). Clear presentation, interesting&nbsp;applications.</li>
 <li><a href="/pdfs/sethna-2021.pdf">Sethna, <span class="caps">J. P.</span></a>, Statistical Mechanics, Entropy, Order Parameter and Complexity (Oxford, 2021). Very interesting and up to date text with a wealth of applications; intermediate&nbsp;level.</li>
 </ul>
-<h3>Notes <a name="notes"></a></h3>
+<h3>Footnotes</h3>
 <div class="footnote">
 <hr>
 <ol>
