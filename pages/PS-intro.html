@@ -161,7 +161,21 @@ S[\mathrm{JK^{-1}}] = k_\mathrm{B} S\,.$$</div>
 <div class="math">$$\braket{ \psi|\rho|\psi } \ge 0,\quad \forall \ket{ \psi } \in \mathcal{H},\quad 
 \mathrm{Tr}\, \rho = 1,$$</div>
 <p>
-where <span class="math">\(\ket{ \psi }\)</span> is an arbitrary ket. The density matrix of an isolated system in a pure state <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> is <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>. </p>
+where <span class="math">\(\ket{ \psi }\)</span> is an arbitrary ket. The density matrix of an isolated system in a pure state <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> is <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>. For a mixed system whose hilbert space <span class="math">\(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \ldots\)</span>, composed of <span class="math">\(n = 1, 2, \ldots\)</span> components, the density operator&nbsp;is
+</p>
+<div class="math">$$\rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1,$$</div>
+<p>
+where <span class="math">\(0 \le p_n \le 1\)</span> are the probabilities that a given component be in state <span class="math">\(\ket{\psi_n}\)</span>.</p>
+<p>The evolution of the density matrix, according to the schrödinger operator <span class="math">\(U(t) = \exp(-\I H t)\)</span> follows the von Neumann equation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$
+\begin{equation}
+\label{vN}
+\frac{\partial}{\partial t} \rho(t) + \I [H, \rho(t)] = 0,
+\end{equation}
+$$</div>
+<p>
+which is the quantum analog to the Liouville classical equation; it shows that at equilibrium one should have <span class="math">\(\rho = \rho(H)\)</span>: the density operator of a stationary state is a functional of the system&#8217;s&nbsp;hamiltonian.</p>
 <p>A fundamental property of the density operator is that it determines the expected value of the observables <span class="math">\(M\)</span>:
 </p>
 <div class="math">$$\braket{M} = \mathrm{Tr}\, \rho M,$$</div>
@@ -297,7 +311,7 @@ The problem is now to relate this probability distribution to the physical prope
 </p>
 <div class="math">$$\rho = \rho(H; X),$$</div>
 <p>
-which immediately leads, through the von Neumann&nbsp;equation,
+which immediately leads, through the von Neumann equation <span class="math">\(\eqref{vN}\)</span>,
 </p>
 <div class="math">$$\I \frac{\partial }{\partial t} \rho = [H,\rho]$$</div>
 <p>
