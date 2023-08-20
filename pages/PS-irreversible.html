@@ -69,10 +69,12 @@ such&nbsp;that
 where the prefactor accounts for the particle permutations. The quantity <span class="math">\(\rho d\Gamma\)</span> is a measure of the probability of the ensemble to be in the &#8220;cell&#8221; <span class="math">\(d\Gamma = \D x \D p\)</span> of the phase space (a <em>microscopic state</em> of the mechanical&nbsp;system).</p>
 <p>The Liouville theorem ensures the conservation of <span class="math">\(\rho\)</span>:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{liouville}
 \frac{\D \rho}{\D t} = \frac{\partial \rho}{\partial t} + \{\rho, H\} = 0
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where the system&#8217;s hamiltonian <span class="math">\(H\)</span> is independent of time;&nbsp;here,
 </p>
@@ -97,17 +99,21 @@ where we introduced the notation <span class="math">\(\Gamma_n = (\boldsymbol x_
 <div class="math">$$f(\boldsymbol x_1, \boldsymbol p_1, \ldots, \boldsymbol x_n, \boldsymbol p_n, t) = \frac{1}{(N-n)!} \int_{\Gamma_{\bar{1}}} \prod_{k=n+1}^N \D \boldsymbol x_k \D \boldsymbol p_k  \,  \rho(x, p, t)\,.$$</div>
 <p>At variance to the Gibbs entropy, the Boltzmann&nbsp;entropy
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{sb}
 S_B = - \int_{\Gamma_1} \D \boldsymbol x \D \boldsymbol p \, f(\boldsymbol x, \boldsymbol p,t) \ln f(\boldsymbol x, \boldsymbol p,t),
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-evolves in time. For instance if the hamiltonian <span class="math">\(H=H_1 + H_2\)</span> contains, in addition to the one particle term <span class="math">\(H_1\)</span>, a two particle interaction <span class="math">\(H_2\)</span> depending on the distance between these two particles, it is easy to demonstrate that integrating the Liouville equation (<span class="math">\(\ref{liouville}\)</span>) over <span class="math">\(\Gamma_\bar{1}\)</span>, one obtains an equation of the form (Boltzmann&nbsp;equation):
+evolves in time. For instance if the hamiltonian <span class="math">\(H=H_1 + H_2\)</span> contains, in addition to the one particle term <span class="math">\(H_1\)</span>, a two particle interaction <span class="math">\(H_2\)</span> depending on the distance between these two particles, it is easy to demonstrate that integrating the Liouville equation (<span class="math">\(\ref{liouville}\)</span>) over <span class="math">\(\Gamma_{\bar{1}}\)</span>, one obtains an equation of the form (Boltzmann&nbsp;equation):
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{boltzmann}
 \frac{\partial f}{\partial t} + \{f, H_1\} = C[f(\Gamma_2)]
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where <span class="math">\(f_2 = f(\Gamma_2)=f(\boldsymbol x_1, \boldsymbol p_1. \boldsymbol x_2, \boldsymbol p_2,t)\)</span> is the two particle distribution function (<span class="caps">BBGKY</span> hierarchy), and <span class="math">\(C\)</span> is the collision term accounting for the interactions between the two particles. In particular, for a diluted gas Boltzmann assumed&nbsp;that
 </p>
@@ -272,7 +278,9 @@ which increases in an oscillatory way, and not monotonically as in usual thermod
 </p>
 <p>hence,</p>
 <p>
-<div class="math">\begin{align*}\E^{\I h_n(\sigma_n) t} \sigma^+ \E^{-\I h_n(\sigma_n) t} &amp; = \sigma^+  \E^{\I h_n(\sigma_n + 2) t} \E^{-\I h_n(\sigma_n) t} \\ &amp;= \sigma^+  \prod_{m=1}^{N/2} \exp\left[ \I 2 J(m) (\sigma_{n+m} + \sigma_{n - m})  \right]\end{align*}</div>
+<div class="math">$$
+\begin{align*}\E^{\I h_n(\sigma_n) t} \sigma^+ \E^{-\I h_n(\sigma_n) t} &amp; = \sigma^+  \E^{\I h_n(\sigma_n + 2) t} \E^{-\I h_n(\sigma_n) t} \\ &amp;= \sigma^+  \prod_{m=1}^{N/2} \exp\left[ \I 2 J(m) (\sigma_{n+m} + \sigma_{n - m})  \right]\end{align*}
+$$</div>
 </p>
 <p>where we used that the exponential operators commute. The pauli matrices satisfy the&nbsp;identity,</p>
 <p>
@@ -280,7 +288,9 @@ which increases in an oscillatory way, and not monotonically as in usual thermod
 </p>
 <p>where <span class="math">\(\boldsymbol n\)</span> is a unit vector and <span class="math">\(\theta\)</span> is an angle (polar angle in spherical coordinates).&nbsp;Hence,</p>
 <p>
-<div class="math">\begin{align*}\sigma^+_n(t) &amp; = \sigma^+ \E^{\I 2 B t} \\ &amp;  \prod_{m=1}^{N/2} \left[ \cos(2J(m)t) + \I \sin(2J(m)t)\, \sigma_{n+m} \right]\\ &amp; \quad \left[ \cos(2J(m)t) + \I \sin(2J(m)t) \, \sigma_{n-m} \right]\end{align*}</div>
+<div class="math">$$
+\begin{align*}\sigma^+_n(t) &amp; = \sigma^+ \E^{\I 2 B t} \\ &amp;  \prod_{m=1}^{N/2} \left[ \cos(2J(m)t) + \I \sin(2J(m)t)\, \sigma_{n+m} \right]\\ &amp; \quad \left[ \cos(2J(m)t) + \I \sin(2J(m)t) \, \sigma_{n-m} \right]\end{align*}
+$$</div>
 </p>
 <p>where we included the external field term of the hamiltonian. Taking the mean value of this last expression gives the formula of the text.&#160;<a class="footnote-backref" href="#fnref:ExSC" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
