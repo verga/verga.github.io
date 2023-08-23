@@ -54,9 +54,7 @@
 <p><a href="/pages/ON-index.html">Workshop</a> on scientific&nbsp;typesetting.</p>
 </blockquote>
 <h2>Document&nbsp;structure</h2>
-<p>The <code>.tex</code> source file start with the <code>\documentclass</code> command, followed by the
-preamble. The preamble contains the list of packages, definitions and new commands.
-A simple template to compiled with <strong>lualatex &#8212;shell-escape</strong>:</p>
+<p>The <code>.tex</code> source file start with the <code>\documentclass</code> command, followed by the preamble. The preamble contains the list of packages, definitions and new commands.  A simple template to compiled with <strong>lualatex &#8212;shell-escape</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[11pt,twoside]</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="c">% luatex set fonts</span>
     <span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
@@ -122,8 +120,7 @@ your text
 <p><a href="https://ctan.crest.fr/tex-archive/info/luatex/lualatex-doc/lualatex-doc.pdf">Lualatex</a> is a modern alternative to&nbsp;pdflatex.</p>
 <p>The text of your document may&nbsp;contain:</p>
 <ul>
-<li>the top matter: title, author, institution, address, date; this information can
-    be put in the preamble and typeset with <code>\maketitle</code>:</li>
+<li>the top matter: title, author, institution, address, date; this information can be put in the preamble and typeset with <code>\maketitle</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">\title</span><span class="nb">{</span>Vectorial Space Structure of the Set of Cycles of a Graph<span class="nb">}</span>
 <span class="k">\author</span><span class="nb">{</span>Marc Dupont<span class="k">\\</span>
@@ -136,19 +133,16 @@ your text
 
 <ul>
 <li>
-<p>an abstract: short description of the article, underlying the problem addressed
-    and the main&nbsp;result</p>
+<p>an abstract: short description of the article, underlying the problem addressed and the main&nbsp;result</p>
 </li>
 <li>
 <p>An introduction: general description of the subject and its scientific context; citation to the previous works; statement of the problem and the approach to deal with it, rough description of the model; summary of the article&nbsp;contents.</p>
 </li>
 <li>The model, experimental setup or numerical and analytical methods, results and discussion, are presented in separated sections and constitute the main contents of the&nbsp;article.</li>
-<li>The article is closed with a, generally brief,&nbsp;conclusion.</li>
-<li>The end matter may contain appendices to the main text, and the references to the
-    cited&nbsp;literature.</li>
+<li>The article is closed with a generally brief&nbsp;conclusion.</li>
+<li>The end matter may contain appendices to the main text, and the references to the cited&nbsp;literature.</li>
 </ul>
-<p>In order to structure your text you may use the <code>\section</code> and <code>\subsection</code>
-commands:</p>
+<p>In order to structure your text you may use the <code>\section</code> and <code>\subsection</code> commands:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[]</span><span class="nb">{</span>article<span class="nb">}</span>
 ...
 <span class="k">\title</span><span class="nb">{</span>...<span class="nb">}</span>
@@ -206,10 +200,8 @@ open issues and outlook.
     <span class="k">\bibliography</span><span class="nb">{</span>bibfile<span class="nb">}</span>
 </code></pre></div>
 
-<p>you put in the preamble, where <code>bibfile</code> is the name of your database
-<code>tplatex.bib</code>, in the example. Then, you put the command <code>\printbibliography</code>
-where you want the bibliography, in general just before the end of the&nbsp;document.</p>
-<p>An <code>article</code> entry of a <code>.bib</code> files looks&nbsp;as:</p>
+<p>you put in the preamble, where <code>bibfile</code> is the name of your database <code>tplatex.bib</code>, in the example. Then, you put the command <code>\printbibliography</code> where you want the bibliography, in general just before the end of the&nbsp;document.</p>
+<p>An <code>article</code> entry of a <code>.bib</code> file looks&nbsp;as:</p>
 <div class="highlight"><pre><span></span><code>@article<span class="nb">{</span>Schrodinger-1935,
   title = <span class="nb">{</span>Discussion of Probability Relations
            between Separated Systems<span class="nb">}</span>,
@@ -258,7 +250,7 @@ where you want the bibliography, in general just before the end of the&nbsp;docu
 </code></pre></div>
 
 <p>Three pdflatex compilations and one bibtex compilation are&nbsp;necessary.</p>
-<p>To create your bibliographic data base you may find it useful to install <a href="https://www.zotero.org/">Zotero</a>, as suggested in the previous <a href="/pages/TP-latex.html">lecture</a>.</p>
+<p>To create your bibliographic database you may find it useful to install <a href="https://www.zotero.org/">Zotero</a>, as suggested in the previous <a href="/pages/TP-latex.html">lecture</a>.</p>
 <h3>Example</h3>
 <p>The following snippets illustrate the standard structure of a research paper. We
 start with the&nbsp;abstract.</p>
@@ -351,8 +343,7 @@ graph<span class="k">\ldots</span>
 <blockquote>
 <p><img src='/images/TP-1concl.png' style="width:520px;"\img></p>
 </blockquote>
-<p>Collecting all the code snippets you get a pdf like the one in <a href="/pdfs/TP-paper.pdf">this
-link</a>.</p>
+<p>Collecting all the code snippets you get a pdf like the one in <a href="/pdfs/TP-paper.pdf">this link</a>.</p>
 <p>The general presentation should be simple and clear, the essential questions and achievements of the work well identified. For instance, to better explain the concept of <code>cycle basis</code> it is convenient to draw a graphical&nbsp;example: </p>
 <div class="highlight"><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Rc</span><span class="nb">}{</span><span class="k">\draw</span> (0,0)--(0,1)--(1,1)--(1,0)--cycle<span class="nb">}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Tc</span><span class="nb">}{</span><span class="k">\draw</span> (1,0)--(1,1)--(2,0)--cycle<span class="nb">}</span>
@@ -391,13 +382,10 @@ in the set of cycles in <span class="s">$</span><span class="nb">G</span><span c
 <p>Interesting article about <a href="https://lwn.net/Articles/731581/">luatex by Lee Phillips</a>.</p>
 </li>
 <li>
-<p>The text fragments are form a paper by <a href="https://arxiv.org/abs/1909.00449">Verga and
-    Elías,&nbsp;2019</a></p>
+<p>The text fragments are form a paper by <a href="https://arxiv.org/abs/1909.00449">Verga and Elías,&nbsp;2019</a></p>
 </li>
 <li>
-<p>Writing scientific papers: the <a href="https://scipost.org/submissions/author_guidelines">guidelines to authors of
-    SciPost</a> and the <a href="https://scipost.org/submissions/author_guidelines"><span class="caps">APS</span> author guidlines</a> are representative
-    of the publishing scientific research&nbsp;process.</p>
+<p>Writing scientific papers: the <a href="https://scipost.org/submissions/author_guidelines">guidelines to authors of SciPost</a> and the <a href="https://scipost.org/submissions/author_guidelines"><span class="caps">APS</span> author guidlines</a> are representative of the publishing scientific research&nbsp;process.</p>
 </li>
 </ul>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

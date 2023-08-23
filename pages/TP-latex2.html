@@ -66,7 +66,7 @@
 </ul>
 <p>The python libraries are included in the <a href="https://www.anaconda.com/distribution/">anaconda distribution</a>. The <span class="math">\(\TeX\)</span> tools are included in the TeX Live distribution, you do not need to install&nbsp;them.</p>
 <h2>Matplotlib&nbsp;example</h2>
-<p>The Lennard Jones potential depends on two parameters, the hard core lenght <span class="math">\(r_0\)</span> and the binding energy <span class="math">\(\epsilon\)</span>:</p>
+<p>The Lennard Jones potential depends on two parameters, the hard core length <span class="math">\(r_0\)</span> and the binding energy <span class="math">\(\epsilon\)</span>:</p>
 <div class="math">$$ w(r) = 4\epsilon \left[ \left(\frac{r_0}{r}\right)^{12} - \left(\frac{r_0}{r}\right)^{6}   \right]$$</div>
 <p><Paste></p>
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span> <span class="c1"># x-points</span>
@@ -126,7 +126,7 @@
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </code></pre></div>
 
-<p><strong>tikzpicture</strong>. The picture environment, where you put your tikz code, is <code>tikzpicture</code>. You may choose many options, for instance  <code>scale=2</code> or <code>node distance=5mm</code>, etc. The style of the pictures can be globally defined by <code>\tikzset{every picture/.style={line width=2pt, color=red!80}}</code>; if instead of <code>every picture</code>, which is pre-defined, you use a name, this name is globally available; styles can also be defined as option of tikzpicture; options can also be defined inside the tikzpicture using the <code>scope</code> environment; a convenient way to use <code>scope</code> is to load the <code>scopes</code> library.</p>
+<p><strong>tikzpicture</strong>. The picture environment, where you put your tikz code, is <code>tikzpicture</code>. You may choose many options, for instance <code>scale=2</code> or <code>node distance=5mm</code>, etc. The style of the pictures can be globally defined by <code>\tikzset{every picture/.style={line width=2pt, color=red!80}}</code>; if instead of <code>every picture</code>, which is pre-defined, you use a name, this name is globally available; styles can also be defined as option of tikzpicture; options can also be defined inside the tikzpicture using the <code>scope</code> environment; a convenient way to use <code>scope</code> is to load the <code>scopes</code> library.</p>
 <p><strong>path</strong>. The drawing commands are <code>\path</code>, <code>\draw</code>, <code>\fill</code> and <code>\clip</code>. Path and clip do not draw anything by themselves, but for example <code>\path[draw]</code> is equivalent to <code>\draw</code>. A path is basically a sequence of coordinates; the linking operator can be <code>--</code> (segment) or <code>..</code> (curve).</p>
 <p>Coordinates can be given as an ordered pair <span class="math">\((x,y)\)</span> (canvas) or <span class="math">\((\phi:r)\)</span> (canvas polar), or by name <code>(node name)</code>; relative coordinates with respect to the current position are given bi <span class="math">\(+(,)\)</span> (without update) or <span class="math">\(++(,)\)</span> (with position&nbsp;update):</p>
 <ul>
@@ -204,7 +204,7 @@
 <p><img alt="tikz" src="/images/TP-s.svg"></p>
 <p>where we used <code>rand</code> for a random orientation of the node&nbsp;arrows.</p>
 <h3>Example: quantum&nbsp;circuit</h3>
-<p>The following circuit describes the Deutsch algorithm, which allows to determine using a single evaluation of <span class="math">\(f(x)\)</span>, if the boolean function is balanced. We use the package <a href="https://arxiv.org/abs/1809.03842"><code>quantikz</code> by Alastair Kay</a>:</p>
+<p>The following circuit describes the Deutsch algorithm, which allows determining if the boolean function is balanced, using a single evaluation of <span class="math">\(f(x)\)</span>. We use the package <a href="https://arxiv.org/abs/1809.03842"><code>quantikz</code> by Alastair Kay</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="nb">{</span>standalone<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>tikz<span class="nb">}</span>
 <span class="k">\usetikzlibrary</span><span class="nb">{</span>external,quantikz<span class="nb">}</span>
