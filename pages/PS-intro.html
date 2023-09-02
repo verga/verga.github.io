@@ -51,7 +51,8 @@
 \newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
 \newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
 \newcommand{\bra}[1]{\langle{#1}|}
-\newcommand{\ket}[1]{|{#1}\rangle}&nbsp;\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{\Tr}{\mathrm{Tr}}\)</span></p>
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
@@ -306,7 +307,7 @@ and the von Neumann entropy for the subsystem&nbsp;is,
 </p>
 <div class="math">$$S = -\sum_n p_n \ln p_n\,.$$</div>
 <p>
-The problem is now to relate this probability distribution to the physical properties of the subsystem in the state <span class="math">\(\rho\)</span>, and the to specify which is the &#8220;appropriated&#8221; basis. The logical choice is the <em>energy</em>&nbsp;basis.</p>
+The problem is now to relate this probability distribution to the physical properties of the subsystem in the state <span class="math">\(\rho\)</span>, and to specify which is the &#8220;appropriated&#8221; basis. The logical choice, for a system conserving the energy, is just the <em>energy</em>&nbsp;basis.</p>
 <p>Indeed, energy is special because, at the microscopic level, a physical system is defined by its hamiltonian operator (one may take this as a definition of &#8216;microscopic&#8217;). The set of eigenvalues and eigenvectors of the system&#8217;s hamiltonian <span class="math">\(H\)</span>, completely defines the physical properties of the system: the statistical matrix (the density operator in the context of statistical physics), must hence be a functional of this spectrum and of the thermodynamic variables <span class="math">\(X\)</span> (possibly with the addition of other conserved&nbsp;quantities),
 </p>
 <div class="math">$$\rho = \rho(H; X),$$</div>
@@ -329,7 +330,7 @@ to the stationary condition <span class="math">\(\dot{\rho}=0\)</span>, required
 </p>
 <div class="math">$$\ket{\psi} = \sum_n \psi_n \ket{n}$$</div>
 <p>
-where <span class="math">\(\psi_n\)</span> are the complex amplitudes in the energy basis of the hamiltonian <span class="math">\(H\)</span>. The expected value of a measurable operator <span class="math">\(M\)</span> (a few body local operator, for instance), is at time <span class="math">\(t\)</span>, given&nbsp;by,
+where <span class="math">\(\psi_n\)</span> are the complex amplitudes in the energy basis <span class="math">\(\ket{n}\)</span> of the hamiltonian <span class="math">\(H\)</span>. The expected value of a measurable operator <span class="math">\(M\)</span> (a few body local operator, for instance), is at time <span class="math">\(t\)</span>, given&nbsp;by,
 </p>
 <div class="math">$$\braket{M(t)} = \sum_n \braket{n|M|n} |\psi_n|^2 + \sum_{m \ne n} \braket{n|M|m} \E^{\I(E_n-E_m)t} \psi_n^* \psi_m\,.$$</div>
 <p>
@@ -353,11 +354,35 @@ $$</div>
 (we used the normalization condition, <span class="math">\(\sum_n |\psi_n|^2= 1\)</span>) for some <em>typical</em> <span class="math">\(n_E\)</span> <em>near</em> the energy <span class="math">\(E\)</span>; and that (ii) the second term vanishes in the thermodynamic&nbsp;limit. </p>
 <p>The first condition means that the diagonal elements of the observable <span class="math">\(M\)</span> in the energy basis, are a smooth function of the energy, thus can be extracted from the sum which contains terms around <span class="math">\(E\)</span>, inside the relevant energy shell of width <span class="math">\(\Delta\)</span>. This is essentially the contents of the &#8220;eigenvector thermal&nbsp;hypothesis&#8221;:
 </p>
-<div class="math">$$\braket{n_E|M|n_E} \approx \braket{M}_E\,,$$</div>
+<div class="math">$$
+\braket{n_E|M|n_E} \approx \braket{M}_E,
+$$</div>
 <p>
 for a closed quantum&nbsp;system.</p>
 <p>The second condition supposes first that there is no significant degeneracy of the energy spectrum. In addition, it is a condition on the amplitudes of fluctuations around the dominant term (<span class="math">\(\ref{nn}\)</span>).</p>
 <p>Both conditions can be demonstrated to be a consequence of the statistical properties associated to the energy spectrum of a chaotic <span class="math">\(H\)</span>, which should be <em>equivalent</em> to the statistical properties of a <strong>random matrix</strong> hamiltonian. Now, as a special case, this should also be true in the semiclassical limit regime of classically chaotic dynamical systems. As a matter of fact, the eigenvectors of a random matrix are gaussianly distributed, one can therefore use the laws of large numbers and the central limit theorem to show that the mean of an operator is dominated by the diagonal terms (condition i) and that the fluctuations around the mean rapidly decrease (condition ii) with the dimension of the matrix (the number of degrees of&nbsp;freedom).</p>
+<h3>Experimental verification of the eigenstate thermalization&nbsp;hypothesis</h3>
+<p>Kaufman et al. (2016)[<a href="#refs"><span class="caps">KL</span></a>] experimentally tested the thermalization of the local observables of an isolated quantum system. They prepared a Bose-Einstein condensate of rubidium atoms in the form of a two-dimensional lattice. Initially the atoms were in a product pure state (without entanglement). After a well controlled quench leading the system towards a high energy state, the interactions between the bosons dynamically generate entanglement. The abstract of their paper&nbsp;reads:</p>
+<blockquote>
+<p>Statistical mechanics relies on the maximization of entropy in a system at thermal equilibrium. However, an isolated quantum many-body system initialized in a pure state remains pure during Schrödinger evolution, and in this sense it has static, zero entropy. We experimentally studied the emergence of statistical mechanics in a quantum state and observed the fundamental role of quantum entanglement in facilitating this emergence. Microscopy of an evolving quantum system indicates that the full quantum state remains pure, whereas thermalization occurs on a local scale. We directly measured entanglement entropy, which assumes the role of the thermal entropy in thermalization. The entanglement creates local entropy that validates the use of statistical physics for local observables. Our measurements are consistent with the eigenstate thermalization&nbsp;hypothesis.</p>
+</blockquote>
+<p>In particular, they compared the thermodynamical (in the canononical ensemble) and the measured value of the so-called &#8220;purity&#8221; of the&nbsp;system
+</p>
+<div class="math">$$
+S_2(V_A) = -\ln\Tr{\rho_A^2},
+$$</div>
+<p>
+related to the Rény entropy with <span class="math">\(n = 2\)</span>:
+</p>
+<div class="math">$$
+S_n = \frac{1}{1-n}\ln \Tr \big(\rho^n\big),
+$$</div>
+<p>
+(it coincides with the von Neumann entropy for <span class="math">\(n = 1\)</span>) where <span class="math">\(\rho_A\)</span> and <span class="math">\(V_A\)</span> are the state and the volume of subsystem <span class="math">\(A\)</span>. This quantity is largely insensitive to the system size when it is in its ground state, and is proportional to the volume in the thermodynamic case. They found that the experiment reproduces these predictions, demonstrating in addition the relation between entanglement and thermodynamic entropy (figure&nbsp;below).</p>
+<blockquote>
+<p><img src="/images/PS-Kaufman_SA.jpeg" alt="purity" style="height: 250px;"/></p>
+<p>Experimental measurements of the second Rény entropy <span class="math">\(S_2\)</span> as a function of the subsystem volume <span class="math">\(V_A\)</span>. The black staight line is the thermodynamic canonical (Rény) entropy as predicted by statistical physics theory at a temperature corresponding to the mean value of the system&#8217;s energy (after the quench). The red line corresponds to the quenched state <span class="math">\(\rho_A\)</span>, and the blue line to the ground state. The initial growth of the entropy in the case of the high energy state (red), match the thermodynamic prediction (black); the subsequent bending results from the finite size (here 6 particles) of the subsystem A. The global state of the system is pure, as confirmed by the vanishing of the entanglement at <span class="math">\(V_A = 6\)</span>. One observes that the ground state entropy is only slightly dependent on the volume, result also consitent with the theoretical predictions. [<a href="https://doi.org/10.1126/science.aaf6725">Kaufman et al. (2016)</a>]</p>
+</blockquote>
 <h2>Notes <a name="notes"></a></h2>
 <h3>References <a name="refs"></a></h3>
 <p>[<span class="caps">DA</span>] D&#8217;Alessio, Kafri, Polkovnikov and Rigol, &#8220;From quantum chaos and eigenstate thermalization to statistical mechanics and thermodynamics&#8221;, Advances in Physics, <strong>65</strong>, 239 (2016) (<a href="/pdfs/dalessio.pdf">.pdf</a>)</p>
@@ -367,6 +392,7 @@ for a closed quantum&nbsp;system.</p>
 <p>[P] Peres, &#8220;Quantum Theory: Concepts and Methods&#8221; (Kluwer,&nbsp;2002)</p>
 <p>[<span class="caps">SW</span>] Schumacher and Westmoreland, &#8220;Quantum Processes, Systems and Information&#8221; (Cambridge,&nbsp;2010)</p>
 <p>[S] Stöckmann, &#8220;Quantum chaos&#8221; (Cambridge,&nbsp;1999)</p>
+<p>[<span class="caps">KL</span>] Kaufman, <span class="caps">AM</span>, <span class="caps">ME</span> Tai, A Lukin, M Rispoli, R Schittko, <span class="caps">PM</span> Preiss, and M Greiner, <em>Quantum Thermalization through Entanglement in an Isolated Many-Body System</em>, <a href="https://doi.org/10.1126/science.aaf6725">Science <strong>353</strong>, 794–800 (2016)</a>(<a href="/pdfs/Kaufman-2016x.pdf">.pdf</a>)</p>
 <h3>Bibliography</h3>
 <ul>
 <li><a href="https://archive.org/details/ost-physics-landaulifshitz-statisticalphysics">Landau, D. and Lifshitz</a>, E., Statistical Physics (Pergamon Oxford, 1980). The classical text on statistical&nbsp;physics.</li>
