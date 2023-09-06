@@ -211,21 +211,33 @@ $$</div>
 <p>
 This is the von Neumann entropy, he introduced to show that the measurement of an observable is an irreversible process and that this irreversibility produces an increase of <span class="math">\(S\)</span>. More significantly we may say that this formula shows that <em>entropy is a property of the quantum state</em>. In the statistical mechanics framework, one may think that formula (<span class="math">\(\ref{vnS}\)</span>) applies to a subsystem, and then that the trace is a partial trace (over the complement of the set of the subsystem&#8217;s degrees of freedom); in such a case <span class="math">\(S\)</span> becomes a measure of the given subsystem <em>entanglement</em> with the rest of the system. In a quantum system interference and interactions contribute to the generation of entanglement, and then to the increase of the entropy (in fact, the entanglement entropy but, for short, we will use &#8220;entropy&#8221;, and we will add &#8220;of the whole system&#8221; when necessary). Therefore, the von Neumann entropy provides a bridge between quantum mechanics, and the probabilistic nature of the quantum state, and statistical mechanics, and the probability distribution of subsystems states as a function of the thermodynamic&nbsp;variables.</p>
 <h2>Formalism</h2>
+<table>
+<tr> 
+<td> <img src="/images/PS-intro_En.svg" alt="energy levels" style="height: 250px;"/> </td>
+<td> The distribution of energy levels \(E_n\), of an isolated quantum macroscopic system forms a quasi-continuum, their number being the dimension of the system&#8217;s hilbert space, then exponential in the number of particles \(N\). As a consequence, for a given value of the macroscopic energy \(E\), the number of level in a band $\Delta$ around \(E\), even if \(\Delta\) vanishes in the thermodynamic limit \(N \rightarrow \infty\), contains a macroscopic number of levels, leading to a large number $\Omega$ of microscopic configurations compatible with \(E\). The microcanonical ensemble is based on the assumption that each of such configurations, with energies around the macroscopic energy, possesses the same probability.</td>
+</tr>
+</table>
+
 <p>Like Kadanoff, we give an <em>operational</em> definition of statistical mechanics [<a href="#refs">K</a>].</p>
-<p>For an isolated system in <em>equilibrium</em> with fixed energy <span class="math">\(E_n\)</span>, the appropriated statistical operator is the <em>microcanonical</em>&nbsp;one:
-</p>
+<blockquote>
+<p>For an isolated system in <em>equilibrium</em> with fixed energy <span class="math">\(E_n\)</span>, the appropriated statistical operator is the <em>microcanonical</em>&nbsp;one:</p>
+<p>
 <div class="math">$$
 \begin{equation}
     \rho(E_n)=\frac{P_\Delta(E)}{\Omega(E)},
     \label{micro}
 \end{equation}
 $$</div>
-<p>
-for which the energy <span class="math">\(E_n\)</span> is within a band of width <span class="math">\(\Delta\)</span>:
 </p>
-<div class="math">$$E_n \in I_\Delta(E) = (E, E+\Delta)$$</div>
+<p>for which the energy <span class="math">\(E_n\)</span> is within a band of width <span class="math">\(\Delta\)</span>:</p>
 <p>
-with <span class="math">\(\Delta\)</span> vanishing in the thermodynamic limit (when the size of the system tends to infinity), and  where <span class="math">\(\Omega(E)\)</span> is the number of energy states and <span class="math">\(P_\Delta\)</span> is the projector into the energy subset <span class="math">\(I_\Delta(E)\)</span>. Using the energy basis corresponding to the system&#8217;s hamiltonian <span class="math">\(H\)</span>,
+<div class="math">$$
+E_n \in I_\Delta(E) = (E, E+\Delta)
+$$</div>
+</p>
+<p>with <span class="math">\(\Delta\)</span> vanishing in the thermodynamic limit (when the size of the system tends to infinity), and  where <span class="math">\(\Omega(E)\)</span> is the number of energy states and <span class="math">\(P_\Delta\)</span> is the projector into the energy subset <span class="math">\(I_\Delta(E)\)</span>. </p>
+</blockquote>
+<p>Using the energy basis corresponding to the system&#8217;s hamiltonian <span class="math">\(H\)</span>,
 </p>
 <div class="math">$$
 \begin{equation}
@@ -419,27 +431,35 @@ $$</div>
 <li id="fn:4">
 <p><strong>Mixed states</strong>. We can interpret <span class="math">\(\rho_1\)</span>, the density matrix of a subsystem of a larger pure state system, as the density matrix of a mixed system, without reference to a larger hilbert space. Given a density matrix it is always possible to &#8220;purify&#8221; it, that is to find a <span class="math">\(\ket{\psi}\)</span> from which it is a partial trace. The general form of a density matrix of a mixed system can be written in the form of a convex sum of pure&nbsp;states, </p>
 <p>
-<div class="math">$$\rho = \sum_n p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha}, \quad \sum_\alpha p_\alpha = 1$$</div>
+<div class="math">$$
+\rho = \sum_n p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha}, \quad \sum_\alpha p_\alpha = 1
+$$</div>
 </p>
 <p>where <span class="math">\(\ket{\psi_\alpha}\)</span> are the possible states of the subsystems, each one with probability <span class="math">\(p_\alpha\)</span>. One may say that <span class="math">\(p_\alpha\)</span> are determined by the experimental protocole of the quantum state preparation.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
 <p><strong>Decomposition</strong> of <span class="math">\(\rho\)</span>. The density matrix, as the quantum state, has an intrinsic probabilistic nature (as expressed by the Born rule). Actually, different quantum states, may correspond to the same density operator, that is leading to the same expected value of the observables. Take for instance, two such operators <span class="math">\(\rho_1\)</span> and <span class="math">\(\rho_2\)</span>,&nbsp;then,</p>
 <p>
-<div class="math">$$\rho = a \rho_1 + (1-a) \rho_2, \quad 0 \le a \le 1,$$</div>
+<div class="math">$$
+\rho = a \rho_1 + (1-a) \rho_2, \quad 0 \le a \le 1,
+$$</div>
 </p>
 <p>is also a density operator&nbsp;satisfying</p>
 <p>
-<div class="math">$$\braket{M} = a \mathrm{Tr}\, \rho_1 M + (1-a) \mathrm{Tr}\, \rho_2 M = \mathrm{Tr}\, \rho M $$</div>
+<div class="math">$$
+\braket{M} = a \mathrm{Tr}\, \rho_1 M + (1-a) \mathrm{Tr}\, \rho_2 M = \mathrm{Tr}\, \rho M
+$$</div>
 </p>
 <p>where <span class="math">\(a\)</span> can be interpreted as the probability of preparing a system in the state <span class="math">\(\rho_1\)</span> and <span class="math">\(1-a\)</span> in the state <span class="math">\(\rho_2\)</span>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
 <p><strong>Entropy</strong>. It is worth noting that, at variance to other physical quantities, entropy does not possess a corresponding mechanical quantity. For instance temperature can be loosely interpreted (for example, in gas) as a mean kinetic energy, pressure as a mean force per unit area driven by collisions, or energy as the sum of particle energies; it is a pure <em>statistical</em> concept. Indeed, using the above decomposition in terms of the probabilities <span class="math">\(p_\alpha\)</span>, we&nbsp;find,</p>
 <p>
-<div class="math">$$S = - \mathrm{Tr}\, \rho \ln \rho = \braket{\ln \rho} = \sum_n\braket{\ln p_n},$$</div>
+<div class="math">$$
+S = - \mathrm{Tr}\, \rho \ln \rho = \braket{\ln \rho} = \sum_n\braket{\ln p_n},
+$$</div>
 </p>
-<p>which depends on <span class="math">\(p_n\)</span>, and it is not a mean of a mechanical quantity appearing in the system hamiltonian.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>which depends on <span class="math">\(p_n\)</span> (a probability distribution), and it is not the average of a mechanical quantity appearing in the system hamiltonian.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
