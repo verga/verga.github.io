@@ -55,6 +55,34 @@
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
+<h2>Selected&nbsp;problems</h2>
+<h3>1</h3>
+<p>Microcanonical ensemble: the harmonic oscillator. Compute the volume of phase space inside the surface of constant energy <span class="math">\(H &lt; E\)</span> (<span class="math">\(H\)</span> is the hamiltonian of a system of <span class="math">\(N\)</span> oscillators). Deduce the entropy. Show that the result do not depend on the value <span class="math">\(\Delta\)</span> of the energy shell&nbsp;thickness. </p>
+<p>Solve the same problem for a set of <span class="math">\(N\)</span> quantum harmonic oscillators, taking into account that bosons are&nbsp;indistinguishable.</p>
+<p>Compare the expression of the energy as a function of the temperature in both, classical and quantum,&nbsp;cases.</p>
+<h3>2</h3>
+<p>Canonical and grand canonical ensembles: classical disordered system. Calculate the canonical partition function of a system whose hamiltonian energy&nbsp;is
+</p>
+<div class="math">$$
+H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x V(\bm r_n - R_x)
+$$</div>
+<p>
+where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
+<p>Assume that the potential energy of an impurity is the one of rigid sphere of radius <span class="math">\(a\)</span>, and that their distribution is uniform in the system&#8217;s volume <span class="math">\(V\)</span> (of density <span class="math">\(n_i = N_i/V\)</span> small enough to avoid overlaps). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
+</p>
+<div class="math">$$
+\braket{Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \D \bm R (\E^{-V(\bm R)} - 1)
+$$</div>
+<p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
+<h3>3</h3>
+<p>Random matrices. Find the Wigner&nbsp;surmise
+</p>
+<div class="math">$$
+p(s) = \frac{\pi s}{2} \E^{-s^2/4}
+$$</div>
+<p>
+for the level spacing distribution of orthogonal random matrices, using the case of a <span class="math">\(2 \times 2\)</span>&nbsp;matrix.</p>
+<p>Investigate the properties of the spectrum&nbsp;numerically.</p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
