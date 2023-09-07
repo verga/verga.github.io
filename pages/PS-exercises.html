@@ -75,14 +75,27 @@ where <span class="math">\(n\)</span> labels the particle (<span class="math">\(
 $$</div>
 <p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
 <h3>3</h3>
-<p>Random matrices. Find the Wigner&nbsp;surmise
+<p><a href="/pages/rm.html">Random matrices</a>. Find the Wigner&nbsp;surmise
 </p>
 <div class="math">$$
 p(s) = \frac{\pi s}{2} \E^{-s^2/4}
 $$</div>
 <p>
 for the level spacing distribution of orthogonal random matrices, using the case of a <span class="math">\(2 \times 2\)</span>&nbsp;matrix.</p>
+<blockquote>
+<p><img src="/images/goe.png" alt="GOE" style="height: 200px;"/> </p>
+<p>Wigner surmise (red line) and histogram of a <em>single</em> large&nbsp;matrix.</p>
+</blockquote>
 <p>Investigate the properties of the spectrum&nbsp;numerically.</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Compute the level spacings of a matrix in the GOE&quot;&quot;&quot;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span> <span class="c1"># matrix size</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># real symmetric</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="c1"># eigenvalues</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="c1"># level spacings</span>
+</code></pre></div>
+
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
