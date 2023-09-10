@@ -140,13 +140,17 @@ We also introduce a unitary operator <span class="math">\(Z\)</span>
 <p>
 with eigenvalues <span class="math">\(\pm1\)</span> (it is both unitary and hermitian, then it also is an observable). Instead of applying a projector, as for example <span class="math">\(\ket{0}\bra{0}\ket{\psi}\)</span> to obtain, with probability <span class="math">\(p(1)=|a|^2\)</span>, the eigenvalue 1 state <span class="math">\(\ket{0}\)</span>, we will use a controlled version of the <span class="math">\(Z\)</span>&nbsp;operator:
 </p>
-<div class="math">$$U_M = \mathrm{ctrl}Z: \begin{cases}\ket{00}  \rightarrow &amp; \ket{00}\\ 
+<div class="math">$$
+U_M = \mathrm{ctrl}Z = \mathsf{CZ} = \begin{cases}\ket{00}  \rightarrow &amp; \ket{00}\\ 
 \ket{01} \rightarrow &amp; \ket{01}\\ \ket{10} \rightarrow &amp; \ket{10}\\ \ket{11} \rightarrow &amp; -\ket{11} 
-\end{cases} \,.$$</div>
+\end{cases} \,.
+$$</div>
 <p>
 The first step (<span class="math">\(s_1\)</span>), in the measurement protocol, is to apply the operator <span class="math">\(H\)</span> defined&nbsp;by
 </p>
-<div class="math">$$H: \begin{cases} \ket{0} \rightarrow \frac{\ket{0} + \ket{1}}{\sqrt{2}} \\  \ket{1} \rightarrow \frac{\ket{0} - \ket{1}}{\sqrt{2}}  \end{cases}\,,$$</div>
+<div class="math">$$
+H: \begin{cases} \ket{0} \rightarrow \frac{\ket{0} + \ket{1}}{\sqrt{2}} \\  \ket{1} \rightarrow \frac{\ket{0} - \ket{1}}{\sqrt{2}}  \end{cases}\,,
+$$</div>
 <p> 
 which transform a vector of the twodimensional ancilla basis into a superposition, to the ancilla state <span class="math">\(\ket{0}\)</span>:
 </p>
@@ -158,11 +162,21 @@ In the second step <span class="math">\(s_2\)</span>, we apply <span class="math
 <p>
 and then third, <span class="math">\(s_3\)</span>, we apply <span class="math">\(1\otimes H\)</span>&nbsp;again:
 </p>
-<div class="math">$$\ket{s_2} \rightarrow \ket{s_3} = 1\otimes H \ket{\psi}\otimes\ket{0}.$$</div>
+<div class="math">$$\ket{s_2} \rightarrow \ket{s_3} = 1\otimes H \ket{s_2}\otimes\ket{0}.$$</div>
 <p>
 We finally get <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">$$\ket{s_3} = \ket{\mathrm{out}} = (a \ket{0}) \otimes \ket{0} + (b \ket{1}) \otimes \ket{1} \,. $$</div>
+<div class="math">$$
+\ket{s_3} = \ket{\mathrm{out}} = (a \ket{0}) \otimes \ket{0} + (b \ket{1}) \otimes \ket{1} = \mathsf{CNOT} \ket{\psi} \otimes \ket{0} \,
+$$</div>
+<p>
+where 
+</p>
+<div class="math">$$
+\mathsf{CNOT} = \mathrm{ctrl}X = \begin{cases}\ket{00}  \rightarrow &amp; \ket{00}\\ 
+\ket{01} \rightarrow &amp; \ket{01}\\ \ket{10} \rightarrow &amp; \ket{11}\\ \ket{11} \rightarrow &amp; \ket{10} 
+\end{cases} .
+$$</div>
 <p>
 Therefore, a projective measurement of the ancilla gives us a post-measurement output state <span class="math">\(\ket{0}\)</span> with probability <span class="math">\(|a|^2\)</span>, or <span class="math">\(\ket{1}\)</span> with probability <span class="math">\(|b|^2\)</span>. As we will study later, the output state is an <em>entangled</em> state; its entanglement allows the measurement protocole using a unitary&nbsp;operator.</p>
 <p>In summary, for a pure or mixed system in state <span class="math">\(\rho\)</span>, a quantum measurement is realized with the aid of a Kraus operator <span class="math">\(M_n\)</span>, which measures property <span class="math">\(n\)</span> with&nbsp;probability,
