@@ -162,7 +162,7 @@ In the second step <span class="math">\(s_2\)</span>, we apply <span class="math
 <p>
 and then third, <span class="math">\(s_3\)</span>, we apply <span class="math">\(1\otimes H\)</span>&nbsp;again:
 </p>
-<div class="math">$$\ket{s_2} \rightarrow \ket{s_3} = 1\otimes H \ket{s_2}\otimes\ket{0}.$$</div>
+<div class="math">$$\ket{s_2} \rightarrow \ket{s_3} = 1\otimes H \ket{s_2}.$$</div>
 <p>
 We finally get <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
@@ -170,7 +170,7 @@ We finally get <strong style="color:DarkSlateBlue; background-color:LightGray;">
 \ket{s_3} = \ket{\mathrm{out}} = (a \ket{0}) \otimes \ket{0} + (b \ket{1}) \otimes \ket{1} = \mathsf{CNOT} \ket{\psi} \otimes \ket{0} \,
 $$</div>
 <p>
-where 
+where the <span class="math">\(\mathsf{CNOT}\)</span> gate &#8220;flips&#8221; the second qubit if the first is in the 0&nbsp;state,
 </p>
 <div class="math">$$
 \mathsf{CNOT} = \mathrm{ctrl}X = \begin{cases}\ket{00}  \rightarrow &amp; \ket{00}\\ 
@@ -178,7 +178,8 @@ where
 \end{cases} .
 $$</div>
 <p>
-Therefore, a projective measurement of the ancilla gives us a post-measurement output state <span class="math">\(\ket{0}\)</span> with probability <span class="math">\(|a|^2\)</span>, or <span class="math">\(\ket{1}\)</span> with probability <span class="math">\(|b|^2\)</span>. As we will study later, the output state is an <em>entangled</em> state; its entanglement allows the measurement protocole using a unitary&nbsp;operator.</p>
+We note that different sets of basic gates can implement the same &#8220;algorithm&#8221; <span class="math">\(U\)</span> (<span class="math">\(\ket{\mathrm{out}} = U \ket{\mathrm{in}}\)</span>), using however, different number of steps&nbsp;(complexity).</p>
+<p>Therefore, a projective measurement of the ancilla gives us a post-measurement output state <span class="math">\(\ket{0}\)</span> with probability <span class="math">\(|a|^2\)</span>, or <span class="math">\(\ket{1}\)</span> with probability <span class="math">\(|b|^2\)</span>. As we will study later, the output state is an <em>entangled</em> state; its entanglement allows the measurement protocole using a unitary&nbsp;operator.</p>
 <p>In summary, for a pure or mixed system in state <span class="math">\(\rho\)</span>, a quantum measurement is realized with the aid of a Kraus operator <span class="math">\(M_n\)</span>, which measures property <span class="math">\(n\)</span> with&nbsp;probability,
 </p>
 <div class="math">$$p_n = \Tr M_n \rho M_n^\dagger = \Tr E_n \rho\,.$$</div>
