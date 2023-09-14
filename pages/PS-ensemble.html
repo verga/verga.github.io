@@ -495,7 +495,9 @@ similar to the energy of a harmonic oscillator, where <span class="math">\(\omeg
 where <span class="math">\(l=0,1,\ldots\)</span> is the orbital quantum number; each level is <span class="math">\(2l+1\)</span> times&nbsp;degenerate.</p>
 <p>In the canonical ensemble, the part of the partition function associated with the vibration and rotation degrees of freedom of <span class="math">\(N\)</span> <em>independent</em> molecules, is given by the product of one particle partition functions,&nbsp;then
 </p>
-<div class="math">$$Z = Z_I Z_1^N \,,\quad Z_1 = \sum_s g_s \E^{-\epsilon_s/T}\,,$$</div>
+<div class="math">$$
+Z = Z_I Z_r^N Z_v^N\,,\quad Z_r = \sum_l (2l+1) \E^{-\epsilon_l/T},\; Z_v = \sum_n \E^{-\epsilon_n/T}
+$$</div>
 <p>
 gives the total partition function whith <span class="math">\(Z_I\)</span> and <span class="math">\(Z_1\)</span> the ideal gas (which takes into account the kinetic energy) and the one particle vibration and rotation contributions, respectively, and where the corresponding energy levels <span class="math">\(\epsilon_s\)</span> are counted with their degeneracy <span class="math">\(g_s\)</span>. </p>
 <p>Typical kinetic, rotation and vibration energies of the diatomic gas&nbsp;are,
@@ -528,9 +530,11 @@ respectively. In the high temperature limit <span class="math">\(\Theta_v \ll 1\
 <p>
 where we defined the nondimensional parameter <span class="math">\(\Theta_r\)</span> that separates the quantum low temperature regime <span class="math">\(\Theta_r \gg 1\)</span> to the classical one, <span class="math">\(\Theta_r \ll 1\)</span>. At low temperatures the exponential factors decrease rapidly, therefore, we can approximate the partition function by the first few&nbsp;terms,
 </p>
-<div class="math">$$Z_r \approx 1 + 3 \E^{-2\Theta_r} + 5 \E^{-6\Theta_r}\,,\quad \Theta_r \gg 1\,.$$</div>
+<div class="math">$$
+Z_r \approx 1 + 3 \E^{-2\Theta_r} + 5 \E^{-6\Theta_r}\,,\quad \Theta_r \gg 1\,.
+$$</div>
 <p>
-At high temperatures, terms with angular momentum up to <span class="math">\(l^2 \sim 1/\Theta_r\)</span> will contribute to the sum; hence, we can use the approximation of the sum by an integral (<a href="https://en.wikipedia.org/wiki/Euler–Maclaurin_formula">Euler-MacLaurin</a>):
+At high temperatures, terms with angular momentum up to <span class="math">\(l^2 \sim 1/\Theta_r\)</span> will contribute to the sum; hence, we can use the approximation of the sum by an integral (<a href="https://en.wikipedia.org/wiki/Euler–Maclaurin_formula">Euler-MacLaurin</a>):<sup id="fnref:EML"><a class="footnote-ref" href="#fn:EML">1</a></sup>
 </p>
 <div class="math">$$Z_r \approx \frac{1}{\Theta_r} + \frac{1}{3} + \frac{\Theta_r}{15}\,,\quad \Theta_r \ll 1\,.$$</div>
 <p>
@@ -675,6 +679,18 @@ and the heat&nbsp;capacity,
 </blockquote>
 <p>We note that the classical prediction <span class="math">\(c_V = 7/2\)</span> is reached at very high temperatures, when the rotational and vibrational degrees of freedom are excited. For example the O<span class="math">\(_2\)</span> molecule has a rotation temperature of about <span class="math">\(2\,\)</span>K, and a vibration temperature of <span class="math">\(2200\,\)</span>K; therefore, at normal temperature the measured heat capacity is <span class="math">\(5/2\)</span>.</p>
 <p>We used the Boltzmann distribution to compute the partition function and the corresponding thermodynamics; it cannot account to the behavior of the system at very low temperatures. For instance, the heat capacity must vanish at <span class="math">\(T=0\)</span>. To obtain the correct low temperature behavior one needs quantum statistics (for bosons or fermions). We also neglected the possibility of phase transitions: at low temperatures liquid and solid states naturally&nbsp;appear.</p>
+<h2>Notes</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:EML">
+<p>Euler-McLaurin formula
+<div class="math">$$
+\sum_{n=0}^\infty f(x) = \int_0^\infty \D x f(n) + \frac{f(0)}{2} - \frac{f'(0)}{12} + \frac{f'''(0)}{720} + \cdots
+$$</div>&#160;<a class="footnote-backref" href="#fnref:EML" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

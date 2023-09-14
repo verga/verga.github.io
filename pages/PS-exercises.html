@@ -71,7 +71,7 @@ where <span class="math">\(n\)</span> labels the particle (<span class="math">\(
 <p>Assume that the potential energy of an impurity is the one of rigid sphere of radius <span class="math">\(a\)</span>, and that their distribution is uniform in the system&#8217;s volume <span class="math">\(V\)</span> (of density <span class="math">\(n_i = N_i/V\)</span> small enough to avoid overlaps). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
 </p>
 <div class="math">$$
-\braket{Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \D \bm R (\E^{-V(\bm R)} - 1)
+\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \D \bm R (\E^{-V(\bm R)} - 1)
 $$</div>
 <p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
 <h3>3</h3>
@@ -88,7 +88,7 @@ for the level spacing distribution of orthogonal random matrices, using the case
 </blockquote>
 <p>Investigate the properties of the spectrum&nbsp;numerically.</p>
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Compute the level spacings of a matrix in the GOE&quot;&quot;&quot;</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span> <span class="c1"># matrix size</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># matrix size</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
 <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># real symmetric</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="c1"># eigenvalues</span>
