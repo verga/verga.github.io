@@ -96,6 +96,27 @@ for the level spacing distribution of orthogonal random matrices, using the case
 <span class="n">s</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="c1"># level spacings</span>
 </code></pre></div>
 
+<h3>4</h3>
+<p>Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
+</p>
+<div class="math">$$
+\braket{\bm x_2 \bm x_2 | \rho(H) | \bm x_1 \bm x_2}
+$$</div>
+<p> 
+using the canonical quantum&nbsp;ensemble
+</p>
+<div class="math">$$
+\rho(H) = \frac{\E^{-H/T}}{Z_2(T,V)}, \quad H = \frac{\bm p_1^2 + \bm p_2^2}{2m}
+$$</div>
+<p>
+density matrix; <span class="math">\(H\)</span> is the hamiltonian of the two identical&nbsp;particles.</p>
+<p>Show that it is given by the&nbsp;formula
+</p>
+<div class="math">$$
+\braket{\bm x_2 \bm x_2 | \rho(H) | \bm x_1 \bm x_2} = \frac{1}{2\lambda^6} \big(1 \pm \E^{-2\pi |\bm x_1 - \bm x_2|/\lambda^2}\big)
+$$</div>
+<p>
+where <span class="math">\(\lambda\)</span> is the thermal length at temperature <span class="math">\(T\)</span>. Deduce the expression of the two particles partition function <span class="math">\(Z_2(T,V)\)</span>, and compare the result with the classical&nbsp;one.</p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
