@@ -68,10 +68,10 @@ H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x V(\bm r_n - R_x)
 $$</div>
 <p>
 where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
-<p>Assume that the potential energy of an impurity is the one of rigid sphere of radius <span class="math">\(a\)</span>, and that their distribution is uniform in the system&#8217;s volume <span class="math">\(V\)</span> (of density <span class="math">\(n_i = N_i/V\)</span> small enough to avoid overlaps). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
+<p>Assume that the potential energy of an impurity is the one of rigid sphere of radius <span class="math">\(a\)</span> with a short range attractive region <span class="math">\(-V_0\)</span> (for <span class="math">\(a&lt;r&lt;b\)</span>), and that their distribution is uniform in the system&#8217;s volume <span class="math">\(V\)</span> (of density <span class="math">\(n_i = N_i/V\)</span> small enough to avoid overlaps). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
 </p>
 <div class="math">$$
-\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \D \bm R (\E^{-V(\bm R)} - 1)
+\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \D \bm R (\E^{-V(\bm R)/T} - 1)
 $$</div>
 <p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
 <h3>3</h3>
