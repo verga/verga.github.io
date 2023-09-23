@@ -88,16 +88,19 @@ for the level spacing distribution of orthogonal random matrices, using the case
 </blockquote>
 <p>Investigate the properties of the spectrum&nbsp;numerically.</p>
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Compute the level spacings of a matrix in the GOE&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvalsh</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">523</span><span class="p">)</span> <span class="c1"># seed</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># matrix size</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
 <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># real symmetric</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="c1"># eigenvalues</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="c1"># level spacings</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="c1"># level spacings</span>
 </code></pre></div>
 
 <h3>4</h3>
-<p>Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
+<p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
 </p>
 <div class="math">$$
 \braket{\bm x_2 \bm x_2 | \rho(H) | \bm x_1 \bm x_2}
@@ -117,6 +120,15 @@ density matrix; <span class="math">\(H\)</span> is the hamiltonian of the two id
 $$</div>
 <p>
 where <span class="math">\(\lambda\)</span> is the thermal length at temperature <span class="math">\(T\)</span>. Deduce the expression of the two particles partition function <span class="math">\(Z_2(T,V)\)</span>, and compare the result with the classical&nbsp;one.</p>
+<h3>5</h3>
+<p>Bose-Einsein condensate. Demonstrate that <span class="math">\(N\)</span> free bosons in two dimension do not form a condensate; show in particular that the critical temperature <span class="math">\(T_c\)</span> (signaling the quantum dominated regime) vanishes like <span class="math">\(T_c \rightarrow 1/\ln N\)</span> in the thermodynamic&nbsp;limit.</p>
+<p>In contrast to the free case, demonstrate that in a harmonic trap, a two-dimensional gas of bosons condensate. Show that in this case the critical temperature&nbsp;is
+</p>
+<div class="math">$$
+T_c = \frac{\sqrt{6}\hbar \omega}{\pi} N^{1/2},
+$$</div>
+<p>
+where <span class="math">\(\omega\)</span> the harmonic oscillator&nbsp;frequency. </p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
