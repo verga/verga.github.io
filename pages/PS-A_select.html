@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Selected Problems | Random physics
+</title>
+    <link rel="canonical" href="/pages/PS-A_select.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Solutions to selected problems">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
+</blockquote>
+<h2>Selected problems:&nbsp;solutions</h2>
+<h3>4 Identical&nbsp;particles</h3>
+<p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
+</p>
+<div class="math">$$
+\begin{equation}
+\label{rh}
+\braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2}
+\end{equation}
+$$</div>
+<p> 
+using the canonical quantum&nbsp;ensemble
+</p>
+<div class="math">$$
+\begin{equation}
+\label{h}
+\rho(H) = \frac{\E^{-H/T}}{Z_2(T,V)}, \quad H = \frac{\bm p_1^2 + \bm p_2^2}{2m}
+\end{equation}
+$$</div>
+<p>
+density matrix; <span class="math">\(H\)</span> is the hamiltonian of the two identical&nbsp;particles.</p>
+<p>Show that it is given by the&nbsp;formula
+</p>
+<div class="math">$$
+\begin{equation}
+\label{xrx}
+\braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2} = \frac{1}{2\lambda^6 Z_2} \big(1 \pm \E^{-2\pi |\bm x_1 - \bm x_2|^2/\lambda^2}\big)
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(\lambda\)</span> is the thermal length at temperature <span class="math">\(T\)</span>. Deduce the expression of the two particles partition function <span class="math">\(Z_2(T,V)\)</span>, and compare the result with the classical&nbsp;one.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The quantum state of the two particles is best described in the momentum representation <span class="math">\(\ket{\bm k}\)</span>,
+</p>
+<div class="math">$$\bm p \ket{k} = \bm k \ket{k} \quad (\hbar = 1)$$</div>
+<p>
+in which the momentum operator <span class="math">\(\bm p\)</span> is diagonal. For bosons we&nbsp;have
+</p>
+<div class="math">$$\ket{k_1k_2}_B = \frac{\ket{k_1k_2} + \ket{k_2k_1}}{\sqrt{2}} = \ket{k_1k_2}_+$$</div>
+<p>
+and
+</p>
+<div class="math">$$\ket{k_1k_2}_F = \frac{\ket{k_1k_2} - \ket{k_2k_1}}{\sqrt{2}} = \ket{k_1k_2}_-$$</div>
+<p>
+for&nbsp;fermions.</p>
+<p>In this representation the two particles hamiltonian is&nbsp;diagonal:
+</p>
+<div class="math">$$
+\begin{equation}
+\label{hkk}
+H = \left( \frac{k_1^2}{2} + \frac{k_2^2}{2} \right) \ket{k_1k_2}\bra{k_1k_2}_\pm \quad (m = 1),
+\end{equation}
+$$</div>
+<p>
+and is symmetric in <span class="math">\((k_1, k_2)\)</span>. Note that in the present units, the thermal length is <span class="math">\(\lambda=(2\pi/T)^{1/2}\)</span> at temperature <span class="math">\(T\)</span> (<span class="math">\(k_\mathrm{B} = 1\)</span>).</p>
+<p>Using (<span class="math">\(\ref{hkk}\)</span>) in (<span class="math">\(\ref{rh}\)</span>), and introducing the unity&nbsp;decomposition
+</p>
+<div class="math">$$
+1 = \frac{1}{2}\sum_{k_1, k_2} \ket{k_1k_2}\bra{k_1k_2}_\pm
+$$</div>
+<p>
+where the factor <span class="math">\(1/2\)</span> avoids counting twice the same basis projector (their are symmetric in the indices <span class="math">\(k_1k_2\)</span>), we&nbsp;obtain
+</p>
+<div class="math">$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2}\sum_{k_1, k_2} \braket{x_1x_2|k_1k_2}_\pm \braket{k_1k_2|x_1x_2}_\pm \exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$</div>
+<p>
+In the limit of a large volume the summations go to&nbsp;integrals:
+</p>
+<div class="math">$$
+\begin{equation}
+\label{xrxkk}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{V^2}{2} \int \frac{\D \bm k_1}{(2\pi)^3} \frac{\D \bm k_2}{(2\pi)^3} \braket{x_1x_2|k_1k_2}_\pm \braket{k_1k_2|x_1x_2}_\pm \exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$</div>
+<p>
+and the <span class="math">\(\braket{x|k}\)</span> wavefunction&nbsp;becomes:
+</p>
+<div class="math">$$
+\braket{x|k} = \frac{\E^{\I \bm k \cdot \bm x}}{\sqrt{V}}
+$$</div>
+<p>
+which, after substitution into (<span class="math">\(\ref{xrxkk}\)</span>),&nbsp;gives
+</p>
+<div class="math">$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{4} \int \frac{\D \bm k_1}{(2\pi)^3} \frac{\D \bm k_2}{(2\pi)^3} \Big( 2 \pm \E^{\I \bm k_1 \cdot (\bm x_1 - \bm x_2)} \E^{\I \bm k_2 \cdot (\bm x_2 - \bm x_1)} \pm \E^{\I \bm k_1 \cdot (\bm x_2 - \bm x_1)} \E^{\I \bm k_2 \cdot (\bm x_1 - \bm x_2)} \big)\exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$</div>
+<p>
+or, noting that the two integrals&nbsp;factorise:
+</p>
+<div class="math">$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2\lambda^6} \pm \frac{1}{2}\left[\int \frac{\D \bm k}{(2\pi)^3} \E^{\I \bm k \cdot (\bm x_1 - \bm x_2)} \E^{-\frac{k^2}{2T}} \right]^2.
+\end{equation}
+$$</div>
+<p>
+The gaussians are readily integrated to&nbsp;give
+</p>
+<div class="math">$$
+\begin{equation}
+\label{xxrxx}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2\lambda^6} \left( 1 \pm \E^{T|\bm x_1 - \bm x_2|^2} \right)
+\end{equation}
+$$</div>
+<p>
+which would coincide with the desired result (<span class="math">\(\ref{xrx}\)</span>), once the original units are&nbsp;restored.</p>
+<p>Integrating now on <span class="math">\(x_1x_2\)</span> we deduce the two particle partition function. The first term gives the ideal gas result <span class="math">\((V/\lambda)^2\)</span>, the second one contains the entropy corrections resulting form the identity of&nbsp;particles:
+</p>
+<div class="math">$$
+Z_2(T,V) = \frac{1}{2!}\left(\frac{V}{\lambda} \right)^2 \pm \frac{V}{2! 2^{3/2}\lambda^3}
+$$</div>
+<p>
+or&nbsp;equivalently
+</p>
+<div class="math">$$
+Z_2(T,V) = \frac{1}{2!}\left(\frac{V}{\lambda} \right)^2 \left(1 \pm \frac{\lambda^3}{2^{3/2} V} \right).
+$$</div>
+<blockquote>
+<p><img src="/images/PS-A_select_wr.svg" alt="entropic potential" style="height: 250px;"/></p>
+<p>Effective entropic interaction between two fermions (<span class="caps">FD</span>) and two bosons (<span class="caps">BE</span>). At short distances <span class="math">\(r\)</span> fermion repulsion is strong (it diverges in <span class="math">\(0\)</span>, red curve), while bosons attract with an maximum energy of <span class="math">\(T \ln2\)</span> (blue&nbsp;curve).</p>
+</blockquote>
+<p>A physical picture of the entropy contribution can be obtained form the observation that (<span class="math">\(\ref{xxrxx}\)</span>) defines an effective&nbsp;interaction 
+</p>
+<div class="math">$$
+w(r) = - T \ln \left( 1 \pm \E^{- Tr^2} \right), \quad r = |\bm x_1 - \bm x_2|
+$$</div>
+<p>
+(note that <span class="math">\(\rho \sim \E^{-w/T}\)</span> can be written as <span class="math">\(w \sim -T \ln \rho\)</span>). The above figure represents the two curves, for bosons (<span class="math">\(+\)</span>) and fermions (<span class="math">\(-\)</span>), as a function of the normalized distance <span class="math">\(\sqrt{T}r = \sqrt{2\pi}r/\lambda\)</span> (in units of <span class="math">\(\sqrt{m/\hbar^2}\)</span>).</p>
+<h3>6 Thermionic&nbsp;emission</h3>
+<p>Electrons in a metal at temperature <span class="math">\(T\)</span> can escape the surface energy barrier <span class="math">\(-W\)</span> if their velocity <span class="math">\(p_z/m\)</span> (perpendicular to the surface) satisfies <span class="math">\(p_z &gt; \sqrt{2 m W}\)</span> (<span class="math">\(m\)</span> is the electron mass and <span class="math">\(\bm p\)</span> its momentum). Using the Fermi-Dirac distribution <span class="math">\(n_\epsilon\)</span> show that the thermionic current&nbsp;is
+</p>
+<div class="math">$$j = \frac{emT^2}{2\pi^2 \hbar^3} \exp\left(-\frac{W - \epsilon_F}{T}\right)$$</div>
+<p>
+where <span class="math">\(\epsilon_F\)</span> is the fermi energy (<span class="math">\(k_\mathrm{B} = 1\)</span>). </p>
+<p>Use units such that <span class="math">\(e = W = m = \hbar = 1\)</span>. Assume that typical particle energies are larger than <span class="math">\(W\)</span> (otherwise emission is impossible). Compare the quantum result with the classical&nbsp;one.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>With <span class="math">\(k_\mathrm{B} = e = W = m = \hbar =1\)</span>, mass, length and time dimensions&nbsp;are:
+</p>
+<div class="math">$$
+\begin{gather}
+\mathrm{M} = m, \\
+\mathrm{L} = \sqrt{\frac{\hbar^2}{mW}}, \\
+\mathrm{T} = \frac{\hbar}{W},
+\end{gather}
+$$</div>
+<p>
+and energy and electric current density&nbsp;are:
+</p>
+<div class="math">$$
+\begin{gather}
+\mathrm{E} = W, \\
+\mathrm{j} = [env] = e \frac{mW^2}{\hbar^3}.
+\end{gather}
+$$</div>
+<p>
+Moreover, temperature as usual is measured in energy units (here <span class="math">\(W\)</span>).</p>
+<p>The electron current <span class="math">\(j\)</span> is obtained from the&nbsp;formula
+</p>
+<div class="math">$$
+\begin{equation}
+j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} \int_{-\infty}^\infty \frac{\D p_x}{2\pi} \int_{-\infty}^\infty \frac{\D p_y}{2\pi} p_z n_{\bm p}
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(n_{\bm p}\)</span> is the fermi&nbsp;distribution
+</p>
+<div class="math">$$ n_{\bm p} = \frac{1}{\E^{(\epsilon _{\bm p} - \mu)/T} + 1},\quad \epsilon_{\bm p} = \frac{p^2}{2}$$</div>
+<p>
+<span class="math">\(\bm p\)</span> is the electron momentum, and, in particular <span class="math">\(p_z/m\)</span>, its perpenducular to the surface velocity. The front factor 2 comes from the two spin states of the electron. Note that only particles with <span class="math">\(p_z &gt; (2mW)^{1/2}\)</span> contribute to the current. Our task reduces to the computation of the above&nbsp;integral.</p>
+<p>The integral over <span class="math">\(p_x, p_z\)</span> is elementary in polar&nbsp;coordinnates:
+</p>
+<div class="math">$$
+\begin{equation}
+j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} p_z \int_0^\infty \frac{\D p p}{2\pi} \frac{1}{\E^{(p_z^2/2 - \mu)/T} \E^{-p^2/2T} + 1}.
+\end{equation}
+$$</div>
+<p>
+Indeed, after changing the integration variable to <span class="math">\(x = p^2/2T\)</span> we are left to calculate an integral of the&nbsp;form
+</p>
+<div class="math">$$\int_0^\infty \frac{\D x}{a\E^x +1} = \ln(1 + 1/a).$$</div>
+<p>
+The result&nbsp;is
+</p>
+<div class="math">$$
+j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \ln\big(1 + \E^{-(p_z^2/2 -\mu)/T}\big).
+$$</div>
+<p>
+This is not elementary, but the physical relevant regime is the one in which the exponential factor is small with respect to the unity: the energies of inerest are those satisfying <span class="math">\(\epsilon_z = p_z^2/2 &gt; W\)</span>, well above the fermi energy <span class="math">\(\mu = \epsilon_F\)</span> (knowing that <span class="math">\(T &lt; \epsilon_F\)</span> in most metals at laboratory temperatures). In this case, we expand <span class="math">\(\ln(1+x) \approx x\)</span> to&nbsp;get
+</p>
+<div class="math">$$
+j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \E^{-(p_z^2/2 -\mu)/T} = \frac{T^2}{2\pi^2} \E^{-(1-\epsilon_F)/T}.
+$$</div>
+<p>
+In the original units (we multiply by <span class="math">\(\mathrm{j}\)</span>) we finally obtain the thermionic current at temperature <span class="math">\(T\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+j = \frac{emT^2}{2\pi^2\hbar^3} \E^{-(W-\epsilon_F)/T}.
+\end{equation}
+$$</div>
+<p>The corresponding classical result <span class="math">\(j_c\)</span>, can be obtained by replacing fermi chemical potential by the ideal gas&nbsp;one:
+</p>
+<div class="math">$$\E^{\mu/T} = \frac{N\lambda^3}{2V}$$</div>
+<p>
+which leads&nbsp;to
+</p>
+<div class="math">$$
+j_c = e n_0 \sqrt{\frac{T}{2\pi m}} \E^{-W/T}
+$$</div>
+<p>
+(<span class="math">\(n_0 = N/V\)</span>) a simple numerical estimation shows that this result is wrong. Another way to estimate classically this current is to us the boltzmann factor <span class="math">\(n = n_0 \exp(-W/T)\)</span> and the (one-dimensional) thermal speed <span class="math">\(v = \sqrt{T/m}\)</span>:
+</p>
+<div class="math">$$
+j_c = env \sim en_0 \sqrt{\frac{T}{m}} \E^{-W/T}
+$$</div>
+<p>
+which coincides with the previus result up to a constant numerical&nbsp;factor.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
