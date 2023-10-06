@@ -189,6 +189,149 @@ w(r) = - T \ln \left( 1 \pm \E^{- Tr^2} \right), \quad r = |\bm x_1 - \bm x_2|
 $$</div>
 <p>
 (note that <span class="math">\(\rho \sim \E^{-w/T}\)</span> can be written as <span class="math">\(w \sim -T \ln \rho\)</span>). The above figure represents the two curves, for bosons (<span class="math">\(+\)</span>) and fermions (<span class="math">\(-\)</span>), as a function of the normalized distance <span class="math">\(\sqrt{T}r = \sqrt{2\pi}r/\lambda\)</span> (in units of <span class="math">\(\sqrt{m/\hbar^2}\)</span>).</p>
+<h3>5</h3>
+<p>Bose-Einsein condensate. Demonstrate that <span class="math">\(N\)</span> free bosons in two dimension do not form a condensate; show in particular that the critical temperature <span class="math">\(T_c\)</span> (signaling the quantum dominated regime) vanishes like <span class="math">\(T_c \rightarrow 1/\ln N\)</span> in the thermodynamic&nbsp;limit.</p>
+<p>In contrast to the free case, demonstrate that in a harmonic trap, a two-dimensional gas of bosons do forms a condensate. Show that in this case the critical temperature&nbsp;is
+</p>
+<div class="math">$$
+T_c = \frac{\sqrt{6}\hbar \omega}{\pi} N^{1/2},
+$$</div>
+<p>
+where <span class="math">\(\omega\)</span> the harmonic oscillator&nbsp;frequency. </p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The interesting quantity is the number of particles, and in particular their distribution between the ground and excited energy&nbsp;levels
+</p>
+<div class="math">$$
+\begin{equation}
+\label{Nsum}
+N = \sum_s \frac{1}{\E^{(\epsilon_s - \mu)/T}-1}
+\end{equation}
+$$</div>
+<p>
+For a <em>free</em> gas confined in a two-dimensional box of area <span class="math">\(L^2\)</span>, we start computing the density of states, in order to transform (<span class="math">\(\ref{Nsum}\)</span>) into an&nbsp;integral:
+</p>
+<div class="math">$$
+\nu(\epsilon) = \frac{\D}{\D \epsilon} \Big[ \frac{L^2}{(2\pi \hbar)^2} \pi p^2\Big] = \frac{L^2}{2\pi} \frac{m}{\hbar^2} = \frac{L^2}{2\pi}
+$$</div>
+<p>
+where, in the last equality we put <span class="math">\(\hbar=m=1\)</span>, and we used that <span class="math">\(\epsilon_{\bm p} = p^2/2m\)</span>. Note also that the ground state&nbsp;energy
+</p>
+<div class="math">$$
+\epsilon_0 = \frac{\pi^2\hbar^2}{2mL^2}
+$$</div>
+<p>
+tends to zero in the thermodynamic limit (<span class="math">\(L \rightarrow \infty\)</span>). Just in the thermodynamic limit we&nbsp;write
+</p>
+<div class="math">$$
+\begin{equation}
+\label{Nint}
+N = \frac{L^2}{2\pi} \int_{0}^\infty \frac{\D \epsilon}{\E^{-\mu/T} \E^{\epsilon/T} - 1} = \frac{L^2 T}{2\pi} \ln\big( 1 - \E^{\mu/T} \big)
+\end{equation}
+$$</div>
+<p>
+and may conclude that the chemical potential vinishes with the&nbsp;temperature,
+</p>
+<div class="math">$$
+\mu = T \ln\big(1 - \E^{2\pi n/T} \big), \quad n = N/L^2
+$$</div>
+<p>
+and therefore, there is no transition to a condensate in two&nbsp;dimensions.</p>
+<p>To refine the above argument, which depends on taking the thermodynamic limit, let us discuss the distribution of the particles taking <span class="math">\(N\)</span> finite and <span class="math">\(\mu = 0\)</span> (the critical value for which the integral in Eq. <span class="math">\(\ref{Nint}\)</span>&nbsp;diverges)
+</p>
+<div class="math">$$
+N - N_0 = \frac{L^2}{2\pi} \int_{\epsilon_0}^\infty \frac{\D \epsilon}{\E^{\epsilon/T} - 1} \approx \frac{L^2 T}{2\pi} \ln \frac{T_c}{\epsilon_0}
+$$</div>
+<p>
+This equation defines the &#8220;critical&#8221; temperature <span class="math">\(T_c\)</span> as the one for which <span class="math">\(N_0 = 0\)</span>:
+</p>
+<div class="math">$$
+N = \frac{L^2}{2\pi} \int_{\epsilon_0}^\infty \frac{\D \epsilon}{\E^{\epsilon/T_c} - 1} \approx \frac{L^2 T_c}{2\pi} \ln \frac{T_c}{\epsilon_0}.
+$$</div>
+<p>
+This is a transcendental equation for <span class="math">\(T_c\)</span> that can be solved iteratively (for large <span class="math">\(N\)</span>):
+</p>
+<div class="math">$$
+\begin{equation}
+T_c \approx \frac{2\pi N}{L^2 \ln N}.
+\end{equation}
+$$</div>
+<p>
+where we replaced inside the logarithm <span class="math">\(T_c/\epsilon_0 = 2L^2 T_c/\pi^2\)</span> by <span class="math">\(4N/\pi\)</span>, and neglected irrelevant terms. We finally&nbsp;obtain
+</p>
+<div class="math">$$
+\begin{equation}
+T_c \approx \frac{2\pi \hbar^2 n}{m \ln N},
+\end{equation}
+$$</div>
+<p>
+in the original units. This result shows how the &#8220;critical&#8221; temperature vanishes in the thermodynamic limit. Because of the slow logarithmic dependence on <span class="math">\(N\)</span>, in the region <span class="math">\(T&lt;T_c(N)\)</span> we may observe a fraction of particles in the ground&nbsp;state.</p>
+<p>If instead of free particles we have trapped bosons in an harmonic potential of frequency <span class="math">\(\omega\)</span>, the one-particle energy is (in two&nbsp;dimensions)
+</p>
+<div class="math">$$
+\epsilon_n = \hbar \omega(n_x + n_y + 1).
+$$</div>
+<p>
+Equation (<span class="math">\(\ref{Nsum}\)</span>) becomes in this&nbsp;case
+</p>
+<div class="math">$$
+\begin{equation}
+\label{Nsumho}
+N = \sum_{n_x, n_y} \frac{1}{\exp\big(\frac{\hbar \omega n}{T} - \frac{\mu - \hbar \omega}{T}\big)-1}, \quad n = n_x + n_y
+\end{equation}
+$$</div>
+<p>
+which shows that the critical chemical potential is <span class="math">\(\mu = \hbar \omega\)</span>, and the sum is over <span class="math">\((n_x,n_y)\)</span> such that <span class="math">\(n =  n_x + n_y = \epsilon/\hbar \omega -1\)</span>. The density of states, in terms of <span class="math">\(n\)</span>, is given&nbsp;by
+</p>
+<div class="math">$$
+\nu(n) = \frac{\D}{\D n} \frac{n^2}{2} = n.
+$$</div>
+<p>The critical temperature is determined by the condition <span class="math">\(\mu = \hbar \omega\)</span>. It is convenient to separate the sum (<span class="math">\(\ref{Nsumho}\)</span>) into one term containing the number of particles in the ground state, and a term containing the number of particles in the excited&nbsp;states,
+</p>
+<div class="math">$$
+N(T) = N_0(T) + N_e(T), \quad  \mu = \hbar \omega
+$$</div>
+<p>
+where, for the excited states, we can replace the sum by an&nbsp;integral:
+</p>
+<div class="math">$$
+N_e(T) = \int_0^\infty \frac{n \D n}{\E^{\hbar\omega n/T} - 1} = \frac{T^2}{(\hbar\omega)^2} \Gamma(2) \zeta(2) = \frac{\pi^2 T^2}{6(\hbar\omega)^2},
+$$</div>
+<p>
+from which we obtain, putting <span class="math">\(N_0 = 0\)</span> and then <span class="math">\(N_e = N\)</span>, the value of the critical&nbsp;temperature,
+</p>
+<div class="math">$$
+\begin{equation}
+\label{Tcho}
+T_c = \hbar \omega\frac{\sqrt{6N}}{\pi}.
+\end{equation}
+$$</div>
+<p>
+Therefor the number of particles in the ground state, for <span class="math">\(T&lt;T_c\)</span> is given&nbsp;by
+</p>
+<div class="math">$$
+N - N_0 =\frac{\pi^2 T^2}{6(\hbar\omega)^2},
+$$</div>
+<p>
+or
+</p>
+<div class="math">$$
+\frac{N_0}{N} = 1 - \left( \frac{T}{T_c} \right)^2.
+$$</div>
+<p>One may think that the critical temperature (<span class="math">\(\ref{Tcho}\)</span>) is not well defined in the thermodynamic limit (when <span class="math">\(N \rightarrow \infty\)</span>). In fact, we must consider that <span class="math">\(\omega = \omega(N)\)</span>. Indeed, the potential energy of the oscillator can be written in terms of the characteristic lenght of the trap <span class="math">\(R\)</span>, which determines the density of the bosons trapped in the area <span class="math">\(R^2\)</span>, and its characteristic energy <span class="math">\(U_0\)</span>:
+</p>
+<div class="math">$$
+\frac{1}{2} m\omega x^2 = \frac{U_0}{2} \left(\frac{x}{R}\right)^2, \quad \omega = \sqrt{\frac{U_0}{m}}\frac{1}{R},
+$$</div>
+<p>
+thus, <span class="math">\(\omega \sim 1/R\)</span>. Using these parameters, the critical temperatrue&nbsp;writes
+</p>
+<div class="math">$$
+T_c = \hbar \sqrt{\frac{U_0}{m}} \frac{1}{R} \frac{\sqrt{6N}}{\pi} = \hbar \sqrt{\frac{6U_0}{\pi^2 m}} \sqrt{n}, \quad n = \frac{N}{R^2}
+$$</div>
+<p>
+which is indeed an intensive&nbsp;variable.</p>
 <h3>6 Thermionic&nbsp;emission</h3>
 <p>Electrons in a metal at temperature <span class="math">\(T\)</span> can escape the surface energy barrier <span class="math">\(-W\)</span> if their velocity <span class="math">\(p_z/m\)</span> (perpendicular to the surface) satisfies <span class="math">\(p_z &gt; \sqrt{2 m W}\)</span> (<span class="math">\(m\)</span> is the electron mass and <span class="math">\(\bm p\)</span> its momentum). Using the Fermi-Dirac distribution <span class="math">\(n_\epsilon\)</span> show that the thermionic current&nbsp;is
 </p>
@@ -273,7 +416,7 @@ which leads&nbsp;to
 j_c = e n_0 \sqrt{\frac{T}{2\pi m}} \E^{-W/T}
 $$</div>
 <p>
-(<span class="math">\(n_0 = N/V\)</span>) a simple numerical estimation shows that this result is wrong. Another way to estimate classically this current is to us the boltzmann factor <span class="math">\(n = n_0 \exp(-W/T)\)</span> and the (one-dimensional) thermal speed <span class="math">\(v = \sqrt{T/m}\)</span>:
+(<span class="math">\(n_0 = N/V\)</span>) a simple numerical estimation shows that this result is wrong. Another way to estimate classically this current is to use the boltzmann factor <span class="math">\(n = n_0 \exp(-W/T)\)</span> and the (one-dimensional) thermal speed <span class="math">\(v = \sqrt{T/m}\)</span>:
 </p>
 <div class="math">$$
 j_c = env \sim en_0 \sqrt{\frac{T}{m}} \E^{-W/T}
