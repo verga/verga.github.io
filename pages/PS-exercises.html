@@ -150,6 +150,46 @@ where <span class="math">\(\bm \sigma \cdot \bm B\)</span> has eigenvalues <span
 H = \frac{(\bm p + e\bm A)^2}{2m}.
 $$</div>
 <p>Investigate the high and low temeperature&nbsp;limits.</p>
+<h3>8</h3>
+<p>Mean field. The hamiltonian of an ising model in a regular lattice of <span class="math">\(N\)</span> sites with <span class="math">\(q\)</span> neighbors&nbsp;is
+</p>
+<div class="math">$$
+H = -J\sum_{\braket{x,y}} s_x s_y
+$$</div>
+<p>
+where <span class="math">\(s_x = \pm 1\)</span> is the spin on site <span class="math">\(x\)</span>; <span class="math">\(y \in N(x)\)</span> is a neighbor of <span class="math">\(x\)</span> belonging to the set <span class="math">\(N(x)\)</span> of size <span class="math">\(q\)</span>; <span class="math">\(J\)</span> is the exchange parameter. In the <em>Bethe approximation</em>, which is a generalization of the standard mean-field model, one considers a given spin <span class="math">\(s_0\)</span> and its&nbsp;neighbors:
+</p>
+<div class="math">$$
+H(s_0) = -Js_0 \sum_{y \in N(0)}s_y - h \sum_{y \in N(0)}s_y = H_c,
+$$</div>
+<p>
+where the last term contains the information about the <em>local</em> field <span class="math">\(h\)</span> created at the site <span class="math">\(0\)</span> by the neighboring spins <span class="math">\(y \in N(0)\)</span>. <span class="math">\(H_c\)</span> is the &#8220;cluster&#8221; hamiltonian, it depends on the unknown parameter <span class="math">\(h\)</span>, which should be determined self-consistently to match the expectation value of the observables (like the magnetization <span class="math">\(m = \braket{s_x}\)</span>).</p>
+<p>Using the &#8220;cluster&#8221; partition&nbsp;function
+</p>
+<div class="math">$$
+Z_c = \mathrm{tr} \, \E^{-H_c(h)/T} = \sum_{s_x = \pm 1}  \E^{-H_c(h)/T}, 
+$$</div>
+<p>
+compute <span class="math">\(\braket{s_0}\)</span> and <span class="math">\(s_x\)</span>. From the condition of homogeneity (at equilibrium) <span class="math">\(m = \braket{s_0} = \braket{s_x}\)</span> for all <span class="math">\(x\)</span>, deduce the self-consistent&nbsp;condition
+</p>
+<div class="math">$$
+\frac{\cosh^{q-1}[(J+h)/T]}{\cosh^{q-1}[(J-h)/T]} = \E^{2h/T}
+$$</div>
+<p>
+which determines <span class="math">\(T_c\)</span>:
+</p>
+<div class="math">$$
+T_c \approx \frac{2J}{\ln\frac{q}{q-1}}.
+$$</div>
+<p>
+Compare the result for <span class="math">\(q=4\)</span> (square lattice) with the Onsager exact value of <span class="math">\(T_c\)</span>.</p>
+<p>Show that near the ferromagnetic transition, the magnetization behaves as <span class="math">\(m \sim |T-T_c|^{1/2}\)</span>:
+</p>
+<div class="math">$$
+m^2 \approx \frac{3q}{q-1} \frac{q}{2} \ln\left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
+$$</div>
+<p>
+Verify that this formula reduces to the standard one (mean field) in the limit <span class="math">\(q \rightarrow \infty\)</span>. </p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
