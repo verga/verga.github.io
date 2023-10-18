@@ -137,7 +137,7 @@ where <span class="math">\(\omega\)</span> the harmonic oscillator&nbsp;frequenc
 where <span class="math">\(\epsilon_F\)</span> is the fermi energy (<span class="math">\(k_\mathrm{B} = 1\)</span>). </p>
 <p>Use units such that <span class="math">\(e = W = m = \hbar = 1\)</span>. Assume that typical particle energies are larger than <span class="math">\(W\)</span> (otherwise emission is impossible). Compare the quantum result with the classical&nbsp;one.</p>
 <h3>7</h3>
-<p>Paramagnetism and diamagnetism. The energy of a particle in a magnetic field <span class="math">\(\bm B\)</span> is, firstly neglecting the orbital&nbsp;contibution,
+<p>Paramagnetism and diamagnetism. The energy of a particle in a magnetic field <span class="math">\(\bm B\)</span> is, firstly neglecting the orbital&nbsp;contribution,
 </p>
 <div class="math">$$
 H = \frac{p^2}{2m} + \mu_B \bm \sigma \cdot \bm B, \quad \epsilon_{\bm k} = \frac{(\hbar k)^2}{2m} \pm \mu_B B,
@@ -149,7 +149,7 @@ where <span class="math">\(\bm \sigma \cdot \bm B\)</span> has eigenvalues <span
 <div class="math">$$
 H = \frac{(\bm p + e\bm A)^2}{2m}.
 $$</div>
-<p>Investigate the high and low temeperature&nbsp;limits.</p>
+<p>Investigate the high and low temperature&nbsp;limits.</p>
 <h3>8</h3>
 <p>Mean field. The hamiltonian of an ising model in a regular lattice of <span class="math">\(N\)</span> sites with <span class="math">\(q\)</span> neighbors&nbsp;is
 </p>
@@ -179,17 +179,50 @@ $$</div>
 which determines <span class="math">\(T_c\)</span>:
 </p>
 <div class="math">$$
-T_c \approx \frac{2J}{\ln\frac{q}{q-1}}.
+T_c \approx \frac{2J}{\ln\frac{q}{q-2}}.
 $$</div>
 <p>
 Compare the result for <span class="math">\(q=4\)</span> (square lattice) with the Onsager exact value of <span class="math">\(T_c\)</span>.</p>
 <p>Show that near the ferromagnetic transition, the magnetization behaves as <span class="math">\(m \sim |T-T_c|^{1/2}\)</span>:
 </p>
 <div class="math">$$
-m^2 \approx \frac{3q}{q-1} \frac{q}{2} \ln\left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
+m^2 \approx \frac{3 q}{q-1} \frac{q}{2} \ln \left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
 $$</div>
 <p>
 Verify that this formula reduces to the standard one (mean field) in the limit <span class="math">\(q \rightarrow \infty\)</span>. </p>
+<h3>9</h3>
+<p>Mean field and Landau theory. Helium (<span class="math">\(^4\mathrm{He}\)</span>) liquefies at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a fraction <span class="math">\(c_3\)</span> of the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transtion changes when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point (<span class="math">\(c_4\)</span> is the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
+</p>
+<div class="math">$$
+H = -J \sum_{\braket{i,j}} S_i S_j + \Delta \sum_i (S_i^2 - 1), \quad S_i = 0, \pm 1
+$$</div>
+<p>
+where <span class="math">\(S_i = \pm 1\)</span> represents the helium-4 interacting atoms and <span class="math">\(S_i = 0\)</span> the helium-3 atoms, treated as impurities, <span class="math">\(\Delta\)</span> controls the number of helium-3 atoms (it is proportional to the difference of chemical potentials); the sums extend to the total number of lattice sites <span class="math">\(N\)</span>, and <span class="math">\(\braket{i,j}\)</span> labels neighbors. The concentration of <span class="math">\(^3\mathrm{He}\)</span> is then <span class="math">\(x = 1 - \braket{S_i^2}\)</span>.</p>
+<p>Show that the probability distribution P(S) is given&nbsp;by
+</p>
+<div class="math">$$
+P(S) = \frac{\E^{(qJmS - \Delta S^2)/T}}{Z}, \quad Z = 1 + 2\E^{-\Delta/T} \cosh\big(qJm/T\big).
+$$</div>
+<p>
+You may use the minimization of the free energy <span class="math">\(F\)</span>, assuming that <span class="math">\(S_i\)</span> are independent random variables (mean field&nbsp;approximation):
+</p>
+<div class="math">$$
+F = \braket{H} + NT\sum_S P(S) \ln P(S),
+$$</div>
+<p>
+where we also exploit homogeneity. Compute the expected value of <span class="math">\(S^2\)</span>:
+</p>
+<div class="math">$$
+\braket{S^2} = \frac{2\E^{-\Delta/T} \cosh(qJM/T)}{Z}.
+$$</div>
+<p>Deduce the free energy per atom <span class="math">\(f(m; T, \Delta) =&nbsp;F/N\)</span>
+</p>
+<div class="math">$$
+f = \frac{1}{2} qJm^2 - T \ln \left( 1 + 2 \E^{-\Delta/T}\cosh \frac{qJm}{T} \right) - \Delta.
+$$</div>
+<p>
+Just above the transition (disordered state) <span class="math">\(m = 0\)</span>; you can then expand <span class="math">\(f(m)\)</span> in powers of <span class="math">\(m\)</span> up to the 6th order. Analyse the possible phase transitions using Landau approach. Compute, in particular, the values of the concentration <span class="math">\(x_t\)</span> and the temperature <span class="math">\(T_t\)</span> at the tricritical&nbsp;point.</p>
+<p>Numerical application: plot the phase diagram in the <span class="math">\((x,T)\)</span>&nbsp;plane.</p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
 <p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
@@ -244,9 +277,9 @@ compute this information difference in&nbsp;bits.</p>
 <ul>
 <li>
 <p>Compute the eigenvalues <span class="math">\(\lambda_\pm\)</span> of <span class="math">\(M\)</span> and show that the probability distribution of the &#8220;spacing&#8221; <span class="math">\(s = (\lambda_+ - \lambda_-)/\Delta\)</span>, where <span class="math">\(\Delta\)</span> is such that the mean spacing is unity, is given by the <a href="/pages/rm.html">Wigner surmise</a>:
-<div class="math">$$p(s) = \frac{\pi s}{2} \E^{-\pi s^2/4}\,,$$</div>
+    <div class="math">$$p(s) = \frac{\pi s}{2} \E^{-\pi s^2/4}\,,$$</div>
     where the mean value and normalization satisfy,
-<div class="math">$$\int_0^\infty \D s\, p(s) s = \int_0^\infty \D s\, p(s) = 1\,.$$</div>
+    <div class="math">$$\int_0^\infty \D s\, p(s) s = \int_0^\infty \D s\, p(s) = 1\,.$$</div>
 </p>
 </li>
 <li>
@@ -476,16 +509,16 @@ where <span class="math">\(z\)</span> is the coordination number of the lattice 
 <ul>
 <li>
 <p>Show that in this approximation, the Glauber dynamics for the mean spin becomes:
-<div class="math">$$\frac{dS_x}{dt} = -2\langle s_x w_x\rangle,$$</div>
+    <div class="math">$$\frac{dS_x}{dt} = -2\langle s_x w_x\rangle,$$</div>
     or
-<div class="math">$$\frac{dm}{dt}=-m + \tanh \beta zJ m.$$</div>
+    <div class="math">$$\frac{dm}{dt}=-m + \tanh \beta zJ m.$$</div>
 </p>
 </li>
 <li>
 <p>Using the appropriated solutions of this differential equation, demonstrate that at the critical temperature, the magnetization relaxes to zero, as a power law,
-<div class="math">$$m \sim t^{-1/2} $$</div>
+    <div class="math">$$m \sim t^{-1/2} $$</div>
     and is exponential outside the transition, with a characteristic time,
-<div class="math">$$\tau \sim |T_c-T|^{-1}$$</div>
+    <div class="math">$$\tau \sim |T_c-T|^{-1}$$</div>
     which diverges at the&nbsp;transition.</p>
 </li>
 </ul>
@@ -493,48 +526,48 @@ where <span class="math">\(z\)</span> is the coordination number of the lattice 
 <ul>
 <li>
 <p>Show that in one dimension, the transition rate is
-<div class="math">$$w_x[s] = \frac{1}{2} \left[1 - \frac{\gamma}{2} s_x(s_{x-1}+s_{x+1}) \right]$$</div>
+    <div class="math">$$w_x[s] = \frac{1}{2} \left[1 - \frac{\gamma}{2} s_x(s_{x-1}+s_{x+1}) \right]$$</div>
     where <span class="math">\(\gamma = \tanh(2\beta J )\)</span>.</p>
 </li>
 <li>
 <p>Deduce the equation for the mean spin <span class="math">\(S_x(t)\)</span>:
-<div class="math">$$\frac{dS_x}{dt} = -S_x + \frac{\gamma}{2} (S_{x-1} + S_{x+1})$$</div>
+    <div class="math">$$\frac{dS_x}{dt} = -S_x + \frac{\gamma}{2} (S_{x-1} + S_{x+1})$$</div>
     and show that its solution for a local initial condition <span class="math">\(S_x(t=0) = \delta_{x,0}\)</span> (the spin at site 0 is up) writes,
-<div class="math">$$S_x(t) = \mathrm{e}^{-t} \, I_x(\gamma t)$$</div>
+    <div class="math">$$S_x(t) = \mathrm{e}^{-t} \, I_x(\gamma t)$$</div>
     where <span class="math">\(I_x\)</span> is the modified bessel&nbsp;function.</p>
 </li>
 <li>
 <p>Show that the mean magnetization decays exponentially for all positive temperatures:
-<div class="math">$$m(t) = m(0) \mathrm{e}^{-(1-\gamma)t}$$</div>
+    <div class="math">$$m(t) = m(0) \mathrm{e}^{-(1-\gamma)t}$$</div>
 </p>
 </li>
 <li>
 <p>Deduce the equation for the correlation <span class="math">\(C_x = S_{y,y+x} = \langle s_y(t)s_{y+x}(t) \rangle =C_x(t)\)</span>:
-<div class="math">$$\frac{dC_x}{dt} = -2C_x + \gamma (C_{x-1} + C_{x+1})$$</div>
+    <div class="math">$$\frac{dC_x}{dt} = -2C_x + \gamma (C_{x-1} + C_{x+1})$$</div>
     with <span class="math">\(x&gt;0\)</span> and <span class="math">\(C_0(t) = 1\)</span>.</p>
 </li>
 <li>
 <p>Show that the stationary solution is given by (<span class="math">\(t \rightarrow \infty\)</span>):
-<div class="math">$$C_x(\infty) = \mathrm{e}^{-x/\xi}\,, \quad  \xi = [\ln (\coth 2\beta J)]^{-1}$$</div>
+    <div class="math">$$C_x(\infty) = \mathrm{e}^{-x/\xi}\,, \quad  \xi = [\ln (\coth 2\beta J)]^{-1}$$</div>
 </p>
 </li>
 <li>
 <p>Study the time dependence of the correlation function in the limit of zero temperature <span class="math">\(\gamma=1\)</span>, for an initial random distribution with <span class="math">\(m_0=0\)</span> and <span class="math">\(C_x(0) = 0\)</span>:
-<div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} + \mathrm{e}^{-2t} \sum_{y=-\infty}^{\infty} c_y I_{x-y}(2\gamma t)$$</div>
+    <div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} + \mathrm{e}^{-2t} \sum_{y=-\infty}^{\infty} c_y I_{x-y}(2\gamma t)$$</div>
     and use the boundary conditions <span class="math">\(C_x(0) = \delta_{x,0}\)</span> and <span class="math">\(C_0(t)= 1\)</span>, to obtain:
-<div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} - \mathrm{e}^{-2t} \sum_{y=1}^\infty \mathrm{e}^{-y/\xi} \left[ I_{x-y}(2\gamma t) - I_{x+y}(2\gamma t) \right]$$</div>
+    <div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} - \mathrm{e}^{-2t} \sum_{y=1}^\infty \mathrm{e}^{-y/\xi} \left[ I_{x-y}(2\gamma t) - I_{x+y}(2\gamma t) \right]$$</div>
 </p>
 </li>
 <li>
 <p>Show that at zero temperature one gets,
-<div class="math">$$C_x^{(0)}(t) = 1 - \mathrm{e}^{-2t} \left[ I_0(2t) + 2\sum_{y=1}^{x-1} I_y(2t) + I_x(2t) \right]$$</div>
+    <div class="math">$$C_x^{(0)}(t) = 1 - \mathrm{e}^{-2t} \left[ I_0(2t) + 2\sum_{y=1}^{x-1} I_y(2t) + I_x(2t) \right]$$</div>
 </p>
 </li>
 <li>
 <p>The density of domain walls (locations in the spin chain where the spin change sign) is defined by
-<div class="math">$$\rho = \frac{1}{2} \langle 1-s_x s_{x+1}\rangle = \frac{1}{2} (1 - C_1)$$</div>
+    <div class="math">$$\rho = \frac{1}{2} \langle 1-s_x s_{x+1}\rangle = \frac{1}{2} (1 - C_1)$$</div>
     From the last expression of <span class="math">\(C_x^{(0)}(t)\)</span> deduce the asymptotic form:
-<div class="math">$$\rho(t) = \mathrm{e}^{-2t}I_0(2t) \approx (4\pi t)^{-1/2}$$</div>
+    <div class="math">$$\rho(t) = \mathrm{e}^{-2t}I_0(2t) \approx (4\pi t)^{-1/2}$$</div>
     Therefore, at zero temperature the domains grow by&nbsp;diffusion.</p>
 </li>
 </ul>
