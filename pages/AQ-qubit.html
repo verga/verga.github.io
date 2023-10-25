@@ -59,7 +59,7 @@
 <h1>Qubit: the quantum of&nbsp;information</h1>
 <p>There is a deep difference between the classical unit of information and its quantum counterpart. A qubit corresponds to the state of a quantum system having two levels (a hilbert space of dimension 2); therefore, the qubit is physical. A bit, or binary digit, is related to a logical state, true or false; its physical implementation as a system having two equilibrium states, is not essential in its&nbsp;definition.</p>
 <p>In 1995, Schumacher<sup id="fnref:SM"><a class="footnote-ref" href="#fn:SM">1</a></sup> demonstrated the quantum version of the noiseless coding theorem of Shannon (see the lecture on <a href="/pages/AQ-classical.html">classical information</a>). He showed that the von Neumann entropy is the mean number of <em>qubits</em> necessary to encode the states of an ensemble or composite quantum system. Therefore, a quantum state carries an amount of information that can be measured using the von Neumann&nbsp;entropy.</p>
-<p>A general qubit, a two dimensional ket <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> (<span class="math">\(\mathrm{dim} \mathcal{H} = 2\)</span>), can be written using the spherical polar <span class="math">\(\varphi \in (0,2\pi)\)</span> and azimutal <span class="math">\(\theta \in (0,\pi)\)</span>&nbsp;angles:
+<p>A general qubit, a two-dimensional ket <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> (<span class="math">\(\mathrm{dim} \mathcal{H} = 2\)</span>), can be written using the spherical polar <span class="math">\(\varphi \in (0,2\pi)\)</span> and azimuth <span class="math">\(\theta \in (0,\pi)\)</span>&nbsp;angles:
 </p>
 <div class="math">$$\ket{\psi} = \cos \frac{\theta}{2} \ket{0} + \E^{\I \varphi} \sin \frac{\theta}{2} \ket{1}$$</div>
 <p>
@@ -131,7 +131,7 @@ where <span class="math">\(\rho\)</span> is <span class="math">\(AB\)</span> sta
 \end{align*}</div>
 <p>
 terms with <span class="math">\(\braket{0|1}\)</span> vanish; therefore the reduced density matrix is proportional to the identity. <span class="math">\(\rho_A\)</span> corresponds then to a mixed state of equally probable <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span> states. We conclude that in general the state of a subsystem of a pure state system is&nbsp;mixed.</p>
-<p>We can compute the von Neumann entropy of the whole system and the one of its&nbsp;sybsystems:
+<p>We can compute the von Neumann entropy of the whole system and the one of its&nbsp;subsystems:
 </p>
 <div class="math">$$S(AB) = -\Tr \rho \log \rho = -\Tr \ket{\psi} \braket{\psi|\psi} \log(1) \bra{\psi} = 0$$</div>
 <p>
@@ -139,7 +139,7 @@ and
 </p>
 <div class="math">$$S(A) = -\Tr \rho_A \log \rho_A = \frac{1}{2} \log 2 + \frac{1}{2} \log 2 = \log 2 = 1\,.$$</div>
 <p>
-The entropy of the pure state is <span class="math">\(0\)</span>, while the entropy of its subsystems is <span class="math">\(S(A) = S(B) = 1\)</span>, the maximum possible value of a twodimensional system. If we apply a classical reasoning to understand this result we arrive at a contradiction. The entropy of a given system is zero, meaning that it is perfectly ordered, or analogously that we have a perfect knowledge of its state (the equivalence of the two statements derives from the equivalence of the entropy and information), however, the entropy of its subsystems is maximal, meaning that its subsystems are perfectly disordered. This contradiction was first put forward by Schrödinger in his famous response to Einstein, Podolsky and&nbsp;Rose:</p>
+The entropy of the pure state is <span class="math">\(0\)</span>, while the entropy of its subsystems is <span class="math">\(S(A) = S(B) = 1\)</span>, the maximum possible value of a two-dimensional system. If we apply a classical reasoning to understand this result we arrive at a contradiction. The entropy of a given system is zero, meaning that it is perfectly ordered, or analogously that we have a perfect knowledge of its state (the equivalence of the two statements derives from the equivalence of the entropy and information), however, the entropy of its subsystems is maximal, meaning that its subsystems are perfectly disordered. This contradiction was first put forward by Schrödinger in his famous response to Einstein, Podolsky and&nbsp;Rose:</p>
 <blockquote>
 <p>the best possible knowledge of a whole does not necessarily include the best possible knowledge of all its parts, even though they may be entirely separated and therefore virtually capable of being &#8220;best possibly known&#8221; <sup id="fnref:s"><a class="footnote-ref" href="#fn:s">2</a></sup></p>
 </blockquote>
@@ -159,7 +159,7 @@ For instance, <span class="math">\(\mathcal{H}\)</span> represents a set of qubi
 </p>
 <div class="math">$$\ket{G} = \ket{0} \otimes \ket{0} \otimes \ldots\,;$$</div>
 <p>
-however, excitations at finite temperature and interactions build much more complex states that cannot be written as a product of basic states belonging to each subsystem. Non factorizable states are <em>entangled</em> states. The bell states are examples of non factorizable two qubit&nbsp;states.</p>
+however, excitations at finite temperature and interactions build much more complex states that cannot be written as a product of basic states belonging to each subsystem. Non-factorizable states are <em>entangled</em> states. The bell states are examples of non-factorizable two qubit&nbsp;states.</p>
 <p>Therefore, not entangled pure states of a bipartite system can be expressed as a&nbsp;product,
 </p>
 <div class="math">$$\ket{\psi}^{AB} = \ket{\psi^A} \otimes \ket{\psi^B}\,.$$</div>
@@ -175,7 +175,7 @@ using its matrix representation <span class="math">\(X\)</span>,
 <p>
 where <span class="math">\(\mathrm{dim}X= N_A \times N_B\)</span>, whose elements&nbsp;are 
 </p>
-<div class="math">$$x_{n^An^B} = \braket{\psi|a_{n^A} b_{n^B}}\,,$$</div>
+<div class="math">$$x_{n^An^B} = \braket{a_{n^A} b_{n^B} | \psi}\,,$$</div>
 <p>
 with <span class="math">\(\ket{a_{n^A}}\)</span> and <span class="math">\(\ket{b_{n^B}}\)</span> the basis vectors of the two parties; we assume <span class="math">\(N_A \le N_B\)</span>. Consequently, the reduced density matrix of subsystem <span class="math">\(A\)</span> is simply the <span class="math">\(N_A \times N_A\)</span>&nbsp;matrix,
 </p>
