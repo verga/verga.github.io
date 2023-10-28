@@ -241,7 +241,7 @@ with <span class="math">\(c = 299\, 792\, 458 \, \mathrm{m\,s^{-1}}\)</span> the
 <h4>Black body&nbsp;radiation</h4>
 <p>The partition function (it is convenient to introduce units such that <span class="math">\(k_{\mathrm{B}}=\hbar=c=1\)</span>)&nbsp;is,
 </p>
-<div class="math">$$\ln Z = 2 \sum_{\boldsymbol k \ne 0} \ln (1 - \E^{\omega_{\boldsymbol k}/T} ) = \frac{2V}{(2\pi)^3} \int_0^\infty 4\pi k^2 \D k\, \ln(1 - \E^{-\omega_{\boldsymbol k}/T} )$$</div>
+<div class="math">$$\ln Z = -2 \sum_{\boldsymbol k \ne 0} \ln (1 - \E^{\omega_{\boldsymbol k}/T} ) = -\frac{2V}{(2\pi)^3} \int_0^\infty 4\pi k^2 \D k\, \ln(1 - \E^{-\omega_{\boldsymbol k}/T} )$$</div>
 <p>
 (the factor <span class="math">\(2\)</span> accounts for the two polarizations) which, after a change of variable from the wavenumber to the frequency <span class="math">\(k = \omega/c = \omega\)</span> together with the substitution <span class="math">\(x =\hbar \omega/k_BT = \omega/T\)</span>, and an integration by parts, gives <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
 </p>
@@ -271,7 +271,7 @@ which gives the energy distribution (replacing <span class="math">\(k=\omega/c\)
 <p>
 the <em>Planck radiation law</em> (1900). Note that, after integration, one obtains the Stefan law <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
 </p>
-<div class="math">$$E = \frac{V}{\pi^2} \int_0^\infty \D \omega\, \frac{\omega^3}{\E^{\omega/T} - 1} = \frac{6V}{\pi^2} T^4 \mathrm{Li}_4(1) = \frac{\pi^2 V}{15} T^4\,,$$</div>
+<div class="math">$$E = \frac{VT^4}{\pi^2} \int_0^\infty \D \omega\, \frac{\omega^3}{\E^{\omega/T} - 1} = \frac{6V}{\pi^2} T^4 \mathrm{Li}_4(1) = \frac{\pi^2 V}{15} T^4\,,$$</div>
 <p>
 or in Si&nbsp;units:
 </p>
