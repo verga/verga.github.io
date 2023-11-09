@@ -71,15 +71,17 @@ Therefore,
 </p>
 <div class="math">$$\ket{s} = \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \E^{2\pi \I s k/2^N} \ket{k}$$</div>
 <p>
-is the fourier transform of <span class="math">\(\ket{s}\)</span>. Knowing the transformation of the basis vector we can compute the transformation of any superposition. The basic idea is to transform the unitary operator, here defined a s <em>sum</em> over the basis vectors in fourier space <span class="math">\(\ket{k}\)</span>, into a product. This can be achieved using the decomposition of <span class="math">\(s\)</span> and <span class="math">\(k\)</span> into its binary&nbsp;digits:
+is the fourier transform of <span class="math">\(\ket{s}\)</span>. Knowing the transformation of the basis vector we can compute the transformation of any superposition. The basic idea is to transform the unitary operator, here defined as a <em>sum</em> over the basis vectors in fourier space <span class="math">\(\ket{k}\)</span>, into a product. This can be achieved using the decomposition of <span class="math">\(s\)</span> and <span class="math">\(k\)</span> into its binary&nbsp;digits:
 </p>
-<div class="math">\begin{align*}
+<div class="math">$$
+\begin{align*}
 \ket{s} &amp;= \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \exp\left( 2\pi \I \frac{s k}{2^N} \right) \ket{k} \\
   &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \exp\left( 2\pi \I s \sum_{n=1}^{N} \frac{k_n}{2^n} \right) \ket{k_1 \ldots k_{N}} \\
   &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \bigotimes_{n=1}^{N} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
   &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \sum_{k_n=0,1} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
   &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \left[ \ket{0} + \exp\left( 2\pi \I \frac{s}{2^n} \right) \ket{1} \right]
-\end{align*}</div>
+\end{align*}
+$$</div>
 <p>
 The exponent selects the fractional part of <span class="math">\(s/2^n\)</span> for <span class="math">\(n=1,\ldots,N\)</span>:
 </p>
@@ -151,7 +153,7 @@ to the correct eigenvector <span class="math">\(\ket{\bar{\theta}_k}\)</span>. C
 <blockquote>
 <p><img src="/images/AQ-cphase-2.svg" alt="Lloyd" style="width: 400px;"/></p>
 </blockquote>
-<p>We note that instead of applying the successive <span class="math">\(U\)</span>, <span class="math">\(U^2\)</span>, <span class="math">\(U^4\)</span>, <span class="math">\(\ldots\)</span> controlled gates as in the phase estimation algorithm, here we simply they use the sequence <span class="math">\(U,U^2,U^3,\ldots, U^{2^N-1}\)</span> (<span class="math">\(N\)</span> is the dimension of the ancilla register). The state after the application of the hadamard gates and the ancilla controlled <span class="math">\(U^n\)</span> gates (<span class="math">\(n=0, \ldots, 2^{N}-1\)</span>),&nbsp;is 
+<p>We note that instead of applying the successive <span class="math">\(U\)</span>, <span class="math">\(U^2\)</span>, <span class="math">\(U^4\)</span>, <span class="math">\(\ldots\)</span> controlled gates as in the phase estimation algorithm, here we simply use the sequence <span class="math">\(U,U^2,U^3,\ldots, U^{2^N-1}\)</span> (<span class="math">\(N\)</span> is the dimension of the ancilla register). The state after the application of the hadamard gates and the ancilla controlled <span class="math">\(U^n\)</span> gates (<span class="math">\(n=0, \ldots, 2^{N}-1\)</span>),&nbsp;is 
 </p>
 <div class="math">$$\ket{\psi} = \sum_k \theta_k \left( \sum_n \E^{\I \bar{\theta}_k n} \ket{n} \right) \ket{k} \,.$$</div>
 <p>
