@@ -88,11 +88,16 @@ We can define the system&#8217;s&nbsp;operator,
 <p>
 or
 </p>
-<div class="math">$$M_n(t) \ket{\psi_S} = \ket{n_E} U(t) \ket{\psi_S} \otimes \ket{0_E}, \quad \ket{\psi_S} \forall \mathcal{H}_S\,,$$</div>
+<div class="math">$$M_n(t) \ket{\psi_S} = \bra{n_E} U(t) \ket{\psi_S} \otimes \ket{0_E}, \quad \ket{\psi_S} \forall \mathcal{H}_S\,,$$</div>
 <p>
 to&nbsp;obtain
 </p>
-<div class="math">$$\mathcal{E}(\rho(0)) = \rho(t) = \sum_n M_n(t) \rho(0) M^\dagger_n(t)\,.$$</div>
+<div class="math">$$
+\begin{equation}
+\label{e:Erho}
+\mathcal{E}(\rho(0)) = \rho(t) = \sum_n M_n(t) \rho(0) M^\dagger_n(t)\,.
+\end{equation}
+$$</div>
 <p>
 The map <span class="math">\(\mathcal{E}\)</span> is referred as a &#8220;superoperator&#8221;: it is linear and acts only on the system&#8217;s state <span class="math">\(\rho\)</span>, giving an operator in <span class="math">\(\mathcal{H}_S\)</span>.  From the normalization of the state (the previous equation is exact: it contains the whole information on the system), we deduce that <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
@@ -109,7 +114,7 @@ according to the generalized evolution of a quantum open system. The system evol
 </p>
 <div class="math">$$\frac{\D}{\D t}\rho(t) = -\I \Tr_E [H_{SE}, \rho_{SE}] = -\I [H,\rho] - \I \Tr_E [H_E+V_{SE},\rho_{SE}]\,.$$</div>
 <p>
-For <span class="math">\(\Delta t\)</span> small enough, we assume <span class="math">\(\mathcal{E}\)</span> near the&nbsp;identity,
+The general solution of this equation is given by the channel evolution (super)-operator (<span class="math">\(\ref{e:Erho}\)</span>). For <span class="math">\(\Delta t\)</span> small enough, we assume <span class="math">\(\mathcal{E}\)</span> near the&nbsp;identity,
 </p>
 <div class="math">$$\Delta \rho \sim \mathcal{O}(\Delta t),$$</div>
 <p>
@@ -120,7 +125,7 @@ M_0 &amp;= 1 - \I H \Delta t + L_0 \Delta t \\
 M_n &amp;= L_n \sqrt{\Delta t}, \quad n \ne 0
 \end{align*}</div>
 <p>
-where, without loss of generality, we separated the near identity operator to be the <span class="math">\(n=0\)</span> kraus operator, in order to take exactly into account the first term of the von Neumann equation. Replacing this expansion into the linear map <span class="math">\(\mathcal{E}(\rho)\)</span>, we obtain <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+where, without loss of generality, we separated the near identity operator to be the <span class="math">\(n=0\)</span> kraus operator (note that <span class="math">\(\I L_0\)</span> must be hermitian), in order to take exactly into account the first term of the von Neumann equation. Replacing this expansion into the linear map <span class="math">\(\mathcal{E}(\rho)\)</span>, we obtain <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
 <div class="math">$$\frac{\D}{\D t}\rho = - \I [H, \rho] + \{L_0, \rho\} + \sum_{n&gt;0} L_n \rho L_n^\dagger\,,$$</div>
 <p>
