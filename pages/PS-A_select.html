@@ -423,6 +423,195 @@ j_c = env \sim en_0 \sqrt{\frac{T}{m}} \E^{-W/T}
 $$</div>
 <p>
 which coincides with the previous result up to a constant numerical&nbsp;factor.</p>
+<h3>8</h3>
+<p>Mean field. The hamiltonian of an ising model in a regular lattice of <span class="math">\(N\)</span> sites with <span class="math">\(q\)</span> neighbors&nbsp;is
+</p>
+<div class="math">$$
+H = -J\sum_{\braket{x,y}} s_x s_y
+$$</div>
+<p>
+where <span class="math">\(s_x = \pm 1\)</span> is the spin on site <span class="math">\(x\)</span>; <span class="math">\(y \in N(x)\)</span> is a neighbor of <span class="math">\(x\)</span> belonging to the set <span class="math">\(N(x)\)</span> of size <span class="math">\(q\)</span>; <span class="math">\(J\)</span> is the exchange parameter. In the <em>Bethe approximation</em>, which is a generalization of the standard mean-field model, one considers a given spin <span class="math">\(s_0\)</span> and its&nbsp;neighbors:
+</p>
+<div class="math">$$
+H(s_0) = -Js_0 \sum_{y \in N(0)}s_y - h \sum_{y \in N(0)}s_y = H_c,
+$$</div>
+<p>
+where the last term contains the information about the <em>local</em> field <span class="math">\(h\)</span> created at the site <span class="math">\(0\)</span> by the neighboring spins <span class="math">\(y \in N(0)\)</span>. <span class="math">\(H_c\)</span> is the &#8220;cluster&#8221; hamiltonian, it depends on the unknown parameter <span class="math">\(h\)</span>, which should be determined self-consistently to match the expectation value of the observables (like the magnetization <span class="math">\(m = \braket{s_x}\)</span>).</p>
+<p>Using the &#8220;cluster&#8221; partition&nbsp;function
+</p>
+<div class="math">$$
+Z_c = \mathrm{tr} \, \E^{-H_c(h)/T} = \sum_{s_x = \pm 1}  \E^{-H_c(h)/T}, 
+$$</div>
+<p>
+compute <span class="math">\(\braket{s_0}\)</span> and <span class="math">\(s_x\)</span>. From the condition of homogeneity (at equilibrium) <span class="math">\(m = \braket{s_0} = \braket{s_x}\)</span> for all <span class="math">\(x\)</span>, deduce the self-consistent&nbsp;condition
+</p>
+<div class="math">$$
+\frac{\cosh^{q-1}[(J+h)/T]}{\cosh^{q-1}[(J-h)/T]} = \E^{2h/T}
+$$</div>
+<p>
+which determines <span class="math">\(T_c\)</span>:
+</p>
+<div class="math">$$
+T_c \approx \frac{2J}{\ln\frac{q}{q-2}}.
+$$</div>
+<p>
+Compare the result for <span class="math">\(q=4\)</span> (square lattice) with the Onsager exact value of <span class="math">\(T_c\)</span>.</p>
+<p>Show that near the ferromagnetic transition, the magnetization behaves as <span class="math">\(m \sim |T-T_c|^{1/2}\)</span>:
+</p>
+<div class="math">$$
+m^2 \approx \frac{3 q}{q-1} \frac{q}{2} \ln \left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
+$$</div>
+<p>
+Verify that this formula reduces to the standard one (mean field) in the limit <span class="math">\(q \rightarrow \infty\)</span>. </p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The partition function of one cluster <span class="math">\(Z_c\)</span> (the one associated to <span class="math">\(s_0\)</span>, for example)&nbsp;is
+</p>
+<div class="math">$$
+Z_c = Z(s_0) = \sum_{s_0 = \pm1} \sum_{s_y=\pm1} \E^{-H(s_0)/T} = \sum_{s_0 = \pm1} \sum_{s_y=\pm1} \prod_{y=1}^{q} \E^{(J/T)s_0s_y + (h/T)s_y}.
+$$</div>
+<p>
+The sums over the cluster configurations&nbsp;give
+</p>
+<div class="math">$$
+Z_c = \left(2 \cosh \frac{J+h}{T} \right)^{q} + \left(2 \cosh \frac{J-h}{T} \right)^{q}.
+$$</div>
+<p>
+The computation of mean value of the reference spin is&nbsp;straightforward,
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:s0}
+\braket{s_0} = \frac{1}{Z_c} \left[\left(2 \cosh \frac{J+h}{T} \right)^{q} - \left(2 \cosh \frac{J-h}{T} \right)^{q}\right].
+\end{equation}
+$$</div>
+<p>
+For the neighbor <span class="math">\(x\)</span> of <span class="math">\(s_0\)</span> in the cluster we&nbsp;write
+</p>
+<div class="math">$$
+\braket{s_x} = \frac{1}{Z_c} \sum_{s_y=\pm1} \left[ \prod_{y=1}^{q} s_x \E^{(J+h)s_y/T} + \prod_{y=1}^{q} s_x \E^{(J-h)s_y/T} \right],
+$$</div>
+<p>
+separating the case <span class="math">\(x=y\)</span> to the others we&nbsp;obtain
+</p>
+<div class="math">$$
+\braket{s_x} = \frac{1}{Z_c} \left[ 2\sinh \frac{J+h}{T}  \left(2 \cosh \frac{J+h}{T} \right)^{q-1} - 2\sinh \frac{J-h}{T}  \left(2 \cosh \frac{J-h}{T} \right)^{q-1} \right]
+$$</div>
+<p>Translation invariance imposes that the mean value of a spin do not depend on the site (the equilibrium state is homogeneous) <span class="math">\(\braket{s_0} = \braket{s_x}\)</span>, therefore, from the previous results we&nbsp;deduce
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:hc}
+\frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} = \E^{2h/(q-1)T},
+\end{equation}
+$$</div>
+<p>
+which is a self-consistent equation that determines the possible values of the cluster field <span class="math">\(h\)</span> (see figure below). Simple algebra shows that <span class="math">\(h\)</span> is given by the roots of the&nbsp;function
+</p>
+<div class="math">$$
+f(h,T) = h - \frac{T(q-1)}{2J} \ln \frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} 
+$$</div>
+<p>
+represented on the&nbsp;figure.</p>
+<blockquote>
+<p><img src="/images/PS-bethe.svg" alt="mean field roots" style="height: 250px;"/></p>
+<p>For <span class="math">\(T&gt;T_c\)</span> only the root at <span class="math">\(h=0\)</span> is present; for <span class="math">\(T&lt;T_c\)</span> two new roots appear, given the possible values of the self-consistent cluster field. We take <span class="math">\(J=1\)</span> and <span class="math">\(T=T_c/1.3\)</span>, and obtain <span class="math">\(h = \pm 2.22\)</span>&nbsp;(dots).</p>
+</blockquote>
+<p>The critical temperature <span class="math">\(T_c\)</span> corresponds to the value of <span class="math">\(T\)</span> for which <span class="math">\(h=0\)</span> becomes an unstable root of <span class="math">\(f\)</span>. It can be determined form the condition that the slope at <span class="math">\(h=0\)</span> of the left hand side of (<span class="math">\(\ref{e:hc}\)</span>) must equals its right hand&nbsp;side:
+</p>
+<div class="math">$$
+\frac{\partial}{\partial h}\left. \frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} \right|_{h=0} = \frac{\partial}{\partial h}\left. \E^{2h/(q-1)T} \right|_{h=0} ,
+$$</div>
+<p>
+or
+</p>
+<div class="math">$$
+2\tanh \frac{J}{T_c} = \frac{2}{q-1},
+$$</div>
+<p>
+or&nbsp;equivalently
+</p>
+<div class="math">$$
+\frac{J}{T} = \frac{1}{2} \ln \frac{q}{q-2}.
+$$</div>
+<p>
+For the square lattice this gives <span class="math">\(T_c \approx 2.885\)</span>, that you can compare to the exact value of Onsager <span class="math">\(2.269\)</span>, a huge improvement with respect to the simple mean-field calculation which gives <span class="math">\(T_c = 4\)</span> (in units of <span class="math">\(J\)</span>). To get the previous expression you may show&nbsp;that
+</p>
+<div class="math">$$
+2x = \ln \frac{1+t}{1-t}, \quad t = \tanh x.
+$$</div>
+<p>Now we compute the magnetization <span class="math">\(m\)</span> near the critical temperature, when <span class="math">\(T \approx T_c\)</span> and <span class="math">\(h \approx h_c\)</span>. Equation (<span class="math">\(\ref{e:s0}\)</span>) gives us the relation between the cluster field <span class="math">\(h\)</span> and <span class="math">\(m =&nbsp;\braket{s_0}\)</span>
+</p>
+<div class="math">$$
+m = \tanh \frac{qh}{(q-1)T} \approx \frac{qh}{(q-1)T} ,
+$$</div>
+<p>
+where, in the last equality, we used the fact that <span class="math">\(h/T \ll 1\)</span> (close to the transition). From the right hand side of the same equation (<span class="math">\(\ref{e:s0}\)</span>), we&nbsp;obtain
+</p>
+<div class="math">$$
+\frac{h}{T} \approx (q-1) \tanh(J/T) \frac{h}{T} - \frac{q-1}{3} \frac{\tanh(J/T)}{\cosh^2(J/T)} \left(\frac{h}{T}\right)^3 + \cdots
+$$</div>
+<p>
+where we used an expansion in a taylor series. Below <span class="math">\(T_c\)</span> we&nbsp;have
+</p>
+<div class="math">$$
+(q-1)\tanh(J/T) &gt; 1 = (q-1)\tanh(J/T_c),
+$$</div>
+<p>
+therefore,
+</p>
+<div class="math">$$
+\tanh(J/T) - \tanh(J/T_c) \approx \frac{1}{3} \tanh(J/T_c)\mathrm{sech}(J/T_c) \left(\frac{h}{T}\right)^3,
+$$</div>
+<p>
+where, within the same approximation, we replaced <span class="math">\(T=T_c\)</span>. Expanding the difference of&nbsp;tangents
+</p>
+<div class="math">$$\tanh(x+\epsilon) - \tanh(x) \approx \mathrm{sech}^2(x) \epsilon,$$</div>
+<p>
+we finally&nbsp;obtain
+</p>
+<div class="math">$$
+h = J\sqrt{3(q-1)} \left(1-\frac{T}{T_c}\right)^{1/2}
+$$</div>
+<p>
+the usual power low with exponent <span class="math">\(\beta=1/2\)</span> of the mean field theory. The bethe approximation improves the estimation of the critical temperature, but do not change the critical exponents at the phase transition, showing that these exponents are rather insensitive to the influence of the field created by the near neighbors. Only long range correlation can modify the mean-field&nbsp;results.</p>
+<h3>9</h3>
+<p>Mean field and Landau theory. Helium (<span class="math">\(^4\mathrm{He}\)</span>) liquefies at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a fraction <span class="math">\(c_3\)</span> of the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transtion changes when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point (<span class="math">\(c_4\)</span> is the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
+</p>
+<div class="math">$$
+H = -J \sum_{\braket{i,j}} S_i S_j + \Delta \sum_i (S_i^2 - 1), \quad S_i = 0, \pm 1
+$$</div>
+<p>
+where <span class="math">\(S_i = \pm 1\)</span> represents the helium-4 interacting atoms and <span class="math">\(S_i = 0\)</span> the helium-3 atoms, treated as impurities, <span class="math">\(\Delta\)</span> controls the number of helium-3 atoms (it is proportional to the difference of chemical potentials); the sums extend to the total number of lattice sites <span class="math">\(N\)</span>, and <span class="math">\(\braket{i,j}\)</span> labels neighbors. The concentration of <span class="math">\(^3\mathrm{He}\)</span> is then <span class="math">\(x = 1 - \braket{S_i^2}\)</span>.</p>
+<p>Show that the probability distribution P(S) is given&nbsp;by
+</p>
+<div class="math">$$
+P(S) = \frac{\E^{(qJmS - \Delta S^2)/T}}{Z}, \quad Z = 1 + 2\E^{-\Delta/T} \cosh\big(qJm/T\big).
+$$</div>
+<p>
+You may use the minimization of the free energy <span class="math">\(F\)</span>, assuming that <span class="math">\(S_i\)</span> are independent random variables (mean field&nbsp;approximation):
+</p>
+<div class="math">$$
+F = \braket{H} + NT\sum_S P(S) \ln P(S),
+$$</div>
+<p>
+where we also exploit homogeneity. Compute the expected value of <span class="math">\(S^2\)</span>:
+</p>
+<div class="math">$$
+\braket{S^2} = \frac{2\E^{-\Delta/T} \cosh(qJM/T)}{Z}.
+$$</div>
+<p>Deduce the free energy per atom <span class="math">\(f(m; T, \Delta) =&nbsp;F/N\)</span>
+</p>
+<div class="math">$$
+f = \frac{1}{2} qJm^2 - T \ln \left( 1 + 2 \E^{-\Delta/T}\cosh \frac{qJm}{T} \right) - \Delta.
+$$</div>
+<p>
+Just above the transition (disordered state) <span class="math">\(m = 0\)</span>; you can then expand <span class="math">\(f(m)\)</span> in powers of <span class="math">\(m\)</span> up to the 6th order. Analyse the possible phase transitions using Landau approach. Compute, in particular, the values of the concentration <span class="math">\(x_t\)</span> and the temperature <span class="math">\(T_t\)</span> at the tricritical&nbsp;point.</p>
+<p>Numerical application: plot the phase diagram in the <span class="math">\((x,T)\)</span>&nbsp;plane.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

@@ -240,7 +240,7 @@ behavior reminiscent to a <em>phase transition</em> (at critical temperature <sp
 <p>
 We introduce as before, the transfer matrix <span class="math">\(T\)</span>,
 </p>
-<div class="math">$$\frac{1}{Z} \sum_s \prod_{y=1}^{x-1} T_{s_ys_{y+1}}s_x \prod_{y=x}^{x+r-1}  T_{s_ys_{y+1}} s_{x+r} \prod_{y=x+y}^{N} T_{s_ys_{y+1}}\,,$$</div>
+<div class="math">$$\frac{1}{Z} \sum_s \prod_{y=1}^{x-1} T_{s_ys_{y+1}}s_x \prod_{y=x}^{x+r-1}  T_{s_ys_{y+1}} s_{x+r} \prod_{y=x+r}^{N} T_{s_ys_{y+1}}\,,$$</div>
 <p>
 which gives, using the matrix product&nbsp;formula,
 </p>
@@ -397,9 +397,9 @@ this means that with this special value of <span class="math">\(p\)</span>, once
 <h3>Numerical computation of the ising&nbsp;model</h3>
 <p>We consider the ising model in a square lattice of size <span class="math">\(L\)</span>,
 </p>
-<div class="math">$$H=-\sum_{\langle x,y \rangle} s_x s_y\,, x,y = 0,1,\ldots, L^2 - 1$$</div>
+<div class="math">$$H=-\sum_{\langle x,y \rangle} s_x s_y\,,\quad x,y = 0,1,\ldots, L^2 - 1$$</div>
 <p>
-(with <span class="math">\(J=1\)</span> the energy unit) was exactly solved by <a href="/pages/PS-onsager.html">Onsager (1944)</a>. It undergoes a ferromagnetic transition at the&nbsp;temperature
+(with <span class="math">\(J=1\)</span> the energy unit and where the sum runs over the nearest neighbors) was exactly solved by <a href="/pages/PS-onsager.html">Onsager (1944)</a>. It undergoes a ferromagnetic transition at the&nbsp;temperature
 </p>
 <div class="math">$$T_c = 2/\log(1+\sqrt{2})\,.$$</div>
 <p>
