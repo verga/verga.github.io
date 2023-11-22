@@ -623,6 +623,91 @@ Just above the transition (disordered state) <span class="math">\(m = 0\)</span>
 <blockquote>
 <p><strong>Solution</strong></p>
 </blockquote>
+<p>One essential feature of the mean-field approximation is the neglect of correlation: <span class="math">\(\braket{S_xS_y} \sim \braket{S_x}\braket{S_y}\)</span>. On the level of the probability distribution function <span class="math">\(P(S_1,S_2,\ldots,S_N)\)</span> of the configuration <span class="math">\(\mathcal{S} = \{S_1S_2\cdots S_N \mid S_x=0,\pm1,\; \forall x\}\)</span>, this assumption means that it factorizes&nbsp;as
+</p>
+<div class="math">$$
+P(\mathcal{S}) = \prod_{x=1}^N P(S_x) = P(S)^N
+$$</div>
+<p>
+where in the last equality we used translation invariance <span class="math">\(P(S_x) = P(S)\)</span>. As a consequence, the computation of the mean energy is&nbsp;straightforward:
+</p>
+<div class="math">$$
+\braket{H} = -\frac{qN}{2} \braket{S}^2 + \Delta N \braket{S^2} - \Delta N.
+$$</div>
+<p>
+Indeed, for instance the <span class="math">\(J\)</span> term can be written&nbsp;as
+</p>
+<div class="math">$$
+\braket{\sum_{\braket{x,y}} S_x S_y} = \frac{1}{2} \sum_x \sum_{y \in N(x)} \braket{S_x S_y} \approx \frac{1}{2} \sum_x \sum_{y \in N(x)} \braket{S} \braket{S},
+$$</div>
+<p>
+which leads to the first term in <span class="math">\(\braket{H}\)</span>, where <span class="math">\(q\)</span> is the number of neighbors and <span class="math">\(N(x)\)</span> the neighbors of <span class="math">\(x\)</span>&nbsp;set.</p>
+<p>The free energy <span class="math">\(F = \braket{H} - T S_G\)</span> where <span class="math">\(S_G\)</span> is the Gibbs entropy, is&nbsp;then
+</p>
+<div class="math">$$
+\frac{F}{N} = -\frac{q}{2} \Big[\sum_S P(S) S\Big]^2 + \Delta \sum_S P(S)S^2 - \Delta + T \sum_S P(S) \ln P(S).
+$$</div>
+<p>To find <span class="math">\(P(S)\)</span> we minimize <span class="math">\(F = F[P(s)]\)</span> subject to the constraint <span class="math">\(\sum_S P(S) = 1\)</span>:
+</p>
+<div class="math">$$
+\frac{1}{N} \frac{\delta}{\delta P(S)} F = -qJ \Big[\sum_S P(S) S] S + \Delta S^2 + T \ln P(S) + (T - \mu) = 0,
+$$</div>
+<p>
+where <span class="math">\(\mu\)</span> is the lagrange multiplier associated to the normalization of <span class="math">\(P\)</span>. We hence&nbsp;obtain,
+</p>
+<div class="math">$$
+P(S) = \frac{1}{Z} \exp\Big[\frac{qJ}{T} m S - \frac{\Delta}{T} S^2\Big], \quad m = \sum_S P(S) S.
+$$</div>
+<p>
+We note that this is a self-consistent equation (<span class="math">\(m\)</span> depends on <span class="math">\(P\)</span>). To ensure its validity, the mean value of <span class="math">\(S\)</span> must&nbsp;satisfy
+</p>
+<div class="math">$$
+m = \frac{1}{Z} \Big[\E^{qJm/T - \Delta/T} - \E^{-qJm/T - \Delta/T}\Big]
+$$</div>
+<p>
+or, taking into account&nbsp;that
+</p>
+<div class="math">$$
+Z = 1 + \Big[\E^{qJm/T - \Delta/T} + \E^{-qJm/T - \Delta/T}\Big]
+$$</div>
+<p>
+we&nbsp;write
+</p>
+<div class="math">$$
+m =  \frac{2\E^{-\Delta/T} \sinh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)}.
+$$</div>
+<p>
+Similarly, the computation of <span class="math">\(\braket{S^2}\)</span>,&nbsp;gives
+</p>
+<div class="math">$$
+\braket{S^2} =  \frac{2\E^{-\Delta/T} \cosh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)}.
+$$</div>
+<p>
+Using these results, we can write the free energy as a function of the macroscopic variable <span class="math">\(m\)</span>:
+</p>
+<div class="math">$$
+F(m, T) = -\frac{qJ}{2} m^2 + \frac{2\Delta \E^{-\Delta/T}}{Z} \cosh(qJm/T) - \Delta - TS_G,
+$$</div>
+<p>
+and
+</p>
+<div class="math">$$
+S_G = -\frac{1}{Z} \ln \frac{1}{Z} - \frac{1}{Z} \exp\Big[\frac{qJ}{T} m - \frac{\Delta}{T} \Big]\Big(\frac{qJm}{T} - \frac{\Delta}{T} + \ln \frac{1}{Z}) - \frac{1}{Z} \exp\Big[-\frac{qJ}{T} m - \frac{\Delta}{T} \Big]\Big(-\frac{qJm}{T} - \frac{\Delta}{T} + \ln \frac{1}{Z})
+$$</div>
+<p>
+or
+</p>
+<div class="math">$$
+S_G = -\frac{1}{Z} \big[1 + \E^{-\Delta/T} \cosh(qJm/T)\big] - \frac{2qJm}{Z} \E^{-\Delta/T} \sinh(qJm/T) + \frac{2\Delta}{TZ} \E^{-\Delta/T} \cosh(qJm/T) ,
+$$</div>
+<p>
+where we recognize the expressions of <span class="math">\(\braket{S}=m\)</span> and <span class="math">\(\braket{S^2}\)</span>. Using these formulas, we can rewrite the free energy in the&nbsp;form,
+</p>
+<div class="math">$$
+F(m,T) = \frac{qJ}{2}m^2 - T \ln\Big[1 + \E^{-\Delta/T} \cosh(qJm/T)\Big] - \Delta.
+$$</div>
+<p>
+We are now in a position to compute the thermodynamics of the Blume, Emery and Griffiths&nbsp;model.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
