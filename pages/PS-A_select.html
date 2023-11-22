@@ -474,7 +474,7 @@ Verify that this formula reduces to the standard one (mean field) in the limit <
 <p>The partition function of one cluster <span class="math">\(Z_c\)</span> (the one associated to <span class="math">\(s_0\)</span>, for example)&nbsp;is
 </p>
 <div class="math">$$
-Z_c = Z(s_0) = \sum_{s_0 = \pm1} \sum_{s_y=\pm1} \E^{-H(s_0)/T} = \sum_{s_0 = \pm1} \sum_{s_y=\pm1} \prod_{y=1}^{q} \E^{(J/T)s_0s_y + (h/T)s_y}.
+Z_c = Z(s_0) = \sum_{s_0 = \pm1} \prod_y \Big(\sum_{s_y=\pm1}\Big) \E^{-H(s_0)/T} = \sum_{s_0 = \pm1} \prod_{y=1}^{q} \sum_{s_y=\pm1} \E^{(J/T)s_0s_y + (h/T)s_y}.
 $$</div>
 <p>
 The sums over the cluster configurations&nbsp;give
@@ -495,7 +495,7 @@ $$</div>
 For the neighbor <span class="math">\(x\)</span> of <span class="math">\(s_0\)</span> in the cluster we&nbsp;write
 </p>
 <div class="math">$$
-\braket{s_x} = \frac{1}{Z_c} \sum_{s_y=\pm1} \left[ \prod_{y=1}^{q} s_x \E^{(J+h)s_y/T} + \prod_{y=1}^{q} s_x \E^{(J-h)s_y/T} \right],
+\braket{s_x} = \frac{1}{Z_c} \left[ \prod_{y=1}^{q} \sum_{s_y=\pm1} s_x \E^{(J+h)s_y/T} + \prod_{y=1}^{q} \sum_{s_y=\pm1} s_x \E^{(J-h)s_y/T} \right],
 $$</div>
 <p>
 separating the case <span class="math">\(x=y\)</span> to the others we&nbsp;obtain
