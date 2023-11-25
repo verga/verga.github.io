@@ -523,6 +523,18 @@ represented on the&nbsp;figure.</p>
 <p><img src="/images/PS-bethe.svg" alt="mean field roots" style="height: 250px;"/></p>
 <p>For <span class="math">\(T&gt;T_c\)</span> only the root at <span class="math">\(h=0\)</span> is present; for <span class="math">\(T&lt;T_c\)</span> two new roots appear, given the possible values of the self-consistent cluster field. We take <span class="math">\(J=1\)</span> and <span class="math">\(T=T_c/1.3\)</span>, and obtain <span class="math">\(h = \pm 2.22\)</span>&nbsp;(dots).</p>
 </blockquote>
+<p>We write a python code to compute the value of <span class="math">\(h\)</span> (the dots in the&nbsp;figure):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root_scalar</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">hmax</span> <span class="o">=</span> <span class="mf">1.6</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># inverse critical temperature</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">bc</span> <span class="c1"># below the critical temperature</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">-</span> <span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="p">)))</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;brentq&#39;</span><span class="p">)</span>
+</code></pre></div>
+
 <p>The critical temperature <span class="math">\(T_c\)</span> corresponds to the value of <span class="math">\(T\)</span> for which <span class="math">\(h=0\)</span> becomes an unstable root of <span class="math">\(f\)</span>. It can be determined form the condition that the slope at <span class="math">\(h=0\)</span> of the left hand side of (<span class="math">\(\ref{e:hc}\)</span>) must equals its right hand&nbsp;side:
 </p>
 <div class="math">$$
@@ -588,7 +600,7 @@ $$</div>
 <p>
 the usual power low with exponent <span class="math">\(\beta=1/2\)</span> of the mean field theory. The bethe approximation improves the estimation of the critical temperature, but do not change the critical exponents at the phase transition, showing that these exponents are rather insensitive to the influence of the field created by the near neighbors. Only long range correlation can modify the mean-field&nbsp;results.</p>
 <h3>9</h3>
-<p>Mean field and Landau theory. Helium (<span class="math">\(^4\mathrm{He}\)</span>) liquefies at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a fraction <span class="math">\(c_3\)</span> of the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transtion changes when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point (<span class="math">\(c_4\)</span> is the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
+<p>Mean field and Landau theory. Helium (<span class="math">\(^4\mathrm{He}\)</span>) liquefies at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a fraction <span class="math">\(c_3\)</span> of the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transition changes when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point (<span class="math">\(c_4\)</span> is the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
 </p>
 <div class="math">$$
 H = -J \sum_{\braket{i,j}} S_i S_j + \Delta \sum_i (S_i^2 - 1), \quad S_i = 0, \pm 1
@@ -674,19 +686,25 @@ $$</div>
 we&nbsp;write
 </p>
 <div class="math">$$
+\begin{equation}
+\label{begm}
 m =  \frac{2\E^{-\Delta/T} \sinh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)}.
+\end{equation}
 $$</div>
 <p>
 Similarly, the computation of <span class="math">\(\braket{S^2}\)</span>,&nbsp;gives
 </p>
 <div class="math">$$
-\braket{S^2} =  \frac{2\E^{-\Delta/T} \cosh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)}.
+\begin{equation}
+\label{begx}
+\braket{S^2} =  \frac{2\E^{-\Delta/T} \cosh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)} = 1- x.
+\end{equation}
 $$</div>
 <p>
 Using these results, we can write the free energy as a function of the macroscopic variable <span class="math">\(m\)</span>:
 </p>
 <div class="math">$$
-F(m, T) = -\frac{qJ}{2} m^2 + \frac{2\Delta \E^{-\Delta/T}}{Z} \cosh(qJm/T) - \Delta - TS_G,
+\frac{F(m, T, \Delta)}{N} = f(m, T, \Delta) = -\frac{qJ}{2} m^2 + \frac{2\Delta \E^{-\Delta/T}}{Z} \cosh(qJm/T) - \Delta - TS_G,
 $$</div>
 <p>
 and
@@ -701,13 +719,135 @@ or
 S_G = -\frac{1}{Z} \big[1 + \E^{-\Delta/T} \cosh(qJm/T)\big] - \frac{2qJm}{Z} \E^{-\Delta/T} \sinh(qJm/T) + \frac{2\Delta}{TZ} \E^{-\Delta/T} \cosh(qJm/T) ,
 $$</div>
 <p>
-where we recognize the expressions of <span class="math">\(\braket{S}=m\)</span> and <span class="math">\(\braket{S^2}\)</span>. Using these formulas, we can rewrite the free energy in the&nbsp;form,
+where we recognize the expressions of <span class="math">\(\braket{S}=m\)</span> and <span class="math">\(\braket{S^2}\)</span>. Using these formulas, we can rewrite the free energy in&nbsp;thform,
 </p>
 <div class="math">$$
-F(m,T) = \frac{qJ}{2}m^2 - T \ln\Big[1 + \E^{-\Delta/T} \cosh(qJm/T)\Big] - \Delta.
+f(m, T, \Delta) = \frac{qJ}{2}m^2 - T \ln\Big[1 + 2\E^{-\Delta/T} \cosh(qJm/T)\Big] - \Delta.
 $$</div>
 <p>
 We are now in a position to compute the thermodynamics of the Blume, Emery and Griffiths&nbsp;model.</p>
+<p>Possible phase transitions can be monitored by <span class="math">\(m\)</span> and <span class="math">\(x\)</span>, the two order parameters of the helium mixture: <span class="math">\(m\)</span> describes the normal-superfluid transition (it vanishes in the normal phase), while <span class="math">\(x\)</span> describes the influence of the <span class="math">\(^3\mathrm{He}\)</span> (it vanishes in the pure <span class="math">\(^4\mathrm{He}\)</span> phase). Note that the free energy can be written&nbsp;as
+</p>
+<div class="math">$$
+f = \frac{qJ}{2}m^2 + T \ln(x) - \Delta.
+$$</div>
+<p>
+We are interested in the line separating the <span class="math">\(m=0\)</span> and <span class="math">\(m\ne 0\)</span> phases as a function of the <span class="math">\(^3\mathrm{He}\)</span> concentration. From (<span class="math">\(\ref{begm}\)</span>) and (<span class="math">\(\ref{begx}\)</span>) we&nbsp;get
+</p>
+<div class="math">$$
+x_0 = \frac{\E^{\Delta/T}}{\E^{\Delta/T} + 2}, \quad \text{or } \Delta = T \ln \frac{2x_0}{1-x_0},\quad \text{for } m=0,
+$$</div>
+<p>
+and, dividing the two&nbsp;equations,
+</p>
+<div class="math">$$
+x(m) = 1 - m \coth(qJm/T), \quad \text{for } m \ne 0.
+$$</div>
+<p>
+Numerically, we can then obtain <span class="math">\(m = m(T)\)</span> from (<span class="math">\(\ref{begm}\)</span>) in which we replace <span class="math">\(x\)</span> by <span class="math">\(x(m)\)</span>. The whole phase diagram <span class="math">\((\Delta, T)\)</span>, giving the equilibrium values of <span class="math">\((m,x)\)</span>, can be obtained by solving (<span class="math">\(\ref{begm}\)</span>) and (<span class="math">\(\ref{begx}\)</span>) for each pair of values of <span class="math">\(\Delta\)</span> and <span class="math">\(T\)</span>. In experiments the control parameters are <span class="math">\((x,T)\)</span>, hence it is convenient to transform the plane <span class="math">\((\Delta,T)\)</span> into <span class="math">\((x,T)\)</span>.</p>
+<p>In the case <span class="math">\(x=0\)</span> we must recover the usual second order phase transition between the normal and superfluid phases of liquid helium. Expanding <span class="math">\(f = f_0 + f_2 m^2 + f_4 m^4\)</span> around <span class="math">\(m=0\)</span> we obtain (see the python code below where we use <code>sympy</code> to compute the expansion coefficients <span class="math">\(f_n,\; n = 0, 2, 4, 6\)</span>)
+</p>
+<div class="math">$$
+\begin{gather}
+f_0 = -\Delta + T\ln\frac{\delta - 1}{\delta} \\
+f_2 = \frac{(qJ)^2}{2T\delta} \Big(\frac{T\delta}{qJ} - 1\Big) \\
+f_4 =  \frac{(qJ)^4}{8T^3 \delta^2} \Big(1 - \frac{\delta}{3}\Big) ,
+\end{gather}
+$$</div>
+<p>
+where
+</p>
+<div class="math">$$
+\delta = \frac{1}{2} \E^{\Delta/T} + 1 = \frac{1}{1-x}.
+$$</div>
+<p>
+We remark that the second order coefficient <span class="math">\(f_2\)</span> becomes negative, the condition for a second order transition, at <span class="math">\(T=T_c(x) = qJ/\delta\)</span>&nbsp;or
+</p>
+<div class="math">$$
+T_c(x) = qJ(1 - x),
+$$</div>
+<p>
+which is then the critical temperature of the superfluid transition, it linearly decreases with the helium 3&nbsp;concentration.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">series</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;m, T, q, J, Delta, delta&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">T</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="n">d</span>
+<span class="n">f_poly</span> <span class="o">=</span> <span class="n">series</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="c1"># simplify each coefficient</span>
+<span class="n">f_coeff</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
+    <span class="n">f_coeff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_poly</span><span class="o">.</span><span class="n">coeff</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">),</span><span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Moreover, the fourth order coefficient <span class="math">\(f_4\)</span>, which must be positive for the second order phase transition, becomes negative when <span class="math">\(\delta &gt; \delta_c = 3\)</span>.&nbsp;Therefore
+</p>
+<div class="math">$$
+x_0 = 2/3, \quad \Delta_c = \frac{1}{\delta_c} \ln(2\delta_c -2) = 0.462, \quad T_c = \frac{1}{3}
+$$</div>
+<p>
+should correspond to the transformation of the second order phase transition into a first order&nbsp;one.</p>
+<blockquote>
+<p><img src="/images/PS-BEGfm.svg" alt="BEG f(m)" style="height: 250px;"/></p>
+<p>Free energy as a function (<span class="math">\(f+\Delta\)</span>) of the order parameter <span class="math">\(m\)</span>, for different values of the helium 3 concentration <span class="math">\(x\)</span> and temperature. The critical curve <span class="math">\(x_c,T_c\)</span> (gray) shows a flat minimum. For <span class="math">\(x&lt;x_c\)</span> the phase transition is of second order, its separates the superfluid to the normal fluid phases. For <span class="math">\(x &gt; x_c\)</span> we see instead that the shape of <span class="math">\(f\)</span> changes, developing secondary minima at a finite distance from zero: <span class="math">\(m = m(T)\)</span> becomes a discontinuous function, signaling the presence of a first order phase transition&nbsp;(red).</p>
+</blockquote>
+<p>In order to investigate the neighborhood of the tricritical point <span class="math">\((x_c,T_c)\)</span> in which superfluid, normal, and separated phases coexist, we must allow <span class="math">\(m  \ne 0\)</span>. This can be done by introducing a fictive field <span class="math">\(H\)</span> and to define the Gibbs free energy by <span class="math">\(g = f + Hm\)</span>. In terms of <span class="math">\(g = g(m)\)</span>, the equation of state <span class="math">\(m = m(H)\)</span> is obtained inverting the relation <span class="math">\(H=H(m)\)</span>&nbsp;from
+</p>
+<div class="math">$$
+H = \frac{\partial g}{\partial m} = 2am + 4bm^3 + 6cm^5, 
+$$</div>
+<p>
+where we wrote the expansion of <span class="math">\(g\)</span> in powers of <span class="math">\(m\)</span>
+</p>
+<div class="math">$$
+g = g_0(\Delta,T) + a(\Delta,T) m^2 + b(\Delta,T) m^4 + c(\Delta,T) m^6.
+$$</div>
+<p>
+To compute the coefficient <span class="math">\((a,b,c)\)</span>, we use the self-consitent equation given <span class="math">\(m\)</span> for <span class="math">\(H \ne 0\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+m =  \frac{2\E^{-\Delta/T} \sinh(qJm/T + H/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T + H/T)}.
+\end{equation}
+$$</div>
+<p>
+and evaluate its derivatives with respect to <span class="math">\(m\)</span> at <span class="math">\(m=0\)</span>. A <code>sympy</code> code is shown&nbsp;below.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">series</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;m, T, q, J, Delta, delta, H&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a, b, c&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># free energy f(m,H)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">T</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">T</span> <span class="o">+</span> <span class="n">H</span><span class="o">/</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="n">d</span>
+<span class="c1"># magnetization</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">J</span><span class="o">/</span><span class="n">q</span><span class="p">)</span>
+<span class="c1"># expand to 6th order</span>
+<span class="n">g1h</span> <span class="o">=</span> <span class="n">g1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">m</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># simplification</span>
+<span class="k">def</span> <span class="nf">subs_m0</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="c1"># m^2 coefficient a</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">a_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># m^4 coefficient b</span>
+<span class="n">g4</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">b_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g4</span><span class="p">,</span> <span class="n">b</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a_sol</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="c1"># m^6 coefficient c</span>
+<span class="n">g6</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">c_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g6</span><span class="p">,</span> <span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">a_sol</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">b_sol</span><span class="p">})</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</code></pre></div>
+
+<p>We&nbsp;get
+</p>
+<div class="math">$$
+\begin{gather}
+a = \frac{qJ}{2} \Big(\frac{T\delta}{qJ} - 1\Big)\\
+b = \frac{T\delta^2}{8} \Big(1 - \frac{\delta}{3} \Big)\\
+c = \frac{T\delta^3}{12}\Big( \frac{3}{20} \delta^2 - \frac{3}{4}\delta + 1\Big)
+\end{gather}
+$$</div>
+<p>
+This is the Landau expansion of the gibbs free energy; note that the conditions to find the tricritical point are as before (where we used <span class="math">\(f\)</span>), but now the 6th order coefficient is always positive (it was not the case in the previous calculation, which failed already at the forth order, just because of the presence of the tricritical&nbsp;point).</p>
+<p>Further information can be obtained in the original paper: 
+* Blume M, Emery <span class="caps">VJ</span>, and Griffiths <span class="caps">RB</span>, <em>Ising Model for the <span class="math">\(\lambda\)</span> Transition and Phase Separation in He3-He4 Mixtures</em>. Phys. Rev. A <strong>4</strong>, 1071 (1971) <a href="https://doi.org/10.1103/PhysRevA.4.1071">https://doi.org/10.1103/PhysRevA.4.1071</a>.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
