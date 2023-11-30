@@ -177,20 +177,20 @@ M \sim |T-T_c|^\beta,\quad \beta = 1/2\,,
 $$</div>
 <p>
 with the same exponent as the one obtained in mean field approximation of the ising&nbsp;model.</p>
-<p>The homogeneous state is not structurally stable near the transition: spatial fluctuations become dominant in the limit <span class="math">\(T\rightarrow T_c\)</span>. The physical manifestation of that is the divergence of the response coefficients, like the susceptibility (a scalar in an isotropic&nbsp;medium):
+<p>The homogeneous state is not structurally stable near the transition: spatial fluctuations become dominant in the limit <span class="math">\(T\rightarrow T_c\)</span>. The physical manifestation of that is the presence of divergences in the response coefficients, like the susceptibility (a scalar in an isotropic medium, but more generally a tensor when it relates&nbsp;vectors):
 </p>
 <div class="math">$$
 \begin{align*}
-M(\bm x) &amp;= -\frac{\delta F}{\delta H(\bm x)},\\ 
-\chi(|\bm x - \bm x'|) &amp;= \frac{\delta M(\bm x)}{\delta  H(\bm x')} = -\frac{\delta^2 F}{\delta H(\bm x) \delta H(\bm x')},
+\bm M(\bm x) &amp;= -\frac{\delta F}{\delta \bm H(\bm x)},\\ 
+\chi_{ij}(|\bm x - \bm x'|) &amp;= \frac{\delta M(\bm x)}{\delta  H(\bm x')} = -\frac{\delta^2 F}{\delta H_i(\bm x) \delta H_j(\bm x')},
 \end{align*}
 $$</div>
 <p>
-(where <span class="math">\(M\)</span> and <span class="math">\(H\)</span> are two vector components in the same direction, the susceptibility do not depend on the direction) computed at equilibrium, where the system is statistically translation&nbsp;invariant.</p>
+(where <span class="math">\(H_i\)</span> is one vector component of <span class="math">\(\bm H\)</span>) computed at equilibrium, where the system is statistically translation invariant (the susceptibility only depends on the distance between two&nbsp;points).</p>
 <p>Near thermodynamic equilibrium a universal relation exists between the linear response susceptibility <span class="math">\(\chi\)</span> and the correlation function <span class="math">\(C\)</span>
 </p>
 <div class="math">$$
-C(|\bm x-\bm x'|) = \langle M(\bm x) M(\bm x') \rangle - \langle M(\bm x)\rangle^2  \,,
+C_{ij}(|\bm x-\bm x'|) = \langle M_i(\bm x) M_j(\bm x') \rangle - \langle M_i(\bm x)\rangle \langle M_j(\bm x)\rangle\,,
 $$</div>
 <p>
 of the corresponding physical quantity. Indeed, using the partition function in the&nbsp;form,
@@ -208,7 +208,7 @@ $$</div>
 we obtain, at <span class="math">\(H=0\)</span>, the <em>fluctuation-dissipation</em>&nbsp;theorem
 </p>
 <div class="math">$$
-C(|\bm x - \bm x'|) = T \chi(|\bm x - \bm x'|)\,.
+C_{ij}(|\bm x - \bm x'|) = T \chi_{ij}(|\bm x - \bm x'|)\,.
 $$</div>
 <p>In the equilibrium state the magnetization has a constant value <span class="math">\(M = \bar{m}\)</span>, different in each phase, <span class="math">\(\bar{m}=0\)</span> (paramagnetic state), and <span class="math">\(\bar{m}=[A(T_c-T)/2b]^{1/2}\)</span> (ferromagnetic state); around this equilibrium state, the order parameter&nbsp;fluctuates,
 </p>
@@ -220,13 +220,13 @@ where we defined the fluctuation field <span class="math">\(\bm \phi\)</span>, w
 <p>Substituting this expansion into the free energy one gets <span class="math">\(F=F[\bar{m}] + F[\phi_0] + F[\bm\phi_\perp]\)</span>,
 </p>
 <div class="math">$$
-F[\phi_0] = \int \D \bm x \, [ \tfrac{\kappa}{2} (\nabla \phi_0 )^2 + \tfrac{1}{2} (2a+12b \bar{m}^2) \phi_0^2  ]
+F[\phi_0] = \int \D \bm x \, [ \tfrac{\kappa}{2} (\nabla \phi_0 )^2 + (a+6b \bar{m}^2) \phi_0^2  ]
 $$</div>
 <p>
 and
 </p>
 <div class="math">$$
-F[\bm\phi_\perp] = \int \D \bm x \, [ \tfrac{\kappa}{2} |\nabla \bm\phi_\perp |^2 + \tfrac{1}{2} (2a+4b \bar{m}^2) \phi_\perp^2  ]
+F[\bm\phi_\perp] = \int \D \bm x \, [ \tfrac{\kappa}{2} |\nabla \bm\phi_\perp |^2 + (a+2b \bar{m}^2) \phi_\perp^2  ]
 $$</div>
 <p>
 to lowest order in the fluctuating fields. The coefficients of the quadratic terms are related with the correlation&nbsp;lengths
