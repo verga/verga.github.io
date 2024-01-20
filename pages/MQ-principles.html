@@ -54,41 +54,39 @@
 \newcommand{\braket}[1]{\langle{#1}\rangle}
 \newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
 <h1>Principes de la mécanique&nbsp;quantique</h1>
-<ul>
-<li>L&#8217;état d&#8217;un système quantique correspond à un vecteur <span class="math">\(\ket{\psi}\)</span> de norme 1 de l&#8217;espace de hilbert $\mathcal{H}:
-    <div class="math">$$
-    \begin{equation}
-      \ket{\psi} \in \mathcal{H},
-    \end{equation}
-    $$</div>
-    cette état constitue une description complète du système&nbsp;physique.</li>
-</ul>
+<blockquote>
+<p>L&#8217;état d&#8217;un système quantique correspond à un vecteur <span class="math">\(\ket{\psi}\)</span> de norme 1 de l&#8217;espace de hilbert <span class="math">\(\mathcal{H}\)</span>:
+<div class="math">$$
+\begin{equation}
+  \ket{\psi} \in \mathcal{H},
+\end{equation}
+$$</div>
+cette état constitue une description complète du système&nbsp;physique.</p>
+</blockquote>
 <p>Le fait que l&#8217;état quantique puisse être associé à un vecteur d&#8217;un espace vectoriel <em>linéaire</em> sur les complexes est une conséquence du principe de <em>superposition</em>: expérimentalement on observe des effets d&#8217;interférence quantique, comme dans l&#8217;expérience de deux fentes dans laquelle apparaît sur le détecteur (écran) un motif d&#8217;interférence similaire à celui d&#8217;une onde électromagnétique mais produit par, par exemple, un faisceau de neutrons, ou dans l&#8217;expérience de Stern-Gerlach où on mesure l&#8217;état de spin d&#8217;un électron. Dans le premier cas il s&#8217;agit d&#8217;une superposition de chemins: l&#8217;état du neutron résulte d&#8217;une superposition de &#8220;chemins&#8221; entre la source et l&#8217;écran, passant par chaque fente. Dans le second cas, l&#8217;état <span class="math">\(\ket{\psi}\)</span> de spin de l&#8217;électron (atomes d&#8217;argent dans l&#8217;expérience) se présente comme étant la superposition d&#8217;un spin &#8220;up&#8221; <span class="math">\(\ket{0}\)</span>, et d&#8217;un spin &#8220;down&#8221; <span class="math">\(\ket{1}\)</span>:
 </p>
 <div class="math">$$\ket{\psi} = a \ket{0} + b \ket{1},$$</div>
 <p>
 avec <span class="math">\(|a|^2 + |b|^2 = 1\)</span>.</p>
-<ul>
-<li>
+<blockquote>
 <p>L&#8217;espace des états <span class="math">\(\mathcal{H}\)</span> d&#8217;un ensemble de système quantiques <span class="math">\(\{1,2,\ldots, N\}\)</span> est un espace de hilbert obtenu par le produit tensoriel (kronecker) des espaces de hilbert de chaque partie <span class="math">\(n\)</span>:
-    <div class="math">$$
-    \begin{equation}
-      \mathcal{H} = \bigotimes_n \mathcal{H}_n,\quad n = 1, 2, \ldots, N
-    \end{equation}
-    $$</div>
-    L&#8217;état d&#8217;un système quantique <em>composite</em> est décrit par l&#8217;opérateur densité (ou matrice densité, pour un espace de dimension finie)
-    <div class="math">$$
+<div class="math">$$
+\begin{equation}
+  \mathcal{H} = \bigotimes_n \mathcal{H}_n,\quad n = 1, 2, \ldots, N
+\end{equation}
+$$</div>
+L&#8217;état d&#8217;un système quantique <em>composite</em> est décrit par l&#8217;opérateur densité (ou matrice densité, pour un espace de dimension finie)
+  <div class="math">$$
     \begin{equation}
       \rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1 
     \end{equation}
-    $$</div>
-    où <span class="math">\(\ket{\psi_n}\)</span> est l&#8217;état de <span class="math">\(n\)</span> avec <em>probabilité</em> <span class="math">\(p_n\)</span>.</p>
+  $$</div>
+où <span class="math">\(\ket{\psi_n}\)</span> est l&#8217;état de <span class="math">\(n\)</span> avec <em>probabilité</em> <span class="math">\(p_n\)</span>.</p>
 <p>La matrice densité satisfait <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-- <span class="math">\(\Tr \rho = 1\)</span> (trace 1, normalisation)
-- <span class="math">\(\rho = \rho^\dagger\)</span> (hermitienne)
-- <span class="math">\(\braket{\psi| \rho |\psi} \ge 0\)</span> pour <span class="math">\(\ket{\psi}\)</span> arbitraire&nbsp;(positive)</p>
-</li>
-</ul>
+  - <span class="math">\(\Tr \rho = 1\)</span> (trace 1, normalisation)
+  - <span class="math">\(\rho = \rho^\dagger\)</span> (hermitienne)
+  - <span class="math">\(\braket{\psi| \rho |\psi} \ge 0\)</span> pour <span class="math">\(\ket{\psi}\)</span> arbitraire&nbsp;(positive)</p>
+</blockquote>
 <p>Une source de photons non-polarisée est un exemple de système composite: chaque photon a une certaine probabilité de se trouver dans un état particulier, lui même superposition des états de base de polarisation donnée. La matrice densité décrit donc un mélange <em>statistique</em> de systèmes&nbsp;quantiques.</p>
 <p>Si <span class="math">\(\ket{b_n}\)</span> est une base de <span class="math">\(\mathcal{H}_n\)</span>, le principe de superposition&nbsp;implique
 </p>
@@ -100,25 +98,25 @@ Une conséquence immédiate de cette expression est qu&#8217;on ne peut généra
 <p>
 où <span class="math">\(B = \bar{A}\)</span> est le complément de l&#8217;ensemble <span class="math">\(A\)</span>.</p>
 <p>On en déduit qu&#8217;il est toujours possible de &#8220;compléter&#8221; l&#8217;espace de hilbert d&#8217;un état mixte <span class="math">\(\rho\)</span> pour le transformer en état pur <span class="math">\(\ket{\psi}\)</span> de sorte que la trace partielle du système étendu soit justement <span class="math">\(\rho\)</span> du&nbsp;&#8220;sous-système&#8221;.</p>
-<ul>
-<li>Une observable <span class="math">\(O\)</span> (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états <span class="math">\(\mathcal{H}\)</span>:
-    <div class="math">$$
+<blockquote>
+<p>Une observable <span class="math">\(O\)</span> (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états <span class="math">\(\mathcal{H}\)</span>:
+  <div class="math">$$
     \begin{equation}
       O = O^\dagger
     \end{equation}
-    $$</div>
-    Les valeurs propres <span class="math">\(o_n\)</span>
-    <div class="math">$$
+  $$</div>
+  Les valeurs propres <span class="math">\(o_n\)</span>
+  <div class="math">$$
     \begin{equation}
       O \ket{o_n} = o_n \ket{o_n}
     \end{equation}
-    $$</div>
-    sont les résultats possibles d&#8217;une mesure de <span class="math">\(O\)</span>. Les vecteurs propres <span class="math">\(\ket{o_n}\)</span> forment une base orthonormale
-    <div class="math">$$ \braket{o_n|o_m} = \delta_{nm}, \quad \sum_n P_n = 1, \quad P_n = \ket{o_n}\bra{o_n},$$</div>
-    de l&#8217;espace de hilbert; les opérateur <span class="math">\(P_n\)</span> sont de projecteurs sur les &#8220;directions&#8221; de vecteurs propres <span class="math">\(\ket{o_n}\)</span>. La valeur espérée de <span class="math">\(O\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> est
-    <div class="math">$$ \braket{O} = \braket{\psi|O|\Psi} $$</div>
-</li>
-</ul>
+  $$</div>
+  sont les résultats possibles d&#8217;une mesure de <span class="math">\(O\)</span>. Les vecteurs propres <span class="math">\(\ket{o_n}\)</span> forment une base orthonormale
+  <div class="math">$$ \braket{o_n|o_m} = \delta_{nm}, \quad \sum_n P_n = 1, \quad P_n = \ket{o_n}\bra{o_n},&gt; $$</div>
+  de l&#8217;espace de hilbert; les opérateur <span class="math">\(P_n\)</span> sont de projecteurs sur les &#8220;directions&#8221; de vecteurs propres <span class="math">\(\ket{o_n}\)</span>. La valeur espérée de <span class="math">\(O\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> est
+  <div class="math">$$ \braket{O} = \braket{\psi|O|\Psi} $$</div>
+</p>
+</blockquote>
 <p>La mesure de l&#8217;état <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> donne le résultat <span class="math">\(o_n\)</span> avec probabilité (<em>règle de Born</em>):
 </p>
 <div class="math">$$
@@ -135,15 +133,15 @@ la probabilité d&#8217;obtenir <span class="math">\(o_n\)</span> dans l&#8217;�
 <p>L&#8217;état du système, après la mesure, est&nbsp;&#8220;réduit&#8221;:
 </p>
 <div class="math">$$ \ket{\psi} \rightarrow \frac{\braket{o_n|\psi}}{\sqrt{p_n}}\ket{o_n}. $$</div>
-<ul>
-<li>L&#8217;évolution d&#8217;un système quantique est unitaire:
-    <div class="math">$$
+<blockquote>
+<p>L&#8217;évolution d&#8217;un système quantique est unitaire:
+  <div class="math">$$
     \begin{equation}
       \ket{\psi(t)} = U(t, t_0) \ket{\psi(t_0)}, \quad U^\dagger U = 1
     \end{equation}
-    $$</div>
-    où le &#8220;temps&#8221; <span class="math">\(t\)</span> est un <em>paramètre</em> réel (ou entier si la dynamique est discrète), <span class="math">\(t_0\)</span> est une référence (temps initial). Plus généralement toute transformation d&#8217;un état quantique dans un autre état quantique est une transformation&nbsp;unitaire.</li>
-</ul>
+  $$</div>
+  où le &#8220;temps&#8221; <span class="math">\(t\)</span> est un <em>paramètre</em> réel (ou entier si la dynamique est discrète), <span class="math">\(t_0\)</span> est une référence (temps initial). Plus généralement toute transformation d&#8217;un état quantique dans un autre état quantique est une transformation&nbsp;unitaire.</p>
+</blockquote>
 <p>La <em>dynamique</em> d&#8217;un système quantique est générée par le <em>hamiltonien</em> <span class="math">\(H\)</span> du&nbsp;système:
 </p>
 <div class="math">$$ U(t, t_0) = \E^{-\I H (t-t_0)} \quad (\hbar = 1). $$</div>
