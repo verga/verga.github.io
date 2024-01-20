@@ -48,29 +48,123 @@
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
 \newcommand{\D}{\mathop{}\!\mathrm{d}} 
-\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\Tr}{\mathrm{tr}} 
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
-\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}\)</span></p>
-<h1>Principles of quantum&nbsp;mechanics</h1>
-<p>We call quantum those phenomena involving the <a href="https://physics.nist.gov/cgi-bin/cuu/Value?hbar|search_for=universal_in!">Planck constant</a>,
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<h1>Principes de la mécanique&nbsp;quantique</h1>
+<ul>
+<li>L&#8217;état d&#8217;un système quantique correspond à un vecteur <span class="math">\(\ket{\psi}\)</span> de norme 1 de l&#8217;espace de hilbert $\mathcal{H}:
+    <div class="math">$$
+    \begin{equation}
+      \ket{\psi} \in \mathcal{H},
+    \end{equation}
+    $$</div>
+    cette état constitue une description complète du système&nbsp;physique.</li>
+</ul>
+<p>Le fait que l&#8217;état quantique puisse être associé à un vecteur d&#8217;un espace vectoriel <em>linéaire</em> sur les complexes est une conséquence du principe de <em>superposition</em>: expérimentalement on observe des effets d&#8217;interférence quantique, comme dans l&#8217;expérience de deux fentes dans laquelle apparaît sur le détecteur (écran) un motif d&#8217;interférence similaire à celui d&#8217;une onde électromagnétique mais produit par, par exemple, un faisceau de neutrons, ou dans l&#8217;expérience de Stern-Gerlach où on mesure l&#8217;état de spin d&#8217;un électron. Dans le premier cas il s&#8217;agit d&#8217;une superposition de chemins: l&#8217;état du neutron résulte d&#8217;une superposition de &#8220;chemins&#8221; entre la source et l&#8217;écran, passant par chaque fente. Dans le second cas, l&#8217;état <span class="math">\(\ket{\psi}\)</span> de spin de l&#8217;électron (atomes d&#8217;argent dans l&#8217;expérience) se présente comme étant la superposition d&#8217;un spin &#8220;up&#8221; <span class="math">\(\ket{0}\)</span>, et d&#8217;un spin &#8220;down&#8221; <span class="math">\(\ket{1}\)</span>:
 </p>
-<div class="math">$$\hbar = 1.054\, 571\, 817 \times 10^{-34} \mathrm{kg\,m^2\,s^{-1}} = 1$$</div>
+<div class="math">$$\ket{\psi} = a \ket{0} + b \ket{1},$$</div>
 <p>
-The first equality is the international system definition, and the second one means that this value is exact; it can thus be used as a relation between the energy unit J (joule) and the frequency unit s<span class="math">\(^{-1}\)</span>:
+avec <span class="math">\(|a|^2 + |b|^2 = 1\)</span>.</p>
+<ul>
+<li>
+<p>L&#8217;espace des états <span class="math">\(\mathcal{H}\)</span> d&#8217;un ensemble de système quantiques <span class="math">\(\{1,2,\ldots, N\}\)</span> est un espace de hilbert obtenu par le produit tensoriel (kronecker) des espaces de hilbert de chaque partie <span class="math">\(n\)</span>:
+    <div class="math">$$
+    \begin{equation}
+      \mathcal{H} = \bigotimes_n \mathcal{H}_n,\quad n = 1, 2, \ldots, N
+    \end{equation}
+    $$</div>
+    L&#8217;état d&#8217;un système quantique <em>composite</em> est décrit par l&#8217;opérateur densité (ou matrice densité, pour un espace de dimension finie)
+    <div class="math">$$
+    \begin{equation}
+      \rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1 
+    \end{equation}
+    $$</div>
+    où <span class="math">\(\ket{\psi_n}\)</span> est l&#8217;état de <span class="math">\(n\)</span> avec <em>probabilité</em> <span class="math">\(p_n\)</span>.</p>
+<p>La matrice densité satisfait <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+- <span class="math">\(\Tr \rho = 1\)</span> (trace 1, normalisation)
+- <span class="math">\(\rho = \rho^\dagger\)</span> (hermitienne)
+- <span class="math">\(\braket{\psi| \rho |\psi} \ge 0\)</span> pour <span class="math">\(\ket{\psi}\)</span> arbitraire&nbsp;(positive)</p>
+</li>
+</ul>
+<p>Une source de photons non-polarisée est un exemple de système composite: chaque photon a une certaine probabilité de se trouver dans un état particulier, lui même superposition des états de base de polarisation donnée. La matrice densité décrit donc un mélange <em>statistique</em> de systèmes&nbsp;quantiques.</p>
+<p>Si <span class="math">\(\ket{b_n}\)</span> est une base de <span class="math">\(\mathcal{H}_n\)</span>, le principe de superposition&nbsp;implique
 </p>
-<div class="math">$$1\,\mathrm{J} = 0.848\,252\,156 \times 10^{34} \,\mathrm{s^{-1}}$$</div>
+<div class="math">$$ \ket{\psi} = \sum_{b_1 b_2 \ldots } \psi_{b_1 b_2 \ldots} \ket{b_1}\otimes\ket{b_2}\otimes \ldots $$</div>
 <p>
-The Planck constant has the dimensions of an action. The classical action is related to the lagrangian of a mechanical system by the&nbsp;formula
+Une conséquence immédiate de cette expression est qu&#8217;on ne peut généralement pas écrire l&#8217;état de la partie <span class="math">\(A = \{1, 2, \ldots, N_A\}\)</span>, bipartition du système global <span class="math">\(AB\)</span>, comme un ket de <span class="math">\(\mathcal{H}_A\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Par conséquent l&#8217;état d&#8217;un sous-système d&#8217;un système quantique dans un état pur est un état composite. Il est donné par la trace&nbsp;partielle
 </p>
-<div class="math">$$S[q] = \int_{t_1}^{t_2} \D t L(q,\dot{q}), \; q(t_1)=q_1,\, q(t_2)=q_2$$</div>
+<div class="math">$$ \rho_A = \Tr_{\bar{A}} \ket{\psi} \bra{\psi} $$</div>
 <p>
-where <span class="math">\(q(t)\)</span> is the trajectory between the fixed points <span class="math">\(q_1,q_2\)</span>. Observables in physics correspond to <em>local</em> dimensional quantities, such as position, angular momentum, energy, temperature, electromagnetic field, etc. The action <span class="math">\(S\)</span>, which is a <em>functional</em> of the trajectory <span class="math">\(q(t)\)</span>, is therefore nonlocal. The fundamental consequence is that quantum phenomena has not a specific (length, energy) scale. In this respect <em>nature is quantum</em>.</p>
-<p>The first observed experimental phenomenon explicitly showing <span class="math">\(\hbar\)</span>, was the thermal radiation emitted by any material at a fixed temperature. This radiation results from the equilibrium established at this temperature, between matter and photons, and cannot be described at any energy scale, by the laws of classical thermodynamics: the emission covers the entire range of energies, from zero to&nbsp;infinity.</p>
-<p>Magnetism is also a macroscopic manifestation of a quantum property of matter: the intrinsic angular momentum of electrons, protons and neutrons, called <em>spin</em>.</p>
-<p>Even in perfectly classical systems, possess quantum properties, hidden into their physical parameters. The motion of an incompressible fluid like water, for instance, is governed by Navier-Stokes equations. Their qualitative behavior is determined by the reynolds number <span class="math">\(Re = LU/\nu\)</span>, a nondimensional combination of the characteristic flow length <span class="math">\(L\)</span> and velocity <span class="math">\(U\)</span> scales, and the viscosity <span class="math">\(\nu\)</span>. The viscosity is one example of a transport coefficient, like the thermal conductivity, the resistivity of a metal, or the polarization of a dielectric. All these coefficients are related with the scattering cross section, which is ultimately&nbsp;quantum.</p>
-<p>The most fundamental experimental facts about quantum systems are that the quantum states are a kind of information resource, their superposition is also a quantum state and their evolution preserves the amount of information; in addition, elementary particles, like photons or electrons, are&nbsp;identical.</p>
-<p>In classical physics information is related to thermodynamics through the entropy and its relation to the Shannon entropy, and the fundamental Landauer principle, which states that erasing a bit of information amounts to an increase of <span class="math">\(k_\mathrm{\small B}\ln 2\)</span> (where <span class="math">\(k_\mathrm{\small B} = 1.380\, 649 \times 10^{-23} \mathrm{J\,K^{-1}} = 1\)</span> is the <a href="https://physics.nist.gov/cgi-bin/cuu/Value?k">Boltzmann constant</a>, which establishes a proportionality between energy an temperature). In quantum mechanics, it is the state itself that carries&nbsp;information.</p>
+où <span class="math">\(B = \bar{A}\)</span> est le complément de l&#8217;ensemble <span class="math">\(A\)</span>.</p>
+<p>On en déduit qu&#8217;il est toujours possible de &#8220;compléter&#8221; l&#8217;espace de hilbert d&#8217;un état mixte <span class="math">\(\rho\)</span> pour le transformer en état pur <span class="math">\(\ket{\psi}\)</span> de sorte que la trace partielle du système étendu soit justement <span class="math">\(\rho\)</span> du&nbsp;&#8220;sous-système&#8221;.</p>
+<ul>
+<li>Une observable <span class="math">\(O\)</span> (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états <span class="math">\(\mathcal{H}\)</span>:
+    <div class="math">$$
+    \begin{equation}
+      O = O^\dagger
+    \end{equation}
+    $$</div>
+    Les valeurs propres <span class="math">\(o_n\)</span>
+    <div class="math">$$
+    \begin{equation}
+      O \ket{o_n} = o_n \ket{o_n}
+    \end{equation}
+    $$</div>
+    sont les résultats possibles d&#8217;une mesure de <span class="math">\(O\)</span>. Les vecteurs propres <span class="math">\(\ket{o_n}\)</span> forment une base orthonormale
+    <div class="math">$$ \braket{o_n|o_m} = \delta_{nm}, \quad \sum_n P_n = 1, \quad P_n = \ket{o_n}\bra{o_n},$$</div>
+    de l&#8217;espace de hilbert; les opérateur <span class="math">\(P_n\)</span> sont de projecteurs sur les &#8220;directions&#8221; de vecteurs propres <span class="math">\(\ket{o_n}\)</span>. La valeur espérée de <span class="math">\(O\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> est
+    <div class="math">$$ \braket{O} = \braket{\psi|O|\Psi} $$</div>
+</li>
+</ul>
+<p>La mesure de l&#8217;état <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> donne le résultat <span class="math">\(o_n\)</span> avec probabilité (<em>règle de Born</em>):
+</p>
+<div class="math">$$
+\begin{equation}
+  \mathrm{Prob}(o = o_n) = p_n = \big|\braket{o_n|\psi}\big|^2.
+\end{equation}
+$$</div>
+<p>
+Une forme équivalente en fonction de l&#8217;opérateur de projection <span class="math">\(P_n\)</span>&nbsp;est
+</p>
+<div class="math">$$ p_n = \braket{\psi|P_n|\psi},  $$</div>
+<p>
+la probabilité d&#8217;obtenir <span class="math">\(o_n\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> correspond donc à la valeur espérée du projecteur sur le vecteur propre <span class="math">\(\ket{o_n}\)</span> dans cet&nbsp;état. </p>
+<p>L&#8217;état du système, après la mesure, est&nbsp;&#8220;réduit&#8221;:
+</p>
+<div class="math">$$ \ket{\psi} \rightarrow \frac{\braket{o_n|\psi}}{\sqrt{p_n}}\ket{o_n}. $$</div>
+<ul>
+<li>L&#8217;évolution d&#8217;un système quantique est unitaire:
+    <div class="math">$$
+    \begin{equation}
+      \ket{\psi(t)} = U(t, t_0) \ket{\psi(t_0)}, \quad U^\dagger U = 1
+    \end{equation}
+    $$</div>
+    où le &#8220;temps&#8221; <span class="math">\(t\)</span> est un <em>paramètre</em> réel (ou entier si la dynamique est discrète), <span class="math">\(t_0\)</span> est une référence (temps initial). Plus généralement toute transformation d&#8217;un état quantique dans un autre état quantique est une transformation&nbsp;unitaire.</li>
+</ul>
+<p>La <em>dynamique</em> d&#8217;un système quantique est générée par le <em>hamiltonien</em> <span class="math">\(H\)</span> du&nbsp;système:
+</p>
+<div class="math">$$ U(t, t_0) = \E^{-\I H (t-t_0)} \quad (\hbar = 1). $$</div>
+<p>
+L&#8217;état quantique satisfait par conséquent l&#8217;équation de&nbsp;Schrödinger
+</p>
+<div class="math">$$
+\begin{equation}
+  \I \frac{\partial}{\partial t} \ket{\psi(t)} = H \ket{\psi(t)},
+\end{equation}
+$$</div>
+<p>
+avec <span class="math">\(\ket{\psi(t_0)}\)</span> l&#8217;état&nbsp;initial.</p>
+<p>Pour un système composite on&nbsp;a
+</p>
+<div class="math">$$ \rho(t) = U(t,t_0) \rho(t_0) U^\dagger(t, t_0). $$</div>
+<p>Le principe de correspondance permet d&#8217;obtenir le hamiltonien d&#8217;un système quantique à partir de son équivalent &#8220;classique&#8221;; par exemple, le hamiltonien d&#8217;une particule <span class="math">\(H(x,p)\)</span>, avec <span class="math">\(x\)</span> la position et <span class="math">\(p\)</span> l&#8217;impulsion, devient le hamiltonien&nbsp;quantique
+</p>
+<div class="math">$$ H(x,p), \quad [x, p] = \I, $$</div>
+<p>
+dans lequel on a remplacé la position et l&#8217;impulsion par des opérateurs dont le commutateur n&#8217;est pas&nbsp;nul.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
