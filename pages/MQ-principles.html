@@ -53,6 +53,9 @@
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
 \newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
+</blockquote>
 <h1>Principes de la mécanique&nbsp;quantique</h1>
 <blockquote>
 <p>L&#8217;état d&#8217;un système quantique correspond à un vecteur <span class="math">\(\ket{\psi}\)</span> de norme 1 de l&#8217;espace de Hilbert <span class="math">\(\mathcal{H}\)</span>:
@@ -90,7 +93,7 @@ où <span class="math">\(\ket{\psi_n}\)</span> est l&#8217;état de <span class=
 <p>Une source de photons non-polarisée est un exemple de système composite: chaque photon a une certaine probabilité de se trouver dans un état particulier, lui même superposition des états de base de polarisation donnée. La matrice densité décrit donc un mélange <em>statistique</em> de systèmes&nbsp;quantiques.</p>
 <p>Si <span class="math">\(\ket{b_n}\)</span> est une base de <span class="math">\(\mathcal{H}_n\)</span>, le principe de superposition&nbsp;implique
 </p>
-<div class="math">$$ \ket{\psi} = \sum_{b_1 b_2 \ldots } \psi_{b_1 b_2 \ldots} \ket{b_1}\otimes\ket{b_2}\otimes \ldots $$</div>
+<div class="math">$$ \ket{\psi} = \sum_{b_1 b_2 \ldots } \psi_{b_1 b_2 \ldots} \ket{b_1}\otimes\ket{b_2}\otimes \ldots \in \mathcal{H} $$</div>
 <p>
 Une conséquence immédiate de cette expression est qu&#8217;on ne peut généralement pas écrire l&#8217;état de la partie <span class="math">\(A = \{1, 2, \ldots, N_A\}\)</span>, bipartition du système global <span class="math">\(AB\)</span>, comme un ket de <span class="math">\(\mathcal{H}_A\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Par conséquent l&#8217;état d&#8217;un sous-système d&#8217;un système quantique dans un état pur est un état composite. Il est donné par la trace&nbsp;partielle
 </p>
@@ -98,6 +101,7 @@ Une conséquence immédiate de cette expression est qu&#8217;on ne peut généra
 <p>
 où <span class="math">\(B = \bar{A}\)</span> est le complément de l&#8217;ensemble <span class="math">\(A\)</span>.</p>
 <p>On en déduit qu&#8217;il est toujours possible de &#8220;compléter&#8221; l&#8217;espace de hilbert d&#8217;un état mixte <span class="math">\(\rho\)</span> pour le transformer en état pur <span class="math">\(\ket{\psi}\)</span> de sorte que la trace partielle du système étendu soit justement <span class="math">\(\rho\)</span> du&nbsp;&#8220;sous-système&#8221;.</p>
+<p>L&#8217;état du sous-système <span class="math">\(A\)</span>, ne peut généralement pas s&#8217;écrire sous la forme d&#8217;un ket de <span class="math">\(\mathcal{H}_A\)</span>; ceci serait possible si l&#8217;état du système global <span class="math">\(\ket{\psi}\)</span> était simplement le produit tensoriel des états de chaque sous-système <span class="math">\(\ket{\psi}= \ket{\psi_A} \otimes \ket{\psi_B}\)</span>. L&#8217;impossibilité d&#8217;exprimer un état pur comme un produit indique que cet état est <em>intriqué</em>. L&#8217;état d&#8217;un sous-système d&#8217;un état intriqué est donc un état mixte décrit par une matrice&nbsp;densité.</p>
 <blockquote>
 <p>Une observable <span class="math">\(O\)</span> (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états <span class="math">\(\mathcal{H}\)</span>:
   <div class="math">$$
@@ -392,7 +396,7 @@ où on a défini la matrice de Pauli <span class="math">\(\sigma_z\)</span>.</p>
 </p>
 <div class="math">$$\ket{\rightarrow} = \ket{0}\braket{0|\rightarrow} + \ket{1}\braket{1|\rightarrow} $$</div>
 <p>
-or, les probabilité de &#8220;up&#8221; et &#8220;down&#8221; comme celles de &#8220;left&#8221; (<span class="math">\(\leftarrow\)</span>) et &#8220;right&#8221; (<span class="math">\(\rightarrow\)</span>) sont égales à 1/2, on peut donc toujours&nbsp;supposer
+or, les probabilités de &#8220;up&#8221; et &#8220;down&#8221; comme celles de &#8220;left&#8221; (<span class="math">\(\leftarrow\)</span>) et &#8220;right&#8221; (<span class="math">\(\rightarrow\)</span>) sont égales à 1/2, on peut donc toujours&nbsp;supposer
 </p>
 <div class="math">$$ \ket{\rightarrow} = \ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}, $$</div>
 <p>
@@ -406,14 +410,14 @@ et
 <p>
 Comme les deux résultats <span class="math">\(\rightarrow\)</span> et <span class="math">\(\leftarrow\)</span> sont excluants, ces deux états sont&nbsp;orthogonaux:
 </p>
-<div class="math">$$ \ket{\leftarrow} = \ket{-}  \frac{\ket{0} - \ket{1}}{\sqrt{2}}. $$</div>
+<div class="math">$$ \ket{\leftarrow} = \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}. $$</div>
 <p>
-En plus, comme <span class="math">\(S_x\)</span> est diagonale dans la base <span class="math">\(\ket{\pm}\)</span> on obtient <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+En plus, comme <span class="math">\(S_x\)</span> est diagonal dans la base <span class="math">\(\ket{\pm}\)</span> on obtient <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$S_x = \frac{\hbar}{2} \sigma_x, \quad \sigma_x = \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0\end{pmatrix}, $$</div>
 <p>
 avec <span class="math">\(\sigma_x\)</span> la matrice &#8220;x&#8221; de&nbsp;pauli.</p>
-<p>Un autre point important est que le résultat de la séquence <span class="caps">SGZ</span>-SGx-SGz est différent de celui de la séquence SGz-SGz-SGx: la conséquence de ce fait expérimental est la non-commutativité des opérateurs de spin dans la direction <span class="math">\(x\)</span> et <span class="math">\(z\)</span>: <span class="math">\([S_x, S_z] \ne 0\)</span>.</p>
+<p>Un autre point important est que le résultat de la séquence SGz-SGx-SGz est différent de celui de la séquence SGz-SGz-SGx: la conséquence de ce fait expérimental est la non-commutativité des opérateurs de spin dans la direction <span class="math">\(x\)</span> et <span class="math">\(z\)</span>: <span class="math">\([S_x, S_z] \ne 0\)</span>. Cette non-commutativité est indicative de la nature physique de spin: les opérateurs de <em>spin</em> sont de générateurs, comme on va le voir plus tard, des <em>rotations</em>, or si on change l&#8217;ordre dans lequel on effectue des rotations autour de différents axes on obtient des résultats&nbsp;différents.</p>
 <p>Enfin, si on remplace dans la dernière expérience <span class="math">\(S_x\)</span> par <span class="math">\(S_y\)</span> on obtient la même phénoménologie, le faisceau se sépare toujours en deux avec la même probabilité: on conclue que les trois mesures conduisent à des états physique différents. Si on note <span class="math">\(\ket{\oplus}\)</span> et <span class="math">\(\ket{\odot}\)</span> les états de l&#8217;opérateur <span class="math">\(S_y\)</span>, on peut&nbsp;supposer 
 </p>
 <div class="math">$$ \ket{\oplus} = \frac{\ket{0} + \E^{\I\phi} \ket{1}}{\sqrt{2}}, $$</div>
@@ -428,9 +432,9 @@ Mais on doit aussi&nbsp;avoir
 <p>
 ce qui implique <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">$$ \phi = \pi/2 $$</div>
+<div class="math">$$ \phi = -\pi/2 $$</div>
 <p>
-et
+(le signe <span class="math">\(-\)</span> est conventionnel, il selection la règle de la main droite pour les rotations dans l&#8217;espace)&nbsp;et
 </p>
 <div class="math">$$S_y = \frac{\hbar}{2} \sigma_y, \quad \sigma_y = \begin{pmatrix}0 &amp; -\I \\ \I &amp; 0\end{pmatrix}. $$</div>
 <p>En résumé on a déduit de l&#8217;expérience de  Stern-Gerlach l&#8217;observable du spin&nbsp;1/2:
@@ -487,13 +491,95 @@ avec <span class="math">\(\sigma_0 = 1_2\)</span> la matrice identité de dimens
 <div class="math">$$ R_y(\pi/2) \ket{0} = \frac{\ket{0} + \ket{1}}{\sqrt{2}} = \ket{+}. $$</div>
 <p>La matrice densité d&#8217;un qubit dans l&#8217;état générique <span class="math">\(\ket{\psi}\)</span> est <span class="math">\(\rho = \ket{\psi}\bra{\psi}\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">$$ \rho = \frac{1 + \bm n \cdot \bm \sigma}{2} = \frac{1}{2} \begin{pmatrix}1+n_z &amp; n_x - \I n_y \\ n_x + \I n_y &amp; 1 - n_z \end{pmatrix}, $$</div>
+<div class="math">$$ \rho = \frac{1_2 + \bm n \cdot \bm \sigma}{2} = \frac{1}{2} \begin{pmatrix}1+n_z &amp; n_x - \I n_y \\ n_x + \I n_y &amp; 1 - n_z \end{pmatrix}, $$</div>
 <p>
 où
 </p>
 <div class="math">$$\bm n = (\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta), $$</div>
 <p>
 est le vecteur unitaire en coordonnées&nbsp;sphériques.</p>
+<p>Le postulat d&#8217;évolution nous dit que toute transformation quantique est implémentée par un opérateur unitaire. Considérons un spin sujet à l&#8217;action d&#8217;un champ magnétique extérieur. Le hamiltonien du système peut&nbsp;s&#8217;écrire 
+</p>
+<div class="math">$$ H = -\frac{J}{\hbar} S_z, $$</div>
+<p>
+où <span class="math">\(J\)</span> est une constante d&#8217;énergie proportionnelle au champ appliqué, et S_z le spin de l&#8217;électron. l&#8217;opérateur d&#8217;évolution&nbsp;est
+</p>
+<div class="math">$$ U(t) = \E^{-\I H t/\hbar} = \E^{\I \sigma_z t/2}, $$</div>
+<p>
+avec le choix d&#8217;unités <span class="math">\(J=\hbar=1\)</span> (l&#8217;unité de temps est donc <span class="math">\(\hbar/J\)</span>):
+</p>
+<div class="math">$$ \quad U(t) = \cos(t/2)\, 1_2 + \I \sin(t/2)\, \sigma_z = \mathrm{diag}(\E^{\I t/2}, \E^{-\I t/2}). $$</div>
+<p>
+Si l&#8217;état initial de l&#8217;électron est <span class="math">\(\ket{+}\)</span>, au temps <span class="math">\(t\)</span>, on&nbsp;a
+</p>
+<div class="math">$$ \ket{\psi(t)} = \frac{\E^{\I t/2}}{\sqrt{2}} \ket{0} + \frac{\E^{-\I t/2}}{\sqrt{2}} \ket{1}. $$</div>
+<p>
+La valeur espérée du spin au cours du temps est <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$ \braket{\bm S(t)} = \braket{\psi(t)| (S_x, S_y, S_z) |\psi(t)} = (\cos t, \sin t, 0), $$</div>
+<p>
+un mouvement de rotation uniforme de fréquence <span class="math">\(J/\hbar\)</span> dans le plan perpendiculaire au champ. Il est intéressant d&#8217;observer qu&#8217;en choisissant <span class="math">\(t = \pi/2 \, [\hbar/J]\)</span> on obtient la&nbsp;transformation
+</p>
+<div class="math">$$ \ket{+}\quad \rightarrow\quad \ket{-} = \sigma_x \ket{+}, $$</div>
+<p>
+à un facteur de phase globale près. On peut donc implémenter physiquement l&#8217;opération <span class="math">\(\sigma_x\)</span>, équivalente à l&#8217;opération logique de négation <span class="math">\(\mathsf{NOT}\)</span>, par l&#8217;application sur le qubit d&#8217;un champ extérieur sur une duration bien&nbsp;précise.</p>
+<h2>Deux&nbsp;qubits</h2>
+<p>Selon le principe de composition des espace de hilbert d&#8217;un système composite, on doit&nbsp;avoir
+</p>
+<div class="math">$$ \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1, \quad \dim{\mathcal{H}}_1 = 2, \; \dim{\mathcal{H}} = 2^2. $$</div>
+<p>Comme l&#8217;ordre des facteurs d&#8217;un produit de kronecker est important, le premier terme correspond au premier qubit (A) et le deuxième au (B). On note <span class="math">\(\ket{s}\)</span> avec <span class="math">\(s \in \{0,1\}\)</span> les kets de base de <span class="math">\(\mathcal{H}_1\)</span>, on a&nbsp;donc
+</p>
+<div class="math">$$ \ket{s_1} \otimes \ket{s_2} \equiv \ket{s_1s_2} \in \mathcal{H}, \quad s_1, s_2 = 0, 1, $$</div>
+<p>
+les 4 éléments de la base de l&#8217;espace de deux spins; notez que <span class="math">\(s_1s_2\)</span> est la décomposition binaire de <span class="math">\(s=0,1,2,3 \doteq 00, 01, 10, 11\)</span>.</p>
+<p>La physique de deux particules (quantiques) est bien plus riche que celle d&#8217;une seule particule de par la possibilité des <em>interactions</em>. Par exemple, deux spins voisins dont les fonctions d&#8217;onde se recouvrent, vont interagir par leur &#8220;énergie d&#8217;échange&#8221; <span class="math">\(J\)</span>. Soit le hamiltonien de deux spins&nbsp;(Ising)
+</p>
+<div class="math">$$
+H = -J \frac{1-\sigma_z}{2} \otimes \frac{1 - \sigma_z}{2}.
+$$</div>
+<p>
+On peut montrer que l&#8217;opérateur d&#8217;évolution est <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+</p>
+<div class="math">$$
+U(t) = \E^{-\I H t} = \mathrm{diag}(1,1,1, \E^{\I t}),
+$$</div>
+<p>
+(<span class="math">\(J=\hbar=1\)</span>) lequel se réduit pour <span class="math">\(t = \pi\, [\hbar/J]\)</span> dans l&#8217;opérateur de &#8220;phase contrôlée&#8221;, puisque le changement sur un qubit dépend de l&#8217;état de&nbsp;l&#8217;autre:
+</p>
+<div class="math">$$
+\mathsf{CZ} = \begin{pmatrix} 
+  1 &amp; 0 &amp; 0 &amp; 0 \\ 
+  0 &amp; 1 &amp; 0 &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; 0 \\
+  0 &amp; 0 &amp; 0 &amp; -1 \end{pmatrix}.
+$$</div>
+<p>Cette interaction entre les deux spins permet de créer un état <em>intriqué</em>: c&#8217;est-à-dire un état que ne peut pas s&#8217;écrire comme le produit d&#8217;un état du premier qubit par celui du deuxième qubit. En effet, l&#8217;application de <span class="math">\(\mathsf{CZ}\)</span> sur l&#8217;état initial produit <span class="math">\(\ket{+} \otimes \ket{+} = \ket{++}\)</span> produit&nbsp;l&#8217;état
+</p>
+<div class="math">$$
+\ket{C} = \mathsf{CZ} \ket{++} = \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} - \ket{11})
+$$</div>
+<p>
+qui est intriqué. On peut le vérifier par un calcul explicite, ou en calculant l&#8217;état du premier qubit en faisant la trace partielle sur le deuxième <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+\rho_A = \Tr_B \ket{C}\bra{C} = \frac{1}{2} 1_2,
+$$</div>
+<p>
+la matrice densité du qubit A est proportionnelle à l&#8217;identité. Les éléments diagonaux de <span class="math">\(\rho_A\)</span> (dont la somme est bien 1) représentes les probabilités de trouver le qubit up ou down, tandis que les élément non-diagonaux représentent la cohérence quantique de ces deux possibilités. Le fait que ceux-ci soient nuls signifie que l&#8217;état du qubit est un état aléatoire sans superposition quantique quelconque. On dit que l&#8217;état dont les sous-états sont représentés par une matrice densité proportionnelle à l&#8217;identité est un état maximalement&nbsp;intriqué.</p>
+<p>Une simple transformation unitaire transforme l&#8217;état <span class="math">\(\ket{C}\)</span> dans un <em>état de Bell</em>:
+</p>
+<div class="math">$$
+\ket{\Phi_+} = (\mathsf{H}\otimes1_2) \mathsf{CZ} \ket{++} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+$$</div>
+<p>
+ou
+</p>
+<div class="math">$$
+\mathsf{H} = \frac{\sigma_x + \sigma_z}{\sqrt{2}} = \begin{pmatrix}
+1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}
+$$</div>
+<p>
+la matrice de Hadamard. Cet état jour un rôle important dans la <a href="/L3-telep.html">téléportation</a>&nbsp;quantique.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
