@@ -429,16 +429,16 @@ $$</div>
 ce qui correspond à <span class="math">\(l=1\)</span>, comme on l&#8217;avait anticipé pour les rotations dans l&#8217;espace. On constate donc que l&#8217;espace de hilbert du moment angulaire <span class="math">\(\bm L\)</span> avec <span class="math">\(l=1\)</span> est simplement tridimensionnel, il ne prend que trois valeurs possibles <span class="math">\(-\hbar, 0, \hbar\)</span>. Les vecteurs propres sont <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
-\ket{1,-1} = \frac{1}{\sqrt{2}} \begin{pmatrix} -\I \\ 1 \\ 0 \end{pmatrix}, \;
+\ket{1,-1} = \frac{1}{\sqrt{2}} \begin{pmatrix} -1 \\ \I \\ 0 \end{pmatrix}, \;
 \ket{1,0} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \;
-\ket{1,1} = \frac{1}{\sqrt{2}} \begin{pmatrix} \I \\ 1 \\ 0 \end{pmatrix}\dots
+\ket{1,1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ \I \\ 0 \end{pmatrix}\dots
 $$</div>
 <p>
 En identifiant <span class="math">\(\braket{\theta,\phi|j,m} = \braket{\bm n| j,m}\)</span> (les états propres de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span> en représentation position) avec le produit scalaire des vecteurs propres et de l&#8217;axe <span class="math">\(\bm n\)</span>, on&nbsp;obtient
 </p>
 <div class="math">$$
 \begin{gather*}
-\braket{\bm n|-1,1} = \frac{1}{\sqrt{2}} \E^{-\I\phi} \sin\theta, \\
+\braket{\bm n|-1,1} = -\frac{1}{\sqrt{2}} \E^{-\I\phi} \sin\theta, \\
 \braket{\bm n|0,1} = \cos\theta, \\
 \braket{\bm n|1,1} = \frac{1}{\sqrt{2}} \E^{\I\phi} \sin\theta,
 \end{gather*}
@@ -449,6 +449,11 @@ expressions, à des facteurs de normalisation près, correspondant aux harmoniqu
 <div class="math">$$
 \braket{\bm n| l,m} = \sqrt{\frac{4\pi}{3}} Y_{lm}, \quad l=1, \; m = -1, 0, 1.
 $$</div>
+<blockquote>
+<p><img src="/images/MQ-ssh1.png" alt="harmonique Y 1 -1" style="height: 250px;"/></p>
+<p>Harmonique sphérique <span class="math">\((l,m)=(1,-1)\)</span>.</p>
+</blockquote>
+<p>Ces fonctions représentent la distribution angulaire de l&#8217;amplitude de probabilité (fonction d&#8217;onde) de la particule, dans le cas de l&#8217;atome par&nbsp;exemple. </p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
