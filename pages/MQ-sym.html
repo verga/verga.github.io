@@ -360,7 +360,7 @@ qui est l&#8217;opérateur du moment angulaire. On conclue que l&#8217;opérateu
 <div class="math">$$
 R_{\bm n}(\phi) = \E^{-\I \phi \bm n \cdot \bm L/\hbar}.
 $$</div>
-<p>Il est important d&#8217;observer que l&#8217;opérateur <span class="math">\(\bm L\)</span> est un <em>générateur</em> de la rotation, ainsi comme <span class="math">\(\bm P\)</span> en est pour la translation; il ne dépend pas des paramètres de la rotation <span class="math">\(\bm n\)</span> et <span class="math">\(\phi\)</span>, par conséquent, il peut être déterminé en étudiant une rotation infinitésimale, comme on vient de le faire. Nous pouvons appliquer cette idée à la rotation dans l&#8217;espace, c&#8217;est-à-dire le moment angulaire correspondant au nombre orbital <span class="math">\(l=1\)</span>:
+<p>Il est important d&#8217;observer que l&#8217;opérateur <span class="math">\(\bm L\)</span> est un <em>générateur</em> de la rotation, ainsi comme <span class="math">\(\bm P\)</span> en est pour la translation; il ne dépend pas des paramètres de la rotation <span class="math">\(\bm n\)</span> et <span class="math">\(\phi\)</span>, par conséquent, il peut être déterminé en étudiant une rotation infinitésimale, comme on vient de le faire. Nous pouvons appliquer cette idée à la rotation dans l&#8217;espace, c&#8217;est-à-dire le moment angulaire correspondant au nombre orbital <span class="math">\(l=1\)</span>, comme on va le&nbsp;voir:
 </p>
 <div class="math">$$
 \bm x \quad \rightarrow \quad \bm x + \Delta \bm x, \; \Delta x = \Delta \phi \bm n \times \bm x = -\frac{\I}{\hbar} \Delta \phi \bm n \cdot \bm L \bm x.
@@ -397,20 +397,58 @@ L_z = \hbar \begin{pmatrix}
   \end{pmatrix}.
 $$</div>
 <p>
-Les valeurs propres de ces matrices sont <span class="math">\(m=-1,0,1\)</span> (ils correspondent bien au moment angulaire <span class="math">\(l=1\)</span>). Les matrices de rotation selon les axes <span class="math">\((x,y,z)\)</span> sont donc <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+Les matrices de rotation selon les axes <span class="math">\((x,y,z)\)</span> sont donc <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
 <div class="math">$$
 R_x(\phi) = \begin{pmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; \cos\phi &amp; -\sin\phi \\ 0 &amp; \sin\phi &amp; \cos\phi \end{pmatrix}, \;
 R_y(\phi) = \begin{pmatrix}\cos\phi &amp; 0 &amp; \sin\phi \\ 0 &amp; 1 &amp; 0 \\ -\sin\phi &amp; 0 &amp; \cos\phi \end{pmatrix}, \;
 R_z(\phi) = \begin{pmatrix}\cos\phi &amp; -\sin\phi &amp; 0\\ \sin\phi &amp; \cos\phi &amp; 0 \\ 0 &amp; 0 &amp; 1  \end{pmatrix}.
 $$</div>
-<p>On vérifie par calcul directe les relations de&nbsp;commutation:
+<p>On vérifie par calcul direct les relations de commutation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
-[L_x, L_y] = \I\hbar L_z,
+[L^2, \bm L] = 0, \quad [L_x, L_y] = \I\hbar L_z, \; [L_z, L_x] = \I\hbar L_y, \; [L_y, L_z] = \I\hbar L_x, 
 $$</div>
 <p>
-et ses permutations cycliques (paires), qui sont en fait parfaitement générales pour tout moment&nbsp;angulaire.</p>
+qui sont en fait parfaitement générales pour tout moment angulaire. Comme le commutateur <span class="math">\([L^2, L_z] = 0\)</span> s&#8217;annule, on peut choisir une base commune de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>, qu&#8217;on note <span class="math">\(\ket{l,m}\)</span>: on dit que <span class="math">\(z\)</span> est l&#8217;axe de quantification du moment&nbsp;angulaire:
+</p>
+<div class="math">$$
+\begin{gather*}
+L^2 \ket{l,m} = \hbar^2 l(l+1) \ket{j,m}\\
+L_z \ket{j,m} = \hbar m \ket{j,m},
+\end{gather*}
+$$</div>
+<p>
+ici <span class="math">\(l\)</span> est le nombre quantique <em>orbital</em>, et <span class="math">\(m\)</span> le nombre quantique <em>magnétique</em>, dénominations utilisées pour décrire la structure électronique des&nbsp;atomes.</p>
+<p>On se propose maintenant de calculer <span class="math">\(l\)</span>, <span class="math">\(m\)</span> et les vecteurs propres <span class="math">\(\ket{l,m}\)</span>. Les valeurs propres de <span class="math">\(L_z\)</span> sont <span class="math">\(m=-1,0,1\)</span>, et celles de <span class="math">\(L^2\)</span> sont toutes égales à <span class="math">\(2\)</span> (troi,s fois&nbsp;dégénérée),
+</p>
+<div class="math">$$
+L^2 = \hbar \begin{pmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 2 \end{pmatrix},
+$$</div>
+<p>
+ce qui correspond à <span class="math">\(l=1\)</span>, comme on l&#8217;avait anticipé pour les rotations dans l&#8217;espace. On constate donc que l&#8217;espace de hilbert du moment angulaire <span class="math">\(\bm L\)</span> avec <span class="math">\(l=1\)</span> est simplement tridimensionnel, il ne prend que trois valeurs possibles <span class="math">\(-\hbar, 0, \hbar\)</span>. Les vecteurs propres sont <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+\ket{1,-1} = \frac{1}{\sqrt{2}} \begin{pmatrix} -\I \\ 1 \\ 0 \end{pmatrix}, \;
+\ket{1,0} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \;
+\ket{1,1} = \frac{1}{\sqrt{2}} \begin{pmatrix} \I \\ 1 \\ 0 \end{pmatrix}\dots
+$$</div>
+<p>
+En identifiant <span class="math">\(\braket{\theta,\phi|j,m} = \braket{\bm n| j,m}\)</span> (les états propres de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span> en représentation position) avec le produit scalaire des vecteurs propres et de l&#8217;axe <span class="math">\(\bm n\)</span>, on&nbsp;obtient
+</p>
+<div class="math">$$
+\begin{gather*}
+\braket{\bm n|-1,1} = \frac{1}{\sqrt{2}} \E^{-\I\phi} \sin\theta, \\
+\braket{\bm n|0,1} = \cos\theta, \\
+\braket{\bm n|1,1} = \frac{1}{\sqrt{2}} \E^{\I\phi} \sin\theta,
+\end{gather*}
+$$</div>
+<p>
+expressions, à des facteurs de normalisation près, correspondant aux harmoniques sphériques <span class="math">\(Y_{lm}(\theta, \phi)\)</span>:
+</p>
+<div class="math">$$
+\braket{\bm n| l,m} = \sqrt{\frac{4\pi}{3}} Y_{lm}, \quad l=1, \; m = -1, 0, 1.
+$$</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
