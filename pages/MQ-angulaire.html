@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Moment Angulaire | Random physics
+</title>
+    <link rel="canonical" href="/pages/MQ-angulaire.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Undergraduate course on quantum mechanics: angular momentum">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\Tr}{\mathrm{tr}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+<blockquote>
+<p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
+</blockquote>
+<h2>Algèbre du moment&nbsp;angulaire</h2>
+<p>Lors de l&#8217;étude des symétries dans l&#8217;espace de hilbert, nous avons trouvé que le générateur de rotations dans l&#8217;espace <span class="math">\(\bm L\)</span> obéit aux règles de commutation (<span class="math">\(\hbar=1\)</span>)
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LLL}
+  [L_x,L_y] = \I L_z,\; 
+  [L_z,L_x] = \I L_y,\;
+  [L_y,L_z] = \I L_x,
+\end{equation}
+$$</div>
+<p>
+ou, d&#8217;une façon plus&nbsp;condensée,
+</p>
+<div class="math">$$
+    [L_i,L_j] = \I \varepsilon_{ijk} L_k\,,\; 
+    \bm L \wedge \bm L = \I \bm L,
+$$</div>
+<p>
+avec <span class="math">\(\varepsilon_{ijk}\)</span> le tenseur complètement antisymétrique de Livi-Civita (où on utilise la convention d&#8217;Einstein par laquelle on somme sur les indices répétés, ici <span class="math">\(k\)</span>). On observe que ces relations de commutations sont identiques à celles satisfaites par le spin <span class="math">\(\bm S\)</span>. En fait, on peut prendre les relations de commutation comme étant la définition des générateurs de rotations, soient-elles intrinsèques comme le spin <span class="math">\(\bm S\)</span>, ou reliés au mouvement, comme pour le moment orbital <span class="math">\(\bm L\)</span>, ou même à leur composition <span class="math">\(\bm J = \bm L + \bm S\)</span>, le moment angulaire&nbsp;total.</p>
+<p>On se propose maintenant de déterminer le spectre (valeurs et vecteurs propres) de l&#8217;opérateur du moment angulaire en nous basant exclusivement sur les relations de commutation. Le premier obstacle découle des ces relations elles-mêmes, car elles montrent qu&#8217;il n&#8217;existe pas de base commune aux trois composantes de <span class="math">\(\bm L\)</span>: ils sont des opérateurs incompatibles. Par contre, on vérifie par un calcul direct que la valeur absolue <span class="math">\(L^2\)</span> commute avec une quelconque&nbsp;composante:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LL2z}
+    [L^2,L_z]=0    \,,
+\end{equation}
+$$</div>
+<p>
+ce qui implique qu&#8217;il existe une base commune aux opérateurs compatibles <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>. Notons par <span class="math">\(\ket{lm}\)</span> les vecteurs de la base&nbsp;commune:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:Llm}
+  L^2 \ket{lm} = l(l+1) \ket{lm}\,,\quad
+  L_z \ket{lm} = m \ket{lm}
+\end{equation}
+$$</div>
+<p>
+où nous avons défini les valeurs propres en fonction de deux paramètres <span class="math">\(l\)</span> et <span class="math">\(m\)</span>, pour le moment arbitraires, qu&#8217;on justement veut&nbsp;déterminer.</p>
+<p>Il convient d&#8217;introduire les opérateurs (non hermitiques)&nbsp;d&#8217;échelle:
+</p>
+<div class="math">$$
+  L_+ =  L_x + \I L_y, \quad L_- = L_x - \I L_y,\quad
+  L_+ L_- = L^2 - L_z(L_z - 1),
+$$</div>
+<p>
+(notez que leur produit est hermitique) lesquels satisfont les règles de&nbsp;commutation:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LLpLmC}
+  [L_+,L_-] = 2 L_z, \quad 
+  [L_\pm,L_z] = \mp L_\pm.
+\end{equation}
+$$</div>
+<p>
+Il se trouve que <span class="math">\(L_\pm\)</span> agissent sur la base commune de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span> d&#8217;une façon analogue aux opérateurs <span class="math">\(a\)</span> et <span class="math">\(a^\dagger\)</span> de annihilation et création de l&#8217;oscillateur&nbsp;harmonique.</p>
+<p>On étudie d&#8217;abord comment <span class="math">\(L_\pm\)</span> agissent sur les états <span class="math">\(\ket{lm}\)</span>, en utilisant les commutateurs avec <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>:
+</p>
+<div class="math">$$
+  L^2 L_\pm \ket{lm} = L_\pm L^2 \ket{lm} = l(l+1)L_\pm \ket{lm}\,,
+$$</div>
+<p>
+puisque <span class="math">\([L^2,L_\pm]=0\)</span>, 
+</p>
+<div class="math">$$
+    L_z L_\pm \ket{lm} = (L_\pm L_z \pm L_\pm) \ket{lm} =
+    (m \pm 1) L_\pm \ket{lm}
+$$</div>
+<p>
+puisque <span class="math">\([L_z,L_\pm] = \pm L_\pm\)</span>. On déduit que le ket <span class="math">\(L_\pm\ket{lm}\)</span> est un vecteur propre de <span class="math">\(L_z\)</span> avec valeurs propres <span class="math">\(m \pm 1\)</span>. D&#8217;une façon équivalente, on&nbsp;a:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:Lcpcm}
+  L_+ \ket{lm} = c_+ \ket{l,m+1}\,, \quad
+  L_- \ket{lm} = c_- \ket{l,m-1}\,,
+\end{equation}
+$$</div>
+<p>
+dont les constantes <span class="math">\(c_\pm\)</span> sont déterminées par la condition de&nbsp;normalisation:
+</p>
+<div class="math">$$
+    |L_\pm \ket{lm}|^2 = \braket{lm|L_\mp L_\pm| lm} =
+    \braket{lm| L^2 - L_z(L_z \mp 1) |lm} \le 0
+$$</div>
+<p>
+ce qui conduit, en supposant <span class="math">\(\braket{lm|lm} = 1\)</span>, aux deux&nbsp;conditions,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:Lcondlm}
+  l(l+1) - m(m - 1) \le 0 , \; l(l+1) - m(m + 1) \le 0 
+  \; \Rightarrow \;
+  -l \le m \le l \,,
+\end{equation}
+$$</div>
+<p>
+ainsi qu&#8217;aux équations (en unités <span class="caps">SI</span>)
+</p>
+<div class="math">$$
+\begin{align}
+  \label{e:LLpLm}
+  L_+ \ket{lm} &amp;= \hbar \sqrt{l(l+1) - m(m+1)} \, \ket{l,m+1}\,, \nonumber \\
+  L_- \ket{lm} &amp;= \hbar \sqrt{l(l+1) - m(m-1)} \, \ket{l,m-1}\,.
+\end{align}
+$$</div>
+<blockquote>
+<p><img src="/images/MQ-Lpm.svg" alt="Lpm" style="height: 60px;"/></p>
+<p>Les opérateurs d&#8217;échelle <span class="math">\(L_\pm\)</span> permettent de passer de l&#8217;état <span class="math">\(\ket{lm}\)</span> à l&#8217;état <span class="math">\(\ket{lm \pm 1}\)</span>, d&#8217;où en fait leur nom (la valeur de <span class="math">\(l\)</span> ne change&nbsp;pas).</p>
+</blockquote>
+<p>La valeur de <span class="math">\(m\)</span> est donc bornée par celle de <span class="math">\(l \le 0\)</span> (<span class="math">\(L^2\)</span> est positif). Or, comme on vient de le voir <span class="math">\(L_+\)</span> augmente de une unité la valeur de <span class="math">\(m\)</span>, tandis que <span class="math">\(L_-\)</span> la diminue d&#8217;une unité; il doit donc exister des entiers <span class="math">\(n_+\)</span> et <span class="math">\(n_-\)</span> tels que le vecteur propre <span class="math">\((L_\pm)^{n_\pm} \ket{lm}\)</span> de <span class="math">\(L_z\)</span>
+</p>
+<div class="math">$$
+    L_z (L_\pm)^{n_\pm} \ket{lm}  = (m \pm n_+) (L_\pm)^{n_\pm} \ket{lm}   
+$$</div>
+<p>
+correspond à une valeur propre <span class="math">\(m \pm n_\pm\)</span> de <span class="math">\(L_z\)</span> qui éventuellement puisse dépasser les bornes <span class="math">\(\pm l\)</span>. Il faut par conséquent que la succession s&#8217;arrête, et donc qu&#8217;il existe des <span class="math">\(n_\pm\)</span> pour&nbsp;lesquels
+</p>
+<div class="math">$$
+  l = m + n_+\,, \quad -l = m - n_- 
+  \; \Rightarrow \;
+  2l = n_+ + n_- \in \mathbb{N} ,
+$$</div>
+<p>
+c&#8217;est-à-dire <span class="math">\(2l\)</span> doit être entier positif. En conclusion, on a donc démontré que <span class="math">\(l\)</span> ne peut prendre, en principe, que des valeurs demi-entiers&nbsp;positifs:
+</p>
+<div class="math">$$
+  l = 0, 1/2, 1, 3/2, 2, \ldots \quad -l \le m \le l \,.
+$$</div>
+<p>
+Il est important de remarquer que ce résultat, ainsi que les équations définissant l&#8217;action des opérateurs <span class="math">\(L_\pm\)</span> sur les états <span class="math">\(\ket{lm}\)</span> sont des conséquences exclusives de la forme algébrique des relations de commutation. Les valeurs de <span class="math">\(l\)</span> pour le moment angulaire, ou de <span class="math">\(s\)</span> pour le spin, dépendent des propriétés de transformation des états quantiques (la fonction d&#8217;onde) vis-à-vis de rotations. On sait que pour le spin de l&#8217;électron <span class="math">\(s=1/2\)</span>, une valuer demi-entière. Concernant le moment angulaire <span class="math">\(\bm L\)</span>, on doit imposer l&#8217;invariance de la fonction d&#8217;onde par rapport à une rotation de <span class="math">\(2\pi\)</span> autour de l&#8217;axe <span class="math">\(z\)</span>,
+</p>
+<div class="math">$$
+R_z(2\pi) \ket{lm} = \E^{-\I2\pi L_z} \ket{lm} = \E^{-\I2\pi m} \ket{lm} = \ket{lm},
+$$</div>
+<p>
+ce qui implique <span class="math">\(m\)</span> entier, <span class="math">\(\E^{\I2\pi m}=1\)</span> (la dernière égalité exprime l&#8217;invariance, <span class="math">\(R_{\bm n}(2\pi) = 1\)</span>).
+On constante que cette symétrie impose bien <span class="math">\(l\)</span>&nbsp;entier:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:Llmentiers}
+  l = 0, 1, 2, \ldots \quad -l \le m \le l \,.
+\end{equation}
+$$</div>
+<p>On remarque également que l&#8217;espace de Hilbert d&#8217;un état de moment angulaire <span class="math">\(l\)</span>, est un espace de dimension finie <span class="math">\(2l+1\)</span>. Un spin <span class="math">\(1/2\)</span> a un espace de Hilbert de dimension <span class="math">\(2=s(s+1)\)</span>, un orbital atomique de moment <span class="math">\(l=1\)</span>, l&#8217;orbital <em>p</em>, est de dimension 3 (voir l&#8217;exemple dans le chapitre sur les&nbsp;symétries).</p>
+<p>On signale enfin, que les propriétés du moment angulaire associées au <em>principe d&#8217;exclusion de Pauli</em>, selon lequel deux électrons ne peuvent pas occuper le même état quantique, permettent d&#8217;expliquer, en grande partie, la structure électronique des atomes telle qu&#8217;elle se manifeste par le tableau périodique des éléments de&nbsp;Mendeleïev.</p>
+<h2>Harmoniques&nbsp;sphériques</h2>
+<p>En représentation position l&#8217;opérateur du moment angulaire <span class="math">\(\bm L = \bm x \wedge  \bm p $ et sa valeur absolue $L^2\)</span> s&#8217;écrivent, en utilisant <span class="math">\(\bm p = -\I \nabla\)</span> (<span class="math">\(\hbar=1\)</span>), en coordonnées sphériques <span class="math">\((r,\theta,\phi)\)</span>,
+</p>
+<div class="math">$$
+\begin{align}
+  \label{e:LLx}
+  L_x &amp;= \I \left(\sin \phi \frac{\partial }{\partial \theta} + 
+    \frac{\cos \phi}{\tan \theta} \frac{\partial }{\partial \phi}
+  \right) \nonumber\\
+  L_y &amp;= \I \left(
+    -\cos\phi \frac{\partial }{\partial \theta} +
+    \frac{\sin\phi}{\tan \theta} \frac{\partial }{\partial \phi}
+  \right) \\
+  L_z &amp;= -\I \frac{\partial }{\partial \phi}
+  \nonumber\,,
+\end{align}
+$$</div>
+<p>
+et
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LLLx}
+  L^2 = \frac{\partial }{\partial r}r^2 \frac{\partial }{\partial r}
+  -r^2\nabla^2\,,
+\end{equation}
+$$</div>
+<p>
+ce qui implique que les vecteurs propres de <span class="math">\(L^2\)</span> sont reliés aux fonctions propres du laplacien&nbsp;angulaire:
+</p>
+<div class="math">$$
+   - L^2 = \frac{1}{\sin \theta} \frac{\partial }{\partial \theta }
+       \sin \theta \frac{\partial }{\partial \theta }  +
+      \frac{1}{\sin^2 \theta } \frac{\partial^2 }{\partial \phi^2}\,.
+$$</div>
+<p>
+Les fonctions d&#8217;onde en coordonnées sphériques, paramétrées par la paire <span class="math">\(l,m\)</span>, se définissent par le&nbsp;braket
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LY}
+  Y_{lm}(\theta,\phi) = \braket{\theta, \phi| lm}, \;
+\end{equation}
+$$</div>
+<p>
+dont les équations à valeurs propres&nbsp;sont,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYlm}
+  L_z Y_{lm} (\theta,\phi) = \hbar m Y_{lm}(\theta,\phi), \quad
+  L^2 Y_{lm}(\theta,\phi) = \hbar^2 l(l+1) Y_{lm}(\theta,\phi) \,.
+\end{equation}
+$$</div>
+<p>
+En utilisant l&#8217;équation <span class="math">\(\eqref{e:LLx}\)</span> de la composante <span class="math">\(z\)</span> du moment angulaire, on déduit que les solutions de la première équation <span class="math">\(\eqref{e:LYlm}\)</span>, sont des fonctions de la forme <span class="math">\(Y_{lm}(\theta, \phi) = \E^{\I m \phi} f(\theta)\)</span>, avec <span class="math">\(f\)</span> déterminée par la deuxième équation. La condition d&#8217;invariance de la fonction d&#8217;onde, comme on l&#8217;a déjà démontré pour les états <span class="math">\(\ket{lm}\)</span>, <span class="math">\(Y_{lm}(\theta, \phi) = Y_{lm}(\theta, \phi + 2\pi)\)</span>, impose <span class="math">\(m\)</span> entier, et&nbsp;donc
+</p>
+<div class="math">$$
+  l=0,1,2,\ldots \quad |m| \le l .
+$$</div>
+<p>
+Une propriété importante des fonctions <span class="math">\(\eqref{e:LY}\)</span> est qu&#8217;elles permettent de trouver une famille de solutions de l&#8217;équation de Laplace <span class="math">\(\nabla^2 \psi(r,\theta,\phi) = 0\)</span> régulières en <span class="math">\(r=0\)</span>, de la&nbsp;forme
+</p>
+<div class="math">$$
+    \psi(r,\theta,\phi) = r^l Y_{lm}(\theta,\phi),
+$$</div>
+<p>
+car, en remplaçant dans le laplacien on obtient, pour la partie radiale, le premier terme de <span class="math">\(\eqref{e:LLLx}]\)</span>, <span class="math">\(l(l+1)r^{l-2}\)</span>, formule identique et de signe contraire à celle du terme angulaire, calculée à partir de l&#8217;équation des valeurs propres <span class="math">\(\eqref{e:LYlm}\)</span>.</p>
+<p>La construction des harmoniques sphériques peut se faire d&#8217;une manière semblable à la construction des états d&#8217;énergie de l&#8217;oscillateur harmonique, pour lequel nous avons utilisé la fonction d&#8217;onde de l&#8217;état fondamental et l&#8217;opérateur de création pour obtenir les états excités. Un rôle semblable aux opérateurs <span class="math">\(a\)</span> et <span class="math">\(a^\dag\)</span> est joué par <span class="math">\(L_-\)</span> et <span class="math">\(L_+\)</span>, 
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LLpLmx}
+  L_\pm = \E^{\pm \I \phi} \left( 
+    \pm \frac{\partial }{\partial \theta } + 
+    \I \cot \theta \frac{\partial }{\partial \phi} \right)
+\end{equation}
+$$</div>
+<p>
+comme on peut le voir par les équations <span class="math">\(\eqref{e:LLpLm}\)</span>. Étant donné par exemple l&#8217;état <span class="math">\(\ket{ll}\)</span>, auquel l&#8217;application de <span class="math">\(L_+\)</span> donne zéro <span class="math">\(L_+ \ket{ll} = 0\)</span>,
+</p>
+<div class="math">$$
+  \E^{\I \phi} \left( \frac{\partial }{\partial \theta } +
+  \I \cot \theta \frac{\partial }{\partial \phi} \right) 
+  \E^{\I l \phi} f(\theta) = 0
+$$</div>
+<p>
+par application successive de <span class="math">\(L_-\)</span> on peut obtenir l&#8217;ensemble d&#8217;états <span class="math">\(\ket{lm}\)</span>, <span class="math">\(-l \le m \le l\)</span>. La solution de l&#8217;équation précédente&nbsp;est
+</p>
+<div class="math">$$
+    f(\theta) = c_{ll} \sin^l \theta \,, 
+$$</div>
+<p>
+à une constante de normalisation près, <span class="math">\(c_{ll}\)</span>, qu&#8217;on détermine par la condition de normalisation des états <span class="math">\(\braket{\theta,\phi|lm}\)</span>. L&#8217;état <span class="math">\(\ket{l, l-1}\)</span> est donc obtenu à partir&nbsp;de
+</p>
+<div class="math">$$
+   \braket{\theta,\phi | l,l-1 } = c_{ll} \E^{-\I \phi} 
+   \left(- \frac{\partial }{\partial \theta } +
+  \I \cot \theta \frac{\partial }{\partial \phi} \right) 
+  \E^{\I l \phi} \sin^l \theta 
+$$</div>
+<p>
+ou
+</p>
+<div class="math">$$
+    Y_{l,l-1} = c_{l,l-1} \E^{\I(l-1) \phi}\sin^{l-1}\theta \cos \theta\,.
+$$</div>
+<p>
+Par itération, et après quelques manipulations algébriques,%
+%
+\footnote{Voir le livre de Cohen-Tannoudji et al. \cite{Cohen-Tannoudji-1973db}, chapitre <span class="caps">IV</span>, complément A.} 
+%
+on obtient les harmoniques&nbsp;sphériques:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYformule}
+  Y_{l,m}(\theta, \phi) = c_{lm} \E^{\I m \phi} \sin^{-m} \theta 
+  \left( \frac{\D}{\D \cos \theta } \right)^{l-m} \sin^{2l}\theta \quad
+  0 \le m \le l
+\end{equation}
+$$</div>
+<p>
+avec les constantes de&nbsp;normalisation
+</p>
+<div class="math">$$
+    c_{lm} = \frac{(-1)^{m}}{2^ll!}
+    \left(   \frac{(l+m)! (2l+1)}{4\pi (l-m)!}
+        \right)^{1/2}\,.
+$$</div>
+<p>
+Pour les <span class="math">\(m&lt;0\)</span> on utilise la&nbsp;relation,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYmm}
+  Y_{l, -m}(\theta,\phi) = (-1)^m Y^*_{lm}(\theta,\phi)\,,\quad m &gt; 0\,.
+\end{equation}
+$$</div>
+<p>
+La forme des constantes <span class="math">\(c_{lm}\)</span> garantie l&#8217;orthonormalité des harmoniques&nbsp;sphériques:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYortho}
+  \int_{0}^{2\pi} \D \phi \int_{0}^{\pi} \D \theta  \sin\theta\, 
+  Y^*_{lm}(\theta,\phi) Y_{l'm'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}\,.
+\end{equation}
+$$</div>
+<p>
+Si on y ajoute la relation de&nbsp;fermeture:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYdelta}
+  \sum_{lm} Y_{lm}(\theta,\phi) Y_{lm}(\theta',\phi') =
+  \delta(\theta-\theta')\delta(\phi-\phi')
+\end{equation}
+$$</div>
+<p>
+on déduit que toute fonction des angles sphériques peut s&#8217;écrire comme superposition des <span class="math">\(Y\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:LYsum}
+  f(\theta,\phi) = \sum_{lm} f_{lm} Y_{lm}(\theta,\phi)\,.
+\end{equation}
+$$</div>
+<blockquote>
+<p><img src="/images/MQ-sylm.png" alt="Y_30" style="height: 250px;"/></p>
+<p>Harmoniques sphériques <span class="math">\(Y_{lm}(\theta,\phi)|\)</span> pour <span class="math">\((l,m)=(0,0)\)</span>, <span class="math">\((1,0),(1,1)\)</span>, et <span class="math">\((2,0)\)</span>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># numpy, scipy, matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">sph_harm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># spherical harmonic Y_lm</span>
+<span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="c1"># spherical lattice</span>
+<span class="c1"># figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;3d&#39;</span><span class="p">})</span>
+<span class="c1"># scipy Y_lm</span>
+<span class="n">Ylm</span> <span class="o">=</span> <span class="n">sph_harm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Ylm</span><span class="p">)</span>
+<span class="c1"># map to cartesian coordinates</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="c1"># plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Les expressions explicites des harmoniques sphériques pour les premières valeurs de <span class="math">\(l\)</span>, <span class="math">\(l=0,1,2\)</span>&nbsp;sont
+</p>
+<div class="math">$$
+\begin{align}
+  Y_{00}(\theta,\phi) &amp; = \frac{1}{\sqrt{4\pi}} \nonumber\\
+  Y_{10}(\theta,\phi) &amp; = \sqrt{\frac{3}{4\pi}} \cos\theta \nonumber\\
+  Y_{1,\pm1}(\theta,\phi) &amp; = \mp \sqrt{\frac{3}{8\pi}} \sin\theta\, \E^{\pm\I\phi}
+  \nonumber \\
+  Y_{20}(\theta,\phi) &amp; = \sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1) \nonumber\\
+  Y_{2,\pm1}(\theta,\phi) &amp; = \mp \sqrt{\frac{15}{8\pi}} 
+      \sin\theta \cos\theta\, \E^{\pm\I\phi}
+  \nonumber \\
+  Y_{2,\pm2}(\theta,\phi) &amp; = 
+      \sqrt{\frac{15}{32\pi}} \sin^2\theta\, \E^{\pm 2 \I \phi}
+  \label{e:LY012}
+\end{align}
+$$</div>
+<p>
+La figure et l&#8217;exemple de code python montrent le graphe et le calcul de quelques harmoniques sphériques en fonction des angles <span class="math">\(\theta, \phi\)</span>.</p>
+<h2>Potentiel&nbsp;central</h2>
+<p>Le mouvement d&#8217;une particule quantique dans un potentiel à symétrie sphérique est décrit par le&nbsp;hamiltonien 
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rH}
+  H = -\frac{\hbar^2}{2mr^2} \frac{\partial }{\partial r}r^2 \frac{\partial }{\partial r} + \frac{L^2}{2mr^2} + V(r)
+\end{equation}
+$$</div>
+<p>
+(en représentation position et en coordonnées sphériques <span class="math">\((r,\theta,\phi)\)</span>). Le fait que l&#8217;interaction ne dépende que du rayon <span class="math">\(r\)</span>, et non des variables angulaires, permet d&#8217;écrire la fonction d&#8217;onde <span class="math">\(\psi=\psi(r,\theta,\phi)\)</span> comme un&nbsp;produit, 
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rpsi}
+    \psi(r,\theta,\phi) = f(r) Y_{lm}(\theta,\phi)  
+\end{equation}
+$$</div>
+<p>
+et de séparer les variables. L&#8217;équation de Schrödinger <span class="math">\(H\psi=E\psi\)</span>, pour cette fonction d&#8217;onde&nbsp;est, 
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rSch}
+  -\frac{\hbar^2}{2m} \left[
+  f''(r) + \frac{2}{r} f'(r) \right] + V_\text{eff}(r) f(r) = E f(r)
+\end{equation}
+$$</div>
+<p>
+où nous avons introduit le potentiel&nbsp;effectif
+</p>
+<div class="math">$$
+    V_\text{eff}(r) = \frac{\hbar^2 l(l+1)}{2mr^2} + V(r)\,,
+$$</div>
+<p>
+et noté les dérivées radiales par des primes. Dans le cas de l&#8217;atome de l&#8217;hydrogène ou des ions avec un seul électron, le potentiel effectif contient, en plus du terme dû au moment angulaire, l&#8217;interaction coulombienne de l&#8217;électron avec le&nbsp;proton:
+</p>
+<div class="math">$$
+V(r) = -\frac{e^2}{4\pi \epsilon_0 r}
+$$</div>
+<p>
+ou <span class="math">\(e\)</span> est la charge&nbsp;élémentaire.</p>
+<blockquote>
+<p><img src="/images/MQ-Lveffl.svg" alt="Veff" style="height: 250px;"/></p>
+<p>Potentiel effectif de l&#8217;atome de Bohr <span class="math">\(V(r)=1/r^2 - 2/r\)</span>. La ligne grise représente le potentiel quantique <span class="math">\(V_\text{eff}\)</span> pour <span class="math">\(l=1\)</span>.</p>
+</blockquote>
+<p>Le potentiel effectif devient (voir figure&nbsp;ci-dessus),
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rVeff}
+  V_\text{eff}(r) = \frac{\hbar^2 l(l+1)}{2mr^2} - \frac{e^2}{4\pi \epsilon_0 r},
+\end{equation}
+$$</div>
+<p>
+qu&#8217;on peut généraliser pour d&#8217;autres atomes hydrogénoïdes en remplaçant <span class="math">\(e\)</span> par <span class="math">\(Ze\)</span>, avec <span class="math">\(Z\)</span> le nombre de&nbsp;protons.</p>
+<p>Par analogie avec le modèle de Bohr, dans lequel le potentiel&nbsp;effectif:
+</p>
+<div class="math">$$
+    V_\text{Bohr}(r)= \mathrm{Ry} \left(\frac{a_0^2}{r^2} - 
+    \frac{2a_0}{r} \right),
+$$</div>
+<p>
+possède un minimum au rayon de Bohr <span class="math">\(r=a_0\)</span> d&#8217;énergie <span class="math">\(E_1=-\mathrm{Ry}\)</span> un Rydberg, on s&#8217;attend à ce que l&#8217;atome d&#8217;hydrogène possède aussi une série d&#8217;états liés aux énergies négatives <span class="math">\(E&lt;0\)</span>. On remarque toutefois que le potentiel de Bohr diffère du potentiel effectif quantique par la dépendance de celui-ci sur le moment angulaire en <span class="math">\(l(l+1)\)</span>. Le principe d&#8217;incertitude interdit un état quantique au minimum de l&#8217;énergie potentielle, ce qui reviendrait à fixer simultanément l&#8217;énergie potentielle et l&#8217;énergie&nbsp;cinétique. </p>
+<p>Il convient de réduire les dimensions en utilisant la masse de l&#8217;électron <span class="math">\(m\)</span> (ou masse effective du problème à deux corps) comme unité de masse, le rayon de Bohr <span class="math">\(a_0\)</span> comme unité de longueur et enfin le Rydberg <span class="math">\(\mathrm{Ry}\)</span> comme unité&nbsp;d&#8217;énergie:
+</p>
+<div class="math">$$
+  a_0= \hbar^2/mq^2\,, \quad 
+  \mathrm{Ry} = q^2/2 a_0\,, \quad
+  q^2 = e^2/4\pi\epsilon_0\,.
+$$</div>
+<p>
+L&#8217;équation pour la fonction radiale <span class="math">\(\eqref{e:rSch}\)</span> s&#8217;écrit dans ce système&nbsp;d&#8217;unités,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rSchd}
+  f''(\rho) + \frac{2}{\rho} f'(\rho) + \left[ 
+      -\frac{1}{4} + \frac{n}{\rho} - \frac{l(l+1)}{\rho^2}
+  \right] f(\rho) = 0\,, 
+\end{equation}
+$$</div>
+<p>
+ou
+</p>
+<div class="math">$$
+  \rho = \frac{2r}{n}, \quad n = \frac{1}{\sqrt{-E}}\,,
+$$</div>
+<p>
+avec <span class="math">\(n\)</span> un nombre à determiner, en principe un réel pour les niveaux d&#8217;énergie négative <span class="math">\(E&lt;0\)</span> correspondants aux états liés, et avec <span class="math">\(f'\)</span> la dérivée de <span class="math">\(f\)</span> par rapport à <span class="math">\(\rho\)</span>.</p>
+<p>Il est facile d&#8217;identifier le comportement asymptotique de <span class="math">\(f\)</span>: pour les petits <span class="math">\(\rho\ll 1\)</span> on peut négliger les termes en <span class="math">\(O(1)\)</span> et <span class="math">\(O(1/\rho)\)</span>,
+</p>
+<div class="math">$$
+    f''(\rho) - \frac{l(l+1)}{\rho^2}=0 \; \Rightarrow  \;
+     f(\rho) \sim \rho^l\,;
+$$</div>
+<p>
+et pour les grands <span class="math">\(\rho\gg1\)</span>, on peut ne retenir que le bilan du terme constant avec la dérivée&nbsp;deuxième,
+</p>
+<div class="math">$$
+    f''(\rho) - \frac{f(\rho)}{4} = 0  \; \Rightarrow \;
+    f(\rho) \sim \E^{-\rho/2}\,,
+$$</div>
+<p>
+la solution en <span class="math">\(\E^{\rho/2}\)</span>, étant divergente ne correspond pas à un état quantique. Regroupant les deux comportements, près de l&#8217;origine et près de l&#8217;infini, l&#8217;ansatz <span class="math">\(f(\rho) = \rho^l \E^{-\rho/2}w(\rho)\)</span> conduit à une équation différentielle pour la fonction <span class="math">\(w(\rho)\)</span> de la&nbsp;forme,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rW}
+    \rho w'' + (2l + 2 - \rho) w' + (n -l -1) w = 0    \,,
+\end{equation}
+$$</div>
+<p>
+qu&#8217;on peut comparer à l&#8217;équation du polynôme de Laguerre généralisés <span class="math">\(L_q^p\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rLag}
+x y'' + (p + 1 - x) y' + q y = 0 \; \Rightarrow \; y = L_q^p(x)\,,
+\end{equation}
+$$</div>
+<p>
+pour conclure que la fonction radiale est proportionnelle aux polynômes de Laguerre <span class="math">\(f\sim L\)</span>. En effet, la solution générale de <span class="math">\(\eqref{e:rW}\)</span> s&#8217;exprime par des fonctions hypergéométrique, lesquelles ne divergent pas exponentiellement vite à l&#8217;infini que pour des valeurs entiers positifs de <span class="math">\(q=n-l-1\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rn}
+  n = 1,2, \ldots \quad 0\le l \le n-1
+\end{equation}
+$$</div>
+<p>
+ce qui implique des niveaux d&#8217;énergie&nbsp;discrets:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rEn}
+  E = - \frac{1}{n^2} \,.
+\end{equation}
+$$</div>
+<blockquote>
+<p><img src="/images/MQ-Lrnl.svg" alt="Rnl" style="height: 300px;"/></p>
+<p>Densité de probabilité <span class="math">\(r^2R_{nl}^2(r)\)</span> pour quelques valeurs de <span class="math">\(\{n,l\}\)</span>, avec <span class="math">\(m=0\)</span>.</p>
+</blockquote>
+<p>Dans ce cas la solution hypergéométrique se réduit à un polynôme. La fonction radiale s&#8217;écrit enfin comme <span class="math">\(f = R_{nl}(r)\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rRnl}
+  R_{nl}(r) = c_{nl} \left( \frac{2}{n} \right)^{\tfrac{3}{2}} 
+  \left(\frac{2r}{n}\right)^l \E^{-\tfrac{r}{n}}
+  L_{n-l-1}^{2l+1} \left(\frac{2r}{n}\right)
+\end{equation}
+$$</div>
+<p>
+avec la constante assurant la bonne normalisation de l&#8217;état&nbsp;quantique,
+</p>
+<div class="math">$$
+    c_{nl} = \sqrt{ \frac{(n-l-1)!}{2n[(n+l)!]^3}  }  \,.
+$$</div>
+<p>
+En unités <span class="caps">SI</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rRsi}
+  R_{nl}(r) =  c_{nl} \left(\frac{2Z}{na_0}\right)^{\tfrac{3}{2}} 
+  \left(\frac{2Zr}{na_0}\right)^l \E^{-\tfrac{Zr}{na_0}}
+  L_{n-l-1}^{2l+1} \left(\frac{2Zr}{na_0}\right)
+\end{equation}
+$$</div>
+<p>
+et les niveaux d&#8217;énergie correspondants&nbsp;sont,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rEsi}
+  E_n = -\frac{Z^2 \mathrm{Ry}}{n^2}\,.
+\end{equation}
+$$</div>
+<p>
+Les premiers fonctions radiales&nbsp;sont:
+</p>
+<div class="math">$$
+\begin{equation}
+  R_{10}  = 2 \E^{-r}, \quad
+  R_{20}  = \frac{1}{\sqrt{2}} \E^{-r/2} \left(1-\frac{r}{2}\right), \quad
+  R_{21}  = \frac{1}{2\sqrt{6}} \E^{-r/2} r \,.
+  \label{e:rR12}
+\end{equation}
+$$</div>
+<p>
+L&#8217;équation <span class="math">\(\eqref{e:rEsi}\)</span> reproduit avec une précision remarquable les données spectroscopiques de l&#8217;atome d&#8217;hydrogène (séries spectrales de Lyman et de Balmer). Pour les énergies positives le spectre de l&#8217;atome d&#8217;hydrogène est continu; il correspond aux états de l&#8217;atome ionisé, où l&#8217;électron de valence est&nbsp;libre.</p>
+<blockquote>
+<p><img src="/images/MQ-Lprob.png" alt="nl prob" style="height: 300px;"/></p>
+<p>Densité de probabilité <span class="math">\(r^2|R_{lm}(r) Y_{lm}(\theta,\phi)|^2 $, dans le plan $xz\)</span>, pour quelques valeurs de <span class="math">\(\{n,l\}\)</span>, avec <span class="math">\(m=0\)</span>. Le côté du carré est de <span class="math">\(2\times 15\,a_0\)</span>.</p>
+</blockquote>
+<p>La fonction d&#8217;onde de l&#8217;électron d&#8217;un atome d&#8217;hydrogène est caractérisé par trois nombres quantiques <span class="math">\(n,l,m\)</span>, nommés principal, azimuthal ou orbital et magnétique,&nbsp;respectivement:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rFO}
+  \psi_{nlm}(r,\theta,\phi) = \braket{r \theta \psi|n l m} =
+  R_{nl}(r)Y_{lm}(\theta, \psi)
+\end{equation}
+$$</div>
+<p>
+où <span class="math">\(\ket{nlm}\)</span> est une base de l&#8217;espace de Hilbert des états liés. Chaque niveau d&#8217;énergie de nombre principal <span class="math">\(n\)</span> est dégénéré <span class="math">\(2l+1\)</span> fois, avec <span class="math">\(l\)</span> le nombre orbital <span class="math">\(0\le l \le n-1\)</span>, selon les différentes valeurs de <span class="math">\(m\)</span>, le nombre quantique magnétique; la dégénérescence totale des premiers <span class="math">\(n\)</span> niveaux est <span class="math">\(n^2\)</span>:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:rDeg}
+    \sum_{l=0}^{n-1}(2l+1) = n^2    \,.
+\end{equation}
+$$</div>
+<p>
+L&#8217;action d&#8217;un champ extérieur, comme un champ électrique ou un champ magnétique, peuvent révéler la structure fine des lignes spectrales en levant la dégénérescence et séparent les lignes d&#8217;un même <span class="math">\(l\)</span>. Outre la dégénérescence orbitale, y il a une dégénérescence de spin: chaque niveau <span class="math">\(\ket{nlm}\)</span> possède deux possibles polarisations du spin, ce qui ajoute un facteur 2 à la formule <span class="math">\(\eqref{e:rDeg}\)</span>, <span class="math">\(2n^2\)</span>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
