@@ -165,7 +165,7 @@ ainsi qu&#8217;aux équations (en unités <span class="caps">SI</span>)
 \end{align}
 $$</div>
 <blockquote>
-<p><img src="/images/MQ-Lpm.svg" alt="Lpm" style="height: 60px;"/></p>
+<p><img src="/images/MQ-Lpm.svg" alt="Lpm" style="height: 50px;"/></p>
 <p>Les opérateurs d&#8217;échelle <span class="math">\(L_\pm\)</span> permettent de passer de l&#8217;état <span class="math">\(\ket{lm}\)</span> à l&#8217;état <span class="math">\(\ket{lm \pm 1}\)</span>, d&#8217;où en fait leur nom (la valeur de <span class="math">\(l\)</span> ne change&nbsp;pas).</p>
 </blockquote>
 <p>La valeur de <span class="math">\(m\)</span> est donc bornée par celle de <span class="math">\(l \le 0\)</span> (<span class="math">\(L^2\)</span> est positif). Or, comme on vient de le voir <span class="math">\(L_+\)</span> augmente de une unité la valeur de <span class="math">\(m\)</span>, tandis que <span class="math">\(L_-\)</span> la diminue d&#8217;une unité; il doit donc exister des entiers <span class="math">\(n_+\)</span> et <span class="math">\(n_-\)</span> tels que le vecteur propre <span class="math">\((L_\pm)^{n_\pm} \ket{lm}\)</span> de <span class="math">\(L_z\)</span>
@@ -422,6 +422,7 @@ $$</div>
 $$</div>
 <p>
 La figure et l&#8217;exemple de code python montrent le graphe et le calcul de quelques harmoniques sphériques en fonction des angles <span class="math">\(\theta, \phi\)</span>.</p>
+<h3>Application: addition de deux spins&nbsp;1/2</h3>
 <h2>Potentiel&nbsp;central</h2>
 <p>Le mouvement d&#8217;une particule quantique dans un potentiel à symétrie sphérique est décrit par le&nbsp;hamiltonien 
 </p>
@@ -457,7 +458,65 @@ où nous avons introduit le potentiel&nbsp;effectif
     V_\text{eff}(r) = \frac{\hbar^2 l(l+1)}{2mr^2} + V(r)\,,
 $$</div>
 <p>
-et noté les dérivées radiales par des primes. Dans le cas de l&#8217;atome de l&#8217;hydrogène ou des ions avec un seul électron, le potentiel effectif contient, en plus du terme dû au moment angulaire, l&#8217;interaction coulombienne de l&#8217;électron avec le&nbsp;proton:
+et noté les dérivées radiales par des&nbsp;primes.</p>
+<h3>Le puits&nbsp;sphérique</h3>
+<p>On considère une particule de masse <span class="math">\(m\)</span> confinée dans une sphère de rayon <span class="math">\(a\)</span>. Le potentiel est supposé infini à l&#8217;extérieur de la&nbsp;sphère:
+</p>
+<div class="math">$$
+V(r) = \begin{cases}0 &amp; r&lt;a \\ \infty &amp; r&gt;0\end{cases}.
+$$</div>
+<p>
+On doit donc résoudre, pour <span class="math">\(r&lt;a\)</span>, l&#8217;équation&nbsp;radiale
+</p>
+<div class="math">$$
+f''(r) + \frac{2}{r} f'(r) + \Big(k^2 - \frac{l(l+1)}{r^2}\Big) f(r) = 0,
+$$</div>
+<p>
+avec <span class="math">\(k^2=2mE\)</span>. C&#8217;est l&#8217;équation différentielle des fonctions de <a href="https://dlmf.nist.gov/10.47">Bessel sphériques</a>:
+</p>
+<div class="math">$$
+f(r) = A j_l(kr) + B y_l(kr),
+$$</div>
+<p>
+où <span class="math">\(j_l,y_l\)</span> sont les fonctions de premier et seconde espèce, elles sont proportionnelles aux fonctions de bessel <span class="math">\(J_l,Y_l\)</span> d&#8217;ordre demi-entier. Voici quelques&nbsp;exemples:
+</p>
+<div class="math">$$
+\begin{gather*}
+j_0 = \frac{\sin x}{x}, \quad y_0 = -\frac{\cos x}{x}\\
+j_1 = \frac{\sin x}{x^2} - \frac{\cos x}{x}, \quad n_1 = -\frac{\cos x}{x^2} - \frac{\sin x}{x} \\
+j_l(x) \sim x^l \; (x \ll 1), \quad n_l(x) \sim \frac{1}{x^l} \; (x \ll 1)\\
+j_l(x) \sim \frac{\sin(x-\pi l/2)}{x} \; (x\gg1), \quad y_l(x) \sim -\frac{\cos(x-\pi l/2)}{x} (x \gg 1).
+\end{gather*}
+$$</div>
+<blockquote>
+<p><img src="/images/MQ-Ljlnl.svg" alt="jl nl" style="height: 200px;"/></p>
+</blockquote>
+<p>Comme la fonction d&#8217;onde doit être régulière à l&#8217;origine on trouve <span class="math">\(B=0\)</span> (<span class="math">\(y_l\)</span> diverge a l&#8217;origine). En plus, la fonction d&#8217;onde doit s&#8217;annuler à l&#8217;extérieur, ce qui implique <span class="math">\(f(a) = 0\)</span>; cette condition se traduit par la quantification du nombre&nbsp;d&#8217;onde:
+</p>
+<div class="math">$$
+ka = z_{nl}
+$$</div>
+<p>
+avec <span class="math">\(z_{nl}\)</span> le <span class="math">\(n\)</span>-ième zéro de <span class="math">\(j_l\)</span>.</p>
+<p>En conclusion, les niveaux d&#8217;énergie de la particule&nbsp;sont:
+</p>
+<div class="math">$$
+E_{nl} = \frac{\hbar^2}{2ma^2} z^2_{nl},
+$$</div>
+<p>
+et la fonction d&#8217;onde, qui dépend des nombre quantique <span class="math">\(n\)</span> (énergie) et <span class="math">\(l\)</span> (orbital)&nbsp;est
+</p>
+<div class="math">$$
+\psi(r,\theta,\phi) = A j_l(z_{nl}r/a) Y_{lm}(\theta,\phi), 
+$$</div>
+<p>
+où <span class="math">\(A = A_{nl}\)</span> est la constante de&nbsp;normalization.</p>
+<blockquote>
+<p><img src="/images/MQ-Ljlzero.svg" alt="zeros jl" style="height: 200px;"/></p>
+<p>Zéros de <span class="math">\(j_l(x)\)</span> pour <span class="math">\(l=0,1,2,3\)</span>.</p>
+</blockquote>
+<h3>L&#8217;atome&nbsp;d&#8217;hydrogène</h3>
+<p>Dans le cas de l&#8217;atome de l&#8217;hydrogène ou des ions avec un seul électron, le potentiel effectif contient, en plus du terme dû au moment angulaire, l&#8217;interaction coulombienne de l&#8217;électron avec le&nbsp;proton:
 </p>
 <div class="math">$$
 V(r) = -\frac{e^2}{4\pi \epsilon_0 r}
