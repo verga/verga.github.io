@@ -423,6 +423,102 @@ $$</div>
 <p>
 La figure et l&#8217;exemple de code python montrent le graphe et le calcul de quelques harmoniques sphériques en fonction des angles <span class="math">\(\theta, \phi\)</span>.</p>
 <h3>Application: addition de deux spins&nbsp;1/2</h3>
+<p>Une question intéressante se pose à propos de la composition de spins. On a vu que les composantes du moment angulaire ne sont pas de observables compatibles; en plus, le moment angulaire est quantifié: seules quelques valeurs discrètes sont possibles pour sa &#8220;longueur&#8221; et composante &#8220;z&#8221;. De lors, comment décrire un système de deux spins? On se propose maintenant d&#8217;étudier, en commençant par l&#8217;identification des observables pertinents, le spin d&#8217;un système composite formé de deux spins (combinaison de deux électrons, par&nbsp;exemple). </p>
+<p>L&#8217;espace de hilbert <span class="math">\(\mathcal{H}\)</span> de deux spins est le produit tensoriel (de kronecker) des espaces vectoriels d&#8217;un spin <span class="math">\(\mathcal{H}_1\)</span>:
+</p>
+<div class="math">$$
+\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1.
+$$</div>
+<p>
+Les observables, les opérateurs de spin pour chaque spin ont aussi une structure&nbsp;tensorielle:
+</p>
+<div class="math">$$
+\bm S_1 = \bm S \otimes \mathbb{I}, \quad \bm S_2 = \mathbb{I} \otimes \bm S
+$$</div>
+<p>
+avec <span class="math">\(\mathbb{I}=1_2\)</span> l&#8217;opérateur identité de dimension 2. Cette structure tensorielle permet de définir naturellement l&#8217;opérateur de <em>spin total</em> <span class="math">\(\bm S\)</span> comme étant simplement la somme de deux&nbsp;vecteurs:
+</p>
+<div class="math">$$
+\bm S = \bm S_1 + \bm S_2 = \frac{1}{2}\big( \bm \sigma \otimes \mathbb{I} + \mathbb{I} \otimes \bm \sigma)
+$$</div>
+<p>
+(<span class="math">\(\hbar =1\)</span>) avec <span class="math">\(\bm \sigma = (\sigma_x, \sigma_y, \sigma_z)\)</span> le vecteur de matrices de&nbsp;pauli:
+</p>
+<div class="math">$$
+\sigma_x = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}, \; 
+\sigma_x = \begin{pmatrix}0&amp;-\I\\\I&amp;0\end{pmatrix}, \; 
+\sigma_x = \begin{pmatrix}1&amp;0\\-1&amp;0\end{pmatrix}.
+$$</div>
+<p>Comme <span class="math">\(\bm S\)</span> est lui même un moment angulaire, on peut définir une base <span class="math">\(\ket{s,m}\)</span>&nbsp;par
+</p>
+<div class="math">$$S^2 \ket{sm} = s(s+1) \ket{sm}, \; S_z \ket{sm} = m \ket{sm},\quad s=0,1/2,1,\ldots,\; -s\le m \le s
+$$</div>
+<p>
+où <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$
+S^2 = \frac{3}{2} \mathbb{I} + \frac{1}{2} \bm \sigma_1 \cdot \bm \sigma_2, \quad S_z = \frac{1}{2} \sigma_{1z} + \frac{1}{2} \sigma_{2z}.
+$$</div>
+<p>
+En forme matricielle on&nbsp;obtient,
+</p>
+<div class="math">$$
+\sigma_1 \cdot \sigma_2 = \begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 2 &amp; 0 \\ 0 &amp; 2 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}, \quad S_z = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 \end{pmatrix}.
+$$</div>
+<p>
+On va maintenant déterminer les possibles valeurs de <span class="math">\(s\)</span> et <span class="math">\(m\)</span>. La diagonalisation de <span class="math">\(S^2\)</span> donne le&nbsp;spectre
+</p>
+<div class="math">$$
+\{\{s(s+1),\ket{sm}\}\} = \{\{0,\ket{0,0}\}, \{2,\ket{1,-1}, \ket{1,0}, \ket{1,1}\}\}
+$$</div>
+<p>
+(<span class="math">\(2=1\times(1+1)\)</span>) avec <span class="math">\(s=1\)</span> l&#8217;état &#8220;triplet&#8221; triplement dégénéré et <span class="math">\(s=0\)</span> l&#8217;état &#8220;singulet&#8221;, et les vecteurs&nbsp;propres
+</p>
+<div class="math">$$
+\ket{0,0} = \frac{1}{\sqrt{2}} \begin{pmatrix} 0\\1\\-1\\0 \end{pmatrix},\;
+\ket{1,-1} = \begin{pmatrix} 0\\0\\0\\1 \end{pmatrix},\;
+\ket{1,0} = \frac{1}{\sqrt{2}} \begin{pmatrix} 0\\1\\1\\0 \end{pmatrix},\;
+\ket{1,1} = \begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}.
+$$</div>
+<p>
+Les quatre états <span class="math">\(\ket{jm}\)</span> forment une base orthonormale de <span class="math">\(\mathcal{H}\)</span>, et la matrice formée avec ces colones (<span class="math">\(V\)</span> dans le code python, ci-bas) est la matrice unitaire de passage entre la base canonique du produit <span class="math">\(\mathcal{H}_1 \otimes \mathcal{H}_1\)</span> et celle du système composite, associée aux observables <span class="math">\(S^2,S_z\)</span>. </p>
+<blockquote>
+<p>Exemple de code <code>sympy/python</code> (méthode <code>diagonalize()</code>) pour le calcul du spectre de <span class="math">\(\ket{S}\)</span>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># sympy</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">from</span> <span class="nn">sympy.physics.quantum</span> <span class="kn">import</span> <span class="n">TensorProduct</span> <span class="k">as</span> <span class="n">K</span>
+<span class="c1"># pauli matrices</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">sy</span><span class="o">.</span><span class="n">I</span><span class="p">],[</span><span class="n">sy</span><span class="o">.</span><span class="n">I</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">id</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="c1"># two spins S^2 and S_z matrices</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">K</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">K</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="o">+</span> <span class="n">K</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span> <span class="c1"># $\sigma_1 \cdot \sigma_2$</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">K</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span><span class="nb">id</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ss</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># $S^2$</span>
+<span class="n">s2z</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="nb">id</span><span class="p">)</span> <span class="o">+</span> <span class="n">K</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span><span class="n">Z</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># $S_z$</span>
+<span class="c1"># spectre V = \{\ket{sm}\}$ (vectors) and D (eigenvalues)</span>
+<span class="n">V</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">diagonalize</span><span class="p">()</span>
+<span class="c1"># verify that $\ket{sm}$ is also eigenvector of $S_z$</span>
+<span class="p">[</span><span class="n">s2z</span><span class="o">*</span><span class="n">V</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</code></pre></div>
+
+<p>Ainsi, la composition de deux spins <span class="math">\(1/2\)</span> résulte en un spin <span class="math">\(0\)</span> (singulet) ou <span class="math">\(1\)</span> (triplet). L&#8217;état singulet est antisymétrique, puisqu&#8217;en échangeant les deux spins le état change de signe, tandis que le triplet est&nbsp;symétrique.</p>
+<p>On observe que dans la base <span class="math">\(\ket{s,m}\)</span>&nbsp;l&#8217;opérateur
+</p>
+<div class="math">$$
+\bm \sigma_1 \cdot \bm \sigma_2 = S^2 - 3 \mathbb{I}
+$$</div>
+<p>
+est diagonal, proportionnel à <span class="math">\(2s(s+1) \mathbb{I} + 3 \mathbb{I}\)</span>, par&nbsp;conséquent
+</p>
+<div class="math">$$
+P_0 = \frac{\mathbb{I} - \bm \sigma_1 \cdot \sigma_2}{4}, \quad
+P_1 = \frac{3\mathbb{I} + \bm \sigma_1 \cdot \sigma_2}{4}, \quad
+$$</div>
+<p>
+sont de projecteurs, dans l&#8217;espace de deux spins, sur les sous-espaces de spin total 0 et 1,&nbsp;respectivement.</p>
+<p>Contrairement à ce qu&#8217;on pourrait naïvement penser,&nbsp;l</p>
 <h2>Potentiel&nbsp;central</h2>
 <p>Le mouvement d&#8217;une particule quantique dans un potentiel à symétrie sphérique est décrit par le&nbsp;hamiltonien 
 </p>
