@@ -137,6 +137,23 @@ la probabilité d&#8217;obtenir <span class="math">\(o_n\)</span> dans l&#8217;�
 <p>L&#8217;état du système, après la mesure, est&nbsp;&#8220;réduit&#8221;:
 </p>
 <div class="math">$$ \ket{\psi} \rightarrow \frac{\braket{o_n|\psi}}{\sqrt{p_n}}\ket{o_n}. $$</div>
+<p>La règle de Born se généralise facilement au cas d&#8217;un système mixte, décrit par la matrice densité <span class="math">\(\rho\)</span>. La valeur espérée d&#8217;un observable <span class="math">\(O\)</span>&nbsp;devient
+</p>
+<div class="math">$$
+\braket{O} = \Tr\, \rho O.
+$$</div>
+<p>
+On vérifie que pour un état pur <span class="math">\(\psi\)</span> on retrouve la bonne expression: <span class="math">\(\Tr \big(\ket{\psi}\bra{\psi} O \big) = \braket{\psi|O|\psi}\)</span>. En remplaçant <span class="math">\(O\)</span> par un projecteur on obtient la probabilité&nbsp;(Born):
+</p>
+<div class="math">$$
+p_n = \Tr\, \rho P_n,
+$$</div>
+<p>
+qui vérifie <span class="math">\(\sum_n p_n = 1\)</span>. L&#8217;état, après la mesure,&nbsp;devient
+</p>
+<div class="math">$$
+\rho_n = \frac{P_n\rho P_n}{\Tr \, \rho P_n}.
+$$</div>
 <blockquote>
 <p>L&#8217;évolution d&#8217;un système quantique est unitaire:
   <div class="math">$$
@@ -171,6 +188,13 @@ dans lequel on a remplacé la position et l&#8217;impulsion par des opérateurs 
 <div class="math">$$\{Q, P\} \rightarrow \frac{1}{\I} [Q,P], $$</div>
 <p>
 pour deux grandeurs conjuguées canonique <span class="math">\(Q\)</span> et <span class="math">\(P\)</span> et ces pendants quantiques les opérateurs <span class="math">\(Q\)</span> et <span class="math">\(P\)</span> (même&nbsp;notation).</p>
+<p>Enfin, une propriété fondamentale de l&#8217;état quantique <span class="math">\(\rho\)</span> d&#8217;un système (mixte ou pur) est qu&#8217;on peut lui <em>toujours</em> associer une <em>entropie</em>:
+</p>
+<div class="math">$$
+S[\rho] = - \Tr\, \rho \ln \rho.
+$$</div>
+<p>
+C&#8217;est l&#8217;entropie introduite initialement par von Neumann pour caractériser le processus quantique de la mesure. Dans le cas ou <span class="math">\(\rho = \rho_A\)</span> représente l&#8217;état d&#8217;un partie <span class="math">\(A\)</span> d&#8217;un système bipartite <span class="math">\(AB\)</span>, <span class="math">\(S\)</span> est une mesure de l&#8217;<em>intrication</em> de l&#8217;état total <span class="math">\(\rho_{AB}\)</span>.</p>
 <h2>Compléments&nbsp;mathématiques</h2>
 <h3>Espace vectoriel et produit&nbsp;scalaire</h3>
 <p>Soient <span class="math">\(\ket{\psi}, \ket{\phi}, \ldots \in \mathcal{H}\)</span> des vecteurs (<em>kets</em> en notation de Dirac) de l&#8217;espace vectoriel hilbertien <span class="math">\(\mathcal{H}\)</span> sur les complexes, et <span class="math">\(a, b, \ldots \in \mathbb{C}\)</span> des nombres complexes. On a&nbsp;donc
@@ -580,6 +604,13 @@ ou
 $$</div>
 <p>
 la matrice de Hadamard. Cet état jour un rôle important dans la <a href="/L3-telep.html">téléportation</a>&nbsp;quantique.</p>
+<p>Il est intéressant d&#8217;observer que, même si l&#8217;entropie d&#8217;un état pur est nulle, <span class="math">\(S = - \braket{\psi| \ln \big(\ket{\psi}\bra{\psi}\big) | \psi} = \ln 1 = 0\)</span>, celle associée au premier qubit (idem pour le deuxième) est <em>maximale</em>:
+</p>
+<div class="math">$$
+S_A = - \Tr \, \rho_A \ln \rho_A = -\frac{1}{2} \ln \frac{1}{2} -\frac{1}{2} \ln \frac{1}{2} = \ln 2.
+$$</div>
+<p>
+L&#8217;état (de Bell) correspond donc à un état maximalement&nbsp;intriqué.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
