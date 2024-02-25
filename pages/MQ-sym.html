@@ -136,13 +136,14 @@ où on a utilisé&nbsp;l&#8217;identité
 <div class="math">$$
 \frac{1}{N} \sum_{k} \E^{\I 2\pi k(x'- x)/N} = \delta_{x,x'}.
 $$</div>
-<p>On déduit que l&#8217;expression du ket <span class="math">\(\ket{k}\)</span> dans la base <span class="math">\(x\)</span>&nbsp;est
+<p>
+compatible avec la condition d&#8217;orthogonalité <span class="math">\(\braket{x|x'} = \delta_{xx'}\)</span> . On déduit également que l&#8217;expression du ket <span class="math">\(\ket{k}\)</span> dans la base <span class="math">\(x\)</span>&nbsp;est
 </p>
 <div class="math">$$
-\braket{x|k} = \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}},
+\braket{x|k} = \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}}.
 $$</div>
 <p>
-on dit qu&#8217;on <em>représente</em> le ket dans la base &#8220;position&#8221;; son complexe conjugué est la représentation de la position dans la base &#8220;k&#8221;, qu&#8217;on va identifier avec&nbsp;l&#8217;impulsion.</p>
+On dit qu&#8217;on <em>représente</em> le ket <span class="math">\(\ket{k}\)</span> dans la base &#8220;position&#8221; <span class="math">\(\ket{x}\)</span>; son complexe conjugué est la représentation de la position dans la base &#8220;k&#8221;, qu&#8217;on va identifier avec&nbsp;l&#8217;impulsion.</p>
 <p>Un vecteur quelconque de l&#8217;espace de hilbert <span class="math">\(\ket{\psi}\)</span> peut s&#8217;exprimer en &#8220;base position&#8221;, c&#8217;est-à-dire comme une superposition des différents états&nbsp;&#8220;position&#8221;:
 </p>
 <div class="math">$$
@@ -150,6 +151,49 @@ on dit qu&#8217;on <em>représente</em> le ket dans la base &#8220;position&#822
 $$</div>
 <p>
 où l&#8217;amplitude au carré <span class="math">\(|\psi_x|^2\)</span>, selon la règle de Born, correspond à la probabilité de trouver le système dans l&#8217;état (la position) <span class="math">\(x\)</span>.</p>
+<p>Il est naturel, comme on l&#8217;a fait pour la position <span class="math">\(x\)</span>, d&#8217;associer aux nombres <span class="math">\(k\)</span> un opérateur <span class="math">\(K\)</span> tel&nbsp;que
+</p>
+<div class="math">$$
+K \ket{k} = k \ket{k}, \quad \braket{k,k'} = \delta_{kk'}.
+$$</div>
+<p>
+Pour étudier le lien entre <span class="math">\(X\)</span> et <span class="math">\(K\)</span>, on peut calculer leur commutateur <span class="math">\([X,K]\)</span>:
+</p>
+<div class="math">$$
+\begin{gather*}
+\braket{x|XK|x'} = \frac{x}{\sqrt{N}} \sum_{k=0}^{N-1} k \E^{-\I 2\pi k x'/N} \braket{x|k} = \frac{x}{N} \sum_{k=0}^{N-1} k \E^{\I 2\pi k(x - x')/N} \\
+\braket{x|KX|x'} = \frac{x'}{\sqrt{N}} \sum_{k=0}^{N-1} k \E^{-\I 2\pi k x'/N} \braket{x|k} = \frac{x'}{N} \sum_{k=0}^{N-1} k \E^{\I 2\pi k(x - x')/N} ,
+\end{gather*}
+$$</div>
+<p>
+la différence de ces deux équations donne <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$
+\braket{x|[X,K]|x'} =  \frac{x-x'}{\E^{\I 2\pi k(x - x')/N - 1}}
+$$</div>
+<p>
+où on a fait la somme sur la série&nbsp;géométrique:
+</p>
+<div class="math">$$
+\sum_{k=0}^{N-1} k \E^{-\I 2\pi kx/N} = \frac{N}{\E^{-\I 2\pi kx/N - 1}} .
+$$</div>
+<p>
+Quand <span class="math">\(x \rightarrow x'\)</span> l&#8217;expression tends&nbsp;vers
+</p>
+<div class="math">$$
+\lim_{x \to x'} \frac{x-x'}{\E^{\I 2\pi k(x - x')/N - 1}} = \frac{\I N}{2\pi},
+$$</div>
+<p>
+ce qui conduit au&nbsp;résultat:
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:ckp}
+\Big[X, \frac{2\pi K}{N}\Big] = \I.
+\end{equation}
+$$</div>
+<p>
+On observe que le commutateur de <span class="math">\(X\)</span> et <span class="math">\(K\)</span> est semblable à celui entre la position et l&#8217;impulsion (comme grandeurs continues), ce qui confirme l&#8217;interprétation de <span class="math">\(K\)</span> comme un opérateur impulsion &#8220;discret&#8221;, opérateur canonique de la position discrète <span class="math">\(X\)</span>.</p>
 <p>On se propose maintenant de généraliser le modèle d&#8217;espace discret à un espace continu, dans lequel la position devient un nombre réel avec la dimension de longueur. On introduit donc <span class="math">\(L=N\Delta x\)</span> la longueur de la ligne et on remplace <span class="math">\(x\Delta x\)</span> par <span class="math">\(x \in \mathbb{R}\)</span>. La limite continue est définie&nbsp;par
 </p>
 <div class="math">$$
@@ -166,7 +210,15 @@ x \Delta x \rightarrow x,\\
 \end{gather*}
 $$</div>
 <p>
-où on a introduit, à la place du nombre d&#8217;onde, la variable continue <span class="math">\(p\)</span> ayant les dimensions d&#8217;une impulsion (avec le choix habituel <span class="math">\(\hbar=1\)</span>, l&#8217;unité d&#8217;impulsion devient l&#8217;inverse d&#8217;une longueur). En faisant <span class="math">\(\Delta x \rightarrow 0\)</span> on obtient la limite&nbsp;continue:
+où on a introduit, à la place du nombre d&#8217;onde, la variable continue <span class="math">\(p\)</span> ayant les dimensions d&#8217;une impulsion (avec le choix habituel <span class="math">\(\hbar=1\)</span>, l&#8217;unité d&#8217;impulsion devient l&#8217;inverse d&#8217;une&nbsp;longueur).</p>
+<p>Observez que le commutateur de l&#8217;équation <span class="math">\(\eqref{e:ckp}\)</span>, se transforme&nbsp;comme
+</p>
+<div class="math">$$
+\Big[X \Delta x, \frac{2\pi K}{N\Delta x}\Big] = [x, p/\hbar] = \I,
+$$</div>
+<p>
+dans la limite&nbsp;continue.</p>
+<p>En faisant <span class="math">\(\Delta x \rightarrow 0\)</span> on obtient la limite&nbsp;continue:
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -219,7 +271,9 @@ $$</div>
 ce qui conduit à l&#8217;expression du&nbsp;commutateur,
 </p>
 <div class="math">$$
+\begin{equation}
   [X,P] = \I \hbar,
+\end{equation}
 $$</div>
 <p>
 résultat qui correspond bien avec l&#8217;interprétation de <span class="math">\(P\)</span> comme l&#8217;opérateur&nbsp;d&#8217;impulsion.</p>
