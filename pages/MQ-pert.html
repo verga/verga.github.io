@@ -60,77 +60,101 @@
 <h2>Perturbation&nbsp;stationnaire</h2>
 <p>Les systèmes physiques sont généralement caractérisés par un ensemble de paramètres dimensionnels; ces paramètres ne sont pas tous indépendants, puisque les propriétés physiques sont indépendantes du système d&#8217;unités, mais peuvent s&#8217;exprimer en fonction d&#8217;un certain nombre de paramètres non dimensionnels. Par exemple, l&#8217;oscillateur harmonique avec les unités de masse, la masse de la particule <span class="math">\([m]\)</span>, le temps, l&#8217;inverse de la fréquence <span class="math">\([1/\omega]\)</span>, et la longueur, exprimée à l&#8217;aide de la constante de planck <span class="math">\([\ell=(\hbar/m\omega)^{1/2}]\)</span>, ne comporte aucun paramètre&nbsp;dimensionnel:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 H_0 = \frac{p^2}{2} + \frac{x^2}{2} \tag{oscillateur}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 avec <span class="math">\(x\)</span> la position et <span class="math">\(p\)</span> l&#8217;impulsion adimensionnelles; de même, le hamiltonien de l&#8217;atome d&#8217;hydrogène avec le choix du rayon de Bohr <span class="math">\([\mathrm{a_0}]\)</span> et du rydberg <span class="math">\([\mathrm{Ry}]\)</span> comme unités de longueur et&nbsp;d&#8217;énergie,
 </p>
-<div class="math">$$\mathrm{a_0} = \frac{4\pi \epsilon_0 \hbar^2}{m e^2}, \quad \mathrm{Ry} = \frac{\hbar^2}{2m a_0^2}$$</div>
+<div class="math">$$
+\mathrm{a_0} = \frac{4\pi \epsilon_0 \hbar^2}{m e^2}, \quad \mathrm{Ry} = \frac{\hbar^2}{2m a_0^2}
+$$</div>
 <p>
 ainsi que de la masse réduite comme unité de masse (unités atomiques), se réduit à la forme&nbsp;adimensionnelle, 
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   H_0 = \frac{\bm p^2}{2} - \frac{2}{r} \tag{coulomb}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 avec <span class="math">\(r\)</span> le rayon en coordonnées sphériques (avec origine le centre de masse), distance entre le noyau et l&#8217;électron, et <span class="math">\(\bm p\)</span> leur impulsion&nbsp;relative.</p>
 <p>Souvent parmi ces paramètres sans dimensions on en trouve un petit,&nbsp;disons
 </p>
-<div class="math">$$\lambda \ll 1\,.$$</div>
+<div class="math">$$
+\lambda \ll 1\,.
+$$</div>
 <p>
 Par exemple, l&#8217;atome d&#8217;hydrogène peut être soumis à un champ extérieur de faible énergie par rapport au rydberg: un champ électrique <span class="math">\(\mathcal{E}\)</span> (dirigé selon la direction <span class="math">\(z\)</span>) qui interagit avec le dipôle atomique, et dont l&#8217;énergie est donnée par <span class="math">\(V = -ez\mathcal{E}\)</span>. Dans ce cas, le paramètre sans dimensions approprié est le rapport de l&#8217;énergie du dipôle (à l&#8217;échelle du rayon de Bohr) et du&nbsp;rydberg:
 </p>
-<div class="math">$$\lambda = \frac{e \mathrm{a_0} \mathcal{E}}{\mathrm{Ry}} \ll 1$$</div>
+<div class="math">$$
+\lambda = \frac{e \mathrm{a_0} \mathcal{E}}{\mathrm{Ry}} \ll 1
+$$</div>
 <p>
 ce qui est généralement vrai pour des champs électriques typiques utilisés en laboratoire dans les expériences de spectroscopie atomique. Par conséquent, le hamiltonien du système physique comportant un petit paramètre peut se séparer en deux parties, la partie <span class="math">\(H_0\)</span> du système sans perturbation, et <span class="math">\(\lambda V\)</span>, le terme de&nbsp;perturbation:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   H = H_0 + \lambda V,\quad \lambda \ll 1\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 Le terme de <em>perturbation</em> aura donc un faible effet sur les niveaux d&#8217;énergie <span class="math">\(\varepsilon_n\)</span> et les fonctions propres <span class="math">\(\ket{n}\)</span>, du système non&nbsp;perturbé:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   H_0 \ket{n} = \varepsilon_n \ket{n}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 où l&#8217;on suppose un spectre discret, ici <span class="math">\(n\)</span> est le nombre quantique associé à l&#8217;énergie (e.g. les niveaux de l&#8217;oscillateur ou de l&#8217;atome d&#8217;hydrogène, selon la signification de <span class="math">\(H_0\)</span>).</p>
 <p>L&#8217;idée de la méthode de perturbation est de construire les états propres et les énergies de <span class="math">\(H\)</span> par des approximations successives en puissances du petit paramètre <span class="math">\(\lambda\)</span>, à partir de la base d&#8217;états <span class="math">\(\ket{n}\)</span> et des énergies <span class="math">\(\varepsilon_n\)</span> du système non perturbé. Nous allons donc chercher les vecteurs propres <span class="math">\(\ket{N}\)</span> et valeurs propres <span class="math">\(E_n\)</span> de <span class="math">\(H\)</span>
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pHvp}
   H \ket{N} = E_n \ket{N}\,,
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 sous la forme des&nbsp;séries,
 </p>
-<div class="math">\begin{align}
+<div class="math">$$
+\begin{align}
   E_n &amp;= \varepsilon_n + \lambda E_{n}^{(1)} + \lambda^2 E_{n}^{(2)} + \cdots 
   \nonumber \\
   \ket{N} &amp;= \ket{n} + \lambda \ket{N^{(1)}} + \lambda^2 \ket{N^{(2)}} + \cdots 
   \label{e:pS}
-\end{align}</div>
+\end{align}
+$$</div>
 <p>
 où les indices entre parenthèses correspondent à l&#8217;ordre de l&#8217;approximation. Nous commençons par le cas non dégénéré, dans lequel chaque valeur propre <span class="math">\(\varepsilon_n\)</span> correspond à un unique vecteur propre <span class="math">\(\ket{n}\)</span>. La base de <span class="math">\(H_0\)</span> est orthonormée; nous pouvons aussi&nbsp;supposer
 </p>
-<div class="math">\begin{equation*}
+<div class="math">$$
+\begin{equation*}
 \braket{n|N^{(i)}} = 0,\quad i=1,2,\ldots
-\end{equation*}</div>
+\end{equation*}
+$$</div>
 <p>
-Après substitution de \eqref{e:pS} dans \eqref{e:pHvp}, on obtient à l&#8217;ordre <span class="math">\(\lambda\)</span>:
+Après substitution de <span class="math">\(\eqref{e:pS}\)</span> dans <span class="math">\(\eqref{e:pHvp}\)</span>, on obtient à l&#8217;ordre <span class="math">\(\lambda\)</span>:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:po1}
   (H_0 - \varepsilon_n) \ket{N^{(1)}} = (E_n^{(1)} -V) \ket{n}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 En multipliant cette équation d&#8217;abord par <span class="math">\(\bra{n}\)</span>, nous obtenons la première correction de&nbsp;l&#8217;énergie:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pE1}
   E^{(1)}_n = \braket{n|V|n}\,;
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 en la multipliant ensuite par <span class="math">\(\bra{m}\)</span> (avec <span class="math">\(m \ne n\)</span>), nous&nbsp;obtenons,
 </p>
@@ -141,37 +165,45 @@ $$</div>
 <p>
 qu&#8217;on peut compléter par l&#8217;unité <span class="math">\(\sum_m \ket{m} \bra{m} = 1\)</span> pour déduire la correction de l&#8217;état propre à l&#8217;ordre&nbsp;1:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pV1}
   \ket{N^{(1)}} = \sum_{m \ne n} \frac{\braket{m|V|n}}{\varepsilon_n - \varepsilon_m}\ket{m}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-À l&#8217;ordre suivant, en <span class="math">\(\lambda^2\)</span>, l&#8217;équation \eqref{e:pHvp}&nbsp;donne,
+À l&#8217;ordre suivant, en <span class="math">\(\lambda^2\)</span>, l&#8217;équation <span class="math">\(\eqref{e:pHvp}\)</span>&nbsp;donne,
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:po2}
   (H_0 - \varepsilon_n) \ket{N^{(2)}} = 
   E^{(2)}_n \ket{n} + (E^{(1)}_n - V) \ket{N^{(1)}}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-En suivant la même méthode nous obtenons, après multiplication à gauche par <span class="math">\(\bra{n}\)</span>, l&#8217;expression <span class="math">\(E^{(2)} = \braket{n|V|N^{(1)}}\)</span>; ou, en substituant dans celle-ci l&#8217;équation \eqref{e:pV1}, et en observant que <span class="math">\(\braket{n|N^{(1)}}=0\)</span>, nous aboutissons&nbsp;à 
+En suivant la même méthode nous obtenons, après multiplication à gauche par <span class="math">\(\bra{n}\)</span>, l&#8217;expression <span class="math">\(E^{(2)} = \braket{n|V|N^{(1)}}\)</span>; ou, en substituant dans celle-ci l&#8217;équation <span class="math">\(\eqref{e:pV1}\)</span>, et en observant que <span class="math">\(\braket{n|N^{(1)}}=0\)</span>, nous aboutissons&nbsp;à 
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pE2}
   E^{(2)}_n = \sum_{m \ne n} 
   \frac{|\braket{m|V|n}|^2}{\varepsilon_n - \varepsilon_m}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-Les équations \eqref{e:pE1} et \eqref{e:pE2} sont le principaux résultats de la théorie des perturbations indépendantes du temps. Elles peuvent se résumer dans la&nbsp;formule:
+Les équations <span class="math">\(\eqref{e:pE1}\)</span> et <span class="math">\(\eqref{e:pE2}\)</span> sont le principaux résultats de la théorie des perturbations indépendantes du temps. Elles peuvent se résumer dans la&nbsp;formule:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pE12}
   E_n = \varepsilon_n + \lambda \braket{n|V|n} +
   \lambda^2 \sum_{m \ne n} 
   \frac{|\braket{m|V|n}|^2}{\varepsilon_n - \varepsilon_m}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-L&#8217;utilisation pratique de la méthode de perturbation est simple: on résout d&#8217;abord le problème à valeurs propres du hamiltonien non perturbé pour avoir la forme explicite des niveaux d&#8217;énergie et des vecteurs propres <span class="math">\(\varepsilon_n\)</span> et <span class="math">\(\ket{n}\)</span>; pour ensuite calculer la correction en <span class="math">\(\lambda\)</span> par la formule \eqref{e:pE1}; si celle-ci s&#8217;avère être nulle (cela dépend de la forme de <span class="math">\(V\)</span>), on passe à l&#8217;ordre suivant et on calcule <span class="math">\(E_n^{(2)}\)</span> à l&#8217;aide de \eqref{e:pE2}. L&#8217;effet physique d&#8217;une petite perturbation sur un niveau non dégénéré est de déplacer le niveau d&#8217;énergie d&#8217;une grandeur de l&#8217;ordre de <span class="math">\(\lambda\)</span> ou de <span class="math">\(\lambda^2\)</span>, sans affecter qualitativement les propriétés du système non&nbsp;perturbé.</p>
+L&#8217;utilisation pratique de la méthode de perturbation est simple: on résout d&#8217;abord le problème à valeurs propres du hamiltonien non perturbé pour avoir la forme explicite des niveaux d&#8217;énergie et des vecteurs propres <span class="math">\(\varepsilon_n\)</span> et <span class="math">\(\ket{n}\)</span>; pour ensuite calculer la correction en <span class="math">\(\lambda\)</span> par la formule <span class="math">\(\eqref{e:pE1}\)</span>; si celle-ci s&#8217;avère être nulle (cela dépend de la forme de <span class="math">\(V\)</span>), on passe à l&#8217;ordre suivant et on calcule <span class="math">\(E_n^{(2)}\)</span> à l&#8217;aide de <span class="math">\(\eqref{e:pE2}\)</span>. L&#8217;effet physique d&#8217;une petite perturbation sur un niveau non dégénéré est de déplacer le niveau d&#8217;énergie d&#8217;une grandeur de l&#8217;ordre de <span class="math">\(\lambda\)</span> ou de <span class="math">\(\lambda^2\)</span>, sans affecter qualitativement les propriétés du système non&nbsp;perturbé.</p>
 <p>Si l&#8217;état d&#8217;énergie <span class="math">\(\varepsilon_n = \varepsilon\)</span> est dégénéré <span class="math">\(D\)</span> fois, la perturbation <span class="math">\(V\)</span> introduit un effet physique intéressant, la <em>levée de dégénérescence</em>, qui change qualitativement les propriétés du système original <span class="math">\(H_0\)</span>. Pour trouver les niveaux d&#8217;énergie perturbés il suffit de considérer le sous-espace de dimension <span class="math">\(D\)</span>, dans lequel la forme du hamiltonien dans la base <span class="math">\(\ket{n}\)</span>,&nbsp;est
 </p>
 <div class="math">$$
@@ -186,13 +218,15 @@ $$</div>
 <p>
 avec <span class="math">\(1_{D}\)</span> la matrice unité et <span class="math">\(V_{D}\)</span> la perturbation dans le sous-espace <span class="math">\(D\)</span>, et de résoudre le problème de valeurs et vecteurs propres. Les états d&#8217;énergie au premier ordre de la théorie de perturbation d&#8217;un état dégénéré, sont donc les racines <span class="math">\(E\)</span> du polynôme&nbsp;caractéristique:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
   \label{e:pED}
   \det \left( \lambda V_{D} - E^{(1)} 1_{D} \right) = 0\,,\quad
   E^{(1)} = E_{n1}, \ldots, E_{nD}\,.
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
-En effet, <span class="math">\(H_D\)</span> est diagonal avec unique valeur propre <span class="math">\(\varepsilon\)</span> pour <span class="math">\(\lambda = 0\)</span>; au premier ordre, \eqref{e:pED} permet de calculer la correction à l&#8217;ordre <span class="math">\(\lambda\)</span> du niveau dégénéré, dans chacune des directions données par les vecteurs propres de&nbsp;\eqref{e:pED}.</p>
+En effet, <span class="math">\(H_D\)</span> est diagonal avec unique valeur propre <span class="math">\(\varepsilon\)</span> pour <span class="math">\(\lambda = 0\)</span>; au premier ordre, <span class="math">\(\eqref{e:pED}\)</span> permet de calculer la correction à l&#8217;ordre <span class="math">\(\lambda\)</span> du niveau dégénéré, dans chacune des directions données par les vecteurs propres de <span class="math">\(\eqref{e:pED}\)</span>.</p>
 <h2>Problèmes</h2>
 <h3>1</h3>
 <p>Montrez que si <span class="math">\(\ket{\psi_\lambda}\)</span> est un état qui diffère d&#8217;une grandeur d&#8217;ordre <span class="math">\(\lambda\)</span> de l&#8217;état fondamental <span class="math">\(\ket{\psi_0}\)</span>, l&#8217;énergie <span class="math">\(E(\lambda)=\langle \psi_\lambda|H|\psi_\lambda\rangle\)</span> diffère de <span class="math">\(E_0\)</span>, l&#8217;énergie de l&#8217;état fondamental, d&#8217;une grandeur d&#8217;ordre <span class="math">\(\lambda^2\)</span>.</p>
@@ -205,7 +239,9 @@ $$</div>
 <p>
 par la méthode variationnelle. Utilisez comme ansatz une fonction d&#8217;onde gaussienne; comparez le résultat avec celui du&nbsp;cours:
 </p>
-<div class="math">$$E = \frac{9}{2\times286^{1/3}}\lambda^{1/3}$$</div>
+<div class="math">$$
+E = \frac{9}{2\times286^{1/3}}\lambda^{1/3}
+$$</div>
 <h3>3</h3>
 <p>Une particule est soumise à l&#8217;action d&#8217;un potentiel&nbsp;central,
 </p>
@@ -263,12 +299,12 @@ $$</div>
 Calculez les énergies du niveau fondamental et du premier niveau excité en présence d&#8217;une perturbation <span class="math">\(V(x,y) = v x^2\)</span> (<span class="math">\(0\le x\le a\)</span>). Tenez compte d&#8217;éventuelles dégénérescences. Faites le graphe des niveaux d&#8217;énergie sans et avec perturbation et discutez l&#8217;effet de&nbsp;celle-ci.</p>
 <h3>9</h3>
 <p>Un atome d&#8217;hydrogène se trouve dans un champ magnétique extérieur constant <span class="math">\(\bm B\)</span> de faible intensité; le potentiel de la perturbation&nbsp;est 
-  </p>
+</p>
 <div class="math">$$
     V= \frac{e}{m}\bm L \cdot \bm B  
-  $$</div>
+$$</div>
 <p>
-  où <span class="math">\(\bm L\)</span> est le moment angulaire orbital de l&#8217;électron. Nous négligeons par simplicité, l&#8217;effet dû au spin (effet Zeeman).  Calculez le déplacement des énergies <span class="math">\(\varepsilon_n\)</span> des états <span class="math">\(\ket{nlm}\)</span>. Discutez la levée de dégénérescence de ces niveaux. Remarquez que vous pouvez choisir un axe de quantification dans la direction du champ&nbsp;extérieur.</p>
+où <span class="math">\(\bm L\)</span> est le moment angulaire orbital de l&#8217;électron. Nous négligeons par simplicité, l&#8217;effet dû au spin (effet Zeeman).  Calculez le déplacement des énergies <span class="math">\(\varepsilon_n\)</span> des états <span class="math">\(\ket{nlm}\)</span>. Discutez la levée de dégénérescence de ces niveaux. Remarquez que vous pouvez choisir un axe de quantification dans la direction du champ&nbsp;extérieur.</p>
 <h3>10</h3>
 <p>(Désintégration beta) Un atome de tritium <span class="math">\(^3\)</span>H, charge nucléaire <span class="math">\(Z=1\)</span>, se transforme en un atome He<span class="math">\(^+\)</span>, <span class="math">\(Z=2\)</span>. Calculez la probabilité de trouver l&#8217;électron, après le changement soudain de charge, dans son état&nbsp;fondamental.</p>
 <h3>11</h3>
