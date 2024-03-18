@@ -61,16 +61,22 @@
 <p>On a donc, un processus de superposition des deux états stationnaires <span class="math">\(\psi_i\)</span>, l&#8217;état &#8220;initial&#8221; des particules incidentes l&#8217;une sur l&#8217;autre, et un état &#8220;final&#8221; <span class="math">\(\psi_f\)</span>, de l&#8217;onde sortante, qui doit tenir compte du centre de diffusion (voir le schéma dans la&nbsp;figure).</p>
 <p>Il convient de décrire la collision entre les deux particules de masse <span class="math">\(m_1\)</span> et <span class="math">\(m_2\)</span>, dans le repère inertiel (centre des masse), de telle façon que les grandeurs physiques ne dépendent que de la distance <span class="math">\(r\)</span> entre les particules. Dans ce repère la collision est celle d&#8217;une particule effective de masse&nbsp;réduite
 </p>
-<div class="math">$$m = \frac{m_1 m_2}{m_1 + m_2}$$</div>
+<div class="math">$$
+m = \frac{m_1 m_2}{m_1 + m_2}
+$$</div>
 <p>
 incident avec une énergie <span class="math">\(E\)</span> sur un centre de diffusion <span class="math">\(V(r)\)</span> fixe. Ainsi, l&#8217;état initial est simplement celui d&#8217;une onde&nbsp;plane,
 </p>
-<div class="math">$$\psi_i = \E^{\I k z}, \quad k = \sqrt{\frac{2mE}{\hbar^2}}$$</div>
+<div class="math">$$
+\psi_i = \E^{\I k z}, \quad k = \sqrt{\frac{2mE}{\hbar^2}}
+$$</div>
 <p>
 La fonction d&#8217;onde <span class="math">\(\psi_i\)</span>, d&#8217;amplitude 1, représente un flux (densité de courant de probabilité) égale à la vitesse de la particule <span class="math">\(v = \hbar k/m\)</span>.</p>
 <p>Après la collision, la particule est diffusée par l&#8217;interaction <span class="math">\(V(r)\)</span>, essentiellement comme un onde&nbsp;radiale:
 </p>
-<div class="math">$$\psi_f \sim \psi_i + f(k,\Omega) \frac{\E^{\I k r}}{r}$$</div>
+<div class="math">$$
+\psi_f \sim \psi_i + f(k,\Omega) \frac{\E^{\I k r}}{r}
+$$</div>
 <p>
 où <span class="math">\(f(k,\Omega)\)</span> est l&#8217;<em>amplitude de diffusion</em>, qui dépend de l&#8217;angle solide <span class="math">\(\Omega\)</span> défini par la direction de la particule diffusée <span class="math">\(\bm r/r\)</span> par rapport à la direction incidente <span class="math">\(\hat{\bm z}\)</span> (voir figure). Dans le cas qui nous intéresse où <span class="math">\(V=V(r)\)</span>, l&#8217;amplitude de diffusion ne dépend que de l&#8217;angle sphérique <span class="math">\(\theta\)</span>, avec <span class="math">\(\D \Omega = 2\pi \sin \theta \D \theta\)</span>, et de l&#8217;énergie <span class="math">\(E\)</span>.</p>
 <blockquote>
@@ -79,172 +85,243 @@ où <span class="math">\(f(k,\Omega)\)</span> est l&#8217;<em>amplitude de diffu
 </blockquote>
 <p>La forme de la fonction d&#8217;onde sortante découle de la forme des solutions asymptotiques de l&#8217;équation de schrödinger (pour de valeurs <span class="math">\(r \rightarrow \infty\)</span>). En effet, on peut&nbsp;écrire,
 </p>
-<div class="math">$$ \frac{\hbar^2}{2m} \nabla ^2 \psi_k(\bm r) + E_k \psi_k(\bm r) = V(r) \psi_k (\bm r)$$</div>
+<div class="math">$$
+ \frac{\hbar^2}{2m} \nabla ^2 \psi_k(\bm r) + E_k \psi_k(\bm r) = V(r) \psi_k (\bm r)
+$$</div>
 <p>
 et utiliser la solution de l&#8217;équation de&nbsp;Green,
 </p>
-<div class="math">$$\left( \frac{\hbar^2}{2m} \nabla ^2 + E_k \right) G_k(\bm r) = \delta(\bm r)$$</div>
+<div class="math">$$
+\left( \frac{\hbar^2}{2m} \nabla ^2 + E_k \right) G_k(\bm r) = \delta(\bm r)
+$$</div>
 <p>
 avec <span class="math">\(G\)</span> la fonction de Green, pour transformer l&#8217;équation pour <span class="math">\(\psi_k\)</span> en équation&nbsp;intégrale:
 </p>
-<div class="math">$$\psi_k(\bm r) = \E^{\I k z} + \int \D \bm r'\, G_k(\bm r - \bm r') V(\bm r') \psi_k(\bm r')$$</div>
+<div class="math">$$
+\psi_k(\bm r) = \E^{\I k z} + \int \D \bm r'\, G_k(\bm r - \bm r') V(\bm r') \psi_k(\bm r')
+$$</div>
 <p>La fonction de Green pour l&#8217;onde sortante (c&#8217;est-à-dire <span class="math">\(\sim \E^{\I k r}\)</span>), est donnée par&nbsp;l&#8217;intégrale
 </p>
-<div class="math">$$G_k(\bm r) = \int \frac{\D \bm p}{(2\pi)^3} \frac{\E^{\I \bm p \cdot \bm r}}{E_k - \hbar^2p^2/2m} $$</div>
+<div class="math">$$
+G_k(\bm r) = \int \frac{\D \bm p}{(2\pi)^3} \frac{\E^{\I \bm p \cdot \bm r}}{E_k - \hbar^2p^2/2m} 
+$$</div>
 <p>
 calculée sur un contour qui se referme par le demi-plan complexe <em>supérieur</em>. (Celle correspondante à un contour sur le demi-plan inférieur est associée à une onde entrante de l&#8217;infini <span class="math">\(\sim \E^{-\I k r}\)</span>.) On obtient, du résidu en <span class="math">\(p = k\)</span>, </p>
 <div class="math">$$G_k(\bm r) = -\frac{m}{2\pi \hbar^2} \frac{\E^{\I k r}}{r}$$</div>
 <p> ce qui permet d&#8217;écrire l&#8217;équation de schrödinger&nbsp;comme, </p>
-<div class="math">$$\psi_k(\bm r) =  \E^{\I k z} - \frac{m}{2\pi \hbar^2} \int \D \bm r'\, \frac{\E^{\I k |\bm r-\bm r'|}}{|\bm r - \bm r'|} V(\bm r') \psi_k(\bm r')$$</div>
+<div class="math">$$\psi_k(\bm r) =  \E^{\I k z} - \frac{m}{2\pi \hbar^2} \int \D \bm r'\, \frac{\E^{\I k |\bm r-\bm r'|}}{|\bm r - \bm r'|} V(\bm r') \psi_k(\bm r')
+$$</div>
 <blockquote>
 <p><img src="/images/MQ-Gcontour.svg" alt="outgoing Green function countour" style="height: 230px;"/></p>
 <p>Contour dans le plan complexe <span class="math">\(p\)</span> pour le calcul de la fonction de Green&nbsp;sortante.</p>
 <p>Calcul de <span class="math">\(G\)</span>:</p>
 <p>
-<div class="math">$$G_k(\bm r) = -\frac{m}{2 \pi^2 \hbar^2} \int_0^\infty \frac{\D p \, p}{p^2 - k^2} \int_0^\pi \D\theta \, \sin\theta \E^{\I p r \cos\theta}$$</div>
+<div class="math">$$
+G_k(\bm r) = -\frac{m}{2 \pi^2 \hbar^2} \int_0^\infty \frac{\D p \, p}{p^2 - k^2} \int_0^\pi \D\theta \, \sin\theta \E^{\I p r \cos\theta}
+$$</div>
 </p>
 <p>l&#8217;intégrale sur <span class="math">\(\theta\)</span>&nbsp;donne</p>
 <p>
-<div class="math">$$\int_0^\pi \D\theta \, \sin\theta \E^{\I p r \cos\theta} = \frac{\E^{\I p r} - \E^{-\I p r}}{\I p r}$$</div>
+<div class="math">$$
+\int_0^\pi \D\theta \, \sin\theta \E^{\I p r \cos\theta} = \frac{\E^{\I p r} - \E^{-\I p r}}{\I p r}
+$$</div>
  d&#8217;où,
-<div class="math">$$G_k(\bm r) = -\frac{m}{2 \pi^2 \hbar^2 \I r} \int_0^\infty \D p \, p \frac{\E^{\I p r} - \E^{-\I p r}}{p^2 - k^2}$$</div>
+<div class="math">$$
+G_k(\bm r) = -\frac{m}{2 \pi^2 \hbar^2 \I r} \int_0^\infty \D p \, p \frac{\E^{\I p r} - \E^{-\I p r}}{p^2 - k^2}
+$$</div>
 </p>
 <p>la seconde intégrale peut s&#8217;ajouter à la première après le changement <span class="math">\(p \rightarrow -p\)</span>:</p>
 <p>
-<div class="math">$$G_k(\bm r) =  -\frac{m}{2 \pi^2 \hbar^2 \I r} \int_{-\infty}^\infty \D p \, p \frac{\E^{\I p r}}{p^2 - k^2}$$</div>
+<div class="math">$$
+G_k(\bm r) =  -\frac{m}{2 \pi^2 \hbar^2 \I r} \int_{-\infty}^\infty \D p \, p \frac{\E^{\I p r}}{p^2 - k^2}
+$$</div>
 </p>
 <p>On sépare le deux&nbsp;pôles:</p>
 <p>
-<div class="math">$$ \frac{p}{p^2 - k^2} = \frac{p}{2k} \left[ \frac{1}{p-k} - \frac{1}{p+k} \right]$$</div>
+<div class="math">$$
+ \frac{p}{p^2 - k^2} = \frac{p}{2k} \left[ \frac{1}{p-k} - \frac{1}{p+k} \right]
+$$</div>
 </p>
 <p>dont seulement le premier contribue à <span class="math">\(G\)</span>:</p>
 <p>
-<div class="math">$$G_k(\bm r) = -\frac{m}{2  \pi^2 \hbar^2 \I r} \left( 2\I \pi \frac{k}{2k}  \E^{\I k r} \right)$$</div>
+<div class="math">$$
+G_k(\bm r) = -\frac{m}{2  \pi^2 \hbar^2 \I r} \left( 2\I \pi \frac{k}{2k}  \E^{\I k r} \right)
+$$</div>
 ce qui donne le&nbsp;résultat.</p>
 </blockquote>
 <p>À des distances <span class="math">\(r \gg \ell\)</span> on a <span class="math">\(V(r) \rightarrow 0\)</span>, et <span class="math">\(k |\bm r = \bm r'| \approx kr - \bm k' \cdot \bm r'\)</span> (<span class="math">\(\bm k' = k \hat{\bm r}\)</span> est le vecteur d&#8217;onde d&#8217;après la collision); par&nbsp;conséquent,
 </p>
-<div class="math">$$\int \ldots \frac{\E^{\I |\bm r-\bm r'|}}{|\bm r - \bm r'|} \ldots \approx \frac{\E^{\I k r}}{r} \int \ldots \E^{-\I \bm k' \cdot \bm r'} \ldots$$</div>
+<div class="math">$$
+\int \ldots \frac{\E^{\I k |\bm r-\bm r'|}}{|\bm r - \bm r'|} \ldots \approx \frac{\E^{\I k r}}{r} \int \ldots \E^{-\I \bm k' \cdot \bm r'} \ldots
+$$</div>
 <p>
 dont on déduit l&#8217;expression asymptotique de <span class="math">\(\psi_k(\bm r)\)</span>&nbsp;avec
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     f(k,\Omega) = -\frac{m}{2 \pi^2 \hbar^2} 
     \int \D \bm r' \E^{-\I \bm k' \cdot \bm r'} V(\bm r') \psi_k(\bm r')
     \label{f}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <h2>Section efficace de&nbsp;diffusion</h2>
 <p>La densité courant de probabilité <span class="math">\(j\)</span> est reliée à la fonction d&#8217;onde par la&nbsp;relation
 </p>
-<div class="math">$$ \bm j = \frac{\hbar}{m} \mathrm{Im} \left[ \psi^\star \nabla \psi \right]$$</div>
+<div class="math">$$
+ \bm j = \frac{\hbar}{m} \mathrm{Im} \left[ \psi^\star \nabla \psi \right]
+$$</div>
 <p>
 Pour l&#8217;onde incidente on&nbsp;a
 </p>
-<div class="math">$$\bm j_i = n_k \bm v_k = \frac{\hbar k}{m} \hat{\bm z}$$</div>
+<div class="math">$$
+\bm j_i = n_k \bm v_k = \frac{\hbar k}{m} \hat{\bm z}
+$$</div>
 <p>
 avec <span class="math">\(v_k = (\hbar/m) k\)</span> la vitesse et <span class="math">\(n_k = |\psi_k|^2 = 1\)</span> (selon la normalization choisie) la densité de probabilité. Selon la formule asymptotique, le flux de probabilité transmis après la collision&nbsp;est 
 </p>
-<div class="math">$$j_f \approx \frac{\hbar k}{m} |f(k,\Omega)|^2 \frac{\hat{\bm r}}{r^2}$$</div>
+<div class="math">$$
+j_f \approx \frac{\hbar k}{m} |f(k,\Omega)|^2 \frac{\hat{\bm r}}{r^2}
+$$</div>
 <p>
 où nous avons utilisé l&#8217;approximation <span class="math">\(\nabla(1/r) \sim 1/r^2\)</span> et <span class="math">\(\nabla f \sim f/r\)</span>.
 Si une source fournit un flux <span class="math">\(F_k = n_k v_k\)</span> de particules par unité de temps, le nombre de particules détectées sur une surface <span class="math">\(\D \bm S\)</span>, dans l&#8217;angle solide <span class="math">\(\D \Omega\)</span>,&nbsp;serait,
 </p>
-<div class="math">$$\D N = \bm j_f \cdot \D \bm S = \frac{\hbar k}{m} |f(k, \Omega)|^2 \D \Omega = F \frac{\D\sigma}{\D \Omega} \D \Omega$$</div>
+<div class="math">$$
+\D N = \bm j_f \cdot \D \bm S = \frac{\hbar k}{m} |f(k, \Omega)|^2 \D \Omega = F \frac{\D\sigma}{\D \Omega} \D \Omega
+$$</div>
 <p>
 avec <span class="math">\(\D S = r^2 d\Omega\)</span>&nbsp;et
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     \frac{\D\sigma}{\D \Omega} = |f(k,\Omega)|^2
     \label{sigma} 
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 la <em>section efficace différentielle,</em> ou par unité d&#8217;angle solide, <span class="math">\(\sigma = \sigma(k, \Omega)\)</span>. C&#8217;est justement cette grandeur <span class="math">\(\sigma\)</span> ayant les dimensions d&#8217;une aire par unité d&#8217;angle solide, qui est la grandeur mesurable dans les expériences de&nbsp;collision.</p>
 <h2>Approximation de&nbsp;Born</h2>
 <p>Si on remplace dans cette dernière formule (<span class="math">\(\ref{sigma}\)</span>) la fonction d&#8217;onde par l&#8217;onde incidente, on obtient l&#8217;<em>approximation de Born</em>:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     f(k,\Omega) = -\frac{m}{2 \pi^2 \hbar^2}
     \int \D \bm r' \E^{\I (\bm k - \bm k') \cdot \bm r'} V(\bm r') =
     -\frac{m}{2 \pi^2 \hbar^2} V_{\bm k - \bm k'}
     \label{born}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 (<span class="math">\(\bm k = k \hat{\bm z}\)</span> est le vecteur d&#8217;onde d&#8217;avant la collision) dans laquelle l&#8217;amplitude de diffusion est donnée par la transformée de fourier de&nbsp;l&#8217;interaction.</p>
 <p>En tenant compte du caractère élastique de la collision on a <span class="math">\(k=k'\)</span>,&nbsp;donc,
 </p>
-<div class="math">$$q^2 = (\bm k - \bm k')^2 = 2k^2 - 2k^2 \cos\theta = (2k\sin\theta/2)^2$$</div>
+<div class="math">$$
+q^2 = (\bm k - \bm k')^2 = 2k^2 - 2k^2 \cos\theta = (2k\sin\theta/2)^2
+$$</div>
 <p>
 Pour un potentiel du type de Yukawa, qui modélise les interaction de&nbsp;nucléons,
 </p>
-<div class="math">$$V(r) = g \frac{\hbar c}{r} \E^{-r/\ell}$$</div>
+<div class="math">$$
+V(r) = g \frac{\hbar c}{r} \E^{-r/\ell}
+$$</div>
 <p>
 avec <span class="math">\(g\)</span> une constante adimensionnelle et <span class="math">\(\ell\)</span> la portée, la transformée de fourier&nbsp;est
 </p>
-<div class="math">$$V_q = 4\pi\ell^2  \frac{\hbar c g}{(\ell q)^2 + 1}$$</div>
+<div class="math">$$
+V_q = 4\pi\ell^2  \frac{\hbar c g}{(\ell q)^2 + 1}
+$$</div>
 <p>
 ce qui donne pour la section&nbsp;efficace,
 </p>
-<div class="math">$$\frac{\D\sigma}{\D\Omega} = \frac{(\hbar c g)^2}{\left( 4 E_k \sin^2\theta/2 + \epsilon^2 \right)^2},\quad \epsilon = \frac{\hbar^2}{2m\ell^2} $$</div>
+<div class="math">$$
+\frac{\D\sigma}{\D\Omega} = \frac{(\hbar c g)^2}{\left( 4 E_k \sin^2\theta/2 + \epsilon^2 \right)^2},\quad \epsilon = \frac{\hbar^2}{2m\ell^2} 
+$$</div>
 <p>
 exprimée comme une fonction de l&#8217;énergie <span class="math">\(E_k=\hbar^2 k^2/2m\)</span> et de l&#8217;angle de difussion <span class="math">\(\theta\)</span>. Notez que quand <span class="math">\(\ell \rightarrow \infty\)</span> on retrouve le résultat classique pour la diffusion dans un potentiel coulombien, la formule de Rutherford (en dépit du fait que les hypothèses de validité de l&#8217;approximation de Born, sont dans le cas coulombien,&nbsp;fausses!).</p>
 <h2>Amplitude de diffusion et&nbsp;déphasage</h2>
 <p>Pour tirer parti de la conservation du moment angulaire du fait de l&#8217;isotropie de l&#8217;interaction, il convient d&#8217;écrire la fonction d&#8217;onde dans la base des harmoniques sphériques. Ceci nous permettra d&#8217;exhiber les propriétés de la diffusion pour les différentes valeurs du nombre quantique orbital <span class="math">\(l\)</span>. L&#8217;onde incidente (avec <span class="math">\(\bm k\)</span> parallèle à l&#8217;axe <span class="math">\(z\)</span>, axe de symétrie de la diffusion) se decompose en polynômes de legendre <span class="math">\(P_l = Y_{l0}\)</span>:
 </p>
-<div class="math">$$\E^{\I \bm k \cdot \bm r} = \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) \mathrm{j}_l(r)$$</div>
+<div class="math">$$
+\E^{\I \bm k \cdot \bm r} = \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) \mathrm{j}_l(r)
+$$</div>
 <p>
 où <span class="math">\(\mathrm{j}_l(kr)\)</span> est la fonction de <a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel sphérique</a>, elle est la partie réelle de la fonction sphérique de&nbsp;hankel,
 </p>
-<div class="math">$$\mathrm{j}_l(kr) = \frac{1}{2} \left[ \mathrm{h}_l(kr) + \mathrm{h}^\star_l(kr) \right]$$</div>
+<div class="math">$$
+\mathrm{j}_l(kr) = \frac{1}{2} \left[ \mathrm{h}_l(kr) + \mathrm{h}^\star_l(kr) \right]
+$$</div>
 <p>
 Tandis que la fonction d&#8217;onde sortante s&#8217;écrit&nbsp;comme,
 </p>
-<div class="math">$$\psi_k(\bm r) = \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) R_l(r)$$</div>
+<div class="math">$$
+\psi_k(\bm r) = \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) R_l(r)
+$$</div>
 <p>
 avec <span class="math">\(R_l(r)\)</span> la fonction d&#8217;onde radiale; elle obéit à l&#8217;équation de&nbsp;schrödinger,
 </p>
-<div class="math">$$\left[ \frac{\D^2}{\D r} + k^2 - \frac{l(l+1)}{r^2} \right] r R_l(r) = \frac{2m}{\hbar^2} V(r) r R_r(r)$$</div>
+<div class="math">$$
+\left[ \frac{\D^2}{\D r} + k^2 - \frac{l(l+1)}{r^2} \right] r R_l(r) = \frac{2m}{\hbar^2} V(r) r R_r(r)
+$$</div>
 <p>
 Pour des grandes distances, dans la région où le terme du potentiel devient négligeable, la solution générale est de la&nbsp;forme,
 </p>
-<div class="math">$$R_l(r) = B_l \left[ \mathrm{h}_l^\star(kr) + S_l(E_k) \mathrm{h}_l(kr) \right]$$</div>
+<div class="math">$$
+R_l(r) = B_l \left[ \mathrm{h}_l^\star(kr) + S_l(E_k) \mathrm{h}_l(kr) \right]
+$$</div>
 <p>
 avec <span class="math">\(B\)</span> et <span class="math">\(S\)</span> deux constantes qu&#8217;on détermine à l&#8217;aide des conditions aux limites. Rappelons le comportement asymptotique des fonctions de&nbsp;hankel:
 </p>
-<div class="math">$$\mathrm{h}_l(z) \sim \frac{\E^{\I z - \I\pi l/2 - \I\pi/2}}{z}$$</div>
+<div class="math">$$
+\mathrm{h}_l(z) \sim \frac{\E^{\I z - \I\pi l/2 - \I\pi/2}}{z}
+$$</div>
 <p>
 donc <span class="math">\(\mathrm{h}^\star\)</span> doit être associée à l&#8217;onde entrante (d&#8217;amplitude 1) et <span class="math">\(\mathrm{h}\)</span> à l&#8217;onde sortante; comme le potentiel ne modifie pas l&#8217;onde entrante on doit avoir (par comparaison avec l&#8217;expression de <span class="math">\(\E^{\I k z}\)</span>, <span class="math">\(B_l=1/2\)</span>. En outre, on doit aussi avoir <span class="math">\(|S_l|=1\)</span> (dans la collision élastique le nombre de particules entrant et sortant est le même pour toute valeur de <span class="math">\(E\)</span>). On défini le déphasage <span class="math">\(\delta_l\)</span> entre l&#8217;onde entrante et sortante par la&nbsp;relation:
 </p>
-<div class="math">$$S_l(E_k) = \E^{\I 2 \delta_l(k)}$$</div>
+<div class="math">$$
+S_l(E_k) = \E^{\I 2 \delta_l(k)}
+$$</div>
 <p>
 On cherche le lien entre l&#8217;amplitude de diffusion <span class="math">\(f(k,\Omega0\)</span> et le déphasage <span class="math">\(\delta_l(k)\)</span>. Dans ce but on étudie le comportement asymptotique de la solution radiale à l&#8217;équation de&nbsp;schrödinger.</p>
 <p>Avec ces définitions, on écrit la fonction d&#8217;onde diffusée&nbsp;comme,
 </p>
-<div class="math">$$\psi_k(\bm r) = \E^{\I \bm k \cdot \bm r} + \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) \left( \E^{\I 2\delta_l} - 1 \right) \mathrm{h}_l(kr)$$</div>
+<div class="math">$$
+\psi_k(\bm r) = \E^{\I \bm k \cdot \bm r} + \sum_{l=0}^\infty \I^l (2l+1) P_l(\cos\theta) \left( \E^{\I 2\delta_l} - 1 \right) \mathrm{h}_l(kr)
+$$</div>
 <p>
 (la fonction de hankel conjuguée <span class="math">\(\mathrm{h}^\star\)</span>, a été absorbée dans le premier terme, celui de l&#8217;onde plane) et en comparant avec la&nbsp;formule,
 </p>
-<div class="math">$$\psi_k(\bm r) = \E^{\I \bm k \cdot \bm r} +  \frac{f(k,\Omega)}{r} \E^{\I k r}$$</div>
+<div class="math">$$
+\psi_k(\bm r) = \E^{\I \bm k \cdot \bm r} +  \frac{f(k,\Omega)}{r} \E^{\I k r}
+$$</div>
 <p>
 on arrive à l&#8217;identification (<span class="math">\(\mathrm{h}_l(kr) \sim \E^{\I kr}/\I^{l+1} kr\)</span>),
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
     f(k,\theta) = \frac{1}{k}
     \sum_{l=0}^\infty (2l+1) P_l(\cos\theta)
     \E^{\I \delta_l} \sin\delta_l
     \label{fk}
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 La section efficace est donnée par l&#8217;intégrale sur <span class="math">\(\D\Omega\)</span> de <span class="math">\(|f|^2\)</span>, ce qui est facile de calculer tenant compte de la relation d&#8217;orthogonalité des&nbsp;polynômes,
 </p>
-<div class="math">$$\frac{1}{2}\int_{-1}^{1} \D x \, P_l(x) P_{l'}(x) = \frac{\delta_{ll'}}{2l +1}$$</div>
+<div class="math">$$
+\frac{1}{2}\int_{-1}^{1} \D x \, P_l(x) P_{l'}(x) = \frac{\delta_{ll'}}{2l +1}
+$$</div>
 <p>
 On&nbsp;obtient,
 </p>
-<div class="math">$$\sigma_l = \frac{4\pi}{k^2}(2l+1)\sin^2\delta_l$$</div>
+<div class="math">$$
+\sigma_l = \frac{4\pi}{k^2}(2l+1)\sin^2\delta_l
+$$</div>
 <p> 
 ou, pour la section efficace&nbsp;totale,
 </p>
-<div class="math">$$\sigma(E) = \frac{4\pi}{k^2} \sum_{l=0}^\infty (2l+1) \sin^2\delta_l(E)\,,$$</div>
+<div class="math">$$
+\sigma(E) = \frac{4\pi}{k^2} \sum_{l=0}^\infty (2l+1) \sin^2\delta_l(E)\,,
+$$</div>
 <p>
 qui est une fonction de l&#8217;énergie de la particule <span class="math">\(E=E_k=\hbar^2 k^2/2m\)</span>.</p>
 <h3>Bibliographie</h3>
@@ -255,111 +332,165 @@ qui est une fonction de l&#8217;énergie de la particule <span class="math">\(E=
 <h3>Problèmes</h3>
 <ol>
 <li>Montrez que la section efficace de la diffusion par une sphère rigide de rayon <span class="math">\(a\)</span>,
-    <div class="math">$$V(r) = \begin{cases} 0\,, &amp; r \le a\\ \infty\,, &amp; r &gt; a \end{cases}$$</div>
+    <div class="math">$$
+    V(r) = \begin{cases} 0\,, &amp; r \le a\\ \infty\,, &amp; r &gt; a \end{cases}
+    $$</div>
     est
-    <div class="math">$$\sigma = \frac{4\pi}{k^2} \sum_{l=0}^\infty (2l+1) \left| \frac{\mathrm{j}_l(ka)}{\mathrm{h}_l(ka)}  \right|^2$$</div>
+    <div class="math">$$
+    \sigma = \frac{4\pi}{k^2} \sum_{l=0}^\infty (2l+1) \left| \frac{\mathrm{j}_l(ka)}{\mathrm{h}_l(ka)}  \right|^2
+    $$</div>
     Étudiez la limite <span class="math">\(ka \ll 1\)</span>; quelle est la valeur de <span class="math">\(l\)</span> qui contribue davantage à la&nbsp;diffusion?</li>
 <li>Diffusion en une dimension. Considérez le problème du mouvement d&#8217;une particule de masse <span class="math">\(m\)</span> et énergie <span class="math">\(E&gt;0\)</span> dans la demi droite négative (<span class="math">\(x&lt;0\)</span>):
-    <div class="math">$$V(r) = \begin{cases} 0\,, &amp; x &lt; -a\\ -V_0\,, &amp; -a \le x \le 0\\ \infty\,, &amp; x &gt; 0 \end{cases}$$</div>
+    <div class="math">$$
+    V(r) = \begin{cases} 0\,, &amp; x &lt; -a\\ -V_0\,, &amp; -a \le x \le 0\\ \infty\,, &amp; x &gt; 0 \end{cases}
+    $$</div>
     Trouvez la fonction d&#8217;onde et montrez explicitement que l&#8217;amplitude de l&#8217;onde réfléchie est de valeur absolu égale à 1 (l&#8217;amplitude de l&#8217;onde incidente est 1). Montrez que pour <span class="math">\(E \ll V_0\)</span> le déphasage entre l&#8217;onde entrante et l&#8217;onde sortante est <span class="math">\(\delta = - ka\)</span>.</li>
 <li>Utilisez l&#8217;approximation de Born pour calculer la section efficace en fonction de l&#8217;énergie <span class="math">\(E\)</span>, pour le potentiel 
-    <div class="math">$$V(r) = V_0 \E^{-(r/a)^2}$$</div>
+    <div class="math">$$
+    V(r) = V_0 \E^{-(r/a)^2}
+    $$</div>
     Réponse:
-    <div class="math">$$\sigma = \frac{\pi^2}{2} \frac{V_0^2}{\epsilon^2 k^2}\left(1 - \E^{-2a^2k^2} \right)$$</div>
+    <div class="math">$$
+    \sigma = \frac{\pi^2}{2} \frac{V_0^2}{\epsilon^2 k^2}\left(1 - \E^{-2a^2k^2} \right)
+    $$</div>
     avec <span class="math">\(\epsilon = \hbar^2/m a^2\)</span> l&#8217;unité d&#8217;énergie, et <span class="math">\(k^2=2mE/\hbar^2\)</span>.</li>
 <li>Démontrez le théorème optique:
-    <div class="math">$$\sigma = \frac{4\pi}{k} \mathrm{Im}\, f(0)$$</div>
+    <div class="math">$$
+    \sigma = \frac{4\pi}{k} \mathrm{Im}\, f(0)
+    $$</div>
 </li>
 </ol>
 <h2>Applications</h2>
 <h3>Le puits&nbsp;sphérique</h3>
 <p>On se propose d&#8217;étudier la diffusion d&#8217;une particule de masse <span class="math">\(m\)</span> et d&#8217;énergie <span class="math">\(E\)</span> par un potentiel central constant <span class="math">\(-V_0\)</span> et de portée <span class="math">\(\ell\)</span>:
 </p>
-<div class="math">$$V(r) = -V_0 \Theta(\ell - r)$$</div>
+<div class="math">$$
+V(r) = -V_0 \Theta(\ell - r)
+$$</div>
 <p>
 avec <span class="math">\(\Theta\)</span> la marche de heaviside (il est nul pour <span class="math">\(r &gt; \ell\)</span>). La solution <span class="math">\(\psi(\bm r)\)</span>, de l&#8217;équation stationnaire de schrödinger est séparable dans les coordonnées sphériques <span class="math">\((r,\theta, \phi)\)</span>:
 </p>
-<div class="math">$$\psi(\bm r) = R_l(r) Y_{lm}(\theta, \phi)$$</div>
+<div class="math">$$
+\psi(\bm r) = R_l(r) Y_{lm}(\theta, \phi)
+$$</div>
 <p>
 avec <span class="math">\(R_l\)</span> la partie radiale et <span class="math">\(Y\)</span> les harmonique sphériques (fonctions propres de l&#8217;opérateur du moment cinétique <span class="math">\(\bm L\)</span>); <span class="math">\(l\)</span> est le nombre quantique orbital, et <span class="math">\(m\)</span> le nombre quantique magnétique (valeur propre de <span class="math">\(L_z\)</span>),
 </p>
-<div class="math">$$L^2 Y_{lm} = \hbar^2 l(l+1) Y_{lm}, \quad L_z Y_{lm} = \hbar m Y_{lm}$$</div>
+<div class="math">$$
+L^2 Y_{lm} = \hbar^2 l(l+1) Y_{lm}, \quad L_z Y_{lm} = \hbar m Y_{lm}
+$$</div>
 <blockquote>
 <p><img src="/images/MQ-puits-r.svg" alt="spherical well" style="height: 230px;"/></p>
 </blockquote>
 <p>Il convient de définir <span class="math">\(m=\ell=\hbar=1\)</span> comme les unités naturelles du problème; <span class="math">\(\hbar^2/m \ell^2\)</span> est donc l&#8217;unité d&#8217;énergie. Le nombre d&#8217;onde est, pour <span class="math">\(r&gt;\ell\)</span>, <span class="math">\(k=(2mE/\hbar^2)^{1/2} \rightarrow k = \sqrt{2E}\)</span>; dans la région centrale <span class="math">\(r &lt; \ell\)</span>, le nombre d&#8217;onde est <span class="math">\(q=\sqrt{2}\sqrt{E+V_0}\)</span>. Avec ces notations, l&#8217;équation radiale&nbsp;s&#8217;écrit,
 </p>
-<div class="math">$$\left( \frac{\D^2}{\D r^2} + \frac{2}{r} \frac{\D}{\D r} - \frac{l(l+1)}{r^2} + k^2 \right) R_l(r) = 0, \; r &gt; \ell$$</div>
+<div class="math">$$
+\left( \frac{\D^2}{\D r^2} + \frac{2}{r} \frac{\D}{\D r} - \frac{l(l+1)}{r^2} + k^2 \right) R_l(r) = 0, \; r &gt; \ell
+$$</div>
 <p>
 et pour <span class="math">\(r&lt;\ell\)</span> on remplace <span class="math">\(k\)</span> par <span class="math">\(q\)</span>. La solution de cette équation différentielle est donnée par une combinaison linéaire des fonctions de bessel&nbsp;sphériques:
 </p>
-<div class="math">$$\mathrm{j}_l(\rho) = (-\rho)^l \left( \frac{1}{\rho} \frac{\D}{\D \rho} \right)^l \frac{\sin \rho}{\rho}$$</div>
+<div class="math">$$
+\mathrm{j}_l(\rho) = (-\rho)^l \left( \frac{1}{\rho} \frac{\D}{\D \rho} \right)^l \frac{\sin \rho}{\rho}
+$$</div>
 <p>
 et
 </p>
-<div class="math">$$\mathrm{n}_l(\rho) = -(-\rho)^l \left( \frac{1}{\rho} \frac{\D}{\D \rho} \right)^l \frac{\cos \rho}{\rho}$$</div>
+<div class="math">$$
+\mathrm{n}_l(\rho) = -(-\rho)^l \left( \frac{1}{\rho} \frac{\D}{\D \rho} \right)^l \frac{\cos \rho}{\rho}
+$$</div>
 <p>
 ou des fonctions de&nbsp;hankel:
 </p>
-<div class="math">$$\mathrm{h}_l(\rho) = \mathrm{j}_l(\rho) + \I \mathrm{n}_l(\rho), \quad \mathrm{h}^\star_l(\rho) = \mathrm{j}_l(\rho) - \I \mathrm{n}_l(\rho)$$</div>
+<div class="math">$$
+\mathrm{h}_l(\rho) = \mathrm{j}_l(\rho) + \I \mathrm{n}_l(\rho), \quad \mathrm{h}^\star_l(\rho) = \mathrm{j}_l(\rho) - \I \mathrm{n}_l(\rho)
+$$</div>
 <p>
 En fonction des bessels, l&#8217;onde radiale&nbsp;est
 </p>
-<div class="math">$$R_L(r) = C \mathrm{j}_l(qr), \; r \le \ell$$</div>
+<div class="math">$$
+R_L(r) = C \mathrm{j}_l(qr), \; r \le \ell
+$$</div>
 <p>
 et
 </p>
-<div class="math">$$R_L(r) = A \mathrm{j}_l(kr) + B \mathrm{n}_l(kr), \; r &gt; \ell$$</div>
+<div class="math">$$
+R_L(r) = A \mathrm{j}_l(kr) + B \mathrm{n}_l(kr), \; r &gt; \ell
+$$</div>
 <p>
 avec <span class="math">\(A,B,C\)</span> des constantes qu&#8217;on doit déterminer par la condition de normalization (ici le flux de particules) et la continuité de <span class="math">\(R_l(r)\)</span> et de sa dérivée en <span class="math">\(r=\ell\)</span>. Le terme en <span class="math">\(C\)</span> correspond à la solution &#8220;intérieure&#8221;, elle est fortement dépendante des détails du potentiel, ici visible par sa dépendance sur <span class="math">\(V_0\)</span> à travers <span class="math">\(q\)</span>; le terme en <span class="math">\(A,B\)</span> est le terme de diffusion, il correspond à la superposition des ondes incidente et transmise dans la région &#8220;extérieure&#8221; (au delà de la portée du&nbsp;potentiel).</p>
 <p>La solution pour <span class="math">\(r &gt; \ell\)</span> peut donc&nbsp;s&#8217;écrire
 </p>
-<div class="math">$$R_L(r) = \frac{1}{2} \mathrm{h}^\star_l(kr) + \frac{\E^{\I 2 \delta_l(k)}}{2} \mathrm{h}_l(kr), \; r &gt; \ell$$</div>
+<div class="math">$$
+R_L(r) = \frac{1}{2} \mathrm{h}^\star_l(kr) + \frac{\E^{\I 2 \delta_l(k)}}{2} \mathrm{h}_l(kr), \; r &gt; \ell
+$$</div>
 <p>
 avec <span class="math">\(1/2 = A + \I B\)</span> et <span class="math">\(\E^{\I 2 \delta_l} = A - \I B\)</span> (où nous avons posé comme auparavant, que le flux incident est 1), ce qui nous permet de faire le lien avec le déphasage dû à la diffusion. À la discontinuité du potentiel la dérivée logarithmique de la fonction&nbsp;d&#8217;onde,
 </p>
-<div class="math">$$\alpha_l = \left. \frac{\D R_l(r)}{\D r} \right|_{r = \ell} = q \left. \frac{\D \ln \mathrm{j}_l(q r)}{\D r} \right|_{r = \ell}$$</div>
+<div class="math">$$
+\alpha_l = \left. \frac{\D R_l(r)}{\D r} \right|_{r = \ell} = q \left. \frac{\D \ln \mathrm{j}_l(q r)}{\D r} \right|_{r = \ell}
+$$</div>
 <p>
 doit être&nbsp;continue:
 </p>
-<div class="math">$$\alpha_l = \left. \frac{\D}{\D r} \ln\Big(\mathrm{h}^\star_l +  \E^{\I 2 \delta_l(k)} \mathrm{h}_l \Big) \right|_{r = \ell}$$</div>
+<div class="math">$$
+\alpha_l = \left. \frac{\D}{\D r} \ln\Big(\mathrm{h}^\star_l +  \E^{\I 2 \delta_l(k)} \mathrm{h}_l \Big) \right|_{r = \ell}
+$$</div>
 <p> 
 D&#8217;où on peut dégager <span class="math">\(\delta_l\)</span>:
 </p>
-<div class="math">$$\cot \delta_l = \left. \frac{\mathrm{n}'_l - \alpha_l \mathrm{n}_l}{\mathrm{j}'_l - \alpha_l \mathrm{j}_l} \right|_{r=\ell}$$</div>
+<div class="math">$$
+\cot \delta_l = \left. \frac{\mathrm{n}'_l - \alpha_l \mathrm{n}_l}{\mathrm{j}'_l - \alpha_l \mathrm{j}_l} \right|_{r=\ell}
+$$</div>
 <p>
 Avec la valeur de <span class="math">\(\alpha_l\)</span> donnée par la solution intérieur, cette formule nous donne le déphasage en fonction de l&#8217;énergie <span class="math">\(E\)</span> et des paramètres du potentiel <span class="math">\(\ell\)</span> et <span class="math">\(-V_0\)</span>. </p>
 <h3>Propriétés du déphasage à basse&nbsp;énergie</h3>
 <p>La section efficace <span class="math">\(\sigma_l \sim \sin^2 \delta_l\)</span> aura un maximum autour de <span class="math">\(\delta_l \sim \pi/2\)</span>, ce qui correspond à un zéro de la cotangente. Voyons le comportement de <span class="math">\(\delta_l\)</span> à basse&nbsp;énergie
 </p>
-<div class="math">$$\ell k \rightarrow 0$$</div>
+<div class="math">$$
+\ell k \rightarrow 0
+$$</div>
 <p>
 On peut utiliser le comportement des bessels près de&nbsp;l&#8217;origine:
 </p>
-<div class="math">$$\mathrm{j}_l(\rho) \rightarrow \frac{\rho^l}{(2l+1)!!}$$</div>
+<div class="math">$$
+\mathrm{j}_l(\rho) \rightarrow \frac{\rho^l}{(2l+1)!!}
+$$</div>
 <p>
 et
 </p>
-<div class="math">$$\mathrm{n}_l(\rho) \rightarrow -\frac{(2l+1)!!}{\rho^{l-1}}$$</div>
+<div class="math">$$
+\mathrm{n}_l(\rho) \rightarrow -\frac{(2l+1)!!}{\rho^{l-1}}
+$$</div>
 <p>
 avec la notation <span class="math">\((2l+1)!!=1\times 3 \times 5 \times \ldots \times (2l+1)\)</span>. On&nbsp;obtient,
 </p>
-<div class="math">$$\cot \delta_l \approx \frac{[(2l+1)!!]^2}{(2l+1) (\ell k)^{2l+1}} \frac{l+1 + \ell \alpha_l}{l - \ell \alpha_l}$$</div>
+<div class="math">$$
+\cot \delta_l \approx \frac{[(2l+1)!!]^2}{(2l+1) (\ell k)^{2l+1}} \frac{l+1 + \ell \alpha_l}{l - \ell \alpha_l}
+$$</div>
 <p>
 Les valeurs de l&#8217;énergie pour lesquelles la cotangente&nbsp;s&#8217;annule
 </p>
-<div class="math">$$l + 1 + \ell \alpha_l = 0, \quad \delta_l = \pi n + \frac{\pi}{2}$$</div>
+<div class="math">$$
+l + 1 + \ell \alpha_l = 0, \quad \delta_l = \pi n + \frac{\pi}{2}
+$$</div>
 <p>
 sont des <em>résonances</em>, et correspondent à un fort couplage des particules au moment de la collision. Pour ces valeurs de l&#8217;énergie on&nbsp;a,
 </p>
-<div class="math">$$\sigma_l = \frac{4\pi (2l+1)}{k^2}$$</div>
+<div class="math">$$
+\sigma_l = \frac{4\pi (2l+1)}{k^2}
+$$</div>
 <p>On observe en outre, que pour <span class="math">\(\ell k \ll 1\)</span> seul l&#8217;orbital s (<span class="math">\(l=0\)</span>) contribue significativement à la section&nbsp;efficace:
 </p>
-<div class="math">$$\delta_l \sim k^{-(2l+1)}$$</div>
+<div class="math">$$
+\delta_l \sim k^{-(2l+1)}
+$$</div>
 <p>
 On a&nbsp;donc,
 </p>
-<div class="math">$$ \sigma_0(k) = \frac{4\pi \sin^2 \delta_0(k)}{k^2}$$</div>
+<div class="math">$$
+ \sigma_0(k) = \frac{4\pi \sin^2 \delta_0(k)}{k^2}
+$$</div>
 <p>
 Remarquons que cette formule est en fait asymptotiquement valable pour tout potentiel à portée finie et à basse&nbsp;énergie.</p>
 <blockquote>
@@ -368,53 +499,77 @@ Remarquons que cette formule est en fait asymptotiquement valable pour tout pote
 </blockquote>
 <p>Pour <span class="math">\(l=0\)</span> le déphasage&nbsp;s&#8217;écrit,
 </p>
-<div class="math">$$k \cot \delta_0 = - \frac{1 + \ell \alpha_0(0)}{\ell^2 \alpha_0(0)} \equiv - \frac{1}{a}$$</div>
+<div class="math">$$
+k \cot \delta_0 = - \frac{1 + \ell \alpha_0(0)}{\ell^2 \alpha_0(0)} \equiv - \frac{1}{a}
+$$</div>
 <p>
 où <span class="math">\(a\)</span> est la <em>longueur de diffusion</em>, elle peut être positive (pour un potentiel répulsif) ou négative (pour un potentiel attractif, sans état liée). La section efficace devient en termes de <span class="math">\(a\)</span>,
 </p>
-<div class="math">$$\sigma_0 = \frac{4\pi a^2}{1 + (ak)^2}$$</div>
+<div class="math">$$
+\sigma_0 = \frac{4\pi a^2}{1 + (ak)^2}
+$$</div>
 <p>
 ce qui correspond, dans la limite <span class="math">\(k \rightarrow 0\)</span>, au cas d&#8217;une sphère rigide de rayon <span class="math">\(a\)</span>. Remarquez que pour <span class="math">\(k = \I/a\)</span>, dans la présente approximation, on aurait une divergence de la section efficace. C&#8217;est justement le cas d&#8217;un état liée <span class="math">\(E_B &lt; 0\)</span>:
 </p>
-<div class="math">$$E_B = - \frac{\hbar^2}{2ma^2}$$</div>
+<div class="math">$$
+E_B = - \frac{\hbar^2}{2ma^2}
+$$</div>
 <p>En effet, en&nbsp;récrivant,
 </p>
-<div class="math">$$\E^{2\I \delta_l} - 1 = \frac{2a k}{\I - a k}$$</div>
+<div class="math">$$
+\E^{2\I \delta_l} - 1 = \frac{2a k}{\I - a k}
+$$</div>
 <p>
 on voit qu&#8217;une longueur <span class="math">\(a=1/k\)</span> correspond à un <em>pôle</em> de l&#8217;amplitude de diffusion <span class="math">\(f(k,\theta)\)</span>. Dans le cas d&#8217;un état liée <span class="math">\(k = \I \kappa\)</span>, ou <span class="math">\(\kappa = 1/a\)</span> correspond à la taille de cet état liée (on doit donc avoir <span class="math">\(a &gt; 0\)</span>, pour s&#8217;assurer de la décroissance de <span class="math">\(R_0(r)\)</span>, <span class="math">\(r \rightarrow \infty\)</span>):
 </p>
-<div class="math">$$\sigma_B(E) = \frac{2\pi\hbar^2}{m} \frac{1}{E - E_B}$$</div>
+<div class="math">$$
+\sigma_B(E) = \frac{2\pi\hbar^2}{m} \frac{1}{E - E_B}
+$$</div>
 <p>
 On obtient donc la contribution de l&#8217;état <span class="math">\(-E_B\)</span> à la section efficace <span class="math">\(l=0\)</span>. Le choix physique du pôle avec le bon signe (<span class="math">\(\kappa = 1/a &gt;0\)</span>), conduit à un résultat fini. Un résultat toutefois assez remarquable: la diffusion d&#8217;une onde <em>s</em> par un potential ayant un état liée <span class="math">\(E_B\)</span> est entièrement déterminée par l&#8217;énergie de cet&nbsp;état.</p>
 <h3>Formule de&nbsp;Breit-Wigner</h3>
 <p>Un effet intéressant apparaît dans le cas d&#8217;un puits profond <span class="math">\(E\ll V_0\)</span> dû à la présence des état liés. En effet, le potentiel effectif dans l&#8217;équation radiale&nbsp;est,
 </p>
-<div class="math">$$V_\text{eff} = \frac{l(l+1)}{r^2} - V_0 \Theta(\ell - r)$$</div>
+<div class="math">$$
+V_\text{eff} = \frac{l(l+1)}{r^2} - V_0 \Theta(\ell - r)
+$$</div>
 <p>
 ce qui implique que pour <span class="math">\(l&gt;0\)</span> des états virtuels (quasi liés) peuvent apparaître à des énergies <span class="math">\(E_R&gt;0\)</span>&nbsp;positives. </p>
 <p>Dans la région des&nbsp;paramètres,
 </p>
-<div class="math">$$\ell k \ll l \ll \ell q, \quad E_0 \ll V_0$$</div>
+<div class="math">$$
+\ell k \ll l \ll \ell q, \quad E_0 \ll V_0
+$$</div>
 <p>
 en utilisant la forme asymptotique <span class="math">\(\rho \gg 1\)</span>,
 </p>
-<div class="math">$$\mathrm{j}_l(\rho) \approx \frac{1}{\rho} \sin(\rho - l\pi/2)$$</div>
+<div class="math">$$
+\mathrm{j}_l(\rho) \approx \frac{1}{\rho} \sin(\rho - l\pi/2)
+$$</div>
 <p>
 et
 </p>
-<div class="math">$$\mathrm{n}_l(\rho) \approx - \frac{1}{\rho} \cos(\rho - l\pi/2)$$</div>
+<div class="math">$$
+\mathrm{n}_l(\rho) \approx - \frac{1}{\rho} \cos(\rho - l\pi/2)
+$$</div>
 <p>
 on&nbsp;a
 </p>
-<div class="math">$$\alpha_l \approx -1/\ell + q \cot(\ell q - \pi l/2)$$</div>
+<div class="math">$$
+\alpha_l \approx -1/\ell + q \cot(\ell q - \pi l/2)
+$$</div>
 <p>
 La condition de résonance&nbsp;devient,
 </p>
-<div class="math">$$l + 1 + \ell \alpha_l \approx l + \ell q  \cot(\ell q - \pi l/2) = 0$$</div>
+<div class="math">$$
+l + 1 + \ell \alpha_l \approx l + \ell q  \cot(\ell q - \pi l/2) = 0
+$$</div>
 <p>
 ou, d&#8217;une façon&nbsp;équivalente, 
 </p>
-<div class="math">$$\cot(\ell q - \pi l/2) \approx -\frac{l}{\ell q} \ll 1$$</div>
+<div class="math">$$
+\cot(\ell q - \pi l/2) \approx -\frac{l}{\ell q} \ll 1
+$$</div>
 <p>
 ou encore approximativement <span class="math">\(\ell q - l\pi/2\)</span> est proche <span class="math">\(\pi/2\)</span>, ce qui correspond à la condition d&#8217;existence d&#8217;un état liée (comme on peut se rendre compte en écrivant la condition de continuité pour <span class="math">\(E &lt; 0\)</span>).</p>
 <blockquote>
@@ -423,27 +578,39 @@ ou encore approximativement <span class="math">\(\ell q - l\pi/2\)</span> est pr
 </blockquote>
 <p>Autour de la résonance <span class="math">\(E \approx E_R\)</span>, on&nbsp;a,
 </p>
-<div class="math">$$l + 1 + \ell \alpha_l(E) \approx \ell (E-E_R) \alpha'_l(E_R)$$</div>
+<div class="math">$$
+l + 1 + \ell \alpha_l(E) \approx \ell (E-E_R) \alpha'_l(E_R)
+$$</div>
 <p>
 et 
 </p>
-<div class="math">$$l - \ell \alpha_l(E) \approx 2l+1$$</div>
+<div class="math">$$
+l - \ell \alpha_l(E) \approx 2l+1
+$$</div>
 <p>
 En remplaçant dans la formule pour <span class="math">\(\cot \delta_l\)</span> on&nbsp;obtient,
 </p>
-<div class="math">$$\cot \delta_l = -\frac{E-E_R}{\Gamma_R}$$</div>
+<div class="math">$$
+\cot \delta_l = -\frac{E-E_R}{\Gamma_R}
+$$</div>
 <p>
 avec
 </p>
-<div class="math">$$\Gamma_R = - \frac{2 \ell^{2l}}{[(2l+1)!!]^2} \frac{k^{2l+1}}{\alpha'_l(E_R)}$$</div>
+<div class="math">$$
+\Gamma_R = - \frac{2 \ell^{2l}}{[(2l+1)!!]^2} \frac{k^{2l+1}}{\alpha'_l(E_R)}
+$$</div>
 <p>
 ou, en dégageant le&nbsp;déphasage,
 </p>
-<div class="math">$$\delta_l(E) \approx \frac{\pi}{2} + \arctan \left( 2\frac{E - E_R}{\Gamma_R} \right)$$</div>
+<div class="math">$$
+\delta_l(E) \approx \frac{\pi}{2} + \arctan \left( 2\frac{E - E_R}{\Gamma_R} \right)
+$$</div>
 <p>
 Ce qui conduit à la <em>formule de Breit-Wigner</em> de la section efficace à basse énergie près d&#8217;un état&nbsp;virtuel:
 </p>
-<div class="math">$$\sigma_l(E) = \frac{4\pi}{k^2} \frac{\Gamma_R^2}{4(E-E_R)^2 + \Gamma_R^2}$$</div>
+<div class="math">$$
+\sigma_l(E) = \frac{4\pi}{k^2} \frac{\Gamma_R^2}{4(E-E_R)^2 + \Gamma_R^2}
+$$</div>
 <p>
 (voir les&nbsp;figures).</p>
 <blockquote>
@@ -523,8 +690,8 @@ Ce qui conduit à la <em>formule de Breit-Wigner</em> de la section efficace à 
         <div class="row">
           <ul class="col-sm-6 list-inline">
             <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
-            <li class="list-inline-item"><a href="/categories.html">Categories</a></li>
               <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
           </ul>
           <p class="col-sm-6 text-sm-right text-muted">
           <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
