@@ -66,9 +66,11 @@
 </ul>
 <p>The python libraries are included in the <a href="https://www.anaconda.com/distribution/">anaconda distribution</a>. The <span class="math">\(\TeX\)</span> tools are included in the TeX Live distribution, you do not need to install&nbsp;them.</p>
 <h2>Matplotlib&nbsp;example</h2>
-<p>The Lennard Jones potential depends on two parameters, the hard core length <span class="math">\(r_0\)</span> and the binding energy <span class="math">\(\epsilon\)</span>:</p>
-<div class="math">$$ w(r) = 4\epsilon \left[ \left(\frac{r_0}{r}\right)^{12} - \left(\frac{r_0}{r}\right)^{6}   \right]$$</div>
-<p><Paste></p>
+<p>The Lennard Jones potential depends on two parameters, the hard core length <span class="math">\(r_0\)</span> and the binding energy <span class="math">\(\epsilon\)</span>:
+</p>
+<div class="math">$$
+w(r) = 4\epsilon \left[ \left(\frac{r_0}{r}\right)^{12} - \left(\frac{r_0}{r}\right)^{6}   \right]
+$$</div>
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span> <span class="c1"># x-points</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">12</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># LJ</span>
 <span class="c1"># plot</span>
@@ -88,27 +90,52 @@
 <p><img src="/images/TP-lj.svg" style="width:250px;"\img></p>
 </blockquote>
 <p>Note that it is possible to embed python code directly in the tex source file using the package <a href="https://github.com/gpoore/pythontex"><code>pythontex</code></a> (included in the texlive&nbsp;distribution).</p>
-<p>In order to obtain compatible styles between matplotlib graphics and latex text, you may create a matplotlib style&nbsp;file:</p>
-<div class="highlight"><pre><span></span><code><span class="n">lines</span><span class="o">.</span><span class="n">linewidth</span> <span class="p">:</span> <span class="mf">1.0</span>
-<span class="n">text</span><span class="o">.</span><span class="n">usetex</span> <span class="p">:</span> <span class="kc">True</span>
-<span class="n">font</span><span class="o">.</span><span class="n">family</span> <span class="p">:</span> <span class="n">serif</span>
-<span class="n">font</span><span class="o">.</span><span class="n">weight</span> <span class="p">:</span> <span class="n">normal</span>
-<span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="p">:</span> <span class="mf">20.0</span>
-<span class="n">font</span><span class="o">.</span><span class="n">serif</span> <span class="p">:</span> <span class="n">STIX</span> <span class="n">Two</span> <span class="n">Text</span><span class="p">,</span> <span class="n">DejaVu</span> <span class="n">Serif</span><span class="p">,</span> <span class="n">Computer</span> <span class="n">Modern</span> <span class="n">Roman</span><span class="p">,</span> <span class="n">serif</span>
-<span class="n">mathtext</span><span class="o">.</span><span class="n">fontset</span> <span class="p">:</span> <span class="n">stix</span>
-<span class="n">mathtext</span><span class="o">.</span><span class="n">rm</span> <span class="p">:</span> <span class="n">serif</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">titlesize</span> <span class="p">:</span> <span class="mi">24</span>
-<span class="n">axes</span><span class="o">.</span><span class="n">labelsize</span> <span class="p">:</span> <span class="mi">24</span>
-<span class="n">xtick</span><span class="o">.</span><span class="n">top</span> <span class="p">:</span> <span class="kc">True</span>
-<span class="n">ytick</span><span class="o">.</span><span class="n">right</span> <span class="p">:</span> <span class="kc">True</span>
-<span class="n">xtick</span><span class="o">.</span><span class="n">direction</span> <span class="p">:</span> <span class="n">out</span>
-<span class="n">ytick</span><span class="o">.</span><span class="n">direction</span> <span class="p">:</span> <span class="n">out</span>
-<span class="n">figure</span><span class="o">.</span><span class="n">figsize</span> <span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.5</span>
-<span class="n">savefig</span><span class="o">.</span><span class="n">bbox</span> <span class="p">:</span> <span class="n">tight</span>
-<span class="n">savefig</span><span class="o">.</span><span class="n">dpi</span> <span class="p">:</span> <span class="mi">300</span>
+<p>In order to obtain compatible styles between matplotlib graphics and latex text, you may configure matplotlib to use a <code>pgf</code> backend:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+
+<span class="c1"># figures (jupyter)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;font.family&quot;</span><span class="p">:</span> <span class="s2">&quot;serif&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font.serif&quot;</span><span class="p">:</span> <span class="s2">&quot;STIX Two Text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mathtext.fontset&quot;</span><span class="p">:</span> <span class="s2">&quot;stix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s2">&quot;axes.titlesize&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">4.5</span><span class="p">),</span>
+    <span class="s2">&quot;lines.linewidth&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">&quot;xtick.top&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;ytick.right&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;savefig.bbox&quot;</span><span class="p">:</span> <span class="s2">&quot;tight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;image.cmap&quot;</span><span class="p">:</span> <span class="s2">&quot;cubehelix&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="c1"># pgf backend</span>
+<span class="kn">from</span> <span class="nn">matplotlib.backends.backend_pgf</span> <span class="kn">import</span> <span class="n">FigureCanvasPgf</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">backend_bases</span><span class="o">.</span><span class="n">register_backend</span><span class="p">(</span><span class="s1">&#39;pdf&#39;</span><span class="p">,</span> <span class="n">FigureCanvasPgf</span><span class="p">)</span>
+<span class="c1"># latex font (pgf)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">&quot;pgf.rcfonts&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;pgf.texsystem&quot;</span><span class="p">:</span> <span class="s2">&quot;lualatex&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pgf.preamble&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="sa">r</span><span class="s2">&quot;\usepackage{amsmath,trace}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\usepackage{lualatex-math}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\usepackage</span><span class="si">{mathtools}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\usepackage{libertinus-otf}&quot;</span><span class="p">,</span>
+    <span class="p">])</span>
+<span class="p">})</span>
 </code></pre></div>
 
-<p>where we use <span class="math">\(\LaTeX\)</span> for the figure labels, define the figure size <span class="math">\(6\times 4.5\)</span> (aspect ratio 4:3), and suitable font sizes. For the fonts we use <code>stix</code>. However, the standard choice, available in every operating system, is Computer Modern Roman (serif) and cm (math fonts). This file must be created inside the <code>.config/matplotlib/stylelib</code> folder and have the extension <code>.mplstyle</code>; it is invoked within python with <code>plt.style.use('name')</code>, if your file name is <code>name.mplstyle</code>.</p>
+<p>The first part of the code (&#8220;jupyter figure&#8221;) standardize your figures for general use, for instance to create a <code>.svg</code> figure with <code>plt.savefig("figure.svg")</code> and use it in your web pages; the second part (&#8220;pgf backend&#8221;) writes a <code>.pgf</code> file (<code>plt.savefig("test.pgf")</code>) that you can input in your latex&nbsp;source:</p>
+<div class="highlight"><pre><span></span><code><span class="k">\scalebox</span><span class="nb">{</span>0.7<span class="nb">}{</span>
+    <span class="k">\input</span><span class="nb">{</span>test.pgf<span class="nb">}</span>
+<span class="nb">}</span>
+</code></pre></div>
+
+<p>here scaled to 70\% of its original&nbsp;size.</p>
 <h2>TikZ ist kein&nbsp;Zeichenprogramm</h2>
 <p><a href="https://mirrors.chevalier.io/CTAN/graphics/pgf/base/doc/pgfmanual.pdf">TikZ</a> and <a href="https://mirrors.chevalier.io/CTAN/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf">pgfplots</a> are popular graphics packages. Tikz is specially useful for schematic drawing, diagrams, graphs with nodes and links, geometry, and in general it is perfect to illustrate mathematical and physical concepts. At variance, pgfplots needs often external programs (like gnuplot) and can be replaced by standard graphical programming libraries (matplotlib is an&nbsp;example).</p>
 <p><strong>tikz</strong>. The package is loaded with <code>\usepackage{tikz}</code> you may also need to load specialized libraries like: <code>\usetikzlibrary{calc,positioning,scopes,shapes}</code>.</p>
