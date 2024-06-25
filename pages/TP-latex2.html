@@ -129,13 +129,13 @@ $$</div>
 <span class="p">})</span>
 </code></pre></div>
 
-<p>The first part of the code (&#8220;jupyter figure&#8221;) standardize your figures for general use, for instance to create a <code>.svg</code> figure with <code>plt.savefig("figure.svg")</code> and use it in your web pages; the second part (&#8220;pgf backend&#8221;) writes a <code>.pgf</code> file (<code>plt.savefig("test.pgf")</code>) that you can input in your latex&nbsp;source:</p>
+<p>The first part of the code (&#8220;jupyter figure&#8221;) standardizes your figures for general use, for instance to create a <code>.svg</code> figure with <code>plt.savefig("figure.svg")</code> and use it in your web pages; the second part (&#8220;pgf backend&#8221;) writes a <code>.pgf</code> file (<code>plt.savefig("test.pgf")</code>) that you can input in your latex&nbsp;source:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\scalebox</span><span class="nb">{</span>0.7<span class="nb">}{</span>
     <span class="k">\input</span><span class="nb">{</span>test.pgf<span class="nb">}</span>
 <span class="nb">}</span>
 </code></pre></div>
 
-<p>here scaled to 70\% of its original&nbsp;size.</p>
+<p>here scaled to 70% of its original&nbsp;size.</p>
 <h2>TikZ ist kein&nbsp;Zeichenprogramm</h2>
 <p><a href="https://mirrors.chevalier.io/CTAN/graphics/pgf/base/doc/pgfmanual.pdf">TikZ</a> and <a href="https://mirrors.chevalier.io/CTAN/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf">pgfplots</a> are popular graphics packages. Tikz is specially useful for schematic drawing, diagrams, graphs with nodes and links, geometry, and in general it is perfect to illustrate mathematical and physical concepts. At variance, pgfplots needs often external programs (like gnuplot) and can be replaced by standard graphical programming libraries (matplotlib is an&nbsp;example).</p>
 <p><strong>tikz</strong>. The package is loaded with <code>\usepackage{tikz}</code> you may also need to load specialized libraries like: <code>\usetikzlibrary{calc,positioning,scopes,shapes}</code>.</p>
