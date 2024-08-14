@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Exams (November 2022) | Random physics
+</title>
+    <link rel="canonical" href="/pages/PS-exams_1.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Solutions to the 2022 midterm exam problems">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p>$\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+<blockquote>
+<p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
+</blockquote>
+<h1>Midterm November&nbsp;2022</h1>
+<h2>Bosons</h2>
+<h3>1.</h3>
+<p>Black Body. Use dimensional analysis to find the energy density of a gas of photons at temperature $T$ (Stefan law). Apply the experimental fact that $E/V$ only depends on $T$ ($E$ and $V$ are the thermodynamic energy and volume of the black&nbsp;body).</p>
+<h3>Solution</h3>
+<p>We must determine the function
+$$\epsilon = E/V = \epsilon(T)$$
+for a noninteracting photon gas. A photon is a quantum ($\hbar$ planck constant) of the electromagnetic field ($c$ light speed); therefore we assume that 
+$$\epsilon=\epsilon(T)=f(T; \hbar, c).$$
+The dimensions are:
+$$[\epsilon]=<span class="caps">EL</span>^{-3}, \; [\hbar c]=E L, \; [k_BT]= E$$
+where $E$ and $L$ are dimensions of energy and length, respectively. Noting that to make a volume we need a factor $(\hbar c)^3$, and compensating for the extra powers of $E$, we obtain that
+$$\epsilon=\text{const.} \frac{(k_BT)^4}{(\hbar c)^3}$$
+has the correct dimensions ($\text{const.}$ is a number). This is the Stefan&nbsp;law.</p>
+<h3>2.</h3>
+<p>Debye phonons. Use dimensional analysis to find the maximum energy $\epsilon_M$ a phonon can take in a solid of $N$ atoms and volume $V$; the sound velocity $c_s$ is isotropic. (Hint: assume that the energy is a function of the density $n=N/V$.) Compute $\epsilon_M$ using the exact density of states. Compare the two&nbsp;results.</p>
+<h3>Solution</h3>
+<p>A phonon is the quantum of cristal lattice excitations of energy $\epsilon = \hbar \omega$: its frequency $\omega$ is related to its wavenumber $k$ by the sound velocity $c_s$, $\omega=c_s k$. The Debye cutoff frequency is a function of the density:
+$$\omega_M=\epsilon_M/\hbar=\omega_M(n)=f(n; c_s).$$
+To determine $f$ we analyze the parameter dimensions: 
+$$[\omega_M]=T^{-1}, \; [c_s] = <span class="caps">LT</span>^{-1}, \; [n] = L^{-3}.$$
+From these relations we find that 
+$$\omega_M = \text{const.} c_s n^{1/3},$$
+because $n^{-1/3}$ has dimension of&nbsp;length.</p>
+<p>To compute the unknown constant, we use the definition of the cutoff frequency:
+$$\text{number of modes} = \text{number of dof} = 3N$$
+which states that the number of phonons must not exceed the number of degrees of freedom (dof) $3N$ (for $N$ lattice sites). Therefore,
+$$3 V \frac{4\pi}{3} \left( \frac{\omega_M}{2\pi c} \right)^3 = 3N,$$
+where the first term is $3$ times (for the longitudinal and transversal phonon polarizations) the volume of a sphere of radius $\omega/2\pi c_s$. We finally obtain,
+$$\omega_M = (6\pi^2 n)^{1/3}&nbsp;c_s\,.$$</p>
+<h2>Rigid&nbsp;rotator</h2>
+<p>We consider a material formed in first approximation, by independent rotators of inertia moment $I$. We are interested in the low temperature limit and assume a Boltzmann&nbsp;distribution.</p>
+<ol>
+<li>
+<p>Write the hamiltonian of the set of \emph{fixed}&nbsp;rotators.</p>
+</li>
+<li>
+<p>Use dimensional analysis to determine the low temperature condition. (Hint: compare the temperature with a characteristic energy of a&nbsp;rotator.)</p>
+</li>
+<li>
+<p>Write the exact expression of the one particle partition function and compute its low temperature expansion. (Remark: take into account the degeneracy of the angular&nbsp;momentum.)</p>
+</li>
+<li>
+<p>Find the specific heat at low&nbsp;temperature.</p>
+</li>
+<li>
+<p>Plot the specific heat as a function of the temperature. Discuss the result (compare with the classical&nbsp;expectation.) </p>
+</li>
+</ol>
+<h3>Solution</h3>
+<p>The hamiltonian of a rigid rotator of inertia moment $I$ and angular momentum $L$ is
+$$H = \frac{L^2}{2I}\,.$$
+The eigenspectum is given by the spherical harmonics $\ket{lm}$ of orbital number $l=0,1,\ldots$ and magnetic number $-l\le m \le l$:
+$$H\ket{lm} = \frac{\hbar^2}{2I} l(l+1) \ket{lm}.$$
+The energy levels are then given by
+$$\epsilon_l = \frac{\hbar^2}{2I} l(l+1).$$
+This leads to a characteristic energy of the rotator $\hbar^2/I$, which combined with the temperature defines the nondiemnsional parameter:
+$$\theta = \frac{\hbar^2}{Ik_BT}\; ;$$
+the low temperature regime corresponds to $\theta\gg&nbsp;1$.</p>
+<p>The one particle partition function $Z_1 = \sum_s \exp(-\epsilon_s/T)$ ($k_B=1$ from now on), where the quantum state here is determined by $s={l,m}$, writes
+$$Z_1 = \sum_{l=0}^\infty \sum_{m=-l}^l \E^{-\theta l(l+1)/2}= \sum_{l=0}^\infty (2l+1) \E^{-\hbar^2 l(l+1)/<span class="caps">2IT</span>} \,,$$
+where we took into account the degeneracy of $\epsilon_l$ (just the sum over $m$). At low temperature each term of the sum is exponentially small (for $l&gt;0$), therfore up the first relevant term we have
+$$Z_1 = 1 + 3\E^{-\theta},$$
+and, to the same order,
+$$F=-3 T \E^{-\hbar^2/<span class="caps">IT</span>},$$
+for the free&nbsp;energy.</p>
+<p>The thermodynamic energy is
+$$\frac{E}{N} = \frac{\partial (F/T)}{\partial (1/T)} = \frac{3\hbar^2}{I} \E^{-\hbar^2/<span class="caps">IT</span>},$$
+and the specific heat per particle,
+$$c_v = \frac{\partial E}{N \partial T} = 3 \left( \frac{\hbar^2}{<span class="caps">IT</span>} \right)^2 \E^{-\hbar^2/<span class="caps">IT</span>}.$$</p>
+<p>To plot $c_v(T)$ we note that it tends to zero when $T \rightarrow 0$ and that, for high temperatures, it must match the classical result $c_v = 1$, in units of the boltzmann constant; the change between the two regimes occurs about&nbsp;$\theta=1$.</p>
+<blockquote>
+<p><img src="/images/PS-exam_cv.svg" alt="cv" style="width:300px;"/></p>
+</blockquote>
+<h2>van der&nbsp;Waals</h2>
+<p>Find the van der Waals equation of state of parameters $a$ and $b$
+\begin{equation}
+\label{e:vdW}
+\left( P + N^2a/V^2 \right)(V - Nb) = Nk_B T
+\end{equation}
+where $P$ is the pressure, $V$ the volume, $N$ the number of atoms and $T$ the temperature ($k_B$ is the Boltzmann constant), corresponding to the interaction energy
+\begin{equation}
+\label{e:wr}
+w(r) = \begin{cases} \infty <span class="amp">&amp;</span> r &lt; r_0\ -\epsilon <span class="amp">&amp;</span> r_0<r\<r_1 \\ 0 <span class="amp">&amp;</span> r>r_1 \end{cases}\,.
+\end{equation}
+Here $r_0,r_1$ have the dimension of a length and $\epsilon > 0$ is an&nbsp;energy.</p>
+<ol>
+<li>
+<p>Plot $w$ and explain the significance of the dimensional parameters appearing in its&nbsp;definition.</p>
+</li>
+<li>
+<p>Compute the second virial coefficient:
+\begin{equation}
+\label{e:B}
+B(T) = 2\pi \int_0^\infty r^2 \D r \left[ 1 - \E^{-w(r)/T} \right]\,.&nbsp;\end{equation}</p>
+</li>
+</ol>
+<p>3.Show that one can write 
+\begin{equation}
+\label{e:ab}
+B(T) = v_0 - \frac{a(T)}{T}, \quad v_0 = \frac{2\pi r_0^3}{3}\,,
+\end{equation}
+and demonstrate that $a(T)$ is independent of the temperature at high&nbsp;$T$.</p>
+<ol start="4">
+<li>Show how to obtain the excluded volume term and compute the van der Waals parameters $a$ and&nbsp;$b$.</li>
+</ol>
+<h3>Solution</h3>
+<p>We :se $k_B=1$. The interaction energy is piecewise constant, repulsive for $r<r_0$, attractive for $r \in (r_0,r_1)$ with a characteristic energy $\epsilon$, and free for $r>r_1$; it can be considered as a crude approximation of the lennard-jones&nbsp;potential.</p>
+<blockquote>
+<p><img src="/images/PS-exam_vdw.svg" alt="vdw" style="width:300px;"/></p>
+</blockquote>
+<p>The second virial coefficient
+$$B(T) = 2\pi \int_0^\infty \D r r^2 \left[ 1 - \E^{-w(r)/T} \right] $$
+is (the integrals give the volume of a sphere over 2):
+$$B(T) = \frac{2\pi}{3}r_0^3 + \frac{2\pi}{3} (r_1^3 - r_0^3)\big(1-\E^{\epsilon/T}\big) \,.$$
+It can be written as $B=v_0-a/T$,
+$$v_0 = \frac{2\pi}{3}r_0^3, \; a(T) = -\frac{2\pi}{3} (r_1^3 - r_0^3)\big(1-\E^{\epsilon/T}\big)T&nbsp;\,.$$</p>
+<p>We note that when $T \gg \epsilon$ (high temperature case) we have $\E^{\epsilon/T}\approx 1 + \epsilon/T$, which leads to
+$$a(T) = \frac{2\pi}{3} (r_1^3 - r_0^3)\epsilon = \text{const.} \,,$$
+independent of&nbsp;$T$</p>
+<p>Putting $B(T)$ in the virial formula $<span class="caps">PV</span> = <span class="caps">NT</span> (1+ B N/V)$, we obtain
+$$<span class="caps">PV</span> = <span class="caps">NT</span> (1 + \frac{N}{V} v_0) - \frac{N^2}{V} a(T)$$
+or
+$$\left[ P + a(T) \frac{N^2}{V^2} \right] V = <span class="caps">NT</span>(1 +Nv_0/V) \approx \frac{<span class="caps">NTV</span>}{V-Nv_0}$$
+where, in the last equality we used that $Nv_0 \ll V$. Therefore, we found the van der Waals equation of state with the microscopic parameters:
+$$b = Nv_0, \; \text{and} \; a(T) = a(T) = \frac{2\pi T}{3} (r_1^3 - r_0^3)\big(\E^{\epsilon/T} - 1 \big)&nbsp;\,.$$ </p>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

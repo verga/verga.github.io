@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Théorie des perturbations | Random physics
+</title>
+    <link rel="canonical" href="/pages/MQ-pert.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Cours élémentaire de mécanique quantique; méthodes de perturbation stationnaire et dépendante du temps">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p>$\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\Tr}{\mathrm{Tr}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+<blockquote>
+<p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
+</blockquote>
+<h1>Méthodes&nbsp;d&#8217;approximation</h1>
+<h2>Perturbation&nbsp;stationnaire</h2>
+<p>Les systèmes physiques sont généralement caractérisés par un ensemble de paramètres dimensionnels; ces paramètres ne sont pas tous indépendants, puisque les propriétés physiques sont indépendantes du système d&#8217;unités, mais peuvent s&#8217;exprimer en fonction d&#8217;un certain nombre de paramètres non dimensionnels. Par exemple, l&#8217;oscillateur harmonique avec les unités de masse, la masse de la particule $[m]$, le temps, l&#8217;inverse de la fréquence $[1/\omega]$, et la longueur, exprimée à l&#8217;aide de la constante de planck $[\ell=(\hbar/m\omega)^{1/2}]$, ne comporte aucun paramètre dimensionnel:
+$$
+\begin{equation}
+H_0 = \frac{p^2}{2} + \frac{x^2}{2} \tag{oscillateur}
+\end{equation}
+$$
+avec $x$ la position et $p$ l&#8217;impulsion adimensionnelles; de même, le hamiltonien de l&#8217;atome d&#8217;hydrogène avec le choix du rayon de Bohr $[\mathrm{a_0}]$ et du rydberg $[\mathrm{Ry}]$ comme unités de longueur et d&#8217;énergie,
+$$
+\mathrm{a_0} = \frac{4\pi \epsilon_0 \hbar^2}{m e^2}, \quad \mathrm{Ry} = \frac{\hbar^2}{2m a_0^2}
+$$
+ainsi que de la masse réduite comme unité de masse (unités atomiques), se réduit à la forme adimensionnelle, 
+$$
+\begin{equation}
+  H_0 = \frac{\bm p^2}{2} - \frac{2}{r} \tag{coulomb}
+\end{equation}
+$$
+avec $r$ le rayon en coordonnées sphériques (avec origine le centre de masse), distance entre le noyau et l&#8217;électron, et $\bm p$ leur impulsion&nbsp;relative.</p>
+<p>Souvent parmi ces paramètres sans dimensions on en trouve un petit, disons
+$$
+\lambda \ll 1\,.
+$$
+Par exemple, l&#8217;atome d&#8217;hydrogène peut être soumis à un champ extérieur de faible énergie par rapport au rydberg: un champ électrique $\mathcal{E}$ (dirigé selon la direction $z$) qui interagit avec le dipôle atomique, et dont l&#8217;énergie est donnée par $V = -ez\mathcal{E}$. Dans ce cas, le paramètre sans dimensions approprié est le rapport de l&#8217;énergie du dipôle (à l&#8217;échelle du rayon de Bohr) et du rydberg:
+$$
+\lambda = \frac{e \mathrm{a_0} \mathcal{E}}{\mathrm{Ry}} \ll 1
+$$
+ce qui est généralement vrai pour des champs électriques typiques utilisés en laboratoire dans les expériences de spectroscopie atomique. Par conséquent, le hamiltonien du système physique comportant un petit paramètre peut se séparer en deux parties, la partie $H_0$ du système sans perturbation, et $\lambda V$, le terme de perturbation:
+$$
+\begin{equation}
+  H = H_0 + \lambda V,\quad \lambda \ll 1\,.
+\end{equation}
+$$
+Le terme de <em>perturbation</em> aura donc un faible effet sur les niveaux d&#8217;énergie $\varepsilon_n$ et les fonctions propres $\ket{n}$, du système non perturbé:
+$$
+\begin{equation}
+  H_0 \ket{n} = \varepsilon_n \ket{n}
+\end{equation}
+$$
+où l&#8217;on suppose un spectre discret, ici $n$ est le nombre quantique associé à l&#8217;énergie (e.g. les niveaux de l&#8217;oscillateur ou de l&#8217;atome d&#8217;hydrogène, selon la signification de&nbsp;$H_0$).</p>
+<p>L&#8217;idée de la méthode de perturbation est de construire les états propres et les énergies de $H$ par des approximations successives en puissances du petit paramètre $\lambda$, à partir de la base d&#8217;états $\ket{n}$ et des énergies $\varepsilon_n$ du système non perturbé. Nous allons donc chercher les vecteurs propres $\ket{N}$ et valeurs propres $E_n$ de $H$
+$$
+\begin{equation}
+  \label{e:pHvp}
+  H \ket{N} = E_n \ket{N}\,,
+\end{equation}
+$$
+sous la forme des séries,
+$$
+\begin{align}
+  E_n &amp;= \varepsilon_n + \lambda E_{n}^{(1)} + \lambda^2 E_{n}^{(2)} + \cdots 
+  \nonumber \
+  \ket{N} &amp;= \ket{n} + \lambda \ket{N^{(1)}} + \lambda^2 \ket{N^{(2)}} + \cdots 
+  \label{e:pS}
+\end{align}
+$$
+où les indices entre parenthèses correspondent à l&#8217;ordre de l&#8217;approximation. Nous commençons par le cas non dégénéré, dans lequel chaque valeur propre $\varepsilon_n$ correspond à un unique vecteur propre $\ket{n}$. La base de $H_0$ est orthonormée; nous pouvons aussi supposer
+$$
+\begin{equation<em>}
+\braket{n|N^{(i)}} = 0,\quad i=1,2,\ldots
+\end{equation</em>}
+$$
+Après substitution de $\eqref{e:pS}$ dans $\eqref{e:pHvp}$, on obtient à l&#8217;ordre $\lambda$:
+$$
+\begin{equation}
+  \label{e:po1}
+  (H_0 - \varepsilon_n) \ket{N^{(1)}} = (E_n^{(1)} -V) \ket{n}\,.
+\end{equation}
+$$
+En multipliant cette équation d&#8217;abord par $\bra{n}$, nous obtenons la première correction de l&#8217;énergie:
+$$
+\begin{equation}
+  \label{e:pE1}
+  E^{(1)}<em _ne="\ne" m n>n = \braket{n|V|n}\,;
+\end{equation}
+$$
+en la multipliant ensuite par $\bra{m}$ (avec $m \ne n$), nous obtenons,
+$$
+  (\varepsilon_m - \varepsilon_n) \braket{m|N^{(1)}} =
+  - \braket{m|V|n}
+$$
+qu&#8217;on peut compléter par l&#8217;unité $\sum_m \ket{m} \bra{m} = 1$ pour déduire la correction de l&#8217;état propre à l&#8217;ordre 1:
+$$
+\begin{equation}
+  \label{e:pV1}
+  \ket{N^{(1)}} = \sum</em>\,.
+\end{equation}
+$$
+À l&#8217;ordre suivant, en $\lambda^2$, l&#8217;équation $\eqref{e:pHvp}$ donne,
+$$
+\begin{equation}
+  \label{e:po2}
+  (H_0 - \varepsilon_n) \ket{N^{(2)}} = 
+  E^{(2)}} \frac{\braket{m|V|n}}{\varepsilon_n - \varepsilon_m}\ket{m<em _ne="\ne" m n>n \ket{n} + (E^{(1)}_n - V) \ket{N^{(1)}}\,.
+\end{equation}
+$$
+En suivant la même méthode nous obtenons, après multiplication à gauche par $\bra{n}$, l&#8217;expression $E^{(2)} = \braket{n|V|N^{(1)}}$; ou, en substituant dans celle-ci l&#8217;équation $\eqref{e:pV1}$, et en observant que $\braket{n|N^{(1)}}=0$, nous aboutissons à 
+$$
+\begin{equation}
+  \label{e:pE2}
+  E^{(2)}_n = \sum</em> 
+  \frac{|\braket{m|V|n}|^2}{\varepsilon_n - \varepsilon_m}\,.
+\end{equation}
+$$
+Les équations $\eqref{e:pE1}$ et $\eqref{e:pE2}$ sont le principaux résultats de la théorie des perturbations indépendantes du temps. Elles peuvent se résumer dans la formule:
+$$
+\begin{equation}
+  \label{e:pE12}
+  E_n = \varepsilon_n + \lambda \braket{n|V|n} +
+  \lambda^2 \sum_{m \ne n} 
+  \frac{|\braket{m|V|n}|^2}{\varepsilon_n - \varepsilon_m}\,.
+\end{equation}
+$$
+L&#8217;utilisation pratique de la méthode de perturbation est simple: on résout d&#8217;abord le problème à valeurs propres du hamiltonien non perturbé pour avoir la forme explicite des niveaux d&#8217;énergie et des vecteurs propres $\varepsilon_n$ et $\ket{n}$; pour ensuite calculer la correction en $\lambda$ par la formule $\eqref{e:pE1}$; si celle-ci s&#8217;avère être nulle (cela dépend de la forme de $V$), on passe à l&#8217;ordre suivant et on calcule $E_n^{(2)}$ à l&#8217;aide de $\eqref{e:pE2}$. L&#8217;effet physique d&#8217;une petite perturbation sur un niveau non dégénéré est de déplacer le niveau d&#8217;énergie d&#8217;une grandeur de l&#8217;ordre de $\lambda$ ou de $\lambda^2$, sans affecter qualitativement les propriétés du système non&nbsp;perturbé.</p>
+<p>Si l&#8217;état d&#8217;énergie $\varepsilon_n = \varepsilon$ est dégénéré $D$ fois, la perturbation $V$ introduit un effet physique intéressant, la <em>levée de dégénérescence</em>, qui change qualitativement les propriétés du système original $H_0$. Pour trouver les niveaux d&#8217;énergie perturbés il suffit de considérer le sous-espace de dimension $D$, dans lequel la forme du hamiltonien dans la base $\ket{n}$, est
+$$
+  H_{D} = \begin{pmatrix}
+    \varepsilon + \lambda v_{11} <span class="amp">&amp;</span> \lambda v_{12} 
+                                 <span class="amp">&amp;</span> \cdots <span class="amp">&amp;</span> \lambda v_{1{D}} \
+    \lambda v_{21} <span class="amp">&amp;</span> \varepsilon +\lambda v_{22} <span class="amp">&amp;</span> \cdots <span class="amp">&amp;</span>  \
+    \vdots <span class="amp">&amp;</span> &amp; \ddots <span class="amp">&amp;</span> \
+    \lambda v_{{D}1} <span class="amp">&amp;</span> &amp; <span class="amp">&amp;</span> \varepsilon + \lambda v_{<span class="caps">DD</span>}
+  \end{pmatrix}  = \varepsilon 1_{D}+ \lambda V_{D}
+$$
+avec $1_{D}$ la matrice unité et $V_{D}$ la perturbation dans le sous-espace $D$, et de résoudre le problème de valeurs et vecteurs propres. Les états d&#8217;énergie au premier ordre de la théorie de perturbation d&#8217;un état dégénéré, sont donc les racines $E$ du polynôme caractéristique:
+$$
+\begin{equation}
+  \label{e:pED}
+  \det \left( \lambda V_{D} - E^{(1)} 1_{D} \right) = 0\,,\quad
+  E^{(1)} = E_{n1}, \ldots, E_{nD}\,.
+\end{equation}
+$$
+En effet, $H_D$ est diagonal avec unique valeur propre $\varepsilon$ pour $\lambda = 0$; au premier ordre, $\eqref{e:pED}$ permet de calculer la correction à l&#8217;ordre $\lambda$ du niveau dégénéré, dans chacune des directions données par les vecteurs propres de&nbsp;$\eqref{e:pED}$.</p>
+<h2>Problèmes</h2>
+<h3>1</h3>
+<p>Montrez que si $\ket{\psi_\lambda}$ est un état qui diffère d&#8217;une grandeur d&#8217;ordre $\lambda$ de l&#8217;état fondamental $\ket{\psi_0}$, l&#8217;énergie $E(\lambda)=\langle \psi_\lambda|H|\psi_\lambda\rangle$ diffère de $E_0$, l&#8217;énergie de l&#8217;état fondamental, d&#8217;une grandeur d&#8217;ordre&nbsp;$\lambda^2$.</p>
+<h3>2</h3>
+<p>Estimez l&#8217;énergie de l&#8217;état fondamental d&#8217;un oscillateur quartique:
+$$
+H=\frac{p^2}{2m}+\lambda x^4\,.
+$$
+par la méthode variationnelle. Utilisez comme ansatz une fonction d&#8217;onde gaussienne; comparez le résultat avec celui du cours:
+$$
+E = \frac{9}{2\times286^{1/3}}\lambda^{1/3}&nbsp;$$</p>
+<h3>3</h3>
+<p>Une particule est soumise à l&#8217;action d&#8217;un potentiel central,
+$$
+V(r)=-\frac{4\hbar^2}{3ma^2}\E^{-r/a}
+$$
+Avec $\psi(r;\alpha)\sim\exp(-\alpha r/a)$ comme fonction test, calculez la valeur de $\alpha$ qui minimise l&#8217;erreur sur l&#8217;énergie de l&#8217;état&nbsp;fondamental.</p>
+<h3>4</h3>
+<p>Calculez les niveaux d&#8217;énergie du hamiltonien
+$$
+H=\left(
+\begin{array}{ccc}
+1  <span class="amp">&amp;</span> 0  <span class="amp">&amp;</span> 0  \
+0  <span class="amp">&amp;</span> 3  <span class="amp">&amp;</span> 0  \
+0  <span class="amp">&amp;</span> 0  <span class="amp">&amp;</span> -1<br>
+\end{array}
+\right)+
+\left(
+\begin{array}{ccc}
+0  <span class="amp">&amp;</span> b  <span class="amp">&amp;</span> 0  \
+b  <span class="amp">&amp;</span> 0  <span class="amp">&amp;</span> 0  \
+0  <span class="amp">&amp;</span> 0  <span class="amp">&amp;</span> b<br>
+\end{array}
+\right)\,.
+$$
+Comparez le résultat avec celui de la théorie des perturbations ($b\ll1$&nbsp;petit).</p>
+<h3>5</h3>
+<p>Une particule dans une boîte [$V_0(x)=0,\;0\le x\le a$ et $V_0(x)=\infty$ ailleurs] est perturbée par un potentiel $V(x)=-\lambda\sin(\pi x/a)$. Calculez approximativement l&#8217;énergie de l&#8217;état&nbsp;fondamental.</p>
+<h3>6</h3>
+<p>Une particule dans une boîte [$V(x)=0,\;-L/2\le x\le L/2$ et $V(x) = \infty$ ailleurs] est perturbée par un potentiel $V(x)=v,\;-a/2\le x\le a/2$, avec $v&gt;0$ et $a&lt;L$. Calculez les niveaux d&#8217;énergie en&nbsp;perturbation.</p>
+<h3>7</h3>
+<p>Un oscillateur harmonique $H_0$ de masse $m$ et fréquence $\omega$ est perturbé par un potentiel $V$ quartique en $x$.
+$$
+  H=H_0+V=\frac{p^2}{2m}+\frac{m \omega^2}{2}x^2+g x^4\,.
+$$
+où $g$ est la constante de&nbsp;couplage.</p>
+<ul>
+<li>Trouvez le paramètre adimensionnel $\lambda$ de couplage, dans les unités naturelles de $H_0$; travaillez par la suite dans ce système d&#8217;unités (dans lequel $H_0$ ne contient aucun&nbsp;paramètre). </li>
+<li>Calculez par perturbation les niveaux d&#8217;énergie du hamiltonien. Utilisez les opérateurs $a$ et $a^\dagger$ pour calculer les éléments de matrice $\braket{m|V|n}$ de la perturbation $V\sim&nbsp;x^4$.</li>
+<li>Discutez la limite de validité, selon le niveau d&#8217;énergie, de la série de&nbsp;perturbation.</li>
+</ul>
+<h3>8</h3>
+<p>Une particule de masse $m$ se trouve dans un puits de potentiel bidimensionnel infini
+$$
+V(x,y) = \begin{cases} 0 <span class="amp">&amp;</span> \text{if}\quad 0 \le x,y \le a \
+\infty <span class="amp">&amp;</span> \text{ailleurs} \end{cases}
+$$
+Calculez les énergies du niveau fondamental et du premier niveau excité en présence d&#8217;une perturbation $V(x,y) = v x^2$ ($0\le x\le a$). Tenez compte d&#8217;éventuelles dégénérescences. Faites le graphe des niveaux d&#8217;énergie sans et avec perturbation et discutez l&#8217;effet de&nbsp;celle-ci.</p>
+<h3>9</h3>
+<p>Un atome d&#8217;hydrogène se trouve dans un champ magnétique extérieur constant $\bm B$ de faible intensité; le potentiel de la perturbation est 
+$$
+    V= \frac{e}{m}\bm L \cdot \bm B<br>
+$$
+où $\bm L$ est le moment angulaire orbital de l&#8217;électron. Nous négligeons par simplicité, l&#8217;effet dû au spin (effet Zeeman).  Calculez le déplacement des énergies $\varepsilon_n$ des états $\ket{nlm}$. Discutez la levée de dégénérescence de ces niveaux. Remarquez que vous pouvez choisir un axe de quantification dans la direction du champ&nbsp;extérieur.</p>
+<h3>10</h3>
+<p>(Désintégration beta) Un atome de tritium $^3$H, charge nucléaire $Z=1$, se transforme en un atome He$^+$, $Z=2$. Calculez la probabilité de trouver l&#8217;électron, après le changement soudain de charge, dans son état&nbsp;fondamental.</p>
+<h3>11</h3>
+<p>(Changement d&#8217;orbital) Calculez la probabilité de transition de l&#8217;état 1s à l&#8217;état 2p d&#8217;un atome H soumis à un champ électrique dirigé selon $z$:
+$$
+\mathcal{E}=\mathcal{E}_0\E^{-t/\tau},\quad t&gt;0\,.
+$$
+Calculez au premier ordre de la perturbation, la probabilité de transition vers les trois états p $m=-,1,0,1$), à des temps longs $t \gg&nbsp;\tau$.</p>
+<h3>12</h3>
+<p>(Excitation d&#8217;énergie) Une molécule se trouve dans un état de vibration $n=2$, avec une énergie $E_n=E_2=3\hbar \omega_0/2$, correspondant à l&#8217;hamiltonien d&#8217;un oscillateur harmonique de fréquence $\omega_0$. À $t=0$ on l&#8217;excite avec un champ électrique:
+$$
+\bm{\mathcal{E}}(t)=\mathcal{E}_0\cos(\omega_0t)\,,
+$$
+dans la direction de l&#8217;axe de la molécule ($x$). Écrivez le nouveau hamiltonien à $t&gt;0$ sous la forme $H=H_0(p,x)+f(t)V(x)$ ($V$ est donc dû au moment dipolaire&nbsp;$qx$).</p>
+<p>Calculez les éléments de matrice $V_{2n}$ et déduisez les probabilités de transition $P_{2n}$ en considérant l&#8217;approximation de perturbation harmonique à temps courts&nbsp;($t\ll\omega_0^{-1}$). </p>
+<h3>13</h3>
+<p>Considérez un système à deux niveaux $E_1&lt;E_2$ perturbé par un potentiel:
+$$
+V_{11}=V_{22}=0,\quad V_{12}=V^*<em 12>{21}=V_0\E^{\I\omega t}.
+$$
+Initialement le système se trouve dans l&#8217;état 1, les amplitudes de probabilité sont $c_1(0)=1$ et $c_2(0)=0$. Résolvez exactement le problème (trouvez $\ket{\psi(t)}=c_1(t)\ket{1}+c_2(t)\ket{2}$) et comparez la probabilité de transition $P</em>$.}$ avec le résultat de la théorie des perturbations ($V_0$ petit) dans le cas $\omega\approx\omega_{12}$ et dans le cas&nbsp;$\omega\ll\omega_{12</p>
+<h3>14</h3>
+<p>Un oscillateur quantique qui se trouve initialement dans son état fondamental, est perturbé par une <em>force</em>,
+$$F(t) = F_0 \E^{-t/\tau}, \quad (t&gt;0)$$
+Calculez au premier ordre de la théorie de perturbations dépendante du temps la probabilité d&#8217;excitation de l&#8217;oscillateur vers des états de plus haute&nbsp;énergie.</p>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

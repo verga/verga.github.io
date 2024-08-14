@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Symétries | Random physics
+</title>
+    <link rel="canonical" href="/pages/MQ-sym.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Undergraduate course on quantum mechanics: symétries">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p>$\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\Tr}{\mathrm{tr}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+<blockquote>
+<p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
+</blockquote>
+<h1>Symétries</h1>
+<p>La symétrie est présente dans pratiquement tout système physique et determine en grande partie ses propriétés et sa dynamique. L&#8217;étude de symétries d&#8217;un système quantique révèle la <em>géométrie</em> des états quantiques et des ses opérateurs. D&#8217;abord, les symétries de l&#8217;espace, du temps et de la dynamique, déterminent les lois de conservation et contraignent la forme des états propres des observables comme l&#8217;impulsion, le moment angulaire ou l&#8217;énergie. Par exemple, les propriétés d&#8217;un système physique vis-à-vis de transformations de translation sont liées à l&#8217;opérateur d&#8217;impulsion; les rotations au moment angulaire; et l&#8217;homogénéité temporelle (évolution) au hamiltonien. Plus généralement, un système peut posséder des symétries spécifiques liées à sa géométrie. Dans un cristal, l&#8217;invariance par translation devient une symétrie discrète à laquelle correspond une certaine propriété de périodicité des fonctions d&#8217;onde; ceci influe, entre autres, sur la propagation de phonons (les quantum de vibration). Dans un métal, près de la surface de Fermi, il existe une symétrie entre les trous et les électrons, la création d&#8217;un électron de conduction est accompagné par la création d&#8217;un trou dans la quantité de mouvement est opposée à celle de le (quasi) électron. Cette symétrie &#8220;électron-trou&#8221; est à l&#8217;origine du phénomène de supraconductivité. Le ferromagnétisme, ou anti-ferromagnétisme, dépend de la symétrie de fonctions d&#8217;onde et du spin. Et&nbsp;cætera.</p>
+<p>Mathématiquement la symétrie est associée à un <em>groupe</em> d&#8217;opérateurs. Un groupe est un ensemble $\mathcal{U}$ d&#8217;éléments $U_1, U_2, \ldots \in \mathcal{U}$ et d&#8217;une règle de composition associative (la multiplication) telle que le produit de deux éléments est aussi un élément de $\mathcal{U}$; il existe un élément unité $I$, tel que $<span class="caps">IU</span>=U$, ainsi qu&#8217;un élément inverse $U^{-1} U =I$, $\forall U \in&nbsp;\mathcal{U}$. </p>
+<blockquote>
+<p><img src="/images/MQ-suhu.svg" alt="similitude" style="height: 200px;"/></p>
+<p>Le sous-groupe $\mathcal{H} \subset \mathcal{U}$ est <em>invariant</em> si pour toute transformation $U \in \mathcal{U}$, la transformation de similitude de $H$ (plus généralement de &#8220;conjugaison&#8221;), est un élément de $\mathcal{H}$, $<span class="caps">UHU</span>^{-1} \in \mathcal{H}$. On écrit $U\mathcal{H}U^{-1}=&nbsp;\mathcal{H}$.</p>
+</blockquote>
+<p>Le groupe de symétrie $\mathcal{U} = \mathrm{sym}(X)$ d&#8217;un objet $X$, est généré par l&#8217;ensemble de transformation $U$ qui laissent $X$ invariant. Par exemple, soit $X$ un carré, $U$ peut être une rotation $R$ de $\pi/2$ autour de l&#8217;axe passant par l&#8217;intersection de ses deux diagonales, ou une réflexion $M$ par rapport à une diagonale, etc. On vérifie que l&#8217;ensemble de rotations et de réflexions forment un groupe d&#8217;ordre 8 (nombre d&#8217;éléments du groupe); on vérifie aussi que ces transformations sont toutes reliées par des <em>conjugaisons</em> ($<span class="caps">MRM</span>=R&#8217;$ ou $<span class="caps">RMR</span>^{-1}=M&#8217;$) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<blockquote>
+<p><img src="/images/MQ-ssqrR.svg" alt="square rotations" style="height: 250px;"/> <img src="/images/MQ-ssqrM.svg" alt="square rotations" style="height: 250px;"/></p>
+<p>Symétries du carré <span class="caps">ABCD</span> de rotation $R_{1,2,3} = R_z(\phi)$ autour de l&#8217;axe $z$ passant par le point d&#8217;intersection des diagonales <span class="caps">AC</span> et <span class="caps">BD</span> et d&#8217;angles $\pi/2, \pi$ et $3\pi/4$, et de réflexion $M_{1,2,3,4}$ sur les axes medians et les&nbsp;diagonales.</p>
+</blockquote>
+<p>La notion physique de symétrie correspond à l&#8217;<em>invariance</em> des propriétés du système (phases, dynamique) vis-à-vis des transformations par un groupe d&#8217;opérateurs associés à chaque symétrie. En particulier, pour un système défini par son hamiltonien $H$, on dit qu&#8217;il possède une symétrie $U$ (opérateur unitaire indépendant du temps) si
+$$
+<span class="caps">UHU</span>^\dagger = H, \text{ ou } [U,H] = 0, 
+$$
+ce qui implique que la transformation $U$ ne modifie pas l&#8217;évolution du système. En effet, la transformation $\ket{\psi&#8217;} = U \ket{\psi}$ transforme l&#8217;équation de schrödinger dans
+$$
+\I \frac{\partial}{\partial t} \ket{\psi&#8217;} = <span class="caps">UHU</span>^\dagger \ket{\psi&#8217;}
+$$
+pour l&#8217;état $\ket{\psi&#8217;}$, identique à celle pour $\ket{\psi}$ si $H$ est invariant vis-à-vis de la transformation&nbsp;$U$.</p>
+<p>Avant de discuter les symétries de l&#8217;espace nous avons besoin de définir les opérateurs et les états de position et&nbsp;d&#8217;impulsion.</p>
+<h2>Position et&nbsp;impulsion</h2>
+<p>En mécanique classique la position d&#8217;une particule est un vecteur dans l&#8217;espace, auquel on associe un référentiel et des coordonnées. En mécanique quantique on doit d&#8217;abord définir un espace de hilbert, dont les kets correspondent à l&#8217;état &#8220;position&#8221; de la particule. L&#8217;<em>observable</em> position $X$ agit sur les états position $\ket{x}$; la position est donc donnée par ses valeurs propres:
+$$
+X \ket{x} = x \ket{x}.
+$$
+Notez que du fait que la position est un élément d&#8217;un espace de hilbert l&#8217;état <em>position</em> est en général une superposition de positions. Un photon qui rentre dans un interféromètre peut bien se &#8220;trouver&#8221; sur ses deux branches, dans une superposition de deux chemins, et par conséquent, interférer avec &#8220;lui&nbsp;même&#8221;.</p>
+<p>Un modèle simple d&#8216;&#8220;espace&#8221; est représenté dans la figure&nbsp;ci-dessous.</p>
+<blockquote>
+<p><img src="/images/MQ-spos.svg" alt="position" style="height: 70px;"/></p>
+<p>Modèle discret de l&#8217;observable &#8220;position&#8221; $x$: le réseau à une dimension dont l&#8217;unité est $\Delta x =&nbsp;1$.</p>
+</blockquote>
+<p>Sur cet &#8220;espace&#8221; la position prend des valeurs discrètes, $x = 0, 1, \ldots, N-1$, ou $N$ est sa longueur totale. L&#8217;unité de longueur est prise telle que la distance entre deux positions successives est $\Delta x = 1$. L&#8217;opérateur $X$ satisfait donc,
+$$
+X \ket{x} = x \ket{x}, \quad x = 0, 1, 2, \ldots, N-1,
+$$
+avec l&#8217;ensemble $\ket{x}$ (l&#8217;état position) formant une base de l&#8217;espace position $\mathcal{H}$:
+$$
+\braket{x|x&#8217;} = \delta_{xx&#8217;}, \quad \sum_x \ket{x} \bra{x} = 1.
+$$
+La périodicité du réseaux permet d&#8217;introduire une deuxième base, $\ket{k}$, reliée à la base position par une transformation de Fourier:
+$$
+\ket{k} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1} \E^{\I 2\pi k x/N} \ket{x},
+$$
+ou son inverse, dans laquelle on exprime la position comme une superposition des états $\ket{k}$:
+$$
+\ket{x} = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} \E^{-\I 2\pi k x/N} \ket{k}.
+$$
+On constate que l&#8217;application linéaire qui relie l&#8217;espace $x$ et l&#8217;espace &#8220;k&#8221; est
+$$
+F = \sum_{x,k} \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}} \ket{x} \bra{k}
+$$
+On vérifie aisément que $F$ (la transformation de fourier) est un opérateur unitaire <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Ceci signifie aussi que les deux équations précédentes sont l&#8217;inverse l&#8217;une de l&#8217;autre:
+$$
+\ket{x} = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} \E^{-\I 2\pi k x/N} \ket{k} = \sum_{x&#8217;} \Big[ \frac{1}{N} \sum_{k} \E^{\I 2\pi k(x&#8217;- x)/N} \Big] \ket{x&#8217;} = \ket{x}
+$$
+où on a utilisé l&#8217;identité
+$$
+\frac{1}{N} \sum_{k} \E^{\I 2\pi k(x&#8217;- x)/N} = \delta_{x,x&#8217;}.
+$$
+compatible avec la condition d&#8217;orthogonalité $\braket{x|x&#8217;} = \delta_{xx&#8217;}$ . On déduit également que l&#8217;expression du ket $\ket{k}$ dans la base $x$ est
+$$
+\braket{x|k} = \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}}.
+$$
+On dit qu&#8217;on <em>représente</em> le ket $\ket{k}$ dans la base &#8220;position&#8221; $\ket{x}$; son complexe conjugué est la représentation de la position dans la base &#8220;k&#8221;, qu&#8217;on va identifier avec&nbsp;l&#8217;impulsion.</p>
+<p>Un vecteur quelconque de l&#8217;espace de hilbert $\ket{\psi}$ peut s&#8217;exprimer en &#8220;base position&#8221;, c&#8217;est-à-dire comme une superposition des différents états &#8220;position&#8221;:
+$$
+\ket{\psi} = \sum_x \psi_x \ket{x}, \quad \psi_x = \braket{x|\psi},
+$$
+où l&#8217;amplitude au carré $|\psi_x|^2$, selon la règle de Born, correspond à la probabilité de trouver le système dans l&#8217;état (la position)&nbsp;$x$.</p>
+<p>Il est naturel, comme on l&#8217;a fait pour la position $x$, d&#8217;associer aux nombres $k$ un opérateur $K$ tel que
+$$
+K \ket{k} = k \ket{k}, \quad \braket{k,k&#8217;} = \delta_{kk&#8217;}.
+$$
+Pour étudier le lien entre $X$ et $K$, on peut calculer leur commutateur $[X,K]$:
+$$
+\begin{gather<em>}
+\braket{x|<span class="caps">XK</span>|x&#8217;} = \frac{x}{\sqrt{N}} \sum_{k=0}^{N-1} k \E^{-\I 2\pi k x&#8217;/N} \braket{x|k} = \frac{x}{N} \sum_{k=0}^{N-1} k \E^{\I 2\pi k(x - x&#8217;)/N} \
+\braket{x|<span class="caps">KX</span>|x&#8217;} = \frac{x&#8217;}{\sqrt{N}} \sum_{k=0}^{N-1} k \E^{-\I 2\pi k x&#8217;/N} \braket{x|k} = \frac{x&#8217;}{N} \sum_{k=0}^{N-1} k \E^{\I 2\pi k(x - x&#8217;)/N} ,
+\end{gather</em>}
+$$
+la différence de ces deux équations donne <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+$$
+\braket{x|[X,K]|x&#8217;} =  \frac{x-x&#8217;}{\E^{\I 2\pi k(x - x&#8217;)/N} - 1}
+$$
+où on a fait la somme sur la série géométrique:
+$$
+\sum_{k=0}^{N-1} k \E^{-\I 2\pi kx/N} = \frac{N}{\E^{-\I 2\pi kx/N}-1} .
+$$
+Quand $x \rightarrow x&#8217;$ l&#8217;expression tends vers
+$$
+\lim_{x \to x&#8217;} \frac{x-x&#8217;}{\E^{\I 2\pi k(x - x&#8217;)/N - 1}} = \frac{\I N}{2\pi},
+$$
+ce qui conduit au résultat:
+$$
+\begin{equation}
+\label{e:ckp}
+\Big[X, \frac{2\pi K}{N}\Big] = \I.
+\end{equation}
+$$
+On observe que le commutateur de $X$ et $K$ est semblable à celui entre la position et l&#8217;impulsion (comme grandeurs continues), ce qui confirme l&#8217;interprétation de $K$ comme un opérateur impulsion &#8220;discret&#8221;, opérateur canonique de la position discrète&nbsp;$X$.</p>
+<p>On se propose maintenant de généraliser le modèle d&#8217;espace discret à un espace continu, dans lequel la position devient un nombre réel avec la dimension de longueur. On introduit donc $L=N\Delta x$ la longueur de la ligne et on remplace $x\Delta x$ par $x \in \mathbb{R}$. La limite continue est définie par
+$$
+\lim_{\substack{N\rightarrow\infty \ \Delta x \rightarrow 0}} N\Delta x = L.
+$$
+La variable discrète $k$ devient une variable dimensionnelle donc proportionnelle à $k/\Delta x$, avec l&#8217;unité de l&#8217;inverse d&#8217;une longueur (nombre d&#8217;onde, dans l&#8217;espace de fourier). En résumé on a
+$$
+\begin{gather<em>}
+N \Delta x \rightarrow L,\
+x \Delta x \rightarrow x,\
+2\pi k/N\Delta x \rightarrow p/\hbar,
+\end{gather</em>}
+$$
+où on a introduit, à la place du nombre d&#8217;onde, la variable continue $p$ ayant les dimensions d&#8217;une impulsion (avec le choix habituel $\hbar=1$, l&#8217;unité d&#8217;impulsion devient l&#8217;inverse d&#8217;une&nbsp;longueur).</p>
+<p>Observez que le commutateur de l&#8217;équation $\eqref{e:ckp}$, se transforme comme
+$$
+\Big[X \Delta x, \frac{2\pi K}{N\Delta x}\Big] = [x, p/\hbar] = \I,
+$$
+dans la limite&nbsp;continue.</p>
+<p>En faisant $\Delta x \rightarrow 0$ on obtient la limite continue:
+$$
+\begin{gather<em>}
+X \ket{x} = x \ket{x}, \quad \int_{-\infty}^{\infty} \D x\, \ket{x}\bra{x} = 1, \; \braket{x|x&#8217;} = \delta(x-x&#8217;), \
+P \ket{p} = p \ket{p}, \quad \int_{-\infty}^{\infty} \D p \, \ket{p}\bra{p} = 1, \; \braket{p|p&#8217;} = \delta(p-p&#8217;),
+\end{gather</em>}
+$$
+et (avec la constante de normalization en unité d&#8217;action, en accord avec les dimensions de $[\ket{x}] \sim 1/\sqrt{L}$ et $[\ket{p}] \sim \sqrt{L/\hbar}$) 
+$$
+\braket{x|p} = \frac{\E^{\I p x/\hbar}}{\sqrt{2\pi \hbar}}.
+$$
+On montre maintenant que $P$ est l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le commutateur de $P$ avec $X$. L&#8217;opérateur $P$ exprimé en base $x$ est
+$$
+\begin{align<em>}
+  \braket{x|P|x&#8217;} &amp;= \int_{-\infty}^{\infty}\D p \,\braket{x|P|p} \braket{p|x&#8217;} \
+  <span class="amp">&amp;</span> = \int_{-\infty}^{\infty}\D p \, p \braket{x|p} \braket{p|x&#8217;}  \
+  <span class="amp">&amp;</span> = \Big(- \I \hbar \frac{\partial }{\partial x}  \Big)
+    \int_{-\infty}^{\infty} \frac{\D p}{2\pi\hbar} \, \E^{\I p x/\hbar}
+  \E^{-\I p x&#8217;/\hbar} \
+  <span class="amp">&amp;</span> = -\I \hbar \frac{\partial }{\partial x} \delta(x-x&#8217;)\,,
+\end{align</em>}
+$$
+ce qui est bien en accord avec l&#8217;identification habituelle de l&#8217;opérateur impulsion $P=-\I\hbar \D/!\D x$, comme opérateur différentiel. Par conséquent, on a
+$$
+\begin{align<em>}
+  \bra{x} <span class="caps">XP</span> \ket{x&#8217;} &amp;= -x \I\hbar \frac{\partial }{\partial x} \delta(x-x&#8217;)\ 
+  \bra{x} <span class="caps">PX</span> \ket{x&#8217;} &amp;= -x&#8217; \I\hbar \frac{\partial }{\partial x} \delta(x-x&#8217;),
+\end{align</em>}
+$$
+et, en faisant la différence,
+$$
+    \bra{x}[X,P]\ket{x&#8217;} = - (x-x&#8217;)\I \hbar 
+    \frac{\partial }{\partial x}\delta(x-x&#8217;) = \I\hbar\delta(x-x&#8217;)
+$$
+où on a utilisé la propriété de la dérivée de la delta de Dirac:
+$$
+x \frac{\D}{\D x}\delta(x)= - \delta(x),
+$$
+ce qui conduit à l&#8217;expression du commutateur,
+$$
+\begin{equation}
+  [X,P] = \I \hbar,
+\end{equation}
+$$
+résultat qui correspond bien avec l&#8217;interprétation de $P$ comme l&#8217;opérateur&nbsp;d&#8217;impulsion.</p>
+<p>Comme dans le cas discret, on utilise la base $x$ pour développer l&#8217;état de la &#8220;particule&#8221;:
+$$
+\ket{\psi} = \int_0^\infty \D x \psi(x) \ket{x}, \quad \psi(x) = \braket{x|\psi},
+$$
+où maintenant $\psi(x)$ est la <em>fonction d&#8217;onde</em> de la particule et $|\psi(x)|^2$ représente la <em>densité de probabilité</em>, ou distribution spatiale, de la particule. En utilisant l&#8217;équation de schrödinger pour $\ket{\psi}$ il est facile de démontrer <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+$$
+\I \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t), \quad \braket{x&#8217;|H|x} = \hat{H}\delta(x&#8217;-x)
+$$
+avec $\hat{H}$ le hamiltonien en représentation position (opérateur&nbsp;différentiel).</p>
+<h2>Translation</h2>
+<p>On définit l&#8217;opérateur de translation $T_a$ par
+$$
+T_a  \ket{x} = \ket{x+a}, \quad a \in \mathbb{R},
+$$
+où $a$ est le paramètre de translation du point $x$ vers le point $x+a$. On vérifie aisément que la famille d&#8217;opérateurs $T_a$ forme un groupe:
+$$
+\begin{gather<em>}
+T_aT_b \ket{x}=\ket{x+a+b}= T_bT_a\ket{x} = T_{a+b}\ket{x} \
+T_aT_{-a} \ket{x} = \ket{x} = T_a T_a^{-1} \ket{x},
+\end{gather</em>}
+$$
+avec $T_0$ l&#8217;élément unité et $T_{-a}$ l&#8217;élément inverse; en plus, comme $T_aT_b=T_bT_a$ le groupe est abélien&nbsp;(commutatif).</p>
+<blockquote>
+<p><img src="/images/MQ-strans.svg" alt="translation psi" style="height: 140px;"/></p>
+<p>Translation de la fonction d&#8217;onde $\psi(x) = \braket{x|\psi} \rightarrow \braket{x|T_a|\psi} =&nbsp;\psi&#8217;(x)$.</p>
+</blockquote>
+<p>Voyons comment $T_a$ agit sur la fonction d&#8217;onde (voir la figure ci-dessus):
+$$
+\begin{align<em>}
+\braket{x|T_a|\psi} &amp;= \int \D x&#8217;\, \braket{x|T_a|x&#8217;} \braket{x&#8217;|\psi} = \
+  &amp;= \int \D x&#8217;\, \braket{x|x&#8217;+a} \psi(x&#8217;) = \int \D x&#8217;\, \delta(x - a - x&#8217;) \psi(x&#8217;) \
+  &amp;= \psi(x-a) = \braket{x-a|\psi},
+\end{align</em>}
+$$
+elle conserve donc sa forme $\psi(x)$, mais déplacée de $a$: l&#8217;expression $\braket{x-a|\psi}$ représente le vecteur $\ket{\psi}$ dans la base position déplacée de $-a$. On observe que le complexe conjugué de l&#8217;expression précédente peut s&#8217;écrire
+$$
+\braket{x|T_a|\psi}^\star = \braket{\psi|x-a} =\braket{\psi|T_a^\dagger|x} = \braket{\psi|T_{-a}|x} \quad \Rightarrow \quad T^\dagger_a = T^{-1}<em _Delta="\Delta" x>a,
+$$
+ce qui implique l&#8217;unitarité de $T_a$. Par conséquent, pour un déplacement infinitésimal $\Delta x$, $T</em>$ doit être proche de l&#8217;unité ($T_0=1$):
+$$
+T_{\Delta x} = 1 - \I \Delta x K, \quad K = K^\dagger,
+$$
+avec $K$ un certain opérateur hermitien. En effet, en posant $a = N\Delta x$, on a dans la limite continue
+$$
+T_a = \lim_{N \to \infty} \Big(1 - \I \Delta x K \Big)^N = \E^{-\I a K},
+$$
+une succession de $N$ translations de $\Delta x$ résulte bien dans une translation de $a$. On va maintenant démontrer que $K$ est en fait (à une constante dimensionnelle près) l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le commutateur $[X,T]$:
+$$
+\begin{align<em>}
+X T_{\Delta x} \ket{x} &amp;= (x + \Delta x)\ket{x + \Delta x} \
+  &amp;= X(1 - \I \Delta x K) \ket{x} = x\ket{x} - \I \Delta x <span class="caps">XK</span> \ket{x},
+\end{align</em>}
+$$
+et
+$$
+\begin{align<em>}
+T_{\Delta x} X \ket{x} &amp;= x\ket{x + \Delta x} \
+  &amp;= x(1 - \I \Delta x K) \ket{x} = x\ket{x} - \I \Delta x <span class="caps">KX</span> \ket{x},
+\end{align</em>}
+$$
+leur différence (à l&#8217;ordre $\Delta x$) est 
+$$
+(X T_{\Delta x} - T_{\Delta x} X) \ket{x} = \Delta x \ket{x} = -\I \Delta x (<span class="caps">XK</span> -<span class="caps">KX</span>) \ket{x},
+$$
+ce qui implique,
+$$
+[X,K] = \I \quad \Rightarrow \quad K = \frac{P}{\hbar},
+$$
+où on a utilisé le commutateur position-impulsion pour identifier $P$. En définitive, l&#8217;opérateur de translation s&#8217;écrit:
+$$
+T_{\bm a} = \E^{-\I \bm a \cdot \bm P/\hbar}, \quad \bm a \in \mathbb{R}^3,
+$$
+en généralisant le résultat en dimension 1, à trois dimensions de l&#8217;espace (les translations sur différentes direction&nbsp;commutent).</p>
+<h2>Rotation</h2>
+<blockquote>
+<p><img src="/images/MQ-srot.png" alt="rotation" style="height: 250px;"/></p>
+<p>La rotation d&#8217;un vecteur $\bm x$ en $\mathbb{R}^3$ est spécifiée par un axe $\bm n$ et un angle $\Delta \phi$: $\bm x&#8217; = \bm x + \Delta \bm \phi \times \bm x$ (avec $\Delta \bm \phi = \Delta \phi \bm n$, où $\bm n$ est de longueur&nbsp;unité).</p>
+</blockquote>
+<p>On définit l&#8217;opérateur de rotation par
+$$
+R_{\bm n}(\phi) \ket{\bm x} = \ket{\bm x + \bm \phi \times \bm x}.
+$$
+Pour une rotation infinitésimale $\Delta \phi$, $R_{\bm n}(\Delta \phi)$ est proche de l&#8217;unité:
+$$
+R_{\bm n}(\Delta \phi) = 1 - \I \Delta \bm\phi \cdot \bm M, \quad \bm M = \bm M^\dagger
+$$
+où $\bm M$ est un opérateur hermitien sans dimension, tel que
+$$
+\begin{align<em>}
+R_{\bm n}(\Delta \phi) \ket{\bm x} &amp;= (1-\I \Delta \bm\phi \cdot \bm M) \ket{x} = \ket{\bm x + \Delta \phi \bm n \times \bm x} \
+ &amp;= \Big[1 - \frac{\I}{\hbar} (\Delta \phi \bm n \times \bm x) \cdot \bm P \Big] \ket{\bm x} \
+ &amp;=\Big[1 - \frac{\I}{\hbar} \Delta \bm\phi \cdot (\bm X \times \bm P) \Big] \ket{\bm x} 
+\end{align</em>}
+$$
+ou, par analogie avec la translation de $\Delta \bm x = \Delta \phi \,\bm n\times \bm x$ on a introduit l&#8217;impulsion $\bm P/\hbar$; on a aussi remplacé $\bm x$ par $\bm X$ et utilisé la propriété cyclique du produit mixte (notez que dans le produit vectoriel les composantes de $\bm X$ et $\bm P$ sont toujours sur des directions différentes, ce qui permet d&#8217;en échanger l&#8217;ordre). En comparant la première et dernière lignes, on obtient $\bm M = \bm L /\hbar$,
+$$
+\bm L = \bm X \times \bm P
+$$
+qui est l&#8217;opérateur du moment angulaire. On conclue que l&#8217;opérateur de rotation s&#8217;écrit:
+$$
+R_{\bm n}(\phi) = \E^{-\I \phi \bm n \cdot \bm L/\hbar}.&nbsp;$$</p>
+<p>Il est important d&#8217;observer que l&#8217;opérateur $\bm L$ est un <em>générateur</em> de la rotation, ainsi comme $\bm P$ en est pour la translation; il ne dépend pas des paramètres de la rotation $\bm n$ et $\phi$, par conséquent, il peut être déterminé en étudiant une rotation infinitésimale, comme on vient de le faire. Nous pouvons appliquer cette idée à la rotation dans l&#8217;espace, c&#8217;est-à-dire le moment angulaire correspondant au nombre orbital $l=1$, comme on va le voir:
+$$
+\bm x \quad \rightarrow \quad \bm x + \Delta \bm x, \; \Delta x = \Delta \phi \bm n \times \bm x = -\frac{\I}{\hbar} \Delta \phi \bm n \cdot \bm L \bm x.
+$$
+La dernière égalité introduit les matrices:
+$$
+\bm n \cdot \bm L = \I\hbar\begin{pmatrix}
+  0 <span class="amp">&amp;</span> -n_z <span class="amp">&amp;</span> n_y \
+  n_z <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> -n_x \
+  -n_y <span class="amp">&amp;</span> n_x <span class="amp">&amp;</span> 0
+  \end{pmatrix}, \quad
+  \bm x = \begin{pmatrix} x \ y \ z \end{pmatrix},
+$$
+ce qui implique
+$$
+L_x = \hbar \begin{pmatrix}
+  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \
+  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> -\I \
+  0 <span class="amp">&amp;</span> \I <span class="amp">&amp;</span> 0
+  \end{pmatrix}, \; 
+L_y = \hbar \begin{pmatrix}
+  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> \I \
+  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \
+  -\I <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0
+  \end{pmatrix}, \;
+L_z = \hbar \begin{pmatrix}
+  0 <span class="amp">&amp;</span> -\I <span class="amp">&amp;</span> 0 \
+  \I <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \
+  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0
+  \end{pmatrix}.
+$$
+Les matrices de rotation selon les axes $(x,y,z)$ sont donc <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+$$
+R_x(\phi) = \begin{pmatrix}1 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> \cos\phi <span class="amp">&amp;</span> -\sin\phi \ 0 <span class="amp">&amp;</span> \sin\phi <span class="amp">&amp;</span> \cos\phi \end{pmatrix}, \;
+R_y(\phi) = \begin{pmatrix}\cos\phi <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> \sin\phi \ 0 <span class="amp">&amp;</span> 1 <span class="amp">&amp;</span> 0 \ -\sin\phi <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> \cos\phi \end{pmatrix}, \;
+R_z(\phi) = \begin{pmatrix}\cos\phi <span class="amp">&amp;</span> -\sin\phi <span class="amp">&amp;</span> 0\ \sin\phi <span class="amp">&amp;</span> \cos\phi <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 1  \end{pmatrix}.&nbsp;$$</p>
+<p>On vérifie par calcul direct les relations de commutation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+$$
+[L^2, \bm L] = 0, \quad [L_x, L_y] = \I\hbar L_z, \; [L_z, L_x] = \I\hbar L_y, \; [L_y, L_z] = \I\hbar L_x, 
+$$
+qui sont en fait parfaitement générales pour tout moment angulaire. Comme le commutateur $[L^2, L_z] = 0$ s&#8217;annule, on peut choisir une base commune de $L^2$ et $L_z$, qu&#8217;on note $\ket{l,m}$: on dit que $z$ est l&#8217;axe de quantification du moment angulaire:
+$$
+\begin{gather<em>}
+L^2 \ket{l,m} = \hbar^2 l(l+1) \ket{j,m}\
+L_z \ket{j,m} = \hbar m \ket{j,m},
+\end{gather</em>}
+$$
+ici $l$ est le nombre quantique <em>orbital</em>, et $m$ le nombre quantique <em>magnétique</em>, dénominations utilisées pour décrire la structure électronique des&nbsp;atomes.</p>
+<p>On se propose maintenant de calculer $l$, $m$ et les vecteurs propres $\ket{l,m}$. Les valeurs propres de $L_z$ sont $m=-1,0,1$, et celles de $L^2$ sont toutes égales à $2$ (troi,s fois dégénérée),
+$$
+L^2 = \hbar \begin{pmatrix} 2 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> 2 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 2 \end{pmatrix},
+$$
+ce qui correspond à $l=1$, comme on l&#8217;avait anticipé pour les rotations dans l&#8217;espace. On constate donc que l&#8217;espace de hilbert du moment angulaire $\bm L$ avec $l=1$ est simplement tridimensionnel, il ne prend que trois valeurs possibles $-\hbar, 0, \hbar$. Les vecteurs propres sont <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+$$
+\ket{1,-1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \ -\I \ 0 \end{pmatrix}, \;
+\ket{1,0} = \begin{pmatrix} 0 \ 0 \ 1 \end{pmatrix}, \;
+\ket{1,1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \ \I \ 0 \end{pmatrix}\dots
+$$
+En identifiant $\braket{\theta,\phi|j,m} = \braket{\bm n| j,m}$ (les états propres de $L^2$ et $L_z$ en représentation position) avec le produit scalaire des vecteurs propres et de l&#8217;axe $\bm n$, on obtient
+$$
+\begin{gather<em>}
+\braket{\bm n|1,-1} = \frac{1}{\sqrt{2}} \E^{-\I\phi} \sin\theta, \
+\braket{\bm n|1,0} = \cos\theta, \
+\braket{\bm n|1,1} = -\frac{1}{\sqrt{2}} \E^{\I\phi} \sin\theta,
+\end{gather</em>}
+$$
+expressions, à des facteurs de normalisation près, correspondant aux harmoniques sphériques $Y_{lm}(\theta, \phi)$:
+$$
+\braket{\bm n| l,m} \sim Y_{lm}, \quad l=1, \; m = -1, 0, 1.&nbsp;$$</p>
+<blockquote>
+<p><img src="/images/MQ-ssh1.png" alt="harmonique Y 1 -1" style="height: 250px;"/></p>
+<p>Harmonique sphérique&nbsp;$(l,m)=(1,-1)$.</p>
+</blockquote>
+<p>Ces fonctions représentent la distribution angulaire de l&#8217;amplitude de probabilité (fonction d&#8217;onde) de la particule, dans le cas de l&#8217;atome par&nbsp;exemple. </p>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

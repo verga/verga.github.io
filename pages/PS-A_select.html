@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Selected Problems | Random physics
+</title>
+    <link rel="canonical" href="/pages/PS-A_select.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Solutions to selected problems">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+
+<article class="article">
+  <div class="content">
+    <p>$\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+<blockquote>
+<p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
+</blockquote>
+<h2>Selected problems:&nbsp;solutions</h2>
+<h3>4 Identical&nbsp;particles</h3>
+<p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions $\bm x_1$ and $\bm x_2$,
+$$
+\begin{equation}
+\label{rh}
+\braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2}
+\end{equation}
+$$ 
+using the canonical quantum ensemble
+$$
+\begin{equation}
+\label{h}
+\rho(H) = \frac{\E^{-H/T}}{Z_2(T,V)}, \quad H = \frac{\bm p_1^2 + \bm p_2^2}{2m}
+\end{equation}
+$$
+density matrix; $H$ is the hamiltonian of the two identical&nbsp;particles.</p>
+<p>Show that it is given by the formula
+$$
+\begin{equation}
+\label{xrx}
+\braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2} = \frac{1}{2\lambda^6 Z_2} \big(1 \pm \E^{-2\pi |\bm x_1 - \bm x_2|^2/\lambda^2}\big)
+\end{equation}
+$$
+where $\lambda$ is the thermal length at temperature $T$. Deduce the expression of the two particles partition function $Z_2(T,V)$, and compare the result with the classical&nbsp;one.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The quantum state of the two particles is best described in the momentum representation $\ket{\bm k}$,
+$$\bm p \ket{k} = \bm k \ket{k} \quad (\hbar = 1)$$
+in which the momentum operator $\bm p$ is diagonal. For bosons we have
+$$\ket{k_1k_2}<em>B = \frac{\ket{k_1k_2} + \ket{k_2k_1}}{\sqrt{2}} = \ket{k_1k_2}</em>+$$
+and
+$$\ket{k_1k_2}<em>F = \frac{\ket{k_1k_2} - \ket{k_2k_1}}{\sqrt{2}} = \ket{k_1k_2}</em>-$$
+for&nbsp;fermions.</p>
+<p>In this representation the two particles hamiltonian is diagonal:
+$$
+\begin{equation}
+\label{hkk}
+H = \left( \frac{k_1^2}{2} + \frac{k_2^2}{2} \right) \ket{k_1k_2}\bra{k_1k_2}<em>\pm \quad (m = 1),
+\end{equation}
+$$
+and is symmetric in $(k_1, k_2)$. Note that in the present units, the thermal length is $\lambda=(2\pi/T)^{1/2}$ at temperature $T$ ($k</em>\mathrm{B} =&nbsp;1$).</p>
+<p>Using ($\ref{hkk}$) in ($\ref{rh}$), and introducing the unity decomposition
+$$
+1 = \frac{1}{2}\sum_{k_1, k_2} \ket{k_1k_2}\bra{k_1k_2}<em k_1_="k_1," k_2>\pm
+$$
+where the factor $1/2$ avoids counting twice the same basis projector (their are symmetric in the indices $k_1k_2$), we obtain
+$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2}\sum</em>} \braket{x_1x_2|k_1k_2<em>\pm \braket{k_1k_2|x_1x_2}</em>\pm \exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$
+In the limit of a large volume the summations go to integrals:
+$$
+\begin{equation}
+\label{xrxkk}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{V^2}{2} \int \frac{\D \bm k_1}{(2\pi)^3} \frac{\D \bm k_2}{(2\pi)^3} \braket{x_1x_2|k_1k_2}<em>\pm \braket{k_1k_2|x_1x_2}</em>\pm \exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$
+and the $\braket{x|k}$ wavefunction becomes:
+$$
+\braket{x|k} = \frac{\E^{\I \bm k \cdot \bm x}}{\sqrt{V}}
+$$
+which, after substitution into ($\ref{xrxkk}$), gives
+$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{4} \int \frac{\D \bm k_1}{(2\pi)^3} \frac{\D \bm k_2}{(2\pi)^3} \Big( 2 \pm \E^{\I \bm k_1 \cdot (\bm x_1 - \bm x_2)} \E^{\I \bm k_2 \cdot (\bm x_2 - \bm x_1)} \pm \E^{\I \bm k_1 \cdot (\bm x_2 - \bm x_1)} \E^{\I \bm k_2 \cdot (\bm x_1 - \bm x_2)} \big)\exp\left( -\frac{k_1^2}{2T} - \frac{k_2^2}{2T} \right).
+\end{equation}
+$$
+or, noting that the two integrals factorise:
+$$
+\begin{equation}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2\lambda^6} \pm \frac{1}{2}\left[\int \frac{\D \bm k}{(2\pi)^3} \E^{\I \bm k \cdot (\bm x_1 - \bm x_2)} \E^{-\frac{k^2}{2T}} \right]^2.
+\end{equation}
+$$
+The gaussians are readily integrated to give
+$$
+\begin{equation}
+\label{xxrxx}
+\braket{x_1 x_2 | \E^{-H/T} | x_1x_2} = \frac{1}{2\lambda^6} \left( 1 \pm \E^{T|\bm x_1 - \bm x_2|^2} \right)
+\end{equation}
+$$
+which would coincide with the desired result ($\ref{xrx}$), once the original units are&nbsp;restored.</p>
+<p>Integrating now on $x_1x_2$ we deduce the two particle partition function. The first term gives the ideal gas result $(V/\lambda)^2$, the second one contains the entropy corrections resulting form the identity of particles:
+$$
+Z_2(T,V) = \frac{1}{2!}\left(\frac{V}{\lambda} \right)^2 \pm \frac{V}{2! 2^{3/2}\lambda^3}
+$$
+or equivalently
+$$
+Z_2(T,V) = \frac{1}{2!}\left(\frac{V}{\lambda} \right)^2 \left(1 \pm \frac{\lambda^3}{2^{3/2} V} \right).&nbsp;$$</p>
+<blockquote>
+<p><img src="/images/PS-A_select_wr.svg" alt="entropic potential" style="height: 250px;"/></p>
+<p>Effective entropic interaction between two fermions (<span class="caps">FD</span>) and two bosons (<span class="caps">BE</span>). At short distances $r$ fermion repulsion is strong (it diverges in $0$, red curve), while bosons attract with an maximum energy of $T \ln2$ (blue&nbsp;curve).</p>
+</blockquote>
+<p>A physical picture of the entropy contribution can be obtained form the observation that ($\ref{xxrxx}$) defines an effective interaction 
+$$
+w(r) = - T \ln \left( 1 \pm \E^{- Tr^2} \right), \quad r = |\bm x_1 - \bm x_2|
+$$
+(note that $\rho \sim \E^{-w/T}$ can be written as $w \sim -T \ln \rho$). The above figure represents the two curves, for bosons ($+$) and fermions ($-$), as a function of the normalized distance $\sqrt{T}r = \sqrt{2\pi}r/\lambda$ (in units of&nbsp;$\sqrt{m/\hbar^2}$).</p>
+<h3>5</h3>
+<p>Bose-Einsein condensate. Demonstrate that $N$ free bosons in two dimension do not form a condensate; show in particular that the critical temperature $T_c$ (signaling the quantum dominated regime) vanishes like $T_c \rightarrow 1/\ln N$ in the thermodynamic&nbsp;limit.</p>
+<p>In contrast to the free case, demonstrate that in a harmonic trap, a two-dimensional gas of bosons do forms a condensate. Show that in this case the critical temperature is
+$$
+T_c = \frac{\sqrt{6}\hbar \omega}{\pi} N^{1/2},
+$$
+where $\omega$ the harmonic oscillator&nbsp;frequency. </p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The interesting quantity is the number of particles, and in particular their distribution between the ground and excited energy levels
+$$
+\begin{equation}
+\label{Nsum}
+N = \sum_s \frac{1}{\E^{(\epsilon_s - \mu)/T}-1}
+\end{equation}
+$$
+For a <em>free</em> gas confined in a two-dimensional box of area $L^2$, we start computing the density of states, in order to transform ($\ref{Nsum}$) into an integral:
+$$
+\nu(\epsilon) = \frac{\D}{\D \epsilon} \Big[ \frac{L^2}{(2\pi \hbar)^2} \pi p^2\Big] = \frac{L^2}{2\pi} \frac{m}{\hbar^2} = \frac{L^2}{2\pi}
+$$
+where, in the last equality we put $\hbar=m=1$, and we used that $\epsilon_{\bm p} = p^2/2m$. Note also that the ground state energy
+$$
+\epsilon_0 = \frac{\pi^2\hbar^2}{2mL^2}
+$$
+tends to zero in the thermodynamic limit ($L \rightarrow \infty$). Just in the thermodynamic limit we write
+$$
+\begin{equation}
+\label{Nint}
+N = \frac{L^2}{2\pi} \int_{0}^\infty \frac{\D \epsilon}{\E^{-\mu/T} \E^{\epsilon/T} - 1} = \frac{L^2 T}{2\pi} \ln\big( 1 - \E^{\mu/T} \big)
+\end{equation}
+$$
+and may conclude that the chemical potential vinishes with the temperature,
+$$
+\mu = T \ln\big(1 - \E^{2\pi n/T} \big), \quad n = N/L^2
+$$
+and therefore, there is no transition to a condensate in two&nbsp;dimensions.</p>
+<p>To refine the above argument, which depends on taking the thermodynamic limit, let us discuss the distribution of the particles taking $N$ finite and $\mu = 0$ (the critical value for which the integral in Eq. $\ref{Nint}$ diverges)
+$$
+N - N_0 = \frac{L^2}{2\pi} \int_{\epsilon_0}^\infty \frac{\D \epsilon}{\E^{\epsilon/T} - 1} \approx \frac{L^2 T}{2\pi} \ln \frac{T_c}{\epsilon_0}
+$$
+This equation defines the &#8220;critical&#8221; temperature $T_c$ as the one for which $N_0 = 0$:
+$$
+N = \frac{L^2}{2\pi} \int_{\epsilon_0}^\infty \frac{\D \epsilon}{\E^{\epsilon/T_c} - 1} \approx \frac{L^2 T_c}{2\pi} \ln \frac{T_c}{\epsilon_0}.
+$$
+This is a transcendental equation for $T_c$ that can be solved iteratively (for large $N$):
+$$
+\begin{equation}
+T_c \approx \frac{2\pi N}{L^2 \ln N}.
+\end{equation}
+$$
+where we replaced inside the logarithm $T_c/\epsilon_0 = 2L^2 T_c/\pi^2$ by $4N/\pi$, and neglected irrelevant terms. We finally obtain
+$$
+\begin{equation}
+T_c \approx \frac{2\pi \hbar^2 n}{m \ln N},
+\end{equation}
+$$
+in the original units. This result shows how the &#8220;critical&#8221; temperature vanishes in the thermodynamic limit. Because of the slow logarithmic dependence on $N$, in the region $T&lt;T_c(N)$ we may observe a fraction of particles in the ground&nbsp;state.</p>
+<p>If instead of free particles we have trapped bosons in an harmonic potential of frequency $\omega$, the one-particle energy is (in two dimensions)
+$$
+\epsilon_n = \hbar \omega(n_x + n_y + 1).
+$$
+Equation ($\ref{Nsum}$) becomes in this case
+$$
+\begin{equation}
+\label{Nsumho}
+N = \sum_{n_x, n_y} \frac{1}{\exp\big(\frac{\hbar \omega n}{T} - \frac{\mu - \hbar \omega}{T}\big)-1}, \quad n = n_x + n_y
+\end{equation}
+$$
+which shows that the critical chemical potential is $\mu = \hbar \omega$, and the sum is over $(n_x,n_y)$ such that $n =  n_x + n_y = \epsilon/\hbar \omega -1$. The density of states, in terms of $n$, is given by
+$$
+\nu(n) = \frac{\D}{\D n} \frac{n^2}{2} = n.&nbsp;$$</p>
+<p>The critical temperature is determined by the condition $\mu = \hbar \omega$. It is convenient to split the sum ($\ref{Nsumho}$) into one term containing the number of particles in the ground state, and one term containing the number of particles in the excited states,
+$$
+N(T) = N_0(T) + N_e(T), \quad  \mu = \hbar \omega
+$$
+where, for the excited states, we can replace the sum by an integral:
+$$
+N_e(T) = \int_0^\infty \frac{n \D n}{\E^{\hbar\omega n/T} - 1} = \frac{T^2}{(\hbar\omega)^2} \Gamma(2) \zeta(2) = \frac{\pi^2 T^2}{6(\hbar\omega)^2},
+$$
+from which we obtain, putting $N_0 = 0$ and then $N_e = N$, the value of the critical temperature,
+$$
+\begin{equation}
+\label{Tcho}
+T_c = \hbar \omega\frac{\sqrt{6N}}{\pi}.
+\end{equation}
+$$
+Therefore, the number of particles in the ground state, for $T&lt;T_c$ is given by
+$$
+N - N_0 =\frac{\pi^2 T^2}{6(\hbar\omega)^2},
+$$
+or
+$$
+\frac{N_0}{N} = 1 - \left( \frac{T}{T_c} \right)^2.&nbsp;$$</p>
+<p>One may think that the critical temperature ($\ref{Tcho}$) is not well defined in the thermodynamic limit (when $N \rightarrow \infty$). In fact, we must consider that $\omega = \omega(N)$. Indeed, the potential energy of the oscillator can be written in terms of the characteristic length of the trap $R$, which determines the density of the bosons trapped in the area $R^2$, and its characteristic energy $U_0$:
+$$
+\frac{1}{2} m\omega x^2 = \frac{U_0}{2} \left(\frac{x}{R}\right)^2, \quad \omega = \sqrt{\frac{U_0}{m}}\frac{1}{R},
+$$
+thus, $\omega \sim 1/R$. Using these parameters, the critical temperature writes
+$$
+T_c = \hbar \sqrt{\frac{U_0}{m}} \frac{1}{R} \frac{\sqrt{6N}}{\pi} = \hbar \sqrt{\frac{6U_0}{\pi^2 m}} \sqrt{n}, \quad n = \frac{N}{R^2}
+$$
+which is indeed an intensive variable. Equivalently, we have $\omega \sim 1/\sqrt{N}$  with $\omega \sqrt{N} = \mathrm{const}$, in the thermodynamic&nbsp;limit.</p>
+<h3>6 Thermionic&nbsp;emission</h3>
+<p>Electrons in a metal at temperature $T$ can escape the surface energy barrier $-W$ if their velocity $p_z/m$ (perpendicular to the surface) satisfies $p_z &gt; \sqrt{2 m W}$ ($m$ is the electron mass and $\bm p$ its momentum). Using the Fermi-Dirac distribution $n_\epsilon$ show that the thermionic current is
+$$j = \frac{emT^2}{2\pi^2 \hbar^3} \exp\left(-\frac{W - \epsilon_F}{T}\right)$$
+where $\epsilon_F$ is the fermi energy ($k_\mathrm{B} =&nbsp;1$). </p>
+<p>Use units such that $e = W = m = \hbar = 1$. Assume that typical particle energies are larger than $W$ (otherwise emission is impossible). Compare the quantum result with the classical&nbsp;one.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>With $k_\mathrm{B} = e = W = m = \hbar =1$, mass, length and time dimensions are:
+$$
+\begin{gather}
+\mathrm{M} = m, \
+\mathrm{L} = \sqrt{\frac{\hbar^2}{mW}}, \
+\mathrm{T} = \frac{\hbar}{W},
+\end{gather}
+$$
+and energy and electric current density are:
+$$
+\begin{gather}
+\mathrm{E} = W, \
+\mathrm{j} = [env] = e \frac{mW^2}{\hbar^3}.
+\end{gather}
+$$
+Moreover, temperature as usual is measured in energy units (here&nbsp;$W$).</p>
+<p>The electron current $j$ is obtained from the formula
+$$
+\begin{equation}
+j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} \int_{-\infty}^\infty \frac{\D p_x}{2\pi} \int_{-\infty}^\infty \frac{\D p_y}{2\pi} p_z n_{\bm p}
+\end{equation}
+$$
+where $n_{\bm p}$ is the fermi distribution
+$$ n_{\bm p} = \frac{1}{\E^{(\epsilon <em _bm="\bm" p>{\bm p} - \mu)/T} + 1},\quad \epsilon</em>$$
+$\bm p$ is the electron momentum, and, in particular $p_z/m$, its perpendicular to the surface velocity. The front factor 2 comes from the two spin states of the electron. Note that only particles with $p_z &gt; (2mW)^{1/2}$ contribute to the current. Our task reduces to the computation of the above integral.} =&nbsp;\frac{p^2}{2</p>
+<p>The integral over $p_x, p_z$ is elementary in polar coordinates:
+$$
+\begin{equation}
+j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} p_z \int_0^\infty \frac{\D p p}{2\pi} \frac{1}{\E^{(p_z^2/2 - \mu)/T} \E^{-p^2/2T} + 1}.
+\end{equation}
+$$
+Indeed, after changing the integration variable to $x = p^2/2T$ we are left to calculate an integral of the form
+$$\int_0^\infty \frac{\D x}{a\E^x +1} = \ln(1 + 1/a).$$
+The result is
+$$
+j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \ln\big(1 + \E^{-(p_z^2/2 -\mu)/T}\big).
+$$
+This is not elementary, but the physical relevant regime is the one in which the exponential factor is small with respect to the unity: the energies of interest are those satisfying $\epsilon_z = p_z^2/2 &gt; W$, well above the fermi energy $\mu = \epsilon_F$ (knowing that $T &lt; \epsilon_F$ in most metals at laboratory temperatures). In this case, we expand $\ln(1+x) \approx x$ to get
+$$
+j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \E^{-(p_z^2/2 -\mu)/T} = \frac{T^2}{2\pi^2} \E^{-(1-\epsilon_F)/T}.
+$$
+In the original units (we multiply by $\mathrm{j}$) we finally obtain the thermionic current at temperature $T$:
+$$
+\begin{equation}
+j = \frac{emT^2}{2\pi^2\hbar^3} \E^{-(W-\epsilon_F)/T}.
+\end{equation}&nbsp;$$</p>
+<p>The corresponding classical result $j_c$, can be obtained by replacing fermi chemical potential by the ideal gas one:
+$$\E^{\mu/T} = \frac{N\lambda^3}{2V}$$
+which leads to
+$$
+j_c = e n_0 \sqrt{\frac{T}{2\pi m}} \E^{-W/T}
+$$
+($n_0 = N/V$) a simple numerical estimation shows that this result is wrong. Another way to estimate classically this current is to use the boltzmann factor $n = n_0 \exp(-W/T)$ and the (one-dimensional) thermal speed $v = \sqrt{T/m}$:
+$$
+j_c = env \sim en_0 \sqrt{\frac{T}{m}} \E^{-W/T}
+$$
+which coincides with the previous result up to a constant numerical&nbsp;factor.</p>
+<h3>8</h3>
+<p>Mean field. The hamiltonian of an ising model in a regular lattice of $N$ sites with $q$ neighbors is
+$$
+H = -J\sum_{\braket{x,y}} s_x s_y
+$$
+where $s_x = \pm 1$ is the spin on site $x$; $y \in N(x)$ is a neighbor of $x$ belonging to the set $N(x)$ of size $q$; $J$ is the exchange parameter. In the <em>Bethe approximation</em>, which is a generalization of the standard mean-field model, one considers a given spin $s_0$ and its neighbors:
+$$
+H(s_0) = -Js_0 \sum_{y \in N(0)}s_y - h \sum_{y \in N(0)}s_y = H_c,
+$$
+where the last term contains the information about the <em>local</em> field $h$ created at the site $0$ by the neighboring spins $y \in N(0)$. $H_c$ is the &#8220;cluster&#8221; hamiltonian, it depends on the unknown parameter $h$, which should be determined self-consistently to match the expectation value of the observables (like the magnetization $m =&nbsp;\braket{s_x}$).</p>
+<p>Using the &#8220;cluster&#8221; partition function
+$$
+Z_c = \mathrm{tr} \, \E^{-H_c(h)/T} = \sum_{s_x = \pm 1}  \E^{-H_c(h)/T}, 
+$$
+compute $\braket{s_0}$ and $s_x$. From the condition of homogeneity (at equilibrium) $m = \braket{s_0} = \braket{s_x}$ for all $x$, deduce the self-consistent condition
+$$
+\frac{\cosh^{q-1}[(J+h)/T]}{\cosh^{q-1}[(J-h)/T]} = \E^{2h/T}
+$$
+which determines $T_c$:
+$$
+T_c \approx \frac{2J}{\ln\frac{q}{q-2}}.
+$$
+Compare the result for $q=4$ (square lattice) with the Onsager exact value of&nbsp;$T_c$.</p>
+<p>Show that near the ferromagnetic transition, the magnetization behaves as $m \sim |T-T_c|^{1/2}$:
+$$
+m^2 \approx \frac{3 q}{q-1} \frac{q}{2} \ln \left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
+$$
+Verify that this formula reduces to the standard one (mean field) in the limit $q \rightarrow&nbsp;\infty$. </p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The idea of the bethe approximation is to combine the mean-field method, which takes into account the influence of the mean magnetization on each spin, and the near neighbors interactions with a given spin, Our task is to compute self-consistently the &#8220;cluster&#8221; field associated to a particular site, using translation&nbsp;invariance.</p>
+<blockquote>
+<p><img src="/images/PS-bethe-2d.svg" alt="bethe cluster" style="height: 250px;"/></p>
+<p>Bethe cluster of site $s_0$ (black dot), $J$ is the exchange energy; the neighbors $s_y$ (gray dots) are responsible of the cluster field&nbsp;$h$.</p>
+</blockquote>
+<p>The partition function of one cluster $Z_c$ (the one associated to $s_0$, for example) is
+$$
+Z_c = Z(s_0) = \sum_{s_0 = \pm1} \prod_y \Big(\sum_{s_y=\pm1}\Big) \E^{-H(s_0)/T} = \sum_{s_0 = \pm1} \prod_{y=1}^{q} \sum_{s_y=\pm1} \E^{(J/T)s_0s_y + (h/T)s_y}.
+$$
+The sums over the cluster configurations give
+$$
+Z_c = \left(2 \cosh \frac{J+h}{T} \right)^{q} + \left(2 \cosh \frac{J-h}{T} \right)^{q}.
+$$
+The computation of mean value of the reference spin is straightforward,
+$$
+\begin{equation}
+\label{e:s0}
+\braket{s_0} = \frac{1}{Z_c} \left[\left(2 \cosh \frac{J+h}{T} \right)^{q} - \left(2 \cosh \frac{J-h}{T} \right)^{q}\right].
+\end{equation}
+$$
+For the neighbor $x$ of $s_0$ in the cluster we write
+$$
+\braket{s_x} = \frac{1}{Z_c} \left[ \prod_{y=1}^{q} \sum_{s_y=\pm1} s_x \E^{(J+h)s_y/T} + \prod_{y=1}^{q} \sum_{s_y=\pm1} s_x \E^{(J-h)s_y/T} \right],
+$$
+separating the case $x=y$ to the others we obtain
+$$
+\braket{s_x} = \frac{1}{Z_c} \left[ 2\sinh \frac{J+h}{T}  \left(2 \cosh \frac{J+h}{T} \right)^{q-1} - 2\sinh \frac{J-h}{T}  \left(2 \cosh \frac{J-h}{T} \right)^{q-1} \right]&nbsp;$$</p>
+<p>Translation invariance imposes that the mean value of a spin do not depend on the site (the equilibrium state is homogeneous) $\braket{s_0} = \braket{s_x}$, therefore, from the previous results we deduce
+$$
+\begin{equation}
+\label{e:hc}
+\frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} = \E^{2h/(q-1)T},
+\end{equation}
+$$
+which is a self-consistent equation that determines the possible values of the cluster field $h$ (see figure below). Simple algebra shows that $h$ is given by the roots of the function
+$$
+f(h,T) = h - \frac{T(q-1)}{2J} \ln \frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} 
+$$
+represented on the&nbsp;figure.</p>
+<blockquote>
+<p><img src="/images/PS-bethe.svg" alt="mean field roots" style="height: 250px;"/></p>
+<p>For $T&gt;T_c$ only the root at $h=0$ is present; for $T&lt;T_c$ two new roots appear, given the possible values of the self-consistent cluster field. We take $J=1$ and $T=T_c/1.3$, and obtain $h = \pm 2.22$&nbsp;(dots).</p>
+</blockquote>
+<p>We write a python code to compute the value of $h$ (the dots in the&nbsp;figure):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root_scalar</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">hmax</span> <span class="o">=</span> <span class="mf">1.6</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># inverse critical temperature</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">bc</span> <span class="c1"># below the critical temperature</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">-</span> <span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="p">)))</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;brentq&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The critical temperature $T_c$ corresponds to the value of $T$ for which $h=0$ becomes an unstable root of $f$. It can be determined form the condition that the slope at $h=0$ of the left hand side of ($\ref{e:hc}$) must equals its right hand side:
+$$
+\frac{\partial}{\partial h}\left. \frac{\cosh\frac{J+h}{T}}{\cosh\frac{J-h}{T}} \right|<em h="0">{h=0} = \frac{\partial}{\partial h}\left. \E^{2h/(q-1)T} \right|</em> ,
+$$
+or
+$$
+2\tanh \frac{J}{T_c} = \frac{2}{q-1},
+$$
+or equivalently
+$$
+\frac{J}{T} = \frac{1}{2} \ln \frac{q}{q-2}.
+$$
+For the square lattice this gives $T_c \approx 2.885$, that you can compare to the exact value of Onsager $2.269$, a huge improvement with respect to the simple mean-field calculation which gives $T_c = 4$ (in units of $J$). To get the previous expression you may show that
+$$
+2x = \ln \frac{1+t}{1-t}, \quad t = \tanh x.&nbsp;$$</p>
+<p>Now we compute the magnetization $m$ near the critical temperature, when $T \approx T_c$ and $h \approx h_c$. Equation ($\ref{e:s0}$) gives us the relation between the cluster field $h$ and $m = \braket{s_0}$
+$$
+m = \tanh \frac{qh}{(q-1)T} \approx \frac{qh}{(q-1)T} ,
+$$
+where, in the last equality, we used the fact that $h/T \ll 1$ (close to the transition). From the right hand side of the same equation ($\ref{e:s0}$), we obtain
+$$
+\frac{h}{T} \approx (q-1) \tanh(J/T) \frac{h}{T} - \frac{q-1}{3} \frac{\tanh(J/T)}{\cosh^2(J/T)} \left(\frac{h}{T}\right)^3 + \cdots
+$$
+where we used an expansion in a taylor series. Below $T_c$ we have
+$$
+(q-1)\tanh(J/T) &gt; 1 = (q-1)\tanh(J/T_c),
+$$
+therefore,
+$$
+\tanh(J/T) - \tanh(J/T_c) \approx \frac{1}{3} \tanh(J/T_c)\mathrm{sech}^2(J/T_c) \left(\frac{h}{T}\right)^3,
+$$
+where, within the same approximation, we replaced $T=T_c$. Expanding the difference of tangents
+$$\tanh(x+\epsilon) - \tanh(x) \approx \mathrm{sech}^2(x) \epsilon,$$
+we finally obtain
+$$
+h = J\sqrt{3(q-1)} \left(1-\frac{T}{T_c}\right)^{1/2}
+$$
+or, in terms of the magnetization per site,
+$$
+m \sim \left(1-\frac{T}{T_c}\right)^{1/2},
+$$
+the usual power low with exponent $\beta=1/2$ of the mean field theory. The bethe approximation improves the estimation of the critical temperature, but do not change the critical exponents at the phase transition, showing that these exponents are rather insensitive to the influence of the field created by the near neighbors. Only long range correlation can modify the mean-field&nbsp;results.</p>
+<h3>9</h3>
+<p>Mean field and Landau theory. Helium ($^4\mathrm{He}$) liquefies at $T_l \approx 4\,\mathrm{K}$ (at normal pressure), and undergoes a phase transition around $T_c \approx 2.2\,\mathrm{K}$ towards a superfluid state, the so-called $\lambda$-transition. If the helium liquid contains a fraction $c_3$ of the $^3\mathrm{He}$ isotope, the nature of the superfluid transition changes when $x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67$, the tricritical point ($c_4$ is the $^4\mathrm{He}$ concentration): it is second order for $x<x_t$, and first order when the mixture when $x > x_t$, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point $(x_t, T_t)$, was proposed by Blume, Emery and Griffiths (1971). It is based on the hamiltonian
+$$
+H = -J \sum_{\braket{i,j}} S_i S_j + \Delta \sum_i (S_i^2 - 1), \quad S_i = 0, \pm 1
+$$
+where $S_i = \pm 1$ represents the helium-4 interacting atoms and $S_i = 0$ the helium-3 atoms, treated as impurities, $\Delta$ controls the number of helium-3 atoms (it is proportional to the difference of chemical potentials); the sums extend to the total number of lattice sites $N$, and $\braket{i,j}$ labels neighbors. The concentration of $^3\mathrm{He}$ is then $x = 1 -&nbsp;\braket{S_i^2}$.</p>
+<p>Show that the probability distribution P(S) is given by
+$$
+P(S) = \frac{\E^{(qJmS - \Delta S^2)/T}}{Z}, \quad Z = 1 + 2\E^{-\Delta/T} \cosh\big(qJm/T\big).
+$$
+You may use the minimization of the free energy $F$, assuming that $S_i$ are independent random variables (mean field approximation):
+$$
+F = \braket{H} + <span class="caps">NT</span>\sum_S P(S) \ln P(S),
+$$
+where we also exploit homogeneity. Compute the expected value of $S^2$:
+$$
+\braket{S^2} = \frac{2\E^{-\Delta/T} \cosh(qJM/T)}{Z}.&nbsp;$$</p>
+<p>Deduce the free energy per atom $f(m; T, \Delta) = F/N$
+$$
+f = \frac{1}{2} qJm^2 - T \ln \left( 1 + 2 \E^{-\Delta/T}\cosh \frac{qJm}{T} \right) - \Delta.
+$$
+Just above the transition (disordered state) $m = 0$; you can then expand $f(m)$ in powers of $m$ up to the 6th order. Analyse the possible phase transitions using Landau approach. Compute, in particular, the values of the concentration $x_t$ and the temperature $T_t$ at the tricritical&nbsp;point.</p>
+<p>Numerical application: plot the phase diagram in the $(x,T)$&nbsp;plane.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>One essential feature of the mean-field approximation is the neglect of correlation: $\braket{S_xS_y} \sim \braket{S_x}\braket{S_y}$. On the level of the probability distribution function $P(S_1,S_2,\ldots,S_N)$ of the configuration $\mathcal{S} = {S_1S_2\cdots S_N \mid S_x=0,\pm1,\; \forall x}$, this assumption means that it factorizes as
+$$
+P(\mathcal{S}) = \prod_{x=1}^N P(S_x) = P(S)^N
+$$
+where in the last equality we used translation invariance $P(S_x) = P(S)$. As a consequence, the computation of the mean energy is straightforward:
+$$
+\braket{H} = -\frac{qNJ}{2} \braket{S}^2 + \Delta N \braket{S^2} - \Delta N.
+$$
+Indeed, for instance the $J$ term can be written as
+$$
+\braket{\sum_{\braket{x,y}} S_x S_y} = \frac{1}{2} \sum_x \sum_{y \in N(x)} \braket{S_x S_y} \approx \frac{1}{2} \sum_x \sum_{y \in N(x)} \braket{S} \braket{S},
+$$
+which leads to the first term in $\braket{H}$, where $q$ is the number of neighbors and $N(x)$ the neighbors of $x$&nbsp;set.</p>
+<p>The free energy $F = \braket{H} - T S_G$ where $S_G$ is the Gibbs entropy, is then
+$$
+\frac{F}{N} = -\frac{qJ}{2} \Big[\sum_S P(S) S\Big]^2 + \Delta \sum_S P(S)S^2 - \Delta + T \sum_S P(S) \ln P(S).&nbsp;$$</p>
+<p>To find $P(S)$ we minimize $F = F[P(s)]$ subject to the constraint $\sum_S P(S) = 1$:
+$$
+\frac{1}{N} \frac{\delta}{\delta P(S)} F = -qJ \Big[\sum_S P(S) S\Big] S + \Delta S^2 + T \ln P(S) + (T - \mu) = 0,
+$$
+where $\mu$ is the lagrange multiplier associated to the normalization of $P$. We hence obtain,
+$$
+P(S) = \frac{1}{Z} \exp\Big[\frac{qJ}{T} m S - \frac{\Delta}{T} S^2\Big], \quad m = \sum_S P(S) S.
+$$
+We note that this is a self-consistent equation ($m$ depends on $P$). To ensure its validity, the mean value of $S$ must satisfy
+$$
+m = \frac{1}{Z} \Big[\E^{qJm/T - \Delta/T} - \E^{-qJm/T - \Delta/T}\Big]
+$$
+or, taking into account that
+$$
+Z = 1 + \Big[\E^{qJm/T - \Delta/T} + \E^{-qJm/T - \Delta/T}\Big]
+$$
+we write
+$$
+\begin{equation}
+\label{begm}
+m =  \frac{2\E^{-\Delta/T} \sinh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)}.
+\end{equation}
+$$
+Similarly, the computation of $\braket{S^2}$, gives
+$$
+\begin{equation}
+\label{begx}
+\braket{S^2} =  \frac{2\E^{-\Delta/T} \cosh(qJm/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T)} = 1- x.
+\end{equation}
+$$
+Using these results, we can write the free energy as a function of the macroscopic variable $m$:
+$$
+\frac{F(m, T, \Delta)}{N} = f(m, T, \Delta) = -\frac{qJ}{2} m^2 + \frac{2\Delta \E^{-\Delta/T}}{Z} \cosh(qJm/T) - \Delta - TS_G,
+$$
+and
+$$
+S_G = -\frac{1}{Z} \ln \frac{1}{Z} - \frac{1}{Z} \exp\Big[\frac{qJ}{T} m - \frac{\Delta}{T} \Big]\Big(\frac{qJm}{T} - \frac{\Delta}{T} + \ln \frac{1}{Z}) - \frac{1}{Z} \exp\Big[-\frac{qJ}{T} m - \frac{\Delta}{T} \Big]\Big(-\frac{qJm}{T} - \frac{\Delta}{T} + \ln \frac{1}{Z})
+$$
+or
+$$
+S_G = -\frac{1}{Z} \big[1 + \E^{-\Delta/T} \cosh(qJm/T)\big] - \frac{2qJm}{Z} \E^{-\Delta/T} \sinh(qJm/T) + \frac{2\Delta}{<span class="caps">TZ</span>} \E^{-\Delta/T} \cosh(qJm/T) ,
+$$
+where we recognize the expressions of $\braket{S}=m$ and $\braket{S^2}$. Using these formulas, we can rewrite the free energy in the form,
+$$
+\begin{equation}
+\label{BEGfmt}
+f(m, T, \Delta) = \frac{qJ}{2}m^2 - T \ln\Big[1 + 2\E^{-\Delta/T} \cosh(qJm/T)\Big] - \Delta.
+\end{equation}
+$$
+We are now in a position to compute the thermodynamics of the Blume, Emery and Griffiths&nbsp;model.</p>
+<p>Possible phase transitions can be monitored by $m$ and $x$, the two order parameters of the helium mixture: $m$ describes the normal-superfluid transition (it vanishes in the normal phase), while $x$ describes the influence of the $^3\mathrm{He}$ (it vanishes in the pure $^4\mathrm{He}$ phase). Note that the free energy can be written as
+$$
+f = \frac{qJ}{2}m^2 + T \ln(x) - \Delta.
+$$
+We are interested in the line separating the $m=0$ and $m\ne 0$ phases as a function of the $^3\mathrm{He}$ concentration. From ($\ref{begm}$) and ($\ref{begx}$) we get
+$$
+x_0 = \frac{\E^{\Delta/T}}{\E^{\Delta/T} + 2}, \quad \text{or } \Delta = T \ln \frac{2x_0}{1-x_0},\quad \text{for } m=0,
+$$
+and, dividing the two equations,
+$$
+x(m) = 1 - m \coth(qJm/T), \quad \text{for } m \ne 0.
+$$
+Numerically, we can then obtain $m = m(T)$ from ($\ref{begm}$) in which we replace $x$ by $x(m)$. The whole phase diagram $(\Delta, T)$, giving the equilibrium values of $(m,x)$, can be obtained by solving ($\ref{begm}$) and ($\ref{begx}$) for each pair of values of $\Delta$ and $T$. In experiments the control parameters are $(x,T)$, hence it is convenient to transform the plane $(\Delta,T)$ into&nbsp;$(x,T)$.</p>
+<p>In the case $x=0$ we must recover the usual second order phase transition between the normal and superfluid phases of liquid helium. Expanding $f = f_0 + f_2 m^2 + f_4 m^4$ around $m=0$ we obtain (see the python code below where we use <code>sympy</code> to compute the expansion coefficients $f_n,\; n = 0, 2, 4, 6$)
+$$
+\begin{gather}
+f_0 = -\Delta + T\ln\frac{\delta - 1}{\delta} \
+f_2 = \frac{(qJ)^2}{2T\delta} \Big(\frac{T\delta}{qJ} - 1\Big) \
+f_4 =  \frac{(qJ)^4}{8T^3 \delta^2} \Big(1 - \frac{\delta}{3}\Big) ,
+\end{gather}
+$$
+where
+$$
+\delta = \frac{1}{2} \E^{\Delta/T} + 1 = \frac{1}{1-x}.
+$$
+We remark that the second order coefficient $f_2$ becomes negative, the condition for a second order transition, at $T=T_c(x) = qJ/\delta$ or
+$$
+T_c(x) = qJ(1 - x),
+$$
+which is then the critical temperature of the superfluid transition, it linearly decreases with the helium 3&nbsp;concentration.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">series</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;m, T, q, J, Delta, delta&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">T</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="n">d</span>
+<span class="n">f_poly</span> <span class="o">=</span> <span class="n">series</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="c1"># simplify each coefficient</span>
+<span class="n">f_coeff</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
+    <span class="n">f_coeff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_poly</span><span class="o">.</span><span class="n">coeff</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">),</span><span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Moreover, the fourth order coefficient $f_4$, which must be positive for the second order phase transition, becomes negative when $\delta &gt; \delta_c = 3$. Therefore
+$$
+x_0 = 2/3, \quad \Delta_c = \frac{1}{\delta_c} \ln(2\delta_c -2) = 0.462, \quad T_c = \frac{1}{3}
+$$
+should correspond to the transformation of the second order phase transition into a first order&nbsp;one.</p>
+<blockquote>
+<p><img src="/images/PS-BEGfm.svg" alt="BEG f(m)" style="height: 250px;"/></p>
+<p>Free energy as a function ($f+\Delta$) of the order parameter $m$, for different values of the helium 3 concentration $x$ and temperature. The critical curve $x_c,T_c$ (gray) shows a flat minimum. For $x<x_c$ the phase transition is of second order, its separates the superfluid to the normal fluid phases. For $x > x_c$ we see instead that the shape of $f$ changes, developing secondary minima at a finite distance from zero: $m = m(T)$ becomes a discontinuous function, signaling the presence of a first order phase transition&nbsp;(red).</p>
+</blockquote>
+<p>In order to investigate the neighborhood of the tricritical point $(x_c,T_c)$ in which superfluid, normal, and separated phases coexist, we must allow $m  \ne 0$. This can be done by introducing a fictive field $H$ and to define the Gibbs free energy by $g = f + Hm = g(H)$. This corresponds to adding $-mH$ to the free energy $f$. To expand $g$ in powers of $m$ we must find the function $g = g(H(m))$, where $H$ is considered a function of $m$ (equation of state):
+$$
+H = \frac{\partial g}{\partial m} = 2am + 4bm^3 + 6cm^5 = H(m), 
+$$
+where we wrote the expansion of $g$ in powers of $m$
+$$
+g = g_0(\Delta,T) + a(\Delta,T) m^2 + b(\Delta,T) m^4 + c(\Delta,T) m^6.
+$$
+This can be done by inverting the function $m=m(H)$ using the self-consistent equation 
+$$
+\begin{equation}
+m =  \frac{2\E^{-\Delta/T} \sinh(qJm/T + H/T)}{1 + 2\E^{-\Delta/T} \cosh(qJm/T + H/T)}.
+\end{equation}
+$$
+which gives $m$ for $H \ne 0$, and computing the coefficients $(a,b,c)$ from its derivatives with respect to $m$ at $m=0$. For example, the derivative of the previous equation with respect to $m$ gives an equation for $\partial H/\partial m$:
+$$2a= \left. \frac{\partial H}{\partial m} \right|_{m=0}
+\dots$$
+A <code>sympy</code> code is shown&nbsp;below.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">series</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;m, T, q, J, Delta, delta, H&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a, b, c&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># free energy f(m,H)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">T</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">sy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">T</span> <span class="o">+</span> <span class="n">H</span><span class="o">/</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="n">d</span>
+<span class="c1"># magnetization</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">J</span><span class="o">/</span><span class="n">q</span><span class="p">)</span>
+<span class="c1"># expand to 6th order</span>
+<span class="n">g1h</span> <span class="o">=</span> <span class="n">g1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">m</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># simplification</span>
+<span class="k">def</span> <span class="nf">subs_m0</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="n">T</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="c1"># m^2 coefficient a</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">a_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span> <span class="n">a</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># m^4 coefficient b</span>
+<span class="n">g4</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">b_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g4</span><span class="p">,</span> <span class="n">b</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a_sol</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="c1"># m^6 coefficient c</span>
+<span class="n">g6</span> <span class="o">=</span> <span class="n">subs_m0</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g1h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">c_sol</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">g6</span><span class="p">,</span> <span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">a_sol</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">b_sol</span><span class="p">})</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</code></pre></div>
+
+<p>We get
+$$
+\begin{gather}
+a = \frac{qJ}{2} \Big(\frac{T\delta}{qJ} - 1\Big)\
+b = \frac{T\delta^2}{8} \Big(1 - \frac{\delta}{3} \Big)\
+c = \frac{T\delta^3}{12}\Big( \frac{3}{20} \delta^2 - \frac{3}{4}\delta + 1\Big)
+\end{gather}
+$$
+This is the Landau expansion of the gibbs free energy; note that the conditions to find the tricritical point are as before (where we used $f$), but now the 6th order coefficient is always positive (it was not the case in the previous calculation, which failed already at the forth order, just because of the presence of the tricritical&nbsp;point).</p>
+<p>In the region where $x&gt;x_c$ (and $T \sim T_c$) the shape of $g$ (or equivalently of f ($\ref{BEGfmt}$)) shows three separated minima (red line in the figure). This corresponds to a first order transition. The separation line between the normal fluid and the separated mixture in the phase space $(x,T)$ can be determined by the condition that the polynomial $g(m)$ should write
+$$
+g(m) = g_0 + c m^2 (m^2 - m^2_\pm)^2,
+$$
+in order to have the minima just at $m = 0$ and $m = m_\pm$ ($m_- = - m_+$) with the same value of $g=g_0$. This implies the relation
+$$
+b^2 = 4 ac.
+$$
+between $a,b,c$, which determines a curve in the $(T,x)$ plane. Therefore, on this curve $T = T(x)$ (for x &gt; x_c$), $a&gt;0$ ($c&gt;0$), then $T&gt; qJ/\delta$:
+$$
+T_1(\delta) = \frac{24}{\delta} \frac{3\delta^2 - 15\delta + 20}{67\delta^2 - 330\delta + 435}.
+$$
+Near the critical point we have $\delta = 1/(1-x)$, and $T(x)$ is slightly above $1-x$ of the second order transition at lower&nbsp;concentration.</p>
+<p>Further information can be obtained in the original&nbsp;paper: </p>
+<ul>
+<li>Blume M, Emery <span class="caps">VJ</span>, and Griffiths <span class="caps">RB</span>, <em>Ising Model for the $\lambda$ Transition and Phase Separation in He3-He4 Mixtures</em>. Phys. Rev. A <strong>4</strong>, 1071 (1971) <a href="https://doi.org/10.1103/PhysRevA.4.1071">https://doi.org/10.1103/PhysRevA.4.1071</a>.</li>
+</ul>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
