@@ -45,43 +45,57 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
-\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
-\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
 </blockquote>
 <h1>Toric&nbsp;Code</h1>
-<p>We summarize the main ideas of the stabilizer formalism.<sup id="fnref:G"><a class="footnote-ref" href="#fn:G">1</a></sup> Errors on individual qubits can be represented by the action of the pauli matrices (spin flip, phase and amplitude errors). The pauli matrices are the generators of the pauli group:
-\begin{equation}
+<p>We summarize the main ideas of the stabilizer formalism.<sup id="fnref:G"><a class="footnote-ref" href="#fn:G">1</a></sup> Errors on individual qubits can be represented by the action of the pauli matrices (spin flip, phase and amplitude errors). The pauli matrices are the generators of the pauli&nbsp;group:
+</p>
+<div class="math">\begin{equation}
 \mathcal{P} = \braket{\I 1_2, X, Y, Z}
-\end{equation}
-The physical information of $K$ qubits is encoded into $K$ logical states $\ket{i_L} \in \mathcal{L} \subset \mathcal{H}_L$, of an extended hilbert space of dimension $\mathrm{dim}(\mathcal{H}_L) =&nbsp;2^N$.</p>
-<p>To detect and eventually correct the pauli errors, a set of $N-K$ independent operators, the stabilizer $\mathcal{S} \subset \mathcal{P}$, is necessary:
-\begin{equation}
+\end{equation}</div>
+<p>
+The physical information of <span class="math">\(K\)</span> qubits is encoded into <span class="math">\(K\)</span> logical states <span class="math">\(\ket{i_L} \in \mathcal{L} \subset \mathcal{H}_L\)</span>, of an extended hilbert space of dimension <span class="math">\(\mathrm{dim}(\mathcal{H}_L) = 2^N\)</span>.</p>
+<p>To detect and eventually correct the pauli errors, a set of <span class="math">\(N-K\)</span> independent operators, the stabilizer <span class="math">\(\mathcal{S} \subset \mathcal{P}\)</span>, is&nbsp;necessary:
+</p>
+<div class="math">\begin{equation}
 \mathcal{S} = \braket{g_1, \ldots, g_{N-K}}
-\end{equation}
-where the stabilizers $g_n$ commute, $[g_n, g_m] = 0$. The logical states (code words) satisfy,
-\begin{equation}
+\end{equation}</div>
+<p>
+where the stabilizers <span class="math">\(g_n\)</span> commute, <span class="math">\([g_n, g_m] = 0\)</span>. The logical states (code words)&nbsp;satisfy,
+</p>
+<div class="math">\begin{equation}
 g_n \ket{i_L} = \ket{i_L}, \quad \forall g_n \in \mathcal{S}
-\end{equation}
-Therefore, the logical qubits are the common eigenstates of the stabilizer operators with eigenvalue one. The operators acting on the subspace spanned by the logical states, are the logical operators. Typically they are products of pauli matrices we denote $X_L$ and $Z_L$, such that
-$$X_L \ket{0_L} = \ket{1_L},\quad X_L \ket{1_L} = \ket{0_L}$$
+\end{equation}</div>
+<p>
+Therefore, the logical qubits are the common eigenstates of the stabilizer operators with eigenvalue one. The operators acting on the subspace spanned by the logical states, are the logical operators. Typically they are products of pauli matrices we denote <span class="math">\(X_L\)</span> and <span class="math">\(Z_L\)</span>, such&nbsp;that
+</p>
+<div class="math">$$X_L \ket{0_L} = \ket{1_L},\quad X_L \ket{1_L} = \ket{0_L}$$</div>
+<p>
 and
-$$Z_L \ket{0_L} = \ket{0_L},\quad Z_L \ket{1_L} = -\ket{1_L}$$
-The <em>centralizer</em> group of the stabilizers, the set of operators commuting with the stabilizers, is
-\begin{equation}
-\mathcal{C} = \braket{ {g \in \mathcal{P} \mid [g,g_n] = 0, \; \forall g_n \in \mathcal{S}} }
-\end{equation}
-has a rank $N + K = (N - K) + 2K$, with $N-K$ stabilizers and $2K$ logical operators (of type $X$ and $Z$); the $2K$ logical operators commute with the stabilizers but act non trivially on the logical qubits:
-\begin{equation}
-\mathcal{C} = \left\langle \begin{matrix} X_L^{(1)}, \ldots,  X_L^{(K)} <span class="amp">&amp;</span> g_1, \ldots g_{N-K} \ Z_L^{(1)} , \ldots , Z_L^{(K)} <span class="amp">&amp;</span> \end{matrix} \right\rangle
-\end{equation}
+</p>
+<div class="math">$$Z_L \ket{0_L} = \ket{0_L},\quad Z_L \ket{1_L} = -\ket{1_L}$$</div>
+<p>
+The <em>centralizer</em> group of the stabilizers, the set of operators commuting with the stabilizers,&nbsp;is
+</p>
+<div class="math">\begin{equation}
+\mathcal{C} = \braket{ \{g \in \mathcal{P} \mid [g,g_n] = 0, \; \forall g_n \in \mathcal{S}\} }
+\end{equation}</div>
+<p>
+has a rank <span class="math">\(N + K = (N - K) + 2K\)</span>, with <span class="math">\(N-K\)</span> stabilizers and <span class="math">\(2K\)</span> logical operators (of type <span class="math">\(X\)</span> and <span class="math">\(Z\)</span>); the <span class="math">\(2K\)</span> logical operators commute with the stabilizers but act non trivially on the logical&nbsp;qubits:
+</p>
+<div class="math">\begin{equation}
+\mathcal{C} = \left\langle \begin{matrix} X_L^{(1)}, \ldots,  X_L^{(K)} &amp; g_1, \ldots g_{N-K} \\ Z_L^{(1)} , \ldots , Z_L^{(K)} &amp; \end{matrix} \right\rangle
+\end{equation}</div>
+<p>
 where the operators in the same column anticommute, while the operators on different columns, commute each&nbsp;other.</p>
 <p>The physical realization of a quantum error correcting system was first proposed by Kitaev (1997),<sup id="fnref:K"><a class="footnote-ref" href="#fn:K">2</a></sup> using the degenerated ground state of a local hamiltonian as a logical code; the hamiltonian itself is build up using a set of stabilizers (see table&nbsp;below).</p>
 <blockquote>
@@ -110,70 +124,88 @@ where the operators in the same column anticommute, while the operators on diffe
 </blockquote>
 
 <h2>Hamiltonian and ground&nbsp;state</h2>
-<p>We consider a set of $N = 2 L^2$ spins laying on the links $\ell$ of a square lattice of size $L$ with periodic boundaries, equivalent to a&nbsp;torus.</p>
-<p>The hamiltonian is defined in terms of mutually commuting star $A_s$ and plaquette $B_p$ operators (figure below),
-\begin{equation}
+<p>We consider a set of <span class="math">\(N = 2 L^2\)</span> spins laying on the links <span class="math">\(\ell\)</span> of a square lattice of size <span class="math">\(L\)</span> with periodic boundaries, equivalent to a&nbsp;torus.</p>
+<p>The hamiltonian is defined in terms of mutually commuting star <span class="math">\(A_s\)</span> and plaquette <span class="math">\(B_p\)</span> operators (figure&nbsp;below),
+</p>
+<div class="math">\begin{equation}
 \label{e:H}
 H = -J_s \sum_s A_s - J_p \sum_p B_p
-\end{equation}
+\end{equation}</div>
+<p>
 where
-\begin{equation}
-\label{e:<span class="caps">AB</span>}
-  A_s = \prod_{\ell \in s} X_\ell,  \quad<br>
+</p>
+<div class="math">\begin{equation}
+\label{e:AB}
+  A_s = \prod_{\ell \in s} X_\ell,  \quad  
   B_p = \prod_{\ell \in p} Z_\ell\,,
-\end{equation}
-and $J_s,J_p$ the coupling energies (we use normal product notation for tensor product of&nbsp;operators).</p>
+\end{equation}</div>
+<p>
+and <span class="math">\(J_s,J_p\)</span> the coupling energies (we use normal product notation for tensor product of&nbsp;operators).</p>
 <blockquote>
 <p><img src="/images/AQ-toric_AB.svg" alt="toric operators" style="width: 280px;"/></p>
-<p>The toric code is defined on a square lattice with periodic boundary conditions; the spins live on the links and interact via  four-body coupling operators $A_s$ (star) and $B_p$&nbsp;(plaquette).</p>
+<p>The toric code is defined on a square lattice with periodic boundary conditions; the spins live on the links and interact via  four-body coupling operators <span class="math">\(A_s\)</span> (star) and <span class="math">\(B_p\)</span>&nbsp;(plaquette).</p>
 </blockquote>
-<p>For example, applying $A_s$ to a star gives $A_s\ket{0010} = \ket{1101},$ (flip), and $B_p$ to a plaquette gives $B_p \ket{0010} = - \ket{0010}$ (odd&nbsp;parity).</p>
-<p>The ground state of $H$ is easy to find because its terms commute, implying that a state $\ket{00}$
-\begin{equation}
+<p>For example, applying <span class="math">\(A_s\)</span> to a star gives <span class="math">\(A_s\ket{0010} = \ket{1101},\)</span> (flip), and <span class="math">\(B_p\)</span> to a plaquette gives <span class="math">\(B_p \ket{0010} = - \ket{0010}\)</span> (odd&nbsp;parity).</p>
+<p>The ground state of <span class="math">\(H\)</span> is easy to find because its terms commute, implying that a state <span class="math">\(\ket{00}\)</span>
+</p>
+<div class="math">\begin{equation}
 \label{kAB}
 A_s \ket{00} = \ket{00}, \quad B_p \ket{00} = \ket{00}
-\end{equation}
-(we explain below the labels) which is a simultaneous eigenvector of the stabilizers $A_s$ and $B_p$, minimizes the energy. However, the system ($\ref{kAB}$) involves only $2L^2 - 2$ equations, because not all the operators are independent:
-\begin{equation}
+\end{equation}</div>
+<p>
+(we explain below the labels) which is a simultaneous eigenvector of the stabilizers <span class="math">\(A_s\)</span> and <span class="math">\(B_p\)</span>, minimizes the energy. However, the system (<span class="math">\(\ref{kAB}\)</span>) involves only <span class="math">\(2L^2 - 2\)</span> equations, because not all the operators are&nbsp;independent:
+</p>
+<div class="math">\begin{equation}
 \prod_s A_s = 1,\quad \prod_p B_p = 1
-\end{equation}
-Therefore, the logical space has dimension $2^2=4$, since the stabilizer space contains $N-2$ independent generators, or $K = 2$. The ground state of $H$ is then four times degenerated, and can be written as a superposition of the type:
-$$\ket{\psi_L} = \sum_{b_1,b_2 = {0,1}} a_{ij} \ket{b_1b_2}, \quad a_{b_1b_2} \in \mathbb{C}$$
-where $b_1,b_2$ label the four basis states of the ground state subspace. The states $\ket{b_1b_2}$ span then the logical&nbsp;space.</p>
-<p>Equation ($\ref{kAB}$) has an interesting geometrical interpretation based on the duality of the square lattice: star operators become plaquette operators in the dual lattice. The dual of a square lattice is also a square lattice whose vertices are at the centers of the original faces (plaquettes). We may construct the ket $\ket{00}$ (in the ground state of $H$) from the product state with all spins up $\ket{0}^{\otimes N}$, using the fact that application of multiple star operators
-$$A_s \ket{0}^{\otimes N}, A_{s_1} A_{s_2} \ket{0}^{\otimes N}, \ldots$$
-represents a loop in the dual lattice of the torus; one $A_s$ gives a plaquette loop in the dual lattice, two successive stars form a two plaquettes loop in the dual lattice, etc. In addition, the action of the plaquette operators is trivial, $B_p \ket{0}^{\otimes N} = \ket{0}^{\otimes N}$ (remember that $[A_s,B_p]=0$). Therefore, an equal superposition of all of these loops:
-\begin{equation}
+\end{equation}</div>
+<p>
+Therefore, the logical space has dimension <span class="math">\(2^2=4\)</span>, since the stabilizer space contains <span class="math">\(N-2\)</span> independent generators, or <span class="math">\(K = 2\)</span>. The ground state of <span class="math">\(H\)</span> is then four times degenerated, and can be written as a superposition of the&nbsp;type:
+</p>
+<div class="math">$$\ket{\psi_L} = \sum_{b_1,b_2 = \{0,1\}} a_{ij} \ket{b_1b_2}, \quad a_{b_1b_2} \in \mathbb{C}$$</div>
+<p>
+where <span class="math">\(b_1,b_2\)</span> label the four basis states of the ground state subspace. The states <span class="math">\(\ket{b_1b_2}\)</span> span then the logical&nbsp;space.</p>
+<p>Equation (<span class="math">\(\ref{kAB}\)</span>) has an interesting geometrical interpretation based on the duality of the square lattice: star operators become plaquette operators in the dual lattice. The dual of a square lattice is also a square lattice whose vertices are at the centers of the original faces (plaquettes). We may construct the ket <span class="math">\(\ket{00}\)</span> (in the ground state of <span class="math">\(H\)</span>) from the product state with all spins up <span class="math">\(\ket{0}^{\otimes N}\)</span>, using the fact that application of multiple star&nbsp;operators
+</p>
+<div class="math">$$A_s \ket{0}^{\otimes N}, A_{s_1} A_{s_2} \ket{0}^{\otimes N}, \ldots$$</div>
+<p>
+represents a loop in the dual lattice of the torus; one <span class="math">\(A_s\)</span> gives a plaquette loop in the dual lattice, two successive stars form a two plaquettes loop in the dual lattice, etc. In addition, the action of the plaquette operators is trivial, <span class="math">\(B_p \ket{0}^{\otimes N} = \ket{0}^{\otimes N}\)</span> (remember that <span class="math">\([A_s,B_p]=0\)</span>). Therefore, an equal superposition of all of these&nbsp;loops:
+</p>
+<div class="math">\begin{equation}
 \label{e:k00}
 \ket{00} = \frac{1}{2^{(L^2-1)/2}}\prod_s (1 + A_s) \ket{0}^{\otimes N}
-\end{equation}
-must be a ground state (note that $A_s(1+A_s) = 1 + A_s$), the one composed by contractible loops $\ket{00}$ (see&nbsp;figure).</p>
+\end{equation}</div>
+<p>
+must be a ground state (note that <span class="math">\(A_s(1+A_s) = 1 + A_s\)</span>), the one composed by contractible loops <span class="math">\(\ket{00}\)</span> (see&nbsp;figure).</p>
 <blockquote>
 <p><img src="/images/AQ-toric_loops.svg" alt="tore contractible loops" style="width: 300px;"/></p>
-<p>The ground state $\ket{00}$ is a superposition of contractible loops in the torus, generated by the successive application of the stabilizer operators (c.f. $\eqref{e:k00}$). We show two loops on the dual lattice $\bar{\ell}$, of reversed spins by a cycle of stars operators&nbsp;$A_s$.</p>
+<p>The ground state <span class="math">\(\ket{00}\)</span> is a superposition of contractible loops in the torus, generated by the successive application of the stabilizer operators (c.f. <span class="math">\(\eqref{e:k00}\)</span>). We show two loops on the dual lattice <span class="math">\(\bar{\ell}\)</span>, of reversed spins by a cycle of stars operators <span class="math">\(A_s\)</span>.</p>
 </blockquote>
-<p>Indeed, as shown in the figure below, on a torus we can have contractible loops $\ell$ and non contractible ones, encircling the torus longitudinally $\ell_\parallel$ (polar angle) or perpendicularly $\ell_\perp$ (azimutal&nbsp;angle). </p>
+<p>Indeed, as shown in the figure below, on a torus we can have contractible loops <span class="math">\(\ell\)</span> and non contractible ones, encircling the torus longitudinally <span class="math">\(\ell_\parallel\)</span> (polar angle) or perpendicularly <span class="math">\(\ell_\perp\)</span> (azimutal&nbsp;angle). </p>
 <blockquote>
 <p><img src="/images/AQ-toric_XZ.svg" alt="tore loops" style="width: 300px;"/></p>
-<p>The ground state of the toric code is a superposition of loops; $\ell$ is a contractible loop, and $\ell_\perp, \ell_\parallel$ are two topologically distinct non contractible&nbsp;loops.</p>
+<p>The ground state of the toric code is a superposition of loops; <span class="math">\(\ell\)</span> is a contractible loop, and <span class="math">\(\ell_\perp, \ell_\parallel\)</span> are two topologically distinct non contractible&nbsp;loops.</p>
 </blockquote>
-<p>The star operators create contractible loops (on the dual lattice). However, non contractible loops can be created using the so called string operators:
-\begin{align<em>}
-X_\parallel &amp;= \prod_{n \in \bar{\ell}<em>\parallel} X_n, \quad <span class="amp">&amp;</span>
-X</em>\perp &amp;= \prod_{n \in \bar{\ell}<em>\perp} X_n \
-Z</em>\parallel &amp;= \prod_{n \in \ell_\parallel} Z_n , \quad <span class="amp">&amp;</span>
+<p>The star operators create contractible loops (on the dual lattice). However, non contractible loops can be created using the so called string&nbsp;operators:
+</p>
+<div class="math">\begin{align*}
+X_\parallel &amp;= \prod_{n \in \bar{\ell}_\parallel} X_n, \quad &amp;
+X_\perp &amp;= \prod_{n \in \bar{\ell}_\perp} X_n \\
+Z_\parallel &amp;= \prod_{n \in \ell_\parallel} Z_n , \quad &amp;
 Z_\perp &amp;= \prod_{n \in \ell_\perp} Z_n 
-\end{align</em>}
-associated to the loops around the two directions in the torus, on the lattice $\ell$ and the dual lattice $\bar{\ell}$ (see&nbsp;figure).</p>
+\end{align*}</div>
+<p>
+associated to the loops around the two directions in the torus, on the lattice <span class="math">\(\ell\)</span> and the dual lattice <span class="math">\(\bar{\ell}\)</span> (see&nbsp;figure).</p>
 <blockquote>
 <p><img src="/images/AQ-toric_LL.svg" alt="tore loops and duals" style="width: 280px;"/></p>
-<p>Non contractible loops on the square lattice and its dual. One associates a logical operator $X_L$ (dual, dashed lines) and $Z_L$ (solid lines), on each&nbsp;path.</p>
+<p>Non contractible loops on the square lattice and its dual. One associates a logical operator <span class="math">\(X_L\)</span> (dual, dashed lines) and <span class="math">\(Z_L\)</span> (solid lines), on each&nbsp;path.</p>
 </blockquote>
-<p>Note that the logical operators commute with the stabilizers but act non trivially on the ground state; for instance, the state $\ket{b_1b_2}$ defined by
-$$X^{b_1}<em _perp="\perp">{\parallel}  X^{b_2}</em>, \quad b_1,b_2 = 0, 1$$
-represents a ground state with $b_1$ non contractible loops in the longitudinal direction, and $b_2$ non contractible loops in the perpendicular direction.} \ket{00} =&nbsp;\ket{b_1b_2</p>
-<p>An interesting observation is that the structure of the logical operators reflects the underlying geometry of the torus: the support of the logical operators is a non contractible cycle on the torus. Moreover, the logical operators, given that they commute with the hamiltonian, are thus related to non trivial symmetries. However, at variance with the stabilizers (which also are symmetries of $H$), the logical operator symmetries are spontaneously broken in the ground&nbsp;states.</p>
-<p>Summarizing the above results, we conclude that the ground state $\ket{\psi_L}$ of the toric code is four times degenerated and can be spanned by the two logical qubits basis $\ket{b_1b_2}$, of the possible superpositions of closed paths on the&nbsp;torus.</p>
+<p>Note that the logical operators commute with the stabilizers but act non trivially on the ground state; for instance, the state <span class="math">\(\ket{b_1b_2}\)</span> defined&nbsp;by
+</p>
+<div class="math">$$X^{b_1}_{\parallel}  X^{b_2}_{\perp} \ket{00} = \ket{b_1b_2}, \quad b_1,b_2 = 0, 1$$</div>
+<p>
+represents a ground state with <span class="math">\(b_1\)</span> non contractible loops in the longitudinal direction, and <span class="math">\(b_2\)</span> non contractible loops in the perpendicular&nbsp;direction.</p>
+<p>An interesting observation is that the structure of the logical operators reflects the underlying geometry of the torus: the support of the logical operators is a non contractible cycle on the torus. Moreover, the logical operators, given that they commute with the hamiltonian, are thus related to non trivial symmetries. However, at variance with the stabilizers (which also are symmetries of <span class="math">\(H\)</span>), the logical operator symmetries are spontaneously broken in the ground&nbsp;states.</p>
+<p>Summarizing the above results, we conclude that the ground state <span class="math">\(\ket{\psi_L}\)</span> of the toric code is four times degenerated and can be spanned by the two logical qubits basis <span class="math">\(\ket{b_1b_2}\)</span>, of the possible superpositions of closed paths on the&nbsp;torus.</p>
 <h2>Notes</h2>
 <div class="footnote">
 <hr>
@@ -186,6 +218,68 @@ represents a ground state with $b_1$ non contractible loops in the longitudinal 
 </li>
 </ol>
 </div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>

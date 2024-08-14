@@ -45,86 +45,124 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
-\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
-\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
 </blockquote>
 <h1>Quantum&nbsp;Algorithms</h1>
 <h2>Fourier transform and phase&nbsp;estimation</h2>
-<p>The classical fourier transform has an inverse: applying the transform to a function and then applying its inverse, lead to the identity; the fact that the inverse is related to the complex conjugate of the direct transformation, naturally leads to the observation that the fourier transformation can be seen as a <em>unitary</em> operator. The quantum algorithm is simply an implementation of this unitary operator acting on a space of dimension $2^N$, as a circuit of one and two qubits&nbsp;gates.</p>
-<p>Let us start with the fourier transform of the basis states. We denote a basis state of the $N$ qubits hilbert space,
-$$\ket{s} \in \mathcal{H}^{\otimes N}$$
-by the binary string
-$$s = s_1 \ldots s_{N} = \sum_{n=1}^{N} s_n 2^{N-n},\; s_n = {0,1}\,.$$
+<p>The classical fourier transform has an inverse: applying the transform to a function and then applying its inverse, lead to the identity; the fact that the inverse is related to the complex conjugate of the direct transformation, naturally leads to the observation that the fourier transformation can be seen as a <em>unitary</em> operator. The quantum algorithm is simply an implementation of this unitary operator acting on a space of dimension <span class="math">\(2^N\)</span>, as a circuit of one and two qubits&nbsp;gates.</p>
+<p>Let us start with the fourier transform of the basis states. We denote a basis state of the <span class="math">\(N\)</span> qubits hilbert&nbsp;space,
+</p>
+<div class="math">$$\ket{s} \in \mathcal{H}^{\otimes N}$$</div>
+<p>
+by the binary&nbsp;string
+</p>
+<div class="math">$$s = s_1 \ldots s_{N} = \sum_{n=1}^{N} s_n 2^{N-n},\; s_n = \{0,1\}\,.$$</div>
+<p>
 Therefore,
-$$\ket{s} = \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \E^{2\pi \I s k/2^N} \ket{k}$$
-is the fourier transform of $\ket{s}$. Knowing the transformation of the basis vector we can compute the transformation of any superposition. The basic idea is to transform the unitary operator, here defined as a <em>sum</em> over the basis vectors in fourier space $\ket{k}$, into a product. This can be achieved using the decomposition of $s$ and $k$ into its binary digits:
-$$
-\begin{align<em>}
-\ket{s} &amp;= \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \exp\left( 2\pi \I \frac{s k}{2^N} \right) \ket{k} \
-  <span class="amp">&amp;</span> = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \exp\left( 2\pi \I s \sum_{n=1}^{N} \frac{k_n}{2^n} \right) \ket{k_1 \ldots k_{N}} \
-  <span class="amp">&amp;</span> = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \bigotimes_{n=1}^{N} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \
-  <span class="amp">&amp;</span> = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \sum_{k_n=0,1} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \
-  <span class="amp">&amp;</span> = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \left[ \ket{0} + \exp\left( 2\pi \I \frac{s}{2^n} \right) \ket{1} \right]
-\end{align</em>}
-$$
-The exponent selects the fractional part of $s/2^n$ for $n=1,\ldots,N$:
-$${s/2^n} = 0.s_{N-n+1}\ldots s_N\,,$$
-which allows the previous product to be written in the simple form,
-$$\ket{s_1 \ldots s_N} = \frac{1}{2^{N/2}} \left(\ket{0} + \E^{2 \pi \I 0.s_N} \ket{1} \right) \otimes \ldots \otimes \left(\ket{0} + \E^{2 \pi \I 0.s_1 \ldots s_N} \ket{1}&nbsp;\right)\,.$$</p>
-<p>Consider the last exponential, each term $s_n/2^n$ of the phase $2\pi 0.s_1\ldots s_N$,
-$$0.s_1 \ldots s_N = \frac{s_1}{2} + \cdots + \frac{s_N}{2^N}$$
-can be obtained by a rotation of an angle $2\pi/2^n$ if $s_n = 1$, otherwise it remains $0$; this operation can be implemented by the rotation matrix
-$$R_n = \begin{pmatrix} 1 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> \E^{2 \pi \I/ 2^n} \end{pmatrix}\,,$$
-controlled by $s_n$ and applied to the first qubit state (initially $\ket{s_1}$). We observe that this term depends on the values of all qubits, leading to a decomposition in at least $N$ operators (one qubit or with one control qubit). The first decimal can be simply obtained from the initial $\ket{s_1}$ by the application of an hadamard gate
-$$H \otimes^{N-1} 1_2 \ket{s_1 \ldots s_N} = \left(\ket{0} + \E^{2 \pi \I 0.s_1} \ket{1} \right) \ket{s_2 \ldots s_N}\,,$$
-note $\E^{2 \pi \I s_1/2} = -1$ only if $s_1=1$. Now, applying $R_2$ controlled by the second qubit, we obtain
-$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$
-Iterating this last step $N-1$ times, up to applying $R_N$, we get the last term in the product:
-$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2 \ldots s_N} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$
-For the other qubits we use the same recipe, $N-1$ times for $0.s_2 \ldots s_N$, $N-3$ on $0.s_3 \ldots s_N$, and so on: the total number of steps is then $N(N-1)/2$. We represent the whole algorithm in the circuit of the&nbsp;figure.</p>
+</p>
+<div class="math">$$\ket{s} = \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \E^{2\pi \I s k/2^N} \ket{k}$$</div>
+<p>
+is the fourier transform of <span class="math">\(\ket{s}\)</span>. Knowing the transformation of the basis vector we can compute the transformation of any superposition. The basic idea is to transform the unitary operator, here defined as a <em>sum</em> over the basis vectors in fourier space <span class="math">\(\ket{k}\)</span>, into a product. This can be achieved using the decomposition of <span class="math">\(s\)</span> and <span class="math">\(k\)</span> into its binary&nbsp;digits:
+</p>
+<div class="math">$$
+\begin{align*}
+\ket{s} &amp;= \frac{1}{\sqrt{2^N}} \sum_{k=0}^{2^N-1} \exp\left( 2\pi \I \frac{s k}{2^N} \right) \ket{k} \\
+  &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \exp\left( 2\pi \I s \sum_{n=1}^{N} \frac{k_n}{2^n} \right) \ket{k_1 \ldots k_{N}} \\
+  &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \bigotimes_{n=1}^{N} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
+  &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \sum_{k_n=0,1} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
+  &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \left[ \ket{0} + \exp\left( 2\pi \I \frac{s}{2^n} \right) \ket{1} \right]
+\end{align*}
+$$</div>
+<p>
+The exponent selects the fractional part of <span class="math">\(s/2^n\)</span> for <span class="math">\(n=1,\ldots,N\)</span>:
+</p>
+<div class="math">$$\{s/2^n\} = 0.s_{N-n+1}\ldots s_N\,,$$</div>
+<p>
+which allows the previous product to be written in the simple&nbsp;form,
+</p>
+<div class="math">$$\ket{s_1 \ldots s_N} = \frac{1}{2^{N/2}} \left(\ket{0} + \E^{2 \pi \I 0.s_N} \ket{1} \right) \otimes \ldots \otimes \left(\ket{0} + \E^{2 \pi \I 0.s_1 \ldots s_N} \ket{1} \right)\,.$$</div>
+<p>Consider the last exponential, each term <span class="math">\(s_n/2^n\)</span> of the phase <span class="math">\(2\pi 0.s_1\ldots s_N\)</span>,
+</p>
+<div class="math">$$0.s_1 \ldots s_N = \frac{s_1}{2} + \cdots + \frac{s_N}{2^N}$$</div>
+<p>
+can be obtained by a rotation of an angle <span class="math">\(2\pi/2^n\)</span> if <span class="math">\(s_n = 1\)</span>, otherwise it remains <span class="math">\(0\)</span>; this operation can be implemented by the rotation&nbsp;matrix
+</p>
+<div class="math">$$R_n = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \E^{2 \pi \I/ 2^n} \end{pmatrix}\,,$$</div>
+<p>
+controlled by <span class="math">\(s_n\)</span> and applied to the first qubit state (initially <span class="math">\(\ket{s_1}\)</span>). We observe that this term depends on the values of all qubits, leading to a decomposition in at least <span class="math">\(N\)</span> operators (one qubit or with one control qubit). The first decimal can be simply obtained from the initial <span class="math">\(\ket{s_1}\)</span> by the application of an hadamard&nbsp;gate
+</p>
+<div class="math">$$H \otimes^{N-1} 1_2 \ket{s_1 \ldots s_N} = \left(\ket{0} + \E^{2 \pi \I 0.s_1} \ket{1} \right) \ket{s_2 \ldots s_N}\,,$$</div>
+<p>
+note <span class="math">\(\E^{2 \pi \I s_1/2} = -1\)</span> only if <span class="math">\(s_1=1\)</span>. Now, applying <span class="math">\(R_2\)</span> controlled by the second qubit, we&nbsp;obtain
+</p>
+<div class="math">$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$</div>
+<p>
+Iterating this last step <span class="math">\(N-1\)</span> times, up to applying <span class="math">\(R_N\)</span>, we get the last term in the&nbsp;product:
+</p>
+<div class="math">$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2 \ldots s_N} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$</div>
+<p>
+For the other qubits we use the same recipe, <span class="math">\(N-1\)</span> times for <span class="math">\(0.s_2 \ldots s_N\)</span>, <span class="math">\(N-3\)</span> on <span class="math">\(0.s_3 \ldots s_N\)</span>, and so on: the total number of steps is then <span class="math">\(N(N-1)/2\)</span>. We represent the whole algorithm in the circuit of the&nbsp;figure.</p>
 <blockquote>
 <p><img src="/images/AQ-cfourier.svg" alt="fft" style="width: 550px;"/></p>
 </blockquote>
-<p>The classical algorithm, the fast fourier transform, needs instead $2^N N$ steps, which is exponential in $N$, compared to the $N^2$ quantum algorithm. This speed up in the computation of the fourier transform is at the origin of the Shor algorithm performance, which allows the factorization of large integers in polynomial&nbsp;time.</p>
+<p>The classical algorithm, the fast fourier transform, needs instead <span class="math">\(2^N N\)</span> steps, which is exponential in <span class="math">\(N\)</span>, compared to the <span class="math">\(N^2\)</span> quantum algorithm. This speed up in the computation of the fourier transform is at the origin of the Shor algorithm performance, which allows the factorization of large integers in polynomial&nbsp;time.</p>
 <h3>Phase&nbsp;estimation</h3>
-<p>The quantum fourier transform may be used to compute the phase $\theta \in (0,1)$, related to the eigenvalue of a unitary $U$ by,
-$$U \ket{u_\theta} = \E^{2 \pi \I \theta} \ket{u_\theta}$$
-where $\ket{u_\theta}$ is a known eigenvector (of dimension $D$). The&nbsp;circuit</p>
+<p>The quantum fourier transform may be used to compute the phase <span class="math">\(\theta \in (0,1)\)</span>, related to the eigenvalue of a unitary <span class="math">\(U\)</span>&nbsp;by,
+</p>
+<div class="math">$$U \ket{u_\theta} = \E^{2 \pi \I \theta} \ket{u_\theta}$$</div>
+<p>
+where <span class="math">\(\ket{u_\theta}\)</span> is a known eigenvector (of dimension <span class="math">\(D\)</span>). The&nbsp;circuit</p>
 <blockquote>
 <p><img src="/images/AQ-cphase.svg" alt="fft phase" style="width: 550px;"/></p>
 </blockquote>
-<p>implements the first part of the algorithm (Cleve et alia, 1998).<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup> One register, whose input is $\ket{u_\theta}$, is used to compute the iterates $U^{2^n}$ ($n=0,\ldots,N-1$) which do not modify the eigenstate, and an ancilla register of $N$ qubits, which are used to control the $U$ iterates; the value of $N$ is chosen in order to get $\theta$ with a $N$ bit precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$\ket{2^N \theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k}&nbsp;\ket{k}\,.$$ </p>
-<p>Applying the inverse fourier transform
-$$\ket{k} = \mathcal{F^\dagger} \ket{s} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N - 1} \E^{-2\pi \I s k/2^N} \ket{s}\,.$$
-to this state, one obtains,
-$$ \frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s} \approx \ket{2^N \theta}\,.$$
-The expression in brackets is picked at $\theta = s/2^N$, therefore, after this inverse transformation, measurement of the ancilla qubits gives us $s$, a $N$ bit approximation of&nbsp;$\theta$.</p>
+<p>implements the first part of the algorithm (Cleve et alia, 1998).<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup> One register, whose input is <span class="math">\(\ket{u_\theta}\)</span>, is used to compute the iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an ancilla register of <span class="math">\(N\)</span> qubits, which are used to control the <span class="math">\(U\)</span> iterates; the value of <span class="math">\(N\)</span> is chosen in order to get <span class="math">\(\theta\)</span> with a <span class="math">\(N\)</span> bit precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$\ket{2^N \theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k}\,.$$</div>
+<p>Applying the inverse fourier&nbsp;transform
+</p>
+<div class="math">$$\ket{k} = \mathcal{F^\dagger} \ket{s} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N - 1} \E^{-2\pi \I s k/2^N} \ket{s}\,.$$</div>
+<p>
+to this state, one&nbsp;obtains,
+</p>
+<div class="math">$$ \frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s} \approx \ket{2^N \theta}\,.$$</div>
+<p>
+The expression in brackets is picked at <span class="math">\(\theta = s/2^N\)</span>, therefore, after this inverse transformation, measurement of the ancilla qubits gives us <span class="math">\(s\)</span>, a <span class="math">\(N\)</span> bit approximation of <span class="math">\(\theta\)</span>.</p>
 <h3>Eigenvectors and eigenvalues&nbsp;finding</h3>
-<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the eigenvector $\ket{\bar{\theta}}$ of $U$ and its eigenvalue $\E^{\I \bar{\theta}}$.  They assumed an initial state $\ket{\theta}$ possessing a substantial overlap with the true eigenvector $\ket{\bar{\theta}}$; this means that the expansion
-$$\ket{\theta} = \sum_k \theta_k \ket{k}, \quad U \ket{k} = \E^{\I \bar{\theta}_k} \ket{k} \,,$$
-contains essentially order one amplitudes
-$$\theta_k = \braket{\bar{\theta}_k|\theta}\,.$$
-The idea is to define a circuit using a set of $N$ ancilla qubits such that their measure leads with probability
-$$p_k = |\braket{\bar{\theta}_k | \theta}|^2$$
-to the correct eigenvector $\ket{\bar{\theta}_k}$. Consider the&nbsp;circuit,</p>
+<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span> of <span class="math">\(U\)</span> and its eigenvalue <span class="math">\(\E^{\I \bar{\theta}}\)</span>.  They assumed an initial state <span class="math">\(\ket{\theta}\)</span> possessing a substantial overlap with the true eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span>; this means that the&nbsp;expansion
+</p>
+<div class="math">$$\ket{\theta} = \sum_k \theta_k \ket{k}, \quad U \ket{k} = \E^{\I \bar{\theta}_k} \ket{k} \,,$$</div>
+<p>
+contains essentially order one&nbsp;amplitudes
+</p>
+<div class="math">$$\theta_k = \braket{\bar{\theta}_k|\theta}\,.$$</div>
+<p>
+The idea is to define a circuit using a set of <span class="math">\(N\)</span> ancilla qubits such that their measure leads with&nbsp;probability
+</p>
+<div class="math">$$p_k = |\braket{\bar{\theta}_k | \theta}|^2$$</div>
+<p>
+to the correct eigenvector <span class="math">\(\ket{\bar{\theta}_k}\)</span>. Consider the&nbsp;circuit,</p>
 <blockquote>
 <p><img src="/images/AQ-cphase-2.svg" alt="Lloyd" style="width: 400px;"/></p>
 </blockquote>
-<p>We note that instead of applying the successive $U$, $U^2$, $U^4$, $\ldots$ controlled gates as in the phase estimation algorithm, here we simply use the sequence $U,U^2,U^3,\ldots, U^{2^N-1}$ ($N$ is the dimension of the ancilla register). The state after the application of the hadamard gates and the ancilla controlled $U^n$ gates ($n=0, \ldots, 2^{N}-1$), is 
-$$\ket{\psi} = \sum_k \theta_k \left( \sum_n \E^{\I \bar{\theta}_k n} \ket{n} \right) \ket{k} \,.$$
-As shown in the above circuit, this needs to control the application of $U$ on the set of ancilla qubits, choosing at each step a different combination of $\ket{0}$ (black) or $\ket{1}$ (white dots) as control qubit states (the gray box in the&nbsp;circuit).</p>
-<p>Now, we assume for simplicity that the eigenvalues are $N$-decimal binary digits; in such a case, applying the inverse quantum fourier transform to the ancilla register state (as in the figure above), we obtain <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
-$$\ket{\psi} = \sum_k \theta_k \ket{\theta_k} \ket{k} \,,$$
-where, in the present approximation the phases $\theta_k$ coincides with the exact ones $\bar{\theta}_k$. As a consequence, a measurement of the first register gives the binary digits $n$ of the phase $n = 2^N\theta_k$, and the state of the second register is projected into its corresponding eigenvector&nbsp;$\ket{k}$.</p>
+<p>We note that instead of applying the successive <span class="math">\(U\)</span>, <span class="math">\(U^2\)</span>, <span class="math">\(U^4\)</span>, <span class="math">\(\ldots\)</span> controlled gates as in the phase estimation algorithm, here we simply use the sequence <span class="math">\(U,U^2,U^3,\ldots, U^{2^N-1}\)</span> (<span class="math">\(N\)</span> is the dimension of the ancilla register). The state after the application of the hadamard gates and the ancilla controlled <span class="math">\(U^n\)</span> gates (<span class="math">\(n=0, \ldots, 2^{N}-1\)</span>),&nbsp;is 
+</p>
+<div class="math">$$\ket{\psi} = \sum_k \theta_k \left( \sum_n \E^{\I \bar{\theta}_k n} \ket{n} \right) \ket{k} \,.$$</div>
+<p>
+As shown in the above circuit, this needs to control the application of <span class="math">\(U\)</span> on the set of ancilla qubits, choosing at each step a different combination of <span class="math">\(\ket{0}\)</span> (black) or <span class="math">\(\ket{1}\)</span> (white dots) as control qubit states (the gray box in the&nbsp;circuit).</p>
+<p>Now, we assume for simplicity that the eigenvalues are <span class="math">\(N\)</span>-decimal binary digits; in such a case, applying the inverse quantum fourier transform to the ancilla register state (as in the figure above), we obtain <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+</p>
+<div class="math">$$\ket{\psi} = \sum_k \theta_k \ket{\theta_k} \ket{k} \,,$$</div>
+<p>
+where, in the present approximation the phases <span class="math">\(\theta_k\)</span> coincides with the exact ones <span class="math">\(\bar{\theta}_k\)</span>. As a consequence, a measurement of the first register gives the binary digits <span class="math">\(n\)</span> of the phase <span class="math">\(n = 2^N\theta_k\)</span>, and the state of the second register is projected into its corresponding eigenvector <span class="math">\(\ket{k}\)</span>.</p>
 <h2>Shor</h2>
 <h2>Grover</h2>
 <h2>Exercises</h2>
@@ -135,14 +173,14 @@ where, in the present approximation the phases $\theta_k$ coincides with the exa
 <li>
 <p>Analyze the&nbsp;circuit,</p>
 <p><img src="/images/AQ-cphase-1.svg" alt="phase measure" style="width: 400px;"/></p>
-<p>where $H$ is the hadamard gate,
-$$Z_\varphi = \mathrm{diag} \left(1, \E^{\I \varphi} \right)$$
-is a phase gate, and $L$ an integer, and show that it transforms the initial state $\ket{0} \otimes \ket{u_\theta}$, $\ket{u_\theta}$ is an eigenvector of $U$, into $\ket{L, \varphi, \theta} \otimes \ket{u_\theta}$,
-$$\ket{L,\varphi,\theta} = \frac{1}{2} \left( 1 + \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0} + \frac{1}{2} \left( 1 - \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0}$$
-Compute the probabilities of measuring the ancilla qubit to be in state $0$ or $1$. (<em>Hint</em> $P_{L,\varphi}(0, \theta) = |\braket{0|L,\varphi,&nbsp;\theta}|^2$)</p>
-<p>Show that with a choice of $\varphi$ one can accurately estimate 
-$$\cos(2\pi L \theta) \; \text{and} \; \sin(2\pi L \theta)$$
-from which one finally gets an approximate value of the phase&nbsp;$\theta$.</p>
+<p>where <span class="math">\(H\)</span> is the hadamard gate,
+<div class="math">$$Z_\varphi = \mathrm{diag} \left(1, \E^{\I \varphi} \right)$$</div>
+is a phase gate, and <span class="math">\(L\)</span> an integer, and show that it transforms the initial state <span class="math">\(\ket{0} \otimes \ket{u_\theta}\)</span>, <span class="math">\(\ket{u_\theta}\)</span> is an eigenvector of <span class="math">\(U\)</span>, into <span class="math">\(\ket{L, \varphi, \theta} \otimes \ket{u_\theta}\)</span>,
+<div class="math">$$\ket{L,\varphi,\theta} = \frac{1}{2} \left( 1 + \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0} + \frac{1}{2} \left( 1 - \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0}$$</div>
+Compute the probabilities of measuring the ancilla qubit to be in state <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. (<em>Hint</em> <span class="math">\(P_{L,\varphi}(0, \theta) = |\braket{0|L,\varphi, \theta}|^2\)</span>)</p>
+<p>Show that with a choice of <span class="math">\(\varphi\)</span> one can accurately estimate 
+<div class="math">$$\cos(2\pi L \theta) \; \text{and} \; \sin(2\pi L \theta)$$</div>
+from which one finally gets an approximate value of the phase <span class="math">\(\theta\)</span>.</p>
 </li>
 </ol>
 <h2>Notes</h2>
@@ -159,6 +197,68 @@ from which one finally gets an approximate value of the phase&nbsp;$\theta$.</p>
 </li>
 </ol>
 </div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>

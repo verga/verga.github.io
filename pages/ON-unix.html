@@ -45,8 +45,8 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
-\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}!\mathrm{d}}$</p>
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
 <h1>Commandes unix de&nbsp;base</h1>
 <p>Le système d&#8217;exploitation linux, dérivé libre d&#8217;unix, est particulièrement adapté pour le travail en sciences. Les langages de programmation comme C, fortran, python, les compilateurs (e.g. gcc), les bibliothèques (e.g. linpack), ainsi que les technologies web (e.g. html), ou les outils d&#8217;édition scientifique come TeX, ont tous été développés dans le cadre&nbsp;d&#8217;unix.</p>
 <p>À la différence des systèmes dont le but est essentiellement de faire tourner une série (fixe) de logiciels, comme Windows par exemple pour le travail administratif avec Office, le système linux est ouvert: il permet de controller complètement le fonctionnement de votre&nbsp;ordinateur.</p>
@@ -286,33 +286,33 @@
 <h4>Commandes&nbsp;basiques</h4>
 <dl>
 <dt><code>&lt;ESC&gt;</code></dt>
-<dd>$-$ passe au mode normal (commande), depuis par exemple le mode&nbsp;d&#8217;insertion</dd>
+<dd><span class="math">\(-\)</span> passe au mode normal (commande), depuis par exemple le mode&nbsp;d&#8217;insertion</dd>
 <dt><code>i a I A</code></dt>
-<dd>$-$ passe au mode insertion, à la position du curseur (i), ou après le curseur (a), ou au début de la ligne (I), ou enfin à la fin de la ligne&nbsp;(A)</dd>
+<dd><span class="math">\(-\)</span> passe au mode insertion, à la position du curseur (i), ou après le curseur (a), ou au début de la ligne (I), ou enfin à la fin de la ligne&nbsp;(A)</dd>
 <dt><code>o O</code></dt>
-<dd>$-$ insère une ligne en dessous (o) ou au dessus (O), de la ligne&nbsp;courante</dd>
+<dd><span class="math">\(-\)</span> insère une ligne en dessous (o) ou au dessus (O), de la ligne&nbsp;courante</dd>
 <dt><code>h j k l</code></dt>
-<dd>$-$ déplace le curseur un caractère vers la gauche (h) ou vers la droite (l), ou vers la ligne précédente (k) ou suivante&nbsp;(j)</dd>
+<dd><span class="math">\(-\)</span> déplace le curseur un caractère vers la gauche (h) ou vers la droite (l), ou vers la ligne précédente (k) ou suivante&nbsp;(j)</dd>
 <dt><code>H M L</code></dt>
-<dd>$-$ positionne le curseur en haut (H), au milieu (M) ou en bas (L) de&nbsp;l&#8217;écran.</dd>
+<dd><span class="math">\(-\)</span> positionne le curseur en haut (H), au milieu (M) ou en bas (L) de&nbsp;l&#8217;écran.</dd>
 <dt><code>^u ^d ^b ^f</code></dt>
-<dd>$-$ control u (^u) déplace le texte d&#8217;un demi écran vers le haut, (^l) le fait vers le bas; (^b) et (^f) font pareil, mais le déplacement se fait par écran entier (vers le haut et vers le bas,&nbsp;respectivement)</dd>
+<dd><span class="math">\(-\)</span> control u (^u) déplace le texte d&#8217;un demi écran vers le haut, (^l) le fait vers le bas; (^b) et (^f) font pareil, mais le déplacement se fait par écran entier (vers le haut et vers le bas,&nbsp;respectivement)</dd>
 <dt><code>gg G</code></dt>
-<dd>$-$ début du document (gg), fin du document&nbsp;(G)</dd>
+<dd><span class="math">\(-\)</span> début du document (gg), fin du document&nbsp;(G)</dd>
 <dt><code>^ $</code></dt>
-<dd>$-$ début de la ligne (^) et fin de la ligne&nbsp;(\$)</dd>
+<dd><span class="math">\(-\)</span> début de la ligne (^) et fin de la ligne&nbsp;(\$)</dd>
 <dt><code>w b e W B E</code></dt>
-<dd>$-$ permettent de déplacer le curseur d&#8217;un mot en avant (w), en arrière (b), ou à la fin (e) du mot; les versions majuscules définissent le mot comme une succession des caractères entre deux&nbsp;espaces</dd>
+<dd><span class="math">\(-\)</span> permettent de déplacer le curseur d&#8217;un mot en avant (w), en arrière (b), ou à la fin (e) du mot; les versions majuscules définissent le mot comme une succession des caractères entre deux&nbsp;espaces</dd>
 <dt><code>f F t T</code></dt>
-<dd>$-$ effectuent des mouvements du curseur sur la ligne: (fa) avance jusqu&#8217;au premier &#8216;a&#8217;, (F) va dans le sens opposé; (ta) avance jusqu&#8217;au caractère qui précède, et (T), va dans la direction&nbsp;opposée.</dd>
+<dd><span class="math">\(-\)</span> effectuent des mouvements du curseur sur la ligne: (fa) avance jusqu&#8217;au premier &#8216;a&#8217;, (F) va dans le sens opposé; (ta) avance jusqu&#8217;au caractère qui précède, et (T), va dans la direction&nbsp;opposée.</dd>
 <dt><code>x dd d</code></dt>
-<dd>$-$ efface un caractère (x) ou n caratères (nx); (dd) efface la ligne, et (d) suivi d&#8217;un mouvement efface jusqu&#8217;à la nouvelle position du curseur: pour effacer un mot on fait <code>dw</code>, pour effacer 3 mots contenant de nombres <code>d3W</code> </dd>
+<dd><span class="math">\(-\)</span> efface un caractère (x) ou n caratères (nx); (dd) efface la ligne, et (d) suivi d&#8217;un mouvement efface jusqu&#8217;à la nouvelle position du curseur: pour effacer un mot on fait <code>dw</code>, pour effacer 3 mots contenant de nombres <code>d3W</code> </dd>
 <dt><code>r s c C</code></dt>
-<dd>$-$ (r) remplace un caractère et reste en mode normal, (s) substitue le caractère sous le curseur et passe en mode insertion; pour changer le mot entier on utilise <code>c</code> ou <code>C</code> pour une chaîne&nbsp;alpha-numérique.</dd>
+<dd><span class="math">\(-\)</span> (r) remplace un caractère et reste en mode normal, (s) substitue le caractère sous le curseur et passe en mode insertion; pour changer le mot entier on utilise <code>c</code> ou <code>C</code> pour une chaîne&nbsp;alpha-numérique.</dd>
 <dt><code>y yy p P</code></dt>
-<dd>$-$ pour sélectionner un texte on fait <code>y</code> suivi d&#8217;un mouvement, par exemple <code>y$</code> copie le texte jusqu&#8217;à la fin de la ligne courante; <code>p</code> colle le texte sélectionné par <code>y</code> après le curseur et <code>P</code> à partir de la position du curseur; (yy) copie la ligne. Grosso modo, y correspond à copier et p a&nbsp;coller.</dd>
+<dd><span class="math">\(-\)</span> pour sélectionner un texte on fait <code>y</code> suivi d&#8217;un mouvement, par exemple <code>y$</code> copie le texte jusqu&#8217;à la fin de la ligne courante; <code>p</code> colle le texte sélectionné par <code>y</code> après le curseur et <code>P</code> à partir de la position du curseur; (yy) copie la ligne. Grosso modo, y correspond à copier et p a&nbsp;coller.</dd>
 <dt><code>u ^r</code></dt>
-<dd>$-$ (undo) remonte la liste de tous les changements en remettant le texte dans son état précédent; control r remet l&#8217;état à l&#8217;état&nbsp;présent</dd>
+<dd><span class="math">\(-\)</span> (undo) remonte la liste de tous les changements en remettant le texte dans son état précédent; control r remet l&#8217;état à l&#8217;état&nbsp;présent</dd>
 </dl>
 <h2>Notes</h2>
 <p>Voici quelques liens utiles sur&nbsp;unix:</p>
@@ -321,6 +321,68 @@
 <li><a href="https://en.wikibooks.org/wiki/Bash_Shell_Scripting">Bash shell&nbsp;scripting</a></li>
 <li><a href="https://vimhelp.org/">Vim&nbsp;help</a></li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>

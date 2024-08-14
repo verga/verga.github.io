@@ -45,8 +45,8 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
-\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}!\mathrm{d}}$</p>
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
 <h1>Python</h1>
 <p>Python est un langage de programmation interactif, dont les multiples applications vont du développement web et réseaux, au calcul scientifique en passant par la manipulation des données et l&#8217;intelligence artificielle. Il se distingue des langages compilés comme le fortran ou le C, dont les types des objets sont statiques, par ses objets dynamiques. On dit donc que python est un langage interprété, dans le sens où chaque instruction peut être exécuté&nbsp;immédiatement.</p>
 <p>Python se caractérise par une syntaxe simple et intuitive (d&#8217;où sa popularité), notamment par le fait que les espaces et par conséquent l&#8217;indentation des lignes, sont significatifs: la porté d&#8217;un bloc de code est associée à un changement d&#8217;indentation. Il s&#8217;agit en outre d&#8217;un langage souple qui permet la programmation à différents niveaux d&#8217;abstraction, du code procédural au code orienté objet. Python possède un ensemble de bibliothèques dédiées aux applications les plus diverses, depuis le script système et le serveur web, jusqu&#8217;aux packages de calcul vectoriel (numpy), scientifique (scipy), des données (pandas), ou graphique (matplotlib,pillow). Des scientifiques proposent de boîtes à outils pour l&#8217;astronomie (astropy), la mécanique quantique (qutip), la matière condensée (kwant, tenpy,quimb), ou les réseaux et l&#8217;intelligence artificielle (pytorch, tensorflow). Cette liste est loin d&#8217;être exhaustive ou même représentative des milliers de packages python (il doit en avoir 200000 dans le site&nbsp;PyPi).</p>
@@ -319,6 +319,68 @@
 <li><a href="https://python-3-patterns-idioms-test.readthedocs.io/en/latest/index.html">Patterns, Recipes and&nbsp;Idioms</a></li>
 <li><a href="https://link-springer-com.lama.univ-amu.fr/book/10.1007/978-3-030-16877-3">Programing for Computations</a> contient la plupart de sujets traités en travaux pratiques; disponible en accès libre aux formats pdf et&nbsp;epub</li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>

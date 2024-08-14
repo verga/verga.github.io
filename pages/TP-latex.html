@@ -45,21 +45,21 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
-\newcommand{\D}{\mathop{}!\mathrm{d}}
+\newcommand{\D}{\mathop{}\!\mathrm{d}}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
-\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{bm}{\boldsymbol}$</p>
+\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/ON-index.html">Workshop</a> on scientific&nbsp;typesetting.</p>
 </blockquote>
-<h1>Scientific writing with&nbsp;$\LaTeX$</h1>
-<p>The goal of this course is to learn how to use the tools allowing to write scientific documents of high quality. The $\LaTeX$ typesetting system is universally used in the scientific and technical literature; it is based on the language $\TeX$ created by <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>.</p>
+<h1>Scientific writing with <span class="math">\(\LaTeX\)</span></h1>
+<p>The goal of this course is to learn how to use the tools allowing to write scientific documents of high quality. The <span class="math">\(\LaTeX\)</span> typesetting system is universally used in the scientific and technical literature; it is based on the language <span class="math">\(\TeX\)</span> created by <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>.</p>
 <p>You will <em>write a short article</em> using your own lecture notes from one of the license or master courses you attended. Typically, you take a simple subject, like the pendulum, the Carnot cycle, or the electric field of a dipole, and write a self-contained text in the form of a scientific paper. Your document should comply with the standards of the scientific papers: front matter, abstract, introduction, main content, conclusion, and&nbsp;references.</p>
 <p>A reasonable, minimal, scientific computing environment might consist&nbsp;in:</p>
 <ul>
-<li>A $\LaTeX$ distribution (TeXLive, see the references at the end of this page, is the standard&nbsp;one)</li>
+<li>A <span class="math">\(\LaTeX\)</span> distribution (TeXLive, see the references at the end of this page, is the standard&nbsp;one)</li>
 <li>An editor: <a href="https://www.xm1math.net/texmaker/">TeXMaker</a>, <a href="https://www.vim.org/">vim</a>, or&nbsp;equivalent</li>
 <li>A <code>python</code> programming environment (you may use <a href="https://www.anaconda.com/">Anaconda</a>)</li>
 </ul>
@@ -124,22 +124,27 @@ are <code>equation</code>, <code>align</code>,&nbsp;etc.:</p>
 <li>Inline formula <code>\(...\)</code>, displayed <code>\[...\]</code></li>
 <li>Equation with number <code>\begin{equation}...\end{equation}</code></li>
 <li>Sequence of centered formulas <code>\begin{gather}...\end{gather}</code>, aligned at <code>&amp;</code>, <code>\begin{align}...\end{align}</code></li>
-<li>Raw formulas <code>a+b=c</code>:&nbsp;$a+b=c$</li>
-<li>Sub and superscripts <code>_</code> and <code>^</code>, <code>a_2x^2+a_1x+a_0=0</code>: $a_2x^2+a_1x+a_0=0$ (spaces are not significant in math&nbsp;formulas)</li>
-<li>Fractions <code>\frac{a}{b+c}</code>:&nbsp;$$\frac{a}{b+c}$$</li>
+<li>Raw formulas <code>a+b=c</code>: <span class="math">\(a+b=c\)</span></li>
+<li>Sub and superscripts <code>_</code> and <code>^</code>, <code>a_2x^2+a_1x+a_0=0</code>: <span class="math">\(a_2x^2+a_1x+a_0=0\)</span> (spaces are not significant in math&nbsp;formulas)</li>
+<li>Fractions <code>\frac{a}{b+c}</code>: 
+    <div class="math">$$\frac{a}{b+c}$$</div>
+</li>
 <li>Integrals and sums <code>\int_0^1 dx f(x) = 1</code>, <code>\sum_{n=0}^\infty \frac{x^n}{n!}= \mathrm{e}^x</code>
-    \begin{gather<em>}
-      \int_0^1 dx f(x) = 1 \
+    <div class="math">\begin{gather*}
+      \int_0^1 dx f(x) = 1 \\
       \sum_{n=0}^\infty \frac{x^n}{n!}= \mathrm{e}^x
-    \end{gather</em>}</li>
+    \end{gather*}</div>
+</li>
 <li>Limits <code>\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1</code>
-    $$\lim_{x \rightarrow 0} \frac{\sin x}{x} =&nbsp;1$$</li>
-<li>Greek letters <code>\alpha, \beta, \gamma, \ldots</code>: $\alpha, \beta, \gamma,&nbsp;\ldots$</li>
-<li>roman, blackboard and calligraphic symbols <code>\mathrm{i},\mathbb{R},\mathcal{L}</code>:&nbsp;$\mathrm{i},\mathbb{R},\mathcal{L}$</li>
-<li>Vectors (bold mathematics <code>\usepackage{bm}</code>),<code>\bm{a = b \times c}</code> $\bm{a = b \times&nbsp;c}$</li>
-<li>Square root <code>\sqrt{1+ \mathrm{i}}</code>:&nbsp;$\sqrt{1+\mathrm{i}}$</li>
+    <div class="math">$$\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1$$</div>
+</li>
+<li>Greek letters <code>\alpha, \beta, \gamma, \ldots</code>: <span class="math">\(\alpha, \beta, \gamma,&nbsp;\ldots\)</span></li>
+<li>roman, blackboard and calligraphic symbols <code>\mathrm{i},\mathbb{R},\mathcal{L}</code>: <span class="math">\(\mathrm{i},\mathbb{R},\mathcal{L}\)</span></li>
+<li>Vectors (bold mathematics <code>\usepackage{bm}</code>),<code>\bm{a = b \times c}</code> <span class="math">\(\bm{a = b \times&nbsp;c}\)</span></li>
+<li>Square root <code>\sqrt{1+ \mathrm{i}}</code>: <span class="math">\(\sqrt{1+\mathrm{i}}\)</span></li>
 <li>Large parenthesis <code>\left(1+\frac{x}{n}\right)^n \rightarrow \mathrm{e}^{-x}</code>:
-    $$\left(1-\frac{x}{n}\right)^n \rightarrow&nbsp;\mathrm{e}^{-x}$$</li>
+    <div class="math">$$\left(1-\frac{x}{n}\right)^n \rightarrow \mathrm{e}^{-x}$$</div>
+</li>
 </ul>
 <h2>LaTeX&nbsp;template</h2>
 <p><strong>Important advice:</strong> do not try by any means to format your text, use exclusively the latex environments for your layout. Avoid <code>\\</code>, <code>vspace</code>, <code>clearpage</code>; do not modify the margin sizes (the use of the geometry package must not break the basic <a href="https://en.wikipedia.org/wiki/Typography">typographic rules</a>).</p>
@@ -147,7 +152,7 @@ are <code>equation</code>, <code>align</code>,&nbsp;etc.:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[a4paper, 11pt, twoside]</span><span class="nb">{</span>article<span class="nb">}</span>
 </code></pre></div>
 
-<p>Define the text encoding as <code>utf8</code>, and fonts: <a href="http://www.gust.org.pl/projects/e-foundry/latin-modern"><code>lmodern</code>, latin modern</a> is the standard font, based on the famous &#8220;Computer Modern&#8221; font designed by Donald Knuth. You may choose other fonts (see the <a href="https://www.tug.org/FontCatalogue/">$\LaTeX$ fonts catalogue</a>); a modern complete set of font is <a href="https://www.stixfonts.org/"><span class="caps">STIX</span></a>. The package <code>babel</code> defines specific language typesetting; the last one in the list (here <code>english</code>) is the active one. To activate <code>french</code> use the command <code>\selectlanguage{french}</code>. You may toggle between languages using <code>\selectlanguage</code>.</p>
+<p>Define the text encoding as <code>utf8</code>, and fonts: <a href="http://www.gust.org.pl/projects/e-foundry/latin-modern"><code>lmodern</code>, latin modern</a> is the standard font, based on the famous &#8220;Computer Modern&#8221; font designed by Donald Knuth. You may choose other fonts (see the <a href="https://www.tug.org/FontCatalogue/"><span class="math">\(\LaTeX\)</span> fonts catalogue</a>); a modern complete set of font is <a href="https://www.stixfonts.org/"><span class="caps">STIX</span></a>. The package <code>babel</code> defines specific language typesetting; the last one in the list (here <code>english</code>) is the active one. To activate <code>french</code> use the command <code>\selectlanguage{french}</code>. You may toggle between languages using <code>\selectlanguage</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c">%</span>
 <span class="c">% fonts and languages</span>
     <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
@@ -179,7 +184,7 @@ are <code>equation</code>, <code>align</code>,&nbsp;etc.:</p>
     <span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
 </code></pre></div>
 
-<p>These packages define a large set of mathematical constructions, like the <code>align</code>, <code>gather</code> or <code>multiline</code> environments, and adds special symbols ($\mathfrak{H}$) and bold mathematics (<code>\bm y</code>: $\boldsymbol&nbsp;y$):</p>
+<p>These packages define a large set of mathematical constructions, like the <code>align</code>, <code>gather</code> or <code>multiline</code> environments, and adds special symbols (<span class="math">\(\mathfrak{H}\)</span>) and bold mathematics (<code>\bm y</code>: <span class="math">\(\boldsymbol y\)</span>):</p>
 <div class="highlight"><pre><span></span><code>  Maxwell equations,
   <span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>
     <span class="k">\label</span><span class="nb">{</span>e:ME<span class="nb">}</span>
@@ -299,11 +304,73 @@ are <code>equation</code>, <code>align</code>,&nbsp;etc.:</p>
 <h3>Documentation</h3>
 <ul>
 <li>Full archive of latex resources <a href="https://www.ctan.org"><span class="caps">CTAN</span></a></li>
-<li><a href="http://mirrors.ctan.org/info/lshort/english/lshort.pdf">A not so short introduction to $\LaTeX$</a>, by by Tobias&nbsp;Oetiker.</li>
+<li><a href="http://mirrors.ctan.org/info/lshort/english/lshort.pdf">A not so short introduction to <span class="math">\(\LaTeX\)</span></a>, by by Tobias&nbsp;Oetiker.</li>
 <li><a href="http://mirrors.ctan.org/info/short-math-guide/short-math-guide.pdf">Short guide to typset mathematics</a>, by Michael Downes, updated by Barbara&nbsp;Beeton.</li>
-<li><a href="http://www.cpt.univ-mrs.fr/~masson/latex/Cours-LaTeX-A4.pdf">Exposé sur $\LaTeX$</a>, par Thierry&nbsp;Masson.</li>
+<li><a href="http://www.cpt.univ-mrs.fr/~masson/latex/Cours-LaTeX-A4.pdf">Exposé sur <span class="math">\(\LaTeX\)</span></a>, par Thierry&nbsp;Masson.</li>
 <li><a href="https://en.wikibooks.org/wiki/LaTeX">Wikibook LaTeX</a>, highly&nbsp;recommended.</li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>

@@ -45,396 +45,634 @@
 
 <article class="article">
   <div class="content">
-    <p>$\newcommand{\I}{\mathrm{i}} 
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
-\newcommand{\D}{\mathop{}!\mathrm{d}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
 \newcommand{\Tr}{\mathrm{tr}} 
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
-\newcommand{\bbraket}[1]{\langle!\langle{#1}\rangle!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}$</p>
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
 </blockquote>
 <h1>Principes de la mécanique&nbsp;quantique</h1>
 <blockquote>
-<p>L&#8217;état d&#8217;un système quantique correspond à un vecteur $\ket{\psi}$ de norme 1 de l&#8217;espace de Hilbert $\mathcal{H}$:
-$$
+<p>L&#8217;état d&#8217;un système quantique correspond à un vecteur <span class="math">\(\ket{\psi}\)</span> de norme 1 de l&#8217;espace de Hilbert <span class="math">\(\mathcal{H}\)</span>:
+<div class="math">$$
 \begin{equation}
   \ket{\psi} \in \mathcal{H},
 \end{equation}
-$$
+$$</div>
 cette état constitue une description complète du système&nbsp;physique.</p>
 </blockquote>
-<p>Le fait que l&#8217;état quantique puisse être associé à un vecteur d&#8217;un espace vectoriel <em>linéaire</em> sur les complexes est une conséquence du principe de <em>superposition</em>: expérimentalement on observe des effets d&#8217;interférence quantique, comme dans l&#8217;expérience de deux fentes dans laquelle apparaît sur le détecteur (écran) un motif d&#8217;interférence similaire à celui d&#8217;une onde électromagnétique mais produit par, par exemple, un faisceau de neutrons, ou dans l&#8217;expérience de Stern-Gerlach où on mesure l&#8217;état de spin d&#8217;un électron. Dans le premier cas il s&#8217;agit d&#8217;une superposition de chemins: l&#8217;état du neutron résulte d&#8217;une superposition de &#8220;chemins&#8221; entre la source et l&#8217;écran, passant par chaque fente. Dans le second cas, l&#8217;état $\ket{\psi}$ de spin de l&#8217;électron (atomes d&#8217;argent dans l&#8217;expérience) se présente comme étant la superposition d&#8217;un spin &#8220;up&#8221; $\ket{0}$, et d&#8217;un spin &#8220;down&#8221; $\ket{1}$:
-$$\ket{\psi} = a \ket{0} + b \ket{1},$$
-avec $|a|^2 + |b|^2 =&nbsp;1$.</p>
+<p>Le fait que l&#8217;état quantique puisse être associé à un vecteur d&#8217;un espace vectoriel <em>linéaire</em> sur les complexes est une conséquence du principe de <em>superposition</em>: expérimentalement on observe des effets d&#8217;interférence quantique, comme dans l&#8217;expérience de deux fentes dans laquelle apparaît sur le détecteur (écran) un motif d&#8217;interférence similaire à celui d&#8217;une onde électromagnétique mais produit par, par exemple, un faisceau de neutrons, ou dans l&#8217;expérience de Stern-Gerlach où on mesure l&#8217;état de spin d&#8217;un électron. Dans le premier cas il s&#8217;agit d&#8217;une superposition de chemins: l&#8217;état du neutron résulte d&#8217;une superposition de &#8220;chemins&#8221; entre la source et l&#8217;écran, passant par chaque fente. Dans le second cas, l&#8217;état <span class="math">\(\ket{\psi}\)</span> de spin de l&#8217;électron (atomes d&#8217;argent dans l&#8217;expérience) se présente comme étant la superposition d&#8217;un spin &#8220;up&#8221; <span class="math">\(\ket{0}\)</span>, et d&#8217;un spin &#8220;down&#8221; <span class="math">\(\ket{1}\)</span>:
+</p>
+<div class="math">$$\ket{\psi} = a \ket{0} + b \ket{1},$$</div>
+<p>
+avec <span class="math">\(|a|^2 + |b|^2 = 1\)</span>.</p>
 <blockquote>
-<p>L&#8217;espace des états $\mathcal{H}$ d&#8217;un ensemble de système quantiques ${1,2,\ldots, N}$ est un espace de hilbert obtenu par le produit tensoriel (Kronecker) des espaces de hilbert de chaque partie $n$:
-$$
+<p>L&#8217;espace des états <span class="math">\(\mathcal{H}\)</span> d&#8217;un ensemble de système quantiques <span class="math">\(\{1,2,\ldots, N\}\)</span> est un espace de hilbert obtenu par le produit tensoriel (Kronecker) des espaces de hilbert de chaque partie <span class="math">\(n\)</span>:
+<div class="math">$$
 \begin{equation}
   \mathcal{H} = \bigotimes_n \mathcal{H}_n,\quad n = 1, 2, \ldots, N
 \end{equation}
-$$
+$$</div>
 L&#8217;état d&#8217;un système quantique <em>composite</em> est décrit par l&#8217;opérateur densité (ou matrice densité, pour un espace de dimension finie)
-  $$
+  <div class="math">$$
     \begin{equation}
       \rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1 
     \end{equation}
-  $$
-où $\ket{\psi_n}$ est l&#8217;état de $n$ avec <em>probabilité</em>&nbsp;$p_n$.</p>
+  $$</div>
+où <span class="math">\(\ket{\psi_n}\)</span> est l&#8217;état de <span class="math">\(n\)</span> avec <em>probabilité</em> <span class="math">\(p_n\)</span>.</p>
 <p>La matrice densité satisfait <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-  - $\Tr \rho = 1$ (trace 1, normalisation)
-  - $\rho = \rho^\dagger$ (hermitienne)
-  - $\braket{\psi| \rho |\psi} \ge 0$ pour $\ket{\psi}$ arbitraire&nbsp;(positive)</p>
+  - <span class="math">\(\Tr \rho = 1\)</span> (trace 1, normalisation)
+  - <span class="math">\(\rho = \rho^\dagger\)</span> (hermitienne)
+  - <span class="math">\(\braket{\psi| \rho |\psi} \ge 0\)</span> pour <span class="math">\(\ket{\psi}\)</span> arbitraire&nbsp;(positive)</p>
 </blockquote>
 <p>Une source de photons non-polarisée est un exemple de système composite: chaque photon a une certaine probabilité de se trouver dans un état particulier, lui même superposition des états de base de polarisation donnée. La matrice densité décrit donc un mélange <em>statistique</em> de systèmes&nbsp;quantiques.</p>
-<p>Si $\ket{b_n}$ est une base de $\mathcal{H}<em _ldots="\ldots" b_1 b_2>n$, le principe de superposition implique
-$$ \ket{\psi} = \sum</em> $$
-Une conséquence immédiate de cette expression est qu&#8217;on ne peut généralement pas écrire l&#8217;état de la partie $A = {1, 2, \ldots, N_A}$, bipartition du système global $<span class="caps">AB</span>$, comme un ket de $\mathcal{H}} \psi_{b_1 b_2 \ldots} \ket{b_1}\otimes\ket{b_2}\otimes \ldots \in \mathcal{H<em _bar_A="\bar{A">A$ <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Par conséquent l&#8217;état d&#8217;un sous-système d&#8217;un système quantique dans un état pur est un état composite. Il est donné par la trace partielle
-$$ \rho_A = \Tr</em> $$
-où $B = \bar{A}$ est le complément de l&#8217;ensemble $A$.}} \ket{\psi}&nbsp;\bra{\psi</p>
-<p>On en déduit qu&#8217;il est toujours possible de &#8220;compléter&#8221; l&#8217;espace de hilbert d&#8217;un état mixte $\rho$ pour le transformer en état pur $\ket{\psi}$ de sorte que la trace partielle du système étendu soit justement $\rho$ du&nbsp;&#8220;sous-système&#8221;.</p>
-<p>L&#8217;état du sous-système $A$, ne peut généralement pas s&#8217;écrire sous la forme d&#8217;un ket de $\mathcal{H}_A$; ceci serait possible si l&#8217;état du système global $\ket{\psi}$ était simplement le produit tensoriel des états de chaque sous-système $\ket{\psi}= \ket{\psi_A} \otimes \ket{\psi_B}$. L&#8217;impossibilité d&#8217;exprimer un état pur comme un produit indique que cet état est <em>intriqué</em>. L&#8217;état d&#8217;un sous-système d&#8217;un état intriqué est donc un état mixte décrit par une matrice&nbsp;densité.</p>
+<p>Si <span class="math">\(\ket{b_n}\)</span> est une base de <span class="math">\(\mathcal{H}_n\)</span>, le principe de superposition&nbsp;implique
+</p>
+<div class="math">$$ \ket{\psi} = \sum_{b_1 b_2 \ldots } \psi_{b_1 b_2 \ldots} \ket{b_1}\otimes\ket{b_2}\otimes \ldots \in \mathcal{H} $$</div>
+<p>
+Une conséquence immédiate de cette expression est qu&#8217;on ne peut généralement pas écrire l&#8217;état de la partie <span class="math">\(A = \{1, 2, \ldots, N_A\}\)</span>, bipartition du système global <span class="math">\(AB\)</span>, comme un ket de <span class="math">\(\mathcal{H}_A\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Par conséquent l&#8217;état d&#8217;un sous-système d&#8217;un système quantique dans un état pur est un état composite. Il est donné par la trace&nbsp;partielle
+</p>
+<div class="math">$$ \rho_A = \Tr_{\bar{A}} \ket{\psi} \bra{\psi} $$</div>
+<p>
+où <span class="math">\(B = \bar{A}\)</span> est le complément de l&#8217;ensemble <span class="math">\(A\)</span>.</p>
+<p>On en déduit qu&#8217;il est toujours possible de &#8220;compléter&#8221; l&#8217;espace de hilbert d&#8217;un état mixte <span class="math">\(\rho\)</span> pour le transformer en état pur <span class="math">\(\ket{\psi}\)</span> de sorte que la trace partielle du système étendu soit justement <span class="math">\(\rho\)</span> du&nbsp;&#8220;sous-système&#8221;.</p>
+<p>L&#8217;état du sous-système <span class="math">\(A\)</span>, ne peut généralement pas s&#8217;écrire sous la forme d&#8217;un ket de <span class="math">\(\mathcal{H}_A\)</span>; ceci serait possible si l&#8217;état du système global <span class="math">\(\ket{\psi}\)</span> était simplement le produit tensoriel des états de chaque sous-système <span class="math">\(\ket{\psi}= \ket{\psi_A} \otimes \ket{\psi_B}\)</span>. L&#8217;impossibilité d&#8217;exprimer un état pur comme un produit indique que cet état est <em>intriqué</em>. L&#8217;état d&#8217;un sous-système d&#8217;un état intriqué est donc un état mixte décrit par une matrice&nbsp;densité.</p>
 <blockquote>
-<p>Une observable $O$ (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états $\mathcal{H}$:
-  $$
+<p>Une observable <span class="math">\(O\)</span> (grandeur physique) correspond à un opérateur hermitien sur l&#8217;espace de hilbert des états <span class="math">\(\mathcal{H}\)</span>:
+  <div class="math">$$
     \begin{equation}
       O = O^\dagger
     \end{equation}
-  $$
-  Les valeurs propres $o_n$
-  $$
+  $$</div>
+  Les valeurs propres <span class="math">\(o_n\)</span>
+  <div class="math">$$
     \begin{equation}
       O \ket{o_n} = o_n \ket{o_n}
     \end{equation}
-  $$
-  sont les résultats possibles d&#8217;une mesure de $O$. Les vecteurs propres $\ket{o_n}$ forment une base orthonormale
-  $$ \braket{o_n|o_m} = \delta_{nm}, \quad \sum_n P_n = 1, \quad P_n = \ket{o_n}\bra{o_n},&gt; $$
-  de l&#8217;espace de hilbert; les opérateur $P_n$ sont de projecteurs sur les &#8220;directions&#8221; de vecteurs propres $\ket{o_n}$. La valeur espérée de $O$ dans l&#8217;état $\ket{\psi}$ est
-  $$ \braket{O} = \braket{\psi|O|\Psi}&nbsp;$$</p>
+  $$</div>
+  sont les résultats possibles d&#8217;une mesure de <span class="math">\(O\)</span>. Les vecteurs propres <span class="math">\(\ket{o_n}\)</span> forment une base orthonormale
+  <div class="math">$$ \braket{o_n|o_m} = \delta_{nm}, \quad \sum_n P_n = 1, \quad P_n = \ket{o_n}\bra{o_n},&gt; $$</div>
+  de l&#8217;espace de hilbert; les opérateur <span class="math">\(P_n\)</span> sont de projecteurs sur les &#8220;directions&#8221; de vecteurs propres <span class="math">\(\ket{o_n}\)</span>. La valeur espérée de <span class="math">\(O\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> est
+  <div class="math">$$ \braket{O} = \braket{\psi|O|\Psi} $$</div>
+</p>
 </blockquote>
-<p>La mesure de l&#8217;état $\ket{\psi} \in \mathcal{H}$ donne le résultat $o_n$ avec probabilité (<em>règle de Born</em>):
-$$
+<p>La mesure de l&#8217;état <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> donne le résultat <span class="math">\(o_n\)</span> avec probabilité (<em>règle de Born</em>):
+</p>
+<div class="math">$$
 \begin{equation}
   \mathrm{Prob}(o = o_n) = p_n = \big|\braket{o_n|\psi}\big|^2.
 \end{equation}
-$$
-Une forme équivalente en fonction de l&#8217;opérateur de projection $P_n$ est
-$$ p_n = \braket{\psi|P_n|\psi},  $$
-la probabilité d&#8217;obtenir $o_n$ dans l&#8217;état $\ket{\psi}$ correspond donc à la valeur espérée du projecteur sur le vecteur propre $\ket{o_n}$ dans cet&nbsp;état. </p>
-<p>L&#8217;état du système, après la mesure, est &#8220;réduit&#8221;:
-$$ \ket{\psi} \rightarrow \frac{\braket{o_n|\psi}}{\sqrt{p_n}}\ket{o_n}.&nbsp;$$</p>
-<p>La règle de Born se généralise facilement au cas d&#8217;un système mixte, décrit par la matrice densité $\rho$. La valeur espérée d&#8217;un observable $O$ devient
-$$
+$$</div>
+<p>
+Une forme équivalente en fonction de l&#8217;opérateur de projection <span class="math">\(P_n\)</span>&nbsp;est
+</p>
+<div class="math">$$ p_n = \braket{\psi|P_n|\psi},  $$</div>
+<p>
+la probabilité d&#8217;obtenir <span class="math">\(o_n\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span> correspond donc à la valeur espérée du projecteur sur le vecteur propre <span class="math">\(\ket{o_n}\)</span> dans cet&nbsp;état. </p>
+<p>L&#8217;état du système, après la mesure, est&nbsp;&#8220;réduit&#8221;:
+</p>
+<div class="math">$$ \ket{\psi} \rightarrow \frac{\braket{o_n|\psi}}{\sqrt{p_n}}\ket{o_n}. $$</div>
+<p>La règle de Born se généralise facilement au cas d&#8217;un système mixte, décrit par la matrice densité <span class="math">\(\rho\)</span>. La valeur espérée d&#8217;un observable <span class="math">\(O\)</span>&nbsp;devient
+</p>
+<div class="math">$$
 \braket{O} = \Tr\, \rho O.
-$$
-On vérifie que pour un état pur $\psi$ on retrouve la bonne expression: $\Tr \big(\ket{\psi}\bra{\psi} O \big) = \braket{\psi|O|\psi}$. En remplaçant $O$ par un projecteur on obtient la probabilité (Born):
-$$
+$$</div>
+<p>
+On vérifie que pour un état pur <span class="math">\(\psi\)</span> on retrouve la bonne expression: <span class="math">\(\Tr \big(\ket{\psi}\bra{\psi} O \big) = \braket{\psi|O|\psi}\)</span>. En remplaçant <span class="math">\(O\)</span> par un projecteur on obtient la probabilité&nbsp;(Born):
+</p>
+<div class="math">$$
 p_n = \Tr\, \rho P_n,
-$$
-qui vérifie $\sum_n p_n = 1$. L&#8217;état, après la mesure, devient
-$$
-\rho_n = \frac{P_n\rho P_n}{\Tr \, \rho P_n}.&nbsp;$$</p>
+$$</div>
+<p>
+qui vérifie <span class="math">\(\sum_n p_n = 1\)</span>. L&#8217;état, après la mesure,&nbsp;devient
+</p>
+<div class="math">$$
+\rho_n = \frac{P_n\rho P_n}{\Tr \, \rho P_n}.
+$$</div>
 <blockquote>
 <p>L&#8217;évolution d&#8217;un système quantique est unitaire:
-  $$
+  <div class="math">$$
     \begin{equation}
       \ket{\psi(t)} = U(t, t_0) \ket{\psi(t_0)}, \quad U^\dagger U = 1
     \end{equation}
-  $$
-  où le &#8220;temps&#8221; $t$ est un <em>paramètre</em> réel (ou entier si la dynamique est discrète), $t_0$ est une référence (temps initial). Plus généralement toute transformation d&#8217;un état quantique dans un autre état quantique est une transformation&nbsp;unitaire.</p>
+  $$</div>
+  où le &#8220;temps&#8221; <span class="math">\(t\)</span> est un <em>paramètre</em> réel (ou entier si la dynamique est discrète), <span class="math">\(t_0\)</span> est une référence (temps initial). Plus généralement toute transformation d&#8217;un état quantique dans un autre état quantique est une transformation&nbsp;unitaire.</p>
 </blockquote>
-<p>La <em>dynamique</em> d&#8217;un système quantique est générée par le <em>hamiltonien</em> $H$ du système:
-$$ U(t, t_0) = \E^{-\I H (t-t_0)} \quad (\hbar = 1). $$
-L&#8217;état quantique satisfait par conséquent l&#8217;équation de Schrödinger
-$$
+<p>La <em>dynamique</em> d&#8217;un système quantique est générée par le <em>hamiltonien</em> <span class="math">\(H\)</span> du&nbsp;système:
+</p>
+<div class="math">$$ U(t, t_0) = \E^{-\I H (t-t_0)} \quad (\hbar = 1). $$</div>
+<p>
+L&#8217;état quantique satisfait par conséquent l&#8217;équation de&nbsp;Schrödinger
+</p>
+<div class="math">$$
 \begin{equation}
   \I \frac{\partial}{\partial t} \ket{\psi(t)} = H \ket{\psi(t)},
 \end{equation}
-$$
-avec $\ket{\psi(t_0)}$ l&#8217;état&nbsp;initial.</p>
-<p>Pour un système composite on a
-$$ \rho(t) = U(t,t_0) \rho(t_0) U^\dagger(t, t_0).&nbsp;$$</p>
-<p>Le principe de correspondance permet d&#8217;obtenir le hamiltonien d&#8217;un système quantique à partir de son équivalent &#8220;classique&#8221;; par exemple, le hamiltonien d&#8217;une particule $H(x,p)$, avec $x$ la position et $p$ l&#8217;impulsion, devient le hamiltonien quantique
-$$ H(x,p), \quad [x, p] = \I, $$
-dans lequel on a remplacé la position et l&#8217;impulsion par des opérateurs dont le commutateur n&#8217;est pas nul. En fait, il existe une analogie entre les équation de hamilton de la mécanique classique et la dynamique quantique en représentation de heisenberg; cette analogie conduit à l&#8217;identification du croche de poisson avec le commutateur quantique (Dirac):
-$${Q, P} \rightarrow \frac{1}{\I} [Q,P], $$
-pour deux grandeurs conjuguées canonique $Q$ et $P$ et ces pendants quantiques les opérateurs $Q$ et $P$ (même&nbsp;notation).</p>
-<p>Enfin, une propriété fondamentale de l&#8217;état quantique $\rho$ d&#8217;un système (mixte ou pur) est qu&#8217;on peut lui <em>toujours</em> associer une <em>entropie</em>:
-$$
+$$</div>
+<p>
+avec <span class="math">\(\ket{\psi(t_0)}\)</span> l&#8217;état&nbsp;initial.</p>
+<p>Pour un système composite on&nbsp;a
+</p>
+<div class="math">$$ \rho(t) = U(t,t_0) \rho(t_0) U^\dagger(t, t_0). $$</div>
+<p>Le principe de correspondance permet d&#8217;obtenir le hamiltonien d&#8217;un système quantique à partir de son équivalent &#8220;classique&#8221;; par exemple, le hamiltonien d&#8217;une particule <span class="math">\(H(x,p)\)</span>, avec <span class="math">\(x\)</span> la position et <span class="math">\(p\)</span> l&#8217;impulsion, devient le hamiltonien&nbsp;quantique
+</p>
+<div class="math">$$ H(x,p), \quad [x, p] = \I, $$</div>
+<p>
+dans lequel on a remplacé la position et l&#8217;impulsion par des opérateurs dont le commutateur n&#8217;est pas nul. En fait, il existe une analogie entre les équation de hamilton de la mécanique classique et la dynamique quantique en représentation de heisenberg; cette analogie conduit à l&#8217;identification du croche de poisson avec le commutateur quantique&nbsp;(Dirac):
+</p>
+<div class="math">$$\{Q, P\} \rightarrow \frac{1}{\I} [Q,P], $$</div>
+<p>
+pour deux grandeurs conjuguées canonique <span class="math">\(Q\)</span> et <span class="math">\(P\)</span> et ces pendants quantiques les opérateurs <span class="math">\(Q\)</span> et <span class="math">\(P\)</span> (même&nbsp;notation).</p>
+<p>Enfin, une propriété fondamentale de l&#8217;état quantique <span class="math">\(\rho\)</span> d&#8217;un système (mixte ou pur) est qu&#8217;on peut lui <em>toujours</em> associer une <em>entropie</em>:
+</p>
+<div class="math">$$
 S[\rho] = - \Tr\, \rho \ln \rho.
-$$
-C&#8217;est l&#8217;entropie introduite initialement par von Neumann pour caractériser le processus quantique de la mesure. Dans le cas ou $\rho = \rho_A$ représente l&#8217;état d&#8217;un partie $A$ d&#8217;un système bipartite $<span class="caps">AB</span>$, $S$ est une mesure de l&#8217;<em>intrication</em> de l&#8217;état total $\rho_{<span class="caps">AB</span>}$.</p>
+$$</div>
+<p>
+C&#8217;est l&#8217;entropie introduite initialement par von Neumann pour caractériser le processus quantique de la mesure. Dans le cas ou <span class="math">\(\rho = \rho_A\)</span> représente l&#8217;état d&#8217;un partie <span class="math">\(A\)</span> d&#8217;un système bipartite <span class="math">\(AB\)</span>, <span class="math">\(S\)</span> est une mesure de l&#8217;<em>intrication</em> de l&#8217;état total <span class="math">\(\rho_{AB}\)</span>.</p>
 <h2>Compléments&nbsp;mathématiques</h2>
 <h3>Espace vectoriel et produit&nbsp;scalaire</h3>
-<p>Soient $\ket{\psi}, \ket{\phi}, \ldots \in \mathcal{H}$ des vecteurs (<em>kets</em> en notation de Dirac) de l&#8217;espace vectoriel hilbertien $\mathcal{H}$ sur les complexes, et $a, b, \ldots \in \mathbb{C}$ des nombres complexes. On a donc
-$$ a \ket{\psi} + b \ket{\phi} \in \mathcal{H}, $$
-toute combinaison linéaire des vecteurs de $\mathcal{H}$ est en&nbsp;$\mathcal{H}$.</p>
-<p>À tout <em>ket</em> $\ket{\psi} \in \mathcal{H}$ correspond un <em>bra</em> $\bra{\psi} \in \mathcal{H}^\dagger$ appartenant à l&#8217;espace dual. La notation $\cdots^\dagger$ indique l&#8217;adjoint (conjuguaison hermitienne). L&#8217;espace dual est tel que le produit (<em>produit scalaire</em>) d&#8217;un bra par un ket est un nombre complexe:
-$$ \braket{\phi | \psi} = \braket{\psi|\phi}^\star \in \mathbb{C} $$
-où $\cdots^\star$ est le complexe conjugué. Notez qu&#8217;on doit faire
-$$ (a \ket{\psi})^\dagger = a^\star \bra{\psi}, \quad a \in \mathbb{C}.&nbsp;$$</p>
-<p>La norme d&#8217;un vecteur $\ket{\psi}$ est $\sqrt{\braket{\psi | \psi}}$. Par exemple,
-$$ \braket{\psi | \psi} = |a|^2 + |b|^2 = 1, \quad \ket{\psi} = a \ket{0} + b \ket{1} $$
-avec ${\ket{0}, \ket{1}}$&nbsp;orthonormés.</p>
-<p>Une <em>base</em> $\ket{n}$ ($n=0,1,\ldots$) orthonormée et complète de l&#8217;espace de hilbert satisfait
-$$ \braket{n|m} = \delta_{n,m}, \quad \sum_n \ket{n} \bra{n} = 1 $$
-avec $1$ l&#8217;opérateur identité (unité) et $\delta_{n,m}$ la delta de kronecker. Le nombre de vecteurs dans la base est la dimension de l&#8217;espace de hilbert (elle peut bien sûr être&nbsp;infinie).</p>
-<p>Tout vecteur se décompose sur les vecteurs de la base
-$$ \ket{\psi} = \sum_n \psi_n \ket{n}, \quad \psi_n = \braket{n|\psi} \in \mathbb{C}, $$
-où les $\psi_n$ sont les &#8220;amplitudes&#8221; (composantes). Notez que la normalisation de l&#8217;état impose
-$$ \braket{\psi | \psi} = 1 \Rightarrow \sum_n |\psi_n|^2 = 1. $$
-On dit que le vecteur formé avec les $\psi_n$ est une <em>représentation</em> dans la base $\ket{n}$ du ket $\ket{\psi}$:
-$$ \ket{\psi} \doteq \begin{pmatrix} \psi_0 \ \psi_1 \ \vdots \end{pmatrix}&nbsp;$$</p>
+<p>Soient <span class="math">\(\ket{\psi}, \ket{\phi}, \ldots \in \mathcal{H}\)</span> des vecteurs (<em>kets</em> en notation de Dirac) de l&#8217;espace vectoriel hilbertien <span class="math">\(\mathcal{H}\)</span> sur les complexes, et <span class="math">\(a, b, \ldots \in \mathbb{C}\)</span> des nombres complexes. On a&nbsp;donc
+</p>
+<div class="math">$$ a \ket{\psi} + b \ket{\phi} \in \mathcal{H}, $$</div>
+<p>
+toute combinaison linéaire des vecteurs de <span class="math">\(\mathcal{H}\)</span> est en <span class="math">\(\mathcal{H}\)</span>.</p>
+<p>À tout <em>ket</em> <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> correspond un <em>bra</em> <span class="math">\(\bra{\psi} \in \mathcal{H}^\dagger\)</span> appartenant à l&#8217;espace dual. La notation <span class="math">\(\cdots^\dagger\)</span> indique l&#8217;adjoint (conjuguaison hermitienne). L&#8217;espace dual est tel que le produit (<em>produit scalaire</em>) d&#8217;un bra par un ket est un nombre&nbsp;complexe:
+</p>
+<div class="math">$$ \braket{\phi | \psi} = \braket{\psi|\phi}^\star \in \mathbb{C} $$</div>
+<p>
+où <span class="math">\(\cdots^\star\)</span> est le complexe conjugué. Notez qu&#8217;on doit&nbsp;faire
+</p>
+<div class="math">$$ (a \ket{\psi})^\dagger = a^\star \bra{\psi}, \quad a \in \mathbb{C}. $$</div>
+<p>La norme d&#8217;un vecteur <span class="math">\(\ket{\psi}\)</span> est <span class="math">\(\sqrt{\braket{\psi | \psi}}\)</span>. Par&nbsp;exemple,
+</p>
+<div class="math">$$ \braket{\psi | \psi} = |a|^2 + |b|^2 = 1, \quad \ket{\psi} = a \ket{0} + b \ket{1} $$</div>
+<p>
+avec <span class="math">\(\{\ket{0}, \ket{1}\}\)</span>&nbsp;orthonormés.</p>
+<p>Une <em>base</em> <span class="math">\(\ket{n}\)</span> (<span class="math">\(n=0,1,\ldots\)</span>) orthonormée et complète de l&#8217;espace de hilbert&nbsp;satisfait
+</p>
+<div class="math">$$ \braket{n|m} = \delta_{n,m}, \quad \sum_n \ket{n} \bra{n} = 1 $$</div>
+<p>
+avec <span class="math">\(1\)</span> l&#8217;opérateur identité (unité) et <span class="math">\(\delta_{n,m}\)</span> la delta de kronecker. Le nombre de vecteurs dans la base est la dimension de l&#8217;espace de hilbert (elle peut bien sûr être&nbsp;infinie).</p>
+<p>Tout vecteur se décompose sur les vecteurs de la&nbsp;base
+</p>
+<div class="math">$$ \ket{\psi} = \sum_n \psi_n \ket{n}, \quad \psi_n = \braket{n|\psi} \in \mathbb{C}, $$</div>
+<p>
+où les <span class="math">\(\psi_n\)</span> sont les &#8220;amplitudes&#8221; (composantes). Notez que la normalisation de l&#8217;état&nbsp;impose
+</p>
+<div class="math">$$ \braket{\psi | \psi} = 1 \Rightarrow \sum_n |\psi_n|^2 = 1. $$</div>
+<p>
+On dit que le vecteur formé avec les <span class="math">\(\psi_n\)</span> est une <em>représentation</em> dans la base <span class="math">\(\ket{n}\)</span> du ket <span class="math">\(\ket{\psi}\)</span>:
+</p>
+<div class="math">$$ \ket{\psi} \doteq \begin{pmatrix} \psi_0 \\ \psi_1 \\ \vdots \end{pmatrix} $$</div>
 <h3>Applications&nbsp;linéaires</h3>
-<p>Un <em>opérateur</em> sur l&#8217;espace de hilbert est une application linéaire 
-$$ A: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{H}, $$
-tel que
-$$ A \ket{\psi} \in \mathcal{H}, \quad \forall \ket{\psi} \in \mathcal{H}. $$
-Le symbol $\times$ indique le produit cartésien (à distinguer du produit de kronecker $\otimes$). L&#8217;ensemble de nombres
-$$ A_{mn} = \braket{m | A | n} \in \mathcal{C} $$
-constituent une représentation de l&#8217;opérateur $A$ sous la forme d&#8217;une matrice: $m$ désigne la ligne et $m$ la colonne:
-$$ A \doteq \begin{pmatrix} A_{00} <span class="amp">&amp;</span> A_{01} <span class="amp">&amp;</span> \cdots \ A_{10} <span class="amp">&amp;</span> A_{11} <span class="amp">&amp;</span> \cdots \ \vdots <span class="amp">&amp;</span> \vdots <span class="amp">&amp;</span> \ddots \end{pmatrix}.&nbsp;$$</p>
-<p>L&#8217;adjoint ou complexe hermitien d&#8217;un opérateur est défini par la relation
-$$ \braket{\phi |A^\dagger |\psi} = \braket{\psi |A |\phi}^\star . $$
+<p>Un <em>opérateur</em> sur l&#8217;espace de hilbert est une application&nbsp;linéaire 
+</p>
+<div class="math">$$ A: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{H}, $$</div>
+<p>
+tel&nbsp;que
+</p>
+<div class="math">$$ A \ket{\psi} \in \mathcal{H}, \quad \forall \ket{\psi} \in \mathcal{H}. $$</div>
+<p>
+Le symbol <span class="math">\(\times\)</span> indique le produit cartésien (à distinguer du produit de kronecker <span class="math">\(\otimes\)</span>). L&#8217;ensemble de&nbsp;nombres
+</p>
+<div class="math">$$ A_{mn} = \braket{m | A | n} \in \mathcal{C} $$</div>
+<p>
+constituent une représentation de l&#8217;opérateur <span class="math">\(A\)</span> sous la forme d&#8217;une matrice: <span class="math">\(m\)</span> désigne la ligne et <span class="math">\(m\)</span> la&nbsp;colonne:
+</p>
+<div class="math">$$ A \doteq \begin{pmatrix} A_{00} &amp; A_{01} &amp; \cdots \\ A_{10} &amp; A_{11} &amp; \cdots \\ \vdots &amp; \vdots &amp; \ddots \end{pmatrix}. $$</div>
+<p>L&#8217;adjoint ou complexe hermitien d&#8217;un opérateur est défini par la&nbsp;relation
+</p>
+<div class="math">$$ \braket{\phi |A^\dagger |\psi} = \braket{\psi |A |\phi}^\star . $$</div>
+<p>
 Notez
-$$ (<span class="caps">AB</span>)^\dagger = B^\dagger A^\dagger.&nbsp;$$</p>
-<p>Un opérateur est <em>hermitien</em> ou auto-adjoint si $O = O^\dagger$; ses éléments de matrice satisfont donc $O_{mn} = O_{nm}^\star$ (le transposé conjugué). Tout opérateur hermitien possède un <em>spectre</em> réel (valeurs propres $o_n$), et ses vecteur propres $\ket{o_n}$ forment une base orthonormée:
-$$ O \ket{o_n} = o_n \ket{o_n}.&nbsp;$$</p>
-<p>Un opérateur est <em>unitaire</em> si son inverse est son adjoint $U^{-1} = U^\dagger$; on a donc $<span class="caps">UU</span>^\dagger = U^\dagger U = 1$. Il est toujours possible de diagonaliser un opérateur hermitien par une transformation unitaire de la base:
-$$ O = U D U^\dagger, \quad D = \mathrm{diag}(o_0, o_1, \ldots). $$
-L&#8217;opérateur (matrice) $U$ est l&#8217;opérateur de changement de&nbsp;base.</p>
-<p>En effet, l&#8217;application linéaire pour passer d&#8217;une base orthonormée $\ket{n}$ à une autre base orthonormée $\ket{n&#8217;}$ est un opérateur unitaire $U$:
-$$
-  \ket{n&#8217;} = U \ket{n} \, \Rightarrow \, U = \sum_n \ket{n&#8217;} \bra{n}\,.
-$$
-On voit qu&#8217;effectivement $U$ est unitaire:
-$$
-  U^\dagger U = \sum_n \sum_m \ket{n} \braket{n&#8217; | m&#8217;} \bra{m} = 
+</p>
+<div class="math">$$ (AB)^\dagger = B^\dagger A^\dagger. $$</div>
+<p>Un opérateur est <em>hermitien</em> ou auto-adjoint si <span class="math">\(O = O^\dagger\)</span>; ses éléments de matrice satisfont donc <span class="math">\(O_{mn} = O_{nm}^\star\)</span> (le transposé conjugué). Tout opérateur hermitien possède un <em>spectre</em> réel (valeurs propres <span class="math">\(o_n\)</span>), et ses vecteur propres <span class="math">\(\ket{o_n}\)</span> forment une base&nbsp;orthonormée:
+</p>
+<div class="math">$$ O \ket{o_n} = o_n \ket{o_n}. $$</div>
+<p>Un opérateur est <em>unitaire</em> si son inverse est son adjoint <span class="math">\(U^{-1} = U^\dagger\)</span>; on a donc <span class="math">\(UU^\dagger = U^\dagger U = 1\)</span>. Il est toujours possible de diagonaliser un opérateur hermitien par une transformation unitaire de la&nbsp;base:
+</p>
+<div class="math">$$ O = U D U^\dagger, \quad D = \mathrm{diag}(o_0, o_1, \ldots). $$</div>
+<p>
+L&#8217;opérateur (matrice) <span class="math">\(U\)</span> est l&#8217;opérateur de changement de&nbsp;base.</p>
+<p>En effet, l&#8217;application linéaire pour passer d&#8217;une base orthonormée <span class="math">\(\ket{n}\)</span> à une autre base orthonormée <span class="math">\(\ket{n'}\)</span> est un opérateur unitaire <span class="math">\(U\)</span>:
+</p>
+<div class="math">$$
+  \ket{n'} = U \ket{n} \, \Rightarrow \, U = \sum_n \ket{n'} \bra{n}\,.
+$$</div>
+<p>
+On voit qu&#8217;effectivement <span class="math">\(U\)</span> est&nbsp;unitaire:
+</p>
+<div class="math">$$
+  U^\dagger U = \sum_n \sum_m \ket{n} \braket{n' | m'} \bra{m} = 
   \sum_{n,m} \ket{n} \delta_{n,m} \bra{m} =
   \sum_n \ket{n} \bra{n} = 1 \,. 
-$$
-Après un changement de base les coordonnées du ket et les éléments de matrice d&#8217;un opérateur son transformés, selon les formules:
-$$
-\begin{gather<em>}
-  \ket{\psi&#8217;} = U^\dagger \ket{\psi}\,,\quad
-  \psi_n&#8217; = \sum_k \braket{n&#8217; | k} \psi_k \
-  A&#8217; = U^\dagger A U \,, \quad
-  A&#8217;<em k_l="k,l">{nm} = \sum</em>\,.
-\end{gather} \braket{n&#8217; | k} A_{kl} \braket{l | m&#8217;</em>}
-$$
-Ces deux formules garantissent l&#8217;invariance du produit scalaire vis-à-vis des transformations unitaires:
-$$
+$$</div>
+<p>
+Après un changement de base les coordonnées du ket et les éléments de matrice d&#8217;un opérateur son transformés, selon les&nbsp;formules:
+</p>
+<div class="math">$$
+\begin{gather*}
+  \ket{\psi'} = U^\dagger \ket{\psi}\,,\quad
+  \psi_n' = \sum_k \braket{n' | k} \psi_k \\
+  A' = U^\dagger A U \,, \quad
+  A'_{nm} = \sum_{k,l} \braket{n' | k} A_{kl} \braket{l | m'}\,.
+\end{gather*}
+$$</div>
+<p>
+Ces deux formules garantissent l&#8217;invariance du produit scalaire vis-à-vis des transformations&nbsp;unitaires:
+</p>
+<div class="math">$$
   \braket{\psi | A | \psi} = \braket{\psi | U U^\dagger A U U^\dagger | \psi} =
-  \braket{\psi&#8217;| A&#8217;| \psi&#8217;}\,.&nbsp;$$</p>
-<p>Un opérateur hermitien $P$ est un <em>projecteur</em> si $P^2 =&nbsp;P$</p>
-<p>Le commutateur de deux opérateurs $A,B$ est $[A,B] = <span class="caps">AB</span> - <span class="caps">BA</span>$, il satisfait les relations:
-$$
+  \braket{\psi'| A'| \psi'}\,.
+$$</div>
+<p>Un opérateur hermitien <span class="math">\(P\)</span> est un <em>projecteur</em> si <span class="math">\(P^2 =&nbsp;P\)</span></p>
+<p>Le commutateur de deux opérateurs <span class="math">\(A,B\)</span> est <span class="math">\([A,B] = AB - BA\)</span>, il satisfait les&nbsp;relations:
+</p>
+<div class="math">$$
   [A+B,C] = [A,C] + [B,C]\,,
   \quad
-  [<span class="caps">AB</span>,C] = [A,C] B + A [B,C]
-$$
-et l&#8217;identité de Jacobi
-$$
-  [A,[B,C]] + [C,[A,B]] + [B,[C,A]] = 0\,.&nbsp;$$</p>
+  [AB,C] = [A,C] B + A [B,C]
+$$</div>
+<p>
+et l&#8217;identité de&nbsp;Jacobi
+</p>
+<div class="math">$$
+  [A,[B,C]] + [C,[A,B]] + [B,[C,A]] = 0\,.
+$$</div>
 <h3>Produit&nbsp;tensoriel</h3>
-<p>La <em>trace</em> $\Tr$, d&#8217;un opérateur est une application linéaire sur les complexes. Elle possède la propriété &#8220;cyclique&#8221;
-$$ \Tr <span class="caps">ABC</span> = \Tr <span class="caps">CAB</span> = \Tr <span class="caps">BCA</span>, $$
-avec $A,B,C$ des opérateurs arbitraires. En utilisant la représentation matricielle de l&#8217;opérateur $A$ on a la formule explicite
-$$ \Tr A = \sum_n A_{nn}, \quad A_{mn} = \braket{m|A|n}, $$
-du calcul de la trace, ou, après un changement de base:
-$$ \Tr A = \Tr U^\dagger A U = \Tr D = \sum_n a_n, \quad D = \mathrm{a_0, a_1, \ldots} $$
-on voit que la trace de $A$ est la somme de ses valeurs propres&nbsp;(spectre).</p>
-<p>Le produit de kronecker d&#8217;opérateurs $A,B, \ldots$ sur un espace de hilbert a les propriétés suivantes
-$$
-\begin{gather<em>}
-aA \otimes B = A \otimes B, \quad a \in \mathbb{C} \
-A \otimes (B + C) = A\otimes B + A \otimes C \
-(A \otimes B)(C \otimes D) = <span class="caps">AC</span> \otimes <span class="caps">BD</span>
-\end{gather</em>}
-$$
-Le produit $\otimes$ n&#8217;est pas commutatif ($A \otimes B \ne B \otimes A$). Il satisfait en outre
-$$
-\begin{gather<em>}
-(A \otimes B)^\dagger = A^\dagger \otimes B^\dagger\
-\Tr( A \times B) = \Tr A\, \Tr B\
+<p>La <em>trace</em> <span class="math">\(\Tr\)</span>, d&#8217;un opérateur est une application linéaire sur les complexes. Elle possède la propriété&nbsp;&#8220;cyclique&#8221;
+</p>
+<div class="math">$$ \Tr ABC = \Tr CAB = \Tr BCA, $$</div>
+<p>
+avec <span class="math">\(A,B,C\)</span> des opérateurs arbitraires. En utilisant la représentation matricielle de l&#8217;opérateur <span class="math">\(A\)</span> on a la formule&nbsp;explicite
+</p>
+<div class="math">$$ \Tr A = \sum_n A_{nn}, \quad A_{mn} = \braket{m|A|n}, $$</div>
+<p>
+du calcul de la trace, ou, après un changement de&nbsp;base:
+</p>
+<div class="math">$$ \Tr A = \Tr U^\dagger A U = \Tr D = \sum_n a_n, \quad D = \mathrm{a_0, a_1, \ldots} $$</div>
+<p>
+on voit que la trace de <span class="math">\(A\)</span> est la somme de ses valeurs propres&nbsp;(spectre).</p>
+<p>Le produit de kronecker d&#8217;opérateurs <span class="math">\(A,B, \ldots\)</span> sur un espace de hilbert a les propriétés&nbsp;suivantes
+</p>
+<div class="math">$$
+\begin{gather*}
+aA \otimes B = A \otimes B, \quad a \in \mathbb{C} \\
+A \otimes (B + C) = A\otimes B + A \otimes C \\
+(A \otimes B)(C \otimes D) = AC \otimes BD
+\end{gather*}
+$$</div>
+<p>
+Le produit <span class="math">\(\otimes\)</span> n&#8217;est pas commutatif (<span class="math">\(A \otimes B \ne B \otimes A\)</span>). Il satisfait en&nbsp;outre
+</p>
+<div class="math">$$
+\begin{gather*}
+(A \otimes B)^\dagger = A^\dagger \otimes B^\dagger\\
+\Tr( A \times B) = \Tr A\, \Tr B\\
 \det(A \otimes B) = (\det A)^{N_A} (\det B)^{N_B}, \quad N_{A,B} = \dim(\mathcal{H}_{A,B}).
-\end{gather</em>}&nbsp;$$</p>
-<p>Pour calculer explicitement le produit de kronecker on utilise la représentation matricielle des applications et vecteurs. Soient $A$ et $B$ deux matrices de dimensions $\dim(A) = N_A \times M_A$ et $\dim(A) = N_B \times M_B$, leur produit tensoriel est de dimension
-$$ \dim(A \otimes B) = (N_AN_B) \times (M_A M_B). $$
-Le produit $A\otimes B$ est donc défini par la formule
-$$ 
+\end{gather*}
+$$</div>
+<p>Pour calculer explicitement le produit de kronecker on utilise la représentation matricielle des applications et vecteurs. Soient <span class="math">\(A\)</span> et <span class="math">\(B\)</span> deux matrices de dimensions <span class="math">\(\dim(A) = N_A \times M_A\)</span> et <span class="math">\(\dim(A) = N_B \times M_B\)</span>, leur produit tensoriel est de&nbsp;dimension
+</p>
+<div class="math">$$ \dim(A \otimes B) = (N_AN_B) \times (M_A M_B). $$</div>
+<p>
+Le produit <span class="math">\(A\otimes B\)</span> est donc défini par la&nbsp;formule
+</p>
+<div class="math">$$ 
 A \otimes B =
   \begin{pmatrix}
-    A_{00} B <span class="amp">&amp;</span> A_{01} B <span class="amp">&amp;</span> \cdots \
-    A_{10} B <span class="amp">&amp;</span> A_{11} B <span class="amp">&amp;</span> \cdots \
-    \vdots <span class="amp">&amp;</span> \vdots <span class="amp">&amp;</span> \ddots
+    A_{00} B &amp; A_{01} B &amp; \cdots \\
+    A_{10} B &amp; A_{11} B &amp; \cdots \\
+    \vdots &amp; \vdots &amp; \ddots
   \end{pmatrix} ,
-$$
-chaque élément de la matrice $A$ est multiplié par la matrice&nbsp;$B$.</p>
-<p>La trace partielle satisfait
-$$ \Tr_B A \otimes B = A \, \Tr B, $$
-où $A$ agit sur $\mathcal{H}<em nm>A$ et $B$ sur $\mathcal{H}_B$. plus explicitement, on considère la matrice densité
-$$
-  \rho = \sum</em>
-$$
-dans la base $\ket{n}$ et on partitionne l&#8217;espace d&#8217;états en deux parties $A$ et $B$ de dimension $N_A$ et $N_B$, respectivement, tels que ${n} = {n_A} \cup {n_B}$ et de même pour la base de $B$. On peut donc écrire
-$$ \rho = \sum_{n_A n_B, m_A m_B} \rho_{n_A n_B, m_A m_B} (\ket{n_A} \otimes \ket{n_B}) (\bra{m_A} \bra{m_B}). $$
-La trace partielle sur $B$, donnée par
-$$ \rho_A = \Tr_B \rho = \sum_{n_A, m_A} \sum_k \rho_{n_A k, m_A k} \ket{n_A}\bra{m_A}, $$
-correspond en physique à l&#8217;état (mixte) du sous-ensemble A.} \rho_{nm}&nbsp;\ket{n}\bra{m</p>
+$$</div>
+<p>
+chaque élément de la matrice <span class="math">\(A\)</span> est multiplié par la matrice <span class="math">\(B\)</span>.</p>
+<p>La trace partielle&nbsp;satisfait
+</p>
+<div class="math">$$ \Tr_B A \otimes B = A \, \Tr B, $$</div>
+<p>
+où <span class="math">\(A\)</span> agit sur <span class="math">\(\mathcal{H}_A\)</span> et <span class="math">\(B\)</span> sur <span class="math">\(\mathcal{H}_B\)</span>. plus explicitement, on considère la matrice&nbsp;densité
+</p>
+<div class="math">$$
+  \rho = \sum_{nm} \rho_{nm} \ket{n}\bra{m}
+$$</div>
+<p>
+dans la base <span class="math">\(\ket{n}\)</span> et on partitionne l&#8217;espace d&#8217;états en deux parties <span class="math">\(A\)</span> et <span class="math">\(B\)</span> de dimension <span class="math">\(N_A\)</span> et <span class="math">\(N_B\)</span>, respectivement, tels que <span class="math">\(\{n\} = \{n_A\} \cup \{n_B\}\)</span> et de même pour la base de <span class="math">\(B\)</span>. On peut donc&nbsp;écrire
+</p>
+<div class="math">$$ \rho = \sum_{n_A n_B, m_A m_B} \rho_{n_A n_B, m_A m_B} (\ket{n_A} \otimes \ket{n_B}) (\bra{m_A} \bra{m_B}). $$</div>
+<p>
+La trace partielle sur <span class="math">\(B\)</span>, donnée&nbsp;par
+</p>
+<div class="math">$$ \rho_A = \Tr_B \rho = \sum_{n_A, m_A} \sum_k \rho_{n_A k, m_A k} \ket{n_A}\bra{m_A}, $$</div>
+<p>
+correspond en physique à l&#8217;état (mixte) du sous-ensemble&nbsp;A.</p>
 <h2>Le qubit: application des postulats de la mécanique&nbsp;quantique</h2>
-<p>Le qubit est le &#8220;quantum&#8221; d&#8217;information physique: il correspond à l&#8217;état d&#8217;un système de dimension 2, comme par exemple le spin $1/2$ de l&#8217;électron (l&#8217;atome d&#8217;argent, de valence 1, dans l&#8217;expérience de&nbsp;Stern-Gerlach).</p>
+<p>Le qubit est le &#8220;quantum&#8221; d&#8217;information physique: il correspond à l&#8217;état d&#8217;un système de dimension 2, comme par exemple le spin <span class="math">\(1/2\)</span> de l&#8217;électron (l&#8217;atome d&#8217;argent, de valence 1, dans l&#8217;expérience de&nbsp;Stern-Gerlach).</p>
 <blockquote>
 <p><img src="/images/MQ-sg1.svg" alt="Stern-Gerlach zz" style="height: 60px;"/></p>
-<p>Une source crée un faisceau d&#8217;atomes Ag (valence 1) qui est envoyé sur un dispositif magnétique qui sépare les atomes selon la direction de leur moment magnétique (orienté ici dans la direction $z$). Stern et Gerlach observèrent une séparation en deux faisceaux qu&#8217;on a identifié correspondre aux deux directions du spin de l&#8217;électron de valence: &#8220;up&#8221; (flèche ver le haut $\uparrow$) et &#8220;down&#8221; (flèche vers le bas $\downarrow$). En sélectionnant les atomes &#8220;up&#8221;, un deuxième dispositif orienté également selon la direction $z$, ne modifie pas l&#8217;orientation du&nbsp;spin.</p>
+<p>Une source crée un faisceau d&#8217;atomes Ag (valence 1) qui est envoyé sur un dispositif magnétique qui sépare les atomes selon la direction de leur moment magnétique (orienté ici dans la direction <span class="math">\(z\)</span>). Stern et Gerlach observèrent une séparation en deux faisceaux qu&#8217;on a identifié correspondre aux deux directions du spin de l&#8217;électron de valence: &#8220;up&#8221; (flèche ver le haut <span class="math">\(\uparrow\)</span>) et &#8220;down&#8221; (flèche vers le bas <span class="math">\(\downarrow\)</span>). En sélectionnant les atomes &#8220;up&#8221;, un deuxième dispositif orienté également selon la direction <span class="math">\(z\)</span>, ne modifie pas l&#8217;orientation du&nbsp;spin.</p>
 </blockquote>
-<p>L&#8217;expérience montre que, contrairement au moment magnétique d&#8217;un aimant classique, celui de l&#8217;électron est <em>quantifié</em>, et ne prend que deux valeurs. En effet, la valeur expérimentale du moment angulaire magnétique, le <em>spin de l&#8217;électron</em>, mesuré par Stern-Gerlach est
-$$\frac{\hbar}{2}, \quad \hbar = 1.054571821 \, 10^{-34} \,\mathrm{Js}= 1. $$
-La première valeur de la constante de Planck est celle du système international d&#8217;unités (<span class="caps">SI</span>); la deuxième valeur est, dans le cadre du <span class="caps">SI</span>, la définition du joule $\mathrm{J}$ en unité de temps (la seconde&nbsp;$\mathrm{s}$).</p>
-<p>On peut formaliser le résultat de l&#8217;expérience en introduisant $S_z$, l&#8217;observable de spin dans la direction $z$. L&#8217;opérateur $S_z$ correspond au dispositif SGz, c&#8217;est-à-dire la grandeur physique associée à la composante $z$ du <em>spin</em> de l&#8217;électron. Il prend deux valeurs:
-$$
+<p>L&#8217;expérience montre que, contrairement au moment magnétique d&#8217;un aimant classique, celui de l&#8217;électron est <em>quantifié</em>, et ne prend que deux valeurs. En effet, la valeur expérimentale du moment angulaire magnétique, le <em>spin de l&#8217;électron</em>, mesuré par Stern-Gerlach&nbsp;est
+</p>
+<div class="math">$$\frac{\hbar}{2}, \quad \hbar = 1.054571821 \, 10^{-34} \,\mathrm{Js}= 1. $$</div>
+<p>
+La première valeur de la constante de Planck est celle du système international d&#8217;unités (<span class="caps">SI</span>); la deuxième valeur est, dans le cadre du <span class="caps">SI</span>, la définition du joule <span class="math">\(\mathrm{J}\)</span> en unité de temps (la seconde <span class="math">\(\mathrm{s}\)</span>).</p>
+<p>On peut formaliser le résultat de l&#8217;expérience en introduisant <span class="math">\(S_z\)</span>, l&#8217;observable de spin dans la direction <span class="math">\(z\)</span>. L&#8217;opérateur <span class="math">\(S_z\)</span> correspond au dispositif SGz, c&#8217;est-à-dire la grandeur physique associée à la composante <span class="math">\(z\)</span> du <em>spin</em> de l&#8217;électron. Il prend deux&nbsp;valeurs:
+</p>
+<div class="math">$$
 S_z \ket{\uparrow} = \frac{\hbar}{2} \ket{\uparrow}, \quad
 S_z \ket{\downarrow} = -\frac{\hbar}{2} \ket{\downarrow}, \quad 
-$$
-ce qui exprime le fait que l&#8217;application de $S_z$ sur un faisceau dans l&#8217;état, noté avec l&#8217;étiquette $\uparrow$, nous donne le même état. On a, en multipliant les deux équation par les bras $\bra{\uparrow}$ et $\bra{\downarrow}$,
-$$ \braket{\uparrow| S_z | \uparrow} = \frac{\hbar}{2}, \quad
+$$</div>
+<p>
+ce qui exprime le fait que l&#8217;application de <span class="math">\(S_z\)</span> sur un faisceau dans l&#8217;état, noté avec l&#8217;étiquette <span class="math">\(\uparrow\)</span>, nous donne le même état. On a, en multipliant les deux équation par les bras <span class="math">\(\bra{\uparrow}\)</span> et <span class="math">\(\bra{\downarrow}\)</span>,
+</p>
+<div class="math">$$ \braket{\uparrow| S_z | \uparrow} = \frac{\hbar}{2}, \quad
 \braket{\downarrow| S_z | \downarrow} = -\frac{\hbar}{2},
-$$
-ou on a utilisé
-$$
+$$</div>
+<p>
+ou on a&nbsp;utilisé
+</p>
+<div class="math">$$
 \braket{\uparrow|\uparrow} = \braket{\downarrow|\downarrow} = 1 \quad
 \braket{\uparrow|\downarrow} = \braket{\downarrow|\uparrow} = 0
-$$
-en accord avec le fait que le spin down ne se transforme pas en spin up après le passage par $S_z$. On peut donc associer à l&#8217;observable $S_z$ une matrice, et aux états $\uparrow$, $\downarrow$ les coordonnées d&#8217;un vecteur:
-$$S_z = \frac{\hbar}{2} \sigma_z, \quad \sigma_z = \begin{pmatrix}1 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> -1\end{pmatrix}, \quad \ket{\uparrow}=\ket{0} = \begin{pmatrix}1 \ 0\end{pmatrix}, \;\ket{\downarrow}=\ket{1} = \begin{pmatrix}0 \ 1\end{pmatrix}, $$
-où on a défini la matrice de Pauli&nbsp;$\sigma_z$.</p>
+$$</div>
+<p>
+en accord avec le fait que le spin down ne se transforme pas en spin up après le passage par <span class="math">\(S_z\)</span>. On peut donc associer à l&#8217;observable <span class="math">\(S_z\)</span> une matrice, et aux états <span class="math">\(\uparrow\)</span>, <span class="math">\(\downarrow\)</span> les coordonnées d&#8217;un&nbsp;vecteur:
+</p>
+<div class="math">$$S_z = \frac{\hbar}{2} \sigma_z, \quad \sigma_z = \begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}, \quad \ket{\uparrow}=\ket{0} = \begin{pmatrix}1 \\ 0\end{pmatrix}, \;\ket{\downarrow}=\ket{1} = \begin{pmatrix}0 \\ 1\end{pmatrix}, $$</div>
+<p>
+où on a défini la matrice de Pauli <span class="math">\(\sigma_z\)</span>.</p>
 <blockquote>
 <p><img src="/images/MQ-sg2.svg" alt="Stern-Gerlach zx" style="height: 60px;"/></p>
-<p>Si à la sortie du premier Stern-Gerlach (SGz) on ajoute un SGx orienté selon la direction $x$, le faisceau &#8220;up&#8221;, se sépare en deux faisceaux $+$ (flèche $\rightarrow$) est $-$ (flèche&nbsp;$\leftarrow$).</p>
+<p>Si à la sortie du premier Stern-Gerlach (SGz) on ajoute un SGx orienté selon la direction <span class="math">\(x\)</span>, le faisceau &#8220;up&#8221;, se sépare en deux faisceaux <span class="math">\(+\)</span> (flèche <span class="math">\(\rightarrow\)</span>) est <span class="math">\(-\)</span> (flèche <span class="math">\(\leftarrow\)</span>).</p>
 <p><img src="/images/MQ-sg3.svg" alt="Stern-Gerlach zxz" style="height: 60px;"/></p>
 <p>En ajoutant au dispositif précédant un troisième SGz, donc en applicant à la source la séquence SGz-SGx-SGz, on récupère deux faisceaux &#8220;up&#8221; et&nbsp;&#8220;down&#8221;.</p>
 </blockquote>
-<p>Ces résultats expriment le principe de superposition: le spin &#8220;z&#8221; est un superposition de deux états de spin &#8220;x&#8221;, ou inversement, le spin &#8220;x&#8221; est une superposition de up et down:
-$$\ket{\rightarrow} = \ket{0}\braket{0|\rightarrow} + \ket{1}\braket{1|\rightarrow} $$
-or, les probabilités de &#8220;up&#8221; et &#8220;down&#8221; comme celles de &#8220;left&#8221; ($\leftarrow$) et &#8220;right&#8221; ($\rightarrow$) sont égales à 1/2, on peut donc toujours supposer
-$$ \ket{\rightarrow} = \ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}, $$
+<p>Ces résultats expriment le principe de superposition: le spin &#8220;z&#8221; est un superposition de deux états de spin &#8220;x&#8221;, ou inversement, le spin &#8220;x&#8221; est une superposition de up et&nbsp;down:
+</p>
+<div class="math">$$\ket{\rightarrow} = \ket{0}\braket{0|\rightarrow} + \ket{1}\braket{1|\rightarrow} $$</div>
+<p>
+or, les probabilités de &#8220;up&#8221; et &#8220;down&#8221; comme celles de &#8220;left&#8221; (<span class="math">\(\leftarrow\)</span>) et &#8220;right&#8221; (<span class="math">\(\rightarrow\)</span>) sont égales à 1/2, on peut donc toujours&nbsp;supposer
+</p>
+<div class="math">$$ \ket{\rightarrow} = \ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}, $$</div>
+<p>
 puisque 
-$$ |\braket{0|\rightarrow}|^2 = \braket{1|\rightarrow}|^2 = 1/2 $$
+</p>
+<div class="math">$$ |\braket{0|\rightarrow}|^2 = \braket{1|\rightarrow}|^2 = 1/2 $$</div>
+<p>
 et
-$$ |\braket{0|\leftarrow}|^2 = \braket{1|\leftarrow}|^2 = 1/2. $$
-Comme les deux résultats $\rightarrow$ et $\leftarrow$ sont excluants, ces deux états sont orthogonaux:
-$$ \ket{\leftarrow} = \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}. $$
-En plus, comme $S_x$ est diagonal dans la base $\ket{\pm}$ on obtient <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$S_x = \frac{\hbar}{2} \sigma_x, \quad \sigma_x = \begin{pmatrix}0 <span class="amp">&amp;</span> 1 \ 1 <span class="amp">&amp;</span> 0\end{pmatrix}, $$
-avec $\sigma_x$ la matrice &#8220;x&#8221; de&nbsp;pauli.</p>
-<p>Un autre point important est que le résultat de la séquence SGz-SGx-SGz est différent de celui de la séquence SGz-SGz-SGx: la conséquence de ce fait expérimental est la non-commutativité des opérateurs de spin dans la direction $x$ et $z$: $[S_x, S_z] \ne 0$. Cette non-commutativité est indicative de la nature physique de spin: les opérateurs de <em>spin</em> sont de générateurs, comme on va le voir plus tard, des <em>rotations</em>, or si on change l&#8217;ordre dans lequel on effectue des rotations autour de différents axes on obtient des résultats&nbsp;différents.</p>
-<p>Enfin, si on remplace dans la dernière expérience $S_x$ par $S_y$ on obtient la même phénoménologie, le faisceau se sépare toujours en deux avec la même probabilité: on conclue que les trois mesures conduisent à des états physique différents. Si on note $\ket{\oplus}$ et $\ket{\odot}$ les états de l&#8217;opérateur $S_y$, on peut supposer 
-$$ \ket{\oplus} = \frac{\ket{0} + \E^{\I\phi} \ket{1}}{\sqrt{2}}, $$
-ce qui est compatible avec
-$$ |\braket{\oplus|0}|^2 = |\braket{\oplus|1}|^2  = 1/2. $$
-Mais on doit aussi avoir
-$$ |\braket{\oplus|+}|^2 = |\braket{\oplus|-}|^2  = 1/2. $$
+</p>
+<div class="math">$$ |\braket{0|\leftarrow}|^2 = \braket{1|\leftarrow}|^2 = 1/2. $$</div>
+<p>
+Comme les deux résultats <span class="math">\(\rightarrow\)</span> et <span class="math">\(\leftarrow\)</span> sont excluants, ces deux états sont&nbsp;orthogonaux:
+</p>
+<div class="math">$$ \ket{\leftarrow} = \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}. $$</div>
+<p>
+En plus, comme <span class="math">\(S_x\)</span> est diagonal dans la base <span class="math">\(\ket{\pm}\)</span> on obtient <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$S_x = \frac{\hbar}{2} \sigma_x, \quad \sigma_x = \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0\end{pmatrix}, $$</div>
+<p>
+avec <span class="math">\(\sigma_x\)</span> la matrice &#8220;x&#8221; de&nbsp;pauli.</p>
+<p>Un autre point important est que le résultat de la séquence SGz-SGx-SGz est différent de celui de la séquence SGz-SGz-SGx: la conséquence de ce fait expérimental est la non-commutativité des opérateurs de spin dans la direction <span class="math">\(x\)</span> et <span class="math">\(z\)</span>: <span class="math">\([S_x, S_z] \ne 0\)</span>. Cette non-commutativité est indicative de la nature physique de spin: les opérateurs de <em>spin</em> sont de générateurs, comme on va le voir plus tard, des <em>rotations</em>, or si on change l&#8217;ordre dans lequel on effectue des rotations autour de différents axes on obtient des résultats&nbsp;différents.</p>
+<p>Enfin, si on remplace dans la dernière expérience <span class="math">\(S_x\)</span> par <span class="math">\(S_y\)</span> on obtient la même phénoménologie, le faisceau se sépare toujours en deux avec la même probabilité: on conclue que les trois mesures conduisent à des états physique différents. Si on note <span class="math">\(\ket{\oplus}\)</span> et <span class="math">\(\ket{\odot}\)</span> les états de l&#8217;opérateur <span class="math">\(S_y\)</span>, on peut&nbsp;supposer 
+</p>
+<div class="math">$$ \ket{\oplus} = \frac{\ket{0} + \E^{\I\phi} \ket{1}}{\sqrt{2}}, $$</div>
+<p>
+ce qui est compatible&nbsp;avec
+</p>
+<div class="math">$$ |\braket{\oplus|0}|^2 = |\braket{\oplus|1}|^2  = 1/2. $$</div>
+<p>
+Mais on doit aussi&nbsp;avoir
+</p>
+<div class="math">$$ |\braket{\oplus|+}|^2 = |\braket{\oplus|-}|^2  = 1/2. $$</div>
+<p>
 ce qui implique <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$ \phi = -\pi/2 $$
-(le signe $-$ est conventionnel, il selection la règle de la main droite pour les rotations dans l&#8217;espace) et
-$$S_y = \frac{\hbar}{2} \sigma_y, \quad \sigma_y = \begin{pmatrix}0 <span class="amp">&amp;</span> -\I \ \I <span class="amp">&amp;</span> 0\end{pmatrix}.&nbsp;$$</p>
-<p>En résumé on a déduit de l&#8217;expérience de  Stern-Gerlach l&#8217;observable du spin 1/2:
-$$ \bm S = \frac{\hbar}{2} \bm \sigma $$
+</p>
+<div class="math">$$ \phi = -\pi/2 $$</div>
+<p>
+(le signe <span class="math">\(-\)</span> est conventionnel, il selection la règle de la main droite pour les rotations dans l&#8217;espace)&nbsp;et
+</p>
+<div class="math">$$S_y = \frac{\hbar}{2} \sigma_y, \quad \sigma_y = \begin{pmatrix}0 &amp; -\I \\ \I &amp; 0\end{pmatrix}. $$</div>
+<p>En résumé on a déduit de l&#8217;expérience de  Stern-Gerlach l&#8217;observable du spin&nbsp;1/2:
+</p>
+<div class="math">$$ \bm S = \frac{\hbar}{2} \bm \sigma $$</div>
+<p>
 avec
-$$
-\sigma_x = \begin{pmatrix}0 <span class="amp">&amp;</span> 1 \ 1 <span class="amp">&amp;</span> 0\end{pmatrix}, \quad
-\sigma_y = \begin{pmatrix}0 <span class="amp">&amp;</span> -\I \ \I <span class="amp">&amp;</span> 0\end{pmatrix}, \quad
-\sigma_z = \begin{pmatrix}1 <span class="amp">&amp;</span> 0 \ 0 <span class="amp">&amp;</span> -1\end{pmatrix},
-$$
-les matrices de pauli. Le qubit est donc décrit par l&#8217;état d&#8217;un système quantique de dimension 2, dont la base canonique est donnée par les vecteurs
-$$
-\ket{0} = \begin{pmatrix}1 \ 0\end{pmatrix}, \;\ket{1} = \begin{pmatrix}0 \ 1\end{pmatrix}.&nbsp;$$</p>
-<p>L&#8217;état le plus général d&#8217;un qubit est la superposition
-$$ \ket{\psi} = \cos\frac{\theta}{2} \ket{0} + \E^{\I \phi} \sin \frac{\theta}{2} \ket{1} $$
-dépendant des angles sphériques $\theta \in [0, \pi]$ et $\phi \in [0, 2\pi]$. Par exemple, le pôle nord ($\theta = 0$) correspond à l&#8217;état $\ket{0}$ et le pôle sud ($\theta = \pi$) à l&#8217;état&nbsp;$\ket{1}$.</p>
+</p>
+<div class="math">$$
+\sigma_x = \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0\end{pmatrix}, \quad
+\sigma_y = \begin{pmatrix}0 &amp; -\I \\ \I &amp; 0\end{pmatrix}, \quad
+\sigma_z = \begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix},
+$$</div>
+<p>
+les matrices de pauli. Le qubit est donc décrit par l&#8217;état d&#8217;un système quantique de dimension 2, dont la base canonique est donnée par les&nbsp;vecteurs
+</p>
+<div class="math">$$
+\ket{0} = \begin{pmatrix}1 \\ 0\end{pmatrix}, \;\ket{1} = \begin{pmatrix}0 \\ 1\end{pmatrix}. 
+$$</div>
+<p>L&#8217;état le plus général d&#8217;un qubit est la&nbsp;superposition
+</p>
+<div class="math">$$ \ket{\psi} = \cos\frac{\theta}{2} \ket{0} + \E^{\I \phi} \sin \frac{\theta}{2} \ket{1} $$</div>
+<p>
+dépendant des angles sphériques <span class="math">\(\theta \in [0, \pi]\)</span> et <span class="math">\(\phi \in [0, 2\pi]\)</span>. Par exemple, le pôle nord (<span class="math">\(\theta = 0\)</span>) correspond à l&#8217;état <span class="math">\(\ket{0}\)</span> et le pôle sud (<span class="math">\(\theta = \pi\)</span>) à l&#8217;état <span class="math">\(\ket{1}\)</span>.</p>
 <blockquote>
 <p><img src="/images/AQ-sbloch.png" alt="sphère de Bloch" style="height: 250px;"/></p>
 <p>Géométrie de l&#8217;espace de hilbert d&#8217;un qubit sous la forme d&#8217;une sphère de&nbsp;Bloch.</p>
 </blockquote>
-<p>Quels sont les résultats possibles de la mesure de $S_z$ dans l&#8217;état $\ket{\psi}$? On applique la règle de Born pour répondre à la question. Les deux états propres de $S_z$ sont $\ket{0}$ et $\ket{1}$ avec les valeurs propres correspondants $1$ (up) et $-1$ (down). La probabilité de trouver l&#8217;état $0$ est donnée par 
-$$p(0) = |\braket{0|\psi}|^2 = \cos^2 \frac{\theta}{2}, $$
-et celle de l&#8217;état $1$ est
-$$p(1) = |\braket{1|\psi}|^2 = \sin^2 \frac{\theta}{2}. $$
-On vérifie que leur somme est 1. La valeur espérée de la composente $z$ du spin est ($\hbar = 1$)
-$$ \braket{S_z} = \braket{\psi|S_z|\psi} = \frac{1}{2} \cos \theta $$
-Un calcul similaire donne
-$$ \braket{S_x} = \braket{\psi|S_z|\psi} = \frac{1}{2} \sin \theta \cos \phi$$
+<p>Quels sont les résultats possibles de la mesure de <span class="math">\(S_z\)</span> dans l&#8217;état <span class="math">\(\ket{\psi}\)</span>? On applique la règle de Born pour répondre à la question. Les deux états propres de <span class="math">\(S_z\)</span> sont <span class="math">\(\ket{0}\)</span> et <span class="math">\(\ket{1}\)</span> avec les valeurs propres correspondants <span class="math">\(1\)</span> (up) et <span class="math">\(-1\)</span> (down). La probabilité de trouver l&#8217;état <span class="math">\(0\)</span> est donnée&nbsp;par 
+</p>
+<div class="math">$$p(0) = |\braket{0|\psi}|^2 = \cos^2 \frac{\theta}{2}, $$</div>
+<p>
+et celle de l&#8217;état <span class="math">\(1\)</span>&nbsp;est
+</p>
+<div class="math">$$p(1) = |\braket{1|\psi}|^2 = \sin^2 \frac{\theta}{2}. $$</div>
+<p>
+On vérifie que leur somme est 1. La valeur espérée de la composente <span class="math">\(z\)</span> du spin est (<span class="math">\(\hbar = 1\)</span>)
+</p>
+<div class="math">$$ \braket{S_z} = \braket{\psi|S_z|\psi} = \frac{1}{2} \cos \theta $$</div>
+<p>
+Un calcul similaire&nbsp;donne
+</p>
+<div class="math">$$ \braket{S_x} = \braket{\psi|S_z|\psi} = \frac{1}{2} \sin \theta \cos \phi$$</div>
+<p>
 et
-$$ \braket{S_y} = \braket{\psi|S_z|\psi} = \frac{1}{2} \sin \theta \sin \phi.&nbsp;$$</p>
-<p>Une transformation unitaire du qubit correspond géométriquement à une rotation dans la sphère de Bloch. Par exemple une rotation du qubit $\ket{0}$ d&#8217;un angle $\theta = \pi/2$ autour de l&#8217;axe $y$ est donnée par la matrice <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$ R_y(\theta) = \E^{-\I \theta \sigma_y/2} = \cos\frac{\theta}{2} \sigma_0 - \I \sin \frac{\theta}{2} \sigma_x =  \begin{pmatrix} \cos\frac{\theta}{2} <span class="amp">&amp;</span> -\sin \frac{\theta}{2} \ \sin \frac{\theta}{2} <span class="amp">&amp;</span> \cos \frac{\theta}{2}\end{pmatrix}. $$
-avec $\sigma_0 = 1_2$ la matrice identité de dimension 2. On obtiend donc
-$$ R_y(\pi/2) \ket{0} = \frac{\ket{0} + \ket{1}}{\sqrt{2}} = \ket{+}.&nbsp;$$</p>
-<p>La matrice densité d&#8217;un qubit dans l&#8217;état générique $\ket{\psi}$ est $\rho = \ket{\psi}\bra{\psi}$ <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$ \rho = \frac{1_2 + \bm n \cdot \bm \sigma}{2} = \frac{1}{2} \begin{pmatrix}1+n_z <span class="amp">&amp;</span> n_x - \I n_y \ n_x + \I n_y <span class="amp">&amp;</span> 1 - n_z \end{pmatrix}, $$
+</p>
+<div class="math">$$ \braket{S_y} = \braket{\psi|S_z|\psi} = \frac{1}{2} \sin \theta \sin \phi. $$</div>
+<p>Une transformation unitaire du qubit correspond géométriquement à une rotation dans la sphère de Bloch. Par exemple une rotation du qubit <span class="math">\(\ket{0}\)</span> d&#8217;un angle <span class="math">\(\theta = \pi/2\)</span> autour de l&#8217;axe <span class="math">\(y\)</span> est donnée par la matrice <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$ R_y(\theta) = \E^{-\I \theta \sigma_y/2} = \cos\frac{\theta}{2} \sigma_0 - \I \sin \frac{\theta}{2} \sigma_x =  \begin{pmatrix} \cos\frac{\theta}{2} &amp; -\sin \frac{\theta}{2} \\ \sin \frac{\theta}{2} &amp; \cos \frac{\theta}{2}\end{pmatrix}. $$</div>
+<p>
+avec <span class="math">\(\sigma_0 = 1_2\)</span> la matrice identité de dimension 2. On obtiend&nbsp;donc
+</p>
+<div class="math">$$ R_y(\pi/2) \ket{0} = \frac{\ket{0} + \ket{1}}{\sqrt{2}} = \ket{+}. $$</div>
+<p>La matrice densité d&#8217;un qubit dans l&#8217;état générique <span class="math">\(\ket{\psi}\)</span> est <span class="math">\(\rho = \ket{\psi}\bra{\psi}\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$ \rho = \frac{1_2 + \bm n \cdot \bm \sigma}{2} = \frac{1}{2} \begin{pmatrix}1+n_z &amp; n_x - \I n_y \\ n_x + \I n_y &amp; 1 - n_z \end{pmatrix}, $$</div>
+<p>
 où
-$$\bm n = (\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta), $$
+</p>
+<div class="math">$$\bm n = (\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta), $$</div>
+<p>
 est le vecteur unitaire en coordonnées&nbsp;sphériques.</p>
-<p>Le postulat d&#8217;évolution nous dit que toute transformation quantique est implémentée par un opérateur unitaire. Considérons un spin sujet à l&#8217;action d&#8217;un champ magnétique extérieur. Le hamiltonien du système peut s&#8217;écrire 
-$$ H = -\frac{J}{\hbar} S_z, $$
-où $J$ est une constante d&#8217;énergie proportionnelle au champ appliqué, et S_z le spin de l&#8217;électron. l&#8217;opérateur d&#8217;évolution est
-$$ U(t) = \E^{-\I H t/\hbar} = \E^{\I \sigma_z t/2}, $$
-avec le choix d&#8217;unités $J=\hbar=1$ (l&#8217;unité de temps est donc $\hbar/J$):
-$$ \quad U(t) = \cos(t/2)\, 1_2 + \I \sin(t/2)\, \sigma_z = \mathrm{diag}(\E^{\I t/2}, \E^{-\I t/2}). $$
-Si l&#8217;état initial de l&#8217;électron est $\ket{+}$, au temps $t$, on a
-$$ \ket{\psi(t)} = \frac{\E^{\I t/2}}{\sqrt{2}} \ket{0} + \frac{\E^{-\I t/2}}{\sqrt{2}} \ket{1}. $$
+<p>Le postulat d&#8217;évolution nous dit que toute transformation quantique est implémentée par un opérateur unitaire. Considérons un spin sujet à l&#8217;action d&#8217;un champ magnétique extérieur. Le hamiltonien du système peut&nbsp;s&#8217;écrire 
+</p>
+<div class="math">$$ H = -\frac{J}{\hbar} S_z, $$</div>
+<p>
+où <span class="math">\(J\)</span> est une constante d&#8217;énergie proportionnelle au champ appliqué, et S_z le spin de l&#8217;électron. l&#8217;opérateur d&#8217;évolution&nbsp;est
+</p>
+<div class="math">$$ U(t) = \E^{-\I H t/\hbar} = \E^{\I \sigma_z t/2}, $$</div>
+<p>
+avec le choix d&#8217;unités <span class="math">\(J=\hbar=1\)</span> (l&#8217;unité de temps est donc <span class="math">\(\hbar/J\)</span>):
+</p>
+<div class="math">$$ \quad U(t) = \cos(t/2)\, 1_2 + \I \sin(t/2)\, \sigma_z = \mathrm{diag}(\E^{\I t/2}, \E^{-\I t/2}). $$</div>
+<p>
+Si l&#8217;état initial de l&#8217;électron est <span class="math">\(\ket{+}\)</span>, au temps <span class="math">\(t\)</span>, on&nbsp;a
+</p>
+<div class="math">$$ \ket{\psi(t)} = \frac{\E^{\I t/2}}{\sqrt{2}} \ket{0} + \frac{\E^{-\I t/2}}{\sqrt{2}} \ket{1}. $$</div>
+<p>
 La valeur espérée du spin au cours du temps est <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$ \braket{\bm S(t)} = \braket{\psi(t)| (S_x, S_y, S_z) |\psi(t)} = (\cos t, \sin t, 0), $$
-un mouvement de rotation uniforme de fréquence $J/\hbar$ dans le plan perpendiculaire au champ. Il est intéressant d&#8217;observer qu&#8217;en choisissant $t = \pi/2 \, [\hbar/J]$ on obtient la transformation
-$$ \ket{+}\quad \rightarrow\quad \ket{-} = \sigma_x \ket{+}, $$
-à un facteur de phase globale près. On peut donc implémenter physiquement l&#8217;opération $\sigma_x$, équivalente à l&#8217;opération logique de négation $\mathsf{<span class="caps">NOT</span>}$, par l&#8217;application sur le qubit d&#8217;un champ extérieur sur une duration bien&nbsp;précise.</p>
+</p>
+<div class="math">$$ \braket{\bm S(t)} = \braket{\psi(t)| (S_x, S_y, S_z) |\psi(t)} = (\cos t, \sin t, 0), $$</div>
+<p>
+un mouvement de rotation uniforme de fréquence <span class="math">\(J/\hbar\)</span> dans le plan perpendiculaire au champ. Il est intéressant d&#8217;observer qu&#8217;en choisissant <span class="math">\(t = \pi/2 \, [\hbar/J]\)</span> on obtient la&nbsp;transformation
+</p>
+<div class="math">$$ \ket{+}\quad \rightarrow\quad \ket{-} = \sigma_x \ket{+}, $$</div>
+<p>
+à un facteur de phase globale près. On peut donc implémenter physiquement l&#8217;opération <span class="math">\(\sigma_x\)</span>, équivalente à l&#8217;opération logique de négation <span class="math">\(\mathsf{NOT}\)</span>, par l&#8217;application sur le qubit d&#8217;un champ extérieur sur une duration bien&nbsp;précise.</p>
 <h2>Deux&nbsp;qubits</h2>
-<p>Selon le principe de composition des espace de hilbert d&#8217;un système composite, on doit avoir
-$$ \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1, \quad \dim{\mathcal{H}}_1 = 2, \; \dim{\mathcal{H}} = 2^2.&nbsp;$$</p>
-<p>Comme l&#8217;ordre des facteurs d&#8217;un produit de kronecker est important, le premier terme correspond au premier qubit (A) et le deuxième au (B). On note $\ket{s}$ avec $s \in {0,1}$ les kets de base de $\mathcal{H}_1$, on a donc
-$$ \ket{s_1} \otimes \ket{s_2} \equiv \ket{s_1s_2} \in \mathcal{H}, \quad s_1, s_2 = 0, 1, $$
-les 4 éléments de la base de l&#8217;espace de deux spins; notez que $s_1s_2$ est la décomposition binaire de $s=0,1,2,3 \doteq 00, 01, 10,&nbsp;11$.</p>
-<p>La physique de deux particules (quantiques) est bien plus riche que celle d&#8217;une seule particule de par la possibilité des <em>interactions</em>. Par exemple, deux spins voisins dont les fonctions d&#8217;onde se recouvrent, vont interagir par leur &#8220;énergie d&#8217;échange&#8221; $J$. Soit le hamiltonien de deux spins (Ising)
-$$
+<p>Selon le principe de composition des espace de hilbert d&#8217;un système composite, on doit&nbsp;avoir
+</p>
+<div class="math">$$ \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_1, \quad \dim{\mathcal{H}}_1 = 2, \; \dim{\mathcal{H}} = 2^2. $$</div>
+<p>Comme l&#8217;ordre des facteurs d&#8217;un produit de kronecker est important, le premier terme correspond au premier qubit (A) et le deuxième au (B). On note <span class="math">\(\ket{s}\)</span> avec <span class="math">\(s \in \{0,1\}\)</span> les kets de base de <span class="math">\(\mathcal{H}_1\)</span>, on a&nbsp;donc
+</p>
+<div class="math">$$ \ket{s_1} \otimes \ket{s_2} \equiv \ket{s_1s_2} \in \mathcal{H}, \quad s_1, s_2 = 0, 1, $$</div>
+<p>
+les 4 éléments de la base de l&#8217;espace de deux spins; notez que <span class="math">\(s_1s_2\)</span> est la décomposition binaire de <span class="math">\(s=0,1,2,3 \doteq 00, 01, 10, 11\)</span>.</p>
+<p>La physique de deux particules (quantiques) est bien plus riche que celle d&#8217;une seule particule de par la possibilité des <em>interactions</em>. Par exemple, deux spins voisins dont les fonctions d&#8217;onde se recouvrent, vont interagir par leur &#8220;énergie d&#8217;échange&#8221; <span class="math">\(J\)</span>. Soit le hamiltonien de deux spins&nbsp;(Ising)
+</p>
+<div class="math">$$
 H = -J \frac{1-\sigma_z}{2} \otimes \frac{1 - \sigma_z}{2}.
-$$
+$$</div>
+<p>
 On peut montrer que l&#8217;opérateur d&#8217;évolution est <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
-$$
+</p>
+<div class="math">$$
 U(t) = \E^{-\I H t} = \mathrm{diag}(1,1,1, \E^{\I t}),
-$$
-($J=\hbar=1$) lequel se réduit pour $t = \pi\, [\hbar/J]$ dans l&#8217;opérateur de &#8220;phase contrôlée&#8221;, puisque le changement sur un qubit dépend de l&#8217;état de l&#8217;autre:
-$$
-\mathsf{<span class="caps">CZ</span>} = \begin{pmatrix} 
-  1 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \ 
-  0 <span class="amp">&amp;</span> 1 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 \
-  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 1 <span class="amp">&amp;</span> 0 \
-  0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> 0 <span class="amp">&amp;</span> -1 \end{pmatrix}.&nbsp;$$</p>
-<p>Cette interaction entre les deux spins permet de créer un état <em>intriqué</em>: c&#8217;est-à-dire un état que ne peut pas s&#8217;écrire comme le produit d&#8217;un état du premier qubit par celui du deuxième qubit. En effet, l&#8217;application de $\mathsf{<span class="caps">CZ</span>}$ sur l&#8217;état initial produit $\ket{+} \otimes \ket{+} = \ket{++}$ produit l&#8217;état
-$$
-\ket{C} = \mathsf{<span class="caps">CZ</span>} \ket{++} = \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} - \ket{11})
-$$
+$$</div>
+<p>
+(<span class="math">\(J=\hbar=1\)</span>) lequel se réduit pour <span class="math">\(t = \pi\, [\hbar/J]\)</span> dans l&#8217;opérateur de &#8220;phase contrôlée&#8221;, puisque le changement sur un qubit dépend de l&#8217;état de&nbsp;l&#8217;autre:
+</p>
+<div class="math">$$
+\mathsf{CZ} = \begin{pmatrix} 
+  1 &amp; 0 &amp; 0 &amp; 0 \\ 
+  0 &amp; 1 &amp; 0 &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; 0 \\
+  0 &amp; 0 &amp; 0 &amp; -1 \end{pmatrix}.
+$$</div>
+<p>Cette interaction entre les deux spins permet de créer un état <em>intriqué</em>: c&#8217;est-à-dire un état que ne peut pas s&#8217;écrire comme le produit d&#8217;un état du premier qubit par celui du deuxième qubit. En effet, l&#8217;application de <span class="math">\(\mathsf{CZ}\)</span> sur l&#8217;état initial produit <span class="math">\(\ket{+} \otimes \ket{+} = \ket{++}\)</span> produit&nbsp;l&#8217;état
+</p>
+<div class="math">$$
+\ket{C} = \mathsf{CZ} \ket{++} = \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} - \ket{11})
+$$</div>
+<p>
 qui est intriqué. On peut le vérifier par un calcul explicite, ou en calculant l&#8217;état du premier qubit en faisant la trace partielle sur le deuxième <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
-$$
+</p>
+<div class="math">$$
 \rho_A = \Tr_B \ket{C}\bra{C} = \frac{1}{2} 1_2,
-$$
-la matrice densité du qubit A est proportionnelle à l&#8217;identité. Les éléments diagonaux de $\rho_A$ (dont la somme est bien 1) représentes les probabilités de trouver le qubit up ou down, tandis que les élément non-diagonaux représentent la cohérence quantique de ces deux possibilités. Le fait que ceux-ci soient nuls signifie que l&#8217;état du qubit est un état aléatoire sans superposition quantique quelconque. On dit que l&#8217;état dont les sous-états sont représentés par une matrice densité proportionnelle à l&#8217;identité est un état maximalement&nbsp;intriqué.</p>
-<p>Une simple transformation unitaire transforme l&#8217;état $\ket{C}$ dans un <em>état de Bell</em>:
-$$
-\ket{\Phi_+} = (\mathsf{H}\otimes1_2) \mathsf{<span class="caps">CZ</span>} \ket{++} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
-$$
+$$</div>
+<p>
+la matrice densité du qubit A est proportionnelle à l&#8217;identité. Les éléments diagonaux de <span class="math">\(\rho_A\)</span> (dont la somme est bien 1) représentes les probabilités de trouver le qubit up ou down, tandis que les élément non-diagonaux représentent la cohérence quantique de ces deux possibilités. Le fait que ceux-ci soient nuls signifie que l&#8217;état du qubit est un état aléatoire sans superposition quantique quelconque. On dit que l&#8217;état dont les sous-états sont représentés par une matrice densité proportionnelle à l&#8217;identité est un état maximalement&nbsp;intriqué.</p>
+<p>Une simple transformation unitaire transforme l&#8217;état <span class="math">\(\ket{C}\)</span> dans un <em>état de Bell</em>:
+</p>
+<div class="math">$$
+\ket{\Phi_+} = (\mathsf{H}\otimes1_2) \mathsf{CZ} \ket{++} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+$$</div>
+<p>
 ou
-$$
+</p>
+<div class="math">$$
 \mathsf{H} = \frac{\sigma_x + \sigma_z}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix}
-1 <span class="amp">&amp;</span> 1 \ 1 <span class="amp">&amp;</span> -1 \end{pmatrix}
-$$
+1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}
+$$</div>
+<p>
 la matrice de Hadamard. Cet état jour un rôle important dans la <a href="/L3-telep.html">téléportation</a>&nbsp;quantique.</p>
-<p>Il est intéressant d&#8217;observer que, même si l&#8217;entropie d&#8217;un état pur est nulle, $S = - \braket{\psi| \ln \big(\ket{\psi}\bra{\psi}\big) | \psi} = \ln 1 = 0$, celle associée au premier qubit (idem pour le deuxième &mdash; bipartition <span class="caps">AB</span>) est <em>maximale</em>:
-$$
+<p>Il est intéressant d&#8217;observer que, même si l&#8217;entropie d&#8217;un état pur est nulle, <span class="math">\(S = - \braket{\psi| \ln \big(\ket{\psi}\bra{\psi}\big) | \psi} = \ln 1 = 0\)</span>, celle associée au premier qubit (idem pour le deuxième &mdash; bipartition <span class="caps">AB</span>) est <em>maximale</em>:
+</p>
+<div class="math">$$
 S_A = - \Tr \, \rho_A \ln \rho_A = -\frac{1}{2} \ln \frac{1}{2} -\frac{1}{2} \ln \frac{1}{2} = \ln 2.
-$$
+$$</div>
+<p>
 L&#8217;état (de Bell) correspond donc à un état maximalement&nbsp;intriqué.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
       </div>
