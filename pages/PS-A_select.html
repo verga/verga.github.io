@@ -56,6 +56,55 @@
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
 <h2>Selected problems:&nbsp;solutions</h2>
+<h3>1</h3>
+<p>Microcanonical ensemble: the harmonic oscillator. Compute the volume of phase space inside the surface of constant energy <span class="math">\(H &lt; E\)</span> (<span class="math">\(H\)</span> is the hamiltonian of a system of <span class="math">\(N\)</span> oscillators). Deduce the entropy. Show that the result do not depend on the value <span class="math">\(\Delta\)</span> of the energy shell&nbsp;thickness. </p>
+<p>Solve the same problem for a set of <span class="math">\(N\)</span> quantum harmonic oscillators, taking into account that bosons are&nbsp;indistinguishable.</p>
+<p>Compare the expression of the energy as a function of the temperature in both, classical and quantum,&nbsp;cases.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
+<p>The hamiltonian of a set of <span class="math">\(N\)</span> harmonic oscillators&nbsp;is
+</p>
+<div class="math">$$
+H = \sum_{i=1}^N \Big[ \frac{p_i^2}{2m} + \frac{m \omega^2 x_i^2}{2} \Big] = E
+$$</div>
+<p>
+where <span class="math">\(m\)</span> is the mass and <span class="math">\(omega\)</span> the frequency; <span class="math">\(p_i\)</span> and <span class="math">\(q_i\)</span> are the canonical variables of momentum and position, defining the phase space configurations of the system; <span class="math">\(E\)</span> is the total energy of the&nbsp;system.</p>
+<p>To compute the entropy we count the number of configurations <span class="math">\(\Omega_\Delta(E)\)</span> of energy <span class="math">\(E\)</span> in a band of width <span class="math">\(\Delta\)</span>. The configurations of the set of oscillators lie on the surface of a sphere of dimension <span class="math">\(2N\)</span> and radius <span class="math">\(\sqrt{2E/\omega}\)</span>. Indeed, after the&nbsp;rescaling
+</p>
+<div class="math">$$
+p \rightarrow \sqrt{m\omega} p, \quad x \rightarrow x/\sqrt{m\omega},
+$$</div>
+<p>
+which left invariant the product <span class="math">\(\D x \D p\)</span>, the hamiltonian&nbsp;writes
+</p>
+<div class="math">$$
+\frac{H}{\omega} = \frac{p^2}{2} + \frac{x^2}{2} = \frac{E}{\omega}, \quad (x,p) \in \mathbb{R}^{2N},
+$$</div>
+<p>
+the equation of a sphere in a space of dimension <span class="math">\(D=2N\)</span>. Noting that the ratio of area <span class="math">\(A_D \sim R^{D-1}\)</span> and the volume <span class="math">\(V_D \sim R^D/D\)</span> of a sphere of radius <span class="math">\(R\)</span> is <span class="math">\(A_D/V_D = D/R\)</span>, we find that for large dimension almost all the &#8220;volume&#8221; concentrates near the&nbsp;surface:
+</p>
+<div class="math">$$
+\frac{A_{2N}}{V_{2N}} = 2N \sqrt{\frac{\omega}{2E}} \sim \sqrt{N}.
+$$</div>
+<p>
+Therefore we can replace <span class="math">\(\Omega_\Delta\)</span> by the integral over the whole phase space <span class="math">\(\Gamma\)</span>,
+</p>
+<div class="math">$$
+\Omega(E) = \int_\Gamma \frac{\D\Gamma}{(2\pi \hbar)^{2N}} \Theta(E-H),\quad \D\Gamma = \prod_i \D x_i \D p_i.
+$$</div>
+<p>
+Using the formula for the volume of a <span class="math">\(D\)</span>-dimensional sphere we&nbsp;obtain:
+</p>
+<div class="math">$$
+\Omega(E) = \frac{1}{N!} \Big(\frac{E}{\hbar \omega} \Big)^N.
+$$</div>
+<p>
+The Boltzmann entropy&nbsp;results
+</p>
+<div class="math">$$
+S = N k_\mathrm{B} \ln \Big( \frac{eE}{\hbar \omega N} \Big).
+$$</div>
 <h3>4 Identical&nbsp;particles</h3>
 <p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
 </p>
