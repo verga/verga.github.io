@@ -68,11 +68,13 @@ H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x w(\bm r_n - R_x)
 $$</div>
 <p>
 where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
-<p>Assume that the potential energy of an impurity <span class="math">\(w\)</span> is attractive and significantly different from zero in the volume <span class="math">\(v_0\)</span> around <span class="math">\(R_x\)</span>, and that their distribution is uniform in the system&#8217;s volume <span class="math">\(V\)</span> (of density <span class="math">\(n_i = N_i v_0/V\)</span> small enough to avoid overlaps). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
+<p>Assume that the range of the interaction energy <span class="math">\(w\)</span> is small compared to the distance between impurities (diluted system), and that the impurities distribution is uniform (of density <span class="math">\(n_i = N_i/V\)</span>). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
 </p>
 <div class="math">$$
-\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i f}, \quad f = \int \frac{\D \bm r}{V} (\E^{-w(\bm r)/T} - 1)
+\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i v_0}, \quad v_0 = \int \D \bm R (\E^{-w(\bm R)/T} - 1),
 $$</div>
+<p>
+where <span class="math">\(v_0\)</span> is the characteristic volume of the particle-impurity&nbsp;interaction.</p>
 <p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
 <h3>3</h3>
 <p><a href="/pages/rm.html">Random matrices</a>. Find the Wigner&nbsp;surmise

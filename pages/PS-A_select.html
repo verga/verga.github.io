@@ -82,29 +82,83 @@ which left invariant the product <span class="math">\(\D x \D p\)</span>, the ha
 \frac{H}{\omega} = \frac{p^2}{2} + \frac{x^2}{2} = \frac{E}{\omega}, \quad (x,p) \in \mathbb{R}^{2N},
 $$</div>
 <p>
-the equation of a sphere in a space of dimension <span class="math">\(D=2N\)</span>. Noting that the ratio of area <span class="math">\(A_D \sim R^{D-1}\)</span> and the volume <span class="math">\(V_D \sim R^D/D\)</span> of a sphere of radius <span class="math">\(R\)</span> is <span class="math">\(A_D/V_D = D/R\)</span>, we find that for large dimension almost all the &#8220;volume&#8221; concentrates near the&nbsp;surface:
+the equation of a sphere in a space of dimension <span class="math">\(D=2N\)</span>. Noting that the ratio area <span class="math">\(A_D \sim R^{D-1}\)</span> to volume <span class="math">\(V_D \sim R^D/D\)</span> of a sphere of radius <span class="math">\(R\)</span> is <span class="math">\(A_D/V_D = D/R\)</span>, we find that for large dimension almost all of the available &#8220;volume&#8221; concentrates near the&nbsp;surface:
 </p>
 <div class="math">$$
 \frac{A_{2N}}{V_{2N}} = 2N \sqrt{\frac{\omega}{2E}} \sim \sqrt{N}.
 $$</div>
 <p>
-Therefore we can replace <span class="math">\(\Omega_\Delta\)</span> by the integral over the whole phase space <span class="math">\(\Gamma\)</span>,
+Therefore, we can replace <span class="math">\(\Omega_\Delta\)</span> by the integral over the whole phase space <span class="math">\(\Gamma\)</span>,
 </p>
 <div class="math">$$
 \Omega(E) = \int_\Gamma \frac{\D\Gamma}{(2\pi \hbar)^{2N}} \Theta(E-H),\quad \D\Gamma = \prod_i \D x_i \D p_i.
 $$</div>
 <p>
-Using the formula for the volume of a <span class="math">\(D\)</span>-dimensional sphere we&nbsp;obtain:
+in the computation of the entropy, <span class="math">\(\ln\Omega_Delta \sim \ln\Omega\)</span>. Using the <a href="{filename}{PS-A_qgas.md}">formula</a> for the volume of a <span class="math">\(D\)</span>-dimensional sphere we&nbsp;obtain:
 </p>
 <div class="math">$$
 \Omega(E) = \frac{1}{N!} \Big(\frac{E}{\hbar \omega} \Big)^N.
 $$</div>
 <p>
-The Boltzmann entropy&nbsp;results
+The Boltzmann entropy results (using the Stirling approximation <span class="math">\(\ln N! = N \ln N - N\)</span>)
 </p>
 <div class="math">$$
-S = N k_\mathrm{B} \ln \Big( \frac{eE}{\hbar \omega N} \Big).
+S = N k_\mathrm{B} \ln \Big( \frac{eE}{\hbar \omega N} \Big),
 $$</div>
+<p>
+from which we obtain the&nbsp;temperature
+</p>
+<div class="math">$$
+\frac{1}{T} = \frac{\partial S}{\partial E} = \frac{Nk_\mathrm{B} }{E}, \quad E = N k_\mathrm{B} T,
+$$</div>
+<p>
+which coincides with the equipartiation result, and the specific&nbsp;heat
+</p>
+<div class="math">$$
+c_V = k_\mathrm{B}.
+$$</div>
+<p>To compute the entropy of the quantum set of oscillators we must take into account the quantization of the energy as well as the identity of the particles to count the configurations. The energy levels&nbsp;are
+</p>
+<div class="math">$$
+E = \sum_i \hbar \omega \Big( n_i + \frac{1}{2} \Big).
+$$</div>
+<p>
+This equation shows that a configuration is given by the set <span class="math">\(\{n_i \mid i=1,\ldots,N\}\)</span>, the energy level of each particle. Counting the number of configurations <span class="math">\(\Omega(E)\)</span>, is equivalent to find the number of arrangements of <span class="math">\(N\)</span> integers <span class="math">\(n_i\)</span> such that their sum&nbsp;is
+</p>
+<div class="math">$$
+M = \sum_i n_i = \frac{E}{\hbar \omega} + \frac{N}{2},
+$$</div>
+<p>
+which&nbsp;is
+</p>
+<div class="math">$$
+\Omega = \binom{M+N-1}{M} = \binom{N-1+M}{N-1}.
+$$</div>
+<p>
+Using the Stirling approximation we obtain the entropy as a function of the&nbsp;energy:
+</p>
+<div class="math">$$
+\frac{S}{N k_\mathrm{B}} = \Big(\epsilon +\frac{1}{2} \Big) \ln \Big(\epsilon +\frac{1}{2} \Big) - \Big(\epsilon -\frac{1}{2} \Big) \ln \Big(\epsilon -\frac{1}{2} \Big), \quad \epsilon = \frac{E}{N \hbar \omega}.
+$$</div>
+<h3>2</h3>
+<p>Canonical and grand canonical ensembles: classical disordered system. Calculate the canonical partition function of a system whose hamiltonian energy&nbsp;is
+</p>
+<div class="math">$$
+H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x w(\bm r_n - R_x)
+$$</div>
+<p>
+where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
+<p>Assume that the range of the interaction energy <span class="math">\(w\)</span> is small compared to the distance between impurities (diluted system), and that the impurities distribution is uniform (of density <span class="math">\(n_i = N_i/V\)</span>). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
+</p>
+<div class="math">$$
+\braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i v_0}, \quad v_0 = \int \D \bm R (\E^{-w(\bm R)/T} - 1),
+$$</div>
+<p>
+where <span class="math">\(v_0\)</span> is the characteristic volume of the particle-impurity&nbsp;interaction.</p>
+<p>From the expression of the thermodynamic potential obtain the equation of state. Compare it to the one of an ideal&nbsp;gas.</p>
+<blockquote>
+<p><strong>Solution</strong></p>
+</blockquote>
 <h3>4 Identical&nbsp;particles</h3>
 <p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
 </p>
