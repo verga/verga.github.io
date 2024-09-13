@@ -94,7 +94,7 @@ Therefore, we can replace <span class="math">\(\Omega_\Delta\)</span> by the int
 \Omega(E) = \int_\Gamma \frac{\D\Gamma}{(2\pi \hbar)^{2N}} \Theta(E-H),\quad \D\Gamma = \prod_i \D x_i \D p_i.
 $$</div>
 <p>
-in the computation of the entropy, <span class="math">\(\ln\Omega_Delta \sim \ln\Omega\)</span>. Using the <a href="{filename}{PS-A_qgas.md}">formula</a> for the volume of a <span class="math">\(D\)</span>-dimensional sphere we&nbsp;obtain:
+in the computation of the entropy, <span class="math">\(\ln\Omega_Delta \sim \ln\Omega\)</span>. Using the <a href="/pages/PS-A_qgas.html">formula</a> for the volume of a <span class="math">\(D\)</span>-dimensional sphere we&nbsp;obtain:
 </p>
 <div class="math">$$
 \Omega(E) = \frac{1}{N!} \Big(\frac{E}{\hbar \omega} \Big)^N.
@@ -144,7 +144,7 @@ $$</div>
 <p>Canonical and grand canonical ensembles: classical disordered system. Calculate the canonical partition function of a system whose hamiltonian energy&nbsp;is
 </p>
 <div class="math">$$
-H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x w(\bm r_n - R_x)
+H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x w(\bm r_n - \bm R_x)
 $$</div>
 <p>
 where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
@@ -159,6 +159,63 @@ where <span class="math">\(v_0\)</span> is the characteristic volume of the part
 <blockquote>
 <p><strong>Solution</strong></p>
 </blockquote>
+<p>The grand canonical partition function can be written as (<span class="math">\(k_\mathrm{B}=1\)</span>)
+</p>
+<div class="math">$$
+Z(T, \mu, V) = \sum_N \E^{\mu N/T} Z_N(T,V),
+$$</div>
+<p>
+where <span class="math">\(Z_N\)</span> is the canonical partition function for <span class="math">\(N\)</span>&nbsp;particles
+</p>
+<div class="math">$$
+\begin{gather*}
+Z_N = \frac{1}{N!} \Big(\frac{V}{\lambda^3}\Big)^N \int \prod_n \frac{\D \bm r_n}{V} \E^{-\sum_{n,x} w(r_n - R_x)/T}\\
+= Z_0 \Big( \int \frac{\D \bm r}{V} \E^{-\sum_x w(r-R_x)/T} \Big)^N
+\end{gather*}
+$$</div>
+<p>
+with <span class="math">\(Z_0\)</span> the ideal gas term. Note that <span class="math">\(Z_N\)</span> depends on the set of random parameters <span class="math">\(\bm R_x\)</span>. Substitution into the grand canonical partition function&nbsp;gives,
+</p>
+<div class="math">$$
+Z(T, \mu, V) = \exp\Big[ \E^{\mu/T} \frac{V}{\lambda^3} \int \frac{\D \bm r}{V} \prod_x \E^{-w(\bm r - \bm R_x)/T}\Big].
+$$</div>
+<p>
+Therefore, averaging over the impurities positions, we&nbsp;find
+</p>
+<div class="math">$$
+\begin{gather*}
+\braket{Z(T,\mu,V)} = \E^{\mu/T} \frac{V}{\lambda^3} \int \frac{\D \bm r}{V} \int \prod_x \frac{\D \bm R_x}{V} \E^{-w(\bm r - \bm R_x)/T}\\
+= \E^{\mu/T} \frac{V}{\lambda^3} \Big[\int \frac{\D \bm R}{V} \E^{-w(\bm r - \bm R)/T}\Big]^{N_i}\\
+= \E^{\mu/T} \frac{V}{\lambda^3} \Big[ 1 + \frac{v_0}{V} \Big]^{n_i V}
+\end{gather*}
+$$</div>
+<p>
+which gives the desired result in the thermodynamic limit. We used the fact that the impurities are diluted in the gas, their positions are uncorrelated, and homogeneously distributed; therefore, the integrals over <span class="math">\(\bm R\)</span> do not depend on <span class="math">\(\bm r\)</span>.</p>
+<p>Using the potential <span class="math">\(\Phi = - T \braket{\ln Z}\)</span>, and the&nbsp;formulas
+</p>
+<div class="math">$$
+PV = \Phi, \quad N = -\frac{\partial \Phi}{\partial \mu},\quad S = -\frac{\partial \Phi}{\partial T}
+$$</div>
+<p>
+and
+</p>
+<div class="math">$$
+E = N\mu + TS - \Phi = \frac{\partial (\Phi/T)}{\partial (1/T)} - \mu \frac{\partial \Phi}{\partial \mu}
+$$</div>
+<p>
+we remark that the disordered gas satisfy the ideal gas equation of&nbsp;state
+</p>
+<div class="math">$$
+PV = NT
+$$</div>
+<p>
+but the relation of the energy with the temperature&nbsp;changes
+</p>
+<div class="math">$$
+E = \frac{3T}{2} \Big[1 + \frac{2n_i T}{3} \frac{\partial v_0}{\partial T} \Big]
+$$</div>
+<p>
+due to the impurity&nbsp;term.</p>
 <h3>4 Identical&nbsp;particles</h3>
 <p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
 </p>
