@@ -261,23 +261,41 @@ here <span class="math">\(\Gamma(\nu)\)</span> is the Euler gamma&nbsp;function,
 $$</div>
 <p>
 see the notes below. Usually, <span class="math">\(\pm\mathrm{Li}_{\nu+1}(\pm z)\)</span> are called <a href="https://dlmf.nist.gov/25.12">bose and fermi integrals</a>, respectively. (See the note below.)<sup id="fnref:NO"><a class="footnote-ref" href="#fn:NO">1</a></sup> </p>
-<p>Thermodynamic quantities are then obtained form the grand&nbsp;potential:
+<p>Thermodynamic quantities are then obtained form the grand potential by differentaition with respect to <span class="math">\(T\)</span> and <span class="math">\(z\)</span> (or equivalently <span class="math">\(\mu\)</span>):
 </p>
 <div class="math">$$
-E = -T^2 \frac{\partial}{\partial T} \frac{\Phi(T,z)}{T}\,, \quad
 N = -z \frac{\partial}{\partial z} \frac{\Phi(T,z)}{T}\,,
+E = -T^2 \frac{\partial}{\partial T} \frac{\Phi(T,z)}{T}\,, \quad
 $$</div>
 <p>
-for the energy and the number of particles, where, when deriving with respect to <span class="math">\(T\)</span> one considers <span class="math">\(V=\text{const.}\)</span> and <span class="math">\(z=\text{const.}\)</span>, and when deriving with respect to <span class="math">\(z\)</span>, <span class="math">\(T=\text{const}\)</span>;&nbsp;and
+for the number of particlesi and the energy, where, when deriving with respect to <span class="math">\(T\)</span> one considers <span class="math">\(Vi,z=\text{const.}\)</span>, and when deriving with respect to <span class="math">\(z\)</span>, <span class="math">\(T,V=\text{const}\)</span>;&nbsp;and
 </p>
 <div class="math">$$
 S = \frac{E - \mu N - \Phi}{T} = -\left. \frac{\partial\Phi}{\partial T}\right|_z + \left. \frac{\mu z}{T^2} \frac{\partial \Phi}{\partial z}\right|_T = -\left. \frac{\partial \Phi(T,\mu)}{\partial T}\right|_{V,\mu}
 $$</div>
 <p>
-for the&nbsp;entropy
+for the&nbsp;entropy.</p>
+<p>We can immediately compute the density <span class="math">\(N/V=n\)</span>,
 </p>
 <div class="math">$$
-S = \frac{5}{2} \frac{V}{\lambda^3}\Big(z + \frac{z^2}{2^{5/2}} \Big) - \frac{\mu}{T} \frac{V}{\lambda^3}\Big(z + \frac{z^2}{2^{3/2}} \Big)
+\frac{N}{V} = -\frac{z}{VT} \frac{\partial \Phi}{\partial z} = \frac{g_s}{\lambda^3} \mathrm{Li}_{3/2}(z) \approx \frac{g_s}{\lambda^3} \left( z \pm \frac{z^2}{2^{3/2}} \right)
+$$</div>
+<p>
+where we used in the last equation the approximation for <span class="math">\(z\ll 1\)</span> (the few first terms of the series defining the <span class="math">\(\mathrm{Li}_\nu\)</span> function), near the classical limit of high temperature and low densities (<span class="math">\(T \gg \mu\)</span>); iteratively inverting this last approximation we obtain the fugacity as a power series of the&nbsp;density,
+</p>
+<div class="math">$$
+z \approx \frac{\lambda^3 n}{g_s} \left( 1 \mp \frac{1}{2^{3/2}} \frac{\lambda^3n}{g_s} \right).
+$$</div>
+<p>
+Using the same approximation, we&nbsp;have
+</p>
+<div class="math">$$
+\Phi \approx - \frac{g_s V T}{\lambda^3} \Big( z \pm \frac{z^2}{2^{5/2}} \Big) .
+$$</div>
+<p>The computation of the entropy is&nbsp;similar:
+</p>
+<div class="math">$$
+S = \frac{5}{2} \frac{V}{\lambda^3}\Big(z \pm \frac{z^2}{2^{5/2}} \Big) \pm \frac{\mu}{T} \frac{V}{\lambda^3}\Big(z + \frac{z^2}{2^{3/2}} \Big)
 $$</div>
 <p>
 or&nbsp;equivalently
@@ -293,25 +311,7 @@ E = \frac{3}{2} PV
 $$</div>
 <p>
 is satisfied for the free quantum gases <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
-<p>We can immediately compute the&nbsp;density,
-</p>
-<div class="math">$$
-\frac{N}{V} = -\frac{z}{VT} \frac{\partial \Phi}{\partial z} = \frac{g_s}{\lambda^3} \mathrm{Li}_{3/2}(z) \approx \frac{g_s}{\lambda^3} \left( z \pm \frac{z^2}{2^{3/2}} \right)
-$$</div>
-<p>
-we used in the last equation the approximation for <span class="math">\(z\ll 1\)</span> (the few first terms of the series defining the <span class="math">\(\mathrm{Li}_\nu\)</span> function), near the classical limit of high temperature (<span class="math">\(T \gg \mu\)</span>); iteratively inverting this last approximation we obtain the fugacity as a power series of the density <span class="math">\(N/V=n\)</span>,
-</p>
-<div class="math">$$
-z \approx \frac{\lambda^3 n}{g_s} \left( 1 \mp \frac{1}{2^{3/2}} \frac{\lambda^3n}{g_s} \right).
-$$</div>
-<p>
-Using the same approximation, we&nbsp;have
-</p>
-<div class="math">$$
-\Phi \approx - \frac{g_s V T}{\lambda^3} \Big( z \pm \frac{z^2}{2^{5/2}} \Big) 
-$$</div>
-<p>
-from which we derive an approximated expression for the pressure <span class="math">\(P = -\Phi/V\)</span>,
+<p>We finally derive an approximated expression for the pressure <span class="math">\(P = -\Phi/V\)</span>,
 </p>
 <div class="math">$$
 P \approx nT \left(1 \mp \frac{1}{2^{5/2}} \frac{\lambda^3 n}{g_s} \right)
