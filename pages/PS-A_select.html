@@ -539,7 +539,7 @@ where <span class="math">\(n_{\bm p}\)</span> is the fermi&nbsp;distribution
 </p>
 <div class="math">$$
 \begin{equation}
-j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} p_z \int_0^\infty \frac{\D p p}{2\pi} \frac{1}{\E^{(p_z^2/2 - \mu)/T} \E^{-p^2/2T} + 1}.
+j =  2 \int_{\sqrt{2}}^\infty \frac{\D p_z}{2\pi} p_z \int_0^\infty \frac{\D p p}{2\pi} \frac{1}{\E^{(p_z^2/2 - \mu)/T} \E^{p^2/2T} + 1}.
 \end{equation}
 $$</div>
 <p>
@@ -550,13 +550,13 @@ Indeed, after changing the integration variable to <span class="math">\(x = p^2/
 The result&nbsp;is
 </p>
 <div class="math">$$
-j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \ln\big(1 + \E^{-(p_z^2/2 -\mu)/T}\big).
+j = \frac{T}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \ln\big(1 + \E^{-(p_z^2/2 -\mu)/T}\big).
 $$</div>
 <p>
 This is not elementary, but the physical relevant regime is the one in which the exponential factor is small with respect to the unity: the energies of interest are those satisfying <span class="math">\(\epsilon_z = p_z^2/2 &gt; W\)</span>, well above the fermi energy <span class="math">\(\mu = \epsilon_F\)</span> (knowing that <span class="math">\(T &lt; \epsilon_F\)</span> in most metals at laboratory temperatures). In this case, we expand <span class="math">\(\ln(1+x) \approx x\)</span> to&nbsp;get
 </p>
 <div class="math">$$
-j = \frac{T^2}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \E^{-(p_z^2/2 -\mu)/T} = \frac{T^2}{2\pi^2} \E^{-(1-\epsilon_F)/T}.
+j = \frac{T}{2\pi^2} \int_{\sqrt{2}}^\infty \D p_z p_z \E^{-(p_z^2/2 -\mu)/T} = \frac{T^2}{2\pi^2} \E^{-(1-\epsilon_F)/T}.
 $$</div>
 <p>
 In the original units (we multiply by <span class="math">\(\mathrm{j}\)</span>) we finally obtain the thermionic current at temperature <span class="math">\(T\)</span>:
