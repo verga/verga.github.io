@@ -48,11 +48,12 @@
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
 \newcommand{\D}{\mathop{}\!\mathrm{d}} 
-\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,}&nbsp;\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
 <p><a href="/pages/CH-index.html">&raquo;chaos</a><a href="/pages/map.html">&raquo;maps</a><a href="/pages/CH-cds.html">&raquo;stability</a><a href="/pages/hamilton.html">&raquo;hamiltonian systems</a><a href="/pages/plasma.html">&raquo;plasmas</a></p>
 <h1>Quasilinear&nbsp;theory</h1>
 <h2>Nonlinear saturation of&nbsp;instabilities</h2>
-<p>The Landau theory of electrostatic fluctuations around a stationary state <span class="math">\(F_0(v)\)</span> shows that a state possessing for same velocity range, a positive slope <span class="math">\(F'_0&gt;0\)</span>, is unstable with a rate proportional to this&nbsp;slope,
+<p>The Landau theory of electrostatic fluctuations around a stationary&nbsp;state <span class="math">\(F_0(v)\)</span> shows that a state possessing for same velocity range, a positive&nbsp;slope <span class="math">\(F'_0&gt;0\)</span>, is unstable with a rate proportional to this&nbsp;slope,
 </p>
 <div class="math">$$
 \gamma(k) =
@@ -60,14 +61,14 @@
   \right|_{v=\frac{\omega}{k} }\,.
 $$</div>
 <p> 
-As a consequence, the amplitude of a fluctuation with wavenumber <span class="math">\(k\)</span> will grow exponentially in time. To describe the evolution of the instability, and eventually its saturation, we must explore the nonlinear effects. The idea is to split the distribution function in two parts, a slow uniform one <span class="math">\(f_0\)</span>, describing the dynamics of the mean value around a fluctuating part, the fast one <span class="math">\(\delta f\)</span>:
+As a consequence, the amplitude of a fluctuation with&nbsp;wavenumber <span class="math">\(k\)</span> will grow exponentially in time. To describe the evolution of the instability, and eventually its saturation, we must explore the nonlinear effects. The idea is to split the distribution function in two parts, a slow uniform&nbsp;one <span class="math">\(f_0\)</span>, describing the dynamics of the mean value around a fluctuating part, the fast&nbsp;one <span class="math">\(\delta f\)</span>:
 </p>
 <div class="math">$$
 f(x,v,t) = f_0(v,t) + \delta f(x,v,t)\,, \quad
 \langle f(x,v,t) \rangle = f_0(v,t)
 $$</div>
 <p>
-and to limit the nonlinear description to the slow part: <span class="math">\(|\delta f| \ll |f_0|\)</span>. After substitution into the Vlasov equation, we&nbsp;have,
+and to limit the nonlinear description to the slow&nbsp;part: <span class="math">\(|\delta f| \ll |f_0|\)</span>. After substitution into the Vlasov equation, we&nbsp;have,
 </p>
 <div class="math">$$
 \frac{\partial f_0}{\partial t} + 
@@ -83,7 +84,7 @@ where the electric field arises from the fluctuating&nbsp;part,
 \nabla \cdot E = - \frac{e}{\epsilon_0} \int \Di{v} \delta f\,.
 $$</div>
 <p>
-Averaging the previous equation, and putting by definition <span class="math">\(\langle \delta f \rangle = 0\)</span>, we obtain the slow&nbsp;equation:
+Averaging the previous equation, and putting by&nbsp;definition <span class="math">\(\langle \delta f \rangle = 0\)</span>, we obtain the slow&nbsp;equation:
 </p>
 <div class="math">\begin{equation}
   \label{ql}
@@ -101,7 +102,7 @@ v\cdot \frac{\partial \delta f}{\partial x} -
 \frac{e}{m} E \cdot \frac{\partial}{\partial v} f_0(t) = 0\,,
 $$</div>
 <p>
-which can be solved by Fourier transform, in most the same way as we proceeded for the derivation of the Landau damping. This is possible because of the time scale separation between <span class="math">\(f_0\)</span> and <span class="math">\(\delta f\)</span>: during the characteristic time of variation of the fluctuations one can assume that the mean value is almost constant. Retaining only the resonant terms given by the imaginary part of the dispersion&nbsp;relation:
+which can be solved by Fourier transform, in most the same way as we proceeded for the derivation of the Landau damping. This is possible because of the time scale separation&nbsp;between <span class="math">\(f_0\)</span> and <span class="math">\(\delta f\)</span>: during the characteristic time of variation of the fluctuations one can assume that the mean value is almost constant. Retaining only the resonant terms given by the imaginary part of the dispersion&nbsp;relation:
 </p>
 <div class="math">\begin{equation}
   \label{qle}
@@ -110,7 +111,7 @@ which can be solved by Fourier transform, in most the same way as we proceeded f
   \int dk \langle E_i(-k,t) E_j(k,t) \rangle \delta(\omega - k \cdot v)\,,
 \end{equation}</div>
 <p>
-where <span class="math">\(D=D(t)\)</span> is a time dependent diffusion coefficient that must be determined self-consistently. Considering a Fourier mode <span class="math">\(E \sim \E^{\I k\cdot x - \I \omega t}\)</span> we observe that only the imaginary part of the frequency (slow with respect to the waves frequencies) appears in the&nbsp;integral: 
+where <span class="math">\(D=D(t)\)</span> is a time dependent diffusion coefficient that must be determined self-consistently. Considering a Fourier&nbsp;mode <span class="math">\(E \sim \E^{\I k\cdot x - \I \omega t}\)</span> we observe that only the imaginary part of the frequency (slow with respect to the waves frequencies) appears in the&nbsp;integral: 
 </p>
 <div class="math">$$
 \langle E_i(-k,t) E_j(k,t) \rangle = |E_k|^2 \E^{2\gamma_k t} \delta_{ij}
@@ -131,7 +132,7 @@ with
  \int \Di{k} \langle E_i(-k,t) E_j(k,t) \rangle
 $$</div>
 <p>
-the electrostatic energy, and where we stressed the dependence of the growth instability rate <span class="math">\(\gamma_k\)</span> on the slow distribution&nbsp;function. </p>
+the electrostatic energy, and where we stressed the dependence of the growth instability&nbsp;rate <span class="math">\(\gamma_k\)</span> on the slow distribution&nbsp;function. </p>
 <p>It is interesting to verify that the total energy of the&nbsp;plasma:
 </p>
 <div class="math">$$
@@ -140,8 +141,8 @@ $$</div>
 <p>
 is&nbsp;conserved.</p>
 <h2>Relaxation of the bump on tail&nbsp;instability</h2>
-<p>A plasma in thermal equilibrium is perturbed by a hot beam of fast particles: the typical form of its velocity distribution is a superposition of two gaussian functions, one centered at <span class="math">\(v=0\)</span>, and one centered at the beam mean velocity <span class="math">\(v=v_0\)</span>. The plasma will be unstable if the ratio of thermal velocities <span class="math">\(v_{0T}/v_T \ll 1\)</span> is small, ensuring the existence of a range of positive slope velocities in the distribution function <span class="math">\(f_0=f_0(v,0)\)</span>. It is a one-dimensional effect, only the velocity in the direction of the beam velocity is&nbsp;important.</p>
-<p>General considerations allows us deduce the form of the growth rate and the diffusion coefficient without a detailed computation. Indeed, the growth rate is proportional to the slope <span class="math">\(2\gamma_k = B(v) f'_0(v)\)</span> where <span class="math">\(B(v)\)</span> depends on the precise form of the distribution function. The diffusion coefficient is proportional to the electrostatic energy, computed at the particle-wave resonance: <span class="math">\(D=A(v) \mathcal{E}(\omega/v, t)\)</span>. With these definitions of the functions <span class="math">\(A(v)\)</span> and <span class="math">\(B(v)\)</span>, the quasilinear equations&nbsp;become,
+<p>A plasma in thermal equilibrium is perturbed by a hot beam of fast particles: the typical form of its velocity distribution is a superposition of two gaussian functions, one centered&nbsp;at <span class="math">\(v=0\)</span>, and one centered at the beam mean&nbsp;velocity <span class="math">\(v=v_0\)</span>. The plasma will be unstable if the ratio of thermal&nbsp;velocities <span class="math">\(v_{0T}/v_T \ll 1\)</span> is small, ensuring the existence of a range of positive slope velocities in the distribution&nbsp;function <span class="math">\(f_0=f_0(v,0)\)</span>. It is a one-dimensional effect, only the velocity in the direction of the beam velocity is&nbsp;important.</p>
+<p>General considerations allows us deduce the form of the growth rate and the diffusion coefficient without a detailed computation. Indeed, the growth rate is proportional to the&nbsp;slope <span class="math">\(2\gamma_k = B(v) f'_0(v)\)</span> where <span class="math">\(B(v)\)</span> depends on the precise form of the distribution function. The diffusion coefficient is proportional to the electrostatic energy, computed at the particle-wave&nbsp;resonance: <span class="math">\(D=A(v) \mathcal{E}(\omega/v, t)\)</span>. With these definitions of the&nbsp;functions <span class="math">\(A(v)\)</span> and <span class="math">\(B(v)\)</span>, the quasilinear equations&nbsp;become,
 </p>
 <div class="math">\begin{align}
   \frac{\partial }{\partial t}f_0(v,t) &amp;= 
@@ -151,15 +152,15 @@ is&nbsp;conserved.</p>
   \frac{\partial }{\partial v} f_0(v,t)\,.
 \end{align}</div>
 <p>
-The asymptotic, independent of time <span class="math">\(t\rightarrow\infty\)</span>, solution&nbsp;is
+The asymptotic, independent of&nbsp;time <span class="math">\(t\rightarrow\infty\)</span>, solution&nbsp;is
 </p>
 <div class="math">\begin{align}
 \mathcal{E}(\omega/v, t) \frac{\partial }{\partial v} f_0(v, t) &amp;=0 \\
 \frac{\partial }{\partial v} \frac{A(v)}{B(v)} \mathcal{E} &amp; = f_0(v,0) - f_0(v, t)
 \end{align}</div>
 <p>
-Therefore, there exists a range of velocities where the electrostatic energy is finite <span class="math">\(\mathcal{E}\ne 0\)</span>, and the distribution function is constant <span class="math">\(f'_0=0\)</span>, and other region, outside this one, in which the system remains at equilibrium with <span class="math">\(\mathcal{E}=0\)</span> and a distribution with a stable&nbsp;slope.</p>
-<p>In the range of velocities <span class="math">\(v_- &lt; v &lt; v_+\)</span>, where the boundaries are determined by the conditions of continuity and conservation of the number of&nbsp;particles:
+Therefore, there exists a range of velocities where the electrostatic energy is&nbsp;finite <span class="math">\(\mathcal{E}\ne 0\)</span>, and the distribution function is&nbsp;constant <span class="math">\(f'_0=0\)</span>, and other region, outside this one, in which the system remains at equilibrium&nbsp;with <span class="math">\(\mathcal{E}=0\)</span> and a distribution with a stable&nbsp;slope.</p>
+<p>In the range of&nbsp;velocities <span class="math">\(v_- &lt; v &lt; v_+\)</span>, where the boundaries are determined by the conditions of continuity and conservation of the number of&nbsp;particles:
 </p>
 <div class="math">$$
 f(v_-) = f(v_+)\,, \quad

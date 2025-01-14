@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Topological and random phases in a spin ladder | Random physics
+</title>
+    <link rel="canonical" href="/cp.html">
+
+    <link rel="stylesheet" href="/theme/css/bootstrapr.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pygments/autumn.min.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <link rel="icon" type="image/png" href="/extras/rphys.png" sizes="64x64">
+
+<meta name="description" content="Work in collaboration with Kevissen Sellapillay and Laurent Raymond arXiv. Non-equilibrium entanglement transitions of a subsystem under discrete time dynamics.">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="title"><a href="/">Random physics</a></h1>
+            <p class="text-muted">Alberto Verga, research notebook</p>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href="/">Blog</a></li>
+                      <li class="list-inline-item text-muted">|</li>
+                      <li class="list-inline-item"><a href="/pages/about.html">About</a></li>
+                      <li class="list-inline-item"><a href="/pages/lectures.html">Lectures</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2024-12-21T00:00:00+01:00">
+        <i class="fa fa-clock-o"></i>
+        sam. 21 décembre 2024
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/category/blog.html">Blog</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="/tag/research.html">#research</a>,         <a href="/tag/paper.html">#paper</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\Tr}{\mathrm{tr}}
+\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\bm}[1]{\boldsymbol{#1}}\)</span></p>
+<h1>Topological and random phases in a spin ladder<sup id="fnref:SE"><a class="footnote-ref" href="#fn:SE">1</a></sup></h1>
+<h2>Introduction</h2>
+<blockquote>
+<p>I therefore believe it&#8217;s true that with a suitable class of quantum machines you could imitate any quantum system, including the physical world (Feynman, 1982).<sup id="fnref:FE"><a class="footnote-ref" href="#fn:FE">2</a></sup></p>
+</blockquote>
+<p>Indeed, present &#8220;noisy intermediate scale quantum computers&#8221; are already suitable to simulate (imitate) nonequilibrium many-body systems,<sup id="fnref:PR"><a class="footnote-ref" href="#fn:PR">3</a></sup> and explore exotic phases of matter<sup id="fnref:OK"><a class="footnote-ref" href="#fn:OK">4</a></sup> (like the Kosterlitz-Thouless phase of superfluid films, the fractional quantum Hall effect, or the topological phases in spin liquids with non-abelian excitations.<sup id="fnref:KA"><a class="footnote-ref" href="#fn:KA">5</a></sup>) It is therefore desirable to find simple, rich models with nontrivial entanglement patterns, thus beyond the reach of a classical computer but amenable to be implemented in a quantum&nbsp;simulator. </p>
+<p>Entanglement is a resource of quantum information, as can be measured by the von Neumann entropy. However, not all forms of entanglement are useful for quantum computing. It is well know that maximally entangled random states are algorithmically equivalent to classical (thermal) states. This observation extends to small subsystems of thermal states, which are essentially unentangled. Symmetry protected topological states are, at variance, suitable resources; for instance their excitations can be used to build fault tolerant gates.<sup id="fnref:KI"><a class="footnote-ref" href="#fn:KI">6</a></sup></p>
+<p>Symmetry protected topological states can be constructed from a set of stabilizers, as the ground state of a Hamiltonian. An important example is the so called cluster state, which is a universal resource for measurement-based quantum computation.<sup id="fnref:RA"><a class="footnote-ref" href="#fn:RA">7</a></sup> In the one-dimensional case the cluster&nbsp;state <span class="math">\(\ket{C}\)</span> is the ground state of the&nbsp;Hamiltonian
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:HC}
+H_C = -J\sum_{x=1}^L Z_{x-1} X_x Z_{x+1}
+\end{equation}
+$$</div>
+<p>
+where at each&nbsp;site <span class="math">\(x\)</span> of a lattice (of&nbsp;step <span class="math">\(\Delta x=1\)</span>) is located a qubit&nbsp;(<span class="math">\(1/2\)</span>-spin),&nbsp;and <span class="math">\((X,Y,Z)\)</span> are the Pauli matrices; the exchange&nbsp;energy <span class="math">\(J\)</span> is positive&nbsp;(<span class="math">\(\hbar=1\)</span>). The cluster state is&nbsp;then,
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:C}
+\ket{C} = \prod_{x=1}^{L} \mathsf{CZ}(x,x+1) \ket{+}^L
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(\ket{+}\)</span> is the eigenvector&nbsp;of <span class="math">\(X\)</span> with eigenvalue 1,&nbsp;and <span class="math">\(\mathsf{CZ}= \mathrm{diag}(1,1,1,-1)\)</span> is the control-phase gate (the exponent refers to the&nbsp;dimension <span class="math">\(2^L\)</span> of the Hilbert space&nbsp;of <span class="math">\(L\)</span> qubits). Note that the construction of the cluster state can be easily generalized to an arbitrary&nbsp;graph <span class="math">\(G(V,E)\)</span>,&nbsp;applying <span class="math">\(\mathsf{CZ}\)</span> to its&nbsp;edges <span class="math">\(E\)</span> (the order can be arbitrary, since the gates on different edges commute); in this case the stabilizers are of the&nbsp;form
+</p>
+<div class="math">$$
+K_x = X_x \prod_y Z_y, \quad x\in V, \; (x,y) \in E
+$$</div>
+<p>
+where <span class="math">\(x\)</span> is a vertex&nbsp;and <span class="math">\((x,y)\)</span> are its incoming edges. In&nbsp;(<span class="math">\(\ref{e:C}\)</span>) the three-body&nbsp;interaction <span class="math">\(K = ZXZ\)</span> are the stabilizers&nbsp;of <span class="math">\(\ket{C}\)</span>.</p>
+<p>The cluster state is the unique ground state of&nbsp;(<span class="math">\(\ref{e:HC}\)</span>) in the case of periodic boundary conditions; for open boundary conditions, it becomes four-fold degenerated: This is a manifestation of the&nbsp;the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> symmetry generated by the parity&nbsp;operators
+</p>
+<div class="math">$$
+\begin{equation}
+P_e = \prod_{x \in e} X_x, \;
+P_o = \prod_{x \in o} X_x, \quad [P_{e,o}, H_C] = 0 
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(x\)</span> runs over the&nbsp;set <span class="math">\(e\)</span> of even sites,&nbsp;and <span class="math">\(o\)</span> of odd sites, respectively. The entanglement entropy associated to a&nbsp;bipartition <span class="math">\(\mathrm{A} = \mathrm{A}_1 \cup \mathrm{A}_2\)</span> (with <span class="math">\(|\mathrm{A}_1| = |\mathrm{A}_2| = |\mathrm{A}|/2\)</span>)&nbsp;is <span class="math">\(\mathcal{S}_{A_1} = 4\)</span>, independent on the&nbsp;length <span class="math">\(L\)</span> of the spin chain (we have two cuts with periodic boundary conditions,&nbsp;and <span class="math">\(2\)</span> bits of entropy per cut). Excitations above the ground state can be generated by the raising&nbsp;operator <span class="math">\(Z + \I ZYZ\)</span>, and are separated to the cluster state by a gap&nbsp;of <span class="math">\(2J\)</span>.</p>
+<p>The cluster Hamiltonian is one of the simplest models, like the polyacetylene or the valence-bond models, exhibiting a topological phase (at zero temperature) and protected by symmetry. However, its entanglement is short range: Using local unitaries one may transform it in a product state, as is evident from the algorithm&nbsp;(<span class="math">\(\ref{e:C}\)</span>) to build it, which involves only Clifford group gates; moreover, universality is obtained by measurement, an irreversible transformation of the state. Therefore, one may naturally ask whether some unitary generalization of the model would lead to high-energy topological&nbsp;states.</p>
+<p>In this work we address the problem of the persistence of a topological phase under nonequilibrium conditions, and of the correlative entanglement transitions. In addition to its interest as a simple model allowing to test the capabilities of noisy quantum computers and to provide a recipe to build a useful highly entangled state to quantum information processing, it also let us investigate the rich phenomenology of excited states in many-body systems created by a discrete time&nbsp;dynamics.</p>
+<p>To reach this goal we must generalize the cluster model, in particular by introducing a dynamics involving non Clifford gates, which is a necessary condition to evolve towards states with a robust entanglement structure, beyond ground states of simple Hamiltonians. For example, Floquet engineering is a standard technique to create gates from simple Hamiltonians, based on the fact the the composition of two unitaries leads to a nontrivial effective Hamiltonian. Another example is the &#8220;monitored&#8221; circuit of random unitaries, in which one introduces a probability that a qubit be measured in such a way that, when the measurement frequency increases, the system undergoes a transition from high to low entanglement.<sup id="fnref:FI"><a class="footnote-ref" href="#fn:FI">8</a></sup></p>
+<p>We adopt here the automaton model of quantum computing, which is equivalent to the universal circuit model, to define the dynamics of a combination of the &#8220;cluster&#8221; chain and a set of independent spins, which we call the &#8220;environment&#8221;, together with an exchange interaction between both subsystems. We investigate the entanglement properties of the cluster subsystem, in particular to probe the persistence of the topological phase and the eventual generation of a long-range entangled stationary&nbsp;state.</p>
+<h2>Model</h2>
+<blockquote>
+<p><img src="/images/CP-latticeAB0.svg" alt="spin ladder" style="width: 350px;"/></p>
+<p>The system consists in a ladder of qubits (one-half spins) in which A is the cluster subsystem and B is the environment subsystem, formed by free spins. The cluster spins interact via a three-body exchange&nbsp;interaction <span class="math">\(J\)</span>; the two subsystems are coupled via a swap spins interaction of&nbsp;strength <span class="math">\(g\)</span>.</p>
+</blockquote>
+<p>Instead of the simple cluster chain, we consider a ladder&nbsp;of <span class="math">\(L\)</span> cells A and B; each&nbsp;cell <span class="math">\(x=1,\ldots,L\)</span> contains two qubits (figure above). The automaton dynamics is generated by the one-step&nbsp;unitary
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:U}
+\mathsf{U}(J,g) = \prod_{x=1}^L \mathsf{C}_x(J) \prod_{x=1}^L \mathsf{SW}_x(g), \quad \mathsf{C}_x(J) = \E^{\I J Z^\mathrm{A}_{x-1} X^\mathrm{A}_x Z^\mathrm{A}_{x+1}}, \; \mathsf{SW}_x(g) = \E^{(\I g/2)(X^\mathrm{A}_x X^\mathrm{B}_x + Y^\mathrm{A}_x Y^\mathrm{B}_x)}
+\end{equation}
+$$</div>
+<p>
+where the Pauli matrices act over&nbsp;the <span class="math">\(x\)</span> sites of sublattices A or B; we note that these two&nbsp;gates <span class="math">\(\mathsf{C}\)</span> and <span class="math">\(\mathsf{SW}\)</span> do not commute when applied to shared cells <span class="caps">AB</span>. For an initial&nbsp;state <span class="math">\(\ket{\psi(0)}\)</span>, <span class="math">\(t\)</span> iterations of the automaton give the&nbsp;state
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:psit}
+\ket{\psi(t)} = \mathsf{U}^t(J,g) \ket{\psi(0)}.
+\end{equation}
+$$</div>
+<p>
+We&nbsp;take <span class="math">\(\ket{\psi(0)} = \ket{C} \ket{+}^L\)</span> as the initial state, the tensorial product of the cluster state&nbsp;(<span class="math">\(\ref{e:C}\)</span>) for the cluster subsystem, and an unentangled environment state for the B sublattice. A sketch of the automation is represented in the figure&nbsp;below.</p>
+<blockquote>
+<p><img src="/images/CP-automat0.svg" alt="automaton AB" style="width: 350px;"/></p>
+<p>The dynamics of the lattice system, presented in the previous figure, is defined by a two layers automaton; the first unitary layer comprises a set of swap&nbsp;gates <span class="math">\(\mathsf{SW}\)</span> acting on A and B qubits; the second layer acts only on the A sublattice, by a set of commuting three-body&nbsp;gates <span class="math">\(\mathsf{C}\)</span> associated to the cluster Hamiltonian. The automaton is thus defined by the&nbsp;unitary <span class="math">\(\mathsf{U}(J,g)\)</span> of&nbsp;Eq.&nbsp;(<span class="math">\(\ref{e:U}\)</span>).</p>
+</blockquote>
+<p>In this simple nonequilibrium model the distinction between &#8220;system&#8221; (the cluster subsystem) and &#8220;environment&#8221; is allowed by the different interactions characterizing both sublattices: The cluster three-body interaction of&nbsp;strength <span class="math">\(J\)</span>, and the independent spins of the environment sublattice. The evolution of the &#8220;environment&#8221; therefore only depends on its interaction with the &#8220;system&#8221;, whose strength&nbsp;is <span class="math">\(g\)</span>. However, contrary to a standard environment, the number of free spins is here identical to the number of cluster spins. Another obvious difference with, for instance a thermal bath, is that the state of the free sublattice is not fixed, determined by a few constant macroscopic parameters like the temperature, but evolves jointly with the cluster subsystem towards an eventual statistically stationary nonequilibrium state (the discrete time breaks the energy&nbsp;conservation).</p>
+<p>The role of the free spins is, in the present model, to irreversibly modify the initial cluster state through entanglement scrambling, in much the same way as can be done by projecting some qubits to their up state in monitored systems. The free spins can be thought as auxiliary qubits that, through the swap gate, introduce errors in the cluster code. This kind of setup was already used by the Google team (Mi et al. 2024)<sup id="fnref:MI"><a class="footnote-ref" href="#fn:MI">9</a></sup> to mimic the monitored dynamics using an unitary circuit and deferred&nbsp;measurements.</p>
+<p>The main question is whether the interaction with the free spins can lead the cluster subsystem towards a topological phase with long-range entanglement. It is well known&nbsp;that <span class="math">\(X\)</span> measurements of a subset of the spins in the cluster state results in a state unitary equivalent to the Greenberger-Horne-Zeilinger, which is an example of long-rang entangled&nbsp;state.</p>
+<h3>Quantum phase transition in the mean-field and Markov&nbsp;approximations</h3>
+<p>We shall study if the topological phase possibly persists under the dynamics&nbsp;(<span class="math">\(\ref{e:psit}\)</span>) in two analytically tractable approximations:&nbsp;When <span class="math">\((J,g) \ll 1\)</span> are small, allowing the definition of an effective local mean-field Hamiltonian; and when the system state is random enough to consider the dynamics to be Markovian, such that at each time step the state of the system can be separated between the two&nbsp;subsystems.</p>
+<p>The mean-field&nbsp;Hamiltonian <span class="math">\(\bar{H}\)</span>,
+</p>
+<div class="math">$$
+\begin{equation}
+  \bar{H}(k) = \begin{pmatrix}
+   -2J s_B^2 \cos 2k + g s_B &amp; -2J s_B^2 \sin 2k &amp; -g &amp; - \I g \\
+   -2Js_B^2 \sin 2k &amp; 2Js_B^2 \cos 2k - g s_B &amp; -\I g &amp; g \\
+   -g &amp; \I g &amp; 0 &amp; 0 \\
+   \I g &amp; g &amp; 0 &amp; 0 
+  \end{pmatrix},
+\end{equation}
+$$</div>
+<p>
+is obtained using the standard Wigner-Jordan mapping of the Pauli matrices into fermions, which leads to a local quartic expression. This expression can be simplified by the introduction of the environment average&nbsp;magnetization <span class="math">\(s_B = \braket{X_x^\mathrm{B}}\)</span>, and by Fourier transformation&nbsp;into <span class="math">\(k\)</span>-space to account for the translation invariance. The expected&nbsp;value <span class="math">\(\braket{X_x^\mathrm{B}}\)</span> must be computed self-consistently in the ground-state of the mean-field Hamiltonian. After a Bogoliubov transformation one obtains the dispersion relation&nbsp;(quasi-energies) 
+</p>
+<div class="math">$$
+\begin{equation}
+  \varepsilon_k = 2 \sqrt{(J s_B - g)^2 s_B^2+ g^2 + 4J s_B^3 g \sin^2 k},
+\end{equation}
+$$</div>
+<p>
+and the selfconsistent equation for the&nbsp;mean-field
+</p>
+<div class="math">$$
+\begin{equation}
+  s_B = \int_{-\pi}^\pi \frac{\D k}{2\pi} \frac{2g^2}{\varepsilon_k^2 - 2g^2} - 1,
+\end{equation}
+$$</div>
+<p>
+which leads&nbsp;to
+</p>
+<div class="math">$$
+\begin{equation}
+  \pm s_B = 1 - 
+    \frac{\bar{g}^2}{\sqrt{4 s_B^8 - 8 \bar{g}^2 s_B^6 + 4 \bar{g}^2 (1 + \bar{g}^2) s_B^4 + \bar{g}^4 (4 s_B^2 + 1)}}.
+\end{equation}
+$$</div>
+<p>
+One observes that, in the mean-field approximation, the&nbsp;spectrum <span class="math">\(\varepsilon_k = \varepsilon_k(\bar{g})\)</span> and the&nbsp;magnetization <span class="math">\(s_B = s_B(\bar{g})\)</span> only depend on the reduced&nbsp;parameter <span class="math">\(\bar{g} = g/J\)</span>; this is not the case of the automaton rule for&nbsp;which <span class="math">\(J\)</span> and <span class="math">\(g\)</span> are independent&nbsp;parameters.</p>
+<blockquote>
+<p><img src="/images/cp-sb_gbar.svg" alt="mean-field s" style="width: 250px;"/> <img src="/images/cp-ekg.png" alt="mean-field s" style="width: 300px;"/></p>
+<p>Mean-field magnetization of the environement in the ground state&nbsp;of <span class="math">\(\bar{H}\)</span> and dispersion&nbsp;relation <span class="math">\(\varepsilon_k\)</span> as function of the cluster-free spins&nbsp;coupling <span class="math">\(\bar{g}=g/J\)</span>.</p>
+</blockquote>
+<p>We find a first order phase transition, as revealed by the discontinuity of the environment magnetization&nbsp;at <span class="math">\(\bar{g} = 0.425 = \bar{g}_c\)</span>. This suggests that the cluster phase might persist&nbsp;below <span class="math">\(\bar{g}_c\)</span>, since nowhere the gap in the&nbsp;quasi-energy <span class="math">\(\varepsilon_k\)</span> closes.&nbsp;Above <span class="math">\(\bar{g}_c\)</span> the magnetization vanishes, and a disordered phase might thus arise. The quasi-energy bands become flat above the critical&nbsp;coupling <span class="math">\(\bar{g}_c\)</span>, and the gap grows linearly&nbsp;in <span class="math">\(\bar{g}\)</span>.</p>
+<p>These observations raise the question about the entanglement across the phase transition; in particular we may ask if there is a change in the topological properties of the stationary state reached by the automaton, and if this change eventually corresponds to an entanglement transition between a high and a low entanglement state of the cluster subsystem. To address this question we first investigate a Markovian approximation of the&nbsp;automaton.</p>
+<p>The Markov dynamics is obtained from the partial trace over the free spins of the discrete time&nbsp;dynamics:
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:markov} 
+  \rho(t + 1) = \Tr_B \big[ U\rho_{AB}(t) U^{\dagger}\big] = \sum_n M_n \rho(t) M_n^\dagger, \quad
+    M_n = \braket{n_B|U|t_B},
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(\rho_{AB}\)</span> is the density matrix corresponding to the pure state of the cluster-environment global system&nbsp;and <span class="math">\(\ket{n_B}\)</span> is a basis of the environment Hilbert space&nbsp;and <span class="math">\(\ket{t_B}\)</span> its state at time&nbsp;step <span class="math">\(t\)</span>; moreover, we&nbsp;denoted <span class="math">\(\rho = \rho_A\)</span> the cluster density matrix (in this context we do not need to specify the label A of the cluster subsystem), and&nbsp;defined <span class="math">\(M_n\)</span>, the Kraus operators,&nbsp;by
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:Mn}
+  M_n = u_0 \cos^{L-|n_+|} \frac{g}{2} \sin^{|n_+|} \frac{g}{2} \Big(\prod_{x\in n_+} \E^{-\I gX_x} Y_x \Big)
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(u_0 = \exp{(-\I J H_{0})}\)</span> is an evolution operator associated with the (non-equilibrium)&nbsp;Hamiltonian
+</p>
+<div class="math">$$
+\begin{equation}
+  H_0 = -\sum_{x=1}^L \Big( Z_{x-1} X_x Z_{x+1} + \frac{\bar{g}}{2} X_x \Big),
+\end{equation}
+$$</div>
+<p>
+identical to a cluster Hamiltonian in a symmetry preserving&nbsp;field <span class="math">\(\bar{g}/2\)</span>. The expression&nbsp;of <span class="math">\(M_n\)</span> contains the&nbsp;number <span class="math">\(|n_+|\)</span> of 1 in the binary expansion of the&nbsp;integer <span class="math">\(n = 0,\ldots,2^L - 1\)</span> (<span class="math">\(n_+\)</span> is the set of 1 positions in this expansion): This corresponds to the number of simultaneous&nbsp;&#8220;errors&#8221; <span class="math">\(Y_x\)</span>. To obtain&nbsp;(<span class="math">\(\ref{e:Mn}\)</span>) we assumed a limit of&nbsp;small <span class="math">\(J\)</span> (<span class="math">\(\bar{g}\)</span> can be of order one, and in our&nbsp;units <span class="math">\(J=J\Delta t\)</span>), and, in this limit, we assumed that at each time step the density matrix separates between the two subsystems, leading to the usual Markov form in which the actual state of the system only depends on its preceding&nbsp;state.</p>
+<p>Usually, in the Lindblad approximation, one consider stochastic processes in which the probability of simultaneous errors are negligible. In our model, at variance, the relevant term is the one in which we&nbsp;have <span class="math">\(L\)</span> simultaneous <span class="math">\(Y\)</span> flips of the environment spins: This ensures perfect synchronization of the homogeneous environment state. In this case the Markov equation simplifies&nbsp;to
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:ML}
+  \rho(t+1) = u_0 \sin^{2L}\frac{g}{2} \Big(\prod_x \E^{-\I g Y_x} Y_x \Big) \rho(t) \Big(\prod_x Y_x \E^{\I g Y_x} \Big) u_0^\dagger.
+\end{equation}
+$$</div>
+<p>
+An important outcome of this equation is that the stochastic process preserves the parity symmetry of the original cluster system, a so called &#8220;strong&#8221;&nbsp;symmetry
+</p>
+<div class="math">$$
+\begin{equation}
+  [H_0,P] = 0, \; PM_LP = M_L, \quad P = \prod_x X_x,
+\end{equation}
+$$</div>
+<p>
+where the product is over even or odd sites of sublattice A. As a consequence we find that the cluster topological phase can be protected by the parity&nbsp;symmetry <span class="math">\(P\)</span>, at least in this approximation, for finite values&nbsp;of <span class="math">\(\bar{g}\)</span>. Moreover, the form of the deterministic&nbsp;Hamiltonian <span class="math">\(H_0\)</span> suggests the existence of a critical&nbsp;value <span class="math">\(\bar{g}_R = 2\)</span>, which separates a cluster dominated regime to a random one dominated by the free spin generated effective&nbsp;field.</p>
+<h2>Entanglement&nbsp;transition</h2>
+<p>To assess the entanglement properties of the cluster system we measure the negativity entanglement spectrum, using exact numerical computations of the whole quantum state. The negativity spectrum is obtained from the&nbsp;eigenvalues <span class="math">\(\lambda_n\)</span> of the reduced density&nbsp;matrix <span class="math">\(\rho_A^{T_1}\)</span>,&nbsp;where <span class="math">\(T_1\)</span> is the partial transposition over a bipartition of A into parties 1 and 2 of equal size. The (logarithmic) negativity itself is given&nbsp;by
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:N}
+  \mathcal{N} = \log\Big(\sum_n |\lambda_n| \Big), \quad n=1, \ldots, \mathrm{dim}\rho_A 
+\end{equation}
+$$</div>
+<p>
+where <span class="math">\(\mathrm{dim} \rho_A=L\)</span> in our case,&nbsp;and <span class="math">\(\log\)</span> is for the base 2 logarithm. The minimum eigenvalue we&nbsp;denote <span class="math">\(\lambda\)</span> is an entanglement witness, it vanishes for unentangled states and is negative for entangled states. The automaton evolves from an initial (entangled) cluster state&nbsp;(<span class="math">\(\ref{e:C}\)</span>) for the A sublattice and a product state for the B&nbsp;one, 
+</p>
+<div class="math">$$
+\begin{equation}
+\label{e:ini}
+  \ket{\psi(0)} = \ket{C} \ket{+}^L, \quad  X\ket{+} = \ket{+},
+\end{equation}
+$$</div>
+<p>
+in which the negativity&nbsp;is <span class="math">\(\mathcal{N}=2\)</span>.</p>
+<blockquote>
+<p><img src="/images/cp-nlg_20_Js.svg" alt="lambda min g" style="width: 250px;"/> </p>
+<p>Entanglement transition. Minimal negativity&nbsp;eigenvalue <span class="math">\(\lambda\)</span> as a function of the environment strength coupling&nbsp;parameter <span class="math">\(g\)</span> for different values of the cluster exchange&nbsp;energy <span class="math">\(J=0.2,0.3,0.4\)</span>; the inset shows the same data but as a function of the reduced&nbsp;parameter <span class="math">\(\bar{g}=g/J\)</span>. The system size&nbsp;is <span class="math">\(2L=20\)</span>. The value of the critical&nbsp;parameter <span class="math">\(\bar{g}_c\)</span> (mean-field) is shown by the dotted&nbsp;line.</p>
+</blockquote>
+<p>The behavior&nbsp;of <span class="math">\(\lambda\)</span> as a function&nbsp;of <span class="math">\(\bar{g}\)</span> (the figure above demonstrate that it is the good parameter), shows an entanglement transition around the critical value predicted by the mean-field approximation: For&nbsp;small <span class="math">\(\bar{g} \ll \bar{g}_c\)</span>, the minimum negativity eigenvalue remains near its cluster value&nbsp;(<span class="math">\(\lambda = 0.25\)</span>), while for larger values it saturates to its&nbsp;maximum <span class="math">\(\lambda = 0\)</span> signaling an unentangled (random) state of the cluster subsystem. The low entanglement phase is a result of the entanglement scrambling, the spreading of quantum information over the whole Hilbert space, leading to a vanishing entanglement within subsystems. This entanglement transition, should reflect the persistence of the cluster topological phase when the influence of the environment is weak, and of a thermal phase in the opposite limit of strong environment influence. For large values&nbsp;of <span class="math">\(J\)</span> and <span class="math">\(g\)</span>, as usually in Floquet quantum systems, one expects an evolution towards an infinite temperature thermal&nbsp;state.</p>
+<p>Before analyzing the topology of the&nbsp;low <span class="math">\(\bar{g}\)</span> phase, we characterize the entanglement properties of the cluster and environment subsystems using the entanglement&nbsp;entropy.</p>
+<blockquote>
+<p><img src="/images/cp-1ent.svg" alt="entropy 0.5" style="width: 250px;"/> 
+<img src="/images/cp-18ent.svg" alt="entropy 0.5" style="width: 250px;"/> 
+<img src="/images/cp-12ent.svg" alt="entropy 2.0" style="width: 250px;"/> </p>
+<p>Entanglement entropy&nbsp;for <span class="math">\(\bar{g} = 0.2, 0.5, 2.0\)</span> (from left to right), corresponding to states in the cluster phase, in the transition parameter region, and in the random (thermal) phase, respectively.&nbsp;Size <span class="math">\(2L=16\)</span>.</p>
+</blockquote>
+<p>In the above figure we illustrate the entanglement behavior of the system using the von Neumann entropy. The half system entropy, from a bipartition of the whole ladder comprising A and B spins, is&nbsp;denoted <span class="math">\(\mathcal{S}\)</span>; the B chain of independent spins entropy&nbsp;is <span class="math">\(\mathcal{S}_B\)</span>; and the logarithmic negativity, measuring the entanglement of the (open) cluster lattice A, is&nbsp;the <span class="math">\(\mathcal{N}\)</span> given in&nbsp;(<span class="math">\(\ref{e:N}\)</span>).</p>
+<p>The first panel shows the typical behavior of the system for small values&nbsp;of <span class="math">\(J\)</span> and <span class="math">\(g\)</span> with <span class="math">\(\bar{g} &lt; \bar{g}_c\)</span>, in the cluster phase region; the total entropy is dominated by the entanglement in the cluster subsystem; simultaneously the environment entropy is much smaller. In the second panel we compute the entanglement entropies in the mean-field critical&nbsp;region <span class="math">\(\bar{g} \approx \bar{g}_c\)</span>. We find that the system&#8217;s entropy growth linearly, the environment entropy remains low, while the entanglement of the cluster phase stays at its initial value, corresponding to the cluster topological phase. The second panel,&nbsp;with <span class="math">\(\bar{g} &gt; \bar{g}_c\)</span>, shows, in striking contrast with the topological phase, an environment entropy saturating at the same level than the total one, while the cluster is almost only weakly entangled: the system state is therefore random&nbsp;(<span class="math">\(\bar{g} \gtrsim \bar{g}_R\)</span>).</p>
+<p>Random quantum states of a subsystem (or partition of a larger system) may have different entanglement structure depending, for instance, on the size of the environment (or the other partitions). In 2007 Žnidarič et al.<sup id="fnref:ZN"><a class="footnote-ref" href="#fn:ZN">10</a></sup> noted that the negativity spectrum of a mixed state whose density&nbsp;matrix <span class="math">\(R\)</span> is simulated as a superposition&nbsp;of <span class="math">\(m\)</span> random pure&nbsp;states <span class="math">\(\ket{r_n}\)</span>,
+</p>
+<div class="math">$$
+\begin{equation}
+  \label{e:m}
+  R = \frac{1}{m} \sum_{n=1}^m \ket{r_n} \bra{r_n},
+\end{equation}
+$$</div>
+<p>
+undergoes a transition between a Marčenko-Pastur like distribution, picked around 0&nbsp;when <span class="math">\(m=1\)</span>, to a Wigner semicircular distribution for&nbsp;large <span class="math">\(m\)</span>. In our context we&nbsp;call <span class="math">\(m\)</span> the environment effective number of degrees of freedom, which are necessary to reproduce the value of cluster entanglement&nbsp;witness:
+</p>
+<div class="math">$$
+\lambda(\rho_A) = \lambda(R).
+$$</div>
+<blockquote>
+<p><img src="/images/cp-nlg_20_mg03.svg" alt="m degrees of freedom" style="width: 250px;"/> </p>
+<p>The effective number of the environment degrees of freedom as seen by the cluster&nbsp;subsystem <span class="math">\(m\)</span> as a function&nbsp;of <span class="math">\(\bar{g}\)</span>. The system size&nbsp;is <span class="math">\(2L = 20\)</span>. The value of the critical&nbsp;point <span class="math">\(\bar{g}_R\)</span> (Markov approximation) is also&nbsp;shown.</p>
+</blockquote>
+<p>This quantitiy is reproduced in the figure as a function&nbsp;of <span class="math">\(\bar{g}\)</span>, computed&nbsp;for <span class="math">\(2L=20\)</span>. It shows a sharp growth of the number of degrees of&nbsp;freedom <span class="math">\(m\)</span> around&nbsp;the <span class="math">\(\bar{g}_R\)</span> predicted by the Markov approximation (note the logarithmic scale). A comparison with the&nbsp;graph <span class="math">\(\lambda(\bar{g})\)</span>, shows that&nbsp;above <span class="math">\(\bar{g}_R\)</span> the cluster entanglement vanishes, coinciding with the multiplication of the environment degrees of freedom; consequently one expect that the negativity entanglement spectrum approaches a semicircular distribution in this parameter region. In this respect, we measure the entanglement spectrum, the set of eigenvalues&nbsp;of <span class="math">\(\rho_A\)</span>, and the negativity entanglement spectrum, as displayed in the figure&nbsp;below.</p>
+<blockquote>
+<p><img src="/images/cp-1hist.svg" alt="histogram 18" style="width: 250px;"/> 
+<img src="/images/cp-3hist.svg" alt="histogram 3" style="width: 250px;"/> 
+<img src="/images/cp-12hist.svg" alt="histogram 12" style="width: 250px;"/> 
+<img src="/images/cp-4hist.svg" alt="histogram 4" style="width: 250px;"/> </p>
+<p>Entanglement spectrum (in gray) and negativity entanglement spectrum (pale red) distribution for different values of the coupling between the two&nbsp;subsystems <span class="math">\(\bar{g}=0.25,1,2,10\)</span> (left to right, top to bottom panels). The count axis is in a logarithmic scale, to enhance the visibility of the distribution tails. The spectrum is averaged over 64 time steps selected in the stationary long time regime (defined by the saturation of the entanglement&nbsp;entropy).</p>
+</blockquote>
+<p>In the first panel&nbsp;(<span class="math">\(\bar{g}&lt;\bar{g}_c\)</span>), the entanglement spectrum is essentially the cluster state spectrum with its four degenerated eigenvalues and the remaining zero eigenvalues; in the second panel&nbsp;(<span class="math">\(\bar{g} = 1 \gtrsim \bar{g}_c\)</span>), the gaps present in the cluster spectrum persist, but become wider, enriching the set of nonvanishing eigenvalues.&nbsp;For <span class="math">\(\bar{g} \approx \bar{g}_R\)</span>, in the third panel, both spectra are continuous, the gaps of the cluster state disappeared, and the distribution of the negativity spectrum is reminiscent of the Marčenko-Pastur distribution found in Žnidarič et al.,<sup id="fnref2:ZN"><a class="footnote-ref" href="#fn:ZN">10</a></sup> and further studied by Shapourian et al. (2021).<sup id="fnref:SH"><a class="footnote-ref" href="#fn:SH">11</a></sup> The last panel shows the thermal state, with a negativity distribution approaching the Wigner semicircular law,&nbsp;for <span class="math">\(\bar{g} \gg \bar{g}_c\)</span>; deviations with respect to a thermal state appear in the tails of the spectrum&nbsp;distribution.</p>
+<blockquote>
+<p><img src="/images/cp-3spin.svg" alt="histogram 3" style="width: 250px;"/> 
+<img src="/images/cp-4spin.svg" alt="histogram 4" style="width: 250px;"/> </p>
+<p>Spatio-temporal plot of the expected value of&nbsp;the <span class="math">\(x\)</span> spin component for both sublattices (even site numbers are for the cluster and odd numbers for the independent spins).&nbsp;(left) <span class="math">\(\bar{g} = 1\)</span> (topological phase);&nbsp;(left) <span class="math">\(\bar{g} = 10\)</span> (random&nbsp;phase).  </p>
+</blockquote>
+<p>Information about the spatial correlations can be obtained from the expected value of the spin operator; by symmetry of the initial state&nbsp;(<span class="math">\(\ref{e:ini}\)</span>),&nbsp;the <span class="math">\(yz\)</span> components remains zero and it is thus enough to follow&nbsp;the <span class="math">\(x\)</span>-component, as represented in the above figure. We observe that all spins in each sublattices, change simultaneously their magnitude; this is a consequence of the homogeneity of the initial state and the translation invariance of the model, and was used to obtain the relevant Markov equation&nbsp;(<span class="math">\(\ref{e:ML}\)</span>).</p>
+<p>For small values&nbsp;of <span class="math">\(\bar{g}\)</span>, oscillations of the spin are observed, in accordance with the oscillations of the entanglement entropies. For larger values&nbsp;of <span class="math">\(\bar{g}\)</span> relaxation towards a non-magnetic state of the whole system is observed. In the entanglement phase transition region of the first panel, the spins of the cluster and of free lattices are mostly aligned, but tend to alternate at long times; this misalignement between the two sublattices is stronger in the fully random phase of the second panel, for large values&nbsp;of <span class="math">\(\bar{g}\)</span>. Note that&nbsp;for <span class="math">\(\bar{g}=10\)</span>, even if the couling is strong, the relaxation is not purely exponential, as happens to be for&nbsp;both <span class="math">\(J\)</span> and <span class="math">\(g\)</span> large; this is also well explained by the Markov equation, which contains the unitary cluster-field evolution&nbsp;operator.</p>
+<h2>Topological&nbsp;phase</h2>
+<p>One defining property of a topological phase is the link between bulk and edge properties. Correlations between edge states are present in a topological phase, even if bulk correlations are short range and vanish exponentially. One possibility to unveil the hiden correlations present in a topological phase, is to measure nonlocal correlation functions, like the expected value of string operators (formed with Pauli matrices) in the quantum state: finite string order parameter means tha the state is topologically nontrivial. In the cluster regime, one expects that the original topology protected by parity extends beyond the neighboring&nbsp;of <span class="math">\(g=0\)</span>, in spite of the decoherence introduced by the interaction with the independent spins. The appropriated string order parameter in this case is given&nbsp;by
+</p>
+<div class="math">$$
+\begin{equation}
+  W(t) = (-1)^L \braket{\psi(t)|Z_1^A Y_2^A \Big(  \prod_{x=3}^{L-2} X_x^A \Big) Y_{L-1}^A Z_L^A|\psi(t)},
+\end{equation}
+$$</div>
+<p>
+where we use open boundary condition (to allow for the edge states)&nbsp;and <span class="math">\(\ket{\psi(t)}\)</span> is the automaton state at&nbsp;step <span class="math">\(t\)</span>, and all operators act on the A chain. The cluster state of a periodic chain is the unique ground state of the Hamiltonian&nbsp;(<span class="math">\(\ref{e:HC}\)</span>); with open edges, the two hanging spins can take any value (labelled by twice the two eigenvalues&nbsp;of <span class="math">\(Z\)</span>), meaning that the ground state becomes 4-fold degenerated; it is however protected by the&nbsp;parity <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> symmetry and the energy gap. The string order parameter measures the long range correlation between the two edge qubits, taking into account the partiy linking both (the&nbsp;operator <span class="math">\(\prod_x X_x\)</span> in the definition&nbsp;above).</p>
+<p>The inital value of the string operator&nbsp;is <span class="math">\(W(0)=1\)</span> for the state&nbsp;(<span class="math">\(\ref{e:ini}\)</span>). It is represented in the figure&nbsp;below.</p>
+<blockquote>
+<p><img src="/images/cp-Wt.svg" alt="string W(t)" style="width: 250px;"/> 
+<img src="/images/cp-W.svg" alt="string W(N)" style="width: 250px;"/> </p>
+<p>String order parameter for the cluster&nbsp;subsystem.</p>
+</blockquote>
+<p>We observe that the string order parameter as a function of time step (first panel) quickly reach a stationnary value, in a time much shorter than, for instance, the entanglement entropies, for&nbsp;small <span class="math">\(\bar{g}\)</span>.&nbsp;Clearly <span class="math">\(W\)</span> as a function&nbsp;of <span class="math">\(\bar{g}\)</span> displays a transition between a topological phase and a non-topological; it occurs in the&nbsp;range <span class="math">\(\bar{g}=(0.5,1)\)</span>. The set of&nbsp;curves <span class="math">\(W(\bar{g})\)</span> for different system sizes, shows a sharpening of the transition region with increasing size, however we cannot numerically simulate systems much larger. Actually, comparing it with the negativity histograms we may confirm the expectation that, when the spectrum gaps disappear&nbsp;for <span class="math">\(\bar{g} \gtrsim 1\)</span>, the system becomes&nbsp;trivial.</p>
+<h2>Conclusion</h2>
+<p>We investigated how the entanglement properties of a cluster spin chain depend on its exchange coupling with a set of independent spins. By increasing the coupling strength the effective number of the environment degrees of freedom, defined as the number of random states necessary to reproduce the statistical distribution of the cluster&#8217;s negativity eigenvalues, we observed a transition between the cluster topological phase, associated to the initial cluster state, to a disordered phase, associated to a random state. The random state itself undergoes an entanglement transition through which the bipartite (system and environment) entanglement entropy increases but the cluster state entanglement disappears, as can be witnessed by the minimum negativity&nbsp;eigenvalue.</p>
+<p>Transitions of different random states were already observed in a quantum simulator by Liu et al. (2023)<sup id="fnref:LI"><a class="footnote-ref" href="#fn:LI">12</a></sup>; they varied the respective sizes of a tripartion and observed structural changes in the distribution of the negativity eigenvalues. The subsystem high entanglement phase is consistent with a convolution of Marčenco-Patur distributions (as is our case), while the low entanglement phase shows the usual Wigner&nbsp;distribution.</p>
+<p>It would be interesting to implement our automaton in a present day quantum computer<sup id="fnref2:PR"><a class="footnote-ref" href="#fn:PR">3</a></sup>. In particular, the cluster chain coupled with a set of independent spins is a well suited model to be implemented in a gate-based platform using superconducting transmon qubits that natively has a ladder architecture, such as the quantum computer under development within the <a href="https://www.q-solid.de/">QSolid project</a>. In addition to provide a relevant test case for such a ladder architecture, it would give us the opportunity to investigate relevant many-body nonequilibrium states, a promising open domain at the interface of quantum matter and&nbsp;information.</p>
+<h3>Notes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:SE">
+<p>Sellapillay, Kevissen, Laurent Raymond, Alberto D. Verga (2025) <em>Entanglement transition in a cluster spin chain coupled with free spins</em>. <a href="https://doi.org/10.48550/arXiv.2501.05937">arXiv:2501.05937</a> [quant-ph]&#160;<a class="footnote-backref" href="#fnref:SE" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:FE">
+<p>Feynman, Richard P (1982) <em>Simulating Physics with Computers</em>. International Journal of Theoretical Physics 21, 467-88. <a href="https://doi.org/10.1007/BF02650179">https://doi.org/10.1007/<span class="caps">BF02650179</span></a>&#160;<a class="footnote-backref" href="#fnref:FE" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:PR">
+<p>Preskill, John. 2023. ‘Quantum Computing 40 Years Later’. In Feynman Lectures on Computation, 2nd ed. <span class="caps">CRC</span> Press.&#160;<a class="footnote-backref" href="#fnref:PR" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:PR" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:OK">
+<p>Oka, Takashi, and Sota Kitamura (2019) <em>Floquet Engineering of Quantum Materials</em>. Annual Review of Condensed Matter Physics 10, 387-408. <a href="https://doi.org/10.1146/annurev-conmatphys-031218-013423">https://doi.org/10.1146/annurev-conmatphys-031218-013423.</a>&#160;<a class="footnote-backref" href="#fnref:OK" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:KA">
+<p>Kalinowski, Marcin, Nishad Maskara, and Mikhail D. Lukin (2023) <em>Non-Abelian Floquet Spin Liquids in a Digital Rydberg Simulator</em>. Physical Review X 13, 031008. <a href="https://doi.org/10.1103/PhysRevX.13.031008">https://doi.org/10.1103/PhysRevX.13.031008.</a>&#160;<a class="footnote-backref" href="#fnref:KA" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:KI">
+<p>Kitaev, A. Yu. (2003) <em>Fault-Tolerant Quantum Computation by Anyons</em>. Annals of Physics 303, 2-30. <a href="https://doi.org/10.1016/S0003-4916(02)00018-0">https://doi.org/10.1016/S0003-4916(02)00018-0.</a>&#160;<a class="footnote-backref" href="#fnref:KI" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:RA">
+<p>Raussendorf, Robert, Daniel E. Browne, and Hans J. Briegel (2003) <em>Measurement-Based Quantum Computation on Cluster States</em>. Phys. Rev. A 68, 022312. <a href="https://doi.org/10.1103/PhysRevA.68.022312">https://doi.org/10.1103/PhysRevA.68.022312.</a>&#160;<a class="footnote-backref" href="#fnref:RA" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:FI">
+<p>Fisher, Matthew P.A., Vedika Khemani, Adam Nahum, and Sagar Vijay (2023) <em>Random Quantum Circuits</em>. Annual Review of Condensed Matter Physics 14, 335–79. <a href="https://doi.org/10.1146/annurev-conmatphys-031720-030658">https://doi.org/10.1146/annurev-conmatphys-031720-030658.</a>&#160;<a class="footnote-backref" href="#fnref:FI" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:MI">
+<p>X. Mi et al. (Google team) (2024) <em>Stable quantum-correlated many-body states through engineered dissipation</em>, Science 383, 1332. <a href="https://doi.org/10.1126/science.adh9932">https://doi.org/10.1126/science.adh9932</a>&#160;<a class="footnote-backref" href="#fnref:MI" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ZN">
+<p>Žnidarič, Marko, Tomaž Prosen, Giuliano Benenti, and Giulio Casati (2007) <em>Detecting Entanglement of Random States with an Entanglement Witness</em>. Journal of Physics A: Mathematical and Theoretical 40, 13787. <a href="https://doi.org/10.1088/1751-8113/40/45/017">https://doi.org/10.1088/1751-8113/40/45/017.</a>&#160;<a class="footnote-backref" href="#fnref:ZN" title="Jump back to footnote 10 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ZN" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SH">
+<p>Shapourian, Hassan, Shang Liu, Jonah Kudler-Flam, and Ashvin Vishwanath (2021) <em>Entanglement Negativity Spectrum of Random Mixed States: A Diagrammatic Approach</em>. <span class="caps">PRX</span> Quantum 2, 030347. <a href="https://doi.org/10.1103/PRXQuantum.2.030347">https://doi.org/10.1103/PRXQuantum.2.030347.</a>&#160;<a class="footnote-backref" href="#fnref:SH" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:LI">
+<p>Liu, Tong, Shang Liu, Hekang Li, Hao Li, Kaixuan Huang, Zhongcheng Xiang, Xiaohui Song, Kai Xu, Dongning Zheng, and Heng Fan (2023) <em>Observation of Entanglement Transition of Pseudo-Random Mixed States</em>. Nature Communications 14 (1): 1971. <a href="https://doi.org/10.1038/s41467-023-37511-y">https://doi.org/10.1038/s41467-023-37511-y.</a>&#160;<a class="footnote-backref" href="#fnref:LI" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 700) ? "left" : align;
+        indent = (screen.width < 700) ? "0em" : indent;
+        linebreak = (screen.width < 700) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+</article>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <ul class="col-sm-6 list-inline">
+            <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
+              <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+          </ul>
+          <p class="col-sm-6 text-sm-right text-muted">
+          <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

@@ -60,7 +60,8 @@
   </header>
   <div class="content">
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
-\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
 <blockquote>
 <p>Work in progress to investigate the edge states of a quantum walk at the interface between two topologically distinct regions, when spatial disorder is present. <a href="http://dx.doi.org/10.1140/epjb/e2017-70433-1">Published in <span class="caps">EPJB</span>,&nbsp;2017.</a></p>
 </blockquote>
@@ -71,7 +72,7 @@
   U = T_x R(\theta) T_y R(\alpha) T_{x+y} R(\theta)
 \end{equation}</div>
 <p>
-of shift operators <span class="math">\(T_i\)</span>, which move the walker&#8217;s position a single step <span class="math">\(\pm1\)</span> in the direction <span class="math">\(i=x,y\)</span> of a square lattice according to their spin state, and rotation&nbsp;operators
+of shift&nbsp;operators <span class="math">\(T_i\)</span>, which move the walker&#8217;s position a single&nbsp;step <span class="math">\(\pm1\)</span> in the&nbsp;direction <span class="math">\(i=x,y\)</span> of a square lattice according to their spin state, and rotation&nbsp;operators
 </p>
 <div class="math">\begin{equation}
   R(\theta) = \E^{-\I \theta \sigma_y/2} = \begin{pmatrix}
@@ -80,13 +81,13 @@ of shift operators <span class="math">\(T_i\)</span>, which move the walker&#821
   \end{pmatrix} \,,
 \end{equation}</div>
 <p>
-which rotate the <span class="math">\(1/2\)</span> particle&#8217;s spin by <span class="math">\(\theta\)</span> around the <span class="math">\(y\)</span>-axis (<span class="math">\(\boldsymbol \sigma\)</span> are Pauli matrices). Therefore, the quantum walk evolution is defined by the unitary operator <span class="math">\(U\)</span>, which advances the particle&#8217;s state a time&nbsp;step:
+which rotate&nbsp;the <span class="math">\(1/2\)</span> particle&#8217;s spin&nbsp;by <span class="math">\(\theta\)</span> around&nbsp;the <span class="math">\(y\)</span>-axis&nbsp;(<span class="math">\(\boldsymbol \sigma\)</span> are Pauli matrices). Therefore, the quantum walk evolution is defined by the unitary&nbsp;operator <span class="math">\(U\)</span>, which advances the particle&#8217;s state a time&nbsp;step:
 </p>
 <div class="math">\begin{equation}
   |\psi(t+1) \rangle = U \, |\psi(t)\rangle\,,
 \end{equation}</div>
 <p>
-where <span class="math">\(|\psi(t)\rangle\)</span> is the quantum state of the walker at time <span class="math">\(t\)</span>;&nbsp;initially 
+where <span class="math">\(|\psi(t)\rangle\)</span> is the quantum state of the walker at&nbsp;time <span class="math">\(t\)</span>;&nbsp;initially 
 </p>
 <div class="math">\begin{equation}
   |\psi(0)\rangle = 
@@ -101,67 +102,67 @@ the particle is at the origin in a superposition of spin up and down with equal 
 \end{equation}</div>
 <p>
 where <span class="math">\(\psi_{\uparrow\downarrow}\)</span> are the spinor components. As other realizations of quantum walks, the information propagates in a ballistic&nbsp;fashion. </p>
-<p>As in the quantum Hall effect, one may compute the <a href="http://arxiv.org/abs/1509.02295">Chern number</a>. Indeed, we can associate an effective Hamiltonian <span class="math">\(H\)</span> to the unitary&nbsp;operator:
+<p>As in the quantum Hall effect, one may compute the <a href="http://arxiv.org/abs/1509.02295">Chern number</a>. Indeed, we can associate an effective&nbsp;Hamiltonian <span class="math">\(H\)</span> to the unitary&nbsp;operator:
 </p>
 <div class="math">\begin{equation}
   U = \E^{-\I H}, \quad
   H \equiv \I\,\log U\,,
 \end{equation}</div>
 <p>
-which allows the study of the topological properties of the random walk using the same tools of condensed matter systems. According to the value of the angles <span class="math">\((\theta,\alpha)\)</span>, one finds that the Chern number takes one of the values <span class="math">\(C \in \{-1,0,1\}\)</span>. </p>
+which allows the study of the topological properties of the random walk using the same tools of condensed matter systems. According to the value of the&nbsp;angles <span class="math">\((\theta,\alpha)\)</span>, one finds that the Chern number takes one of the&nbsp;values <span class="math">\(C \in \{-1,0,1\}\)</span>. </p>
 <video width="300" height="300" poster="/images/prob_02.png" preload="auto" controls > <source src="/images/prob_02.mp4" type="video/mp4" /> </video>
 <video width="300" height="300" poster="/images/prob_06.png" preload="auto" controls > <source src="/images/prob_06.mp4" type="video/mp4" /> </video>
 
 <h3>Topological&nbsp;properties</h3>
-<p>We consider a system with an interface separating a <span class="math">\(C=-1\)</span> left region (for <span class="math">\(x &lt; 0\)</span>) and a <span class="math">\(C=1\)</span> right region (for <span class="math">\(x \gt 0\)</span>). In the figure we show the two representative points in the <span class="math">\((\theta,\alpha)\)</span> phase plane, corresponding to each topological domain: red for the left and blue for the right. At the edge, localized modes exist that, in the case of the Hall system, are responsible for the conduction. These <a href="http://dx.doi.org/10.1038/ncomms1872">topologically protected bound states</a> were experimentally observed in the case of a one dimensional quantum&nbsp;walk.</p>
+<p>We consider a system with an interface separating&nbsp;a <span class="math">\(C=-1\)</span> left region&nbsp;(for <span class="math">\(x &lt; 0\)</span>) and&nbsp;a <span class="math">\(C=1\)</span> right region&nbsp;(for <span class="math">\(x \gt 0\)</span>). In the figure we show the two representative points in&nbsp;the <span class="math">\((\theta,\alpha)\)</span> phase plane, corresponding to each topological domain: red for the left and blue for the right. At the edge, localized modes exist that, in the case of the Hall system, are responsible for the conduction. These <a href="http://dx.doi.org/10.1038/ncomms1872">topologically protected bound states</a> were experimentally observed in the case of a one dimensional quantum&nbsp;walk.</p>
 <p><img src="/images/c-phases.png" alt="quantum walk topology" style="height: 200px;"/>
 <img src="/images/c-impurities.png" alt="spatial disorder" style="height: 200px;"/></p>
-<p>In the case of the two dimensional quantum walk <span class="math">\(\ref{e:tr}\)</span>, we numerically computed the time evolution (second movie) and found that the position probability concentrates at the interface and spreads along the <span class="math">\(y\)</span> axis, in agreement with the existence of an edge&nbsp;state.</p>
+<p>In the case of the two dimensional quantum&nbsp;walk <span class="math">\(\ref{e:tr}\)</span>, we numerically computed the time evolution (second movie) and found that the position probability concentrates at the interface and spreads along&nbsp;the <span class="math">\(y\)</span> axis, in agreement with the existence of an edge&nbsp;state.</p>
 <h3>Effect of&nbsp;disorder</h3>
 <p>One important property of the edge states associated with the topology of the effective Hamiltonian (in analogy with the electronic bands of an insulator), is that they are protected against random perturbations. As long as the perturbation do not change the topology, for instance closing the gap or adding new states in the gap, the transport properties of the system are&nbsp;preserved. </p>
-<p>We are interested in investigating the behavior of the edge states in the case of the two-dimensional quantum walk <span class="math">\(\ref{e:tr}\)</span>, when it is perturbed by <em>spatial disorder</em>. We introduce, at random sites uniformly distributed over the square lattice, a set of impurities <span class="math">\(I\)</span> (as shown in the figure, where we compare two sets with occupation probabilities <span class="math">\(p=0.01\)</span> and <span class="math">\(p=0.1\)</span>). These impurities will change the spin state of the&nbsp;walker.</p>
+<p>We are interested in investigating the behavior of the edge states in the case of the two-dimensional quantum&nbsp;walk <span class="math">\(\ref{e:tr}\)</span>, when it is perturbed by <em>spatial disorder</em>. We introduce, at random sites uniformly distributed over the square lattice, a set of&nbsp;impurities <span class="math">\(I\)</span> (as shown in the figure, where we compare two sets with occupation&nbsp;probabilities <span class="math">\(p=0.01\)</span> and <span class="math">\(p=0.1\)</span>). These impurities will change the spin state of the&nbsp;walker.</p>
 <video width="300" height="300" poster="/images/m_06.png" preload="auto" controls > <source src="/images/m_06.mp4" type="video/mp4"> </video>
 
 <video width="300" height="300" poster="/images/m_05.png" preload="auto" controls > <source src="/images/m_05.mp4" type="video/mp4"> </video>
 
-<p>In the presence of disorder, we consider various modifications of the coin operator <span class="math">\(R\)</span>:</p>
+<p>In the presence of disorder, we consider various modifications of the coin&nbsp;operator <span class="math">\(R\)</span>:</p>
 <ul>
 <li>
-<p>the rotation angle becomes random, <span class="math">\(\theta \rightarrow \theta + \delta\theta\)</span>,
+<p>the rotation angle becomes&nbsp;random, <span class="math">\(\theta \rightarrow \theta + \delta\theta\)</span>,
 <div class="math">$$R_J(\theta) = \E^{-\I \sigma_y (\theta + J\delta\theta(x))/2},\;
 x \in I\,,$$</div>
-where <span class="math">\(J\)</span> is a coupling constant and <span class="math">\(\delta\theta\)</span> is uniformly distributed on the circle (quenched &#8220;rotation&#8221;&nbsp;disorder);</p>
+where <span class="math">\(J\)</span> is a coupling constant&nbsp;and <span class="math">\(\delta\theta\)</span> is uniformly distributed on the circle (quenched &#8220;rotation&#8221;&nbsp;disorder);</p>
 </li>
 <li>
-<p>the walker&#8217;s spin is changed by the impurity spin, polarized in the <span class="math">\(z\)</span> direction,
+<p>the walker&#8217;s spin is changed by the impurity spin, polarized in&nbsp;the <span class="math">\(z\)</span> direction,
 <div class="math">$$S_J(\phi) = \E^{-\I J \sigma_z \phi(x,t)},\;
 x \in I\,,$$</div>
-where the phase <span class="math">\(\phi(x,t)\)</span> can be randomly distributed on the circle (quench &#8220;spin&#8221; disorder, independent of&nbsp;time),</p>
+where the&nbsp;phase <span class="math">\(\phi(x,t)\)</span> can be randomly distributed on the circle (quench &#8220;spin&#8221; disorder, independent of&nbsp;time),</p>
 </li>
 <li>
-<p>or dependent on the particle&#8217;s state (self-consistent disorder),
+<p>or dependent on the particle&#8217;s state (self-consistent&nbsp;disorder),
 <div class="math">$$\phi(x,t) = |\psi_\uparrow|^2 - |\psi_\downarrow|^2$$</div>
 or
 <div class="math">$$\phi(x,t) = \frac{|\psi_\uparrow|^2 - |\psi_\downarrow|^2}{
 |\psi_\uparrow|^2 + |\psi_\downarrow|^2}\,.
 $$</div>
-In the first case the impurity phase is proportional to the <span class="math">\(z\)</span> component of the particle spin, and in the second case, it is in addition normalized to the local particle density; this second form is invariant with respect to scale transformations of the spinor. For the self-consistent disorder the coin operator writes:
+In the first case the impurity phase is proportional to&nbsp;the <span class="math">\(z\)</span> component of the particle spin, and in the second case, it is in addition normalized to the local particle density; this second form is invariant with respect to scale transformations of the spinor. For the self-consistent disorder the coin operator&nbsp;writes:
 <div class="math">$$R_J(\theta,\phi) = S_J(\phi)R(\theta)\,,$$</div>
 and the quantum walk becomes <a href="https://tel.archives-ouvertes.fr/tel-01230891">nonlinear</a>. Nonlinear quantum walks are studied in relation to the Dirac equation; in particular <a href="http://dx.doi.org/10.1103/PhysRevA.92.052336">solitons</a> and <a href="http://dx.doi.org/10.1103/PhysRevA.93.022329">attractors</a>, were recently&nbsp;predicted.</p>
 </li>
 </ul>
-<p>The two videos compare the probability density at the interface of the free (without disorder) and the random (with spatial disorder) quantum walks. The two cases show ballistic propagation on the edge state. The following two figures show the width of the probability at <span class="math">\(x=0\)</span> (spreading in the <span class="math">\(y\)</span> direction), for the free walk and the nonlinear walk with <span class="math">\(p=0.1\)</span> and <span class="math">\(J=100\)</span>; we choose a large value of the coupling constant to strength the remarkable behavior in this&nbsp;case.</p>
+<p>The two videos compare the probability density at the interface of the free (without disorder) and the random (with spatial disorder) quantum walks. The two cases show ballistic propagation on the edge state. The following two figures show the width of the probability&nbsp;at <span class="math">\(x=0\)</span> (spreading in&nbsp;the <span class="math">\(y\)</span> direction), for the free walk and the nonlinear walk&nbsp;with <span class="math">\(p=0.1\)</span> and <span class="math">\(J=100\)</span>; we choose a large value of the coupling constant to strength the remarkable behavior in this&nbsp;case.</p>
 <p><img src="/images/chern_w0_00.png" alt="free walk on the edge" style="height: 200px;"/>
 <img src="/images/chern_w0_09.png" alt="random walk on the edge" style="height: 200px;"/></p>
 <p>Indeed, it its worth noting that the presence of the nonlinear disorder do not prevent the walker to spread at a rate proportional to the time. This is in contrast with the usual behavior of a quantum walk, which localizes or diffuse as a result of&nbsp;disorder. </p>
 <p><img src="/images/chern_p3d_00.png" alt="free walk on the edge" style="height: 300px;"/>
 <img src="/images/chern_p3d_09.png" alt="random walk on the edge" style="height: 300px;"/></p>
-<p>We also observe, as shown in the figures above, that in the random case the  probability density distribution is slightly larger than in the free case near the interface. This is probably an effect due to disorder induced (anisotropic) localization, the density is confined in a region around its initial position. However, the presence of the edge state, wider in the case of disorder, prevents the localization along the <span class="math">\(y\)</span>&nbsp;axis.</p>
+<p>We also observe, as shown in the figures above, that in the random case the  probability density distribution is slightly larger than in the free case near the interface. This is probably an effect due to disorder induced (anisotropic) localization, the density is confined in a region around its initial position. However, the presence of the edge state, wider in the case of disorder, prevents the localization along&nbsp;the <span class="math">\(y\)</span> axis.</p>
 <h3>Noise and&nbsp;nonlinearity</h3>
 <p>The edge state is protected against disorder. If the amplitude of the noise in the rotation angle is not large enough to change the topology of the system, the edge state persists. Strong disorder may destroy&nbsp;it.</p>
 <p><img src="/images/chern_12b.png" alt="weak rotation noise" style="height: 200px;"/>
 <img src="/images/chern_13d.png" alt="strong rotation noise" style="height: 200px;"/></p>
-<p>Figures above compare the spreading of the walker in the weak (<span class="math">\(p=0.05\)</span>) and strong (<span class="math">\(p=0.2\)</span>) disorder&nbsp;cases.</p>
+<p>Figures above compare the spreading of the walker in the weak&nbsp;(<span class="math">\(p=0.05\)</span>) and strong&nbsp;(<span class="math">\(p=0.2\)</span>) disorder&nbsp;cases.</p>
 <p>The nonlinear walk restore the edge state even in the presence of strong&nbsp;noise.</p>
 <blockquote></blockquote>
 <table>

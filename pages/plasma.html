@@ -49,10 +49,11 @@
 <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
 \newcommand{\D}{\mathop{}\!\mathrm{d}} 
-\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,}&nbsp;\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
+\newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
+\newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}\)</span></p>
 <h1>Warm plamas and the Vlasov&nbsp;equation</h1>
-<p>A plasma is loosely defined as the fourth state of matter; it is basically an ionized gas whose physical properties depend on the electrostatic interaction between the charged particles. There is a large variety of plasma states depending on their characteristic densities and temperatures. Plasma density <span class="math">\(n\)</span> and temperature <span class="math">\(T\)</span> can cover a wide range of scales, from rarefied weakly ionized discharges to hot completely ionized plasmas as in a tokamak or in the solar&nbsp;corona.</p>
-<p>The one particle distribution function in a <span class="math">\(d\)</span>-dimensional phase space <span class="math">\((x,v)\)</span>,
+<p>A plasma is loosely defined as the fourth state of matter; it is basically an ionized gas whose physical properties depend on the electrostatic interaction between the charged particles. There is a large variety of plasma states depending on their characteristic densities and temperatures. Plasma&nbsp;density <span class="math">\(n\)</span> and&nbsp;temperature <span class="math">\(T\)</span> can cover a wide range of scales, from rarefied weakly ionized discharges to hot completely ionized plasmas as in a tokamak or in the solar&nbsp;corona.</p>
+<p>The one particle distribution function in&nbsp;a <span class="math">\(d\)</span>-dimensional phase&nbsp;space <span class="math">\((x,v)\)</span>,
 </p>
 <div class="math">\begin{equation}
   \label{fxv}
@@ -60,7 +61,7 @@
   \int_{-\infty}^{\infty} \Di{v} f(x,v,t) = n(x,t)
 \end{equation}</div>
 <p>
-of an electron plasma [here <span class="math">\(n=n(x,t)\)</span> is the electron density] in a neutralizing background <span class="math">\(n_0\)</span> of positive charge, satisfies the Vlasov&nbsp;equation
+of an electron plasma&nbsp;[here <span class="math">\(n=n(x,t)\)</span> is the electron density] in a neutralizing&nbsp;background <span class="math">\(n_0\)</span> of positive charge, satisfies the Vlasov&nbsp;equation
 </p>
 <div class="math">\begin{equation}
   \label{vlasov}
@@ -69,9 +70,9 @@ of an electron plasma [here <span class="math">\(n=n(x,t)\)</span> is the electr
   -\nabla^2 \varphi(x,t) = \frac{e}{\epsilon_0} \left[ n_0 - \int_{-\infty}^{\infty} \Di{v} f(x,v,t) \right]\,.
 \end{equation}</div>
 <p>
-The one particle dynamics is driven by the self-consistent electrostatic electric field <span class="math">\(E=-\nabla \varphi\)</span>, where <span class="math">\(\varphi = \varphi(x,t)\)</span> is the potential. Indeed, the forces exerted on an individual charge are due, because of the long range of the Coulomb force, to the electric field <span class="math">\(E\)</span> created by all the other charges in the plasma. Vlasov equation is a <em>mean field</em> approximation that neglects two-body collisions. Note that among the physical parameters there is the electron mass <span class="math">\(m\)</span> and charge <span class="math">\(-e\)</span>, which are relevant at the microscopic one particle scale; moreover, we also have a macroscopic parameter <span class="math">\(n_0\)</span>, the density of the ions, supposed to be uniform. The presence together of the microscopic and macroscopic parameters reveals the nature of the Vlasov equation: it is a <em>kinetic equation</em>, relating the motion of individual particles with the thermodynamic state of the&nbsp;system. </p>
+The one particle dynamics is driven by the self-consistent electrostatic electric&nbsp;field <span class="math">\(E=-\nabla \varphi\)</span>,&nbsp;where <span class="math">\(\varphi = \varphi(x,t)\)</span> is the potential. Indeed, the forces exerted on an individual charge are due, because of the long range of the Coulomb force, to the electric&nbsp;field <span class="math">\(E\)</span> created by all the other charges in the plasma. Vlasov equation is a <em>mean field</em> approximation that neglects two-body collisions. Note that among the physical parameters there is the electron&nbsp;mass <span class="math">\(m\)</span> and&nbsp;charge <span class="math">\(-e\)</span>, which are relevant at the microscopic one particle scale; moreover, we also have a macroscopic&nbsp;parameter <span class="math">\(n_0\)</span>, the density of the ions, supposed to be uniform. The presence together of the microscopic and macroscopic parameters reveals the nature of the Vlasov equation: it is a <em>kinetic equation</em>, relating the motion of individual particles with the thermodynamic state of the&nbsp;system. </p>
 <h2>Plasma&nbsp;waves</h2>
-<p>In a hot plasmas waves of many different kinds can propagate; in the simplest case, an electron plasma with uniform ion background, a fluctuation of the charge density gives rise to a longitudinal wave, the Langmuir or plasma wave. At thermodynamic equilibrium the plasma density is <span class="math">\(n(x,t) = n_0\)</span> is homogeneous and the velocity distribution is Maxwellian <span class="math">\(f(x,v,t)=f_0(v)\)</span>:
+<p>In a hot plasmas waves of many different kinds can propagate; in the simplest case, an electron plasma with uniform ion background, a fluctuation of the charge density gives rise to a longitudinal wave, the Langmuir or plasma wave. At thermodynamic equilibrium the plasma density&nbsp;is <span class="math">\(n(x,t) = n_0\)</span> is homogeneous and the velocity distribution is&nbsp;Maxwellian <span class="math">\(f(x,v,t)=f_0(v)\)</span>:
 </p>
 <div class="math">$$ f_0(v) = n_0 (m/2\pi T)^{3/2} \E^{-m v^2/2T} $$</div>
 <p>
@@ -79,31 +80,31 @@ where we took the Boltzmann constant&nbsp;one. </p>
 <p>We start studying the dimensions of the physical&nbsp;parameters</p>
 <ul>
 <li>
-<p><span class="math">\(e,\epsilon_0\)</span> are purely dimension dependent constants, <span class="math">\(m\)</span> can be taken as the unit of mass, and <span class="math">\(n_0,T\)</span> characterize the thermodynamic&nbsp;state;</p>
+<p><span class="math">\(e,\epsilon_0\)</span> are purely dimension dependent&nbsp;constants, <span class="math">\(m\)</span> can be taken as the unit of mass,&nbsp;and <span class="math">\(n_0,T\)</span> characterize the thermodynamic&nbsp;state;</p>
 </li>
 <li>
-<p>the units of mass, length and <span class="math">\((\text{time})^{-1}\)</span> are given by monomial combinaisons of the dimensional&nbsp;parameters:</p>
+<p>the units of mass, length&nbsp;and <span class="math">\((\text{time})^{-1}\)</span> are given by monomial combinaisons of the dimensional&nbsp;parameters:</p>
 <p>
 <div class="math">$$ m\,, \quad 
 \lambda_D = \sqrt{\frac{\epsilon_0 T}{e^2 n_0}}\,, \quad
 \omega_p = \sqrt{\frac{e^2 n_0 }{\epsilon_0 m}}\,,$$</div>
 </p>
-<p>where <span class="math">\(\lambda_D\)</span> is the Debye length and <span class="math">\(\omega_p\)</span> the plasma frequency; <span class="math">\(\lambda_D\)</span> mesures the range of the Coulomb forces in a plasma and <span class="math">\(\omega_p\)</span> is a natural electrostatic oscillation frequency of the charge&nbsp;density;</p>
+<p>where <span class="math">\(\lambda_D\)</span> is the Debye length&nbsp;and <span class="math">\(\omega_p\)</span> the plasma&nbsp;frequency; <span class="math">\(\lambda_D\)</span> mesures the range of the Coulomb forces in a plasma&nbsp;and <span class="math">\(\omega_p\)</span> is a natural electrostatic oscillation frequency of the charge&nbsp;density;</p>
 </li>
 <li>
 <p>from these parameters one can form the nondimensional plasma&nbsp;parameter</p>
 <p>
 <div class="math">$$g=\frac{1}{\lambda_D^3 n}$$</div>
 </p>
-<p>which is the inverse of the ratio between the Debye length and the mean distance between particles uniformly distributed in space, or equivalently, it is inversely proportional to the number of particles in a sphere of <span class="math">\(\lambda_D\)</span> radius, inside which Coulomb interactions are important. Therefore, <span class="math">\(g\)</span> measures the strength of thermal forces with respect to Coulomb forces; it is small when collective effects are important (many particles within <span class="math">\(\lambda_D\)</span>).</p>
+<p>which is the inverse of the ratio between the Debye length and the mean distance between particles uniformly distributed in space, or equivalently, it is inversely proportional to the number of particles in a sphere&nbsp;of <span class="math">\(\lambda_D\)</span> radius, inside which Coulomb interactions are important.&nbsp;Therefore, <span class="math">\(g\)</span> measures the strength of thermal forces with respect to Coulomb forces; it is small when collective effects are important (many particles&nbsp;within <span class="math">\(\lambda_D\)</span>).</p>
 </li>
 </ul>
 <h3>Exercice</h3>
 <blockquote>
 <p>Show, using simple fluid equations, that (i) the plasma frequency corresponds to charge density fluctuations, and that (ii) a test charge potential is screened at distances of the order of the Debye&nbsp;length.</p>
 </blockquote>
-<p>In the following we use the above units to get nondimensional expressions. The different physical regimes of the collisionless unmagnetized electron plasma depend on the sole plasma <span class="math">\(g\)</span> parameter. We assume the hot, diluted, Coulomb interaction dominated regime, <span class="math">\(g \ll 1\)</span>.</p>
-<p>The linearized Vlasov equation reads, in Fourier space <span class="math">\((\omega,k)\)</span>:
+<p>In the following we use the above units to get nondimensional expressions. The different physical regimes of the collisionless unmagnetized electron plasma depend on the sole&nbsp;plasma <span class="math">\(g\)</span> parameter. We assume the hot, diluted, Coulomb interaction dominated&nbsp;regime, <span class="math">\(g \ll 1\)</span>.</p>
+<p>The linearized Vlasov equation reads, in Fourier&nbsp;space <span class="math">\((\omega,k)\)</span>:
 </p>
 <div class="math">$$ (-\I \omega + \I k \cdot v)f_{\omega k} =
 \I k \cdot \frac{\partial }{\partial v}f_0(v) 
@@ -118,15 +119,15 @@ from which one straightforwardly obtains the <em>dispersion relation</em>,
   \frac{k\cdot \frac{\partial f_0}{\partial v}  }{\omega -k\cdot v}
 \end{equation}</div>
 <p>
-where <span class="math">\(\mathrm{V}(v)\)</span> is the volume in velocity space. Landau showed that the integral (which is devergent because of the resonance <span class="math">\(\omega = k \cdot v\)</span>), must be extended to the <span class="math">\(\omega \in \mathbb{C}\)</span>&nbsp;plane:
+where <span class="math">\(\mathrm{V}(v)\)</span> is the volume in velocity space. Landau showed that the integral (which is devergent because of the&nbsp;resonance <span class="math">\(\omega = k \cdot v\)</span>), must be extended to&nbsp;the <span class="math">\(\omega \in \mathbb{C}\)</span> plane:
 </p>
 <div class="math">\begin{equation}
   \frac{1}{\omega - k \cdot v + \I o} = \frac{\mathcal{P}}{\omega - k \cdot v} - 
   \I \pi \delta(\omega - k \cdot v)
 \end{equation}</div>
 <p>
-(<a href="https://en.wikipedia.org/wiki/Sokhotski–Plemelj_theorem">Plemelj formula</a>, in the limit <span class="math">\(o \rightarrow 0\)</span>) with <span class="math">\(\mathcal{P}\)</span> denoting the principal value. The physical justification of this prescription is causality, <span class="math">\(\omega\)</span> must include a small <em>positive</em> imaginary&nbsp;part.</p>
-<p>The real <span class="math">\(\omega = \omega(k)\)</span> solution of (<span class="math">\(\ref{dispersion}\)</span>) corresponds to the Langmuir waves. The pole in the denominator only involves the component component <span class="math">\(v\)</span> of the velocity parallel to the wave vector <span class="math">\(k\)</span>; therefore it is enough to take this one dimensional velocity direction and use the corresponding one dimensional Maxwell distribution. In the hydrodynamic limit <span class="math">\(k \rightarrow 0\)</span> we can expand the integrand in powers of <span class="math">\(k\)</span>, to get after an integration by&nbsp;parts
+(<a href="https://en.wikipedia.org/wiki/Sokhotski–Plemelj_theorem">Plemelj formula</a>, in the&nbsp;limit <span class="math">\(o \rightarrow 0\)</span>)&nbsp;with <span class="math">\(\mathcal{P}\)</span> denoting the principal value. The physical justification of this prescription is&nbsp;causality, <span class="math">\(\omega\)</span> must include a small <em>positive</em> imaginary&nbsp;part.</p>
+<p>The&nbsp;real <span class="math">\(\omega = \omega(k)\)</span> solution of&nbsp;(<span class="math">\(\ref{dispersion}\)</span>) corresponds to the Langmuir waves. The pole in the denominator only involves the component&nbsp;component <span class="math">\(v\)</span> of the velocity parallel to the wave&nbsp;vector <span class="math">\(k\)</span>; therefore it is enough to take this one dimensional velocity direction and use the corresponding one dimensional Maxwell distribution. In the hydrodynamic&nbsp;limit <span class="math">\(k \rightarrow 0\)</span> we can expand the integrand in powers&nbsp;of <span class="math">\(k\)</span>, to get after an integration by&nbsp;parts
 </p>
 <div class="math">\begin{equation}
   \mathcal{P} \int_{-\infty}^{\infty} \frac{ \Di{v} }{k}
@@ -135,7 +136,7 @@ where <span class="math">\(\mathrm{V}(v)\)</span> is the volume in velocity spac
   \frac{1}{\omega^2} \left( 1+ \frac{3k^2}{\omega^2} \right)\,,
 \end{equation}</div>
 <p>
-where <span class="math">\(F_0\)</span> is the one dimensional Maxwell distribution (depending on the longitudinal velocity).Using this result in (<span class="math">\(\ref{dispersion}\)</span>) we obtain the dispersion relation for the plasma&nbsp;waves:
+where <span class="math">\(F_0\)</span> is the one dimensional Maxwell distribution (depending on the longitudinal velocity).Using this result in&nbsp;(<span class="math">\(\ref{dispersion}\)</span>) we obtain the dispersion relation for the plasma&nbsp;waves:
 </p>
 <div class="math">\begin{equation}
   \omega(k) = 1 + \frac{3}{2}k^2 \quad \Rightarrow \quad
@@ -144,7 +145,7 @@ where <span class="math">\(F_0\)</span> is the one dimensional Maxwell distribut
 <p>
 where, in the last equality, we put the dimensional&nbsp;parameters.</p>
 <h2>Landau&nbsp;damping</h2>
-<p>The imaginary part of the dispersion relation describes the damping (and in principle also the amplification) of the plasma waves. This gives rise to an imaginary part of the frequency <span class="math">\(\gamma = \mathrm{Re}\,\omega\)</span>, which controls the long time behavior of the electric field <span class="math">\(E \sim \E^{\gamma t}\)</span>; a negative <span class="math">\(\gamma\)</span> is then related to damping of the electrostatic fluctuations. This astonishing phenomenon in a system which is invariant under time reversal, and where any collisions can introduce dissipation, was discovered by Landau. In this case the integral is trivial and&nbsp;gives:
+<p>The imaginary part of the dispersion relation describes the damping (and in principle also the amplification) of the plasma waves. This gives rise to an imaginary part of the&nbsp;frequency <span class="math">\(\gamma = \mathrm{Re}\,\omega\)</span>, which controls the long time behavior of the electric&nbsp;field <span class="math">\(E \sim \E^{\gamma t}\)</span>; a&nbsp;negative <span class="math">\(\gamma\)</span> is then related to damping of the electrostatic fluctuations. This astonishing phenomenon in a system which is invariant under time reversal, and where any collisions can introduce dissipation, was discovered by Landau. In this case the integral is trivial and&nbsp;gives:
 </p>
 <div class="math">\begin{equation}
   \varepsilon(\omega,k) = 1- \frac{1}{ \omega^2} (1+ 3 \frac{k^2}{\omega^2} )- \frac{\I \pi }{k^2} \left. \frac{\partial F_0(v) }{\partial v} 
@@ -159,7 +160,7 @@ from which we finally find the imaginary part of the&nbsp;frequency,
   \right|_{v=\frac{\omega}{k} }
 \end{equation}</div>
 <p>
-in the same approximation <span class="math">\(k \rightarrow 0\)</span> and <span class="math">\(\mathrm{Re}\, \omega \gg \mathrm{Im}\, \omega = \gamma\)</span>. For the Maxwellian it&nbsp;becomes,
+in the same&nbsp;approximation <span class="math">\(k \rightarrow 0\)</span> and <span class="math">\(\mathrm{Re}\, \omega \gg \mathrm{Im}\, \omega = \gamma\)</span>. For the Maxwellian it&nbsp;becomes,
 </p>
 <div class="math">\begin{equation}
   \gamma(k) = - \sqrt{\frac{\pi}{8}} \frac{1}{k^3} \exp \left[- 
@@ -173,7 +174,7 @@ or in dimensional&nbsp;form
   \frac{1}{2 (\lambda_D k)^2}\right]\,.
 \end{equation}</div>
 <p>
-We observe that the sign of the Landau rate <span class="math">\(\gamma\)</span> depends on the slope of the distribution function at the wave phase space velocity <span class="math">\(v=\omega/k\)</span>, and for the Maxwellian this slope is strictly negative, corresponding to a damping rate. In the opposite case, for example if a bump of rapid particles is present, a positive slope in the velocity distribution function appears, and the plasma is&nbsp;unstable.</p>
+We observe that the sign of the Landau&nbsp;rate <span class="math">\(\gamma\)</span> depends on the slope of the distribution function at the wave phase space&nbsp;velocity <span class="math">\(v=\omega/k\)</span>, and for the Maxwellian this slope is strictly negative, corresponding to a damping rate. In the opposite case, for example if a bump of rapid particles is present, a positive slope in the velocity distribution function appears, and the plasma is&nbsp;unstable.</p>
 <h2>Nonlinear&nbsp;evolution</h2>
 <p>The description of the evolution of an unstable plasma needs numerical methods. A difficulty for any numerical approach, is that the distribution function, even if initially smooth, mixing in phase space creates finer and finer structures. Therefore, discretisation grids are not well adapted. An interesting algorithm that avoids, at least in part, these difficulties is the so called <em>particle in cell</em> method. It is based on the fact that de distribution function is constant along the trajectories of &#8220;particles&#8221; (set of points in phase&nbsp;space):
 </p>
@@ -182,19 +183,19 @@ We observe that the sign of the Landau rate <span class="math">\(\gamma\)</span>
   \dot{v_p} = - E(x)
 \end{equation}</div>
 <p>
-with time measured un plasma frequencies, and <span class="math">\(e=m=\epsilon_0=1\)</span>, <span class="math">\(p\)</span> is the particle index, and the electric field, which depends on the position of all the other particles, is computed from the Poisson&nbsp;equation,
+with time measured un plasma frequencies,&nbsp;and <span class="math">\(e=m=\epsilon_0=1\)</span>, <span class="math">\(p\)</span> is the particle index, and the electric field, which depends on the position of all the other particles, is computed from the Poisson&nbsp;equation,
 </p>
 <div class="math">\begin{equation}
   -\nabla^2 \phi(X) = 1 - \frac{n(X)}{n_0}
 \end{equation}</div>
 <p>
-computed on a spatial grid <span class="math">\(X\)</span>. The charge density <span class="math">\(n(X)\)</span> is constructed as a histogram of particle positions, using first order interpolation. We give here an example of a code (in <em>python</em>):</p>
-<p>Computation of the density at a grid point <span class="math">\(X[j]\)</span> from the particles positions <span class="math">\(x[p]\)</span>, <span class="math">\(j\)</span> is the spatial grid&nbsp;index:</p>
+computed on a spatial&nbsp;grid <span class="math">\(X\)</span>. The charge&nbsp;density <span class="math">\(n(X)\)</span> is constructed as a histogram of particle positions, using first order interpolation. We give here an example of a code (in <em>python</em>):</p>
+<p>Computation of the density at a grid&nbsp;point <span class="math">\(X[j]\)</span> from the particles&nbsp;positions <span class="math">\(x[p]\)</span>, <span class="math">\(j\)</span> is the spatial grid&nbsp;index:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># NP number of particles</span>
 <span class="c1"># NX number of lattice points in x</span>
 <span class="c1"># L length</span>
 <span class="c1"># DX = L/NX</span>
-<span class="k">def</span> <span class="nf">density</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">density</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;weithed histogram of particle positions&quot;&quot;&quot;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">NX</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NP</span><span class="p">):</span>
@@ -210,10 +211,10 @@ computed on a spatial grid <span class="math">\(X\)</span>. The charge density <
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">n</span><span class="o">/</span><span class="n">N0</span>
 </code></pre></div>
 
-<p>Computation of the force on particle <span class="math">\(x[p]\)</span>; the first task is to solve Poisson equation using fast Fourier transforms, second, to compute the gradient of the potential to get the electric field, and finally, to interpolate the electric field on the grid, for each particle, the obtain the&nbsp;force:</p>
+<p>Computation of the force on&nbsp;particle <span class="math">\(x[p]\)</span>; the first task is to solve Poisson equation using fast Fourier transforms, second, to compute the gradient of the potential to get the electric field, and finally, to interpolate the electric field on the grid, for each particle, the obtain the&nbsp;force:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># iLap ~ -1/k^2 is the inverse of the laplacian (k != 0)</span>
 <span class="c1"># pseudo-spectral method</span>
-<span class="k">def</span> <span class="nf">force</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">force</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;electric potential in X&quot;&quot;&quot;</span> 
     <span class="n">pot</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">NX</span><span class="p">)</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">NX</span><span class="p">)</span>
@@ -242,7 +243,7 @@ computed on a spatial grid <span class="math">\(X\)</span>. The charge density <
 <p>Leap-frog algorithm to time&nbsp;stepping:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DT time step</span>
 <span class="c1"># f the force applied at position x</span>
-<span class="k">def</span> <span class="nf">lf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;leap-frog time stepping&quot;&quot;&quot;</span>
     <span class="n">v</span> <span class="o">+=</span> <span class="o">-</span><span class="n">DT</span><span class="o">*</span><span class="n">f</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="n">DT</span><span class="o">*</span><span class="n">v</span>           
@@ -256,7 +257,7 @@ computed on a spatial grid <span class="math">\(X\)</span>. The charge density <
   x_p = x_{0p} + a \cos(k_0 x_{0p})\,,
 \end{equation}</div>
 <p>
-where <span class="math">\(a\)</span> is the amplitude of mode <span class="math">\(k_0=1\)</span>. In the figures we observe the wandering in phase space of the two streams, and the formation of a wide distribution in&nbsp;velocities.</p>
+where <span class="math">\(a\)</span> is the amplitude of&nbsp;mode <span class="math">\(k_0=1\)</span>. In the figures we observe the wandering in phase space of the two streams, and the formation of a wide distribution in&nbsp;velocities.</p>
 <p><img src="/images/pl_twostream_260.png" alt="two beams 260" style="height: 200px;"/>
 <img src="/images/pl_twostream_290.png" alt="two beams 290" style="height: 200px;"/>
 <img src="/images/pl_twostream_320.png" alt="two beams 320" style="height: 200px;"/></p>

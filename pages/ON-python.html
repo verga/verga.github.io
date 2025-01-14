@@ -46,19 +46,20 @@
 <article class="article">
   <div class="content">
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
-\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
 <h1>Python</h1>
 <p>Python est un langage de programmation interactif, dont les multiples applications vont du développement web et réseaux, au calcul scientifique en passant par la manipulation des données et l&#8217;intelligence artificielle. Il se distingue des langages compilés comme le fortran ou le C, dont les types des objets sont statiques, par ses objets dynamiques. On dit donc que python est un langage interprété, dans le sens où chaque instruction peut être exécuté&nbsp;immédiatement.</p>
 <p>Python se caractérise par une syntaxe simple et intuitive (d&#8217;où sa popularité), notamment par le fait que les espaces et par conséquent l&#8217;indentation des lignes, sont significatifs: la porté d&#8217;un bloc de code est associée à un changement d&#8217;indentation. Il s&#8217;agit en outre d&#8217;un langage souple qui permet la programmation à différents niveaux d&#8217;abstraction, du code procédural au code orienté objet. Python possède un ensemble de bibliothèques dédiées aux applications les plus diverses, depuis le script système et le serveur web, jusqu&#8217;aux packages de calcul vectoriel (numpy), scientifique (scipy), des données (pandas), ou graphique (matplotlib,pillow). Des scientifiques proposent de boîtes à outils pour l&#8217;astronomie (astropy), la mécanique quantique (qutip), la matière condensée (kwant, tenpy,quimb), ou les réseaux et l&#8217;intelligence artificielle (pytorch, tensorflow). Cette liste est loin d&#8217;être exhaustive ou même représentative des milliers de packages python (il doit en avoir 200000 dans le site&nbsp;PyPi).</p>
 <h2>Éléments du&nbsp;langage</h2>
 <p>Le mots réservés&nbsp;sont:</p>
-<div class="highlight"><pre><span></span><code><span class="kc">False</span><span class="w">      </span><span class="k">await</span><span class="w">      </span><span class="k">else</span><span class="w">       </span><span class="kn">import</span><span class="w">     </span><span class="nn">pass</span>
-<span class="kc">None</span><span class="w">       </span><span class="k">break</span><span class="w">      </span><span class="k">except</span><span class="w">     </span><span class="ow">in</span><span class="w">         </span><span class="k">raise</span>
-<span class="kc">True</span><span class="w">       </span><span class="k">class</span><span class="w">      </span><span class="nc">finally</span><span class="w">    </span><span class="ow">is</span><span class="w">         </span><span class="k">return</span>
-<span class="ow">and</span><span class="w">        </span><span class="k">continue</span><span class="w">   </span><span class="k">for</span><span class="w">        </span><span class="k">lambda</span><span class="w">     </span><span class="k">try</span>
-<span class="k">as</span><span class="w">         </span><span class="k">def</span><span class="w">        </span><span class="nf">from</span><span class="w">       </span><span class="k">nonlocal</span><span class="w">   </span><span class="k">while</span>
-<span class="k">assert</span><span class="w">     </span><span class="k">del</span><span class="w">        </span><span class="k">global</span><span class="w">     </span><span class="ow">not</span><span class="w">        </span><span class="k">with</span>
-<span class="k">async</span><span class="w">      </span><span class="k">elif</span><span class="w">       </span><span class="k">if</span><span class="w">         </span><span class="ow">or</span><span class="w">         </span><span class="k">yield</span>
+<div class="highlight"><pre><span></span><code><span class="kc">False</span>      <span class="k">await</span>      <span class="k">else</span>       <span class="kn">import</span><span class="w">     </span><span class="nn">pass</span>
+<span class="kc">None</span>       <span class="k">break</span>      <span class="k">except</span>     <span class="ow">in</span>         <span class="k">raise</span>
+<span class="kc">True</span>       <span class="k">class</span><span class="w">      </span><span class="nc">finally</span>    <span class="ow">is</span>         <span class="k">return</span>
+<span class="ow">and</span>        <span class="k">continue</span>   <span class="k">for</span>        <span class="k">lambda</span>     <span class="k">try</span>
+<span class="k">as</span>         <span class="k">def</span><span class="w">        </span><span class="nf">from</span>       <span class="k">nonlocal</span>   <span class="k">while</span>
+<span class="k">assert</span>     <span class="k">del</span>        <span class="k">global</span>     <span class="ow">not</span>        <span class="k">with</span>
+<span class="k">async</span>      <span class="k">elif</span>       <span class="k">if</span>         <span class="ow">or</span>         <span class="k">yield</span>
 </code></pre></div>
 
 <p>Python est donc une langue avec 35&nbsp;mots! </p>
@@ -71,24 +72,24 @@
 </code></pre></div>
 
 <ul>
-<li><code>**</code> est la puissance <code>3**3 = 27</code></li>
-<li><code>//</code> est la division entière: <code>1//2 -&gt; 0</code></li>
-<li><code>%</code> est modulo <code>7 % 4 -&gt; 3</code></li>
+<li><code>**</code> est la&nbsp;puissance <code>3**3 = 27</code></li>
+<li><code>//</code> est la division&nbsp;entière: <code>1//2 -&gt; 0</code></li>
+<li><code>%</code> est&nbsp;modulo <code>7 % 4 -&gt; 3</code></li>
 </ul>
-<p>Ajoutons l&#8217;opérateur d&#8217;affectation <code>=</code> qui affecte l&#8217;expression de droite à la variable de gauche. Les combinaisons <code>+=, -=, *=, /=</code> sont des raccourcis (grosso modo) qui combinent la variable de gauche avec l&#8217;expression de droite par l&#8217;opération&nbsp;correspondante: </p>
+<p>Ajoutons l&#8217;opérateur&nbsp;d&#8217;affectation <code>=</code> qui affecte l&#8217;expression de droite à la variable de gauche. Les&nbsp;combinaisons <code>+=, -=, *=, /=</code> sont des raccourcis (grosso modo) qui combinent la variable de gauche avec l&#8217;expression de droite par l&#8217;opération&nbsp;correspondante: </p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># affecte l&#39;entier 1 à la variable de nom a</span>
 <span class="n">a</span> <span class="o">+=</span><span class="mi">1</span> <span class="c1"># donne a = 2</span>
 </code></pre></div>
 
 <p>Les types usuels de varaibles&nbsp;sont</p>
 <ul>
-<li><code>bool</code> les logiques <code>True, False, None</code> Par exemple <code>not True is False</code> donne <code>True</code> (vérifiez)</li>
-<li><code>int</code> les entiers (ils sont exacts), <code>1, 10, -3, 0, 3141592653589793238462643383279502884</code></li>
-<li><code>float</code> les réels <code>1.0, -89.4, 2e-3</code></li>
-<li><code>complex</code> les complexes <code>1+1j, 6.8 - 0.1j</code></li>
+<li><code>bool</code> les&nbsp;logiques <code>True, False, None</code> Par&nbsp;exemple <code>not True is False</code> donne <code>True</code> (vérifiez)</li>
+<li><code>int</code> les entiers (ils sont&nbsp;exacts), <code>1, 10, -3, 0, 3141592653589793238462643383279502884</code></li>
+<li><code>float</code> les&nbsp;réels <code>1.0, -89.4, 2e-3</code></li>
+<li><code>complex</code> les&nbsp;complexes <code>1+1j, 6.8 - 0.1j</code></li>
 </ul>
 <p>Avec les entiers on peut faire des rationnels utilisant <a href="https://docs.python.org/3/library/fractions.html"><code>Fraction</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">fractions</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">fractions</span>
 <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 
@@ -98,27 +99,27 @@
 <p><code>string</code> (guillemets) ou chaînes de caractères immutable (non modifiable) de la forme &#8220;Bienvenue!&#8221; ou &#8220;jusqu&#8217;à&#8221; (python accepte l&#8217;encodage&nbsp;utf8)</p>
 </li>
 <li>
-<p><code>tuple</code> (parenthèses) liste immutable de la forme <code>(a, b, c)</code></p>
+<p><code>tuple</code> (parenthèses) liste immutable de la&nbsp;forme <code>(a, b, c)</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># donne 35</span>
 </code></pre></div>
 
-<p>le tuple est indexé à partir de 0, ses éléments sont séléctionné par un &#8220;slice&#8221;: <code>a[1:3]</code> donne le tuple <code>(2,35)</code> </p>
+<p>le tuple est indexé à partir de 0, ses éléments sont séléctionné par un&nbsp;&#8220;slice&#8221;: <code>a[1:3]</code> donne le&nbsp;tuple <code>(2,35)</code> </p>
 </li>
 <li>
-<p><code>list</code> (crochets) tableau modifiable (dynamique: on peut ajouter ou retrancher d&#8217;éléments), de la forme <code>[1, b, 'c']</code> (les éléments n&#8217;ont pas besoin d&#8217;être du même&nbsp;type)</p>
+<p><code>list</code> (crochets) tableau modifiable (dynamique: on peut ajouter ou retrancher d&#8217;éléments), de la&nbsp;forme <code>[1, b, 'c']</code> (les éléments n&#8217;ont pas besoin d&#8217;être du même&nbsp;type)</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;jusqu&#39;à&quot;</span><span class="p">]</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># donne &quot;jusqu&#39;à&quot;</span>
 </code></pre></div>
 
 </li>
 <li>
-<p><code>set</code> (accolades) immutable ensemble d&#8217;éléments sans répétition et ordonnés <code>{1,8,3} -&gt; {1,3,8}</code>. Par&nbsp;exemple:</p>
+<p><code>set</code> (accolades) immutable ensemble d&#8217;éléments sans répétition et&nbsp;ordonnés <code>{1,8,3} -&gt; {1,3,8}</code>. Par&nbsp;exemple:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># donne {1, 3, 8}</span>
 </code></pre></div>
 
-<p>on peut faire <code>list(set(a))</code> pour transformer le n-uplet <code>a</code> en un tableau modifiable (de type&nbsp;list)</p>
+<p>on peut&nbsp;faire <code>list(set(a))</code> pour transformer le&nbsp;n-uplet <code>a</code> en un tableau modifiable (de type&nbsp;list)</p>
 </li>
 <li>
 <p><code>dict</code> dictionnaire; la syntaxe&nbsp;est </p>
@@ -127,12 +128,12 @@
 <span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># donne dict_values([1,2])</span>
 </code></pre></div>
 
-<p>le dictionnaire associe des clés (étiquettes) (les clés forment un <code>set</code>, elle sont donc uniques, elle peuvent être des mots, mais aussi de nombres), aux données ou valeurs; la liste de valeurs s&#8217;obtient avec la méthode <code>values()</code>:</p>
+<p>le dictionnaire associe des clés (étiquettes) (les clés forment&nbsp;un <code>set</code>, elle sont donc uniques, elle peuvent être des mots, mais aussi de nombres), aux données ou valeurs; la liste de valeurs s&#8217;obtient avec la&nbsp;méthode <code>values()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="s2">&quot;a&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span> <span class="c1"># donne {&#39;a&#39;: 2, &#39;b&#39;: [2,3], 3: 4}, </span>
                                 <span class="c1"># notez la substitution de &quot;a&quot;</span>
 </code></pre></div>
 
-<p>la méthode <code>dico.items()</code> ennumère les clés est les valeurs du dictionaire nommé dico&nbsp;(vérifiez):</p>
+<p>la&nbsp;méthode <code>dico.items()</code> ennumère les clés est les valeurs du dictionaire nommé dico&nbsp;(vérifiez):</p>
 <div class="highlight"><pre><span></span><code><span class="n">dico</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)}</span> <span class="c1"># triangle rectangle</span>
 <span class="k">for</span> <span class="n">clef</span><span class="p">,</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">dico</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">clef</span><span class="o">+</span><span class="s2">&quot; : &quot;</span><span class="p">,</span> <span class="n">valeur</span><span class="p">)</span>
@@ -174,8 +175,8 @@
 </tbody>
 </table>
 
-<p>Le module <code>random</code> contient plusieurs routines de génération de nombres aléatoires. Pour utiliser le module il faut importer le &#8220;générateur&nbsp;aléatoire&#8221;:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<p>Le&nbsp;module <code>random</code> contient plusieurs routines de génération de nombres aléatoires. Pour utiliser le module il faut importer le &#8220;générateur&nbsp;aléatoire&#8221;:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.random</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_rng</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="c1"># 25 nombres aléatoires dans [0,1)</span>
 </code></pre></div>
@@ -225,7 +226,7 @@
 </tr>
 <tr>
 <td>sum</td>
-<td style="text-align: left;">fait la somme des éléments <code>sum(a**2)</code></td>
+<td style="text-align: left;">fait la somme des&nbsp;éléments <code>sum(a**2)</code></td>
 </tr>
 <tr>
 <td>mean</td>
@@ -233,7 +234,7 @@
 </tr>
 <tr>
 <td>where</td>
-<td style="text-align: left;"><code>where(a &gt; 0)</code> <em>tuple</em> contenant un tableau avec les éléments de <code>a</code> positifs</td>
+<td style="text-align: left;"><code>where(a &gt; 0)</code> <em>tuple</em> contenant un tableau avec les éléments&nbsp;de <code>a</code> positifs</td>
 </tr>
 </tbody>
 </table>
@@ -287,7 +288,7 @@
 </tr>
 <tr>
 <td>dot</td>
-<td style="text-align: left;"><code>dot(a,b)</code> contraction du dernier indice de <code>a</code> avec l&#8217;avant-dernier de b</td>
+<td style="text-align: left;"><code>dot(a,b)</code> contraction du dernier indice&nbsp;de <code>a</code> avec l&#8217;avant-dernier de b</td>
 </tr>
 <tr>
 <td>matmul</td>

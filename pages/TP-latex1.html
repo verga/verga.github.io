@@ -49,12 +49,13 @@
 \newcommand{\E}{\mathrm{e}} 
 \newcommand{\D}{\mathop{}\!\mathrm{d}}
 \newcommand{\bra}[1]{\langle{#1}|}
-\newcommand{\ket}[1]{|{#1}\rangle}&nbsp;\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
 <blockquote>
 <p><a href="/pages/ON-index.html">Workshop</a> on scientific&nbsp;typesetting.</p>
 </blockquote>
 <h2>Document&nbsp;structure</h2>
-<p>The <code>.tex</code> source file start with the <code>\documentclass</code> command, followed by the preamble. The preamble contains the list of packages, definitions and new commands.  A simple template to compiled with <strong>lualatex &#8212;shell-escape</strong>:</p>
+<p>The <code>.tex</code> source file start with&nbsp;the <code>\documentclass</code> command, followed by the preamble. The preamble contains the list of packages, definitions and new commands.  A simple template to compiled with <strong>lualatex &#8212;shell-escape</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[11pt,twoside]</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="c">% luatex set fonts</span>
     <span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
@@ -120,7 +121,7 @@ your text
 <p><a href="https://ctan.crest.fr/tex-archive/info/luatex/lualatex-doc/lualatex-doc.pdf">Lualatex</a> is a modern alternative to&nbsp;pdflatex.</p>
 <p>The text of your document may&nbsp;contain:</p>
 <ul>
-<li>the top matter: title, author, institution, address, date; this information can be put in the preamble and typeset with <code>\maketitle</code>:</li>
+<li>the top matter: title, author, institution, address, date; this information can be put in the preamble and typeset&nbsp;with <code>\maketitle</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">\title</span><span class="nb">{</span>Vectorial Space Structure of the Set of Cycles of a Graph<span class="nb">}</span>
 <span class="k">\author</span><span class="nb">{</span>Marc Dupont<span class="k">\\</span>
@@ -142,7 +143,7 @@ your text
 <li>The article is closed with a generally brief&nbsp;conclusion.</li>
 <li>The end matter may contain appendices to the main text, and the references to the cited&nbsp;literature.</li>
 </ul>
-<p>In order to structure your text you may use the <code>\section</code> and <code>\subsection</code> commands:</p>
+<p>In order to structure your text you may use&nbsp;the <code>\section</code> and <code>\subsection</code> commands:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[]</span><span class="nb">{</span>article<span class="nb">}</span>
 ...
 <span class="k">\title</span><span class="nb">{</span>...<span class="nb">}</span>
@@ -186,7 +187,7 @@ open issues and outlook.
 </code></pre></div>
 
 <h3>The&nbsp;bibliography</h3>
-<p><a href="https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management">Bibtex</a> is the bibliography database management program for latex documents. You create a <code>.bib</code> bibliographic data base in the <code>bibtex</code> format. It is convenient to use the <code>biblatex</code> package and the <code>biber</code> engine:</p>
+<p><a href="https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management">Bibtex</a> is the bibliography database management program for latex documents. You create&nbsp;a <code>.bib</code> bibliographic data base in&nbsp;the <code>bibtex</code> format. It is convenient to use&nbsp;the <code>biblatex</code> package and&nbsp;the <code>biber</code> engine:</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">\usepackage</span>[
       backend=biber,
       style=numeric,
@@ -200,8 +201,8 @@ open issues and outlook.
     <span class="k">\bibliography</span><span class="nb">{</span>bibfile<span class="nb">}</span>
 </code></pre></div>
 
-<p>you put in the preamble, where <code>bibfile</code> is the name of your database <code>tplatex.bib</code>, in the example. Then, you put the command <code>\printbibliography</code> where you want the bibliography, in general just before the end of the&nbsp;document.</p>
-<p>An <code>article</code> entry of a <code>.bib</code> file looks&nbsp;as:</p>
+<p>you put in the preamble,&nbsp;where <code>bibfile</code> is the name of your&nbsp;database <code>tplatex.bib</code>, in the example. Then, you put the&nbsp;command <code>\printbibliography</code> where you want the bibliography, in general just before the end of the&nbsp;document.</p>
+<p>An <code>article</code> entry of&nbsp;a <code>.bib</code> file looks&nbsp;as:</p>
 <div class="highlight"><pre><span></span><code>@article<span class="nb">{</span>Schrodinger-1935,
   title = <span class="nb">{</span>Discussion of Probability Relations
            between Separated Systems<span class="nb">}</span>,
@@ -216,7 +217,7 @@ open issues and outlook.
 <span class="nb">}</span>
 </code></pre></div>
 
-<p>or a more recent one, with and <code>url</code> field in addition to the <code>doi</code> one:</p>
+<p>or a more recent one, with&nbsp;and <code>url</code> field in addition to&nbsp;the <code>doi</code> one:</p>
 <div class="highlight"><pre><span></span><code>@article<span class="nb">{</span>Georgescu-2014,
   title = <span class="nb">{</span>Quantum Simulation<span class="nb">}</span>,
   author = <span class="nb">{</span>Georgescu, I. M. and Ashhab, S. and Nori, Franco<span class="nb">}</span>,
@@ -242,7 +243,7 @@ open issues and outlook.
 <span class="nb">}</span>
 </code></pre></div>
 
-<p>To compile a document containing a <code>\bibliography</code> you must execute the&nbsp;sequence:</p>
+<p>To compile a document containing&nbsp;a <code>\bibliography</code> you must execute the&nbsp;sequence:</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nv">pdflatex</span><span class="w"> </span><span class="nv">yourtexfile</span>.<span class="nv">tex</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nv">bibtex</span><span class="w"> </span><span class="nv">yourtexfile</span><span class="w">   </span>#<span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="s2">&quot;biber&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">biblatex</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nv">pdflatex</span><span class="w"> </span><span class="nv">yourtexfile</span>.<span class="nv">tex</span>
@@ -344,7 +345,7 @@ graph<span class="k">\ldots</span>
 <p><img src='/images/TP-1concl.png' style="width:520px;"\img></p>
 </blockquote>
 <p>Collecting all the code snippets you get a pdf like the one in <a href="/pdfs/TP-paper.pdf">this link</a>.</p>
-<p>The general presentation should be simple and clear, the essential questions and achievements of the work well identified. For instance, to better explain the concept of <code>cycle basis</code> it is convenient to draw a graphical&nbsp;example: </p>
+<p>The general presentation should be simple and clear, the essential questions and achievements of the work well identified. For instance, to better explain the concept&nbsp;of <code>cycle basis</code> it is convenient to draw a graphical&nbsp;example: </p>
 <div class="highlight"><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Rc</span><span class="nb">}{</span><span class="k">\draw</span> (0,0)--(0,1)--(1,1)--(1,0)--cycle<span class="nb">}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Tc</span><span class="nb">}{</span><span class="k">\draw</span> (1,0)--(1,1)--(2,0)--cycle<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[hb]

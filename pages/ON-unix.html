@@ -46,30 +46,31 @@
 <article class="article">
   <div class="content">
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
-\newcommand{\E}{\mathrm{e}}&nbsp;\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
+\newcommand{\E}{\mathrm{e}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}\)</span></p>
 <h1>Commandes unix de&nbsp;base</h1>
 <p>Le système d&#8217;exploitation linux, dérivé libre d&#8217;unix, est particulièrement adapté pour le travail en sciences. Les langages de programmation comme C, fortran, python, les compilateurs (e.g. gcc), les bibliothèques (e.g. linpack), ainsi que les technologies web (e.g. html), ou les outils d&#8217;édition scientifique come TeX, ont tous été développés dans le cadre&nbsp;d&#8217;unix.</p>
 <p>À la différence des systèmes dont le but est essentiellement de faire tourner une série (fixe) de logiciels, comme Windows par exemple pour le travail administratif avec Office, le système linux est ouvert: il permet de controller complètement le fonctionnement de votre&nbsp;ordinateur.</p>
-<p>L&#8217;interaction de l&#8217;utilisateur avec le système unix se fait à travers un terminal; le terminal  execute  un programme appelé <code>shell</code>, lequel interprète et exécute à son tour les commandes introduites par l&#8217;utilisateur avec le clavier. Les commandes unix de base sont généralement des mots de deux lettres: ls, cd, mv, rm, qui effectuent des tâches comme afficher la liste de fichiers, changer de dossier, déplacer un fichier ou le supprimer. Les commandes peuvent aussi ouvrir des logiciels, compiler un code, effectuer des mises à jour, ou par exemple, se connecter à un site extérieur pour récupérer des&nbsp;données.</p>
+<p>L&#8217;interaction de l&#8217;utilisateur avec le système unix se fait à travers un terminal; le terminal  execute  un programme&nbsp;appelé <code>shell</code>, lequel interprète et exécute à son tour les commandes introduites par l&#8217;utilisateur avec le clavier. Les commandes unix de base sont généralement des mots de deux lettres: ls, cd, mv, rm, qui effectuent des tâches comme afficher la liste de fichiers, changer de dossier, déplacer un fichier ou le supprimer. Les commandes peuvent aussi ouvrir des logiciels, compiler un code, effectuer des mises à jour, ou par exemple, se connecter à un site extérieur pour récupérer des&nbsp;données.</p>
 <h4>Exercices:</h4>
 <ul>
 <li>
-<p>Ouvrez le terminal et tapez la commande d&#8217;aide <code>man man</code>, ici le commande <code>man</code> affiche les informations à propos de la commande <code>man</code>. Répondez aux questions: common avance-t-on d&#8217;une page? comment revient-on en arrière d&#8217;une page? comment quit-on la&nbsp;commande?</p>
+<p>Ouvrez le terminal et tapez la commande&nbsp;d&#8217;aide <code>man man</code>, ici le&nbsp;commande <code>man</code> affiche les informations à propos de la&nbsp;commande <code>man</code>. Répondez aux questions: common avance-t-on d&#8217;une page? comment revient-on en arrière d&#8217;une page? comment quit-on la&nbsp;commande?</p>
 </li>
 <li>
-<p>Tapez la commande <code>ls</code> et notez la différence avec <code>ls -al</code></p>
+<p>Tapez la&nbsp;commande <code>ls</code> et notez la différence&nbsp;avec <code>ls -al</code></p>
 </li>
 </ul>
 <h2>Fichiers</h2>
-<p>Le système de fichiers d&#8217;unix est organisé selon une structure arborescente, la racine <code>/</code> est le &#8220;parent&#8221; de tous les autres dossiers, elle contienne, entre autres, les répertoires <code>/usr</code> avec les bibliothèques et les exécutable, et le dossier <code>/home</code> qui est la base des utilisateurs: par exemple le répertoire <code>/home/dupont</code> est le &#8220;home directory&#8221; de l&#8217;utilisateur Dupont (attention, unix distingue les majuscules). Un autre répertoire important est <code>/usr/bin</code>, lequel regroupe notamment les commandes du système. Le répertoire <code>/etc</code> contient les fichiers de configuration du&nbsp;système.</p>
-<p>En unix, les fichiers n&#8217;ont pas nécessairement d&#8217;extension (comme txt, pdf, c, png,&#8230;), pour afficher leur type on utilise la commande <code>file</code> suivie du nom du&nbsp;fichier.</p>
-<p>Le nom d&#8217;un fichier peut être absolu, quand il est spécifié par son chemin depuis la racine, par exemple <code>/home/dupont/Documents/Textes/notes.txt</code>, ou relatif, quand son chemin commence par le dossier courant; dans l&#8217;exemple précédent si on se trouve sur Documents, ce serait <code>Textes/notes.txt</code>. </p>
+<p>Le système de fichiers d&#8217;unix est organisé selon une structure arborescente, la&nbsp;racine <code>/</code> est le &#8220;parent&#8221; de tous les autres dossiers, elle contienne, entre autres, les&nbsp;répertoires <code>/usr</code> avec les bibliothèques et les exécutable, et le&nbsp;dossier <code>/home</code> qui est la base des utilisateurs: par exemple le&nbsp;répertoire <code>/home/dupont</code> est le &#8220;home directory&#8221; de l&#8217;utilisateur Dupont (attention, unix distingue les majuscules). Un autre répertoire important&nbsp;est <code>/usr/bin</code>, lequel regroupe notamment les commandes du système. Le&nbsp;répertoire <code>/etc</code> contient les fichiers de configuration du&nbsp;système.</p>
+<p>En unix, les fichiers n&#8217;ont pas nécessairement d&#8217;extension (comme txt, pdf, c, png,&#8230;), pour afficher leur type on utilise la&nbsp;commande <code>file</code> suivie du nom du&nbsp;fichier.</p>
+<p>Le nom d&#8217;un fichier peut être absolu, quand il est spécifié par son chemin depuis la racine, par&nbsp;exemple <code>/home/dupont/Documents/Textes/notes.txt</code>, ou relatif, quand son chemin commence par le dossier courant; dans l&#8217;exemple précédent si on se trouve sur Documents, ce&nbsp;serait <code>Textes/notes.txt</code>. </p>
 <h3><code>ls, cd, pwd, du</code></h3>
-<p><code>ls</code> liste les fichiers du répertoire courant; pour savoir dans quel dossier vous êtes, tapez <code>pwd</code> (present working directory); pour changer de dossier tapez <code>cd</code> suivi du chemin de votre dossier (path). Le dossier présent est désigné par un point <code>.</code>, le dossier parent par <code>..</code>, le dossier parent du parent <code>../..</code>, la racine par <code>/</code>; le dossier home par <code>~</code>. Par exemple, le chemin vers votre dossier Documents est <code>/home/dupont/Documents</code> ou <code>~</code>. </p>
-<p>La commande <code>du</code> sert à afficher la taille des répertoires: <code>du -sh Documents/*</code> donne la taille totale (option -s) en unités lisibles (option -h); l&#8217;étoile (*) liste tous les sous-dossiers et fichiers dans&nbsp;Documents.</p>
+<p><code>ls</code> liste les fichiers du répertoire courant; pour savoir dans quel dossier vous êtes,&nbsp;tapez <code>pwd</code> (present working directory); pour changer de dossier&nbsp;tapez <code>cd</code> suivi du chemin de votre dossier (path). Le dossier présent est désigné par un&nbsp;point <code>.</code>, le dossier parent&nbsp;par <code>..</code>, le dossier parent du&nbsp;parent <code>../..</code>, la racine&nbsp;par <code>/</code>; le dossier home&nbsp;par <code>~</code>. Par exemple, le chemin vers votre dossier Documents&nbsp;est <code>/home/dupont/Documents</code> ou <code>~</code>. </p>
+<p>La&nbsp;commande <code>du</code> sert à afficher la taille des&nbsp;répertoires: <code>du -sh Documents/*</code> donne la taille totale (option -s) en unités lisibles (option -h); l&#8217;étoile (*) liste tous les sous-dossiers et fichiers dans&nbsp;Documents.</p>
 <h4>Exercices:</h4>
 <ul>
-<li>Tapez successivement <code>cd / &lt;CR&gt;</code> (<code>&lt;CR&gt;</code> c&#8217;est return &#8212;retour chariot), <code>pwd &lt;CR&gt;</code>, <code>cd &lt;CR&gt;</code> et enfin <code>pwd</code> Où est allez vous vous&nbsp;promener?</li>
+<li>Tapez&nbsp;successivement <code>cd / &lt;CR&gt;</code> (<code>&lt;CR&gt;</code> c&#8217;est return &#8212;retour&nbsp;chariot), <code>pwd &lt;CR&gt;</code>, <code>cd &lt;CR&gt;</code> et&nbsp;enfin <code>pwd</code> Où est allez vous vous&nbsp;promener?</li>
 </ul>
 <table>
 <thead>
@@ -103,7 +104,7 @@
 <tr>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><code>ls -lh *.pdf</code> liste les fichiers pdf avec la taille exprimée en Kb, Mb, Gb (<code>-h</code>)</td>
+<td style="text-align: left;"><code>ls -lh *.pdf</code> liste les fichiers pdf avec la taille exprimée en Kb, Mb, Gb&nbsp;(<code>-h</code>)</td>
 </tr>
 <tr>
 <td style="text-align: left;">cd path</td>
@@ -123,7 +124,7 @@
 <tr>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><code>~/.config/nvim</code>  va au sous-dossier nvim du répertoire caché .config de <code>/home/$USER</code></td>
+<td style="text-align: left;"><code>~/.config/nvim</code>  va au sous-dossier nvim du répertoire caché .config&nbsp;de <code>/home/$USER</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">pwd</td>
@@ -153,12 +154,12 @@
 </tbody>
 </table>
 <h3><code>mkdir, cp, mv, rm, touch, source</code></h3>
-<p>Pour créer un dossier il suffit de taper <code>mkdir nomdudossier</code>. Si vous faites <code>mkdir nom du dossier</code> vous créez trois dossiers&#8230; Un nom avec espaces doit être mis entre guillemets, ou utiliser le caractère d&#8217;échappement <code>\</code> comme dans <code>nom\ du\ dossier</code>.</p>
-<p><code>cp fichier1 fichier2</code> crée le deuxième fichier, copie du premier; la commande <code>cp imgage1.png images/</code> copie &#8220;image1.png&#8221; dans le dossier &#8220;images&#8221; avec le même nom (notez, c&#8217;est important, que le chemin fini par un slash, ou barre, qui est le caractère de séparation des&nbsp;dossiers).</p>
-<p>Pour renommer ou transférer un fichier &#8220;file1.txt&#8221; vers un autre dossier on utilise <code>mv</code>: <code>mv file1.txt ../.</code> met le fichier dans le dossier parent; <code>mv file1.txt fichier1.txt</code> change le nom (en&nbsp;français).</p>
-<p>Le caractère <code>*</code> (wildcard pattern) remplace zero ou plus des caractères: par exemple, <code>*.pdf</code> désigne tous le noms de fishier avec extension <code>.pdf</code> (portable document file). Si vous voulez nommer les fichiers <code>a1, a2, a2, a4</code> vous pouvez ne pas répéter la partie commune avec <code>a{1,2,3,4}</code> ou encore <code>a{1..4}</code>. Ces raccourcis peuvent être utilisés avec les commandes de&nbsp;fichiers.</p>
-<p>La commande <code>rm</code> efface irréversiblement fichiers et dossiers: <code>rm *.pdf</code> efface du répertoire courant les fichiers dont le nom termine par <code>.pdf</code>; <code>rm -rf rep1/</code> efface l&#8217;arborescence commençant par le repertoire rep1 (sous-répertoire du répertoire&nbsp;courant).</p>
-<p>Pour créer un fichier vide on peut faire <code>touch nom</code> (cette commende actualise la date si nom existe déjà); un autre façon de créer un fichier vide est d&#8217;utiliser la redirection <code>&gt;</code>, par exemple <code>&gt; nom.txt</code> crée le fichier nom.txt en y ajoutant rien. Cette dernière recette vous permet par exemple, de créer un fichier contenant la sortie de ls: <code>ls -l Documents/* &gt; "liste de mes dossiers.txt"</code></p>
+<p>Pour créer un dossier il suffit de&nbsp;taper <code>mkdir nomdudossier</code>. Si vous&nbsp;faites <code>mkdir nom du dossier</code> vous créez trois dossiers&#8230; Un nom avec espaces doit être mis entre guillemets, ou utiliser le caractère&nbsp;d&#8217;échappement <code>\</code> comme&nbsp;dans <code>nom\ du\ dossier</code>.</p>
+<p><code>cp fichier1 fichier2</code> crée le deuxième fichier, copie du premier; la&nbsp;commande <code>cp imgage1.png images/</code> copie &#8220;image1.png&#8221; dans le dossier &#8220;images&#8221; avec le même nom (notez, c&#8217;est important, que le chemin fini par un slash, ou barre, qui est le caractère de séparation des&nbsp;dossiers).</p>
+<p>Pour renommer ou transférer un fichier &#8220;file1.txt&#8221; vers un autre dossier on&nbsp;utilise <code>mv</code>: <code>mv file1.txt ../.</code> met le fichier dans le dossier&nbsp;parent; <code>mv file1.txt fichier1.txt</code> change le nom (en&nbsp;français).</p>
+<p>Le&nbsp;caractère <code>*</code> (wildcard pattern) remplace zero ou plus des caractères: par&nbsp;exemple, <code>*.pdf</code> désigne tous le noms de fishier avec&nbsp;extension <code>.pdf</code> (portable document file). Si vous voulez nommer les&nbsp;fichiers <code>a1, a2, a2, a4</code> vous pouvez ne pas répéter la partie commune&nbsp;avec <code>a{1,2,3,4}</code> ou&nbsp;encore <code>a{1..4}</code>. Ces raccourcis peuvent être utilisés avec les commandes de&nbsp;fichiers.</p>
+<p>La&nbsp;commande <code>rm</code> efface irréversiblement fichiers et&nbsp;dossiers: <code>rm *.pdf</code> efface du répertoire courant les fichiers dont le nom termine&nbsp;par <code>.pdf</code>; <code>rm -rf rep1/</code> efface l&#8217;arborescence commençant par le repertoire rep1 (sous-répertoire du répertoire&nbsp;courant).</p>
+<p>Pour créer un fichier vide on peut&nbsp;faire <code>touch nom</code> (cette commende actualise la date si nom existe déjà); un autre façon de créer un fichier vide est d&#8217;utiliser la&nbsp;redirection <code>&gt;</code>, par&nbsp;exemple <code>&gt; nom.txt</code> crée le fichier nom.txt en y ajoutant rien. Cette dernière recette vous permet par exemple, de créer un fichier contenant la sortie de&nbsp;ls: <code>ls -l Documents/* &gt; "liste de mes dossiers.txt"</code></p>
 <table>
 <thead>
 <tr>
@@ -206,12 +207,12 @@
 <tr>
 <td style="text-align: left;">touch</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">crée un fichier vide: <code>touch note.txt</code></td>
+<td style="text-align: left;">crée un fichier&nbsp;vide: <code>touch note.txt</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">source</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">sert à mettre à jour un script shell: <code>source ~/.config/nvim/init.vim</code></td>
+<td style="text-align: left;">sert à mettre à jour un script&nbsp;shell: <code>source ~/.config/nvim/init.vim</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
@@ -221,11 +222,11 @@
 </tbody>
 </table>
 <h3><code>tar, gzip</code></h3>
-<p>Pour créer un archive des fichiers et le compresser on utilise la commande <code>tar</code>; son format est <code>tar -options tarfile /path/dossier/</code> avec les options <code>-cf</code> pour créer (c) l&#8217;archive tar (f) nommé tarfile, avec les fichiers contenus dans /path/dossier/ (notez le slash final!). Si vous voulez compresser l&#8217;archive tarfile il suffit d&#8217;ajouter l&#8217;option <code>z</code>, qui applique la commande gzip&nbsp;automatiquement:</p>
+<p>Pour créer un archive des fichiers et le compresser on utilise la&nbsp;commande <code>tar</code>; son format&nbsp;est <code>tar -options tarfile /path/dossier/</code> avec les&nbsp;options <code>-cf</code> pour créer (c) l&#8217;archive tar (f) nommé tarfile, avec les fichiers contenus dans /path/dossier/ (notez le slash final!). Si vous voulez compresser l&#8217;archive tarfile il suffit d&#8217;ajouter&nbsp;l&#8217;option <code>z</code>, qui applique la commande gzip&nbsp;automatiquement:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-cvzf<span class="w"> </span>mes_codes.tar.gz<span class="w"> </span>~/codes/
 </code></pre></div>
 
-<p>crée l&#8217;archive mes_codes (avec les extensions correspondant a <code>tar</code> et <code>gzip</code>) avec les fichiers dans votre dossier codes. La&nbsp;commande:</p>
+<p>crée l&#8217;archive mes_codes (avec les extensions correspondant&nbsp;a <code>tar</code> et <code>gzip</code>) avec les fichiers dans votre dossier codes. La&nbsp;commande:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-xvf<span class="w"> </span>mes_codes.tar.gz
 </code></pre></div>
 
@@ -233,9 +234,9 @@
 <div class="highlight"><pre><span></span><code><span class="w">    </span>tar<span class="w"> </span>-xvf<span class="w"> </span>mes_codes.tar.gz<span class="w"> </span>-C<span class="w"> </span>codes_1
 </code></pre></div>
 
-<p>crée le dossier codes_1 avec les fichiers dans l&#8217;archive mes_codes.tar. L&#8217;option <code>-v</code> (verbose) affiche des information sur le résultat de la&nbsp;commande.</p>
+<p>crée le dossier codes_1 avec les fichiers dans l&#8217;archive mes_codes.tar.&nbsp;L&#8217;option <code>-v</code> (verbose) affiche des information sur le résultat de la&nbsp;commande.</p>
 <h3><code>cat, more, head, tail</code></h3>
-<p>Souvent on veut inspecter le contenu d&#8217;un fichier sans l&#8217;ouvrir. <code>cat</code> affiche dans le terminal la totalité du fichier, <code>more</code> affiche page para page (on peut aussi utiliser <code>less</code> qui est plus souple); <code>head</code> and <code>tail</code> montrent le début et la fin du fichier (par défaut 10 ligne, avec l&#8217;option -n 12, vous affichez 12&nbsp;lignes).</p>
+<p>Souvent on veut inspecter le contenu d&#8217;un fichier sans&nbsp;l&#8217;ouvrir. <code>cat</code> affiche dans le terminal la totalité du&nbsp;fichier, <code>more</code> affiche page para page (on peut aussi&nbsp;utiliser <code>less</code> qui est plus&nbsp;souple); <code>head</code> and <code>tail</code> montrent le début et la fin du fichier (par défaut 10 ligne, avec l&#8217;option -n 12, vous affichez 12&nbsp;lignes).</p>
 <p>Si vous avez deux fichiers f1.txt et f2.txt et vous voulez créer un fichier contenant f1 et f2 à la suite vous&nbsp;faites:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>cat<span class="w"> </span>f1.txt<span class="w"> </span>f2.txt<span class="w"> </span>&gt;<span class="w"> </span>f3.txt
 </code></pre></div>
@@ -262,27 +263,27 @@
 
 <p>affiche la liste des fichiers .html contenant le tag &#8216;&lt;strong&gt;&#8217; (les guillemets sont nécessaires), du dossier&nbsp;&#8216;codes&#8217;.</p>
 <h2>Shell</h2>
-<p>Le shell, c&#8217;est-à-dire le logiciel qui tourne sur votre terminal (pour simplifier), vous permet de contrôler votre ordinateur. Comme on l&#8217;a vu vous pouvez explorer le système de fichiers, vous pouvez lancer l&#8217;exécution des applications, ou la compilation des vos codes python, fortran, C ou latex; vous pouvez créer des nouveaux fichiers en utilisant l&#8217;éditeur (par exemple <code>vim</code> ou <code>nvim</code>, si neovim est&nbsp;installé).</p>
-<p>Chaque programme actif est, sous unix, un processus contrôlé par le système (linux ou macos); pour obtenir une liste des processus on peut faire <code>top</code> (&#8216;q&#8217; pour quitter). <code>top</code> affiche le <span class="caps">PID</span> (process identifier), que vous permet de tuer un processus bloqué: <code>kill -9 1234</code> arrête le processus 1234 (où 1234 est, par exemple, le navigateur, ou la commande que vous avez lancée et que ne réponds&nbsp;plus).</p>
+<p>Le shell, c&#8217;est-à-dire le logiciel qui tourne sur votre terminal (pour simplifier), vous permet de contrôler votre ordinateur. Comme on l&#8217;a vu vous pouvez explorer le système de fichiers, vous pouvez lancer l&#8217;exécution des applications, ou la compilation des vos codes python, fortran, C ou latex; vous pouvez créer des nouveaux fichiers en utilisant l&#8217;éditeur (par&nbsp;exemple <code>vim</code> ou <code>nvim</code>, si neovim est&nbsp;installé).</p>
+<p>Chaque programme actif est, sous unix, un processus contrôlé par le système (linux ou macos); pour obtenir une liste des processus on peut&nbsp;faire <code>top</code> (&#8216;q&#8217; pour&nbsp;quitter). <code>top</code> affiche le <span class="caps">PID</span> (process identifier), que vous permet de tuer un processus&nbsp;bloqué: <code>kill -9 1234</code> arrête le processus 1234 (où 1234 est, par exemple, le navigateur, ou la commande que vous avez lancée et que ne réponds&nbsp;plus).</p>
 <h2>Éditeur:&nbsp;vim</h2>
 <p>L&#8217;éditeur <code>vim</code> est accessible depuis le terminal; il est présent dans toute distribution unix. C&#8217;est l&#8217;éditeur de choix de beaucoup de développeurs, particulièrement adapté à la programmation (python, fortran, latex, par exemple). Sa caractéristique distinctive c&#8217;est qu&#8217;il possède différents&nbsp;modes:</p>
 <ul>
 <li>
-<p>le mode normal, auquel on accède en tapant vim dans le shell, attend des commandes; les commandes ont souvent la forme <code>ncm</code> avec <code>n</code> un nombre, <code>c</code> une commande (ou action) et <code>m</code> un mouvement (ou objet: ligne, mot, paragraphe&#8230;).  Par exemple, <code>3dw</code> efface (deletes) 3 mots (words). La commande <code>i</code> change en mode&nbsp;insertion;</p>
+<p>le mode normal, auquel on accède en tapant vim dans le shell, attend des commandes; les commandes ont souvent la&nbsp;forme <code>ncm</code> avec <code>n</code> un&nbsp;nombre, <code>c</code> une commande (ou action)&nbsp;et <code>m</code> un mouvement (ou objet: ligne, mot, paragraphe&#8230;).  Par&nbsp;exemple, <code>3dw</code> efface (deletes) 3 mots (words). La&nbsp;commande <code>i</code> change en mode&nbsp;insertion;</p>
 </li>
 <li>
-<p>le mode insertion, qui correspond en fait au mode dans lequel on écrit son texte comme dans un éditeur usuel; on quite le mode d&#8217;insertion en frappant <code>&lt;ESC&gt;</code> (touche&nbsp;escape)</p>
+<p>le mode insertion, qui correspond en fait au mode dans lequel on écrit son texte comme dans un éditeur usuel; on quite le mode d&#8217;insertion en&nbsp;frappant <code>&lt;ESC&gt;</code> (touche&nbsp;escape)</p>
 </li>
 <li>
-<p>le mode visuel, qui permet de sélectionner du texte (horizontalement et verticalement), auquel on accède depuis le mode normal en tapant <code>v</code>;</p>
+<p>le mode visuel, qui permet de sélectionner du texte (horizontalement et verticalement), auquel on accède depuis le mode normal en&nbsp;tapant <code>v</code>;</p>
 </li>
 <li>
-<p>le mode commande, accessible par <code>:</code>, qui sert à faire des recherches et remplacements, manipuler les lignes, ouvrir ou fermer des fichiers (buffers, windows,&nbsp;tabs)</p>
+<p>le mode commande, accessible&nbsp;par <code>:</code>, qui sert à faire des recherches et remplacements, manipuler les lignes, ouvrir ou fermer des fichiers (buffers, windows,&nbsp;tabs)</p>
 </li>
 </ul>
-<p>On quite vim avec la commande <code>:wq</code> (on sauve <code>w</code> et on se sauve <code>q</code>). Notez que les commandes élémentaires n&#8217;ont qu&#8217;un caractère: en les combinant on peut effectuer des tâches complexes. Certaines commandes, commençant par <code>g</code> ou <code>z</code>, comportent deux&nbsp;caractères.</p>
+<p>On quite vim avec la&nbsp;commande <code>:wq</code> (on&nbsp;sauve <code>w</code> et on se&nbsp;sauve <code>q</code>). Notez que les commandes élémentaires n&#8217;ont qu&#8217;un caractère: en les combinant on peut effectuer des tâches complexes. Certaines commandes, commençant&nbsp;par <code>g</code> ou <code>z</code>, comportent deux&nbsp;caractères.</p>
 <h4>Exercice</h4>
-<p>Asseyez-vous. Tapez <code>vim</code> et une fois le logiciel ouvert (cet instantané) tapez <code>:Tutor</code> Levez vous une heure&nbsp;après.</p>
+<p>Asseyez-vous.&nbsp;Tapez <code>vim</code> et une fois le logiciel ouvert (cet instantané)&nbsp;tapez <code>:Tutor</code> Levez vous une heure&nbsp;après.</p>
 <h4>Commandes&nbsp;basiques</h4>
 <dl>
 <dt><code>&lt;ESC&gt;</code></dt>
@@ -306,11 +307,11 @@
 <dt><code>f F t T</code></dt>
 <dd><span class="math">\(-\)</span> effectuent des mouvements du curseur sur la ligne: (fa) avance jusqu&#8217;au premier &#8216;a&#8217;, (F) va dans le sens opposé; (ta) avance jusqu&#8217;au caractère qui précède, et (T), va dans la direction&nbsp;opposée.</dd>
 <dt><code>x dd d</code></dt>
-<dd><span class="math">\(-\)</span> efface un caractère (x) ou n caratères (nx); (dd) efface la ligne, et (d) suivi d&#8217;un mouvement efface jusqu&#8217;à la nouvelle position du curseur: pour effacer un mot on fait <code>dw</code>, pour effacer 3 mots contenant de nombres <code>d3W</code> </dd>
+<dd><span class="math">\(-\)</span> efface un caractère (x) ou n caratères (nx); (dd) efface la ligne, et (d) suivi d&#8217;un mouvement efface jusqu&#8217;à la nouvelle position du curseur: pour effacer un mot on&nbsp;fait <code>dw</code>, pour effacer 3 mots contenant de&nbsp;nombres <code>d3W</code> </dd>
 <dt><code>r s c C</code></dt>
-<dd><span class="math">\(-\)</span> (r) remplace un caractère et reste en mode normal, (s) substitue le caractère sous le curseur et passe en mode insertion; pour changer le mot entier on utilise <code>c</code> ou <code>C</code> pour une chaîne&nbsp;alpha-numérique.</dd>
+<dd><span class="math">\(-\)</span> (r) remplace un caractère et reste en mode normal, (s) substitue le caractère sous le curseur et passe en mode insertion; pour changer le mot entier on&nbsp;utilise <code>c</code> ou <code>C</code> pour une chaîne&nbsp;alpha-numérique.</dd>
 <dt><code>y yy p P</code></dt>
-<dd><span class="math">\(-\)</span> pour sélectionner un texte on fait <code>y</code> suivi d&#8217;un mouvement, par exemple <code>y$</code> copie le texte jusqu&#8217;à la fin de la ligne courante; <code>p</code> colle le texte sélectionné par <code>y</code> après le curseur et <code>P</code> à partir de la position du curseur; (yy) copie la ligne. Grosso modo, y correspond à copier et p a&nbsp;coller.</dd>
+<dd><span class="math">\(-\)</span> pour sélectionner un texte on&nbsp;fait <code>y</code> suivi d&#8217;un mouvement, par&nbsp;exemple <code>y$</code> copie le texte jusqu&#8217;à la fin de la ligne&nbsp;courante; <code>p</code> colle le texte sélectionné&nbsp;par <code>y</code> après le curseur&nbsp;et <code>P</code> à partir de la position du curseur; (yy) copie la ligne. Grosso modo, y correspond à copier et p a&nbsp;coller.</dd>
 <dt><code>u ^r</code></dt>
 <dd><span class="math">\(-\)</span> (undo) remonte la liste de tous les changements en remettant le texte dans son état précédent; control r remet l&#8217;état à l&#8217;état&nbsp;présent</dd>
 </dl>

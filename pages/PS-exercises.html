@@ -51,14 +51,15 @@
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
-\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}
+\newcommand{\bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
 <h2>Selected&nbsp;problems</h2>
 <h3>1</h3>
-<p>Microcanonical ensemble: the harmonic oscillator. Compute the volume of phase space inside the surface of constant energy <span class="math">\(H &lt; E\)</span> (<span class="math">\(H\)</span> is the hamiltonian of a system of <span class="math">\(N\)</span> oscillators). Deduce the entropy. Show that the result do not depend on the value <span class="math">\(\Delta\)</span> of the energy shell&nbsp;thickness. </p>
-<p>Solve the same problem for a set of <span class="math">\(N\)</span> quantum harmonic oscillators, taking into account that bosons are&nbsp;indistinguishable.</p>
+<p>Microcanonical ensemble: the harmonic oscillator. Compute the volume of phase space inside the surface of constant&nbsp;energy <span class="math">\(H &lt; E\)</span> (<span class="math">\(H\)</span> is the hamiltonian of a system&nbsp;of <span class="math">\(N\)</span> oscillators). Deduce the entropy. Show that the result do not depend on the&nbsp;value <span class="math">\(\Delta\)</span> of the energy shell&nbsp;thickness. </p>
+<p>Solve the same problem for a set&nbsp;of <span class="math">\(N\)</span> quantum harmonic oscillators, taking into account that bosons are&nbsp;indistinguishable.</p>
 <p>Compare the expression of the energy as a function of the temperature in both, classical and quantum,&nbsp;cases.</p>
 <h3>2</h3>
 <p>Canonical and grand canonical ensembles: classical disordered system. Calculate the canonical partition function of a system whose hamiltonian energy&nbsp;is
@@ -67,8 +68,8 @@
 H = \sum_n \frac{p_n^2}{2m} + \sum_n \sum_x w(\bm r_n - R_x)
 $$</div>
 <p>
-where <span class="math">\(n\)</span> labels the particle (<span class="math">\(n=1,\ldots,N\)</span>, for <span class="math">\(N\)</span> particles) and <span class="math">\(x\)</span> labels the impurities located at random positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>, for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the temperature, <span class="math">\(\mu\)</span> the chemical potential, and <span class="math">\(V\)</span> the&nbsp;volume).</p>
-<p>Assume that the range of the interaction energy <span class="math">\(w\)</span> is small compared to the distance between impurities (diluted system), and that the impurities distribution is uniform (of density <span class="math">\(n_i = N_i/V\)</span>). Using these assumptions calculate the averaged value of the logarithm of <span class="math">\(Z\)</span> and show&nbsp;that
+where <span class="math">\(n\)</span> labels the particle&nbsp;(<span class="math">\(n=1,\ldots,N\)</span>,&nbsp;for <span class="math">\(N\)</span> particles)&nbsp;and <span class="math">\(x\)</span> labels the impurities located at random&nbsp;positions <span class="math">\(\bm R_x\)</span> (<span class="math">\(x = 1, \ldots, N_i\)</span>,&nbsp;for <span class="math">\(N_i\)</span> impurities); <span class="math">\(p_n\)</span> and <span class="math">\(r_n\)</span> are the momenta and positions of the particles. Using the canonical partition function&nbsp;for <span class="math">\(N\)</span> particles <span class="math">\(Z_N(T,V)\)</span>, compute the grand canonical partition&nbsp;function <span class="math">\(Z(\mu,T,V)\)</span> (<span class="math">\(T\)</span> is the&nbsp;temperature, <span class="math">\(\mu\)</span> the chemical potential,&nbsp;and <span class="math">\(V\)</span> the&nbsp;volume).</p>
+<p>Assume that the range of the interaction&nbsp;energy <span class="math">\(w\)</span> is small compared to the distance between impurities (diluted system), and that the impurities distribution is uniform (of&nbsp;density <span class="math">\(n_i = N_i/V\)</span>). Using these assumptions calculate the averaged value of the logarithm&nbsp;of <span class="math">\(Z\)</span> and show&nbsp;that
 </p>
 <div class="math">$$
 \braket{\ln Z(\mu,T,V)} = \frac{\E^{\mu/T} V}{\lambda^3} \E^{n_i v_0}, \quad v_0 = \int \D \bm R (\E^{-w(\bm R)/T} - 1),
@@ -83,15 +84,15 @@ where <span class="math">\(v_0\)</span> is the characteristic volume of the part
 p(s) = \frac{\pi s}{2} \E^{-s^2/4}
 $$</div>
 <p>
-for the level spacing distribution of orthogonal random matrices, using the case of a <span class="math">\(2 \times 2\)</span>&nbsp;matrix.</p>
+for the level spacing distribution of orthogonal random matrices, using the case of&nbsp;a <span class="math">\(2 \times 2\)</span> matrix.</p>
 <blockquote>
 <p><img src="/images/goe.png" alt="GOE" style="height: 200px;"/> </p>
 <p>Wigner surmise (red line) and histogram of a <em>single</em> large&nbsp;matrix.</p>
 </blockquote>
 <p>Investigate the properties of the spectrum&nbsp;numerically.</p>
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Compute the level spacings of a matrix in the GOE&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvalsh</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">eigvalsh</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">523</span><span class="p">)</span> <span class="c1"># seed</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># matrix size</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># nxn gaussian numbers</span>
@@ -102,7 +103,7 @@ for the level spacing distribution of orthogonal random matrices, using the case
 </code></pre></div>
 
 <h3>4</h3>
-<p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
+<p>Identity of particles. Find the joint probability density of 2 bosons (and 2 fermions) to be at&nbsp;positions <span class="math">\(\bm x_1\)</span> and <span class="math">\(\bm x_2\)</span>,
 </p>
 <div class="math">$$
 \braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2}
@@ -114,16 +115,16 @@ using the canonical quantum&nbsp;ensemble
 \rho(H) = \frac{\E^{-H/T}}{Z_2(T,V)}, \quad H = \frac{\bm p_1^2 + \bm p_2^2}{2m}
 $$</div>
 <p>
-density matrix; <span class="math">\(H\)</span> is the hamiltonian of the two identical&nbsp;particles.</p>
+density&nbsp;matrix; <span class="math">\(H\)</span> is the hamiltonian of the two identical&nbsp;particles.</p>
 <p>Show that it is given by the&nbsp;formula
 </p>
 <div class="math">$$
 \braket{\bm x_1 \bm x_2 | \rho(H) | \bm x_1 \bm x_2} = \frac{1}{2\lambda^6 Z_2} \big(1 \pm \E^{-2\pi |\bm x_1 - \bm x_2|^2/\lambda^2}\big)
 $$</div>
 <p>
-where <span class="math">\(\lambda\)</span> is the thermal length at temperature <span class="math">\(T\)</span>. Deduce the expression of the two particles partition function <span class="math">\(Z_2(T,V)\)</span>, and compare the result with the classical&nbsp;one.</p>
+where <span class="math">\(\lambda\)</span> is the thermal length at&nbsp;temperature <span class="math">\(T\)</span>. Deduce the expression of the two particles partition&nbsp;function <span class="math">\(Z_2(T,V)\)</span>, and compare the result with the classical&nbsp;one.</p>
 <h3>5</h3>
-<p>Bose-Einsein condensate. Demonstrate that <span class="math">\(N\)</span> free bosons in two dimension do not form a condensate; show in particular that the critical temperature <span class="math">\(T_c\)</span> (signaling the quantum dominated regime) vanishes like <span class="math">\(T_c \rightarrow 1/\ln N\)</span> in the thermodynamic&nbsp;limit.</p>
+<p>Bose-Einsein condensate. Demonstrate&nbsp;that <span class="math">\(N\)</span> free bosons in two dimension do not form a condensate; show in particular that the critical&nbsp;temperature <span class="math">\(T_c\)</span> (signaling the quantum dominated regime) vanishes&nbsp;like <span class="math">\(T_c \rightarrow 1/\ln N\)</span> in the thermodynamic&nbsp;limit.</p>
 <p>In contrast to the free case, demonstrate that in a harmonic trap, a two-dimensional gas of bosons do forms a condensate. Show that in this case the critical temperature&nbsp;is
 </p>
 <div class="math">$$
@@ -132,20 +133,20 @@ $$</div>
 <p>
 where <span class="math">\(\omega\)</span> the harmonic oscillator&nbsp;frequency. </p>
 <h3>6</h3>
-<p>Thermionic emission. Electrons in a metal at temperature <span class="math">\(T\)</span> can escape the surface energy barrier <span class="math">\(-W\)</span> if their velocity <span class="math">\(p_z/m\)</span> (perpendicular to the surface) satisfies <span class="math">\(p_z &gt; \sqrt{2 m W}\)</span> (<span class="math">\(m\)</span> is the electron mass and <span class="math">\(\bm p\)</span> its momentum). Using the Fermi-Dirac distribution <span class="math">\(n_\epsilon\)</span> show that the thermionic current&nbsp;is
+<p>Thermionic emission. Electrons in a metal at&nbsp;temperature <span class="math">\(T\)</span> can escape the surface energy&nbsp;barrier <span class="math">\(-W\)</span> if their&nbsp;velocity <span class="math">\(p_z/m\)</span> (perpendicular to the surface)&nbsp;satisfies <span class="math">\(p_z &gt; \sqrt{2 m W}\)</span> (<span class="math">\(m\)</span> is the electron mass&nbsp;and <span class="math">\(\bm p\)</span> its momentum). Using the Fermi-Dirac&nbsp;distribution <span class="math">\(n_\epsilon\)</span> show that the thermionic current&nbsp;is
 </p>
 <div class="math">$$j = \frac{emT^2}{2\pi^2 \hbar^3} \exp\left(-\frac{W - \epsilon_F}{T}\right)$$</div>
 <p>
-where <span class="math">\(\epsilon_F\)</span> is the fermi energy (<span class="math">\(k_\mathrm{B} = 1\)</span>). </p>
-<p>Use units such that <span class="math">\(e = W = m = \hbar = 1\)</span>. Assume that typical particle energies are larger than <span class="math">\(W\)</span> (otherwise emission is impossible). Compare the quantum result with the classical&nbsp;one.</p>
+where <span class="math">\(\epsilon_F\)</span> is the fermi energy&nbsp;(<span class="math">\(k_\mathrm{B} = 1\)</span>). </p>
+<p>Use units such&nbsp;that <span class="math">\(e = W = m = \hbar = 1\)</span>. Assume that typical particle energies are larger&nbsp;than <span class="math">\(W\)</span> (otherwise emission is impossible). Compare the quantum result with the classical&nbsp;one.</p>
 <h3>7</h3>
-<p>Paramagnetism and diamagnetism. The energy of a particle in a magnetic field <span class="math">\(\bm B\)</span> is, firstly neglecting the orbital&nbsp;contribution,
+<p>Paramagnetism and diamagnetism. The energy of a particle in a magnetic&nbsp;field <span class="math">\(\bm B\)</span> is, firstly neglecting the orbital&nbsp;contribution,
 </p>
 <div class="math">$$
 H = \frac{p^2}{2m} + \mu_B \bm \sigma \cdot \bm B, \quad \epsilon_{\bm k} = \frac{(\hbar k)^2}{2m} \pm \mu_B B,
 $$</div>
 <p>
-where <span class="math">\(\bm \sigma \cdot \bm B\)</span> has eigenvalues <span class="math">\(\pm 1\)</span> (<span class="math">\(m\)</span> is the particle mass, <span class="math">\(\hbar \bm k\)</span> its momentum <span class="math">\(\bm p\)</span> eigenvalue, and <span class="math">\(\mu_B\)</span> the Bohr magneton; we put <span class="math">\(g=2\)</span>). Find the magnetic susceptibility <span class="math">\(\chi = \mu_0 M/B\)</span> (at zero field, <span class="math">\(\mu_0\)</span> is the vacuum&nbsp;permeability).</p>
+where <span class="math">\(\bm \sigma \cdot \bm B\)</span> has&nbsp;eigenvalues <span class="math">\(\pm 1\)</span> (<span class="math">\(m\)</span> is the particle&nbsp;mass, <span class="math">\(\hbar \bm k\)</span> its&nbsp;momentum <span class="math">\(\bm p\)</span> eigenvalue,&nbsp;and <span class="math">\(\mu_B\)</span> the Bohr magneton; we&nbsp;put <span class="math">\(g=2\)</span>). Find the magnetic&nbsp;susceptibility <span class="math">\(\chi = \mu_0 M/B\)</span> (at zero&nbsp;field, <span class="math">\(\mu_0\)</span> is the vacuum&nbsp;permeability).</p>
 <p>Secondly, compute the orbital contribution to the susceptibility, coming from the kinetic&nbsp;term:
 </p>
 <div class="math">$$
@@ -153,107 +154,107 @@ H = \frac{(\bm p + e\bm A)^2}{2m}.
 $$</div>
 <p>Investigate the high and low temperature&nbsp;limits.</p>
 <h3>8</h3>
-<p>Mean field. The hamiltonian of an ising model in a regular lattice of <span class="math">\(N\)</span> sites with <span class="math">\(q\)</span> neighbors&nbsp;is
+<p>Mean field. The hamiltonian of an ising model in a regular lattice&nbsp;of <span class="math">\(N\)</span> sites&nbsp;with <span class="math">\(q\)</span> neighbors&nbsp;is
 </p>
 <div class="math">$$
 H = -J\sum_{\braket{x,y}} s_x s_y
 $$</div>
 <p>
-where <span class="math">\(s_x = \pm 1\)</span> is the spin on site <span class="math">\(x\)</span>; <span class="math">\(y \in N(x)\)</span> is a neighbor of <span class="math">\(x\)</span> belonging to the set <span class="math">\(N(x)\)</span> of size <span class="math">\(q\)</span>; <span class="math">\(J\)</span> is the exchange parameter. In the <em>Bethe approximation</em>, which is a generalization of the standard mean-field model, one considers a given spin <span class="math">\(s_0\)</span> and its&nbsp;neighbors:
+where <span class="math">\(s_x = \pm 1\)</span> is the spin on&nbsp;site <span class="math">\(x\)</span>; <span class="math">\(y \in N(x)\)</span> is a neighbor&nbsp;of <span class="math">\(x\)</span> belonging to the&nbsp;set <span class="math">\(N(x)\)</span> of&nbsp;size <span class="math">\(q\)</span>; <span class="math">\(J\)</span> is the exchange parameter. In the <em>Bethe approximation</em>, which is a generalization of the standard mean-field model, one considers a given&nbsp;spin <span class="math">\(s_0\)</span> and its&nbsp;neighbors:
 </p>
 <div class="math">$$
 H(s_0) = -Js_0 \sum_{y \in N(0)}s_y - h \sum_{y \in N(0)}s_y = H_c,
 $$</div>
 <p>
-where the last term contains the information about the <em>local</em> field <span class="math">\(h\)</span> created at the site <span class="math">\(0\)</span> by the neighboring spins <span class="math">\(y \in N(0)\)</span>. <span class="math">\(H_c\)</span> is the &#8220;cluster&#8221; hamiltonian, it depends on the unknown parameter <span class="math">\(h\)</span>, which should be determined self-consistently to match the expectation value of the observables (like the magnetization <span class="math">\(m = \braket{s_x}\)</span>).</p>
+where the last term contains the information about the <em>local</em>&nbsp;field <span class="math">\(h\)</span> created at the&nbsp;site <span class="math">\(0\)</span> by the neighboring&nbsp;spins <span class="math">\(y \in N(0)\)</span>. <span class="math">\(H_c\)</span> is the &#8220;cluster&#8221; hamiltonian, it depends on the unknown&nbsp;parameter <span class="math">\(h\)</span>, which should be determined self-consistently to match the expectation value of the observables (like the&nbsp;magnetization <span class="math">\(m = \braket{s_x}\)</span>).</p>
 <p>Using the &#8220;cluster&#8221; partition&nbsp;function
 </p>
 <div class="math">$$
 Z_c = \mathrm{tr} \, \E^{-H_c(h)/T} = \sum_{s_x = \pm 1}  \E^{-H_c(h)/T}, 
 $$</div>
 <p>
-compute <span class="math">\(\braket{s_0}\)</span> and <span class="math">\(s_x\)</span>. From the condition of homogeneity (at equilibrium) <span class="math">\(m = \braket{s_0} = \braket{s_x}\)</span> for all <span class="math">\(x\)</span>, deduce the self-consistent&nbsp;condition
+compute <span class="math">\(\braket{s_0}\)</span> and <span class="math">\(s_x\)</span>. From the condition of homogeneity (at&nbsp;equilibrium) <span class="math">\(m = \braket{s_0} = \braket{s_x}\)</span> for&nbsp;all <span class="math">\(x\)</span>, deduce the self-consistent&nbsp;condition
 </p>
 <div class="math">$$
 \frac{\cosh^{q-1}[(J+h)/T]}{\cosh^{q-1}[(J-h)/T]} = \E^{2h/T}
 $$</div>
 <p>
-which determines <span class="math">\(T_c\)</span>:
+which&nbsp;determines <span class="math">\(T_c\)</span>:
 </p>
 <div class="math">$$
 T_c \approx \frac{2J}{\ln\frac{q}{q-2}}.
 $$</div>
 <p>
-Compare the result for <span class="math">\(q=4\)</span> (square lattice) with the Onsager exact value of <span class="math">\(T_c\)</span>.</p>
-<p>Show that near the ferromagnetic transition, the magnetization behaves as <span class="math">\(m \sim |T-T_c|^{1/2}\)</span>:
+Compare the result&nbsp;for <span class="math">\(q=4\)</span> (square lattice) with the Onsager exact value&nbsp;of <span class="math">\(T_c\)</span>.</p>
+<p>Show that near the ferromagnetic transition, the magnetization behaves&nbsp;as <span class="math">\(m \sim |T-T_c|^{1/2}\)</span>:
 </p>
 <div class="math">$$
 m^2 \approx \frac{3 q}{q-1} \frac{q}{2} \ln \left( \frac{q}{q-2} \right) \left( 1 - \frac{T}{T_c} \right).
 $$</div>
 <p>
-Verify that this formula reduces to the standard one (mean field) in the limit <span class="math">\(q \rightarrow \infty\)</span>. </p>
+Verify that this formula reduces to the standard one (mean field) in the&nbsp;limit <span class="math">\(q \rightarrow \infty\)</span>. </p>
 <h3>9</h3>
-<p>Mean field and Landau theory. Helium (<span class="math">\(^4\mathrm{He}\)</span>) liquefies at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a fraction <span class="math">\(c_3\)</span> of the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transtion changes when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point (<span class="math">\(c_4\)</span> is the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
+<p>Mean field and Landau theory. Helium&nbsp;(<span class="math">\(^4\mathrm{He}\)</span>) liquefies&nbsp;at <span class="math">\(T_l \approx 4\,\mathrm{K}\)</span> (at normal pressure), and undergoes a phase transition&nbsp;around <span class="math">\(T_c \approx 2.2\,\mathrm{K}\)</span> towards a superfluid state, the&nbsp;so-called <span class="math">\(\lambda\)</span>-transition. If the helium liquid contains a&nbsp;fraction <span class="math">\(c_3\)</span> of&nbsp;the <span class="math">\(^3\mathrm{He}\)</span> isotope, the nature of the superfluid transtion changes&nbsp;when <span class="math">\(x &gt; x_t = c_3/(c_3 + c_4) \approx 0.67\)</span>, the tricritical point&nbsp;(<span class="math">\(c_4\)</span> is&nbsp;the <span class="math">\(^4\mathrm{He}\)</span> concentration): it is second order&nbsp;for <span class="math">\(x&lt;x_t\)</span>, and first order when the mixture&nbsp;when <span class="math">\(x &gt; x_t\)</span>, which results in the separation into rich in helium-3 and rich in helium-4 phases. A simple model to describe the properties of the tricritical&nbsp;point <span class="math">\((x_t, T_t)\)</span>, was proposed by Blume, Emery and Griffiths (1971). It is based on the&nbsp;hamiltonian
 </p>
 <div class="math">$$
 H = -J \sum_{\braket{i,j}} S_i S_j + \Delta \sum_i (S_i^2 - 1), \quad S_i = 0, \pm 1
 $$</div>
 <p>
-where <span class="math">\(S_i = \pm 1\)</span> represents the helium-4 interacting atoms and <span class="math">\(S_i = 0\)</span> the helium-3 atoms, treated as impurities, <span class="math">\(\Delta\)</span> controls the number of helium-3 atoms (it is proportional to the difference of chemical potentials); the sums extend to the total number of lattice sites <span class="math">\(N\)</span>, and <span class="math">\(\braket{i,j}\)</span> labels neighbors. The concentration of <span class="math">\(^3\mathrm{He}\)</span> is then <span class="math">\(x = 1 - \braket{S_i^2}\)</span>.</p>
+where <span class="math">\(S_i = \pm 1\)</span> represents the helium-4 interacting atoms&nbsp;and <span class="math">\(S_i = 0\)</span> the helium-3 atoms, treated as&nbsp;impurities, <span class="math">\(\Delta\)</span> controls the number of helium-3 atoms (it is proportional to the difference of chemical potentials); the sums extend to the total number of lattice&nbsp;sites <span class="math">\(N\)</span>,&nbsp;and <span class="math">\(\braket{i,j}\)</span> labels neighbors. The concentration&nbsp;of <span class="math">\(^3\mathrm{He}\)</span> is&nbsp;then <span class="math">\(x = 1 - \braket{S_i^2}\)</span>.</p>
 <p>Show that the probability distribution P(S) is given&nbsp;by
 </p>
 <div class="math">$$
 P(S) = \frac{\E^{(qJmS - \Delta S^2)/T}}{Z}, \quad Z = 1 + 2\E^{-\Delta/T} \cosh\big(qJm/T\big).
 $$</div>
 <p>
-You may use the minimization of the free energy <span class="math">\(F\)</span>, assuming that <span class="math">\(S_i\)</span> are independent random variables (mean field&nbsp;approximation):
+You may use the minimization of the free&nbsp;energy <span class="math">\(F\)</span>, assuming&nbsp;that <span class="math">\(S_i\)</span> are independent random variables (mean field&nbsp;approximation):
 </p>
 <div class="math">$$
 F = \braket{H} + NT\sum_S P(S) \ln P(S),
 $$</div>
 <p>
-where we also exploit homogeneity. Compute the expected value of <span class="math">\(S^2\)</span>:
+where we also exploit homogeneity. Compute the expected value&nbsp;of <span class="math">\(S^2\)</span>:
 </p>
 <div class="math">$$
 \braket{S^2} = \frac{2\E^{-\Delta/T} \cosh(qJM/T)}{Z}.
 $$</div>
-<p>Deduce the free energy per atom <span class="math">\(f(m; T, \Delta) =&nbsp;F/N\)</span>
+<p>Deduce the free energy per&nbsp;atom <span class="math">\(f(m; T, \Delta) = F/N\)</span>
 </p>
 <div class="math">$$
 f = \frac{1}{2} qJm^2 - T \ln \left( 1 + 2 \E^{-\Delta/T}\cosh \frac{qJm}{T} \right) - \Delta.
 $$</div>
 <p>
-Just above the transition (disordered state) <span class="math">\(m = 0\)</span>; you can then expand <span class="math">\(f(m)\)</span> in powers of <span class="math">\(m\)</span> up to the 6th order. Analyse the possible phase transitions using Landau approach. Compute, in particular, the values of the concentration <span class="math">\(x_t\)</span> and the temperature <span class="math">\(T_t\)</span> at the tricritical&nbsp;point.</p>
-<p>Numerical application: plot the phase diagram in the <span class="math">\((x,T)\)</span>&nbsp;plane.</p>
+Just above the transition (disordered&nbsp;state) <span class="math">\(m = 0\)</span>; you can then&nbsp;expand <span class="math">\(f(m)\)</span> in powers&nbsp;of <span class="math">\(m\)</span> up to the 6th order. Analyse the possible phase transitions using Landau approach. Compute, in particular, the values of the&nbsp;concentration <span class="math">\(x_t\)</span> and the&nbsp;temperature <span class="math">\(T_t\)</span> at the tricritical&nbsp;point.</p>
+<p>Numerical application: plot the phase diagram in&nbsp;the <span class="math">\((x,T)\)</span> plane.</p>
 <h2>Probability<sup id="fnref:Ap"><a class="footnote-ref" href="#fn:Ap">1</a></sup></h2>
 <h3>1</h3>
-<p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities: uniform <span class="math">\(\sim 1\)</span>, Laplace <span class="math">\(\sim \E^{-|x|}\)</span>, Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>, Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>, Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
+<p>Characteristic functions. Calculate the characteristic functions, and the first moments (mean, variance) of the probability densities:&nbsp;uniform <span class="math">\(\sim 1\)</span>,&nbsp;Laplace <span class="math">\(\sim \E^{-|x|}\)</span>,&nbsp;Gaussian <span class="math">\(\sim \E^{-x^2}\)</span>,&nbsp;Maxwell <span class="math">\(\sim x^2 \E^{-x^2}\)</span>,&nbsp;Cauchy <span class="math">\(\sim 1/(1+x^2)\)</span>, and&nbsp;Rayleigh, <span class="math">\(\sim x \E^{-x^2}\)</span>. Note that only the behavior of the functions is given, you must find, adding the necessary parameters, their complete expression, satisfying the&nbsp;normalization.</p>
 <h3>2</h3>
-<p>Random walk. A particle moves in space by steps of length <span class="math">\(a\)</span> and orientation <span class="math">\((\theta,\varphi)\)</span> (the azimutal and polar angles) with&nbsp;probability,
+<p>Random walk. A particle moves in space by steps of&nbsp;length <span class="math">\(a\)</span> and&nbsp;orientation <span class="math">\((\theta,\varphi)\)</span> (the azimutal and polar angles) with&nbsp;probability,
 </p>
 <div class="math">$$p(\theta, \varphi) = \frac{\sin\theta}{4\pi}\,,$$</div>
 <p>
 (explain this&nbsp;formula). </p>
 <ul>
-<li>Calculate the moments up to second order of the cartesian coordinates <span class="math">\(\boldsymbol x =(x,y,z)\)</span> after <span class="math">\(N\)</span>&nbsp;steps.</li>
-<li>Use the central limit theorem to find <span class="math">\(p(\boldsymbol x)\)</span>.</li>
+<li>Calculate the moments up to second order of the cartesian&nbsp;coordinates <span class="math">\(\boldsymbol x =(x,y,z)\)</span> after <span class="math">\(N\)</span> steps.</li>
+<li>Use the central limit theorem to&nbsp;find <span class="math">\(p(\boldsymbol x)\)</span>.</li>
 </ul>
 <h3>3</h3>
-<p>Typical maximum value. If <span class="math">\(X = \{x_1,\ldots,x_n\}\)</span> is a set of random independent variables, uniformly distributed in <span class="math">\([0,1]\)</span>, show that the variance around <span class="math">\(x = \max X\)</span> tends to zero with <span class="math">\(n\)</span>. Find first the probability <span class="math">\(p_n(x)\)</span> in terms of the <span class="math">\(p(x_i &lt; x)\)</span>, where <span class="math">\(i=1,2,\ldots\)</span>, and then calculate the mean and variance of <span class="math">\(x\)</span>.</p>
+<p>Typical maximum value.&nbsp;If <span class="math">\(X = \{x_1,\ldots,x_n\}\)</span> is a set of random independent variables, uniformly distributed&nbsp;in <span class="math">\([0,1]\)</span>, show that the variance&nbsp;around <span class="math">\(x = \max X\)</span> tends to zero&nbsp;with <span class="math">\(n\)</span>. Find first the&nbsp;probability <span class="math">\(p_n(x)\)</span> in terms of&nbsp;the <span class="math">\(p(x_i &lt; x)\)</span>,&nbsp;where <span class="math">\(i=1,2,\ldots\)</span>, and then calculate the mean and variance&nbsp;of <span class="math">\(x\)</span>.</p>
 <h3>4</h3>
-<p>Information and entropy. Use the maximum entropy principle to find the distribution <span class="math">\(p(v)\)</span> of the velocity <span class="math">\(v\)</span> of one particle subject to the constraints: (V) <span class="math">\(\braket{|v|} = c\)</span>, (E) <span class="math">\(\braket{mv^2/2} = mc^2/2\)</span>. Show that the energy constraint (E) contains more information than the mean velocity constraint&nbsp;(V),
+<p>Information and entropy. Use the maximum entropy principle to find the&nbsp;distribution <span class="math">\(p(v)\)</span> of the&nbsp;velocity <span class="math">\(v\)</span> of one particle subject to the constraints:&nbsp;(V) <span class="math">\(\braket{|v|} = c\)</span>,&nbsp;(E) <span class="math">\(\braket{mv^2/2} = mc^2/2\)</span>. Show that the energy constraint (E) contains more information than the mean velocity constraint&nbsp;(V),
 </p>
 <div class="math">$$I_\text{E} - I_\text{V} &gt; 0$$</div>
 <p>
 compute this information difference in&nbsp;bits.</p>
 <h3>5</h3>
-<p>A simple model of a polymer consists in a chain of bonded atoms (<span class="math">\(a\)</span> is the link length) whose successive links can make an angle of <span class="math">\(0\)</span> or <span class="math">\(\pi\)</span>, with probability <span class="math">\(1/2\)</span>, for a total length <span class="math">\(L\)</span>. </p>
+<p>A simple model of a polymer consists in a chain of bonded atoms&nbsp;(<span class="math">\(a\)</span> is the link length) whose successive links can make an angle&nbsp;of <span class="math">\(0\)</span> or <span class="math">\(\pi\)</span>, with&nbsp;probability <span class="math">\(1/2\)</span>, for a total&nbsp;length <span class="math">\(L\)</span>. </p>
 <ul>
-<li>Find the number <span class="math">\(\Omega\)</span> of chains of length <span class="math">\(L\)</span> as a function of the number of atoms <span class="math">\(N\)</span>. You may introduce the number of <span class="math">\(0\)</span> links <span class="math">\(N_+\)</span> and the number of <span class="math">\(\pi\)</span> links, such that <span class="math">\(L=(N_+ - N_-)a\)</span> and <span class="math">\(N = N_+ + N_-\)</span>.</li>
-<li>Assume <span class="math">\(L/a \ll N\)</span> and show that <span class="math">\(\Omega(N,L)\)</span> approaches a gaussian distribution of variance <span class="math">\(\sim N\)</span> (as in a random walk). Deduce the entropy (using the Stirling&nbsp;approximation).</li>
-<li>Show that the force required to maintain the chain length at a fixed value <span class="math">\(L\)</span> follows the Hooke&#8217;s law (for a well folded&nbsp;chain).</li>
+<li>Find the&nbsp;number <span class="math">\(\Omega\)</span> of chains of&nbsp;length <span class="math">\(L\)</span> as a function of the number of&nbsp;atoms <span class="math">\(N\)</span>. You may introduce the number&nbsp;of <span class="math">\(0\)</span> links <span class="math">\(N_+\)</span> and the number&nbsp;of <span class="math">\(\pi\)</span> links, such&nbsp;that <span class="math">\(L=(N_+ - N_-)a\)</span> and <span class="math">\(N = N_+ + N_-\)</span>.</li>
+<li>Assume <span class="math">\(L/a \ll N\)</span> and show&nbsp;that <span class="math">\(\Omega(N,L)\)</span> approaches a gaussian distribution of&nbsp;variance <span class="math">\(\sim N\)</span> (as in a random walk). Deduce the entropy (using the Stirling&nbsp;approximation).</li>
+<li>Show that the force required to maintain the chain length at a fixed&nbsp;value <span class="math">\(L\)</span> follows the Hooke&#8217;s law (for a well folded&nbsp;chain).</li>
 <li>
-<p>If <span class="math">\(L\)</span> can take any value, not necessary small with respect to <span class="math">\(Na\)</span>, use the Boltzmann weight <span class="math">\(\sim \E^{-V/T}\)</span> (<span class="math">\(V\)</span> is the potential of the external force), to demonstrate that the force&nbsp;is,</p>
+<p>If <span class="math">\(L\)</span> can take any value, not necessary small with respect&nbsp;to <span class="math">\(Na\)</span>, use the Boltzmann&nbsp;weight <span class="math">\(\sim \E^{-V/T}\)</span> (<span class="math">\(V\)</span> is the potential of the external force), to demonstrate that the force&nbsp;is,</p>
 <p>
 <div class="math">$$f = \frac{T}{a} \mathrm{artanh}\left( \frac{L}{Na} \right)\,.$$</div>
 </p>
@@ -261,26 +262,26 @@ compute this information difference in&nbsp;bits.</p>
 </li>
 </ul>
 <h3>6</h3>
-<p>We consider first, a random symmetric <span class="math">\(N \times N\)</span> matrix <span class="math">\(M\)</span>, each element <span class="math">\(i \le j\)</span> distributed according&nbsp;to
+<p>We consider first, a random&nbsp;symmetric <span class="math">\(N \times N\)</span> matrix <span class="math">\(M\)</span>, each&nbsp;element <span class="math">\(i \le j\)</span> distributed according&nbsp;to
 </p>
 <div class="math">$$p(x) = p(M_{ij}=x) = \begin{cases}\frac{1}{2a} &amp; \text{for} \quad x\in (-a,a)\\
 0 &amp; \text{otherwise}\end{cases}\,.$$</div>
 <ul>
 <li>
-<p>Calculate the characteristic function <span class="math">\(p(k)\)</span> of the distribution <span class="math">\(p(M)\)</span> and of the distribution of the trace <span class="math">\(\mathrm{Tr}\,M\)</span>, <span class="math">\(p_T(k)\)</span>.</p>
+<p>Calculate the characteristic&nbsp;function <span class="math">\(p(k)\)</span> of the&nbsp;distribution <span class="math">\(p(M)\)</span> and of the distribution of the&nbsp;trace <span class="math">\(\mathrm{Tr}\,M\)</span>, <span class="math">\(p_T(k)\)</span>.</p>
 </li>
 <li>
-<p>For large <span class="math">\(N\)</span> the cumulant of <span class="math">\(N\)</span> elements is <span class="math">\(N\)</span> times the cumulant of one element. Use the central limit theorem (gaussian distribution for large <span class="math">\(N\)</span>) to compute <span class="math">\(p(t)\)</span>, with <span class="math">\(t = N^{-1/2} \mathrm{Tr}\, M\)</span>; show that,
+<p>For&nbsp;large <span class="math">\(N\)</span> the cumulant&nbsp;of <span class="math">\(N\)</span> elements&nbsp;is <span class="math">\(N\)</span> times the cumulant of one element. Use the central limit theorem (gaussian distribution for&nbsp;large <span class="math">\(N\)</span>) to&nbsp;compute <span class="math">\(p(t)\)</span>,&nbsp;with <span class="math">\(t = N^{-1/2} \mathrm{Tr}\, M\)</span>; show&nbsp;that,
 <div class="math">$$p(t) = (3/2\pi a^2)^{1/2} \E^{-3t^2/2a^2}\,.$$</div>
 </p>
 </li>
 </ul>
-<p>Consider now that <span class="math">\(M\)</span> is a <span class="math">\(2\times2\)</span> <em>gaussian</em> random matrix: each element is normally distributed with <span class="math">\(\mathcal{N}(0,1)\)</span> for the diagonal elements, and <span class="math">\(\mathcal{N}(0,1/\sqrt{2})\)</span> for the nondiagonal ones. (We denote <span class="math">\(\mathcal{N}(0,\sigma)\)</span> a normal distribution with zero mean and variance <span class="math">\(\sigma^2\)</span>.)</p>
+<p>Consider now&nbsp;that <span class="math">\(M\)</span> is&nbsp;a <span class="math">\(2\times2\)</span> <em>gaussian</em> random matrix: each element is normally distributed&nbsp;with <span class="math">\(\mathcal{N}(0,1)\)</span> for the diagonal elements,&nbsp;and <span class="math">\(\mathcal{N}(0,1/\sqrt{2})\)</span> for the nondiagonal ones. (We&nbsp;denote <span class="math">\(\mathcal{N}(0,\sigma)\)</span> a normal distribution with zero mean and&nbsp;variance <span class="math">\(\sigma^2\)</span>.)</p>
 <ul>
 <li>
-<p>Compute the eigenvalues <span class="math">\(\lambda_\pm\)</span> of <span class="math">\(M\)</span> and show that the probability distribution of the &#8220;spacing&#8221; <span class="math">\(s = (\lambda_+ - \lambda_-)/\Delta\)</span>, where <span class="math">\(\Delta\)</span> is such that the mean spacing is unity, is given by the <a href="/pages/rm.html">Wigner surmise</a>:
+<p>Compute the&nbsp;eigenvalues <span class="math">\(\lambda_\pm\)</span> of <span class="math">\(M\)</span> and show that the probability distribution of the&nbsp;&#8220;spacing&#8221; <span class="math">\(s = (\lambda_+ - \lambda_-)/\Delta\)</span>,&nbsp;where <span class="math">\(\Delta\)</span> is such that the mean spacing is unity, is given by the <a href="/pages/rm.html">Wigner surmise</a>:
     <div class="math">$$p(s) = \frac{\pi s}{2} \E^{-\pi s^2/4}\,,$$</div>
-    where the mean value and normalization satisfy,
+    where the mean value and normalization&nbsp;satisfy,
     <div class="math">$$\int_0^\infty \D s\, p(s) s = \int_0^\infty \D s\, p(s) = 1\,.$$</div>
 </p>
 </li>
@@ -290,64 +291,64 @@ compute this information difference in&nbsp;bits.</p>
 </ul>
 <h2>Noninteracting systems: Boltzmann<sup id="fnref:Ab"><a class="footnote-ref" href="#fn:Ab">2</a></sup></h2>
 <h3>1</h3>
-<p>A system, satisfying Boltzmann statistics, consists in <span class="math">\(N\)</span> two level atoms (with energies <span class="math">\(E_1 &lt; E_2\)</span>); the system is in contact with a reservoir at temperature <span class="math">\(T\)</span>. If the emission of a quanta into the reservoir occurs, the level populations change <span class="math">\(n_2 \rightarrow n_2 - 1\)</span> and <span class="math">\(n_1 \rightarrow n_1 + 1\)</span>. Assuming <span class="math">\(n_1 \gg n_2\)</span>, calculate the entropy change for the two level system and the reservoir; eventually derive the Boltzmann relation for the ration <span class="math">\(n_2/n_1\)</span>.</p>
+<p>A system, satisfying Boltzmann statistics, consists&nbsp;in <span class="math">\(N\)</span> two level atoms (with&nbsp;energies <span class="math">\(E_1 &lt; E_2\)</span>); the system is in contact with a reservoir at&nbsp;temperature <span class="math">\(T\)</span>. If the emission of a quanta into the reservoir occurs, the level populations&nbsp;change <span class="math">\(n_2 \rightarrow n_2 - 1\)</span> and <span class="math">\(n_1 \rightarrow n_1 + 1\)</span>.&nbsp;Assuming <span class="math">\(n_1 \gg n_2\)</span>, calculate the entropy change for the two level system and the reservoir; eventually derive the Boltzmann relation for the&nbsp;ration <span class="math">\(n_2/n_1\)</span>.</p>
 <h3>2</h3>
-<p>Show that an ideal gas, in the diluted, high temperature limit <span class="math">\(n \lambda^3 \ll 1\)</span>, the fermi distribution reduces to the boltzmann one (<span class="math">\(n\)</span> is the density, <span class="math">\(\lambda^2=2\pi \hbar^2/mT\)</span>, with <span class="math">\(m\)</span> the atom&#8217;s mass, and <span class="math">\(T\)</span> the temperature). Using the free particles density of states in a volume <span class="math">\(V\)</span>, demonstrate that the ideal gas chemical potential <span class="math">\(\mu\)</span> is given&nbsp;by
+<p>Show that an ideal gas, in the diluted, high temperature&nbsp;limit <span class="math">\(n \lambda^3 \ll 1\)</span>, the fermi distribution reduces to the boltzmann one&nbsp;(<span class="math">\(n\)</span> is the&nbsp;density, <span class="math">\(\lambda^2=2\pi \hbar^2/mT\)</span>,&nbsp;with <span class="math">\(m\)</span> the atom&#8217;s mass,&nbsp;and <span class="math">\(T\)</span> the temperature). Using the free particles density of states in a&nbsp;volume <span class="math">\(V\)</span>, demonstrate that the ideal gas chemical&nbsp;potential <span class="math">\(\mu\)</span> is given&nbsp;by
 </p>
 <div class="math">$$\E^{\mu/T} = n\lambda^3.$$</div>
 <h3>3</h3>
-<p>Disordered material. An alloy contains a small fraction of impurities that can be in two energy states <span class="math">\(\Delta_x &gt; 0\)</span> or <span class="math">\(-\Delta_x\)</span>, according to their position <span class="math">\(x\)</span> in the crystal lattice. We assume that the impurities are independent. We are interested in the low temperature limit <span class="math">\(T \ll \Delta\)</span>.</p>
+<p>Disordered material. An alloy contains a small fraction of impurities that can be in two energy&nbsp;states <span class="math">\(\Delta_x &gt; 0\)</span> or <span class="math">\(-\Delta_x\)</span>, according to their&nbsp;position <span class="math">\(x\)</span> in the crystal lattice. We assume that the impurities are independent. We are interested in the low temperature&nbsp;limit <span class="math">\(T \ll \Delta\)</span>.</p>
 <ul>
-<li>In the case that each impurity atom has the same levels <span class="math">\(\pm\Delta\)</span> (independent of position), calculate their contribution to the heat capacity (neglect all other possible&nbsp;contributions).</li>
-<li>In the inhomogeneous case, write the total heat capacity summing up the individual contributions. Assuming now that the distribution of energy levels is exponential,
+<li>In the case that each impurity atom has the same&nbsp;levels <span class="math">\(\pm\Delta\)</span> (independent of position), calculate their contribution to the heat capacity (neglect all other possible&nbsp;contributions).</li>
+<li>In the inhomogeneous case, write the total heat capacity summing up the individual contributions. Assuming now that the distribution of energy levels is&nbsp;exponential,
 <div class="math">$$\rho(\Delta) = \frac{\E^{-\Delta/\Delta_0}}{\Delta_0}\,,$$</div>
 replace the sum by an integral, and investigate the low temperature behavior of the heat capacity. Compare with the homogeneous&nbsp;case.</li>
 </ul>
 <h3>4</h3>
-<p>Three level molecule. The lowest energy levels of a molecule are <span class="math">\(E=0,\epsilon,10\epsilon\)</span>. </p>
+<p>Three level molecule. The lowest energy levels of a molecule&nbsp;are <span class="math">\(E=0,\epsilon,10\epsilon\)</span>. </p>
 <ul>
-<li>Compute the level population assuming boltzmann statistics (give the validity condition for this assumption), and compare the results. Find the temperature <span class="math">\(T_c\)</span> below which the highest level is&nbsp;empty.</li>
-<li>Calculate the (exact) energy <span class="math">\(E\)</span> and specific heat <span class="math">\(C_V\)</span>. Investigate the high and low temperature limits. Sketch <span class="math">\(C_V=C_V(T)\)</span>.</li>
+<li>Compute the level population assuming boltzmann statistics (give the validity condition for this assumption), and compare the results. Find the&nbsp;temperature <span class="math">\(T_c\)</span> below which the highest level is&nbsp;empty.</li>
+<li>Calculate the (exact)&nbsp;energy <span class="math">\(E\)</span> and specific&nbsp;heat <span class="math">\(C_V\)</span>. Investigate the high and low temperature limits.&nbsp;Sketch <span class="math">\(C_V=C_V(T)\)</span>.</li>
 </ul>
 <h3>5</h3>
-<p>The effective interaction energy between the two hydrogen atoms of a <span class="math">\(\mathrm{H}_2\)</span> molecule&nbsp;is
+<p>The effective interaction energy between the two hydrogen atoms of&nbsp;a <span class="math">\(\mathrm{H}_2\)</span> molecule&nbsp;is
 </p>
 <div class="math">$$V = \epsilon \big[\E^{-2\kappa(r -r_0)} - 2 \E^{-\kappa(r - r_0)} \big]\,,$$</div>
 <p>
-with the parameters: hydrogen mass <span class="math">\(m = 1.672\, 10^{-27}\,\mathrm{kg}\)</span>, <span class="math">\(\epsilon = 7\,10^{-19}\,\mathrm{J}\)</span>, <span class="math">\(\kappa = 2\,10^{10} \, \mathrm{m^{-1}}\)</span>, and <span class="math">\(r_0=&nbsp;8\,10^{-11}\,\mathrm{m}\)</span></p>
+with the parameters: hydrogen&nbsp;mass <span class="math">\(m = 1.672\, 10^{-27}\,\mathrm{kg}\)</span>, <span class="math">\(\epsilon = 7\,10^{-19}\,\mathrm{J}\)</span>, <span class="math">\(\kappa = 2\,10^{10} \, \mathrm{m^{-1}}\)</span>,&nbsp;and <span class="math">\(r_0= 8\,10^{-11}\,\mathrm{m}\)</span></p>
 <ul>
-<li>Estimate <span class="math">\(T_\text{R}\)</span> and <span class="math">\(T_\text{V}\)</span>, the threshold temperatures at which rotation and vibration degrees of freedom contribute to the specific heat <span class="math">\(C_V\)</span> of the diatomic&nbsp;gas.</li>
-<li>Approximately calculate the values of the volume <span class="math">\(C_V\)</span> and pressure <span class="math">\(C_P\)</span> specific heats at <span class="math">\(T[\mathrm{K}] = 25, 250, 2500, 10\,000\)</span>.</li>
+<li>Estimate <span class="math">\(T_\text{R}\)</span> and <span class="math">\(T_\text{V}\)</span>, the threshold temperatures at which rotation and vibration degrees of freedom contribute to the specific&nbsp;heat <span class="math">\(C_V\)</span> of the diatomic&nbsp;gas.</li>
+<li>Approximately calculate the values of the&nbsp;volume <span class="math">\(C_V\)</span> and&nbsp;pressure <span class="math">\(C_P\)</span> specific heats&nbsp;at <span class="math">\(T[\mathrm{K}] = 25, 250, 2500, 10\,000\)</span>.</li>
 </ul>
 <p>(<em>Hint</em>. Order of magnitude calculation, compute the relevant parameters from the potential shape and use dimensional like&nbsp;analysis.)</p>
 <h3>6</h3>
-<p>A high temperature hydrogen plasma contains a fraction (<span class="math">\(T &lt; m_\mathrm{e}c^2\)</span>) of positrons created through electron collisions <span class="math">\(\mathrm{e}^{-} + \mathrm{e}^{-} \rightarrow 2\mathrm{e}^{-} + (\mathrm{e}^{+} + \mathrm{e}^{-})\)</span>, or proton-electron collisions <span class="math">\(\mathrm{e}^{-} + \mathrm{p} \rightarrow \mathrm{e}^{-} + \mathrm{p} + ( \mathrm{e}^{+} + \mathrm{e}^{-})\)</span> (note that the total charge is conserved). The proton density is <span class="math">\(n_\mathrm{p} = 1\,10^{16}\,\mathrm{m^{-3}}\)</span>. Find the chemical potential for <span class="math">\(\mathrm{e}^{-}\)</span> and <span class="math">\(\mathrm{e}^{+}\)</span> and estimate the temperature at which the positron density is <span class="math">\(n_+ = 1\,10^{6}\,\mathrm{m^{-3}} \ll n_\mathrm{p}\)</span> and <span class="math">\(n_+ = 1\,10^{16}\,\mathrm{m^{-3}} \approx n_\mathrm{p}\)</span>. Assume the plasma non relativistic and non&nbsp;degenerated.</p>
+<p>A high temperature hydrogen plasma contains a fraction&nbsp;(<span class="math">\(T &lt; m_\mathrm{e}c^2\)</span>) of positrons created through electron&nbsp;collisions <span class="math">\(\mathrm{e}^{-} + \mathrm{e}^{-} \rightarrow 2\mathrm{e}^{-} + (\mathrm{e}^{+} + \mathrm{e}^{-})\)</span>, or proton-electron&nbsp;collisions <span class="math">\(\mathrm{e}^{-} + \mathrm{p} \rightarrow \mathrm{e}^{-} + \mathrm{p} + ( \mathrm{e}^{+} + \mathrm{e}^{-})\)</span> (note that the total charge is conserved). The proton density&nbsp;is <span class="math">\(n_\mathrm{p} = 1\,10^{16}\,\mathrm{m^{-3}}\)</span>. Find the chemical potential&nbsp;for <span class="math">\(\mathrm{e}^{-}\)</span> and <span class="math">\(\mathrm{e}^{+}\)</span> and estimate the temperature at which the positron density&nbsp;is <span class="math">\(n_+ = 1\,10^{6}\,\mathrm{m^{-3}} \ll n_\mathrm{p}\)</span> and <span class="math">\(n_+ = 1\,10^{16}\,\mathrm{m^{-3}} \approx n_\mathrm{p}\)</span>. Assume the plasma non relativistic and non&nbsp;degenerated.</p>
 <h3>7</h3>
-<p>An ideal gas of polar polar molecules is placed in a uniform electric field <span class="math">\(\mathcal{E}\)</span>. The dipolar moment of each molecule is <span class="math">\(p\)</span>, whose energy is <span class="math">\(-p\mathcal{E} \cos \theta\)</span>, where <span class="math">\(\theta\)</span> is the angle between the applied field and the dipole. Compute the classical partition function <span class="math">\(Z\)</span> in the canonical ensemble, the mean polarization and the dipolar susceptibility <span class="math">\(\chi = \D \braket{p}/ \D \mathcal{E}\)</span>, and the specific heat at constant volume. Find the high temperature asymptotics, where the classical approximation is&nbsp;valid.</p>
+<p>An ideal gas of polar polar molecules is placed in a uniform electric&nbsp;field <span class="math">\(\mathcal{E}\)</span>. The dipolar moment of each molecule&nbsp;is <span class="math">\(p\)</span>, whose energy&nbsp;is <span class="math">\(-p\mathcal{E} \cos \theta\)</span>,&nbsp;where <span class="math">\(\theta\)</span> is the angle between the applied field and the dipole. Compute the classical partition&nbsp;function <span class="math">\(Z\)</span> in the canonical ensemble, the mean polarization and the dipolar&nbsp;susceptibility <span class="math">\(\chi = \D \braket{p}/ \D \mathcal{E}\)</span>, and the specific heat at constant volume. Find the high temperature asymptotics, where the classical approximation is&nbsp;valid.</p>
 <h3>8</h3>
-<p>Surfactant gas. A surfactant is diluted in an aqueous solution; the molecules binding energy in volume is <span class="math">\(\epsilon\)</span> and on the surface is <span class="math">\(\epsilon_s\)</span>, the difference <span class="math">\(\Delta \epsilon = \epsilon - \epsilon_s &gt;0\)</span>. Suppose the surfactant molecules as an ideal gas of dimension <span class="math">\(D\)</span> and compute the partition function <span class="math">\(Z(T,\mu_D,V_D)\)</span> in the grand canonical ensemble; calculate the number <span class="math">\(N_3\)</span> of molecules in the volume <span class="math">\(V_3 =V\)</span> and <span class="math">\(N_2\)</span> of molecules on the surface <span class="math">\(V_2 = A\)</span>. Find the ratio <span class="math">\(N_2/N_3\)</span> and discuss your&nbsp;result.</p>
+<p>Surfactant gas. A surfactant is diluted in an aqueous solution; the molecules binding energy in volume&nbsp;is <span class="math">\(\epsilon\)</span> and on the surface&nbsp;is <span class="math">\(\epsilon_s\)</span>, the&nbsp;difference <span class="math">\(\Delta \epsilon = \epsilon - \epsilon_s &gt;0\)</span>. Suppose the surfactant molecules as an ideal gas of&nbsp;dimension <span class="math">\(D\)</span> and compute the partition&nbsp;function <span class="math">\(Z(T,\mu_D,V_D)\)</span> in the grand canonical ensemble; calculate the&nbsp;number <span class="math">\(N_3\)</span> of molecules in the&nbsp;volume <span class="math">\(V_3 =V\)</span> and <span class="math">\(N_2\)</span> of molecules on the&nbsp;surface <span class="math">\(V_2 = A\)</span>. Find the&nbsp;ratio <span class="math">\(N_2/N_3\)</span> and discuss your&nbsp;result.</p>
 <h3>9</h3>
-<p>Relativistic gas. A one dimensional system of <span class="math">\(N\)</span> identical particles move in one dimension. The system&#8217;s classical hamiltonian&nbsp;is,
+<p>Relativistic gas. A one dimensional system&nbsp;of <span class="math">\(N\)</span> identical particles move in one dimension. The system&#8217;s classical hamiltonian&nbsp;is,
 </p>
 <div class="math">$$H= \sum_n [c |p_n| + w(x_n)]$$</div>
 <p>
-where the potential energy vanishes in the region <span class="math">\(0 \le x_n \le L\)</span> and is infinite at the <span class="math">\(x=0,L\)</span> walls. Consider the microcanonical ensemble and calculate the number of states in phase space <span class="math">\(\Omega(E,L,N)\)</span> in the limit of large <span class="math">\(N\)</span>. Observe that each momentum can have two signs and that <span class="math">\(E=\sum_n |p_n|\)</span> is conserved. Calculate the entropy, the equation of state and the heat capacities at constant length and constant&nbsp;pressure.</p>
-<p>(<em>Hint</em>. The volume of a pyramide <span class="math">\(\sum_n^N x_n \le L\)</span>, in <span class="math">\(N\)</span> dimensions is <span class="math">\(L^N/N!\)</span>)</p>
+where the potential energy vanishes in the&nbsp;region <span class="math">\(0 \le x_n \le L\)</span> and is infinite at&nbsp;the <span class="math">\(x=0,L\)</span> walls. Consider the microcanonical ensemble and calculate the number of states in phase&nbsp;space <span class="math">\(\Omega(E,L,N)\)</span> in the limit of&nbsp;large <span class="math">\(N\)</span>. Observe that each momentum can have two signs and&nbsp;that <span class="math">\(E=\sum_n |p_n|\)</span> is conserved. Calculate the entropy, the equation of state and the heat capacities at constant length and constant&nbsp;pressure.</p>
+<p>(<em>Hint</em>. The volume of a&nbsp;pyramide <span class="math">\(\sum_n^N x_n \le L\)</span>,&nbsp;in <span class="math">\(N\)</span> dimensions&nbsp;is <span class="math">\(L^N/N!\)</span>)</p>
 <h3>10</h3>
-<p>A gas of <span class="math">\(N\)</span> <em>hard</em> spheres of volume <span class="math">\(v\)</span> occupies a volume <span class="math">\(V\)</span>. Compute the <span class="math">\(\Omega(T,V,N)\)</span> (microcanonical&nbsp;ensemble),
+<p>A gas&nbsp;of <span class="math">\(N\)</span> <em>hard</em> spheres of&nbsp;volume <span class="math">\(v\)</span> occupies a&nbsp;volume <span class="math">\(V\)</span>. Compute&nbsp;the <span class="math">\(\Omega(T,V,N)\)</span> (microcanonical&nbsp;ensemble),
 </p>
 <div class="math">$$\Omega = \frac{1}{N!(2\pi \hbar)^N}\int_{H=E} \prod_{N=1}^N \D p_n \D x_n$$</div>
 <p>
-with <span class="math">\(E = \sum_n p_n^2/2m\)</span>. For the configuration integral assume that one can introduce successively one sphere into the system. Discuss the validity of this approach. Deduce the entropy of the gas, the equation of state and the isothermal compressibility <span class="math">\(k_T\)</span>. (Read the interesting paper by <a href="/pdfs/Ursell-1927fr.pdf">Ursell 1927</a>.)</p>
+with <span class="math">\(E = \sum_n p_n^2/2m\)</span>. For the configuration integral assume that one can introduce successively one sphere into the system. Discuss the validity of this approach. Deduce the entropy of the gas, the equation of state and the isothermal&nbsp;compressibility <span class="math">\(k_T\)</span>. (Read the interesting paper by <a href="/pdfs/Ursell-1927fr.pdf">Ursell 1927</a>.)</p>
 <h2>Noninteracting systems: Bose and&nbsp;Fermi</h2>
 <h3>1</h3>
-<p>Investigate how the usual laws of Stefan black body radiation <span class="math">\(\sim T^4\)</span>, and Debye specific heat of a solid <span class="math">\(\sim T^3\)</span>, are modified if one assumes that the spatial dimension is <span class="math">\(D\)</span>.</p>
+<p>Investigate how the usual laws of Stefan black body&nbsp;radiation <span class="math">\(\sim T^4\)</span>, and Debye specific heat of a&nbsp;solid <span class="math">\(\sim T^3\)</span>, are modified if one assumes that the spatial dimension&nbsp;is <span class="math">\(D\)</span>.</p>
 <h3>2</h3>
-<p>Graphite is a stack of weakly coupled flat crystal layers of carbon atoms; experiments show that, instead of the usual Debye scaling with the temperature, the specific heat of graphite is proportional to <span class="math">\(T^2\)</span>. Explain this behavior. You may assume that oscillations are two dimensional and the sound velocity is anisotropic (one mode through the layers, and two modes, on the layer&nbsp;plane).</p>
+<p>Graphite is a stack of weakly coupled flat crystal layers of carbon atoms; experiments show that, instead of the usual Debye scaling with the temperature, the specific heat of graphite is proportional&nbsp;to <span class="math">\(T^2\)</span>. Explain this behavior. You may assume that oscillations are two dimensional and the sound velocity is anisotropic (one mode through the layers, and two modes, on the layer&nbsp;plane).</p>
 <h3>3</h3>
-<p>Identical particles. A system consists in two identical non interacting particles in contact with a bath at <span class="math">\(T\)</span>. Calculate the partition function of the two particle system <span class="math">\(Z_2\)</span> in terms of the one particle <span class="math">\(Z_1\)</span>, in the case of bosons and fermions (spinless). Assuming that <span class="math">\(Z_1 = V/\lambda^3\)</span>, compute the thermodynamics of the two particles system: energy, pressure and heat capacity at constant&nbsp;volume.</p>
+<p>Identical particles. A system consists in two identical non interacting particles in contact with a bath&nbsp;at <span class="math">\(T\)</span>. Calculate the partition function of the two particle&nbsp;system <span class="math">\(Z_2\)</span> in terms of the one&nbsp;particle <span class="math">\(Z_1\)</span>, in the case of bosons and fermions (spinless). Assuming&nbsp;that <span class="math">\(Z_1 = V/\lambda^3\)</span>, compute the thermodynamics of the two particles system: energy, pressure and heat capacity at constant&nbsp;volume.</p>
 <h3>4</h3>
-<p>Bose gas in <span class="math">\(D\)</span> dimensions. Generalize the computation of a free Bose gas <span class="math">\(\epsilon = p^2/2m\)</span>, to <span class="math">\(D\)</span> dimensions. Calculate the grand potential <span class="math">\(\Phi_D(T,\mu,V)\)</span> by approximating the sum over energies by an integral. Establish the range of validity of this approximation and, if necessary, separate the fundamental state from the integral in the computation of the number of particles. Deduce the thermodynamic properties, <span class="math">\(N\)</span>, <span class="math">\(P\)</span>, <span class="math">\(E\)</span> and <span class="math">\(C_V\)</span>. Sketch <span class="math">\(C_V(T)\)</span> for all&nbsp;temperatures.</p>
+<p>Bose gas&nbsp;in <span class="math">\(D\)</span> dimensions. Generalize the computation of a free Bose&nbsp;gas <span class="math">\(\epsilon = p^2/2m\)</span>,&nbsp;to <span class="math">\(D\)</span> dimensions. Calculate the grand&nbsp;potential <span class="math">\(\Phi_D(T,\mu,V)\)</span> by approximating the sum over energies by an integral. Establish the range of validity of this approximation and, if necessary, separate the fundamental state from the integral in the computation of the number of particles. Deduce the thermodynamic&nbsp;properties, <span class="math">\(N\)</span>, <span class="math">\(P\)</span>, <span class="math">\(E\)</span> and <span class="math">\(C_V\)</span>.&nbsp;Sketch <span class="math">\(C_V(T)\)</span> for all&nbsp;temperatures.</p>
 <h3>5</h3>
 <p>A fermion gas is confined in a two dimensional device. Compute the fermi energy, and the chemical potential as a function of the&nbsp;temperature.</p>
 <h3>6</h3>
@@ -359,12 +360,12 @@ with <span class="math">\(E = \sum_n p_n^2/2m\)</span>. For the configuration in
 </p>
 <div class="math">$$w(r) = \begin{cases} \infty &amp; \text{if } r &lt; a \\ -\epsilon &amp; \text{if } x \in (a,b) \\ 0 &amp; \text{if } x &gt; b \end{cases}\,,$$</div>
 <p>
-where <span class="math">\(r\)</span> is the interparticle distance, <span class="math">\(a\)</span> is the repulsion radius, and <span class="math">\(b\)</span> the range of the attractive energy, of the order of <span class="math">\(\epsilon\)</span>. Compute the second virial coefficient <span class="math">\(B_2(T)\)</span>, 
+where <span class="math">\(r\)</span> is the interparticle&nbsp;distance, <span class="math">\(a\)</span> is the repulsion radius,&nbsp;and <span class="math">\(b\)</span> the range of the attractive energy, of the order&nbsp;of <span class="math">\(\epsilon\)</span>. Compute the second virial&nbsp;coefficient <span class="math">\(B_2(T)\)</span>, 
 </p>
 <div class="math">$$B_2(T) = 2\pi \int_0^\infty r^2 \D r\, \left(1 - \E^{-w(r)/T} \right)\,,$$</div>
 <p>
-and discuss its behavior as a function of the temperature <span class="math">\(T\)</span>.</p>
-<p>Using the experimental values of the Boyle temperature <span class="math">\(T_B = 410\,\mathrm{K}\)</span>, and the Joule-Thomson inversion temperature <span class="math">\(T_i=720\,\mathrm{K}\)</span>, find approximate values of the interaction parameters <span class="math">\(\epsilon\)</span> and <span class="math">\(a/b\)</span>. At the Boyle temperature <span class="math">\(B_2=0\)</span>, the virial coefficient vanishes (ideal gas behavior due to the balance between attractive and repulsive molecular forces). At the inversion temperature the thermal expansion coefficient&nbsp;satisfies,
+and discuss its behavior as a function of the&nbsp;temperature <span class="math">\(T\)</span>.</p>
+<p>Using the experimental values of the Boyle&nbsp;temperature <span class="math">\(T_B = 410\,\mathrm{K}\)</span>, and the Joule-Thomson inversion&nbsp;temperature <span class="math">\(T_i=720\,\mathrm{K}\)</span>, find approximate values of the interaction&nbsp;parameters <span class="math">\(\epsilon\)</span> and <span class="math">\(a/b\)</span>. At the Boyle&nbsp;temperature <span class="math">\(B_2=0\)</span>, the virial coefficient vanishes (ideal gas behavior due to the balance between attractive and repulsive molecular forces). At the inversion temperature the thermal expansion coefficient&nbsp;satisfies,
 </p>
 <div class="math">$$\alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T} \right)_P = \frac{1}{T} \,,\quad T = T_i\,,$$</div>
 <p>
@@ -383,61 +384,61 @@ Derive the expressions for the free energy, the entropy and the internal energy;
 </p>
 <div class="math">$$F = F_I + NT\sum_{k \ge 2} B_k(T) \frac{n^{k-1}}{k-1} \approx F_I + T B_2(T) \frac{N^2}{V}$$</div>
 <p>
-where <span class="math">\(F_I = NT \ln(n/\E \lambda^3)\)</span> (<span class="math">\(\lambda\)</span> is the thermal length), with <span class="math">\(n=N/V\)</span>, is the ideal gas free&nbsp;energy. </p>
+where <span class="math">\(F_I = NT \ln(n/\E \lambda^3)\)</span> (<span class="math">\(\lambda\)</span> is the thermal length),&nbsp;with <span class="math">\(n=N/V\)</span>, is the ideal gas free&nbsp;energy. </p>
 <h3>Lattice&nbsp;systems</h3>
 <h3>3</h3>
-<p>The hamiltonian of the Potts model, a generalization of the ising model for <span class="math">\(q\)</span>-states atoms, is&nbsp;written,
+<p>The hamiltonian of the Potts model, a generalization of the ising model&nbsp;for <span class="math">\(q\)</span>-states atoms, is&nbsp;written,
 </p>
 <div class="math">$$H = -J \sum_{x=1}^N \delta(s_x,s_{x+1}),\quad s_x = 1,\ldots,q$$</div>
 <p>
-where <span class="math">\(\delta\)</span> is the kronecker symbol, for a one-dimensional system with periodic boundary conditions (and the number of lattice sites is macroscopic, <span class="math">\(N \rightarrow \infty\)</span>).</p>
-<p>Find the partition function using the transfer matrix method. Find the free energy for arbitrary <span class="math">\(q\)</span>, starting with the special (ising) case <span class="math">\(q=2\)</span>. Compute the energy and discuss the low and high temperature limits. Using the definition of the correlation length in terms of the first two largest eigenvalues <span class="math">\(\lambda_1 &gt; \lambda_2\)</span>, of the transfer&nbsp;matrix:
+where <span class="math">\(\delta\)</span> is the kronecker symbol, for a one-dimensional system with periodic boundary conditions (and the number of lattice sites is&nbsp;macroscopic, <span class="math">\(N \rightarrow \infty\)</span>).</p>
+<p>Find the partition function using the transfer matrix method. Find the free energy for&nbsp;arbitrary <span class="math">\(q\)</span>, starting with the special (ising)&nbsp;case <span class="math">\(q=2\)</span>. Compute the energy and discuss the low and high temperature limits. Using the definition of the correlation length in terms of the first two largest&nbsp;eigenvalues <span class="math">\(\lambda_1 &gt; \lambda_2\)</span>, of the transfer&nbsp;matrix:
 </p>
 <div class="math">$$\xi^{-1} = \ln(\lambda_1/\lambda_2)$$</div>
 <p>
-Analyse the behavior of <span class="math">\(\xi = \xi(T)\)</span>, and show that there is no phase transition at finite&nbsp;temperature.</p>
+Analyse the behavior&nbsp;of <span class="math">\(\xi = \xi(T)\)</span>, and show that there is no phase transition at finite&nbsp;temperature.</p>
 <h3>4</h3>
-<p>We want to investigate the behavior of the per site magnetization <span class="math">\(m\)</span> of a ferromagnetic material, using a simple phenomenological model. In the mean field approximation one neglects the fluctuations around the thermodynamic mean value. Find the effective hamiltonian of an ising model in a <span class="math">\(D\)</span>-dimensional&nbsp;lattice,
+<p>We want to investigate the behavior of the per site&nbsp;magnetization <span class="math">\(m\)</span> of a ferromagnetic material, using a simple phenomenological model. In the mean field approximation one neglects the fluctuations around the thermodynamic mean value. Find the effective hamiltonian of an ising model in&nbsp;a <span class="math">\(D\)</span>-dimensional&nbsp;lattice,
 </p>
 <div class="math">$$H =-J \sum_{\braket{x,y}} s_x s_y - B \sum_x s_x, \quad s_x = \{-1,1\}\,,$$</div>
 <p>
 in this approximation (the summation is over nearest neighbors). Show the existence of a phase transition between a low temperature ferromagnetic state and a high temperature paramagnetic&nbsp;state.</p>
 <p>Compute the characteristic exponents, around the phase&nbsp;transition,</p>
 <ul>
-<li>of the magnetization as a function of the temperature for vanishing field, and also as a function of the field for <span class="math">\(T=T_c\)</span> (the critical temperature);&nbsp;and</li>
+<li>of the magnetization as a function of the temperature for vanishing field, and also as a function of the field&nbsp;for <span class="math">\(T=T_c\)</span> (the critical temperature);&nbsp;and</li>
 <li>of the&nbsp;susceptibility.</li>
 </ul>
 <p>Hint: exponent&nbsp;definitions,</p>
 <ul>
-<li><span class="math">\(m(T) \sim |t|^\beta\)</span>, for <span class="math">\(B=0\)</span>,</li>
-<li><span class="math">\(B(m) \sim m^\delta\)</span>, for <span class="math">\(T=T_c\)</span>,</li>
-<li><span class="math">\(\chi \sim t^{-\gamma}\)</span> for <span class="math">\(T&gt;T_c\)</span> and a similar equation for <span class="math">\(T&lt;T_c\)</span>,</li>
+<li><span class="math">\(m(T) \sim |t|^\beta\)</span>,&nbsp;for <span class="math">\(B=0\)</span>,</li>
+<li><span class="math">\(B(m) \sim m^\delta\)</span>,&nbsp;for <span class="math">\(T=T_c\)</span>,</li>
+<li><span class="math">\(\chi \sim t^{-\gamma}\)</span> for <span class="math">\(T&gt;T_c\)</span> and a similar equation&nbsp;for <span class="math">\(T&lt;T_c\)</span>,</li>
 </ul>
-<p>where <span class="math">\(t = (T-T_c)/T_c\)</span>. Show that the free energy, near the transition can be expanded in powers of the magnetization <span class="math">\(m\)</span>.</p>
+<p>where <span class="math">\(t = (T-T_c)/T_c\)</span>. Show that the free energy, near the transition can be expanded in powers of the&nbsp;magnetization <span class="math">\(m\)</span>.</p>
 <h3>5</h3>
-<p>Duality relation in the twodimensional ising model. Compute the partition function using series expansions at low and high temperatures. We denote <span class="math">\(K=J/T\)</span> the effective coupling and <span class="math">\(N\)</span> the number of spins in the square&nbsp;lattice.</p>
+<p>Duality relation in the twodimensional ising model. Compute the partition function using series expansions at low and high temperatures. We&nbsp;denote <span class="math">\(K=J/T\)</span> the effective coupling&nbsp;and <span class="math">\(N\)</span> the number of spins in the square&nbsp;lattice.</p>
 <p>Show that at low temperature the successive terms of the expansion correspond to flipping one spin, two neighbor spins, two isolated spins,&nbsp;etc.:
 </p>
 <div class="math">$$Z_{L} = 2 \E^{2NK} \left(1 + N u^4 + 2N u^6 + \cdots \right), \quad u = \E^{-2K}$$</div>
 <p>Show that at high temperature the expansion depends on the perimeter (number of bonds) of closed path in the lattice, leading to an expansion on the closed graphs (single unit square, two neighboring unit squares,&nbsp;etc.): 
 </p>
 <div class="math">$$Z_{H} = 2^N \cosh^{2N}K \left(1 + N t^4 + 2N t^6 + \cdots \right), \quad t = \tanh K$$</div>
-<p>Compare the two series and deduce that there must be a relation between the high and low constants (<span class="math">\(K_L = K\)</span> and <span class="math">\(K_H = K^\star\)</span>, <span class="math">\(\tanh K = \E^{-2K^\star}\)</span>) leading to the duality&nbsp;relation:
+<p>Compare the two series and deduce that there must be a relation between the high and low constants&nbsp;(<span class="math">\(K_L = K\)</span> and <span class="math">\(K_H = K^\star\)</span>, <span class="math">\(\tanh K = \E^{-2K^\star}\)</span>) leading to the duality&nbsp;relation:
 </p>
 <div class="math">$$\frac{Z(K)}{\sinh^N (2K)} = \frac{Z(K^\star)}{\sinh^N (2K^\star)}$$</div>
 <p>
-where we used that <span class="math">\(\sinh (2K) \sinh (2K^\star) = 1\)</span>&nbsp;(exercice).</p>
+where we used&nbsp;that <span class="math">\(\sinh (2K) \sinh (2K^\star) = 1\)</span> (exercice).</p>
 <h3>Phase&nbsp;transitions</h3>
 <h3>6</h3>
 <p>Stoner model of magnetism. In an electron gas the fermi statistics repulsion (antisymmetric wave function) favors spin alignement (symmetric wave function). A simple expression of the spin-dependent repulsion energy&nbsp;is,
 </p>
 <div class="math">$$w = \frac{\alpha}{V} N_+ N_-, \quad N=N_+ + N_-\,,$$</div>
 <p>
-where <span class="math">\(\alpha\)</span> is a phenomenological energy parameter and <span class="math">\(N\)</span> the total number of particles, sum of spin up <span class="math">\(N_+\)</span> and spin down <span class="math">\(N_-\)</span> electron numbers (the volume factor ensures that <span class="math">\(U\)</span> is&nbsp;extensive). </p>
+where <span class="math">\(\alpha\)</span> is a phenomenological energy parameter&nbsp;and <span class="math">\(N\)</span> the total number of particles, sum of spin&nbsp;up <span class="math">\(N_+\)</span> and spin&nbsp;down <span class="math">\(N_-\)</span> electron numbers (the volume factor ensures&nbsp;that <span class="math">\(U\)</span> is&nbsp;extensive). </p>
 <ul>
-<li>Calculate the fermi energy of the spin up and down electrons (assume low temperature <span class="math">\(T\)</span>). Deduce the expression of the total kinetic energy as a function of the up and down&nbsp;densities.</li>
-<li>Assume that the density difference <span class="math">\(\Delta n\)</span> with respect to the non magnetic state <span class="math">\(N_+=N_-=N/2\)</span>, <span class="math">\(n_\pm = n/2 \pm \Delta n/2\)</span>, is small <span class="math">\(\Delta=\Delta n/n \ll 1\)</span>. Compute the total energy as an expansion to fourth order in <span class="math">\(\Delta n\)</span>.</li>
-<li>Show that the paramagnetic state is <em>unstable</em> for some <span class="math">\(\alpha &gt; \alpha_c\)</span>, compute the critical interaction <span class="math">\(\alpha_c\)</span>, indicating the presence of a quantum phase transition. Investigate the behavior of the magnetization around the transition as a function of <span class="math">\(\alpha\)</span>, <span class="math">\(M = M(\alpha)\)</span>.</li>
+<li>Calculate the fermi energy of the spin up and down electrons (assume low&nbsp;temperature <span class="math">\(T\)</span>). Deduce the expression of the total kinetic energy as a function of the up and down&nbsp;densities.</li>
+<li>Assume that the density&nbsp;difference <span class="math">\(\Delta n\)</span> with respect to the non magnetic&nbsp;state <span class="math">\(N_+=N_-=N/2\)</span>, <span class="math">\(n_\pm = n/2 \pm \Delta n/2\)</span>, is&nbsp;small <span class="math">\(\Delta=\Delta n/n \ll 1\)</span>. Compute the total energy as an expansion to fourth order&nbsp;in <span class="math">\(\Delta n\)</span>.</li>
+<li>Show that the paramagnetic state is <em>unstable</em> for&nbsp;some <span class="math">\(\alpha &gt; \alpha_c\)</span>, compute the critical&nbsp;interaction <span class="math">\(\alpha_c\)</span>, indicating the presence of a quantum phase transition. Investigate the behavior of the magnetization around the transition as a function&nbsp;of <span class="math">\(\alpha\)</span>, <span class="math">\(M = M(\alpha)\)</span>.</li>
 </ul>
 <h3>7</h3>
 <p>The Landau free energy of a ferromagnetic system&nbsp;is;
@@ -446,26 +447,26 @@ where <span class="math">\(\alpha\)</span> is a phenomenological energy paramete
 F[\phi,H]=\int_{\mathrm{Vol}} \mathrm{d}x \left[ \frac{\kappa}{2}(\nabla \phi)^2 + V(\phi) - \phi H\right], 
 $$</div>
 <p>
-where the <em>order parameter</em> <span class="math">\(\phi=\phi(x)\)</span> is related to the magnetization density (in one direction); the thermodynamic potential is a pair function of the order parameter, in order to satisfy the system&#8217;s invariance with respect to the inversion of the external field (even in the zero field&nbsp;limit),
+where the <em>order&nbsp;parameter</em> <span class="math">\(\phi=\phi(x)\)</span> is related to the magnetization density (in one direction); the thermodynamic potential is a pair function of the order parameter, in order to satisfy the system&#8217;s invariance with respect to the inversion of the external field (even in the zero field&nbsp;limit),
 </p>
 <div class="math">$$
 V(\phi) = a \phi^2 + b\phi^4,
 $$</div>
 <p>
-<span class="math">\(\kappa,a,b\)</span> are phenomenological constants, in principle dependent on the temperature, and the last term is the coupling with an external magnetic field <span class="math">\(H\)</span> (in energy&nbsp;units).</p>
-<p>Find the minimum of <span class="math">\(F\)</span> from the first variation <span class="math">\(\delta F/\delta \phi=0\)</span>,
+<span class="math">\(\kappa,a,b\)</span> are phenomenological constants, in principle dependent on the temperature, and the last term is the coupling with an external magnetic&nbsp;field <span class="math">\(H\)</span> (in energy&nbsp;units).</p>
+<p>Find the minimum&nbsp;of <span class="math">\(F\)</span> from the first&nbsp;variation <span class="math">\(\delta F/\delta \phi=0\)</span>,
 </p>
 <div class="math">$$
 -\kappa \nabla^2 \phi + 2 a \phi + 4 b \phi^3 =0\; \Rightarrow\; \phi=m=\left\{0, \pm \sqrt{-a/2b}\right\}, 
 $$</div>
 <p>
-where <span class="math">\(m=m(T)\)</span> is the equilibrium magnetization (per unit volume). Show that the phase transition occurs at <span class="math">\(a(T=T_c)=0\)</span>; for <span class="math">\(a&gt;0\)</span> the only stable minimum corresponds to <span class="math">\(\phi=0\)</span>; for <span class="math">\(a&lt;0\)</span> two opposite values of the magnetization arise. Assuming that <span class="math">\(a\)</span> is a smooth function of the temperature, <span class="math">\(a=a_0(T-T_c)\)</span> to lowest order, near the critical temperature, compute the&nbsp;magnetization, 
+where <span class="math">\(m=m(T)\)</span> is the equilibrium magnetization (per unit volume). Show that the phase transition occurs&nbsp;at <span class="math">\(a(T=T_c)=0\)</span>;&nbsp;for <span class="math">\(a&gt;0\)</span> the only stable minimum corresponds&nbsp;to <span class="math">\(\phi=0\)</span>;&nbsp;for <span class="math">\(a&lt;0\)</span> two opposite values of the magnetization arise. Assuming&nbsp;that <span class="math">\(a\)</span> is a smooth function of the&nbsp;temperature, <span class="math">\(a=a_0(T-T_c)\)</span> to lowest order, near the critical temperature, compute the&nbsp;magnetization, 
 </p>
 <div class="math">$$
 \phi\sim|T-T_c|^{\beta}
 $$</div>
 <p>
-and find the exponent (<span class="math">\(\beta=1/2\)</span> corresponding to the mean field&nbsp;prediction.</p>
+and find the exponent&nbsp;(<span class="math">\(\beta=1/2\)</span> corresponding to the mean field&nbsp;prediction.</p>
 <p>The validity of this result is limited by the existence of large spatial fluctuations intrinsic to the phase transition. In order to study these fluctuations compute the second variation of the free&nbsp;energy:
 </p>
 <div class="math">\begin{align*}
@@ -473,102 +474,102 @@ m(x) &amp;= -\frac{\delta F}{\delta H(x)},\\
 \chi(|x-x'|) &amp;= \frac{\delta m(x)}{\delta H(x')} = -\frac{\delta^2 F}{\delta H(x) \delta H(x')},
 \end{align*}</div>
 <p>
-where <span class="math">\(\chi=\chi(T)\)</span> is the susceptibility; it characterizes the <em>linear response</em> of the magnet to a small applied magnetic field. In a translation invariant system it depends on the distance between two points <span class="math">\(x\)</span> and <span class="math">\(x'\)</span>. Using the <em>fluctuation-dissipation</em> theorem, <span class="math">\(\chi=TG\)</span> (<span class="math">\(k_\mathrm{B}=1\)</span>), show that the equation for the correlation function <span class="math">\(G\)</span>,&nbsp;writes,
+where <span class="math">\(\chi=\chi(T)\)</span> is the susceptibility; it characterizes the <em>linear response</em> of the magnet to a small applied magnetic field. In a translation invariant system it depends on the distance between two&nbsp;points <span class="math">\(x\)</span> and <span class="math">\(x'\)</span>. Using the <em>fluctuation-dissipation</em>&nbsp;theorem, <span class="math">\(\chi=TG\)</span> (<span class="math">\(k_\mathrm{B}=1\)</span>), show that the equation for the correlation&nbsp;function <span class="math">\(G\)</span>,&nbsp;writes,
 </p>
 <div class="math">$$
 \left[-\nabla^2 + \xi(T)^{-2}\right] G(x-x') = \frac{T}{\kappa}\delta(x-x'),
 $$</div>
 <p>
-with the <em>correlation length</em> <span class="math">\(\xi\)</span>. Demonstrate that <span class="math">\(\xi = [\kappa/2a_0(T-T_c)]^{1/2}\)</span>, in the paramagnetic state, and <span class="math">\(\xi = [-\kappa/4a_0(T-T_c)]^{1/2}\)</span>, in the ferromagnetic&nbsp;state.</p>
-<p>This length characterizes the exponential decay of correlations outside the transition. The correlation length diverges at the transition temperature, <span class="math">\(\xi\rightarrow\infty\)</span> for <span class="math">\(T\rightarrow T_c\)</span>.</p>
-<p>Finally, show that at the transition, the correlation function decays algebraically in dimension <span class="math">\(d&gt;2\)</span>
+with the <em>correlation&nbsp;length</em> <span class="math">\(\xi\)</span>. Demonstrate&nbsp;that <span class="math">\(\xi = [\kappa/2a_0(T-T_c)]^{1/2}\)</span>, in the paramagnetic state,&nbsp;and <span class="math">\(\xi = [-\kappa/4a_0(T-T_c)]^{1/2}\)</span>, in the ferromagnetic&nbsp;state.</p>
+<p>This length characterizes the exponential decay of correlations outside the transition. The correlation length diverges at the transition&nbsp;temperature, <span class="math">\(\xi\rightarrow\infty\)</span> for <span class="math">\(T\rightarrow T_c\)</span>.</p>
+<p>Finally, show that at the transition, the correlation function decays algebraically in&nbsp;dimension <span class="math">\(d&gt;2\)</span>
 </p>
 <div class="math">$$
 G(x) \sim \frac{1}{x^{d-2}},
 $$</div>
 <p>
-which is a consequence of the divergence of the correlation length below <span class="math">\(T_c\)</span>.</p>
+which is a consequence of the divergence of the correlation length&nbsp;below <span class="math">\(T_c\)</span>.</p>
 <h3>Glauber&nbsp;dynamics</h3>
 <h3>8</h3>
 <p>A general Ising system of spins is defined by the&nbsp;hamiltonian
 </p>
 <div class="math">$$H = -J\sum_{\langle x, y\rangle} s_x s_y$$</div>
 <p>
-where the sum runs on the lattice neighbors. At time <span class="math">\(t\)</span> a random spin <span class="math">\(x\)</span> is selected and its state changed with a probability <span class="math">\(w_x\)</span> that depends on the local magnetization (the sum of the spins of its&nbsp;neighbors):
+where the sum runs on the lattice neighbors. At&nbsp;time <span class="math">\(t\)</span> a random&nbsp;spin <span class="math">\(x\)</span> is selected and its state changed with a&nbsp;probability <span class="math">\(w_x\)</span> that depends on the local magnetization (the sum of the spins of its&nbsp;neighbors):
 </p>
 <div class="math">$$w_x[s]= \frac{1}{2} \left[ 1- s_x \tanh \left( \beta \sum_{y\in \langle x \rangle} J s_y \right) \right].$$</div>
 <p>
-is the <em>transition rate</em> form configuration <span class="math">\(s\)</span> to configuration <span class="math">\(s'=s^{(x)}\)</span> with <span class="math">\(s_x \rightarrow - s_x\)</span> flipped. Glauber dynamics can be viewed as a stochastic equation that, at each time step <span class="math">\(\Delta t\)</span>, updates the spins according to the&nbsp;rule:
+is the <em>transition rate</em> form&nbsp;configuration <span class="math">\(s\)</span> to&nbsp;configuration <span class="math">\(s'=s^{(x)}\)</span> with <span class="math">\(s_x \rightarrow - s_x\)</span> flipped. Glauber dynamics can be viewed as a stochastic equation that, at each time&nbsp;step <span class="math">\(\Delta t\)</span>, updates the spins according to the&nbsp;rule:
 </p>
 <div class="math">$$s_x(t+\Delta t) = \begin{cases} s_x &amp; \text{with prob } 1 - \Delta t\, w_x \\  -s_x &amp; \text{with prob } \Delta t\, w_x \end{cases}$$</div>
 <p>
-from which one can deduce the evolution equations for the spin moments <span class="math">\(S_x =\langle s_x \rangle\)</span>, <span class="math">\(S_{xy} = \langle s_x s_y \rangle\)</span>,&nbsp;etc.</p>
-<p>In the <strong>mean field approximation</strong> one neglects local spin fluctuations <span class="math">\(s_x\approx \langle s_x\rangle=S_x\)</span>, such that each spin feels the field created by all other&nbsp;spins:
+from which one can deduce the evolution equations for the spin&nbsp;moments <span class="math">\(S_x =\langle s_x \rangle\)</span>, <span class="math">\(S_{xy} = \langle s_x s_y \rangle\)</span>,&nbsp;etc.</p>
+<p>In the <strong>mean field approximation</strong> one neglects local spin&nbsp;fluctuations <span class="math">\(s_x\approx \langle s_x\rangle=S_x\)</span>, such that each spin feels the field created by all other&nbsp;spins:
 </p>
 <div class="math">$$h_x = \sum_{y\in\langle x\rangle} J s_y \approx J z m, \quad m = \frac{1}{N} \sum_x S_x$$</div>
 <p>
-where <span class="math">\(z\)</span> is the coordination number of the lattice (<span class="math">\(2d\)</span>, for a cubic lattice of dimension <span class="math">\(d\)</span>), and <span class="math">\(m\)</span> the mean magnetization per&nbsp;site.</p>
+where <span class="math">\(z\)</span> is the coordination number of the lattice&nbsp;(<span class="math">\(2d\)</span>, for a cubic lattice of&nbsp;dimension <span class="math">\(d\)</span>),&nbsp;and <span class="math">\(m\)</span> the mean magnetization per&nbsp;site.</p>
 <ul>
 <li>
-<p>Show that in this approximation, the Glauber dynamics for the mean spin becomes:
+<p>Show that in this approximation, the Glauber dynamics for the mean spin&nbsp;becomes:
     <div class="math">$$\frac{dS_x}{dt} = -2\langle s_x w_x\rangle,$$</div>
     or
     <div class="math">$$\frac{dm}{dt}=-m + \tanh \beta zJ m.$$</div>
 </p>
 </li>
 <li>
-<p>Using the appropriated solutions of this differential equation, demonstrate that at the critical temperature, the magnetization relaxes to zero, as a power law,
+<p>Using the appropriated solutions of this differential equation, demonstrate that at the critical temperature, the magnetization relaxes to zero, as a power&nbsp;law,
     <div class="math">$$m \sim t^{-1/2} $$</div>
-    and is exponential outside the transition, with a characteristic time,
+    and is exponential outside the transition, with a characteristic&nbsp;time,
     <div class="math">$$\tau \sim |T_c-T|^{-1}$$</div>
     which diverges at the&nbsp;transition.</p>
 </li>
 </ul>
-<p>The <strong>one dimensional</strong> hamiltonian reduces to <span class="math">\(H = -J\sum_x s_x s_{x+1}\)</span>.</p>
+<p>The <strong>one dimensional</strong> hamiltonian reduces&nbsp;to <span class="math">\(H = -J\sum_x s_x s_{x+1}\)</span>.</p>
 <ul>
 <li>
-<p>Show that in one dimension, the transition rate is
+<p>Show that in one dimension, the transition rate&nbsp;is
     <div class="math">$$w_x[s] = \frac{1}{2} \left[1 - \frac{\gamma}{2} s_x(s_{x-1}+s_{x+1}) \right]$$</div>
     where <span class="math">\(\gamma = \tanh(2\beta J )\)</span>.</p>
 </li>
 <li>
-<p>Deduce the equation for the mean spin <span class="math">\(S_x(t)\)</span>:
+<p>Deduce the equation for the mean&nbsp;spin <span class="math">\(S_x(t)\)</span>:
     <div class="math">$$\frac{dS_x}{dt} = -S_x + \frac{\gamma}{2} (S_{x-1} + S_{x+1})$$</div>
-    and show that its solution for a local initial condition <span class="math">\(S_x(t=0) = \delta_{x,0}\)</span> (the spin at site 0 is up) writes,
+    and show that its solution for a local initial&nbsp;condition <span class="math">\(S_x(t=0) = \delta_{x,0}\)</span> (the spin at site 0 is up)&nbsp;writes,
     <div class="math">$$S_x(t) = \mathrm{e}^{-t} \, I_x(\gamma t)$$</div>
     where <span class="math">\(I_x\)</span> is the modified bessel&nbsp;function.</p>
 </li>
 <li>
-<p>Show that the mean magnetization decays exponentially for all positive temperatures:
+<p>Show that the mean magnetization decays exponentially for all positive&nbsp;temperatures:
     <div class="math">$$m(t) = m(0) \mathrm{e}^{-(1-\gamma)t}$$</div>
 </p>
 </li>
 <li>
-<p>Deduce the equation for the correlation <span class="math">\(C_x = S_{y,y+x} = \langle s_y(t)s_{y+x}(t) \rangle =C_x(t)\)</span>:
+<p>Deduce the equation for the&nbsp;correlation <span class="math">\(C_x = S_{y,y+x} = \langle s_y(t)s_{y+x}(t) \rangle =C_x(t)\)</span>:
     <div class="math">$$\frac{dC_x}{dt} = -2C_x + \gamma (C_{x-1} + C_{x+1})$$</div>
     with <span class="math">\(x&gt;0\)</span> and <span class="math">\(C_0(t) = 1\)</span>.</p>
 </li>
 <li>
-<p>Show that the stationary solution is given by (<span class="math">\(t \rightarrow \infty\)</span>):
+<p>Show that the stationary solution is given by&nbsp;(<span class="math">\(t \rightarrow \infty\)</span>):
     <div class="math">$$C_x(\infty) = \mathrm{e}^{-x/\xi}\,, \quad  \xi = [\ln (\coth 2\beta J)]^{-1}$$</div>
 </p>
 </li>
 <li>
-<p>Study the time dependence of the correlation function in the limit of zero temperature <span class="math">\(\gamma=1\)</span>, for an initial random distribution with <span class="math">\(m_0=0\)</span> and <span class="math">\(C_x(0) = 0\)</span>:
+<p>Study the time dependence of the correlation function in the limit of zero&nbsp;temperature <span class="math">\(\gamma=1\)</span>, for an initial random distribution&nbsp;with <span class="math">\(m_0=0\)</span> and <span class="math">\(C_x(0) = 0\)</span>:
     <div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} + \mathrm{e}^{-2t} \sum_{y=-\infty}^{\infty} c_y I_{x-y}(2\gamma t)$$</div>
-    and use the boundary conditions <span class="math">\(C_x(0) = \delta_{x,0}\)</span> and <span class="math">\(C_0(t)= 1\)</span>, to obtain:
+    and use the boundary&nbsp;conditions <span class="math">\(C_x(0) = \delta_{x,0}\)</span> and <span class="math">\(C_0(t)= 1\)</span>, to&nbsp;obtain:
     <div class="math">$$C_x(t) = \mathrm{e}^{-x/\xi} - \mathrm{e}^{-2t} \sum_{y=1}^\infty \mathrm{e}^{-y/\xi} \left[ I_{x-y}(2\gamma t) - I_{x+y}(2\gamma t) \right]$$</div>
 </p>
 </li>
 <li>
-<p>Show that at zero temperature one gets,
+<p>Show that at zero temperature one&nbsp;gets,
     <div class="math">$$C_x^{(0)}(t) = 1 - \mathrm{e}^{-2t} \left[ I_0(2t) + 2\sum_{y=1}^{x-1} I_y(2t) + I_x(2t) \right]$$</div>
 </p>
 </li>
 <li>
-<p>The density of domain walls (locations in the spin chain where the spin change sign) is defined by
+<p>The density of domain walls (locations in the spin chain where the spin change sign) is defined&nbsp;by
     <div class="math">$$\rho = \frac{1}{2} \langle 1-s_x s_{x+1}\rangle = \frac{1}{2} (1 - C_1)$$</div>
-    From the last expression of <span class="math">\(C_x^{(0)}(t)\)</span> deduce the asymptotic form:
+    From the last expression&nbsp;of <span class="math">\(C_x^{(0)}(t)\)</span> deduce the asymptotic&nbsp;form:
     <div class="math">$$\rho(t) = \mathrm{e}^{-2t}I_0(2t) \approx (4\pi t)^{-1/2}$$</div>
     Therefore, at zero temperature the domains grow by&nbsp;diffusion.</p>
 </li>

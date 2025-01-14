@@ -50,7 +50,8 @@
 \newcommand{\D}{\mathop{}\!\mathrm{d}}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
-\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{bm}{\boldsymbol}\)</span></p>
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/ON-index.html">Workshop</a> on scientific&nbsp;typesetting.</p>
 </blockquote>
@@ -125,7 +126,7 @@ your text
 <span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
 </code></pre></div>
 
-<p>It is also possible to display multimedia contents. A <em>movie frame</em> uses the <code>multimedia</code> package which defines the <code>\movie</code> command:</p>
+<p>It is also possible to display multimedia contents. A <em>movie frame</em> uses&nbsp;the <code>multimedia</code> package which defines&nbsp;the <code>\movie</code> command:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>frame title<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="k">\movie</span><span class="na">[externalviewer,height=7cm]</span><span class="nb">{</span><span class="c">%</span>
@@ -149,7 +150,7 @@ Use nondimensional parameters
 <span class="k">\hyperlink</span><span class="nb">{</span>XXX<span class="nb">}{</span><span class="k">\beamerbutton</span><span class="nb">{</span>click here<span class="nb">}</span> to find XXX<span class="nb">}</span>
 </code></pre></div>
 
-<p>The command <code>\beamerbuttom</code> creates a cliquable button on your pdf. Note that the command <code>\frame</code> accepts the option <code>label=name</code>, which can be used in a&nbsp;hyperlink.</p>
+<p>The&nbsp;command <code>\beamerbuttom</code> creates a cliquable button on your pdf. Note that the&nbsp;command <code>\frame</code> accepts the&nbsp;option <code>label=name</code>, which can be used in a&nbsp;hyperlink.</p>
 <h3>Effects</h3>
 <p>You may display the presentation table of contents at each new section to recall the structure of your&nbsp;talk:</p>
 <div class="highlight"><pre><span></span><code><span class="c">% Outline sections</span>
@@ -194,7 +195,7 @@ Use nondimensional parameters
 <span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
 </code></pre></div>
 
-<p>In this example we defined a color text style (uses the <code>xcolor</code> package, invoked as a class&nbsp;option):</p>
+<p>In this example we defined a color text style (uses&nbsp;the <code>xcolor</code> package, invoked as a class&nbsp;option):</p>
 <div class="highlight"><pre><span></span><code><span class="k">\definecolor</span><span class="nb">{</span>colLight<span class="nb">}{</span>RGB<span class="nb">}{</span>255, 255, 235<span class="nb">}</span> <span class="c">% light yellow</span>
 <span class="k">\definecolor</span><span class="nb">{</span>colDark<span class="nb">}{</span>RGB<span class="nb">}{</span>90, 40, 19<span class="nb">}</span> <span class="c">% dark sienna</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\BLC</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\colorbox</span><span class="nb">{</span>colDark<span class="nb">}{</span><span class="k">\textcolor</span><span class="nb">{</span>colLight<span class="nb">}{</span>#1<span class="nb">}}}</span>
@@ -208,27 +209,27 @@ Use nondimensional parameters
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\D</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>d<span class="nb">}}</span>
 </code></pre></div>
 
-<p>you may insert in the preamble. Note the use of <code>uncover</code> to show first the Shrödinger equation, then the evolution operator, and eventually the remark (colored&nbsp;text).</p>
+<p>you may insert in the preamble. Note the use&nbsp;of <code>uncover</code> to show first the Shrödinger equation, then the evolution operator, and eventually the remark (colored&nbsp;text).</p>
 <h2>Modes</h2>
 <p>Beamer can be set in different modes: presentation, handouts, transparencies, and article&nbsp;modes:</p>
 <ul>
-<li><code>presentation</code> is the default mode, it creates the slides (defined by the <code>\frame</code> command);</li>
+<li><code>presentation</code> is the default mode, it creates the slides (defined by&nbsp;the <code>\frame</code> command);</li>
 <li><code>handouts</code> creates supplementary material the audience can read during the&nbsp;presentation;</li>
 <li><code>trans</code> creates a stack of slides without the overlays, in fact a printable version of your&nbsp;talk;</li>
-<li><code>article</code> ignores frames and transfers the scope to other document class (article, book); in this case you change the class to &#8220;article&#8221; and load <code>\usepackage{beamerarticle}</code></li>
+<li><code>article</code> ignores frames and transfers the scope to other document class (article, book); in this case you change the class to &#8220;article&#8221; and&nbsp;load <code>\usepackage{beamerarticle}</code></li>
 </ul>
 <p>Thus, playing with the presentation and article mode, you can have one source (.tex) file with your paper and your&nbsp;talk:</p>
 <ul>
-<li>mode presentation <code>\documentclass[ignorenonframetext]{beamer}</code></li>
+<li>mode&nbsp;presentation <code>\documentclass[ignorenonframetext]{beamer}</code></li>
 <li>mode&nbsp;article </li>
 </ul>
 <div class="highlight"><pre><span></span><code>    <span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
     <span class="k">\usepackage</span><span class="nb">{</span>beamerarticle<span class="nb">}</span>
 </code></pre></div>
 
-<p>The commands <code>\mode&lt;article&gt;{some text}</code> and <code>\mode&lt;presentation&gt;{some text</code> make &#8220;some text&#8221; available only in the specified&nbsp;mode.</p>
+<p>The&nbsp;commands <code>\mode&lt;article&gt;{some text}</code> and <code>\mode&lt;presentation&gt;{some text</code> make &#8220;some text&#8221; available only in the specified&nbsp;mode.</p>
 <h3>Notes</h3>
-<p>You may also add notes inside your slides: <code>\note{your text}</code> creates a separate page just after your slide page, with the note text. It is also possible to use the command outside a specific&nbsp;frame:</p>
+<p>You may also add notes inside your&nbsp;slides: <code>\note{your text}</code> creates a separate page just after your slide page, with the note text. It is also possible to use the command outside a specific&nbsp;frame:</p>
 <div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>
     slide text...
 <span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>

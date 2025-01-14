@@ -52,7 +52,8 @@
 \newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
-\newcommand{\braket}[1]{\langle{#1}\rangle}&nbsp;\newcommand{\Tr}{\mathrm{Tr}}\)</span></p>
+\newcommand{\braket}[1]{\langle{#1}\rangle}
+\newcommand{\Tr}{\mathrm{Tr}}\)</span></p>
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
@@ -61,10 +62,10 @@
 <p>Thermodynamics is based on the experimental fact that the <em>state</em> of a homogeneous phase (a liquid, gas or solid), is completely determined by a set of few independent quantities. Extensive ones, like energy or volume, are additive, if one doubles the size of the system, extensive quantities double, and intensive ones, like temperature or pressure, whose value is constant over the entire system; if one divides a system into two parts, intensive quantities, remain the same in each&nbsp;part.</p>
 <p>The goal of thermodynamics is to account for the exchanges of heat and work a system undergoes when external conditions vary; the total energy balance and the direction of the possible changes are constrained by the laws of <em>energy conservation</em> and <em>entropy increase</em>: the first and second principles, respectively. Indeed, an isolated system consisting in two parts, initially at different temperatures, will evolve towards a state with uniform temperature through heat exchange between the two parts, and this evolution is irreversible: no spontaneous macroscopic temperature difference will&nbsp;appear.</p>
 <p>The central concept of thermodynamics is <em>entropy</em> <span class="math">\(S\)</span>. The main problem of thermodynamics, the specification of the state variables of a system at equilibrium, is solved by the entropy&nbsp;postulate:</p>
-<p>The entropy <span class="math">\(S\)</span> is a function of extensive variables <span class="math">\(X\)</span> that reach its <em>maximum</em> value at the state of equilibrium, among all other possible states. Entropy&nbsp;is:</p>
+<p>The&nbsp;entropy <span class="math">\(S\)</span> is a function of extensive&nbsp;variables <span class="math">\(X\)</span> that reach its <em>maximum</em> value at the state of equilibrium, among all other possible states. Entropy&nbsp;is:</p>
 <ul>
 <li>
-<p><strong>Extensive</strong>, the total entropy <span class="math">\(S\)</span> of a system composed of two subsystems, <span class="math">\(1\)</span> and <span class="math">\(2\)</span>, is the sum of entropies <span class="math">\(S_1\)</span> and <span class="math">\(S_2\)</span>,</p>
+<p><strong>Extensive</strong>, the total&nbsp;entropy <span class="math">\(S\)</span> of a system composed of two&nbsp;subsystems, <span class="math">\(1\)</span> and <span class="math">\(2\)</span>, is the sum of&nbsp;entropies <span class="math">\(S_1\)</span> and <span class="math">\(S_2\)</span>,</p>
 <p>
 <div class="math">$$S=S_1 + S_2$$</div>
 </p>
@@ -74,31 +75,31 @@
 </p>
 </li>
 <li>
-<p><strong>Concave</strong>, if <span class="math">\(X_1\)</span> and <span class="math">\(X_2\)</span> are two sets of variables for two different states, the entropy&nbsp;satisfies,</p>
+<p><strong>Concave</strong>,&nbsp;if <span class="math">\(X_1\)</span> and <span class="math">\(X_2\)</span> are two sets of variables for two different states, the entropy&nbsp;satisfies,</p>
 <p>
 <div class="math">$$\left. \frac{\partial S}{\partial X}\right|_{X_1} (X_2 - X_1) \ge S(X_2) - S(X_1),\; \forall X_2$$</div>
 </p>
-<p>therefore, the function <span class="math">\(S(X)\)</span> is always below its tangent plane at each value <span class="math">\(X=X_1\)</span>. This property ensures that the entropy of a mixed state is always larger than the mix of&nbsp;entropies:</p>
+<p>therefore, the&nbsp;function <span class="math">\(S(X)\)</span> is always below its tangent plane at each&nbsp;value <span class="math">\(X=X_1\)</span>. This property ensures that the entropy of a mixed state is always larger than the mix of&nbsp;entropies:</p>
 <p>
 <div class="math">$$S(\lambda X_1 + (1-\lambda)X_2) \gt \lambda S(X_1) + (1-\lambda) S(X_2),\; X_1 \ne X_2, \; \lambda \in (0,1).$$</div>
 </p>
 </li>
 <li>
-<p><strong>Monotonic</strong>, as a function of the energy <span class="math">\(E\)</span>, <span class="math">\(S(E)\)</span> is&nbsp;increasing, </p>
+<p><strong>Monotonic</strong>, as a function of the&nbsp;energy <span class="math">\(E\)</span>, <span class="math">\(S(E)\)</span> is&nbsp;increasing, </p>
 <p>
 <div class="math">$$\frac{\partial S}{\partial E} = \frac{1}{T} \ge 0,$$</div>
 </p>
-<p>a condition of positivity of the temperature <span class="math">\(T\)</span>  (see below the <a href="#notes">note</a> on the two level system.) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">2</a></sup> </p>
+<p>a condition of positivity of the&nbsp;temperature <span class="math">\(T\)</span>  (see below the <a href="#notes">note</a> on the two level system.) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">2</a></sup> </p>
 </li>
 </ul>
-<p>More specifically, let us consider a system defined by its energy <span class="math">\(E\)</span> and volume <span class="math">\(V\)</span>; its <em>thermodynamic</em> entropy is then function of these <em>mechanical</em> extensive variables, <span class="math">\(S=S(E,V)\)</span>. Equivalently, we may consider the energy as a function of the entropy and the volume, <span class="math">\(E=E(S,V)\)</span>. At equilibrium and for fixed volume, the entropy of an isolated system is maximal (second principle), <span class="math">\(dS = 0\)</span>. Divide the system into two parts, 1 and 2, such that the total energy (which is constant) is <span class="math">\(E = E_1 + E_2\)</span>; therefore, a change of the entropy <span class="math">\(S = S(E) = S(E_1 + E_2)\)</span> is given&nbsp;by
+<p>More specifically, let us consider a system defined by its&nbsp;energy <span class="math">\(E\)</span> and&nbsp;volume <span class="math">\(V\)</span>; its <em>thermodynamic</em> entropy is then function of these <em>mechanical</em> extensive&nbsp;variables, <span class="math">\(S=S(E,V)\)</span>. Equivalently, we may consider the energy as a function of the entropy and the&nbsp;volume, <span class="math">\(E=E(S,V)\)</span>. At equilibrium and for fixed volume, the entropy of an isolated system is maximal (second&nbsp;principle), <span class="math">\(dS = 0\)</span>. Divide the system into two parts, 1 and 2, such that the total energy (which is constant)&nbsp;is <span class="math">\(E = E_1 + E_2\)</span>; therefore, a change of the&nbsp;entropy <span class="math">\(S = S(E) = S(E_1 + E_2)\)</span> is given&nbsp;by
 </p>
 <div class="math">$$
 dS = \frac{\partial S}{\partial E_1} dE_1 + \frac{\partial S}{\partial E_2} dE_2 = \left( \frac{1}{T_1} - \frac{1}{T_2} \right) dE_1 = 0,
 $$</div>
 <p>
 which means that at equilibrium the temperature of two different regions of an isolated system must be the&nbsp;same.</p>
-<p>Furthermore, a change in the energy <span class="math">\(\Delta E\)</span> related to a change in the system&#8217;s volume <span class="math">\(\Delta V\)</span>, due for example by the application of an external force (one may imagine a gas compressed by a piston), results in a thermodynamic <em>pressure</em>
+<p>Furthermore, a change in the&nbsp;energy <span class="math">\(\Delta E\)</span> related to a change in the system&#8217;s&nbsp;volume <span class="math">\(\Delta V\)</span>, due for example by the application of an external force (one may imagine a gas compressed by a piston), results in a thermodynamic <em>pressure</em>
 </p>
 <div class="math">$$
 P = - \left. \frac{\partial E}{\partial V} \right|_S
@@ -110,12 +111,12 @@ where we specified that the state transformation is at constant entropy (adiabat
 \begin{equation} dE = \left. \frac{\partial E}{\partial S} \right|_V dS + \left. \frac{\partial E}{\partial V} \right|_S dV = T dS - P dV \end{equation}
 $$</div>
 <p>
-which is a form of the energy conservation principle of thermodynamics: a change of the energy can be decomposed into an exchange of heat <span class="math">\(TdS\)</span> (irreversible transformation according to the second principle), and an exchange of mechanical work <span class="math">\(-PdV\)</span> (reversible&nbsp;transformation).</p>
+which is a form of the energy conservation principle of thermodynamics: a change of the energy can be decomposed into an exchange of&nbsp;heat <span class="math">\(TdS\)</span> (irreversible transformation according to the second principle), and an exchange of mechanical&nbsp;work <span class="math">\(-PdV\)</span> (reversible&nbsp;transformation).</p>
 <p>Note that we take throughout the Boltzmann constant equal to&nbsp;one:
 </p>
 <div class="math">$$k_{\mathrm{B}}  = 1.380\,649\times 10^{-23}\,\mathrm{J/K} = 1,$$</div>
 <p>
-and then the temperature is measured in energy units, and more significantly, the entropy is dimensionless; to restore the kelvin it is enough to replace <span class="math">\(T\)</span> by <span class="math">\(k_\mathrm{B}T\)</span>:
+and then the temperature is measured in energy units, and more significantly, the entropy is dimensionless; to restore the kelvin it is enough to&nbsp;replace <span class="math">\(T\)</span> by <span class="math">\(k_\mathrm{B}T\)</span>:
 </p>
 <div class="math">$$T[\mathrm{K}] = \frac{T[\mathrm{J}]}{k_\mathrm{B}}, \quad
 S[\mathrm{JK^{-1}}] = k_\mathrm{B} S\,.$$</div>
@@ -124,18 +125,18 @@ S[\mathrm{JK^{-1}}] = k_\mathrm{B} S\,.$$</div>
 <p>Nature is quantum. The principles ruling the structure and properties of matter are those of quantum&nbsp;mechanics:</p>
 <ul>
 <li>
-<p>The superposition principle, which implies that the <em>state</em> of a quantum system can be represented by a vector in hilbert space (vector field over the complex numbers), <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span>.</p>
+<p>The superposition principle, which implies that the <em>state</em> of a quantum system can be represented by a vector in hilbert space (vector field over the complex&nbsp;numbers), <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span>.</p>
 </li>
 <li>
-<p>The physical quantities <span class="math">\(M\)</span> (<em>observables</em>), are hermitian operators on vectors of the hilbert space; a <em>measurement</em> of <span class="math">\(M\)</span> in the state <span class="math">\(\ket{\psi}\)</span>, will give one of its eigenvalues <span class="math">\(m\)</span>, with&nbsp;probability </p>
+<p>The physical&nbsp;quantities <span class="math">\(M\)</span> (<em>observables</em>), are hermitian operators on vectors of the hilbert space; a <em>measurement</em>&nbsp;of <span class="math">\(M\)</span> in the&nbsp;state <span class="math">\(\ket{\psi}\)</span>, will give one of its&nbsp;eigenvalues <span class="math">\(m\)</span>, with&nbsp;probability </p>
 <p>
 <div class="math">$$p(m) = |\braket{m|\psi}|^2,$$</div>
 </p>
-<p>(Born rule) where <span class="math">\(\ket{m}\)</span>, is the&nbsp;eigenvector</p>
+<p>(Born rule)&nbsp;where <span class="math">\(\ket{m}\)</span>, is the&nbsp;eigenvector</p>
 <p>
 <div class="math">$$M \ket{m} = m \ket{m}.$$</div>
 </p>
-<p>After the measurement, the state of the system is <span class="math">\(\ket{m}\)</span> (sometimes referred as the &#8220;collapse&#8221; of the wave&nbsp;function).</p>
+<p>After the measurement, the state of the system&nbsp;is <span class="math">\(\ket{m}\)</span> (sometimes referred as the &#8220;collapse&#8221; of the wave&nbsp;function).</p>
 </li>
 <li>
 <p>The time evolution of the quantum state is&nbsp;unitary,</p>
@@ -146,27 +147,27 @@ S[\mathrm{JK^{-1}}] = k_\mathrm{B} S\,.$$</div>
 <p>
 <div class="math">$$U(t,t_0) = \E^{-\I H (t-t_0)}$$</div>
 </p>
-<p>(Schrödinger) where we put <span class="math">\(\hbar = 1.054\,571\,82 \times 10^{-34}\,\mathrm{Js} = 1\)</span>.</p>
+<p>(Schrödinger) where we&nbsp;put <span class="math">\(\hbar = 1.054\,571\,82 \times 10^{-34}\,\mathrm{Js} = 1\)</span>.</p>
 </li>
 <li>
-<p>The hilbert space <span class="math">\(\mathcal{H}\)</span> of a composite system is the Kronecker product of the component hilbert spaces <span class="math">\(\mathcal{H_\alpha},\,\alpha=1,2,\ldots\)</span>:</p>
+<p>The hilbert&nbsp;space <span class="math">\(\mathcal{H}\)</span> of a composite system is the Kronecker product of the component hilbert&nbsp;spaces <span class="math">\(\mathcal{H_\alpha},\,\alpha=1,2,\ldots\)</span>:</p>
 <p>
 <div class="math">$$\mathcal{H} = \mathcal{H_1} \otimes \mathcal{H_2} \otimes \ldots$$</div>
 </p>
 </li>
 </ul>
-<p>This last postulate of quantum mechanics, establishing a tensor product structure of the quantum space, is essential in statistical physics. Indeed, statistical physics is about <em>subsystems</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">3</a></sup> of a larger closed system [<a href="#refs"><span class="caps">LL</span></a>]. Yet, the quantum state of a composite system, is in general a superposition of basis vectors, each one being a product of the component states, then it cannot be factorized in a product state: subsystems will be <em>entangled</em>. Therefore, we are unable to assign a specific state <span class="math">\(\ket{\psi_A}\)</span> to a subsystem <span class="math">\(A\)</span> of a system in the state <span class="math">\(\ket{\psi}\)</span>. In order to completely characterize the state of a subsystem we must generalize the notion of quantum state (of <em>pure</em> systems) to the case of composite (or <em>mixed</em>)&nbsp;systems.</p>
-<p>The state of a general, pure or mixed, quantum system in a hilbert space <span class="math">\(\mathcal{H}\)</span>, is given by the density operator <span class="math">\(\rho\)</span> (see <a href="#notes">notes</a><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">4</a></sup>), which is <strong>positive</strong> and of <strong>trace one</strong>:
+<p>This last postulate of quantum mechanics, establishing a tensor product structure of the quantum space, is essential in statistical physics. Indeed, statistical physics is about <em>subsystems</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">3</a></sup> of a larger closed system [<a href="#refs"><span class="caps">LL</span></a>]. Yet, the quantum state of a composite system, is in general a superposition of basis vectors, each one being a product of the component states, then it cannot be factorized in a product state: subsystems will be <em>entangled</em>. Therefore, we are unable to assign a specific&nbsp;state <span class="math">\(\ket{\psi_A}\)</span> to a&nbsp;subsystem <span class="math">\(A\)</span> of a system in the&nbsp;state <span class="math">\(\ket{\psi}\)</span>. In order to completely characterize the state of a subsystem we must generalize the notion of quantum state (of <em>pure</em> systems) to the case of composite (or <em>mixed</em>)&nbsp;systems.</p>
+<p>The state of a general, pure or mixed, quantum system in a hilbert&nbsp;space <span class="math">\(\mathcal{H}\)</span>, is given by the density&nbsp;operator <span class="math">\(\rho\)</span> (see <a href="#notes">notes</a><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">4</a></sup>), which is <strong>positive</strong> and of <strong>trace one</strong>:
 </p>
 <div class="math">$$\braket{ \psi|\rho|\psi } \ge 0,\quad \forall \ket{ \psi } \in \mathcal{H},\quad 
 \mathrm{Tr}\, \rho = 1,$$</div>
 <p>
-where <span class="math">\(\ket{ \psi }\)</span> is an arbitrary ket. The density matrix of an isolated system in a pure state <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> is <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>. For a mixed system whose hilbert space <span class="math">\(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \ldots\)</span>, composed of <span class="math">\(n = 1, 2, \ldots\)</span> components, the density operator&nbsp;is
+where <span class="math">\(\ket{ \psi }\)</span> is an arbitrary ket. The density matrix of an isolated system in a pure&nbsp;state <span class="math">\(\ket{\psi} \in \mathcal{H}\)</span> is <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>. For a mixed system whose hilbert&nbsp;space <span class="math">\(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes \ldots\)</span>, composed&nbsp;of <span class="math">\(n = 1, 2, \ldots\)</span> components, the density operator&nbsp;is
 </p>
 <div class="math">$$\rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}, \quad \sum_n p_n = 1,$$</div>
 <p>
-where <span class="math">\(0 \le p_n \le 1\)</span> are the probabilities that a given component be in state <span class="math">\(\ket{\psi_n}\)</span>.</p>
-<p>The evolution of the density matrix, according to the schrödinger operator <span class="math">\(U(t) = \exp(-\I H t)\)</span> follows the von Neumann equation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+where <span class="math">\(0 \le p_n \le 1\)</span> are the probabilities that a given component be in&nbsp;state <span class="math">\(\ket{\psi_n}\)</span>.</p>
+<p>The evolution of the density matrix, according to the schrödinger&nbsp;operator <span class="math">\(U(t) = \exp(-\I H t)\)</span> follows the von Neumann equation <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
 <div class="math">$$
 \begin{equation}
@@ -175,31 +176,31 @@ where <span class="math">\(0 \le p_n \le 1\)</span> are the probabilities that a
 \end{equation}
 $$</div>
 <p>
-which is the quantum analog to the Liouville classical equation; it shows that at equilibrium one should have <span class="math">\(\rho = \rho(H)\)</span>: the density operator of a stationary state is a functional of the system&#8217;s&nbsp;hamiltonian.</p>
-<p>A fundamental property of the density operator is that it determines the expected value of the observables <span class="math">\(M\)</span>:
+which is the quantum analog to the Liouville classical equation; it shows that at equilibrium one should&nbsp;have <span class="math">\(\rho = \rho(H)\)</span>: the density operator of a stationary state is a functional of the system&#8217;s&nbsp;hamiltonian.</p>
+<p>A fundamental property of the density operator is that it determines the expected value of the&nbsp;observables <span class="math">\(M\)</span>:
 </p>
 <div class="math">$$\braket{M} = \mathrm{Tr}\, \rho M,$$</div>
 <p>
-which is known as the von Neumann rule. An important theorem by Gleason [<a href="#refs">P</a>], states that this rule is unique and the operator <span class="math">\(\rho\)</span> must be positive and of unit trace, provided the superposition principle, applied to a complete orthogonal base of the hilbert space, is valid. As a result, the density operator embodies a complete account of the physical&nbsp;system.</p>
-<p>Let us show how a density matrix can be constructed starting from a pure system. We consider a system <span class="math">\(\mathcal{S}\)</span> in the state <span class="math">\(\ket{\psi}\)</span>, and split it into two parts <span class="math">\(\mathcal{S}_\alpha\)</span> (<span class="math">\(\alpha = 1,2\)</span>); let <span class="math">\(M_1\)</span> be a measurable property of the subsystem <span class="math">\(\mathcal{S}_1\)</span>; we want to define the state of <span class="math">\(\mathcal{S}_1\)</span>. The tensor structure of the hilbert space suggests the&nbsp;form
+which is known as the von Neumann rule. An important theorem by Gleason [<a href="#refs">P</a>], states that this rule is unique and the&nbsp;operator <span class="math">\(\rho\)</span> must be positive and of unit trace, provided the superposition principle, applied to a complete orthogonal base of the hilbert space, is valid. As a result, the density operator embodies a complete account of the physical&nbsp;system.</p>
+<p>Let us show how a density matrix can be constructed starting from a pure system. We consider a&nbsp;system <span class="math">\(\mathcal{S}\)</span> in the&nbsp;state <span class="math">\(\ket{\psi}\)</span>, and split it into two&nbsp;parts <span class="math">\(\mathcal{S}_\alpha\)</span> (<span class="math">\(\alpha = 1,2\)</span>);&nbsp;let <span class="math">\(M_1\)</span> be a measurable property of the&nbsp;subsystem <span class="math">\(\mathcal{S}_1\)</span>; we want to define the state&nbsp;of <span class="math">\(\mathcal{S}_1\)</span>. The tensor structure of the hilbert space suggests the&nbsp;form
 </p>
 <div class="math">$$M= M_1 \otimes 1_2,$$</div>
 <p>
-for the corresponding operator on the whole system, where <span class="math">\(1_2\)</span> is the identity operator in <span class="math">\(\mathcal{S}_2\)</span>. We define the state <span class="math">\(\rho_1\)</span> of <span class="math">\(\mathcal{S}_1\)</span> as the operator satisfying the relation [<a href="#refs"><span class="caps">NC</span></a>],
+for the corresponding operator on the whole system,&nbsp;where <span class="math">\(1_2\)</span> is the identity operator&nbsp;in <span class="math">\(\mathcal{S}_2\)</span>. We define the&nbsp;state <span class="math">\(\rho_1\)</span> of <span class="math">\(\mathcal{S}_1\)</span> as the operator satisfying the relation [<a href="#refs"><span class="caps">NC</span></a>],
 </p>
 <div class="math">$$\braket{M_1} = \mathrm{Tr}\, \rho_1 M_1 = \mathrm{Tr}\, \rho M = \braket{M}$$</div>
 <p>
-where <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span> is the density matrix of <span class="math">\(\mathcal{S}\)</span>. Therefore, the <em>reduced</em> density matrix <span class="math">\(\rho_1\)</span> of <span class="math">\(\mathcal{S}_1\)</span> is given by the <em>partial trace</em> <span class="math">\(\mathrm{Tr}_2\)</span> of the total density matrix <span class="math">\(\rho\)</span> over the subsystem <span class="math">\(\mathcal{S}_2\)</span>:
+where <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span> is the density matrix&nbsp;of <span class="math">\(\mathcal{S}\)</span>. Therefore, the <em>reduced</em> density&nbsp;matrix <span class="math">\(\rho_1\)</span> of <span class="math">\(\mathcal{S}_1\)</span> is given by the <em>partial&nbsp;trace</em> <span class="math">\(\mathrm{Tr}_2\)</span> of the total density&nbsp;matrix <span class="math">\(\rho\)</span> over the&nbsp;subsystem <span class="math">\(\mathcal{S}_2\)</span>:
 </p>
 <div class="math">$$\rho_1 = \mathrm{Tr}_2\,\rho_{12},$$</div>
 <p>
-where the notation <span class="math">\(\rho = \rho_{12}\)</span> explicitly specifies the space over which the operator acts (see the <a href="#notes">note</a> on the mixed states<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">5</a></sup>).</p>
-<p>Other important property of the density operators is that, given two matrices <span class="math">\(\rho_1\)</span> and <span class="math">\(\rho_2\)</span>, the&nbsp;combination,
+where the&nbsp;notation <span class="math">\(\rho = \rho_{12}\)</span> explicitly specifies the space over which the operator acts (see the <a href="#notes">note</a> on the mixed states<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">5</a></sup>).</p>
+<p>Other important property of the density operators is that, given two&nbsp;matrices <span class="math">\(\rho_1\)</span> and <span class="math">\(\rho_2\)</span>, the&nbsp;combination,
 </p>
 <div class="math">$$\rho = a \rho_1 + (1-a) \rho_2\,,\quad 0 \le a \le 1$$</div>
 <p>
-is also a density matrix. This is a property of <strong>convexity</strong> of the set of density matrices. The same relation can be understood as a decomposition of a state into two states with probability <span class="math">\(a\)</span> and <span class="math">\(1-a\)</span>; such a decomposition would not affect the expectation value of observables of the mixed system. Therefore the density matrix is not unique, differently prepared quantum systems may have the same density matrix (see the <a href="#notes">notes</a><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">6</a></sup> below).</p>
-<p>Within the quantum framework, it is possible to associate an entropy to a quantum state <span class="math">\(\rho\)</span>:
+is also a density matrix. This is a property of <strong>convexity</strong> of the set of density matrices. The same relation can be understood as a decomposition of a state into two states with&nbsp;probability <span class="math">\(a\)</span> and <span class="math">\(1-a\)</span>; such a decomposition would not affect the expectation value of observables of the mixed system. Therefore the density matrix is not unique, differently prepared quantum systems may have the same density matrix (see the <a href="#notes">notes</a><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">6</a></sup> below).</p>
+<p>Within the quantum framework, it is possible to associate an entropy to a quantum&nbsp;state <span class="math">\(\rho\)</span>:
 </p>
 <div class="math">$$
 \begin{equation}
@@ -208,7 +209,7 @@ is also a density matrix. This is a property of <strong>convexity</strong> of th
 \end{equation}
 $$</div>
 <p>
-This is the von Neumann entropy, he introduced to show that the measurement of an observable is an irreversible process and that this irreversibility produces an increase of <span class="math">\(S\)</span>. More significantly we may say that this formula shows that <em>entropy is a property of the quantum state</em>. In the statistical mechanics framework, one may think that formula (<span class="math">\(\ref{vnS}\)</span>) applies to a subsystem, and then that the trace is a partial trace (over the complement of the set of the subsystem&#8217;s degrees of freedom); in such a case <span class="math">\(S\)</span> becomes a measure of the given subsystem <em>entanglement</em> with the rest of the system. In a quantum system interference and interactions contribute to the generation of entanglement, and then to the increase of the entropy (in fact, the entanglement entropy but, for short, we will use &#8220;entropy&#8221;, and we will add &#8220;of the whole system&#8221; when necessary). Therefore, the von Neumann entropy provides a bridge between quantum mechanics, and the probabilistic nature of the quantum state, and statistical mechanics, and the probability distribution of subsystems states as a function of the thermodynamic&nbsp;variables.</p>
+This is the von Neumann entropy, he introduced to show that the measurement of an observable is an irreversible process and that this irreversibility produces an increase&nbsp;of <span class="math">\(S\)</span>. More significantly we may say that this formula shows that <em>entropy is a property of the quantum state</em>. In the statistical mechanics framework, one may think that formula&nbsp;(<span class="math">\(\ref{vnS}\)</span>) applies to a subsystem, and then that the trace is a partial trace (over the complement of the set of the subsystem&#8217;s degrees of freedom); in such a&nbsp;case <span class="math">\(S\)</span> becomes a measure of the given subsystem <em>entanglement</em> with the rest of the system. In a quantum system interference and interactions contribute to the generation of entanglement, and then to the increase of the entropy (in fact, the entanglement entropy but, for short, we will use &#8220;entropy&#8221;, and we will add &#8220;of the whole system&#8221; when necessary). Therefore, the von Neumann entropy provides a bridge between quantum mechanics, and the probabilistic nature of the quantum state, and statistical mechanics, and the probability distribution of subsystems states as a function of the thermodynamic&nbsp;variables.</p>
 <h2>Formalism</h2>
 <table>
 <tr> 
@@ -219,7 +220,7 @@ This is the von Neumann entropy, he introduced to show that the measurement of a
 
 <p>Like Kadanoff, we give an <em>operational</em> definition of statistical mechanics [<a href="#refs">K</a>].</p>
 <blockquote>
-<p>For an isolated system in <em>equilibrium</em> with fixed energy <span class="math">\(E_n\)</span>, the appropriated statistical operator is the <em>microcanonical</em>&nbsp;one:</p>
+<p>For an isolated system in <em>equilibrium</em> with fixed&nbsp;energy <span class="math">\(E_n\)</span>, the appropriated statistical operator is the <em>microcanonical</em>&nbsp;one:</p>
 <p>
 <div class="math">$$
 \begin{equation}
@@ -228,15 +229,15 @@ This is the von Neumann entropy, he introduced to show that the measurement of a
 \end{equation}
 $$</div>
 </p>
-<p>for which the energy <span class="math">\(E_n\)</span> is within a band of width <span class="math">\(\Delta\)</span>:</p>
+<p>for which the&nbsp;energy <span class="math">\(E_n\)</span> is within a band of&nbsp;width <span class="math">\(\Delta\)</span>:</p>
 <p>
 <div class="math">$$
 E_n \in I_\Delta(E) = (E, E+\Delta)
 $$</div>
 </p>
-<p>with <span class="math">\(\Delta\)</span> vanishing in the thermodynamic limit (when the size of the system tends to infinity), and  where <span class="math">\(\Omega(E)\)</span> is the number of energy states and <span class="math">\(P_\Delta\)</span> is the projector into the energy subset <span class="math">\(I_\Delta(E)\)</span>. </p>
+<p>with <span class="math">\(\Delta\)</span> vanishing in the thermodynamic limit (when the size of the system tends to infinity), and&nbsp;where <span class="math">\(\Omega(E)\)</span> is the number of energy states&nbsp;and <span class="math">\(P_\Delta\)</span> is the projector into the energy&nbsp;subset <span class="math">\(I_\Delta(E)\)</span>. </p>
 </blockquote>
-<p>Using the energy basis corresponding to the system&#8217;s hamiltonian <span class="math">\(H\)</span>,
+<p>Using the energy basis corresponding to the system&#8217;s&nbsp;hamiltonian <span class="math">\(H\)</span>,
 </p>
 <div class="math">$$
 \begin{equation}
@@ -244,7 +245,7 @@ $$</div>
 \end{equation}
 $$</div>
 <p>
-where <span class="math">\(E_n\)</span>, and <span class="math">\(\ket{n}\)</span> are the energy levels and vectors, the mean value of an observable <span class="math">\(M\)</span> is given&nbsp;by,
+where <span class="math">\(E_n\)</span>,&nbsp;and <span class="math">\(\ket{n}\)</span> are the energy levels and vectors, the mean value of an&nbsp;observable <span class="math">\(M\)</span> is given&nbsp;by,
 </p>
 <div class="math">$$
 \begin{equation}
@@ -252,7 +253,7 @@ where <span class="math">\(E_n\)</span>, and <span class="math">\(\ket{n}\)</spa
   \frac{1}{\Omega(E)}\sum_{n \in I_\Delta} \braket{n|M|n}\,.
 \end{equation}
 $$</div>
-<p>We observe that <span class="math">\(\rho = \rho(E)\)</span> is uniformly distributed in the interval <span class="math">\(I_\Delta\)</span>. A macroscopic quantum system has eigenenergies <span class="math">\(E_n\)</span> whose spacing exponentially shrinks with the number <span class="math">\(N\)</span> of the system&#8217;s number of particles. Therefore, &#8220;microscopic&#8221; transitions within the band of width <span class="math">\(\Delta\)</span> does not change the &#8220;macroscopic&#8221; properties of the system, justifying the uniform probability distribution of the energy levels in this band. The entropy of the system is related with the number of the microscopic states <span class="math">\(\Omega(E)\)</span> compatibles with the macrostate of energy <span class="math">\(E\)</span>; the extensive quantity associated with this number is the statistical&nbsp;entropy:
+<p>We observe&nbsp;that <span class="math">\(\rho = \rho(E)\)</span> is uniformly distributed in the&nbsp;interval <span class="math">\(I_\Delta\)</span>. A macroscopic quantum system has&nbsp;eigenenergies <span class="math">\(E_n\)</span> whose spacing exponentially shrinks with the&nbsp;number <span class="math">\(N\)</span> of the system&#8217;s number of particles. Therefore, &#8220;microscopic&#8221; transitions within the band of&nbsp;width <span class="math">\(\Delta\)</span> does not change the &#8220;macroscopic&#8221; properties of the system, justifying the uniform probability distribution of the energy levels in this band. The entropy of the system is related with the number of the microscopic&nbsp;states <span class="math">\(\Omega(E)\)</span> compatibles with the macrostate of&nbsp;energy <span class="math">\(E\)</span>; the extensive quantity associated with this number is the statistical&nbsp;entropy:
 </p>
 <div class="math">$$
 \begin{equation}
@@ -261,12 +262,12 @@ $$</div>
 \end{equation}
 $$</div>
 <p>
-Using the extensivity of <span class="math">\(S \sim N\)</span>, we demonstrate that the energy spacing is indeed exponentially&nbsp;small:
+Using the extensivity&nbsp;of <span class="math">\(S \sim N\)</span>, we demonstrate that the energy spacing is indeed exponentially&nbsp;small:
 </p>
 <div class="math">$$\Delta E_n = \frac{\Delta}{\Omega(E)} \sim \Delta \E^{-N}\,.$$</div>
 <p>If instead of an isolated system we deal with a subsystem that exchange energy with its environment at fixed temperature, the appropriated statistical operator is the <em>canonical</em>&nbsp;one.</p>
 <blockquote>
-<p>The statistical operator of a system in thermodynamic equilibrium at temperature <span class="math">\(T\)</span>&nbsp;is</p>
+<p>The statistical operator of a system in thermodynamic equilibrium at&nbsp;temperature <span class="math">\(T\)</span> is</p>
 <p>
 <div class="math">$$
 \begin{equation}
@@ -276,7 +277,7 @@ Using the extensivity of <span class="math">\(S \sim N\)</span>, we demonstrate 
 \end{equation}
 $$</div>
 </p>
-<p>where <span class="math">\(Z=Z(T,N,V)\)</span> is the partition function, which depends only on the thermodynamic variables (temperature, <span class="math">\(N\)</span> number of particle, <span class="math">\(V\)</span> volume). In the energy basis, <span class="math">\(\rho\)</span> can be written in terms of the probability <span class="math">\(P(E_n)\)</span> to be in the state <span class="math">\(n\)</span>:</p>
+<p>where <span class="math">\(Z=Z(T,N,V)\)</span> is the partition function, which depends only on the thermodynamic variables&nbsp;(temperature, <span class="math">\(N\)</span> number of&nbsp;particle, <span class="math">\(V\)</span> volume). In the energy&nbsp;basis, <span class="math">\(\rho\)</span> can be written in terms of the&nbsp;probability <span class="math">\(P(E_n)\)</span> to be in the&nbsp;state <span class="math">\(n\)</span>:</p>
 <p>
 <div class="math">$$
 \begin{equation}
@@ -286,7 +287,7 @@ $$</div>
 \end{equation}
 $$</div>
 </p>
-<p>The expected value of an observable <span class="math">\(M\)</span> is given by the von Neumann formula; in the energy basis it&nbsp;becomes:</p>
+<p>The expected value of an&nbsp;observable <span class="math">\(M\)</span> is given by the von Neumann formula; in the energy basis it&nbsp;becomes:</p>
 <p>
 <div class="math">$$
 \begin{equation}
@@ -294,7 +295,7 @@ $$</div>
 \end{equation}
 $$</div>
 </p>
-<p>which depends only on the diagonal elements of the matrix <span class="math">\(M\)</span>. <span class="math">\(\rho\)</span> defined by (<span class="math">\(\ref{canon}\)</span>), is called the canonical density operator, it it relevant for subsystems that exchange energy with their&nbsp;environment.</p>
+<p>which depends only on the diagonal elements of the&nbsp;matrix <span class="math">\(M\)</span>. <span class="math">\(\rho\)</span> defined by&nbsp;(<span class="math">\(\ref{canon}\)</span>), is called the canonical density operator, it it relevant for subsystems that exchange energy with their&nbsp;environment.</p>
 <p>The canonical entropy is given&nbsp;by,</p>
 <p>
 <div class="math">$$
@@ -306,11 +307,11 @@ $$</div>
 </p>
 <p>where <span class="math">\(p_n = P(E_n)\)</span>.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">7</a></sup></p>
 </blockquote>
-<p>Formula (<span class="math">\(\ref{canon}\)</span>), defining the <em>canonical</em> ensemble of subsystems, contains the whole program of statistical mechanics: it is a functional of the hamiltonian describing the microscopic interactions, and is a function of the macroscopic thermodynamical variables; once the partition function computed, all the quantities defining the thermal state can be obtained. In the thermodynamic limit, the equilibrium state is equivalently described by both, the canonical and microcanonical&nbsp;ensembles.</p>
+<p>Formula&nbsp;(<span class="math">\(\ref{canon}\)</span>), defining the <em>canonical</em> ensemble of subsystems, contains the whole program of statistical mechanics: it is a functional of the hamiltonian describing the microscopic interactions, and is a function of the macroscopic thermodynamical variables; once the partition function computed, all the quantities defining the thermal state can be obtained. In the thermodynamic limit, the equilibrium state is equivalently described by both, the canonical and microcanonical&nbsp;ensembles.</p>
 <h2>Foundations</h2>
 <p>Entropy is the central concept of statistical mechanics, as it is for thermodynamics. However, at variance with the phenomenological quantity used to describe thermal systems, the statistical entropy is a fundamental physical notion, intimately related with quantum laws. Its fundamental character is emphasized by its dimensionless nature, with also means that the realm of entropy goes beyond the physical domain. In fact, it is also a central concept in the theory of information: the relationships between physics and information are actually active research topics [<a href="#refs"><span class="caps">SW</span></a>].</p>
-<p>As nature, statistical physics is essentially quantum. One reason for the necessity of a quantum description of macroscopic systems is that there is no intrinsic scale for the validity of the quantum: at low temperature quantum effects dominate, whatever the size of the system. Superfluidity appears on helium below <span class="math">\(4\,\mathrm{K}\)</span>, superconductivity in cuprates can arise at temperatures of the order of <span class="math">\(100\,\mathrm{K}\)</span>, ferromagnetism, which is the result of interacting spins, is observed up to a thousand degrees. More fundamentally, classical statistical physics is based on the notion of state in the phase space, but entropy cannot be defined without introducing an arbitrary coarse graining, which, in the quantum context is naturally associated with the Planck action <span class="math">\(\hbar\)</span>. Moreover, a fundamental property of nature, the identity of particles (Pauli principle), is incompatible with the full deterministic laws of classical physics (trajectories in phase space are always perfectly determined, and label each particle independently of their&nbsp;number).</p>
-<p>The necessity of a probabilistic description of macroscopic systems arises naturally from one (astonishing) consequence of entanglement. Let us consider a set of classical magnetic moments, the knowledge of the composite system implies the knowledge of each particle; on the quantum side, the knowledge of the state of a set of interacting spins, for example in a pure state, do not imply the knowledge of the state of each spin. In fact, in an interacting system, it is impossible to assign a &#8220;value&#8221; to the spin of a particle. This is just the reason for the introduction of the density matrix as a description of the quantum state of a composite system. Yet, in an <em>appropriated</em> orthonormal basis <span class="math">\(\ket{n}\)</span>, the density operator can be written as a functional of a <em>probability distribution</em> <span class="math">\(p_n\)</span>:
+<p>As nature, statistical physics is essentially quantum. One reason for the necessity of a quantum description of macroscopic systems is that there is no intrinsic scale for the validity of the quantum: at low temperature quantum effects dominate, whatever the size of the system. Superfluidity appears on helium&nbsp;below <span class="math">\(4\,\mathrm{K}\)</span>, superconductivity in cuprates can arise at temperatures of the order&nbsp;of <span class="math">\(100\,\mathrm{K}\)</span>, ferromagnetism, which is the result of interacting spins, is observed up to a thousand degrees. More fundamentally, classical statistical physics is based on the notion of state in the phase space, but entropy cannot be defined without introducing an arbitrary coarse graining, which, in the quantum context is naturally associated with the Planck&nbsp;action <span class="math">\(\hbar\)</span>. Moreover, a fundamental property of nature, the identity of particles (Pauli principle), is incompatible with the full deterministic laws of classical physics (trajectories in phase space are always perfectly determined, and label each particle independently of their&nbsp;number).</p>
+<p>The necessity of a probabilistic description of macroscopic systems arises naturally from one (astonishing) consequence of entanglement. Let us consider a set of classical magnetic moments, the knowledge of the composite system implies the knowledge of each particle; on the quantum side, the knowledge of the state of a set of interacting spins, for example in a pure state, do not imply the knowledge of the state of each spin. In fact, in an interacting system, it is impossible to assign a &#8220;value&#8221; to the spin of a particle. This is just the reason for the introduction of the density matrix as a description of the quantum state of a composite system. Yet, in an <em>appropriated</em> orthonormal&nbsp;basis <span class="math">\(\ket{n}\)</span>, the density operator can be written as a functional of a <em>probability&nbsp;distribution</em> <span class="math">\(p_n\)</span>:
 </p>
 <div class="math">$$\rho = \sum_n p_n \ket{n} \bra{n},\quad \sum_n p_n =1\,,$$</div>
 <p>
@@ -318,17 +319,17 @@ and the von Neumann entropy for the subsystem&nbsp;is,
 </p>
 <div class="math">$$S = -\sum_n p_n \ln p_n\,.$$</div>
 <p>
-The problem is now to relate this probability distribution to the physical properties of the subsystem in the state <span class="math">\(\rho\)</span>, and to specify which is the &#8220;appropriated&#8221; basis. The logical choice, for a system conserving the energy, is just the <em>energy</em>&nbsp;basis.</p>
-<p>Indeed, energy is special because, at the microscopic level, a physical system is defined by its hamiltonian operator (one may take this as a definition of &#8216;microscopic&#8217;). The set of eigenvalues and eigenvectors of the system&#8217;s hamiltonian <span class="math">\(H\)</span>, completely defines the physical properties of the system: the statistical matrix (the density operator in the context of statistical physics), must hence be a functional of this spectrum and of the thermodynamic variables <span class="math">\(X\)</span> (possibly with the addition of other conserved&nbsp;quantities),
+The problem is now to relate this probability distribution to the physical properties of the subsystem in the&nbsp;state <span class="math">\(\rho\)</span>, and to specify which is the &#8220;appropriated&#8221; basis. The logical choice, for a system conserving the energy, is just the <em>energy</em>&nbsp;basis.</p>
+<p>Indeed, energy is special because, at the microscopic level, a physical system is defined by its hamiltonian operator (one may take this as a definition of &#8216;microscopic&#8217;). The set of eigenvalues and eigenvectors of the system&#8217;s&nbsp;hamiltonian <span class="math">\(H\)</span>, completely defines the physical properties of the system: the statistical matrix (the density operator in the context of statistical physics), must hence be a functional of this spectrum and of the thermodynamic&nbsp;variables <span class="math">\(X\)</span> (possibly with the addition of other conserved&nbsp;quantities),
 </p>
 <div class="math">$$\rho = \rho(H; X),$$</div>
 <p>
-which immediately leads, through the von Neumann equation <span class="math">\(\eqref{vN}\)</span>,
+which immediately leads, through the von Neumann&nbsp;equation <span class="math">\(\eqref{vN}\)</span>,
 </p>
 <div class="math">$$\I \frac{\partial }{\partial t} \rho = [H,\rho]$$</div>
 <p>
-to the stationary condition <span class="math">\(\dot{\rho}=0\)</span>, required by the equilibrium condition. Therefore, the natural representation of the density matrix should be in terms of the energy eigenfunctions. To find the functional relation between the energy spectrum, the thermodynamic state variables, and the probability distribution of the composite quantum state, is the main problem of the statistical physics formalism. We will thus investigate the relation between the density matrix and the properties of the energy spectrum of macroscopic&nbsp;systems.</p>
-<p>One defining feature of the energy spectrum of a macroscopic body is its quasi-continuum distribution: the level spacings decrease exponentially with the size of the system. It is a remarkable fact that the density of energy levels can be related to the statistical entropy, which in turn, can be related to the thermodynamical entropy (using the Boltzmann constant <span class="math">\(k_\mathrm{B}\)</span>). Paradigmatic examples of systems with a complex spectrum are atomic nuclei, and this, in spite to be formed by only a few particles (see Figure below and&nbsp;exercices).</p>
+to the stationary&nbsp;condition <span class="math">\(\dot{\rho}=0\)</span>, required by the equilibrium condition. Therefore, the natural representation of the density matrix should be in terms of the energy eigenfunctions. To find the functional relation between the energy spectrum, the thermodynamic state variables, and the probability distribution of the composite quantum state, is the main problem of the statistical physics formalism. We will thus investigate the relation between the density matrix and the properties of the energy spectrum of macroscopic&nbsp;systems.</p>
+<p>One defining feature of the energy spectrum of a macroscopic body is its quasi-continuum distribution: the level spacings decrease exponentially with the size of the system. It is a remarkable fact that the density of energy levels can be related to the statistical entropy, which in turn, can be related to the thermodynamical entropy (using the Boltzmann&nbsp;constant <span class="math">\(k_\mathrm{B}\)</span>). Paradigmatic examples of systems with a complex spectrum are atomic nuclei, and this, in spite to be formed by only a few particles (see Figure below and&nbsp;exercices).</p>
 <blockquote>
 <p><img src="/images/PS-bohigas-levels.png" alt="typical energy level distributions" style="width: 250px;"/>
 <img src="/images/PS-bohigas-hist.png" alt="histogram of level spacings" style="width: 250px;"/></p>
@@ -337,11 +338,11 @@ to the stationary condition <span class="math">\(\dot{\rho}=0\)</span>, required
 <p>It is important to note that for a subsystem to be in a well defined thermodynamic state, we do not need the whole system to be in the same thermodynamic state; the whole system, being completely isolated, can be for instance in a quantum pure state (and then not at all at equilibrium). This is possible because the thermodynamical state refers to <em>local</em> observables, whose quantum expected value (computed with the appropriated energy eigenvectors) will be equivalent to the one predicted by a statistical ensemble expectation value. This statement, already mentioned by Landau and Lifshitz in their book on statistics, is now known as the &#8220;eigenvector thermalization hypothesis&#8221; (see reference [<a href="#refs"><span class="caps">DA</span></a>]).</p>
 <p>One may ask about the conditions under which local observables of a system have thermal expected values. A generic condition for the applicability of statistics is <strong>chaos</strong>.</p>
 <p>Chaos is related to the emergence of statistical properties in otherwise deterministic systems; in classical systems it manifests by an extreme (exponential) sensitivity of particle trajectories on slight differences in the initial conditions (the Sinai&#8217;s billiard is a paradigmatic example); in quantum systems, where the notion of trajectory is precluded by the uncertainty principle, it is related to the statistical properties of the hamiltonian spectrum (atomic nuclei spectra or the quantum version of the Sinai billiard, are examples). See the lectures on <a href="/pages/CH-index.html">chaos</a> and reference [<a href="#refs">S</a>].</p>
-<p>Let us consider for simplicity an isolated system in a pure state <span class="math">\(\ket{\psi}\)</span>,
+<p>Let us consider for simplicity an isolated system in a pure&nbsp;state <span class="math">\(\ket{\psi}\)</span>,
 </p>
 <div class="math">$$\ket{\psi} = \sum_n \psi_n \ket{n}$$</div>
 <p>
-where <span class="math">\(\psi_n\)</span> are the complex amplitudes in the energy basis <span class="math">\(\ket{n}\)</span> of the hamiltonian <span class="math">\(H\)</span>. The expected value of a measurable operator <span class="math">\(M\)</span> (a few body local operator, for instance), is at time <span class="math">\(t\)</span>, given&nbsp;by,
+where <span class="math">\(\psi_n\)</span> are the complex amplitudes in the energy&nbsp;basis <span class="math">\(\ket{n}\)</span> of the&nbsp;hamiltonian <span class="math">\(H\)</span>. The expected value of a measurable&nbsp;operator <span class="math">\(M\)</span> (a few body local operator, for instance), is at&nbsp;time <span class="math">\(t\)</span>, given&nbsp;by,
 </p>
 <div class="math">$$\braket{M(t)} = \sum_n \braket{n|M|n} |\psi_n|^2 + \sum_{m \ne n} \braket{n|M|m} \E^{\I(E_n-E_m)t} \psi_n^* \psi_m\,.$$</div>
 <p>
@@ -353,7 +354,7 @@ In order to obtain from this general (exact) equation the thermodynamic expected
 \end{equation}
 $$</div>
 <p>
-where <span class="math">\(\rho_E\)</span> is the density matrix given by (<span class="math">\(\ref{micro}\)</span>), it is necessary that (i) the first term be independent of the arbitrary initial amplitudes defining the whole system pure state <span class="math">\(|\psi_n|^2\)</span>, 
+where <span class="math">\(\rho_E\)</span> is the density matrix given by&nbsp;(<span class="math">\(\ref{micro}\)</span>), it is necessary that (i) the first term be independent of the arbitrary initial amplitudes defining the whole system pure&nbsp;state <span class="math">\(|\psi_n|^2\)</span>, 
 </p>
 <div class="math">$$
 \begin{equation}
@@ -362,16 +363,16 @@ where <span class="math">\(\rho_E\)</span> is the density matrix given by (<span
 \end{equation}
 $$</div>
 <p>
-(we used the normalization condition, <span class="math">\(\sum_n |\psi_n|^2= 1\)</span>) for some <em>typical</em> <span class="math">\(n_E\)</span> <em>near</em> the energy <span class="math">\(E\)</span>; and that (ii) the second term vanishes in the thermodynamic&nbsp;limit. </p>
-<p>The first condition means that the diagonal elements of the observable <span class="math">\(M\)</span> in the energy basis, are a smooth function of the energy, thus can be extracted from the sum which contains terms around <span class="math">\(E\)</span>, inside the relevant energy shell of width <span class="math">\(\Delta\)</span>. This is essentially the contents of the &#8220;eigenvector thermal&nbsp;hypothesis&#8221;:
+(we used the normalization&nbsp;condition, <span class="math">\(\sum_n |\psi_n|^2= 1\)</span>) for some <em>typical</em> <span class="math">\(n_E\)</span> <em>near</em> the&nbsp;energy <span class="math">\(E\)</span>; and that (ii) the second term vanishes in the thermodynamic&nbsp;limit. </p>
+<p>The first condition means that the diagonal elements of the&nbsp;observable <span class="math">\(M\)</span> in the energy basis, are a smooth function of the energy, thus can be extracted from the sum which contains terms&nbsp;around <span class="math">\(E\)</span>, inside the relevant energy shell of&nbsp;width <span class="math">\(\Delta\)</span>. This is essentially the contents of the &#8220;eigenvector thermal&nbsp;hypothesis&#8221;:
 </p>
 <div class="math">$$
 \braket{n_E|M|n_E} \approx \braket{M}_E,
 $$</div>
 <p>
 for a closed quantum&nbsp;system.</p>
-<p>The second condition supposes first that there is no significant degeneracy of the energy spectrum. In addition, it is a condition on the amplitudes of fluctuations around the dominant term (<span class="math">\(\ref{nn}\)</span>).</p>
-<p>Both conditions can be demonstrated to be a consequence of the statistical properties associated to the energy spectrum of a chaotic <span class="math">\(H\)</span>, which should be <em>equivalent</em> to the statistical properties of a <strong>random matrix</strong> hamiltonian. Now, as a special case, this should also be true in the semiclassical limit regime of classically chaotic dynamical systems. As a matter of fact, the eigenvectors of a random matrix are gaussianly distributed, one can therefore use the laws of large numbers and the central limit theorem to show that the mean of an operator is dominated by the diagonal terms (condition i) and that the fluctuations around the mean rapidly decrease (condition ii) with the dimension of the matrix (the number of degrees of&nbsp;freedom).</p>
+<p>The second condition supposes first that there is no significant degeneracy of the energy spectrum. In addition, it is a condition on the amplitudes of fluctuations around the dominant term&nbsp;(<span class="math">\(\ref{nn}\)</span>).</p>
+<p>Both conditions can be demonstrated to be a consequence of the statistical properties associated to the energy spectrum of a&nbsp;chaotic <span class="math">\(H\)</span>, which should be <em>equivalent</em> to the statistical properties of a <strong>random matrix</strong> hamiltonian. Now, as a special case, this should also be true in the semiclassical limit regime of classically chaotic dynamical systems. As a matter of fact, the eigenvectors of a random matrix are gaussianly distributed, one can therefore use the laws of large numbers and the central limit theorem to show that the mean of an operator is dominated by the diagonal terms (condition i) and that the fluctuations around the mean rapidly decrease (condition ii) with the dimension of the matrix (the number of degrees of&nbsp;freedom).</p>
 <h3>Experimental verification of the eigenstate thermalization&nbsp;hypothesis</h3>
 <p>Kaufman et al. (2016)[<a href="#refs"><span class="caps">KL</span></a>] experimentally tested the thermalization of the local observables of an isolated quantum system. They prepared a Bose-Einstein condensate of rubidium atoms in the form of a two-dimensional lattice. Initially the atoms were in a product pure state (without entanglement). After a well controlled quench leading the system towards a high energy state, the interactions between the bosons dynamically generate entanglement. The abstract of their paper&nbsp;reads:</p>
 <blockquote>
@@ -383,16 +384,16 @@ for a closed quantum&nbsp;system.</p>
 S_2(V_A) = -\ln\Tr{\rho_A^2},
 $$</div>
 <p>
-related to the Rény entropy with <span class="math">\(n = 2\)</span>:
+related to the Rény entropy&nbsp;with <span class="math">\(n = 2\)</span>:
 </p>
 <div class="math">$$
 S_n = \frac{1}{1-n}\ln \Tr \big(\rho^n\big),
 $$</div>
 <p>
-(it coincides with the von Neumann entropy for <span class="math">\(n = 1\)</span>) where <span class="math">\(\rho_A\)</span> and <span class="math">\(V_A\)</span> are the state and the volume of subsystem <span class="math">\(A\)</span>. This quantity is largely insensitive to the system size when it is in its ground state, and is proportional to the volume in the thermodynamic case. They found that the experiment reproduces these predictions, demonstrating in addition the relation between entanglement and thermodynamic entropy (figure&nbsp;below).</p>
+(it coincides with the von Neumann entropy&nbsp;for <span class="math">\(n = 1\)</span>)&nbsp;where <span class="math">\(\rho_A\)</span> and <span class="math">\(V_A\)</span> are the state and the volume of&nbsp;subsystem <span class="math">\(A\)</span>. This quantity is largely insensitive to the system size when it is in its ground state, and is proportional to the volume in the thermodynamic case. They found that the experiment reproduces these predictions, demonstrating in addition the relation between entanglement and thermodynamic entropy (figure&nbsp;below).</p>
 <blockquote>
 <p><img src="/images/PS-Kaufman_SA.jpeg" alt="purity" style="height: 250px;"/></p>
-<p>Experimental measurements of the second Rény entropy <span class="math">\(S_2\)</span> as a function of the subsystem volume <span class="math">\(V_A\)</span>. The black staight line is the thermodynamic canonical (Rény) entropy as predicted by statistical physics theory at a temperature corresponding to the mean value of the system&#8217;s energy (after the quench). The red line corresponds to the quenched state <span class="math">\(\rho_A\)</span>, and the blue line to the ground state. The initial growth of the entropy in the case of the high energy state (red), match the thermodynamic prediction (black); the subsequent bending results from the finite size (here 6 particles) of the subsystem A. The global state of the system is pure, as confirmed by the vanishing of the entanglement at <span class="math">\(V_A = 6\)</span>. One observes that the ground state entropy is only slightly dependent on the volume, result also consitent with the theoretical predictions. [<a href="https://doi.org/10.1126/science.aaf6725">Kaufman et al. (2016)</a>]</p>
+<p>Experimental measurements of the second Rény&nbsp;entropy <span class="math">\(S_2\)</span> as a function of the subsystem&nbsp;volume <span class="math">\(V_A\)</span>. The black staight line is the thermodynamic canonical (Rény) entropy as predicted by statistical physics theory at a temperature corresponding to the mean value of the system&#8217;s energy (after the quench). The red line corresponds to the quenched&nbsp;state <span class="math">\(\rho_A\)</span>, and the blue line to the ground state. The initial growth of the entropy in the case of the high energy state (red), match the thermodynamic prediction (black); the subsequent bending results from the finite size (here 6 particles) of the subsystem A. The global state of the system is pure, as confirmed by the vanishing of the entanglement&nbsp;at <span class="math">\(V_A = 6\)</span>. One observes that the ground state entropy is only slightly dependent on the volume, result also consitent with the theoretical predictions. [<a href="https://doi.org/10.1126/science.aaf6725">Kaufman et al. (2016)</a>]</p>
 </blockquote>
 <h2>Notes <a name="notes"></a></h2>
 <h3>References <a name="refs"></a></h3>
@@ -428,16 +429,16 @@ $$</div>
 <p><strong>Density operator</strong>. Often we use &#8220;density operator&#8221;, &#8220;density matrix&#8221; and &#8220;statistical operator&#8221; as synonyms. However, more specifically &#8220;matrix&#8221; refers to some particular representation (usually the energy basis), and &#8220;statistical&#8221; refers to the domain of statistical mechanics, thus dependent on the thermodynamic state. The density matrix was originally introduced by <a href="/pdfs/Landau-1927.pdf">Landau, 1927</a>, to describe the radiative damping of an atom in an electromagnetic field.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p><strong>Mixed states</strong>. We can interpret <span class="math">\(\rho_1\)</span>, the density matrix of a subsystem of a larger pure state system, as the density matrix of a mixed system, without reference to a larger hilbert space. Given a density matrix it is always possible to &#8220;purify&#8221; it, that is to find a <span class="math">\(\ket{\psi}\)</span> from which it is a partial trace. The general form of a density matrix of a mixed system can be written in the form of a convex sum of pure&nbsp;states, </p>
+<p><strong>Mixed states</strong>. We can&nbsp;interpret <span class="math">\(\rho_1\)</span>, the density matrix of a subsystem of a larger pure state system, as the density matrix of a mixed system, without reference to a larger hilbert space. Given a density matrix it is always possible to &#8220;purify&#8221; it, that is to find&nbsp;a <span class="math">\(\ket{\psi}\)</span> from which it is a partial trace. The general form of a density matrix of a mixed system can be written in the form of a convex sum of pure&nbsp;states, </p>
 <p>
 <div class="math">$$
 \rho = \sum_n p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha}, \quad \sum_\alpha p_\alpha = 1
 $$</div>
 </p>
-<p>where <span class="math">\(\ket{\psi_\alpha}\)</span> are the possible states of the subsystems, each one with probability <span class="math">\(p_\alpha\)</span>. One may say that <span class="math">\(p_\alpha\)</span> are determined by the experimental protocole of the quantum state preparation.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>where <span class="math">\(\ket{\psi_\alpha}\)</span> are the possible states of the subsystems, each one with&nbsp;probability <span class="math">\(p_\alpha\)</span>. One may say&nbsp;that <span class="math">\(p_\alpha\)</span> are determined by the experimental protocole of the quantum state preparation.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p><strong>Decomposition</strong> of <span class="math">\(\rho\)</span>. The density matrix, as the quantum state, has an intrinsic probabilistic nature (as expressed by the Born rule). Actually, different quantum states, may correspond to the same density operator, that is leading to the same expected value of the observables. Take for instance, two such operators <span class="math">\(\rho_1\)</span> and <span class="math">\(\rho_2\)</span>,&nbsp;then,</p>
+<p><strong>Decomposition</strong>&nbsp;of <span class="math">\(\rho\)</span>. The density matrix, as the quantum state, has an intrinsic probabilistic nature (as expressed by the Born rule). Actually, different quantum states, may correspond to the same density operator, that is leading to the same expected value of the observables. Take for instance, two such&nbsp;operators <span class="math">\(\rho_1\)</span> and <span class="math">\(\rho_2\)</span>,&nbsp;then,</p>
 <p>
 <div class="math">$$
 \rho = a \rho_1 + (1-a) \rho_2, \quad 0 \le a \le 1,
@@ -449,16 +450,16 @@ $$</div>
 \braket{M} = a \mathrm{Tr}\, \rho_1 M + (1-a) \mathrm{Tr}\, \rho_2 M = \mathrm{Tr}\, \rho M
 $$</div>
 </p>
-<p>where <span class="math">\(a\)</span> can be interpreted as the probability of preparing a system in the state <span class="math">\(\rho_1\)</span> and <span class="math">\(1-a\)</span> in the state <span class="math">\(\rho_2\)</span>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>where <span class="math">\(a\)</span> can be interpreted as the probability of preparing a system in the&nbsp;state <span class="math">\(\rho_1\)</span> and <span class="math">\(1-a\)</span> in the&nbsp;state <span class="math">\(\rho_2\)</span>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p><strong>Entropy</strong>. It is worth noting that, at variance to other physical quantities, entropy does not possess a corresponding mechanical quantity. For instance temperature can be loosely interpreted (for example, in gas) as a mean kinetic energy, pressure as a mean force per unit area driven by collisions, or energy as the sum of particle energies; it is a pure <em>statistical</em> concept. Indeed, using the above decomposition in terms of the probabilities <span class="math">\(p_\alpha\)</span>, we&nbsp;find,</p>
+<p><strong>Entropy</strong>. It is worth noting that, at variance to other physical quantities, entropy does not possess a corresponding mechanical quantity. For instance temperature can be loosely interpreted (for example, in gas) as a mean kinetic energy, pressure as a mean force per unit area driven by collisions, or energy as the sum of particle energies; it is a pure <em>statistical</em> concept. Indeed, using the above decomposition in terms of the&nbsp;probabilities <span class="math">\(p_\alpha\)</span>, we&nbsp;find,</p>
 <p>
 <div class="math">$$
 S = - \mathrm{Tr}\, \rho \ln \rho = \braket{\ln \rho} = \sum_n\braket{\ln p_n},
 $$</div>
 </p>
-<p>which depends on <span class="math">\(p_n\)</span> (a probability distribution), and it is not the average of a mechanical quantity appearing in the system hamiltonian.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>which depends&nbsp;on <span class="math">\(p_n\)</span> (a probability distribution), and it is not the average of a mechanical quantity appearing in the system hamiltonian.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

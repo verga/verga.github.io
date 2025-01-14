@@ -52,38 +52,39 @@
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
 \newcommand{\braket}[1]{\langle{#1}\rangle}
-\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}&nbsp;\newcommand{\bm}{\boldsymbol}\)</span></p>
+\newcommand{\bbraket}[1]{\langle\!\langle{#1}\rangle\!\rangle}
+\newcommand{\bm}{\boldsymbol}\)</span></p>
 <blockquote>
 <p><a href="/pages/MQ-index.html">Cours</a> de mécanique&nbsp;quantique.</p>
 </blockquote>
 <h1>Symétries</h1>
 <p>La symétrie est présente dans pratiquement tout système physique et determine en grande partie ses propriétés et sa dynamique. L&#8217;étude de symétries d&#8217;un système quantique révèle la <em>géométrie</em> des états quantiques et des ses opérateurs. D&#8217;abord, les symétries de l&#8217;espace, du temps et de la dynamique, déterminent les lois de conservation et contraignent la forme des états propres des observables comme l&#8217;impulsion, le moment angulaire ou l&#8217;énergie. Par exemple, les propriétés d&#8217;un système physique vis-à-vis de transformations de translation sont liées à l&#8217;opérateur d&#8217;impulsion; les rotations au moment angulaire; et l&#8217;homogénéité temporelle (évolution) au hamiltonien. Plus généralement, un système peut posséder des symétries spécifiques liées à sa géométrie. Dans un cristal, l&#8217;invariance par translation devient une symétrie discrète à laquelle correspond une certaine propriété de périodicité des fonctions d&#8217;onde; ceci influe, entre autres, sur la propagation de phonons (les quantum de vibration). Dans un métal, près de la surface de Fermi, il existe une symétrie entre les trous et les électrons, la création d&#8217;un électron de conduction est accompagné par la création d&#8217;un trou dans la quantité de mouvement est opposée à celle de le (quasi) électron. Cette symétrie &#8220;électron-trou&#8221; est à l&#8217;origine du phénomène de supraconductivité. Le ferromagnétisme, ou anti-ferromagnétisme, dépend de la symétrie de fonctions d&#8217;onde et du spin. Et&nbsp;cætera.</p>
-<p>Mathématiquement la symétrie est associée à un <em>groupe</em> d&#8217;opérateurs. Un groupe est un ensemble <span class="math">\(\mathcal{U}\)</span> d&#8217;éléments <span class="math">\(U_1, U_2, \ldots \in \mathcal{U}\)</span> et d&#8217;une règle de composition associative (la multiplication) telle que le produit de deux éléments est aussi un élément de <span class="math">\(\mathcal{U}\)</span>; il existe un élément unité <span class="math">\(I\)</span>, tel que <span class="math">\(IU=U\)</span>, ainsi qu&#8217;un élément inverse <span class="math">\(U^{-1} U =I\)</span>, <span class="math">\(\forall U \in \mathcal{U}\)</span>. </p>
+<p>Mathématiquement la symétrie est associée à un <em>groupe</em> d&#8217;opérateurs. Un groupe est un&nbsp;ensemble <span class="math">\(\mathcal{U}\)</span> d&#8217;éléments <span class="math">\(U_1, U_2, \ldots \in \mathcal{U}\)</span> et d&#8217;une règle de composition associative (la multiplication) telle que le produit de deux éléments est aussi un élément&nbsp;de <span class="math">\(\mathcal{U}\)</span>; il existe un élément&nbsp;unité <span class="math">\(I\)</span>, tel&nbsp;que <span class="math">\(IU=U\)</span>, ainsi qu&#8217;un élément&nbsp;inverse <span class="math">\(U^{-1} U =I\)</span>, <span class="math">\(\forall U \in \mathcal{U}\)</span>. </p>
 <blockquote>
 <p><img src="/images/MQ-suhu.svg" alt="similitude" style="height: 200px;"/></p>
-<p>Le sous-groupe <span class="math">\(\mathcal{H} \subset \mathcal{U}\)</span> est <em>invariant</em> si pour toute transformation <span class="math">\(U \in \mathcal{U}\)</span>, la transformation de similitude de <span class="math">\(H\)</span> (plus généralement de &#8220;conjugaison&#8221;), est un élément de <span class="math">\(\mathcal{H}\)</span>, <span class="math">\(UHU^{-1} \in \mathcal{H}\)</span>. On écrit <span class="math">\(U\mathcal{H}U^{-1}= \mathcal{H}\)</span>.</p>
+<p>Le&nbsp;sous-groupe <span class="math">\(\mathcal{H} \subset \mathcal{U}\)</span> est <em>invariant</em> si pour toute&nbsp;transformation <span class="math">\(U \in \mathcal{U}\)</span>, la transformation de similitude&nbsp;de <span class="math">\(H\)</span> (plus généralement de &#8220;conjugaison&#8221;), est un élément&nbsp;de <span class="math">\(\mathcal{H}\)</span>, <span class="math">\(UHU^{-1} \in \mathcal{H}\)</span>. On&nbsp;écrit <span class="math">\(U\mathcal{H}U^{-1}= \mathcal{H}\)</span>.</p>
 </blockquote>
-<p>Le groupe de symétrie <span class="math">\(\mathcal{U} = \mathrm{sym}(X)\)</span> d&#8217;un objet <span class="math">\(X\)</span>, est généré par l&#8217;ensemble de transformation <span class="math">\(U\)</span> qui laissent <span class="math">\(X\)</span> invariant. Par exemple, soit <span class="math">\(X\)</span> un carré, <span class="math">\(U\)</span> peut être une rotation <span class="math">\(R\)</span> de <span class="math">\(\pi/2\)</span> autour de l&#8217;axe passant par l&#8217;intersection de ses deux diagonales, ou une réflexion <span class="math">\(M\)</span> par rapport à une diagonale, etc. On vérifie que l&#8217;ensemble de rotations et de réflexions forment un groupe d&#8217;ordre 8 (nombre d&#8217;éléments du groupe); on vérifie aussi que ces transformations sont toutes reliées par des <em>conjugaisons</em> (<span class="math">\(MRM=R'\)</span> ou <span class="math">\(RMR^{-1}=M'\)</span>) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+<p>Le groupe de&nbsp;symétrie <span class="math">\(\mathcal{U} = \mathrm{sym}(X)\)</span> d&#8217;un&nbsp;objet <span class="math">\(X\)</span>, est généré par l&#8217;ensemble de&nbsp;transformation <span class="math">\(U\)</span> qui&nbsp;laissent <span class="math">\(X\)</span> invariant. Par exemple,&nbsp;soit <span class="math">\(X\)</span> un&nbsp;carré, <span class="math">\(U\)</span> peut être une&nbsp;rotation <span class="math">\(R\)</span> de <span class="math">\(\pi/2\)</span> autour de l&#8217;axe passant par l&#8217;intersection de ses deux diagonales, ou une&nbsp;réflexion <span class="math">\(M\)</span> par rapport à une diagonale, etc. On vérifie que l&#8217;ensemble de rotations et de réflexions forment un groupe d&#8217;ordre 8 (nombre d&#8217;éléments du groupe); on vérifie aussi que ces transformations sont toutes reliées par des <em>conjugaisons</em>&nbsp;(<span class="math">\(MRM=R'\)</span> ou <span class="math">\(RMR^{-1}=M'\)</span>) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
 <blockquote>
 <p><img src="/images/MQ-ssqrR.svg" alt="square rotations" style="height: 250px;"/> <img src="/images/MQ-ssqrM.svg" alt="square rotations" style="height: 250px;"/></p>
-<p>Symétries du carré <span class="caps">ABCD</span> de rotation <span class="math">\(R_{1,2,3} = R_z(\phi)\)</span> autour de l&#8217;axe <span class="math">\(z\)</span> passant par le point d&#8217;intersection des diagonales <span class="caps">AC</span> et <span class="caps">BD</span> et d&#8217;angles <span class="math">\(\pi/2, \pi\)</span> et <span class="math">\(3\pi/4\)</span>, et de réflexion <span class="math">\(M_{1,2,3,4}\)</span> sur les axes medians et les&nbsp;diagonales.</p>
+<p>Symétries du carré <span class="caps">ABCD</span> de&nbsp;rotation <span class="math">\(R_{1,2,3} = R_z(\phi)\)</span> autour de&nbsp;l&#8217;axe <span class="math">\(z\)</span> passant par le point d&#8217;intersection des diagonales <span class="caps">AC</span> et <span class="caps">BD</span> et&nbsp;d&#8217;angles <span class="math">\(\pi/2, \pi\)</span> et <span class="math">\(3\pi/4\)</span>, et de&nbsp;réflexion <span class="math">\(M_{1,2,3,4}\)</span> sur les axes medians et les&nbsp;diagonales.</p>
 </blockquote>
-<p>La notion physique de symétrie correspond à l&#8217;<em>invariance</em> des propriétés du système (phases, dynamique) vis-à-vis des transformations par un groupe d&#8217;opérateurs associés à chaque symétrie. En particulier, pour un système défini par son hamiltonien <span class="math">\(H\)</span>, on dit qu&#8217;il possède une symétrie <span class="math">\(U\)</span> (opérateur unitaire indépendant du temps)&nbsp;si
+<p>La notion physique de symétrie correspond à l&#8217;<em>invariance</em> des propriétés du système (phases, dynamique) vis-à-vis des transformations par un groupe d&#8217;opérateurs associés à chaque symétrie. En particulier, pour un système défini par son&nbsp;hamiltonien <span class="math">\(H\)</span>, on dit qu&#8217;il possède une&nbsp;symétrie <span class="math">\(U\)</span> (opérateur unitaire indépendant du temps)&nbsp;si
 </p>
 <div class="math">$$
 UHU^\dagger = H, \text{ ou } [U,H] = 0, 
 $$</div>
 <p>
-ce qui implique que la transformation <span class="math">\(U\)</span> ne modifie pas l&#8217;évolution du système. En effet, la transformation <span class="math">\(\ket{\psi'} = U \ket{\psi}\)</span> transforme l&#8217;équation de schrödinger&nbsp;dans
+ce qui implique que la&nbsp;transformation <span class="math">\(U\)</span> ne modifie pas l&#8217;évolution du système. En effet, la&nbsp;transformation <span class="math">\(\ket{\psi'} = U \ket{\psi}\)</span> transforme l&#8217;équation de schrödinger&nbsp;dans
 </p>
 <div class="math">$$
 \I \frac{\partial}{\partial t} \ket{\psi'} = UHU^\dagger \ket{\psi'}
 $$</div>
 <p>
-pour l&#8217;état <span class="math">\(\ket{\psi'}\)</span>, identique à celle pour <span class="math">\(\ket{\psi}\)</span> si <span class="math">\(H\)</span> est invariant vis-à-vis de la transformation <span class="math">\(U\)</span>.</p>
+pour&nbsp;l&#8217;état <span class="math">\(\ket{\psi'}\)</span>, identique à celle&nbsp;pour <span class="math">\(\ket{\psi}\)</span> si <span class="math">\(H\)</span> est invariant vis-à-vis de la&nbsp;transformation <span class="math">\(U\)</span>.</p>
 <p>Avant de discuter les symétries de l&#8217;espace nous avons besoin de définir les opérateurs et les états de position et&nbsp;d&#8217;impulsion.</p>
 <h2>Position et&nbsp;impulsion</h2>
-<p>En mécanique classique la position d&#8217;une particule est un vecteur dans l&#8217;espace, auquel on associe un référentiel et des coordonnées. En mécanique quantique on doit d&#8217;abord définir un espace de hilbert, dont les kets correspondent à l&#8217;état &#8220;position&#8221; de la particule. L&#8217;<em>observable</em> position <span class="math">\(X\)</span> agit sur les états position <span class="math">\(\ket{x}\)</span>; la position est donc donnée par ses valeurs&nbsp;propres:
+<p>En mécanique classique la position d&#8217;une particule est un vecteur dans l&#8217;espace, auquel on associe un référentiel et des coordonnées. En mécanique quantique on doit d&#8217;abord définir un espace de hilbert, dont les kets correspondent à l&#8217;état &#8220;position&#8221; de la particule. L&#8217;<em>observable</em>&nbsp;position <span class="math">\(X\)</span> agit sur les états&nbsp;position <span class="math">\(\ket{x}\)</span>; la position est donc donnée par ses valeurs&nbsp;propres:
 </p>
 <div class="math">$$
 X \ket{x} = x \ket{x}.
@@ -93,39 +94,39 @@ Notez que du fait que la position est un élément d&#8217;un espace de hilbert 
 <p>Un modèle simple d&#8216;&#8220;espace&#8221; est représenté dans la figure&nbsp;ci-dessous.</p>
 <blockquote>
 <p><img src="/images/MQ-spos.svg" alt="position" style="height: 70px;"/></p>
-<p>Modèle discret de l&#8217;observable &#8220;position&#8221; <span class="math">\(x\)</span>: le réseau à une dimension dont l&#8217;unité est <span class="math">\(\Delta x = 1\)</span>.</p>
+<p>Modèle discret de l&#8217;observable&nbsp;&#8220;position&#8221; <span class="math">\(x\)</span>: le réseau à une dimension dont l&#8217;unité&nbsp;est <span class="math">\(\Delta x = 1\)</span>.</p>
 </blockquote>
-<p>Sur cet &#8220;espace&#8221; la position prend des valeurs discrètes, <span class="math">\(x = 0, 1, \ldots, N-1\)</span>, ou <span class="math">\(N\)</span> est sa longueur totale. L&#8217;unité de longueur est prise telle que la distance entre deux positions successives est <span class="math">\(\Delta x = 1\)</span>. L&#8217;opérateur <span class="math">\(X\)</span> satisfait&nbsp;donc,
+<p>Sur cet &#8220;espace&#8221; la position prend des valeurs&nbsp;discrètes, <span class="math">\(x = 0, 1, \ldots, N-1\)</span>,&nbsp;ou <span class="math">\(N\)</span> est sa longueur totale. L&#8217;unité de longueur est prise telle que la distance entre deux positions successives&nbsp;est <span class="math">\(\Delta x = 1\)</span>.&nbsp;L&#8217;opérateur <span class="math">\(X\)</span> satisfait&nbsp;donc,
 </p>
 <div class="math">$$
 X \ket{x} = x \ket{x}, \quad x = 0, 1, 2, \ldots, N-1,
 $$</div>
 <p>
-avec l&#8217;ensemble <span class="math">\(\ket{x}\)</span> (l&#8217;état position) formant une base de l&#8217;espace position <span class="math">\(\mathcal{H}\)</span>:
+avec&nbsp;l&#8217;ensemble <span class="math">\(\ket{x}\)</span> (l&#8217;état position) formant une base de l&#8217;espace&nbsp;position <span class="math">\(\mathcal{H}\)</span>:
 </p>
 <div class="math">$$
 \braket{x|x'} = \delta_{xx'}, \quad \sum_x \ket{x} \bra{x} = 1.
 $$</div>
 <p>
-La périodicité du réseaux permet d&#8217;introduire une deuxième base, <span class="math">\(\ket{k}\)</span>, reliée à la base position par une transformation de&nbsp;Fourier:
+La périodicité du réseaux permet d&#8217;introduire une deuxième&nbsp;base, <span class="math">\(\ket{k}\)</span>, reliée à la base position par une transformation de&nbsp;Fourier:
 </p>
 <div class="math">$$
 \ket{k} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1} \E^{\I 2\pi k x/N} \ket{x},
 $$</div>
 <p>
-ou son inverse, dans laquelle on exprime la position comme une superposition des états <span class="math">\(\ket{k}\)</span>:
+ou son inverse, dans laquelle on exprime la position comme une superposition des&nbsp;états <span class="math">\(\ket{k}\)</span>:
 </p>
 <div class="math">$$
 \ket{x} = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} \E^{-\I 2\pi k x/N} \ket{k}.
 $$</div>
 <p>
-On constate que l&#8217;application linéaire qui relie l&#8217;espace <span class="math">\(x\)</span> et l&#8217;espace &#8220;k&#8221;&nbsp;est
+On constate que l&#8217;application linéaire qui relie&nbsp;l&#8217;espace <span class="math">\(x\)</span> et l&#8217;espace &#8220;k&#8221;&nbsp;est
 </p>
 <div class="math">$$
 F = \sum_{x,k} \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}} \ket{x} \bra{k}
 $$</div>
 <p>
-On vérifie aisément que <span class="math">\(F\)</span> (la transformation de fourier) est un opérateur unitaire <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Ceci signifie aussi que les deux équations précédentes sont l&#8217;inverse l&#8217;une de&nbsp;l&#8217;autre:
+On vérifie aisément&nbsp;que <span class="math">\(F\)</span> (la transformation de fourier) est un opérateur unitaire <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Ceci signifie aussi que les deux équations précédentes sont l&#8217;inverse l&#8217;une de&nbsp;l&#8217;autre:
 </p>
 <div class="math">$$
 \ket{x} = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} \E^{-\I 2\pi k x/N} \ket{k} = \sum_{x'} \Big[ \frac{1}{N} \sum_{k} \E^{\I 2\pi k(x'- x)/N} \Big] \ket{x'} = \ket{x}
@@ -137,27 +138,27 @@ où on a utilisé&nbsp;l&#8217;identité
 \frac{1}{N} \sum_{k} \E^{\I 2\pi k(x'- x)/N} = \delta_{x,x'}.
 $$</div>
 <p>
-compatible avec la condition d&#8217;orthogonalité <span class="math">\(\braket{x|x'} = \delta_{xx'}\)</span> . On déduit également que l&#8217;expression du ket <span class="math">\(\ket{k}\)</span> dans la base <span class="math">\(x\)</span>&nbsp;est
+compatible avec la condition&nbsp;d&#8217;orthogonalité <span class="math">\(\braket{x|x'} = \delta_{xx'}\)</span> . On déduit également que l&#8217;expression du&nbsp;ket <span class="math">\(\ket{k}\)</span> dans la&nbsp;base <span class="math">\(x\)</span> est
 </p>
 <div class="math">$$
 \braket{x|k} = \frac{\E^{\I 2\pi k x/N}}{\sqrt{N}}.
 $$</div>
 <p>
-On dit qu&#8217;on <em>représente</em> le ket <span class="math">\(\ket{k}\)</span> dans la base &#8220;position&#8221; <span class="math">\(\ket{x}\)</span>; son complexe conjugué est la représentation de la position dans la base &#8220;k&#8221;, qu&#8217;on va identifier avec&nbsp;l&#8217;impulsion.</p>
-<p>Un vecteur quelconque de l&#8217;espace de hilbert <span class="math">\(\ket{\psi}\)</span> peut s&#8217;exprimer en &#8220;base position&#8221;, c&#8217;est-à-dire comme une superposition des différents états&nbsp;&#8220;position&#8221;:
+On dit qu&#8217;on <em>représente</em> le&nbsp;ket <span class="math">\(\ket{k}\)</span> dans la base&nbsp;&#8220;position&#8221; <span class="math">\(\ket{x}\)</span>; son complexe conjugué est la représentation de la position dans la base &#8220;k&#8221;, qu&#8217;on va identifier avec&nbsp;l&#8217;impulsion.</p>
+<p>Un vecteur quelconque de l&#8217;espace de&nbsp;hilbert <span class="math">\(\ket{\psi}\)</span> peut s&#8217;exprimer en &#8220;base position&#8221;, c&#8217;est-à-dire comme une superposition des différents états&nbsp;&#8220;position&#8221;:
 </p>
 <div class="math">$$
 \ket{\psi} = \sum_x \psi_x \ket{x}, \quad \psi_x = \braket{x|\psi},
 $$</div>
 <p>
-où l&#8217;amplitude au carré <span class="math">\(|\psi_x|^2\)</span>, selon la règle de Born, correspond à la probabilité de trouver le système dans l&#8217;état (la position) <span class="math">\(x\)</span>.</p>
-<p>Il est naturel, comme on l&#8217;a fait pour la position <span class="math">\(x\)</span>, d&#8217;associer aux nombres <span class="math">\(k\)</span> un opérateur <span class="math">\(K\)</span> tel&nbsp;que
+où l&#8217;amplitude au&nbsp;carré <span class="math">\(|\psi_x|^2\)</span>, selon la règle de Born, correspond à la probabilité de trouver le système dans l&#8217;état (la&nbsp;position) <span class="math">\(x\)</span>.</p>
+<p>Il est naturel, comme on l&#8217;a fait pour la&nbsp;position <span class="math">\(x\)</span>, d&#8217;associer aux&nbsp;nombres <span class="math">\(k\)</span> un&nbsp;opérateur <span class="math">\(K\)</span> tel&nbsp;que
 </p>
 <div class="math">$$
 K \ket{k} = k \ket{k}, \quad \braket{k,k'} = \delta_{kk'}.
 $$</div>
 <p>
-Pour étudier le lien entre <span class="math">\(X\)</span> et <span class="math">\(K\)</span>, on peut calculer leur commutateur <span class="math">\([X,K]\)</span>:
+Pour étudier le lien&nbsp;entre <span class="math">\(X\)</span> et <span class="math">\(K\)</span>, on peut calculer leur&nbsp;commutateur <span class="math">\([X,K]\)</span>:
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -193,14 +194,14 @@ ce qui conduit au&nbsp;résultat:
 \end{equation}
 $$</div>
 <p>
-On observe que le commutateur de <span class="math">\(X\)</span> et <span class="math">\(K\)</span> est semblable à celui entre la position et l&#8217;impulsion (comme grandeurs continues), ce qui confirme l&#8217;interprétation de <span class="math">\(K\)</span> comme un opérateur impulsion &#8220;discret&#8221;, opérateur canonique de la position discrète <span class="math">\(X\)</span>.</p>
-<p>On se propose maintenant de généraliser le modèle d&#8217;espace discret à un espace continu, dans lequel la position devient un nombre réel avec la dimension de longueur. On introduit donc <span class="math">\(L=N\Delta x\)</span> la longueur de la ligne et on remplace <span class="math">\(x\Delta x\)</span> par <span class="math">\(x \in \mathbb{R}\)</span>. La limite continue est définie&nbsp;par
+On observe que le commutateur&nbsp;de <span class="math">\(X\)</span> et <span class="math">\(K\)</span> est semblable à celui entre la position et l&#8217;impulsion (comme grandeurs continues), ce qui confirme l&#8217;interprétation&nbsp;de <span class="math">\(K\)</span> comme un opérateur impulsion &#8220;discret&#8221;, opérateur canonique de la position&nbsp;discrète <span class="math">\(X\)</span>.</p>
+<p>On se propose maintenant de généraliser le modèle d&#8217;espace discret à un espace continu, dans lequel la position devient un nombre réel avec la dimension de longueur. On introduit&nbsp;donc <span class="math">\(L=N\Delta x\)</span> la longueur de la ligne et on&nbsp;remplace <span class="math">\(x\Delta x\)</span> par <span class="math">\(x \in \mathbb{R}\)</span>. La limite continue est définie&nbsp;par
 </p>
 <div class="math">$$
 \lim_{\substack{N\rightarrow\infty \\ \Delta x \rightarrow 0}} N\Delta x = L.
 $$</div>
 <p>
-La variable discrète <span class="math">\(k\)</span> devient une variable dimensionnelle donc proportionnelle à <span class="math">\(k/\Delta x\)</span>, avec l&#8217;unité de l&#8217;inverse d&#8217;une longueur (nombre d&#8217;onde, dans l&#8217;espace de fourier). En résumé on&nbsp;a
+La variable&nbsp;discrète <span class="math">\(k\)</span> devient une variable dimensionnelle donc proportionnelle&nbsp;à <span class="math">\(k/\Delta x\)</span>, avec l&#8217;unité de l&#8217;inverse d&#8217;une longueur (nombre d&#8217;onde, dans l&#8217;espace de fourier). En résumé on&nbsp;a
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -210,15 +211,15 @@ x \Delta x \rightarrow x,\\
 \end{gather*}
 $$</div>
 <p>
-où on a introduit, à la place du nombre d&#8217;onde, la variable continue <span class="math">\(p\)</span> ayant les dimensions d&#8217;une impulsion (avec le choix habituel <span class="math">\(\hbar=1\)</span>, l&#8217;unité d&#8217;impulsion devient l&#8217;inverse d&#8217;une&nbsp;longueur).</p>
-<p>Observez que le commutateur de l&#8217;équation <span class="math">\(\eqref{e:ckp}\)</span>, se transforme&nbsp;comme
+où on a introduit, à la place du nombre d&#8217;onde, la variable&nbsp;continue <span class="math">\(p\)</span> ayant les dimensions d&#8217;une impulsion (avec le choix&nbsp;habituel <span class="math">\(\hbar=1\)</span>, l&#8217;unité d&#8217;impulsion devient l&#8217;inverse d&#8217;une&nbsp;longueur).</p>
+<p>Observez que le commutateur de&nbsp;l&#8217;équation <span class="math">\(\eqref{e:ckp}\)</span>, se transforme&nbsp;comme
 </p>
 <div class="math">$$
 \Big[X \Delta x, \frac{2\pi K}{N\Delta x}\Big] = [x, p/\hbar] = \I,
 $$</div>
 <p>
 dans la limite&nbsp;continue.</p>
-<p>En faisant <span class="math">\(\Delta x \rightarrow 0\)</span> on obtient la limite&nbsp;continue:
+<p>En&nbsp;faisant <span class="math">\(\Delta x \rightarrow 0\)</span> on obtient la limite&nbsp;continue:
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -227,13 +228,13 @@ P \ket{p} = p \ket{p}, \quad \int_{-\infty}^{\infty} \D p \, \ket{p}\bra{p} = 1,
 \end{gather*}
 $$</div>
 <p>
-et (avec la constante de normalization en unité d&#8217;action, en accord avec les dimensions de <span class="math">\([\ket{x}] \sim 1/\sqrt{L}\)</span> et <span class="math">\([\ket{p}] \sim \sqrt{L/\hbar}\)</span>) 
+et (avec la constante de normalization en unité d&#8217;action, en accord avec les dimensions&nbsp;de <span class="math">\([\ket{x}] \sim 1/\sqrt{L}\)</span> et <span class="math">\([\ket{p}] \sim \sqrt{L/\hbar}\)</span>) 
 </p>
 <div class="math">$$
 \braket{x|p} = \frac{\E^{\I p x/\hbar}}{\sqrt{2\pi \hbar}}.
 $$</div>
 <p>
-On montre maintenant que <span class="math">\(P\)</span> est l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le commutateur de <span class="math">\(P\)</span> avec <span class="math">\(X\)</span>. L&#8217;opérateur <span class="math">\(P\)</span> exprimé en base <span class="math">\(x\)</span>&nbsp;est
+On montre maintenant&nbsp;que <span class="math">\(P\)</span> est l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le commutateur&nbsp;de <span class="math">\(P\)</span> avec <span class="math">\(X\)</span>.&nbsp;L&#8217;opérateur <span class="math">\(P\)</span> exprimé en&nbsp;base <span class="math">\(x\)</span> est
 </p>
 <div class="math">$$
 \begin{align*}
@@ -246,7 +247,7 @@ On montre maintenant que <span class="math">\(P\)</span> est l&#8217;opérateur 
 \end{align*}
 $$</div>
 <p>
-ce qui est bien en accord avec l&#8217;identification habituelle de l&#8217;opérateur impulsion <span class="math">\(P=-\I\hbar \D/\!\D x\)</span>, comme opérateur différentiel. Par conséquent, on&nbsp;a
+ce qui est bien en accord avec l&#8217;identification habituelle de l&#8217;opérateur&nbsp;impulsion <span class="math">\(P=-\I\hbar \D/\!\D x\)</span>, comme opérateur différentiel. Par conséquent, on&nbsp;a
 </p>
 <div class="math">$$
 \begin{align*}
@@ -276,14 +277,14 @@ ce qui conduit à l&#8217;expression du&nbsp;commutateur,
 \end{equation}
 $$</div>
 <p>
-résultat qui correspond bien avec l&#8217;interprétation de <span class="math">\(P\)</span> comme l&#8217;opérateur&nbsp;d&#8217;impulsion.</p>
-<p>Comme dans le cas discret, on utilise la base <span class="math">\(x\)</span> pour développer l&#8217;état de la&nbsp;&#8220;particule&#8221;:
+résultat qui correspond bien avec l&#8217;interprétation&nbsp;de <span class="math">\(P\)</span> comme l&#8217;opérateur&nbsp;d&#8217;impulsion.</p>
+<p>Comme dans le cas discret, on utilise la&nbsp;base <span class="math">\(x\)</span> pour développer l&#8217;état de la&nbsp;&#8220;particule&#8221;:
 </p>
 <div class="math">$$
 \ket{\psi} = \int_0^\infty \D x \psi(x) \ket{x}, \quad \psi(x) = \braket{x|\psi},
 $$</div>
 <p>
-où maintenant <span class="math">\(\psi(x)\)</span> est la <em>fonction d&#8217;onde</em> de la particule et <span class="math">\(|\psi(x)|^2\)</span> représente la <em>densité de probabilité</em>, ou distribution spatiale, de la particule. En utilisant l&#8217;équation de schrödinger pour <span class="math">\(\ket{\psi}\)</span> il est facile de démontrer <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+où&nbsp;maintenant <span class="math">\(\psi(x)\)</span> est la <em>fonction d&#8217;onde</em> de la particule&nbsp;et <span class="math">\(|\psi(x)|^2\)</span> représente la <em>densité de probabilité</em>, ou distribution spatiale, de la particule. En utilisant l&#8217;équation de schrödinger&nbsp;pour <span class="math">\(\ket{\psi}\)</span> il est facile de démontrer <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
 <div class="math">$$
 \I \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t), \quad \braket{x'|H|x} = \hat{H}\delta(x'-x)
@@ -291,13 +292,13 @@ $$</div>
 <p>
 avec <span class="math">\(\hat{H}\)</span> le hamiltonien en représentation position (opérateur&nbsp;différentiel).</p>
 <h2>Translation</h2>
-<p>On définit l&#8217;opérateur de translation <span class="math">\(T_a\)</span>&nbsp;par
+<p>On définit l&#8217;opérateur de&nbsp;translation <span class="math">\(T_a\)</span> par
 </p>
 <div class="math">$$
 T_a  \ket{x} = \ket{x+a}, \quad a \in \mathbb{R},
 $$</div>
 <p>
-où <span class="math">\(a\)</span> est le paramètre de translation du point <span class="math">\(x\)</span> vers le point <span class="math">\(x+a\)</span>. On vérifie aisément que la famille d&#8217;opérateurs <span class="math">\(T_a\)</span> forme un&nbsp;groupe:
+où <span class="math">\(a\)</span> est le paramètre de translation du&nbsp;point <span class="math">\(x\)</span> vers le&nbsp;point <span class="math">\(x+a\)</span>. On vérifie aisément que la famille&nbsp;d&#8217;opérateurs <span class="math">\(T_a\)</span> forme un&nbsp;groupe:
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -306,12 +307,12 @@ T_aT_{-a} \ket{x} = \ket{x} = T_a T_a^{-1} \ket{x},
 \end{gather*}
 $$</div>
 <p>
-avec <span class="math">\(T_0\)</span> l&#8217;élément unité et <span class="math">\(T_{-a}\)</span> l&#8217;élément inverse; en plus, comme <span class="math">\(T_aT_b=T_bT_a\)</span> le groupe est abélien&nbsp;(commutatif).</p>
+avec <span class="math">\(T_0\)</span> l&#8217;élément unité&nbsp;et <span class="math">\(T_{-a}\)</span> l&#8217;élément inverse; en plus,&nbsp;comme <span class="math">\(T_aT_b=T_bT_a\)</span> le groupe est abélien&nbsp;(commutatif).</p>
 <blockquote>
 <p><img src="/images/MQ-strans.svg" alt="translation psi" style="height: 140px;"/></p>
-<p>Translation de la fonction d&#8217;onde <span class="math">\(\psi(x) = \braket{x|\psi} \rightarrow \braket{x|T_a|\psi} = \psi'(x)\)</span>.</p>
+<p>Translation de la fonction&nbsp;d&#8217;onde <span class="math">\(\psi(x) = \braket{x|\psi} \rightarrow \braket{x|T_a|\psi} = \psi'(x)\)</span>.</p>
 </blockquote>
-<p>Voyons comment <span class="math">\(T_a\)</span> agit sur la fonction d&#8217;onde (voir la figure&nbsp;ci-dessus):
+<p>Voyons&nbsp;comment <span class="math">\(T_a\)</span> agit sur la fonction d&#8217;onde (voir la figure&nbsp;ci-dessus):
 </p>
 <div class="math">$$
 \begin{align*}
@@ -321,25 +322,25 @@ avec <span class="math">\(T_0\)</span> l&#8217;élément unité et <span class="
 \end{align*}
 $$</div>
 <p>
-elle conserve donc sa forme <span class="math">\(\psi(x)\)</span>, mais déplacée de <span class="math">\(a\)</span>: l&#8217;expression <span class="math">\(\braket{x-a|\psi}\)</span> représente le vecteur <span class="math">\(\ket{\psi}\)</span> dans la base position déplacée de <span class="math">\(-a\)</span>. On observe que le complexe conjugué de l&#8217;expression précédente peut&nbsp;s&#8217;écrire
+elle conserve donc sa&nbsp;forme <span class="math">\(\psi(x)\)</span>, mais déplacée&nbsp;de <span class="math">\(a\)</span>:&nbsp;l&#8217;expression <span class="math">\(\braket{x-a|\psi}\)</span> représente le&nbsp;vecteur <span class="math">\(\ket{\psi}\)</span> dans la base position déplacée&nbsp;de <span class="math">\(-a\)</span>. On observe que le complexe conjugué de l&#8217;expression précédente peut&nbsp;s&#8217;écrire
 </p>
 <div class="math">$$
 \braket{x|T_a|\psi}^\star = \braket{\psi|x-a} =\braket{\psi|T_a^\dagger|x} = \braket{\psi|T_{-a}|x} \quad \Rightarrow \quad T^\dagger_a = T^{-1}_a,
 $$</div>
 <p>
-ce qui implique l&#8217;unitarité de <span class="math">\(T_a\)</span>. Par conséquent, pour un déplacement infinitésimal <span class="math">\(\Delta x\)</span>, <span class="math">\(T_{\Delta x}\)</span> doit être proche de l&#8217;unité (<span class="math">\(T_0=1\)</span>):
+ce qui implique l&#8217;unitarité&nbsp;de <span class="math">\(T_a\)</span>. Par conséquent, pour un déplacement&nbsp;infinitésimal <span class="math">\(\Delta x\)</span>, <span class="math">\(T_{\Delta x}\)</span> doit être proche de l&#8217;unité&nbsp;(<span class="math">\(T_0=1\)</span>):
 </p>
 <div class="math">$$
 T_{\Delta x} = 1 - \I \Delta x K, \quad K = K^\dagger,
 $$</div>
 <p>
-avec <span class="math">\(K\)</span> un certain opérateur hermitien. En effet, en posant <span class="math">\(a = N\Delta x\)</span>, on a dans la limite&nbsp;continue
+avec <span class="math">\(K\)</span> un certain opérateur hermitien. En effet, en&nbsp;posant <span class="math">\(a = N\Delta x\)</span>, on a dans la limite&nbsp;continue
 </p>
 <div class="math">$$
 T_a = \lim_{N \to \infty} \Big(1 - \I \Delta x K \Big)^N = \E^{-\I a K},
 $$</div>
 <p>
-une succession de <span class="math">\(N\)</span> translations de <span class="math">\(\Delta x\)</span> résulte bien dans une translation de <span class="math">\(a\)</span>. On va maintenant démontrer que <span class="math">\(K\)</span> est en fait (à une constante dimensionnelle près) l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le commutateur <span class="math">\([X,T]\)</span>:
+une succession&nbsp;de <span class="math">\(N\)</span> translations&nbsp;de <span class="math">\(\Delta x\)</span> résulte bien dans une translation&nbsp;de <span class="math">\(a\)</span>. On va maintenant démontrer&nbsp;que <span class="math">\(K\)</span> est en fait (à une constante dimensionnelle près) l&#8217;opérateur d&#8217;impulsion. Pour cela on calcule le&nbsp;commutateur <span class="math">\([X,T]\)</span>:
 </p>
 <div class="math">$$
 \begin{align*}
@@ -357,7 +358,7 @@ T_{\Delta x} X \ket{x} &amp;= x\ket{x + \Delta x} \\
 \end{align*}
 $$</div>
 <p>
-leur différence (à l&#8217;ordre <span class="math">\(\Delta x\)</span>)&nbsp;est 
+leur différence (à&nbsp;l&#8217;ordre <span class="math">\(\Delta x\)</span>)&nbsp;est 
 </p>
 <div class="math">$$
 (X T_{\Delta x} - T_{\Delta x} X) \ket{x} = \Delta x \ket{x} = -\I \Delta x (XK -KX) \ket{x},
@@ -369,7 +370,7 @@ ce qui&nbsp;implique,
 [X,K] = \I \quad \Rightarrow \quad K = \frac{P}{\hbar},
 $$</div>
 <p>
-où on a utilisé le commutateur position-impulsion pour identifier <span class="math">\(P\)</span>. En définitive, l&#8217;opérateur de translation&nbsp;s&#8217;écrit:
+où on a utilisé le commutateur position-impulsion pour&nbsp;identifier <span class="math">\(P\)</span>. En définitive, l&#8217;opérateur de translation&nbsp;s&#8217;écrit:
 </p>
 <div class="math">$$
 T_{\bm a} = \E^{-\I \bm a \cdot \bm P/\hbar}, \quad \bm a \in \mathbb{R}^3,
@@ -379,7 +380,7 @@ en généralisant le résultat en dimension 1, à trois dimensions de l&#8217;es
 <h2>Rotation</h2>
 <blockquote>
 <p><img src="/images/MQ-srot.png" alt="rotation" style="height: 250px;"/></p>
-<p>La rotation d&#8217;un vecteur <span class="math">\(\bm x\)</span> en <span class="math">\(\mathbb{R}^3\)</span> est spécifiée par un axe <span class="math">\(\bm n\)</span> et un angle <span class="math">\(\Delta \phi\)</span>: <span class="math">\(\bm x' = \bm x + \Delta \bm \phi \times \bm x\)</span> (avec <span class="math">\(\Delta \bm \phi = \Delta \phi \bm n\)</span>, où <span class="math">\(\bm n\)</span> est de longueur&nbsp;unité).</p>
+<p>La rotation d&#8217;un&nbsp;vecteur <span class="math">\(\bm x\)</span> en <span class="math">\(\mathbb{R}^3\)</span> est spécifiée par un&nbsp;axe <span class="math">\(\bm n\)</span> et un&nbsp;angle <span class="math">\(\Delta \phi\)</span>: <span class="math">\(\bm x' = \bm x + \Delta \bm \phi \times \bm x\)</span> (avec <span class="math">\(\Delta \bm \phi = \Delta \phi \bm n\)</span>,&nbsp;où <span class="math">\(\bm n\)</span> est de longueur&nbsp;unité).</p>
 </blockquote>
 <p>On définit l&#8217;opérateur de rotation&nbsp;par
 </p>
@@ -387,7 +388,7 @@ en généralisant le résultat en dimension 1, à trois dimensions de l&#8217;es
 R_{\bm n}(\phi) \ket{\bm x} = \ket{\bm x + \bm \phi \times \bm x}.
 $$</div>
 <p>
-Pour une rotation infinitésimale <span class="math">\(\Delta \phi\)</span>, <span class="math">\(R_{\bm n}(\Delta \phi)\)</span> est proche de&nbsp;l&#8217;unité:
+Pour une rotation&nbsp;infinitésimale <span class="math">\(\Delta \phi\)</span>, <span class="math">\(R_{\bm n}(\Delta \phi)\)</span> est proche de&nbsp;l&#8217;unité:
 </p>
 <div class="math">$$
 R_{\bm n}(\Delta \phi) = 1 - \I \Delta \bm\phi \cdot \bm M, \quad \bm M = \bm M^\dagger
@@ -403,7 +404,7 @@ R_{\bm n}(\Delta \phi) \ket{\bm x} &amp;= (1-\I \Delta \bm\phi \cdot \bm M) \ket
 \end{align*}
 $$</div>
 <p>
-ou, par analogie avec la translation de <span class="math">\(\Delta \bm x = \Delta \phi \,\bm n\times \bm x\)</span> on a introduit l&#8217;impulsion <span class="math">\(\bm P/\hbar\)</span>; on a aussi remplacé <span class="math">\(\bm x\)</span> par <span class="math">\(\bm X\)</span> et utilisé la propriété cyclique du produit mixte (notez que dans le produit vectoriel les composantes de <span class="math">\(\bm X\)</span> et <span class="math">\(\bm P\)</span> sont toujours sur des directions différentes, ce qui permet d&#8217;en échanger l&#8217;ordre). En comparant la première et dernière lignes, on obtient <span class="math">\(\bm M = \bm L /\hbar\)</span>,
+ou, par analogie avec la translation&nbsp;de <span class="math">\(\Delta \bm x = \Delta \phi \,\bm n\times \bm x\)</span> on a introduit&nbsp;l&#8217;impulsion <span class="math">\(\bm P/\hbar\)</span>; on a aussi&nbsp;remplacé <span class="math">\(\bm x\)</span> par <span class="math">\(\bm X\)</span> et utilisé la propriété cyclique du produit mixte (notez que dans le produit vectoriel les composantes&nbsp;de <span class="math">\(\bm X\)</span> et <span class="math">\(\bm P\)</span> sont toujours sur des directions différentes, ce qui permet d&#8217;en échanger l&#8217;ordre). En comparant la première et dernière lignes, on&nbsp;obtient <span class="math">\(\bm M = \bm L /\hbar\)</span>,
 </p>
 <div class="math">$$
 \bm L = \bm X \times \bm P
@@ -414,7 +415,7 @@ qui est l&#8217;opérateur du moment angulaire. On conclue que l&#8217;opérateu
 <div class="math">$$
 R_{\bm n}(\phi) = \E^{-\I \phi \bm n \cdot \bm L/\hbar}.
 $$</div>
-<p>Il est important d&#8217;observer que l&#8217;opérateur <span class="math">\(\bm L\)</span> est un <em>générateur</em> de la rotation, ainsi comme <span class="math">\(\bm P\)</span> en est pour la translation; il ne dépend pas des paramètres de la rotation <span class="math">\(\bm n\)</span> et <span class="math">\(\phi\)</span>, par conséquent, il peut être déterminé en étudiant une rotation infinitésimale, comme on vient de le faire. Nous pouvons appliquer cette idée à la rotation dans l&#8217;espace, c&#8217;est-à-dire le moment angulaire correspondant au nombre orbital <span class="math">\(l=1\)</span>, comme on va le&nbsp;voir:
+<p>Il est important d&#8217;observer que&nbsp;l&#8217;opérateur <span class="math">\(\bm L\)</span> est un <em>générateur</em> de la rotation, ainsi&nbsp;comme <span class="math">\(\bm P\)</span> en est pour la translation; il ne dépend pas des paramètres de la&nbsp;rotation <span class="math">\(\bm n\)</span> et <span class="math">\(\phi\)</span>, par conséquent, il peut être déterminé en étudiant une rotation infinitésimale, comme on vient de le faire. Nous pouvons appliquer cette idée à la rotation dans l&#8217;espace, c&#8217;est-à-dire le moment angulaire correspondant au nombre&nbsp;orbital <span class="math">\(l=1\)</span>, comme on va le&nbsp;voir:
 </p>
 <div class="math">$$
 \bm x \quad \rightarrow \quad \bm x + \Delta \bm x, \; \Delta x = \Delta \phi \bm n \times \bm x = -\frac{\I}{\hbar} \Delta \phi \bm n \cdot \bm L \bm x.
@@ -451,7 +452,7 @@ L_z = \hbar \begin{pmatrix}
   \end{pmatrix}.
 $$</div>
 <p>
-Les matrices de rotation selon les axes <span class="math">\((x,y,z)\)</span> sont donc <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
+Les matrices de rotation selon les&nbsp;axes <span class="math">\((x,y,z)\)</span> sont donc <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
 <div class="math">$$
 R_x(\phi) = \begin{pmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; \cos\phi &amp; -\sin\phi \\ 0 &amp; \sin\phi &amp; \cos\phi \end{pmatrix}, \;
@@ -464,7 +465,7 @@ $$</div>
 [L^2, \bm L] = 0, \quad [L_x, L_y] = \I\hbar L_z, \; [L_z, L_x] = \I\hbar L_y, \; [L_y, L_z] = \I\hbar L_x, 
 $$</div>
 <p>
-qui sont en fait parfaitement générales pour tout moment angulaire. Comme le commutateur <span class="math">\([L^2, L_z] = 0\)</span> s&#8217;annule, on peut choisir une base commune de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>, qu&#8217;on note <span class="math">\(\ket{l,m}\)</span>: on dit que <span class="math">\(z\)</span> est l&#8217;axe de quantification du moment&nbsp;angulaire:
+qui sont en fait parfaitement générales pour tout moment angulaire. Comme le&nbsp;commutateur <span class="math">\([L^2, L_z] = 0\)</span> s&#8217;annule, on peut choisir une base commune&nbsp;de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span>, qu&#8217;on&nbsp;note <span class="math">\(\ket{l,m}\)</span>: on dit&nbsp;que <span class="math">\(z\)</span> est l&#8217;axe de quantification du moment&nbsp;angulaire:
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -473,14 +474,14 @@ L_z \ket{j,m} = \hbar m \ket{j,m},
 \end{gather*}
 $$</div>
 <p>
-ici <span class="math">\(l\)</span> est le nombre quantique <em>orbital</em>, et <span class="math">\(m\)</span> le nombre quantique <em>magnétique</em>, dénominations utilisées pour décrire la structure électronique des&nbsp;atomes.</p>
-<p>On se propose maintenant de calculer <span class="math">\(l\)</span>, <span class="math">\(m\)</span> et les vecteurs propres <span class="math">\(\ket{l,m}\)</span>. Les valeurs propres de <span class="math">\(L_z\)</span> sont <span class="math">\(m=-1,0,1\)</span>, et celles de <span class="math">\(L^2\)</span> sont toutes égales à <span class="math">\(2\)</span> (troi,s fois&nbsp;dégénérée),
+ici <span class="math">\(l\)</span> est le nombre quantique <em>orbital</em>,&nbsp;et <span class="math">\(m\)</span> le nombre quantique <em>magnétique</em>, dénominations utilisées pour décrire la structure électronique des&nbsp;atomes.</p>
+<p>On se propose maintenant de&nbsp;calculer <span class="math">\(l\)</span>, <span class="math">\(m\)</span> et les vecteurs&nbsp;propres <span class="math">\(\ket{l,m}\)</span>. Les valeurs propres&nbsp;de <span class="math">\(L_z\)</span> sont <span class="math">\(m=-1,0,1\)</span>, et celles&nbsp;de <span class="math">\(L^2\)</span> sont toutes égales&nbsp;à <span class="math">\(2\)</span> (troi,s fois&nbsp;dégénérée),
 </p>
 <div class="math">$$
 L^2 = \hbar \begin{pmatrix} 2 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 2 \end{pmatrix},
 $$</div>
 <p>
-ce qui correspond à <span class="math">\(l=1\)</span>, comme on l&#8217;avait anticipé pour les rotations dans l&#8217;espace. On constate donc que l&#8217;espace de hilbert du moment angulaire <span class="math">\(\bm L\)</span> avec <span class="math">\(l=1\)</span> est simplement tridimensionnel, il ne prend que trois valeurs possibles <span class="math">\(-\hbar, 0, \hbar\)</span>. Les vecteurs propres sont <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+ce qui correspond&nbsp;à <span class="math">\(l=1\)</span>, comme on l&#8217;avait anticipé pour les rotations dans l&#8217;espace. On constate donc que l&#8217;espace de hilbert du moment&nbsp;angulaire <span class="math">\(\bm L\)</span> avec <span class="math">\(l=1\)</span> est simplement tridimensionnel, il ne prend que trois valeurs&nbsp;possibles <span class="math">\(-\hbar, 0, \hbar\)</span>. Les vecteurs propres sont <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
 \ket{1,-1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -\I \\ 0 \end{pmatrix}, \;
@@ -488,7 +489,7 @@ ce qui correspond à <span class="math">\(l=1\)</span>, comme on l&#8217;avait a
 \ket{1,1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ \I \\ 0 \end{pmatrix}\dots
 $$</div>
 <p>
-En identifiant <span class="math">\(\braket{\theta,\phi|j,m} = \braket{\bm n| j,m}\)</span> (les états propres de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span> en représentation position) avec le produit scalaire des vecteurs propres et de l&#8217;axe <span class="math">\(\bm n\)</span>, on&nbsp;obtient
+En&nbsp;identifiant <span class="math">\(\braket{\theta,\phi|j,m} = \braket{\bm n| j,m}\)</span> (les états propres&nbsp;de <span class="math">\(L^2\)</span> et <span class="math">\(L_z\)</span> en représentation position) avec le produit scalaire des vecteurs propres et de&nbsp;l&#8217;axe <span class="math">\(\bm n\)</span>, on&nbsp;obtient
 </p>
 <div class="math">$$
 \begin{gather*}
@@ -498,14 +499,14 @@ En identifiant <span class="math">\(\braket{\theta,\phi|j,m} = \braket{\bm n| j,
 \end{gather*}
 $$</div>
 <p>
-expressions, à des facteurs de normalisation près, correspondant aux harmoniques sphériques <span class="math">\(Y_{lm}(\theta, \phi)\)</span>:
+expressions, à des facteurs de normalisation près, correspondant aux harmoniques&nbsp;sphériques <span class="math">\(Y_{lm}(\theta, \phi)\)</span>:
 </p>
 <div class="math">$$
 \braket{\bm n| l,m} \sim Y_{lm}, \quad l=1, \; m = -1, 0, 1.
 $$</div>
 <blockquote>
 <p><img src="/images/MQ-ssh1.png" alt="harmonique Y 1 -1" style="height: 250px;"/></p>
-<p>Harmonique sphérique <span class="math">\((l,m)=(1,-1)\)</span>.</p>
+<p>Harmonique&nbsp;sphérique <span class="math">\((l,m)=(1,-1)\)</span>.</p>
 </blockquote>
 <p>Ces fonctions représentent la distribution angulaire de l&#8217;amplitude de probabilité (fonction d&#8217;onde) de la particule, dans le cas de l&#8217;atome par&nbsp;exemple. </p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

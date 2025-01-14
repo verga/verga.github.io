@@ -51,35 +51,36 @@
 \newcommand{\Di}[1]{\mathop{}\!\mathrm{d}#1\,} 
 \newcommand{\Dd}[1]{\frac{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}#1}}
 \newcommand{\bra}[1]{\langle{#1}|}
-\newcommand{\ket}[1]{|{#1}\rangle}&nbsp;\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\braket}[1]{\langle{#1}\rangle}\)</span></p>
 <blockquote>
 <p><a href="/pages/PS-index.html">Lectures</a> on statistical&nbsp;mechanics.</p>
 </blockquote>
 <h1>Gibbs&nbsp;ensembles</h1>
 <p>The main idea of statistical mechanics, as formulated by Boltzmann and Gibbs, is to describe the microscopic state of equilibrium systems in terms of the <em>probability</em> of an ensemble of configurations compatible with the thermodynamic variables of the macroscopic state. Gibbs devised a <em>set</em> of identical thermodynamic systems differing in their microscopic state, and associated to this set a probability measure; in fact, it is enough to replace the set of systems by an ensemble of macroscopic subsystems. The probability depends on both the microscopic hamiltonian and the state variables. In contrast to Gibbs theory of equilibrium systems, Boltzmann focused on the mechanical description of a macroscopic system and its approach to equilibrium, a <em>kinetic</em> point of&nbsp;view.</p>
-<p>Boltzmann fundamental insight was his identification of the combinatorial entropy, a measure of the microstates <em>information</em> bearing, with the thermodynamic entropy. The content of information is proportional to the number of microstates matching the same macrostate. In quantum mechanics this number is well defined, and related to the number of energy levels, spin polarizations, and other quantum numbers. In classical mechanics one must assume (using a semiclassical limit) that the number of microstates is proportional to the volume they occupy in phase space, normalized by the quantum action <span class="math">\(\hbar\)</span>.</p>
+<p>Boltzmann fundamental insight was his identification of the combinatorial entropy, a measure of the microstates <em>information</em> bearing, with the thermodynamic entropy. The content of information is proportional to the number of microstates matching the same macrostate. In quantum mechanics this number is well defined, and related to the number of energy levels, spin polarizations, and other quantum numbers. In classical mechanics one must assume (using a semiclassical limit) that the number of microstates is proportional to the volume they occupy in phase space, normalized by the quantum&nbsp;action <span class="math">\(\hbar\)</span>.</p>
 <blockquote>
 <p><img src="/images/PS-boltzmann.png" alt="Boltzmann" style="width:150px;"/>&nbsp;Boltzmann</p>
 </blockquote>
-<p>The extensive thermodynamic variables characterizing the macrostate are the energy <span class="math">\(E\)</span>, the volume <span class="math">\(V\)</span> and the number of particles <span class="math">\(N\)</span> (generalization to other extensive variables is straightforward). An equilibrium isolated system of fixed volume and particle number is in a thermodynamic state that depends only on its energy; the set of microstates compatible with a macroscopic energy is the <em>microcanonical ensemble</em>. The energy spectrum of a confined quantum system is discrete but it tends to a continuum in the thermodynamic&nbsp;limit,
+<p>The extensive thermodynamic variables characterizing the macrostate are the&nbsp;energy <span class="math">\(E\)</span>, the&nbsp;volume <span class="math">\(V\)</span> and the number of&nbsp;particles <span class="math">\(N\)</span> (generalization to other extensive variables is straightforward). An equilibrium isolated system of fixed volume and particle number is in a thermodynamic state that depends only on its energy; the set of microstates compatible with a macroscopic energy is the <em>microcanonical ensemble</em>. The energy spectrum of a confined quantum system is discrete but it tends to a continuum in the thermodynamic&nbsp;limit,
 </p>
 <div class="math">$$N \rightarrow \infty,\; V \rightarrow \infty, \quad \mbox{such that}\quad
 N/V \rightarrow \mbox{const.}$$</div>
 <p>
-the spacing of the energy levels <span class="math">\(\Delta E\)</span> is exponentially small in the number of particles <span class="math">\(N\)</span>:
+the spacing of the energy&nbsp;levels <span class="math">\(\Delta E\)</span> is exponentially small in the number of&nbsp;particles <span class="math">\(N\)</span>:
 </p>
 <div class="math">$$\Delta E \sim \E^{-N}.$$</div>
 <p>
-One may understand this order of magnitude from the fact that the number of energy levels of a quantum system growth exponentially with the number of particles (i.e with the dimension of the hilbert space). This means that the macroscopic energy of the system is compatible with a huge number of microscopic energy levels: for large <span class="math">\(N\)</span> one cannot distinguish between neighboring&nbsp;levels.</p>
-<p>Therefore, the macroscopic value of the energy <span class="math">\(E\)</span> is compatible with microscopic energy levels <span class="math">\(E_n\)</span> (<span class="math">\(n\in \mathbb{N}\)</span>) in the&nbsp;interval
+One may understand this order of magnitude from the fact that the number of energy levels of a quantum system growth exponentially with the number of particles (i.e with the dimension of the hilbert space). This means that the macroscopic energy of the system is compatible with a huge number of microscopic energy levels: for&nbsp;large <span class="math">\(N\)</span> one cannot distinguish between neighboring&nbsp;levels.</p>
+<p>Therefore, the macroscopic value of the&nbsp;energy <span class="math">\(E\)</span> is compatible with microscopic energy&nbsp;levels <span class="math">\(E_n\)</span> (<span class="math">\(n\in \mathbb{N}\)</span>) in the&nbsp;interval
 </p>
 <div class="math">$$E_n \in [E, E+\Delta]$$</div>
 <p>
-where <span class="math">\(\Delta\)</span> is small but macroscopic <span class="math">\(\Delta/E \ll 1\)</span>, one may consider that, in the thermodynamic limit, <span class="math">\(\Delta/E \rightarrow 0\)</span>. (This is effectively the case if, following the central limit theorem, <span class="math">\(\Delta\)</span> represents the strength of the energy fluctuations around the mean value <span class="math">\(\Delta \sim \sqrt{N}\)</span>.) More importantly, the quantum state of a macroscopic&nbsp;system,
+where <span class="math">\(\Delta\)</span> is small but&nbsp;macroscopic <span class="math">\(\Delta/E \ll 1\)</span>, one may consider that, in the thermodynamic&nbsp;limit, <span class="math">\(\Delta/E \rightarrow 0\)</span>. (This is effectively the case if, following the central limit&nbsp;theorem, <span class="math">\(\Delta\)</span> represents the strength of the energy fluctuations around the mean&nbsp;value <span class="math">\(\Delta \sim \sqrt{N}\)</span>.) More importantly, the quantum state of a macroscopic&nbsp;system,
 </p>
 <div class="math">$$\rho = \sum_n P_n \ket{n}\bra{n}, \quad \sum_n P_n = 1$$</div>
 <p>
-where <span class="math">\(\ket{n}\)</span> are the eigenvectors of the system&#8217;s hamiltonian <span class="math">\(H\ket{n} = E_n \ket{n}\)</span>, is generally not an eigenstate of <span class="math">\(H\)</span>. Indeed, in principle the <span class="math">\(P_n\)</span> are arbitrary, depending for instance on the preparation of the system. Consequently, a macroscopic fraction of the set of energy states <span class="math">\(E_n\)</span> contributes to a state with thermodynamic energy <span class="math">\(E\)</span>.</p>
+where <span class="math">\(\ket{n}\)</span> are the eigenvectors of the system&#8217;s&nbsp;hamiltonian <span class="math">\(H\ket{n} = E_n \ket{n}\)</span>, is generally not an eigenstate&nbsp;of <span class="math">\(H\)</span>. Indeed, in principle&nbsp;the <span class="math">\(P_n\)</span> are arbitrary, depending for instance on the preparation of the system. Consequently, a macroscopic fraction of the set of energy&nbsp;states <span class="math">\(E_n\)</span> contributes to a state with thermodynamic&nbsp;energy <span class="math">\(E\)</span>.</p>
 <p>The fundamental statistical hypothesis formulated by Boltzmann (applied to a general quantum system), is that the microstate probabilities are a priori&nbsp;equal:
 </p>
 <div class="math">$$
@@ -93,8 +94,8 @@ where
 \Omega_\Delta(E) = \#\{E_n, E_n \in [E, E + \Delta]\}
 $$</div>
 <p>
-is the number of states in the energy band of width <span class="math">\(\Delta\)</span>.</p>
-<p>If we denote <span class="math">\(\Omega(E)\)</span> the total number of states having energies below <span class="math">\(E\)</span>, <span class="math">\(E_n &lt; E\)</span>:
+is the number of states in the energy band of&nbsp;width <span class="math">\(\Delta\)</span>.</p>
+<p>If we&nbsp;denote <span class="math">\(\Omega(E)\)</span> the total number of states having energies&nbsp;below <span class="math">\(E\)</span>, <span class="math">\(E_n &lt; E\)</span>:
 </p>
 <div class="math">$$
 \Omega_\Delta(E) = \Omega(E+\Delta) - \Omega(E) \approx \frac{\partial \Omega(E)}{\partial E} \Delta \equiv \nu(E) \Delta
@@ -114,26 +115,26 @@ S = k_{\mathrm{B}} \ln \Omega(E)
 $$</div>
 <p>
 where <span class="math">\(k_{\mathrm{B}} = 1.380\,649\,10^{-23}\,\mathrm{JK^{-1}}=1\)</span> is the Boltzmann constant (the last identity is a definition of the kelvin in energy&nbsp;units).</p>
-<p>It is worth noting that, in the thermodynamic limit, the Boltzmann entropy and therefore the other thermodynamic properties of the system, do not depend on the subextensive parameter <span class="math">\(\Delta \ll E\)</span> (for instance <span class="math">\(\Delta \sim \mathcal{O}(N^{1/2}\)</span>).&nbsp;Indeed,
+<p>It is worth noting that, in the thermodynamic limit, the Boltzmann entropy and therefore the other thermodynamic properties of the system, do not depend on the subextensive&nbsp;parameter <span class="math">\(\Delta \ll E\)</span> (for&nbsp;instance <span class="math">\(\Delta \sim \mathcal{O}(N^{1/2}\)</span>).&nbsp;Indeed,
 </p>
 <div class="math">$$
 \ln \Omega_\Delta = \ln \Omega + \mathcal{O}\left( \ln \frac{E}{N\Delta} \right)\,.
 $$</div>
 <p> 
-For example, if we take a system of <span class="math">\(N\)</span> free particles, the number of states inside a sphere of radius (in wavenumber space) <span class="math">\(K \sim \sqrt{E}\)</span> and dimension <span class="math">\(N\)</span> is essentially concentrated on its surface: <span class="math">\(\ln \Omega \sim \ln K^N \sim \ln K^{N-1}\)</span> (for <span class="math">\(N \rightarrow \infty\)</span>).</p>
+For example, if we take a system&nbsp;of <span class="math">\(N\)</span> free particles, the number of states inside a sphere of radius (in wavenumber&nbsp;space) <span class="math">\(K \sim \sqrt{E}\)</span> and&nbsp;dimension <span class="math">\(N\)</span> is essentially concentrated on its&nbsp;surface: <span class="math">\(\ln \Omega \sim \ln K^N \sim \ln K^{N-1}\)</span> (for <span class="math">\(N \rightarrow \infty\)</span>).</p>
 <p>The Boltzmann formula can easily be deduced from the general expression of the quantum von Neumann&nbsp;entropy:
 </p>
 <div class="math">$$
 S = - \mathrm{Tr}\, \rho \ln \rho\,,
 $$</div>
 <p>
-using the hypothesis of a priori equal probabilities, given by <span class="math">\(P(E_n)\)</span> above. It is interesting to note that the number of&nbsp;states,
+using the hypothesis of a priori equal probabilities, given&nbsp;by <span class="math">\(P(E_n)\)</span> above. It is interesting to note that the number of&nbsp;states,
 </p>
 <div class="math">$$
 \Omega(E) = \E^{S(E)} \rightarrow \E^{N s(E/N)}
 $$</div>
 <p>
-is effectively exponentially large in the thermodynamic limit, as a consequence of the extensivity of the entropy; here <span class="math">\(s\)</span> is the entropy density (per particle). The typical separation <span class="math">\(D\)</span> of levels in the band of width <span class="math">\(\Delta\)</span> is then of the order of <span class="math">\(D(E) \sim \Delta \E^{-N s(E/N)}\)</span>.</p>
+is effectively exponentially large in the thermodynamic limit, as a consequence of the extensivity of the entropy;&nbsp;here <span class="math">\(s\)</span> is the entropy density (per particle). The typical&nbsp;separation <span class="math">\(D\)</span> of levels in the band of&nbsp;width <span class="math">\(\Delta\)</span> is then of the order&nbsp;of <span class="math">\(D(E) \sim \Delta \E^{-N s(E/N)}\)</span>.</p>
 <blockquote>
 <p>In summary, the microcanonical distribution of microstates probabilities&nbsp;is</p>
 <p>
@@ -145,39 +146,39 @@ is effectively exponentially large in the thermodynamic limit, as a consequence 
 \end{equation}
 $$</div>
 </p>
-<p>in terms of the hamiltonian operator <span class="math">\(H\)</span> and the thermodynamic energy <span class="math">\(E\)</span> of an isolated quantum system; <span class="math">\(\nu(E)\)</span> is the density of states (<span class="math">\(\nu(E) \sim \Omega_\Delta(E)/\Delta\)</span>).</p>
+<p>in terms of the hamiltonian&nbsp;operator <span class="math">\(H\)</span> and the thermodynamic&nbsp;energy <span class="math">\(E\)</span> of an isolated quantum&nbsp;system; <span class="math">\(\nu(E)\)</span> is the density of states&nbsp;(<span class="math">\(\nu(E) \sim \Omega_\Delta(E)/\Delta\)</span>).</p>
 </blockquote>
 <p>The microcanonical ensemble describes isolated systems in terms of their energy; a more general situation is that of a subsystem exchanging energy with a large system at fixed temperature; the set of the corresponding microstates is the <em>canonical ensemble</em>.</p>
 <blockquote>
 <p><img src="/images/PS-canonical.svg" alt="Canonical setup" style="width:200px;"/></p>
 </blockquote>
-<p>Let the system&#8217;s hamiltonian <span class="math">\(H_S = H + H_R\)</span> be split into a subsystem part <span class="math">\(H\)</span> and a &#8220;reservoir&#8221; part <span class="math">\(H_R\)</span>; the density operator of the subsystem <span class="math">\(\rho\)</span> is obtained by the <em>partial trace</em> of the total system <span class="math">\(\rho_S\)</span> on the reservoir degrees of&nbsp;freedom:
+<p>Let the system&#8217;s&nbsp;hamiltonian <span class="math">\(H_S = H + H_R\)</span> be split into a subsystem&nbsp;part <span class="math">\(H\)</span> and a &#8220;reservoir&#8221;&nbsp;part <span class="math">\(H_R\)</span>; the density operator of the&nbsp;subsystem <span class="math">\(\rho\)</span> is obtained by the <em>partial trace</em> of the total&nbsp;system <span class="math">\(\rho_S\)</span> on the reservoir degrees of&nbsp;freedom:
 </p>
 <div class="math">$$
 \rho = \mathrm{Tr}_R \, \rho_S = \frac{\mathrm{Tr}_R \, \delta(H + H_R - E_S)}{\mathrm{Tr}_S \, \delta(H_S - E_S)} = \frac{\nu_R(E_S-H)}{\nu_S(E_S)}\,,
 $$</div>
 <p>
-where we used that the partial trace over the bath of the total state <span class="math">\(\rho = \delta(E-H)/\nu(E)\)</span> is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+where we used that the partial trace over the bath of the total&nbsp;state <span class="math">\(\rho = \delta(E-H)/\nu(E)\)</span> is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
 </p>
 <div class="math">$$
 \mathrm{Tr}_R \delta(H_S-E_S) = \nu_R(E_S - H),
 $$</div>
 <p>
-the number of states of the reservoir with energies near the energy of the subsystem. If <span class="math">\(E\)</span> is the typical energy of the subsystem, we have <span class="math">\(E \ll E_S\)</span>, and we can then expand the logarithm of <span class="math">\(\Omega\)</span>, which is the entropy, to&nbsp;obtain:
+the number of states of the reservoir with energies near the energy of the subsystem.&nbsp;If <span class="math">\(E\)</span> is the typical energy of the subsystem, we&nbsp;have <span class="math">\(E \ll E_S\)</span>, and we can then expand the logarithm&nbsp;of <span class="math">\(\Omega\)</span>, which is the entropy, to&nbsp;obtain:
 </p>
 <div class="math">$$
 \nu_R(E_S-H) \approx \nu_R(E_S)\, \E^{-H/T},\quad
 \frac{1}{T} = \frac{\D S(E_S)}{\D E_S}
 $$</div>
 <p>
-where we defined the temperature <span class="math">\(T\)</span> of the total system. Indeed, for any eigenvalue <span class="math">\(E_n\)</span> of <span class="math">\(H\)</span> we&nbsp;have,
+where we defined the&nbsp;temperature <span class="math">\(T\)</span> of the total system. Indeed, for any&nbsp;eigenvalue <span class="math">\(E_n\)</span> of <span class="math">\(H\)</span> we&nbsp;have,
 </p>
 <div class="math">$$
 \nu_R(E_S-E_n) = \frac{\exp[S_R(E_S-E_n)]}{\Delta_S} \approx 
 \frac{1}{\Delta_S} \exp\left[ S_R(E_S) - \frac{\D S_R(E_S)}{\D E_S} E_n \right]\,,
 $$</div>
 <p>
-which readily leads to the above expression (<span class="math">\(\Delta_S\)</span> is the energy band width of the corresponding microcanonical distribution of the entire system). The reservoir temperature is obviously equal to the total system temperature. Note that as a consequence of the large size limit of the reservoir, the last formula only involves quantities related to the subsystem, the reservoir enters through the&nbsp;temperature. </p>
+which readily leads to the above expression&nbsp;(<span class="math">\(\Delta_S\)</span> is the energy band width of the corresponding microcanonical distribution of the entire system). The reservoir temperature is obviously equal to the total system temperature. Note that as a consequence of the large size limit of the reservoir, the last formula only involves quantities related to the subsystem, the reservoir enters through the&nbsp;temperature. </p>
 <blockquote>
 <p>The density operator of the canonical ensemble&nbsp;is</p>
 <p>
@@ -188,7 +189,7 @@ which readily leads to the above expression (<span class="math">\(\Delta_S\)</sp
 \end{equation}
 $$</div>
 </p>
-<p>where <span class="math">\(H\)</span> is the hamiltonian of a quantum system of volume <span class="math">\(V\)</span> in contact with a reservoir at temperature <span class="math">\(T\)</span>; <span class="math">\(Z=Z(T,V)\)</span> is the partition&nbsp;function.</p>
+<p>where <span class="math">\(H\)</span> is the hamiltonian of a quantum system of&nbsp;volume <span class="math">\(V\)</span> in contact with a reservoir at&nbsp;temperature <span class="math">\(T\)</span>; <span class="math">\(Z=Z(T,V)\)</span> is the partition&nbsp;function.</p>
 </blockquote>
 <p>More generally, a subsystem can exchange with its surroundings not only energy at fixed temperature, but also particles at fixed chemical&nbsp;potential:
 </p>
@@ -197,7 +198,7 @@ $$</div>
 \mu = -T \left. \frac{\partial S}{\partial N}\right|_{(E,V)}
 $$</div>
 <p>
-the corresponding ensemble calls <em>grand canonical</em>, and it is particularly useful for actual computations of statistical models.  Adding the number of particles as a new variable <span class="math">\(S=S(E,N)\)</span> (with fixed volume), a similar reasoning as the one used to obtain the canonical distribution, leads to&nbsp;the</p>
+the corresponding ensemble calls <em>grand canonical</em>, and it is particularly useful for actual computations of statistical models.  Adding the number of particles as a new&nbsp;variable <span class="math">\(S=S(E,N)\)</span> (with fixed volume), a similar reasoning as the one used to obtain the canonical distribution, leads to&nbsp;the</p>
 <blockquote>
 <p>grand canonical density&nbsp;operator,</p>
 <p>
@@ -208,9 +209,9 @@ the corresponding ensemble calls <em>grand canonical</em>, and it is particularl
 \end{equation}
 $$</div>
 </p>
-<p>where <span class="math">\(\hat{N}\)</span> is the number operator and <span class="math">\(\mu\)</span> the chemical&nbsp;potential. </p>
+<p>where <span class="math">\(\hat{N}\)</span> is the number operator&nbsp;and <span class="math">\(\mu\)</span> the chemical&nbsp;potential. </p>
 </blockquote>
-<p>If the spectrum of <span class="math">\(\hat{N}\)</span> is the set of natural numbers <span class="math">\(N=0,1,2,\ldots\)</span> and <span class="math">\(\hat{N}\)</span> commutes with <span class="math">\(H\)</span>, we can write the grand canonical partition function as a power series in the fugacity <span class="math">\(z=\E^{\mu/T}\)</span>:
+<p>If the spectrum&nbsp;of <span class="math">\(\hat{N}\)</span> is the set of natural&nbsp;numbers <span class="math">\(N=0,1,2,\ldots\)</span> and <span class="math">\(\hat{N}\)</span> commutes&nbsp;with <span class="math">\(H\)</span>, we can write the grand canonical partition function as a power series in the&nbsp;fugacity <span class="math">\(z=\E^{\mu/T}\)</span>:
 </p>
 <div class="math">$$
 \begin{equation}
@@ -219,45 +220,45 @@ $$</div>
 \end{equation}
 $$</div>
 <p>
-where <span class="math">\(Z_N(T,V)\)</span> is the canonical partition function of <span class="math">\(N\)</span> particles with hamiltonian <span class="math">\(H_N\)</span>. In the same way as the exchange of energy between subsystems of an equilibrium system must satisfy the conservation of the total energy, condition that implies the equality of the temperatures, the exchange of particles at equilibrium implies the equality of chemical potentials. In contrast, for a system that do not conserve the number of particles, such as the photons in a cavity (photons are emitted and absorbed by the walls), the chemical potential must vanish <span class="math">\(\mu=0\)</span>. Indeed, if the number of particles is variable, at equilibrium the free energy <span class="math">\(F(T,N)\)</span> is minimal: the condition <span class="math">\((\partial F/\partial N)_{(T,V)} = \mu = 0\)</span> specifies its equilibrium&nbsp;value.</p>
+where <span class="math">\(Z_N(T,V)\)</span> is the canonical partition function&nbsp;of <span class="math">\(N\)</span> particles with&nbsp;hamiltonian <span class="math">\(H_N\)</span>. In the same way as the exchange of energy between subsystems of an equilibrium system must satisfy the conservation of the total energy, condition that implies the equality of the temperatures, the exchange of particles at equilibrium implies the equality of chemical potentials. In contrast, for a system that do not conserve the number of particles, such as the photons in a cavity (photons are emitted and absorbed by the walls), the chemical potential must&nbsp;vanish <span class="math">\(\mu=0\)</span>. Indeed, if the number of particles is variable, at equilibrium the free&nbsp;energy <span class="math">\(F(T,N)\)</span> is minimal: the&nbsp;condition <span class="math">\((\partial F/\partial N)_{(T,V)} = \mu = 0\)</span> specifies its equilibrium&nbsp;value.</p>
 <p>Remark that in the thermodynamic limit the number of particles and volume tend to infinity, stressing the fact that at thermodynamic equilibrium the physical properties cannot depend on the exact number of particles: isolated, closed systems that exchange energy, or open systems that can also exchange particles, are in this limit equivalent. The Gibbs ensembles, microcanonical, canonical or grand canonical, are therefore&nbsp;equivalent.</p>
-<p>The corresponding ensembles for a classical system of <span class="math">\(N\)</span> particles are obtained from the quantum ones by replacing the trace by an integral over the phase space <span class="math">\(\Gamma\)</span>,
+<p>The corresponding ensembles for a classical system&nbsp;of <span class="math">\(N\)</span> particles are obtained from the quantum ones by replacing the trace by an integral over the phase&nbsp;space <span class="math">\(\Gamma\)</span>,
 </p>
 <div class="math">$$
 \mathrm{Tr} \rightarrow \frac{1}{N!}\int_\Gamma \prod_{n=1}^N \frac{\D \boldsymbol x_n \D \boldsymbol p_n}{(2\pi\hbar)^3}
 $$</div>
 <p>
-and considering the hamiltonian as a function over the phase space. The factor <span class="math">\(1/N!\)</span> takes into account the identity of particles (a quantum effect). Note however that the validity of the classical formulas is difficult to assess, and must be verified for each model. For instance, free particles of mass <span class="math">\(m\)</span> at temperature <span class="math">\(T\)</span> and density <span class="math">\(n=N/V\)</span> can be characterized by the nondimensional&nbsp;parameter
+and considering the hamiltonian as a function over the phase space. The&nbsp;factor <span class="math">\(1/N!\)</span> takes into account the identity of particles (a quantum effect). Note however that the validity of the classical formulas is difficult to assess, and must be verified for each model. For instance, free particles of&nbsp;mass <span class="math">\(m\)</span> at&nbsp;temperature <span class="math">\(T\)</span> and&nbsp;density <span class="math">\(n=N/V\)</span> can be characterized by the nondimensional&nbsp;parameter
 </p>
 <div class="math">$$
 g = n \lambda_T^3\,,\quad \lambda_T = \sqrt{\frac{2\pi\hbar^2}{mT}}
 $$</div>
 <p>
-which compares the thermal de Broglie length <span class="math">\(\lambda_T\)</span> to the mean distance between particles <span class="math">\(n^{-1/3}\)</span>; when <span class="math">\(g \gg 1\)</span> quantum effects become important: this is the case for dense or low temperature systems (&#8220;degenerate&#8221; fermi and bose gases). For oscillator systems of typical frequency <span class="math">\(\omega\)</span>, one may define the parameter <span class="math">\(g = \hbar \omega/T\)</span> which separates the quantum (<span class="math">\(g \gg 1\)</span>) and classical regimes (<span class="math">\(g \ll 1\)</span>) (vibrations and rotation of&nbsp;molecules).</p>
+which compares the thermal de Broglie&nbsp;length <span class="math">\(\lambda_T\)</span> to the mean distance between&nbsp;particles <span class="math">\(n^{-1/3}\)</span>;&nbsp;when <span class="math">\(g \gg 1\)</span> quantum effects become important: this is the case for dense or low temperature systems (&#8220;degenerate&#8221; fermi and bose gases). For oscillator systems of typical&nbsp;frequency <span class="math">\(\omega\)</span>, one may define the&nbsp;parameter <span class="math">\(g = \hbar \omega/T\)</span> which separates the quantum&nbsp;(<span class="math">\(g \gg 1\)</span>) and classical regimes&nbsp;(<span class="math">\(g \ll 1\)</span>) (vibrations and rotation of&nbsp;molecules).</p>
 <h2>Thermodynamics</h2>
-<p>The knowledge of the partition function allows the computation of the thermodynamics properties of statistical systems. For instance, in the microcanonical ensemble <span class="math">\(\Omega\)</span> gives the entropy <span class="math">\(S=S(E,N,V)\)</span> from which one deduces the temperature and chemical potential (see the formulas above), as well as the&nbsp;pressure:
+<p>The knowledge of the partition function allows the computation of the thermodynamics properties of statistical systems. For instance, in the microcanonical&nbsp;ensemble <span class="math">\(\Omega\)</span> gives the&nbsp;entropy <span class="math">\(S=S(E,N,V)\)</span> from which one deduces the temperature and chemical potential (see the formulas above), as well as the&nbsp;pressure:
 </p>
 <div class="math">$$
 P = T \left. \frac{\partial S}{\partial V}\right|_{E,N}\,.
 $$</div>
-<p>The canonical partition function <span class="math">\(Z(T,N,V)\)</span>, for a fixed number of particles <span class="math">\(N\)</span>, is related to the Helmholtz free energy <span class="math">\(F\)</span>&nbsp;by,
+<p>The canonical partition&nbsp;function <span class="math">\(Z(T,N,V)\)</span>, for a fixed number of&nbsp;particles <span class="math">\(N\)</span>, is related to the Helmholtz free&nbsp;energy <span class="math">\(F\)</span> by,
 </p>
 <div class="math">$$
 F(T,V) = -T \ln Z(T,N,V) = E - TS\,,
 $$</div>
 <p>
-and the grand canonical partition function <span class="math">\(Z(T,\mu,V)\)</span> with the thermodynamic potential <span class="math">\(\Phi\)</span>:
+and the grand canonical partition&nbsp;function <span class="math">\(Z(T,\mu,V)\)</span> with the thermodynamic&nbsp;potential <span class="math">\(\Phi\)</span>:
 </p>
 <div class="math">$$
 \Phi(T,\mu,V) = -T \ln Z(T,\mu,V) = E - TS - \mu N = -PV\,.
 $$</div>
 <p>
-The dependency on the volume <span class="math">\(V\)</span> is through the Hamiltonian: a variation <span class="math">\(\D V\)</span> of the volume leads to a variation of the hamiltonian spectrum <span class="math">\(\D H\)</span>; their ratio gives the&nbsp;pressure:
+The dependency on the&nbsp;volume <span class="math">\(V\)</span> is through the Hamiltonian: a&nbsp;variation <span class="math">\(\D V\)</span> of the volume leads to a variation of the hamiltonian&nbsp;spectrum <span class="math">\(\D H\)</span>; their ratio gives the&nbsp;pressure:
 </p>
 <div class="math">$$
 P = - \left\langle \frac{\partial H}{\partial V} \right\rangle\,.
 $$</div>
-<p>More generally, the variation of the free energy as a function of <span class="math">\((T,N,V)\)</span>,&nbsp;is,
+<p>More generally, the variation of the free energy as a function&nbsp;of <span class="math">\((T,N,V)\)</span>,&nbsp;is,
 </p>
 <div class="math">$$
 \D F(T,N,V) = -S \D T + \mu \D N - P \D V
@@ -271,7 +272,7 @@ S = - \frac{\partial F}{\partial T}\,,\quad
 P = - \frac{\partial F}{\partial V}\,.
 $$</div>
 <p>
-Similar expressions can be obtained from the variation of the grand potential <span class="math">\(\D \Phi = -S\D T - N \D \mu - P \D V\)</span>:
+Similar expressions can be obtained from the variation of the grand&nbsp;potential <span class="math">\(\D \Phi = -S\D T - N \D \mu - P \D V\)</span>:
 </p>
 <div class="math">$$
 S = - \frac{\partial \Phi}{\partial T}\,,\quad
@@ -279,8 +280,8 @@ N = -\frac{\partial \Phi}{\partial \mu}\,,\quad
 P = - \frac{\partial \Phi}{\partial V} = - \frac{\Phi}{V}\,.
 $$</div>
 <p>
-The two last equations <span class="math">\(N = N(T,\mu,V)\)</span> and <span class="math">\(P = P(T,\mu,V)\)</span> determine the equation of state <span class="math">\(P = P(T,N,V)\)</span>, after elimination of the chemical&nbsp;potential.</p>
-<p>Second partial derivatives of the free energy (or the partition function) are related to the fluctuations of thermodynamic quantities; for example, taking the derivative of <span class="math">\(F/T\)</span>:
+The two last&nbsp;equations <span class="math">\(N = N(T,\mu,V)\)</span> and <span class="math">\(P = P(T,\mu,V)\)</span> determine the equation of&nbsp;state <span class="math">\(P = P(T,N,V)\)</span>, after elimination of the chemical&nbsp;potential.</p>
+<p>Second partial derivatives of the free energy (or the partition function) are related to the fluctuations of thermodynamic quantities; for example, taking the derivative&nbsp;of <span class="math">\(F/T\)</span>:
 </p>
 <div class="math">$$
 -\frac{\partial \ln Z}{\partial \frac{1}{T} } = \frac{1}{Z} \mathrm{Tr}\, H \E^{-H/T} = \braket{H} = E
@@ -304,18 +305,18 @@ which is the heat capacity at constant volume <strong style="color:DarkSlateBlue
 C_V = \frac{1}{T^2} \frac{\partial^2 \ln Z}{\partial \left(\frac{1}{T}\right)^2 } = \frac{\braket{H^2} - \braket{H}^2}{T^2} = \left(\frac{\Delta E}{T}\right)^2
 $$</div>
 <p>
-we get the desired relation to the energy fluctuations (in the canonical ensemble). This type of relation between the variation of an intensive quantity, here the temperature, and the response of the system, here a variation of the energy (<span class="math">\(\Delta E = C_V \Delta T\)</span>), is one example of a <em>fluctuation-response</em> relation. The proportionality coefficient, the heat capacity, is what is called a <em>susceptibility</em>; other examples are the coefficients of thermal dilatation, compressibility, and the magnetic&nbsp;susceptibility.</p>
+we get the desired relation to the energy fluctuations (in the canonical ensemble). This type of relation between the variation of an intensive quantity, here the temperature, and the response of the system, here a variation of the energy&nbsp;(<span class="math">\(\Delta E = C_V \Delta T\)</span>), is one example of a <em>fluctuation-response</em> relation. The proportionality coefficient, the heat capacity, is what is called a <em>susceptibility</em>; other examples are the coefficients of thermal dilatation, compressibility, and the magnetic&nbsp;susceptibility.</p>
 <p>More generally, examples of linear relations between an applied field and the response of the system near thermodynamic equilibrium, are the <em>transport</em> coefficients like diffusion, electric or heat conductivities, and viscosity, related respectively, to the fluctuations of concentration, electric or heat currents, and momentum&nbsp;gradients.</p>
 <h2>Applications</h2>
 <h3>A system of&nbsp;oscillators</h3>
-<p>As an example of the use of the microcanonical ensemble, we consider a set of <span class="math">\(N\)</span> harmonic oscillators, with&nbsp;hamiltonian,
+<p>As an example of the use of the microcanonical ensemble, we consider a set&nbsp;of <span class="math">\(N\)</span> harmonic oscillators, with&nbsp;hamiltonian,
 </p>
 <div class="math">$$
 H = \sum_{x=1}^N \hbar \omega (a^\dagger_x a_x + 1/2)
 $$</div>
 <p>
-frequency <span class="math">\(\omega\)</span> (we take <span class="math">\(\hbar=\omega=1\)</span>, such that the energy unit is <span class="math">\(\hbar\omega\)</span>), and <span class="math">\(a_x\)</span> the annihilation operator of the oscillator <span class="math">\(x\)</span>. We may think that <span class="math">\(x\)</span> represent the position in a one dimensional lattice. The oscillators are independent, interactions can be added in a second step: for example considering that the positions in the lattice are themselves&nbsp;oscillators.</p>
-<p>The density of states <span class="math">\(\nu(E) = \mathrm{Tr}\,\delta(E-H)\)</span> is readily obtained form the&nbsp;spectrum 
+frequency <span class="math">\(\omega\)</span> (we&nbsp;take <span class="math">\(\hbar=\omega=1\)</span>, such that the energy unit&nbsp;is <span class="math">\(\hbar\omega\)</span>),&nbsp;and <span class="math">\(a_x\)</span> the annihilation operator of the&nbsp;oscillator <span class="math">\(x\)</span>. We may think&nbsp;that <span class="math">\(x\)</span> represent the position in a one dimensional lattice. The oscillators are independent, interactions can be added in a second step: for example considering that the positions in the lattice are themselves&nbsp;oscillators.</p>
+<p>The density of&nbsp;states <span class="math">\(\nu(E) = \mathrm{Tr}\,\delta(E-H)\)</span> is readily obtained form the&nbsp;spectrum 
 </p>
 <div class="math">$$
 E_{n_x} = n_x + 1/2, \quad n_x=0,1,\ldots\,; \; x=1,2,\ldots,N\,,
@@ -340,7 +341,7 @@ of the Dirac delta&nbsp;function:
 \exp\left[ \I k \left(E-\sum_x (n_x + 1/2)\right) \right]\,.
 $$</div>
 <p>
-The summation over <span class="math">\(n_x\)</span> are power series of the&nbsp;form
+The summation&nbsp;over <span class="math">\(n_x\)</span> are power series of the&nbsp;form
 </p>
 <div class="math">$$
 \sum_{n=0}^\infty x^n = \frac{1}{1-x}\,;
@@ -359,15 +360,15 @@ that, after rearranging the exponentials, can be written&nbsp;as,
 f(k) = \I \epsilon k - \ln(2 \I \sin(k/2))
 $$</div>
 <p>
-where <span class="math">\(\epsilon = E/N\)</span>. The asymptotic value, for large <span class="math">\(N\)</span>, of this integral can be evaluated using the <a href="https://en.wikipedia.org/wiki/Laplace%27s_method">Laplace method</a>:
+where <span class="math">\(\epsilon = E/N\)</span>. The asymptotic value, for&nbsp;large <span class="math">\(N\)</span>, of this integral can be evaluated using the <a href="https://en.wikipedia.org/wiki/Laplace%27s_method">Laplace method</a>:
 </p>
 <div class="math">$$
 \int_{-\infty}^\infty \D k \, \E^{N f(k)} \approx \sqrt{\frac{2\pi}{-f''(k_0) N}} \E^{N f(k_0)}\,,\quad f'(k_0)=0\,.
 $$</div>
 <p>
-The idea is that the main contribution to the convergent integral comes from the maximum value of the integrand (or in the case of an oscillating function, to its slower oscillation); values away from the stationnary points of <span class="math">\(f(k)\)</span> decrease exponentially fast with the large parameter <span class="math">\(N\)</span> (or cancels if rapidly oscillating). Then the computation of the integral reduces to its value at the extrema of <span class="math">\(f\)</span> (at point <span class="math">\(k_0\)</span>) and the gaussian integral around this minimum. Therefore, we must compute the value <span class="math">\(k_0\)</span> for which <span class="math">\(f'(k) = 0\)</span>.</p>
-<p>We use <code>sympy</code> to compute the minimum of <span class="math">\(f(k)\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+The idea is that the main contribution to the convergent integral comes from the maximum value of the integrand (or in the case of an oscillating function, to its slower oscillation); values away from the stationnary points&nbsp;of <span class="math">\(f(k)\)</span> decrease exponentially fast with the large&nbsp;parameter <span class="math">\(N\)</span> (or cancels if rapidly oscillating). Then the computation of the integral reduces to its value at the extrema&nbsp;of <span class="math">\(f\)</span> (at&nbsp;point <span class="math">\(k_0\)</span>) and the gaussian integral around this minimum. Therefore, we must compute the&nbsp;value <span class="math">\(k_0\)</span> for&nbsp;which <span class="math">\(f'(k) = 0\)</span>.</p>
+<p>We&nbsp;use <code>sympy</code> to compute the minimum&nbsp;of <span class="math">\(f(k)\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_printing</span><span class="p">()</span>
 <span class="n">k</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;k, epsilon, x&quot;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">I</span><span class="o">*</span><span class="n">epsilon</span><span class="o">*</span><span class="n">k</span> <span class="o">-</span> <span class="n">ln</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># function definition</span>
@@ -391,7 +392,7 @@ $$</div>
 \I \epsilon - \frac{1}{2 \tan{\left (\frac{k}{2} \right )}}
 $$</div>
 </p>
-<p>solve by substitution of <span class="math">\(\exp(\I k/2) \rightarrow x\)</span>, this transforms the trigonometric functions in <span class="math">\(k\)</span> into rational expressions in <span class="math">\(x\)</span>, easier to solve; once the solution obtained we put <span class="math">\(-2\I \ln(x) \rightarrow k\)</span>:</p>
+<p>solve by substitution&nbsp;of <span class="math">\(\exp(\I k/2) \rightarrow x\)</span>, this transforms the trigonometric functions&nbsp;in <span class="math">\(k\)</span> into rational expressions&nbsp;in <span class="math">\(x\)</span>, easier to solve; once the solution obtained we&nbsp;put <span class="math">\(-2\I \ln(x) \rightarrow k\)</span>:</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="n">fx</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">exp</span><span class="p">))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
 <span class="n">fx</span>
@@ -447,7 +448,7 @@ f(k_0) = \left(\epsilon + \frac{1}{2}\right)\ln\left(\epsilon + \frac{1}{2}\righ
 \left(\epsilon - \frac{1}{2}\right) \ln\left(\epsilon - \frac{1}{2}\right)\,,
 $$</div>
 <p>
-which readily gives, at the leading order, the density of states (neglecting the <span class="math">\(O(N^{-1/2})\)</span> non extensive corrections, appearing in the dimensional prefactor of the&nbsp;exponential):
+which readily gives, at the leading order, the density of states (neglecting&nbsp;the <span class="math">\(O(N^{-1/2})\)</span> non extensive corrections, appearing in the dimensional prefactor of the&nbsp;exponential):
 </p>
 <div class="math">$$
 \nu(E) \sim \E^{Ns(E/N)}\,,\quad
@@ -460,25 +461,25 @@ where <span class="math">\(S = N s(E/N)\)</span> is the entropy of the system (i
 <p><img src="/images/PS-oscS.png" alt="entropy" style="width:250px;"/></p>
 <p>The entropy of the oscillators system is a monotonic increasing concave function of the energy and vanishes at zero energy (which corresponds to zero&nbsp;temperature).</p>
 </blockquote>
-<p>This formal demonstration, which allowed us to derive the entropy in the microcanonical ensemble of a set of harmonic oscillators masks somewhat the combinatorial, and then probabilistic, nature of the entropy. In fact, we can count the number of quantum states with energy <span class="math">\(E\)</span> and then directly compute the entropy <span class="math">\(S=\ln \Omega\)</span>. Noting&nbsp;that
+<p>This formal demonstration, which allowed us to derive the entropy in the microcanonical ensemble of a set of harmonic oscillators masks somewhat the combinatorial, and then probabilistic, nature of the entropy. In fact, we can count the number of quantum states with&nbsp;energy <span class="math">\(E\)</span> and then directly compute the&nbsp;entropy <span class="math">\(S=\ln \Omega\)</span>. Noting&nbsp;that
 </p>
 <div class="math">$$
 E = \sum_{x=1}^N \left(n_x + \frac{1}{2} \right)
 $$</div>
 <p>
-(in units of <span class="math">\(\hbar \omega\)</span>) is the energy of a microstate with the first oscillator in level <span class="math">\(n_1\)</span>, the second oscillator in level <span class="math">\(n_2\)</span>, and so on, we should count the number of combinations of the &#8220;occupation numbers&#8221; <span class="math">\(\{n_x\}\)</span> (number of quanta with energy 1) leading to the same energy <span class="math">\(E\)</span>. This microstate is characterized by the&nbsp;integer
+(in units&nbsp;of <span class="math">\(\hbar \omega\)</span>) is the energy of a microstate with the first oscillator in&nbsp;level <span class="math">\(n_1\)</span>, the second oscillator in&nbsp;level <span class="math">\(n_2\)</span>, and so on, we should count the number of combinations of the &#8220;occupation&nbsp;numbers&#8221; <span class="math">\(\{n_x\}\)</span> (number of quanta with energy 1) leading to the same&nbsp;energy <span class="math">\(E\)</span>. This microstate is characterized by the&nbsp;integer
 </p>
 <div class="math">$$
 M = E - N/2 = \sum_{x=1}^N n_x \,.
 $$</div>
 <p>
-Using the fact that the oscillators are identical, the number of microstates with energy <span class="math">\(E\)</span>, the number of ways of distributing <span class="math">\(M\)</span> quantas (units of energy) into <span class="math">\(N\)</span> oscillators,&nbsp;is
+Using the fact that the oscillators are identical, the number of microstates with&nbsp;energy <span class="math">\(E\)</span>, the number of ways of&nbsp;distributing <span class="math">\(M\)</span> quantas (units of energy)&nbsp;into <span class="math">\(N\)</span> oscillators,&nbsp;is
 </p>
 <div class="math">$$
 \Omega(E) = \binom{M+N-1}{N-1}\,.
 $$</div>
 <p>
-(We may verify that for <span class="math">\(M=0\)</span> there is only one state, the fundamental state, and for <span class="math">\(M=1\)</span> there are <span class="math">\(N-1\)</span>.) Using the Stirling formula <span class="math">\(\ln N! \approx N \ln N - N\)</span>, one obtains the same expression of the entropy as before <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong> (see Kardar, ch.&nbsp;4).</p>
+(We may verify that&nbsp;for <span class="math">\(M=0\)</span> there is only one state, the fundamental state, and&nbsp;for <span class="math">\(M=1\)</span> there&nbsp;are <span class="math">\(N-1\)</span>.) Using the Stirling&nbsp;formula <span class="math">\(\ln N! \approx N \ln N - N\)</span>, one obtains the same expression of the entropy as before <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong> (see Kardar, ch.&nbsp;4).</p>
 <p>We may deduce the thermodynamic quantities from the entropy. The temperature&nbsp;is
 </p>
 <div class="math">$$
@@ -497,13 +498,13 @@ Or in the original&nbsp;units
 E = \frac{N\hbar \omega}{\E^{\hbar \omega/T} - 1} + \frac{N\hbar \omega}{2}
 $$</div>
 <p>
-where the last term (essential in both derivations of the entropy) corresponds to the vacuum energy <span class="math">\(E_0 = N\hbar \omega/2\)</span> (the fundamental state of the oscillators). In the limit of high temperature one recovers the equipartition&nbsp;result:
+where the last term (essential in both derivations of the entropy) corresponds to the vacuum&nbsp;energy <span class="math">\(E_0 = N\hbar \omega/2\)</span> (the fundamental state of the oscillators). In the limit of high temperature one recovers the equipartition&nbsp;result:
 </p>
 <div class="math">$$
 E(T) -E_0 \approx NT\,.
 $$</div>
 <p>
-We observe that this last formula, which corresponds to the classical calculation, fails to explain the behavior of the heat capacity at low temperatures <span class="math">\(C_V \rightarrow 0\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
+We observe that this last formula, which corresponds to the classical calculation, fails to explain the behavior of the heat capacity at low&nbsp;temperatures <span class="math">\(C_V \rightarrow 0\)</span> <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>.</p>
 <h3>Two level&nbsp;system</h3>
 <p>We are interested in the canonical ensemble of a <em>paramagnet</em>, a set of independent spins one half, whose hamiltonian&nbsp;is,
 </p>
@@ -511,22 +512,22 @@ We observe that this last formula, which corresponds to the classical calculatio
 H = -J \sum_{x=1}^N \sigma_x^{(z)}\,,
 $$</div>
 <p>
-where <span class="math">\(\sigma_x^{(z)}\)</span> are operators acting on the hilbert space of dimension <span class="math">\(2^N\)</span>:
+where <span class="math">\(\sigma_x^{(z)}\)</span> are operators acting on the hilbert space of&nbsp;dimension <span class="math">\(2^N\)</span>:
 </p>
 <div class="math">$$
 \sigma_x^{(z)} = 1_2  \otimes \ldots \overbrace{\otimes \sigma^{(z)} \otimes}^x 1_2 \otimes \ldots \,,\quad
 \sigma^{(z)} = \begin{pmatrix} 1 &amp; 0\\ 0 &amp; -1\end{pmatrix}
 $$</div>
 <p>
-(<span class="math">\(1_2\)</span> is the identity matrix of dimension <span class="math">\(2\times2\)</span>) where <span class="math">\(J\)</span> is an energy constant, and <span class="math">\(x\)</span> is the position in a one dimensional lattice. (Remark that the geometry is not important because of the absence of interactions.) The constant <span class="math">\(J\)</span> can be associated with an external magnetic field <span class="math">\(B\)</span>, <span class="math">\(J=\mu B\)</span>, with <span class="math">\(\mu\)</span> the magnetic moment of the&nbsp;particles.</p>
-<p>The partition function (we note <span class="math">\(\sigma_x=\sigma_x^{(z)}\)</span>), is straightforwardly&nbsp;calculated,
+(<span class="math">\(1_2\)</span> is the identity matrix of&nbsp;dimension <span class="math">\(2\times2\)</span>)&nbsp;where <span class="math">\(J\)</span> is an energy constant,&nbsp;and <span class="math">\(x\)</span> is the position in a one dimensional lattice. (Remark that the geometry is not important because of the absence of interactions.) The&nbsp;constant <span class="math">\(J\)</span> can be associated with an external magnetic&nbsp;field <span class="math">\(B\)</span>, <span class="math">\(J=\mu B\)</span>,&nbsp;with <span class="math">\(\mu\)</span> the magnetic moment of the&nbsp;particles.</p>
+<p>The partition function (we&nbsp;note <span class="math">\(\sigma_x=\sigma_x^{(z)}\)</span>), is straightforwardly&nbsp;calculated,
 </p>
 <div class="math">$$
 Z = \mathrm{Tr}\, \E^{J \sum_x \sigma_x/T}= \mathrm{Tr}\, \bigotimes_x \E^{J\sigma_x/T} = \prod_x \mathrm{Tr}\, \E^{J\sigma_x/T} = (2\cosh J/T)^N
 $$</div>
 <p>
-where we used the properties of the <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)">trace</a> and the Kronecker product: <span class="math">\(\mathrm{Tr}\,A \otimes B = \mathrm{Tr}\,A \mathrm{Tr}\,B\)</span>.</p>
-<p>We can now compute the thermodynamic properties of the two level system: the energy, which is in the present case proportional to the magnetization <span class="math">\(m = (1/N) \braket{\sum_x \sigma_x}\)</span>,
+where we used the properties of the <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)">trace</a> and the Kronecker&nbsp;product: <span class="math">\(\mathrm{Tr}\,A \otimes B = \mathrm{Tr}\,A \mathrm{Tr}\,B\)</span>.</p>
+<p>We can now compute the thermodynamic properties of the two level system: the energy, which is in the present case proportional to the&nbsp;magnetization <span class="math">\(m = (1/N) \braket{\sum_x \sigma_x}\)</span>,
 </p>
 <div class="math">$$
 E = -\frac{\partial \ln Z }{\partial 1/T} = - NJ \tanh(J/T) = - NJ m
@@ -550,39 +551,39 @@ s = \frac{S}{N} = -\frac{1 + \epsilon}{2} \ln \frac{1 + \epsilon}{2} - \frac{1- 
 $$</div>
 <p>
 can also be obtained using the microcanonical ensemble <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. </p>
-<p>The heat capacity, or magnetic susceptibility <span class="math">\(\chi = \partial M/\partial \mu_0 B \sim \partial N m/\partial J\)</span>, in the magnetic case (<span class="math">\(J\)</span> represents an applied magnetic field to the spin system), is the temperature derivative of the energy <span class="math">\(E\)</span>,
+<p>The heat capacity, or magnetic&nbsp;susceptibility <span class="math">\(\chi = \partial M/\partial \mu_0 B \sim \partial N m/\partial J\)</span>, in the magnetic case&nbsp;(<span class="math">\(J\)</span> represents an applied magnetic field to the spin system), is the temperature derivative of the&nbsp;energy <span class="math">\(E\)</span>,
 </p>
 <div class="math">$$
 C_V = \frac{NJ^2}{T^2} \cosh^{-2} \left(\frac{J}{T} \right) \rightarrow 
 \frac{J^2}{T^2} \sim  \frac{J^2}{T}\chi\,.
 $$</div>
 <p>
-Note that the last expression is compatible with the Curie law <span class="math">\(\chi \sim 1/T\)</span> (at <span class="math">\(J=0\)</span>).</p>
+Note that the last expression is compatible with the Curie&nbsp;law <span class="math">\(\chi \sim 1/T\)</span> (at <span class="math">\(J=0\)</span>).</p>
 <blockquote>
 <p><img src="/images/PS-paraC.png" alt="heat" style="width:250px;"/></p>
 <p>The heat capacity of the paramagnet as a function of the temperature, showing a decreasing range at high&nbsp;temperature.</p>
 </blockquote>
-<p>Comparing the two examples, the oscillators and the paramagnet, we observe that an essential difference is in the range of the allowed energies; while the system of oscillators allows arbitrary high energies, in the range <span class="math">\(E/N \ge 1/2\)</span>, in the spin system the energy is restricted to a band <span class="math">\(-1 \le E/N \le 1\)</span>; this is the physical origin of their fundamentally different thermodynamic&nbsp;behavior.</p>
+<p>Comparing the two examples, the oscillators and the paramagnet, we observe that an essential difference is in the range of the allowed energies; while the system of oscillators allows arbitrary high energies, in the&nbsp;range <span class="math">\(E/N \ge 1/2\)</span>, in the spin system the energy is restricted to a&nbsp;band <span class="math">\(-1 \le E/N \le 1\)</span>; this is the physical origin of their fundamentally different thermodynamic&nbsp;behavior.</p>
 <h3>Ideal&nbsp;gas</h3>
-<p>To illustrate the use of the grand canonical ensemble we consider an ideal gas of mass <span class="math">\(m\)</span> particles in a volume <span class="math">\(V\)</span>, in contact with a reservoir enabling the exchange of energy at temperature <span class="math">\(T\)</span> and molecules at chemical potential <span class="math">\(\mu\)</span>. The <span class="math">\(N\)</span>-particles hamiltonian&nbsp;is,
+<p>To illustrate the use of the grand canonical ensemble we consider an ideal gas of&nbsp;mass <span class="math">\(m\)</span> particles in a&nbsp;volume <span class="math">\(V\)</span>, in contact with a reservoir enabling the exchange of energy at&nbsp;temperature <span class="math">\(T\)</span> and molecules at chemical&nbsp;potential <span class="math">\(\mu\)</span>.&nbsp;The <span class="math">\(N\)</span>-particles hamiltonian&nbsp;is,
 </p>
 <div class="math">$$
 H_N(x, p) = \sum_{n=1}^N \frac{p_n^2}{2m}\,, \quad x \in V
 $$</div>
 <p>
-where the only interaction is with the walls, imposing the restriction on the positions <span class="math">\(x=\{ \boldsymbol x_1, \ldots, \boldsymbol x_N \}\)</span>.  The canonical partition function for <span class="math">\(N\)</span>&nbsp;is
+where the only interaction is with the walls, imposing the restriction on the&nbsp;positions <span class="math">\(x=\{ \boldsymbol x_1, \ldots, \boldsymbol x_N \}\)</span>.  The canonical partition function&nbsp;for <span class="math">\(N\)</span> is
 </p>
 <div class="math">$$
 Z_N(T) = \frac{1}{N!}\int_\Gamma \prod_{n=1}^N \frac{\D \boldsymbol x_n \D \boldsymbol p_n}{(2\pi\hbar)^3} \exp\left( -\sum_{n=1}^N \frac{p^2_n}{2mT} \right)\,.
 $$</div>
 <p>
-The integral over <span class="math">\(x\)</span> gives a factor <span class="math">\(V^N\)</span> and the integrals over the impulsions factorize in gaussian integrals for each particle, the result is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
+The integral&nbsp;over <span class="math">\(x\)</span> gives a&nbsp;factor <span class="math">\(V^N\)</span> and the integrals over the impulsions factorize in gaussian integrals for each particle, the result is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
 </p>
 <div class="math">$$
 Z_N(T) = \frac{V^N}{N!} \left( \frac{m T}{2\pi \hbar^2}\right)^{3N/2} = \frac{g^N}{N!}
 $$</div>
 <p>
-where we defined the nondimensional parameter <span class="math">\(g=g(V,T) = V/\lambda^3\)</span>, with <span class="math">\(\lambda = (2\pi\hbar^2/mT)^{1/2}\)</span>. We are now ready to compute the grand partition&nbsp;function:
+where we defined the nondimensional&nbsp;parameter <span class="math">\(g=g(V,T) = V/\lambda^3\)</span>,&nbsp;with <span class="math">\(\lambda = (2\pi\hbar^2/mT)^{1/2}\)</span>. We are now ready to compute the grand partition&nbsp;function:
 </p>
 <div class="math">$$
 Z(T,\mu) = \sum_N \E^{\mu N/T} Z_N(T) = \E^{z g}\,,\quad z=\E^{\mu/T}\,,
@@ -606,7 +607,7 @@ the&nbsp;pressure,
 P = -\frac{\partial \Phi}{\partial V} =  \E^{\mu/T} \frac{T}{\lambda(T)^3} = \frac{NT}{V}\,,
 $$</div>
 <p>
-which coincides with the usual thermodynamic equation of state <span class="math">\(PV=NT\)</span>. Note that the grand potential is <span class="math">\(\Phi(T,\mu,V) = - P(T,\mu) V\)</span>. Putting <span class="math">\(p_T = T/\lambda^3\)</span>, the chemical potential&nbsp;writes,
+which coincides with the usual thermodynamic equation of&nbsp;state <span class="math">\(PV=NT\)</span>. Note that the grand potential&nbsp;is <span class="math">\(\Phi(T,\mu,V) = - P(T,\mu) V\)</span>.&nbsp;Putting <span class="math">\(p_T = T/\lambda^3\)</span>, the chemical potential&nbsp;writes,
 </p>
 <div class="math">$$
 \mu = T\ln(P/p_T)
@@ -632,25 +633,25 @@ the <em>equipartition</em>&nbsp;result.</p>
 \epsilon_n = \hbar \omega \left(n+\frac{1}{2}\right)\,,
 $$</div>
 <p>
-similar to the energy of a harmonic oscillator, where <span class="math">\(\omega\)</span> is the vibration frequency and <span class="math">\(n=0,1,\ldots\)</span> is the energy level quantum number. The rotation energy of an axisymmetric molecule depends on its inertia momentum <span class="math">\(I\)</span> and is proportional to the square of the angular momentum <span class="math">\(L^2\)</span>,
+similar to the energy of a harmonic oscillator,&nbsp;where <span class="math">\(\omega\)</span> is the vibration frequency&nbsp;and <span class="math">\(n=0,1,\ldots\)</span> is the energy level quantum number. The rotation energy of an axisymmetric molecule depends on its inertia&nbsp;momentum <span class="math">\(I\)</span> and is proportional to the square of the angular&nbsp;momentum <span class="math">\(L^2\)</span>,
 </p>
 <div class="math">$$
 \epsilon_l = \frac{\hbar^2 l(l+1)}{2I}\,,
 $$</div>
 <p>
-where <span class="math">\(l=0,1,\ldots\)</span> is the orbital quantum number; each level is <span class="math">\(2l+1\)</span> times&nbsp;degenerate.</p>
-<p>In the canonical ensemble, the part of the partition function associated with the vibration and rotation degrees of freedom of <span class="math">\(N\)</span> <em>independent</em> molecules, is given by the product of one particle partition functions,&nbsp;then
+where <span class="math">\(l=0,1,\ldots\)</span> is the orbital quantum number; each level&nbsp;is <span class="math">\(2l+1\)</span> times&nbsp;degenerate.</p>
+<p>In the canonical ensemble, the part of the partition function associated with the vibration and rotation degrees of freedom&nbsp;of <span class="math">\(N\)</span> <em>independent</em> molecules, is given by the product of one particle partition functions,&nbsp;then
 </p>
 <div class="math">$$
 Z = Z_I Z_r^N Z_v^N\,,\quad Z_r = \sum_l (2l+1) \E^{-\epsilon_l/T},\; Z_v = \sum_n \E^{-\epsilon_n/T}
 $$</div>
 <p>
-gives the total partition function whith <span class="math">\(Z_I\)</span> and <span class="math">\(Z_1\)</span> the ideal gas (which takes into account the kinetic energy) and the one particle vibration and rotation contributions, respectively, and where the corresponding energy levels <span class="math">\(\epsilon_s\)</span> are counted with their degeneracy <span class="math">\(g_s\)</span>. </p>
+gives the total partition function&nbsp;whith <span class="math">\(Z_I\)</span> and <span class="math">\(Z_1\)</span> the ideal gas (which takes into account the kinetic energy) and the one particle vibration and rotation contributions, respectively, and where the corresponding energy&nbsp;levels <span class="math">\(\epsilon_s\)</span> are counted with their&nbsp;degeneracy <span class="math">\(g_s\)</span>. </p>
 <p>Typical kinetic, rotation and vibration energies of the diatomic gas&nbsp;are,
 </p>
 <div class="math">$$T,\; \frac{\hbar^2}{I},\; \hbar \omega\,,$$</div>
 <p>
-respectively. Their relative values give an order of magnitude of their contribution to the thermodynamic properties; for example, one may predict (actually, a quantum mechanical effect) that the rotation degrees of freedom are negligible when the parameter <span class="math">\(\hbar^2/IT \ll 1\)</span> is small, and similarly for the vibration when <span class="math">\(\hbar \omega/T \ll 1\)</span>. This statement is in conflict with the <em>equipartition theorem</em>, which assign to each degree of freedom the same energy (note that the previous estimates include the quantum energy&nbsp;scale).</p>
+respectively. Their relative values give an order of magnitude of their contribution to the thermodynamic properties; for example, one may predict (actually, a quantum mechanical effect) that the rotation degrees of freedom are negligible when the&nbsp;parameter <span class="math">\(\hbar^2/IT \ll 1\)</span> is small, and similarly for the vibration&nbsp;when <span class="math">\(\hbar \omega/T \ll 1\)</span>. This statement is in conflict with the <em>equipartition theorem</em>, which assign to each degree of freedom the same energy (note that the previous estimates include the quantum energy&nbsp;scale).</p>
 <p>The partition function of the vibrational degrees of freedom is readily&nbsp;calculated:
 </p>
 <div class="math">$$
@@ -669,7 +670,7 @@ and
 C_v = \frac{N \Theta_v^2}{4} \sinh^{-2}\frac{\Theta_v}{2} \,,
 $$</div>
 <p>
-respectively. In the high temperature limit <span class="math">\(\Theta_v \ll 1\)</span>, one recovers the classical result of constant heat capacity <span class="math">\(C_V \approx N\)</span>, while in the low temperature limit <span class="math">\(\Theta_v \gg 1\)</span>, it vanishes&nbsp;exponentially 
+respectively. In the high temperature&nbsp;limit <span class="math">\(\Theta_v \ll 1\)</span>, one recovers the classical result of constant heat&nbsp;capacity <span class="math">\(C_V \approx N\)</span>, while in the low temperature&nbsp;limit <span class="math">\(\Theta_v \gg 1\)</span>, it vanishes&nbsp;exponentially 
 </p>
 <div class="math">$$
 C_v \approx \frac{N \hbar^2 \omega^2}{4T^2} \exp(-\hbar\omega/T)\,, \quad T \ll \hbar\omega \,.
@@ -684,13 +685,13 @@ $$</div>
 Z_r = \sum_{l=0}^\infty (2l + 1) \E^{-\Theta_r l(l+1)}\,, \quad \Theta_r = \frac{\hbar^2}{2IT}\,,
 $$</div>
 <p>
-where we defined the nondimensional parameter <span class="math">\(\Theta_r\)</span> that separates the quantum low temperature regime <span class="math">\(\Theta_r \gg 1\)</span> to the classical one, <span class="math">\(\Theta_r \ll 1\)</span>. At low temperatures the exponential factors decrease rapidly, therefore, we can approximate the partition function by the first few&nbsp;terms,
+where we defined the nondimensional&nbsp;parameter <span class="math">\(\Theta_r\)</span> that separates the quantum low temperature&nbsp;regime <span class="math">\(\Theta_r \gg 1\)</span> to the classical&nbsp;one, <span class="math">\(\Theta_r \ll 1\)</span>. At low temperatures the exponential factors decrease rapidly, therefore, we can approximate the partition function by the first few&nbsp;terms,
 </p>
 <div class="math">$$
 Z_r \approx 1 + 3 \E^{-2\Theta_r} + 5 \E^{-6\Theta_r}\,,\quad \Theta_r \gg 1\,.
 $$</div>
 <p>
-At high temperatures, terms with angular momentum up to <span class="math">\(l^2 \sim 1/\Theta_r\)</span> will contribute to the sum; hence, we can use the approximation of the sum by an integral (<a href="https://en.wikipedia.org/wiki/Euler–Maclaurin_formula">Euler-MacLaurin</a>):<sup id="fnref:EML"><a class="footnote-ref" href="#fn:EML">1</a></sup>
+At high temperatures, terms with angular momentum up&nbsp;to <span class="math">\(l^2 \sim 1/\Theta_r\)</span> will contribute to the sum; hence, we can use the approximation of the sum by an integral (<a href="https://en.wikipedia.org/wiki/Euler–Maclaurin_formula">Euler-MacLaurin</a>):<sup id="fnref:EML"><a class="footnote-ref" href="#fn:EML">1</a></sup>
 </p>
 <div class="math">$$
 Z_r \approx \frac{1}{\Theta_r} + \frac{1}{3} + \frac{\Theta_r}{15}\,,\quad \Theta_r \ll 1\,.
@@ -721,18 +722,18 @@ C_r = \begin{cases} 12 \Theta_r^2 \E^{-2\Theta_r} &amp; \text{for } \Theta_r \gg
 $$</div>
 <blockquote>
 <p><img src="/images/PS-dia_cr.svg" alt="rotation heat capacity" style="width:250px;"/></p>
-<p>Exact heat capacity at constant volume <span class="math">\(C_r = (\Delta E_r/T)^2\)</span>, showing the exponential convergence to zero at low temperatures (quantum regime), and the asymptotic (classical) value of <span class="math">\(N\)</span> at high&nbsp;temperatures.</p>
+<p>Exact heat capacity at constant&nbsp;volume <span class="math">\(C_r = (\Delta E_r/T)^2\)</span>, showing the exponential convergence to zero at low temperatures (quantum regime), and the asymptotic (classical) value&nbsp;of <span class="math">\(N\)</span> at high&nbsp;temperatures.</p>
 </blockquote>
 <h4>Sympy code for the high temperature&nbsp;expansion</h4>
 <div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_printing</span><span class="p">()</span>
 </code></pre></div>
 
 <blockquote>
-<p>It is convenient to choose units such that <span class="math">\(\hbar = I = 1\)</span>, the unit of energy is then <span class="math">\(\hbar^2/I\)</span>; the non dimensional parameter <span class="math">\(\Theta_r\)</span>, becomes <span class="math">\(\Theta_r = \hbar^2/2IT = 1/2T\)</span>.</p>
+<p>It is convenient to choose units such&nbsp;that <span class="math">\(\hbar = I = 1\)</span>, the unit of energy is&nbsp;then <span class="math">\(\hbar^2/I\)</span>; the non dimensional&nbsp;parameter <span class="math">\(\Theta_r\)</span>,&nbsp;becomes <span class="math">\(\Theta_r = \hbar^2/2IT = 1/2T\)</span>.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="n">l</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">positive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -792,7 +793,7 @@ $$</div>
 $$</div>
 </p>
 <p><strong>Euler-MacLaurin formula</strong> <a href="https://en.wikipedia.org/wiki/Euler–Maclaurin_formula">wiki</a></p>
-<p>If <span class="math">\(f\)</span> is a sufficiently regular function decreasing at infinity (<span class="math">\(\forall k\)</span>, <span class="math">\(f^{(k)}(\infty) = 0\)</span>), the&nbsp;series,</p>
+<p>If <span class="math">\(f\)</span> is a sufficiently regular function decreasing at infinity&nbsp;(<span class="math">\(\forall k\)</span>, <span class="math">\(f^{(k)}(\infty) = 0\)</span>), the&nbsp;series,</p>
 <p>
 <div class="math">$$
 S = \sum_{n = 0}^\infty f(n)
@@ -804,7 +805,7 @@ $$</div>
 S = \int_0^\infty \mathrm{d}n\, f(n) + \frac{f(0)}{2} - \sum_{k=1}^{K-1} \frac{B_{2k}}{(2k)!} f^{(2k-1)}(0) + R_K
 $$</div>
 </p>
-<p>where the <span class="math">\(B_n\)</span> are the Bernoulli numbers <a href="https://en.wikipedia.org/wiki/Bernoulli_number">wiki</a>,</p>
+<p>where&nbsp;the <span class="math">\(B_n\)</span> are the Bernoulli numbers <a href="https://en.wikipedia.org/wiki/Bernoulli_number">wiki</a>,</p>
 <p>
 <div class="math">$$
 B_2 = 1/6,\; B_4 = -1/30,\; B_6 = 1/42,\ldots
@@ -838,7 +839,7 @@ $$</div>
 \ln Z_r \approx \ln(2T) + \frac{1}{6T} + \frac{1}{360T^2}
 $$</div>
 </p>
-<p>exact to <span class="math">\(1/T^2\)</span>&nbsp;terms.</p>
+<p>exact&nbsp;to <span class="math">\(1/T^2\)</span> terms.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="n">Er</span> <span class="o">=</span> <span class="n">expand</span><span class="p">(</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">diff</span><span class="p">(</span><span class="n">lnZ</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
 <span class="n">Er</span>
@@ -865,16 +866,16 @@ $$</div>
 <p>The figure below represents schematically the behavior of the heat capacity as a function of the&nbsp;temperature.</p>
 <blockquote>
 <p><img src="/images/PS-dia.svg" alt="rotation heat capacity" style="width:250px;"/></p>
-<p>Schematic total <span class="math">\(C_V\)</span> of a diatomic molecule, showing the transtaltion, rotation and vibration contributions, appearing at different&nbsp;temperatures.</p>
+<p>Schematic&nbsp;total <span class="math">\(C_V\)</span> of a diatomic molecule, showing the transtaltion, rotation and vibration contributions, appearing at different&nbsp;temperatures.</p>
 </blockquote>
-<p>We note that the classical prediction <span class="math">\(c_V = 7/2\)</span> is reached at very high temperatures, when the rotational and vibrational degrees of freedom are excited. For example the O<span class="math">\(_2\)</span> molecule has a rotation temperature of about <span class="math">\(2\,\)</span>K, and a vibration temperature of <span class="math">\(2200\,\)</span>K; therefore, at normal temperature the measured heat capacity is <span class="math">\(5/2\)</span>.</p>
-<p>We used the Boltzmann distribution to compute the partition function and the corresponding thermodynamics; it cannot account to the behavior of the system at very low temperatures. For instance, the heat capacity must vanish at <span class="math">\(T=0\)</span>. To obtain the correct low temperature behavior one needs quantum statistics (for bosons or fermions). We also neglected the possibility of phase transitions: at low temperatures liquid and solid states naturally&nbsp;appear.</p>
+<p>We note that the classical&nbsp;prediction <span class="math">\(c_V = 7/2\)</span> is reached at very high temperatures, when the rotational and vibrational degrees of freedom are excited. For example the&nbsp;O<span class="math">\(_2\)</span> molecule has a rotation temperature of&nbsp;about <span class="math">\(2\,\)</span>K, and a vibration temperature&nbsp;of <span class="math">\(2200\,\)</span>K; therefore, at normal temperature the measured heat capacity&nbsp;is <span class="math">\(5/2\)</span>.</p>
+<p>We used the Boltzmann distribution to compute the partition function and the corresponding thermodynamics; it cannot account to the behavior of the system at very low temperatures. For instance, the heat capacity must vanish&nbsp;at <span class="math">\(T=0\)</span>. To obtain the correct low temperature behavior one needs quantum statistics (for bosons or fermions). We also neglected the possibility of phase transitions: at low temperatures liquid and solid states naturally&nbsp;appear.</p>
 <h2>Notes</h2>
 <div class="footnote">
 <hr>
 <ol>
 <li id="fn:EML">
-<p>Euler-McLaurin formula
+<p>Euler-McLaurin&nbsp;formula
 <div class="math">$$
 \sum_{n=0}^\infty f(x) = \int_0^\infty \D x f(n) + \frac{f(0)}{2} - \frac{f'(0)}{12} + \frac{f'''(0)}{720} + \cdots
 $$</div>&#160;<a class="footnote-backref" href="#fnref:EML" title="Jump back to footnote 1 in the text">&#8617;</a></p>
