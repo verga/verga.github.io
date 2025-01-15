@@ -190,7 +190,7 @@ One observes that, in the mean-field approximation, the&nbsp;spectrum <span clas
 <p>Mean-field magnetization of the environement in the ground state&nbsp;of <span class="math">\(\bar{H}\)</span> and dispersion&nbsp;relation <span class="math">\(\varepsilon_k\)</span> as function of the cluster-free spins&nbsp;coupling <span class="math">\(\bar{g}=g/J\)</span>.</p>
 </blockquote>
 <p>We find a first order phase transition, as revealed by the discontinuity of the environment magnetization&nbsp;at <span class="math">\(\bar{g} = 0.425 = \bar{g}_c\)</span>. This suggests that the cluster phase might persist&nbsp;below <span class="math">\(\bar{g}_c\)</span>, since nowhere the gap in the&nbsp;quasi-energy <span class="math">\(\varepsilon_k\)</span> closes.&nbsp;Above <span class="math">\(\bar{g}_c\)</span> the magnetization vanishes, and a disordered phase might thus arise. The quasi-energy bands become flat above the critical&nbsp;coupling <span class="math">\(\bar{g}_c\)</span>, and the gap grows linearly&nbsp;in <span class="math">\(\bar{g}\)</span>.</p>
-<p>These observations raise the question about the entanglement across the phase transition; in particular we may ask if there is a change in the topological properties of the stationary state reached by the automaton, and if this change eventually corresponds to an entanglement transition between a high and a low entanglement state of the cluster subsystem. To address this question we first investigate a Markovian approximation of the&nbsp;automaton.</p>
+<p>These observations raise the question about the entanglement across the phase transition; in particular we may ask if there is a change in the topological properties of the stationary state reached by the automaton, and if this change eventually corresponds to an entanglement transition between a high and a low entanglement state of the cluster subsystem. To address this question we investigate a Markovian approximation of the automaton, which is suitable to describe the cluster subsystem evolution in the&nbsp;large <span class="math">\(\bar{g}\)</span> regime, when the state becomes&nbsp;random.</p>
 <p>The Markov dynamics is obtained from the partial trace over the free spins of the discrete time&nbsp;dynamics:
 </p>
 <div class="math">$$
@@ -206,11 +206,17 @@ where <span class="math">\(\rho_{AB}\)</span> is the density matrix correspondin
 <div class="math">$$
 \begin{equation}
   \label{e:Mn}
-  M_n = u_0 \cos^{L-|n_+|} \frac{g}{2} \sin^{|n_+|} \frac{g}{2} \Big(\prod_{x\in n_+} \E^{-\I gX_x} Y_x \Big)
+  M_n = u_+ \cos^{L-|n_+|} \frac{g}{2} \sin^{|n_+|} \frac{g}{2} \Big(\prod_{x\in n_+} \E^{-\I g X_x} Y_x \Big)
 \end{equation}
 $$</div>
 <p>
-where <span class="math">\(u_0 = \exp{(-\I J H_{0})}\)</span> is an evolution operator associated with the (non-equilibrium)&nbsp;Hamiltonian
+where u_\pm = u_0(\pm&nbsp;\bar{g}),
+</p>
+<div class="math">$$
+u_0(\bar{g}) = \exp\big[-\I J H_{0}(\bar{g})\big]
+$$</div>
+<p>
+is an evolution operator associated with the (non-equilibrium)&nbsp;Hamiltonian
 </p>
 <div class="math">$$
 \begin{equation}
@@ -224,11 +230,11 @@ identical to a cluster Hamiltonian in a symmetry preserving&nbsp;field <span cla
 <div class="math">$$
 \begin{equation}
 \label{e:ML}
-  \rho(t+1) = u_0 \sin^{2L}\frac{g}{2} \Big(\prod_x \E^{-\I g Y_x} Y_x \Big) \rho(t) \Big(\prod_x Y_x \E^{\I g Y_x} \Big) u_0^\dagger.
+  \rho(t+1) = u_- \sin^{2L}\frac{g}{2} \Big(\prod_x \E^{-\I g Y_x} Y_x \Big) \rho(t) \Big(\prod_x Y_x \E^{\I g Y_x} \Big) u_-^\dagger.
 \end{equation}
 $$</div>
 <p>
-An important outcome of this equation is that the stochastic process preserves the parity symmetry of the original cluster system, a so called &#8220;strong&#8221;&nbsp;symmetry
+We remark that, in this equation, the coherent&nbsp;evolution <span class="math">\(u_-\)</span>, introduces the same&nbsp;field <span class="math">\(\bar{g}/2\)</span> present in&nbsp;(<span class="math">\(\ref{Mn}\)</span>) but with the opposite sign. Therefore, the Markov equation&nbsp;(<span class="math">\(\ref{ML}\)</span>) not only breaks the mean-field&nbsp;symmetry <span class="math">\(g \rightarrow -g\)</span>, but the effective field tends to polarize the cluster spins in&nbsp;the <span class="math">\(\ket{-}\)</span> eigenstate. An important outcome of this equation is that the stochastic process preserves the parity symmetry of the original cluster system, a so called &#8220;strong&#8221;&nbsp;symmetry
 </p>
 <div class="math">$$
 \begin{equation}
@@ -299,12 +305,12 @@ $$</div>
 </blockquote>
 <p>In the first panel&nbsp;(<span class="math">\(\bar{g}&lt;\bar{g}_c\)</span>), the entanglement spectrum is essentially the cluster state spectrum with its four degenerated eigenvalues and the remaining zero eigenvalues; in the second panel&nbsp;(<span class="math">\(\bar{g} = 1 \gtrsim \bar{g}_c\)</span>), the gaps present in the cluster spectrum persist, but become wider, enriching the set of nonvanishing eigenvalues.&nbsp;For <span class="math">\(\bar{g} \approx \bar{g}_R\)</span>, in the third panel, both spectra are continuous, the gaps of the cluster state disappeared, and the distribution of the negativity spectrum is reminiscent of the Marčenko-Pastur distribution found in Žnidarič et al.,<sup id="fnref2:ZN"><a class="footnote-ref" href="#fn:ZN">10</a></sup> and further studied by Shapourian et al. (2021).<sup id="fnref:SH"><a class="footnote-ref" href="#fn:SH">11</a></sup> The last panel shows the thermal state, with a negativity distribution approaching the Wigner semicircular law,&nbsp;for <span class="math">\(\bar{g} \gg \bar{g}_c\)</span>; deviations with respect to a thermal state appear in the tails of the spectrum&nbsp;distribution.</p>
 <blockquote>
-<p><img src="/images/cp-3spin.svg" alt="histogram 3" style="width: 250px;"/> 
-<img src="/images/cp-4spin.svg" alt="histogram 4" style="width: 250px;"/> </p>
+<p><img src="/images/cp-3spin.svg" alt="spin 3" style="width: 250px;"/> 
+<img src="/images/cp-4spin.svg" alt="spin 4" style="width: 250px;"/> </p>
 <p>Spatio-temporal plot of the expected value of&nbsp;the <span class="math">\(x\)</span> spin component for both sublattices (even site numbers are for the cluster and odd numbers for the independent spins).&nbsp;(left) <span class="math">\(\bar{g} = 1\)</span> (topological phase);&nbsp;(left) <span class="math">\(\bar{g} = 10\)</span> (random&nbsp;phase).  </p>
 </blockquote>
 <p>Information about the spatial correlations can be obtained from the expected value of the spin operator; by symmetry of the initial state&nbsp;(<span class="math">\(\ref{e:ini}\)</span>),&nbsp;the <span class="math">\(yz\)</span> components remains zero and it is thus enough to follow&nbsp;the <span class="math">\(x\)</span>-component, as represented in the above figure. We observe that all spins in each sublattices, change simultaneously their magnitude; this is a consequence of the homogeneity of the initial state and the translation invariance of the model, and was used to obtain the relevant Markov equation&nbsp;(<span class="math">\(\ref{e:ML}\)</span>).</p>
-<p>For small values&nbsp;of <span class="math">\(\bar{g}\)</span>, oscillations of the spin are observed, in accordance with the oscillations of the entanglement entropies. For larger values&nbsp;of <span class="math">\(\bar{g}\)</span> relaxation towards a non-magnetic state of the whole system is observed. In the entanglement phase transition region of the first panel, the spins of the cluster and of free lattices are mostly aligned, but tend to alternate at long times; this misalignement between the two sublattices is stronger in the fully random phase of the second panel, for large values&nbsp;of <span class="math">\(\bar{g}\)</span>. Note that&nbsp;for <span class="math">\(\bar{g}=10\)</span>, even if the couling is strong, the relaxation is not purely exponential, as happens to be for&nbsp;both <span class="math">\(J\)</span> and <span class="math">\(g\)</span> large; this is also well explained by the Markov equation, which contains the unitary cluster-field evolution&nbsp;operator.</p>
+<p>For small values&nbsp;of <span class="math">\(\bar{g}\)</span>, oscillations of the spin are observed, in accordance with the oscillations of the entanglement entropies. For larger values&nbsp;of <span class="math">\(\bar{g}\)</span> relaxation towards a non-magnetic state of the whole system is observed. In the entanglement phase transition region of the first panel, the spins of the cluster and of free lattices are mostly aligned, but tend to alternate at long times; this misalignement between the two sublattices is stronger in the fully random phase of the second panel, for large values&nbsp;of <span class="math">\(\bar{g}\)</span>. This behavior corresponds to what is expected from&nbsp;(<span class="math">\(\ref{e:ML}\)</span>):&nbsp;The <span class="math">\(-\bar{g}/2\)</span> field created by the environment favor&nbsp;the <span class="math">\(-1\)</span> eigenvalue&nbsp;of <span class="math">\(X\)</span> (red in the figure); at large values&nbsp;of <span class="math">\(\bar{g}\)</span> this leads to a rapid exchange between&nbsp;the <span class="math">\(\pm1\)</span> states in the decaying regime of the initial&nbsp;pure <span class="math">\(\ket{+}\)</span> state. Note that&nbsp;for <span class="math">\(\bar{g}=10\)</span>, even if the couling is strong, the relaxation is not purely exponential, as happens to be for&nbsp;both <span class="math">\(J\)</span> and <span class="math">\(g\)</span> large; this is also well explained by the Markov equation, which contains a ballistic component of the dynamics governed by the unitary cluster-field evolution&nbsp;operator.</p>
 <h2>Topological&nbsp;phase</h2>
 <p>One defining property of a topological phase is the link between bulk and edge properties. Correlations between edge states are present in a topological phase, even if bulk correlations are short range and vanish exponentially. One possibility to unveil the hiden correlations present in a topological phase, is to measure nonlocal correlation functions, like the expected value of string operators (formed with Pauli matrices) in the quantum state: finite string order parameter means tha the state is topologically nontrivial. In the cluster regime, one expects that the original topology protected by parity extends beyond the neighboring&nbsp;of <span class="math">\(g=0\)</span>, in spite of the decoherence introduced by the interaction with the independent spins. The appropriated string order parameter in this case is given&nbsp;by
 </p>
