@@ -47,7 +47,7 @@
   <div class="content">
     <p><span class="math">\(\newcommand{\I}{\mathrm{i}} 
 \newcommand{\E}{\mathrm{e}} 
-\newcommand{\D}{\mathop{}\!\mathrm{d}} 
+\newcommand{\D}{\mathop{}\!\mathrm{d}}
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\bra}[1]{\langle{#1}|}
 \newcommand{\ket}[1]{|{#1}\rangle}
@@ -62,10 +62,14 @@
 <ul>
 <li>
 <p>The <em>state space</em> of a, possibly composite, quantum system is a vectorial space over complex numbers, the hilbert&nbsp;space <span class="math">\(\mathcal{H}\)</span>. The <em>state</em> of a general, possibly mixed, quantum system is given by its <em>density&nbsp;operator</em> <span class="math">\(\rho\)</span>:
-    <div class="math">$$\rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}$$</div>
-    where <span class="math">\(\ket{\psi_n} \in \mathcal{H}_n\)</span> and <span class="math">\(p_n \in [0,1]\)</span> satisfying
-    <div class="math">$$\sum_n p_n = 1\,.$$</div>
-    Each <span class="math">\(n\)</span> can be interpreted in two equivalent ways: (i) as a member of a composite quantum system; (ii) as a subsystem of a larger system, the whole system being in a <em>pure</em>&nbsp;state 
+    <div class="math">$$
+    \rho = \sum_n p_n \ket{\psi_n} \bra{\psi_n}
+    $$</div>
+    where <span class="math">\(\ket{\psi_n} \in \mathcal{H}_n\)</span>, <span class="math">\(\braket{\psi_n|\psi_n} = 1\)</span>,&nbsp;and <span class="math">\(p_n \in [0,1]\)</span> satisfying
+    <div class="math">$$
+    \Tr \rho = 1, \quad \sum_n p_n = 1\,.
+    $$</div>
+    Note that pure quantum&nbsp;states <span class="math">\(\ket{\psi}\)</span> are normalized.&nbsp;Each <span class="math">\(n\)</span> can be interpreted in two equivalent ways: (i) as a member of a composite quantum system; (ii) as a subsystem of a larger system, the whole system being in a <em>pure</em>&nbsp;state 
     <div class="math">$$\ket{\psi} \in \mathcal{H} = \bigotimes_n \mathcal{H}_n\,.$$</div>
     A state which is not pure, is <em>mixed</em>. The hilbert state of an ensemble is then the kronecker product of the hilbert spaces of its&nbsp;elements.</p>
 </li>
@@ -258,6 +262,7 @@ This state establishes a one to one correspondance between system and apparatus:
 <div class="math">$$\sum_n A_n \braket{n,N - n|N,0} \sim \braket{\braket{n}, N- \braket{n}|N,0}=0$$</div>
 <p>
 are vanishingly small. We may see the measuring process as a way to amplify the microscopic state of the system, into a macroscopically distinguishable superposition of&nbsp;states.</p>
+<h2>Applications</h2>
 <h3>Exercises</h3>
 <ol>
 <li>
@@ -282,8 +287,77 @@ where
 Show that the&nbsp;set <span class="math">\(M\)</span> is complete.&nbsp;Compute <span class="math">\(M_\pm^\dagger \ket{\psi}_A\)</span> and compare with the post-measurement states obtained before. Calculate the norm of these two&nbsp;vectors <span class="math">\(|M_\pm^\dagger\ket{\psi}_A|^2\)</span> and compare the results&nbsp;with <span class="math">\(p_A(\pm)\)</span>.</p>
 </li>
 </ol>
+<h3>Practicum</h3>
+<p>As an application of the quantum principles we propose to write python codes to manipulate density matrices, for one and&nbsp;two <span class="math">\(1/2\)</span>-spins (or <a href="/pages/AQ-qubit.html">qubits</a>) hilbert spaces, simulate measurement and compute expected values of&nbsp;observables. </p>
+<p>All the exercices are supposed to be worked out using python codes and scientific packages (numpy, matplotlib,&nbsp;etc.).</p>
+<h4>One&nbsp;qubit</h4>
+<ol>
+<li>
+<p>Write a function with the definition of the most general density&nbsp;matrix <span class="math">\(\rho\)</span> of a single qubit. Use a decomposition&nbsp;of <span class="math">\(\rho\)</span> in terms of pauli&nbsp;matrices <span class="math">\(\bm \sigma = (X, Y, Z)\)</span>, and the spherical&nbsp;angles <span class="math">\((\theta, \phi)\)</span>. Explain your&nbsp;results.</p>
+</li>
+<li>
+<p>Code a function to compute, given a&nbsp;state <span class="math">\(\rho\)</span>, the expected value of an observable; apply it&nbsp;to <span class="math">\(\bm \sigma\)</span> and plot it (magnetization). Compute and plot the probabilities to measure&nbsp;the <span class="math">\(z\)</span>-spin in the state&nbsp;up <span class="math">\(\ket{0}\)</span>, or&nbsp;down <span class="math">\(\ket{1}\)</span>; idem for&nbsp;the <span class="math">\(x\)</span>-spin, <span class="math">\(\ket{\pm}\)</span>. Compare your results with the corresponding analytical&nbsp;expressions.</p>
+</li>
+<li>
+<p>Calculate the spectrum&nbsp;of <span class="math">\(\rho\)</span> and plot it for different values of the parameters.&nbsp;Discuss.</p>
+</li>
+<li>
+<p>Given the unitary&nbsp;operators
+    <div class="math">$$
+    H = \frac{X + Z}{\sqrt{2}}, \quad S(\delta) = \mathrm{diag}(1, \E^{\I\delta}),
+    $$</div>
+    where <span class="math">\(H\)</span> is the Hadamard gate&nbsp;and <span class="math">\(S(\delta)\)</span> a phase shift, consider the&nbsp;circuits <span class="math">\(SH\)</span> and <span class="math">\(HSH\)</span>; apply them to&nbsp;the <span class="math">\(\ket{0}\)</span> state and compute the&nbsp;probabilities <span class="math">\(p(0)\)</span> and <span class="math">\(p(1)\)</span> to get a spin up or down. Explain the difference between the two&nbsp;setups.</p>
+</li>
+<li>
+<p>The principle of deferred measurement states that a projective measurement can be replaced by a controlled unitary gate in an enlarged hilbert space; the extra qubit is called &#8220;ancilla&#8221;. Compare the following&nbsp;circuits</p>
+<p><img src="/images/AQ-cdeferred.svg" alt="deferred measurement circuits" style="width: 250px;"/></p>
+<p>and verify that the outputs are identical. Deferring the measurement to the end of the computation is important in quantum computation to preserve the information in quantum&nbsp;channels.</p>
+</li>
+</ol>
+<h4>Two&nbsp;qubits</h4>
+<ol>
+<li>
+<p><span class="caps">CZ</span>-gate. This example illustrates a simple physical implementation of the&nbsp;control-<span class="math">\(Z\)</span> gate. A two qubits system&nbsp;(<span class="math">\(A\)</span> and <span class="math">\(B\)</span>) is governed by the Ising&nbsp;hamiltonian,
+    <div class="math">$$
+    H = -J \frac{1-Z}{2} \otimes \frac{1-Z}{2}.
+    $$</div>
+    Compute the evolution of the initial &#8220;plus&#8221;&nbsp;state
+    <div class="math">$$
+    \ket{\psi(t)} = \E^{-\I H t} \ket{+} \otimes \ket{+}.
+    $$</div>
+    Use <span class="math">\(\ket{\psi}\)</span> to calculate the <a href="/pages/AQ-qubit.html">von Neumann&nbsp;entropy</a>
+    <div class="math">$$
+    S(t)  = -\Tr \rho_A(t) \log \rho_A(t), \quad \rho_A(t) = \Tr_B \ket{\psi(t)} \bra{\psi(t)}
+    $$</div>
+    and analyze its change in time. Give the expression&nbsp;of <span class="math">\(U(t)\)</span> when the entanglement is maximum. Plot the expected&nbsp;value <span class="math">\(\braket{\bm \sigma_A(t)}\)</span>. </p>
+</li>
+<li>
+<p>Quantum channel. The transmission of quantum states through channels (in analogy with classical circuits) may be affected by errors that partially destroy information. We consider an input&nbsp;state <span class="math">\(\rho\)</span>, and Kraus operators&nbsp;(errors)
+    <div class="math">$$
+    M_0 = \frac{1}{\sqrt{2}} 1 \otimes 1, \quad M_1 = \frac{1}{\sqrt{2}} 1\otimes R_y(\theta), \quad M_0^\dagger M_0 + M_1^\dagger M_1 = 1;
+    $$</div>
+    verify the second identity (normalization). We&nbsp;denote <span class="math">\(R_y(\theta)= \exp(-\I\theta Y)\)</span>, the spin rotation operator of&nbsp;angle <span class="math">\(\theta\)</span> and&nbsp;axis <span class="math">\(y\)</span> (<span class="math">\(Y\)</span> is&nbsp;the <span class="math">\(y\)</span>-pauli matrix). Assuming that initially the system is in a Bell (pure)&nbsp;state <span class="math">\(\ket{\Phi_+} = (\ket{00} + \ket{11})/\sqrt{2}\)</span>, compute the output of the channel&nbsp;using
+    <div class="math">$$
+    \rho = M_0 \rho_0 M_0^\dagger + M_1 \rho_0 M_1^\dagger,
+    $$</div>
+    for <span class="math">\(\theta \in [0, \pi]\)</span>. Analyze the entanglement of the output state with the von Neumann entropy. Can the noise destroy the initial&nbsp;entanglement? </p>
+<p>To quantify the qubit-qubit entanglement compute the <a href="/pages/AQ-entanglement.html">concurrence</a>:
+<div class="math">$$
+C(\rho) =  \max \{0, \lambda_1 - \lambda_2 - \lambda_3 - \lambda_4 \}
+$$</div>
+where <span class="math">\(\lambda_n\)</span> are the square roots of the four eigenvalues of the&nbsp;matrix <span class="math">\(\rho \bar{\rho}\)</span>
+<div class="math">$$
+\lambda^2 \in \mathrm{spec}\big[\rho \bar{\rho}\big], \quad \bar{\rho} = (Y\otimes Y) \rho^\star (Y\otimes Y). 
+$$</div>
+sorted in decreasing order; even&nbsp;if <span class="math">\(\rho \bar{\rho}\)</span> is not hermitian, its eigenvalues are positive&nbsp;(<span class="math">\(\rho^\star\)</span> is the complex conjugate&nbsp;of <span class="math">\(\rho\)</span>).</p>
+</li>
+</ol>
 <h2>Notes</h2>
-<p>A concise and useful book&nbsp;is,</p>
+<p>The main reference on the subject&nbsp;is</p>
+<ul>
+<li>Nielsen, Michael A., and Isaac L. Chuang, <em>Quantum Computation and Quantum Information</em> (Cambridge University Press, 2010) <a href="[https://doi.org/10.1017/CBO9780511976667">https://doi.org/10.1017/<span class="caps">CBO9780511976667</span>.</a></li>
+</ul>
+<p>A concise presentation can be found&nbsp;in,</p>
 <ul>
 <li><span class="caps">J. A.</span> Bergou, and M. Hillery, <em>Introduction to the Theory of Quantum Information Processing</em> (Springer,&nbsp;2013)</li>
 </ul>
@@ -306,13 +380,15 @@ The new hamiltonian&nbsp;is
 Its eigenvalues are&nbsp;integers <span class="math">\(\bar{n}\)</span>, and its eigenvectors are (it is enough to&nbsp;change <span class="math">\(n\)</span> by <span class="math">\(\bar{n}\)</span> in the expression of the harmonic oscillator&nbsp;eigenvectors):
 <div class="math">$$\ket{\bar{n}, N - \bar{n}} = \frac{(b^\dagger_0)^\bar{n} (b^\dagger_1)^{N-\bar{n}}}{\sqrt{\bar{n}!(N-\bar{n})!}} \ket{0}$$</div>
 Now we want to express the old eigenvectors in terms of the new ones; the initial state&nbsp;reads,
-<div class="math">\begin{align*}
+<div class="math">$$
+\begin{align*}
 \ket{N,0} &amp;= \frac{(a^\dagger_0)^N}{\sqrt{N!}} \ket{0} \\
   &amp;= \frac{1}{\sqrt{N!}} \frac{(b_0 - b^\dagger_1)^N}{\sqrt{2}} \ket{0} \\
   &amp;= \frac{1}{2^{N/2} \sqrt{N!}} \sum_{\bar{n}} \binom{N}{\bar{n}} (-1)^{N-\bar{n}} (b^\dagger_0)^\bar{n} (b^\dagger_1)^{N-\bar{n}} \ket{0} \\
   &amp;= \frac{1}{2^{N/2} \sqrt{N!}} \sum_{\bar{n}} \frac{N! (-1)^{N - \bar{n}}}{\bar{n}! (N - \bar{n})!} \sqrt{\bar{n}!} \sqrt{(N-\bar{n})!} \ket{\bar{n}, N - \bar{n}} \\
   &amp;= \frac{1}{2^{N/2}} \sum_{\bar{n}} \frac{(-1)^{N-\bar{n}} \sqrt{N!}}{\sqrt{\bar{n}!} \sqrt{(N - \bar{n})!}} \ket{\bar{n}, N - \bar{n}}
-\end{align*}</div>&#160;<a class="footnote-backref" href="#fnref:cini" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+\end{align*}
+$$</div>&#160;<a class="footnote-backref" href="#fnref:cini" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -389,7 +465,7 @@ Now we want to express the old eigenvectors in terms of the new ones; the initia
           <ul class="col-sm-6 list-inline">
             <li class="list-inline-item"><a href="/archives.html">Archives</a></li>
               <li class="list-inline-item"><a href="/tags.html">Tags</a></li>
-            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2024)</li>
+            <li>&#xa9;Alberto&nbsp;Verga&nbsp;(2025)</li>
           </ul>
           <p class="col-sm-6 text-sm-right text-muted">
           <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> / <a href="https://getbootstrap.com" target="_blank"><img alt="Bootstrap" src="/theme/css/bootstrap-solid.svg" style="height: 18px;"/></a> / <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License Non-Commercial 4.0" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> CC 4.0
