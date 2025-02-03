@@ -62,11 +62,15 @@
 <p>The classical fourier transform has an inverse: applying the transform to a function and then applying its inverse, lead to the identity; the fact that the inverse is related to the complex conjugate of the direct transformation, naturally leads to the observation that the fourier transformation can be seen as a <em>unitary</em> operator. The quantum algorithm is simply an implementation of this unitary operator acting on a space of&nbsp;dimension <span class="math">\(2^N\)</span>, as a circuit of one and two qubits&nbsp;gates.</p>
 <p>Let us start with the fourier transform of the basis states. We denote a basis state of&nbsp;the <span class="math">\(N\)</span> qubits hilbert&nbsp;space,
 </p>
-<div class="math">$$\ket{s} \in \mathcal{H}^{\otimes N}$$</div>
+<div class="math">$$
+\ket{s} \in \mathcal{H}^{\otimes N}
+$$</div>
 <p>
 by the binary&nbsp;string
 </p>
-<div class="math">$$s = s_1 \ldots s_{N} = \sum_{n=1}^{N} s_n 2^{N-n},\; s_n = \{0,1\}\,.$$</div>
+<div class="math">$$
+s = s_1 \ldots s_{N} = \sum_{n=1}^{N} s_n 2^{N-n},\; s_n = \{0,1\}.
+$$</div>
 <p>
 Therefore,
 </p>
@@ -80,41 +84,69 @@ is the fourier transform&nbsp;of <span class="math">\(\ket{s}\)</span>. Knowing 
   &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \exp\left( 2\pi \I s \sum_{n=1}^{N} \frac{k_n}{2^n} \right) \ket{k_1 \ldots k_{N}} \\
   &amp; = \frac{1}{\sqrt{2^N}} \sum_{k_1=0,1} \ldots \sum_{k_{N}=0,1} \bigotimes_{n=1}^{N} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
   &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \sum_{k_n=0,1} \exp\left( 2\pi \I \frac{k_n}{2^n} \right) \ket{k_n} \\
-  &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \left[ \ket{0} + \exp\left( 2\pi \I \frac{s}{2^n} \right) \ket{1} \right]
+  &amp; = \frac{1}{\sqrt{2^N}} \bigotimes_{n=1}^{N} \left[ \ket{0} + \exp\left( 2\pi \I \frac{s}{2^n} \right) \ket{1} \right].
 \end{align*}
 $$</div>
 <p>
 The exponent selects the fractional part&nbsp;of <span class="math">\(s/2^n\)</span> for <span class="math">\(n=1,\ldots,N\)</span>:
 </p>
-<div class="math">$$\{s/2^n\} = 0.s_{N-n+1}\ldots s_N\,,$$</div>
+<div class="math">$$
+\{s/2^n\} = 0.s_{N-n+1}\ldots s_N\,,
+$$</div>
 <p>
 which allows the previous product to be written in the simple&nbsp;form,
 </p>
-<div class="math">$$\ket{s_1 \ldots s_N} = \frac{1}{2^{N/2}} \left(\ket{0} + \E^{2 \pi \I 0.s_N} \ket{1} \right) \otimes \ldots \otimes \left(\ket{0} + \E^{2 \pi \I 0.s_1 \ldots s_N} \ket{1} \right)\,.$$</div>
+<div class="math">$$
+\begin{equation}
+\label{e:prod}
+\ket{s_1 \ldots s_N} = \frac{1}{2^{N/2}} \left(\ket{0} + \E^{2 \pi \I 0.s_N} \ket{1} \right) \otimes \ldots \otimes \left(\ket{0} + \E^{2 \pi \I 0.s_1 \ldots s_N} \ket{1} \right)\,.
+\end{equation}
+$$</div>
 <p>Consider the last exponential, each&nbsp;term <span class="math">\(s_n/2^n\)</span> of the&nbsp;phase <span class="math">\(2\pi 0.s_1\ldots s_N\)</span>,
 </p>
-<div class="math">$$0.s_1 \ldots s_N = \frac{s_1}{2} + \cdots + \frac{s_N}{2^N}$$</div>
+<div class="math">$$
+0.s_1 \ldots s_N = \frac{s_1}{2} + \cdots + \frac{s_N}{2^N}
+$$</div>
 <p>
 can be obtained by a rotation of an&nbsp;angle <span class="math">\(2\pi/2^n\)</span> if <span class="math">\(s_n = 1\)</span>, otherwise it&nbsp;remains <span class="math">\(0\)</span>; this operation can be implemented by the rotation&nbsp;matrix
 </p>
-<div class="math">$$R_n = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \E^{2 \pi \I/ 2^n} \end{pmatrix}\,,$$</div>
+<div class="math">$$
+R_n = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \E^{2 \pi \I/ 2^n} \end{pmatrix}\,,
+$$</div>
 <p>
 controlled&nbsp;by <span class="math">\(s_n\)</span> and applied to the first qubit state&nbsp;(initially <span class="math">\(\ket{s_1}\)</span>). We observe that this term depends on the values of all qubits, leading to a decomposition in at&nbsp;least <span class="math">\(N\)</span> operators (one qubit or with one control qubit). The first decimal can be simply obtained from the&nbsp;initial <span class="math">\(\ket{s_1}\)</span> by the application of an hadamard&nbsp;gate
 </p>
-<div class="math">$$H \otimes^{N-1} 1_2 \ket{s_1 \ldots s_N} = \left(\ket{0} + \E^{2 \pi \I 0.s_1} \ket{1} \right) \ket{s_2 \ldots s_N}\,,$$</div>
+<div class="math">$$
+H \otimes^{N-1} 1_2 \ket{s_1 \ldots s_N} = \left(\ket{0} + \E^{2 \pi \I 0.s_1} \ket{1} \right) \ket{s_2 \ldots s_N},
+$$</div>
 <p>
 note <span class="math">\(\E^{2 \pi \I s_1/2} = -1\)</span> only&nbsp;if <span class="math">\(s_1=1\)</span>. Now,&nbsp;applying <span class="math">\(R_2\)</span> controlled by the second qubit, we&nbsp;obtain
 </p>
-<div class="math">$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$</div>
+<div class="math">$$
+\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2} \ket{1} \right) \ket{s_2 \ldots s_N}.
+$$</div>
 <p>
 Iterating this last&nbsp;step <span class="math">\(N-1\)</span> times, up to&nbsp;applying <span class="math">\(R_N\)</span>, we get the last term in the&nbsp;product:
 </p>
-<div class="math">$$\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2 \ldots s_N} \ket{1} \right) \ket{s_2 \ldots s_N}\,.$$</div>
+<div class="math">$$
+\left(\ket{0} + \E^{2 \pi \I 0.s_1s_2 \ldots s_N} \ket{1} \right) \ket{s_2 \ldots s_N}.
+$$</div>
 <p>
-For the other qubits we use the same&nbsp;recipe, <span class="math">\(N-1\)</span> times&nbsp;for <span class="math">\(0.s_2 \ldots s_N\)</span>, <span class="math">\(N-3\)</span> on <span class="math">\(0.s_3 \ldots s_N\)</span>, and so on: the total number of steps is&nbsp;then <span class="math">\(N(N-1)/2\)</span>. We represent the whole algorithm in the circuit of the&nbsp;figure.</p>
+For the other qubits we use the same&nbsp;recipe, <span class="math">\(N-1\)</span> times&nbsp;for <span class="math">\(0.s_2 \ldots s_N\)</span>, <span class="math">\(N-3\)</span> on <span class="math">\(0.s_3 \ldots s_N\)</span>, and so on: the total number of steps is&nbsp;then <span class="math">\(N(N-1)/2\)</span>. We represent the whole algorithm in the &#8220;<span class="caps">QFT</span>&#8221; circuit of the&nbsp;figure.</p>
 <blockquote>
 <p><img src="/images/AQ-cfourier.svg" alt="fft" style="width: 550px;"/></p>
 </blockquote>
+<p>Note that we need to reverse the order of the qubits to obtain the result; this can be achieved by&nbsp;applying <span class="math">\(N/2\)</span> swap&nbsp;gates,
+</p>
+<div class="math">$$
+\mathsf{SW} = \begin{pmatrix}
+    1 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0 \\
+    0 &amp; 1 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix},
+$$</div>
+<p>
+at the end of the <span class="caps">QFT</span>&nbsp;circuit.</p>
 <p>The classical algorithm, the fast fourier transform, needs&nbsp;instead <span class="math">\(2^N N\)</span> steps, which is exponential&nbsp;in <span class="math">\(N\)</span>, compared to&nbsp;the <span class="math">\(N^2\)</span> quantum algorithm. This speed up in the computation of the fourier transform is at the origin of the Shor algorithm performance, which allows the factorization of large integers in polynomial&nbsp;time.</p>
 <h3>Phase&nbsp;estimation</h3>
 <p>The quantum fourier transform may be used to compute the&nbsp;phase <span class="math">\(\theta \in (0,1)\)</span>, related to the eigenvalue of a&nbsp;unitary <span class="math">\(U\)</span> by,
@@ -127,28 +159,40 @@ where <span class="math">\(\ket{u_\theta}\)</span> is a known eigenvector (of&nb
 </blockquote>
 <p>implements the first part of the algorithm (Cleve et alia, 1998).<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup> One register, whose input&nbsp;is <span class="math">\(\ket{u_\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an ancilla register&nbsp;of <span class="math">\(N\)</span> qubits, which are used to control&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to&nbsp;get <span class="math">\(\theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bit precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">$$\ket{2^N \theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k}\,.$$</div>
+<div class="math">$$
+\ket{2^N \theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k}.
+$$</div>
 <p>Applying the inverse fourier&nbsp;transform
 </p>
-<div class="math">$$\ket{k} = \mathcal{F^\dagger} \ket{s} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N - 1} \E^{-2\pi \I s k/2^N} \ket{s}\,.$$</div>
+<div class="math">$$
+\ket{k} = \mathcal{F^\dagger} \ket{s} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N - 1} \E^{-2\pi \I s k/2^N} \ket{s}.
+$$</div>
 <p>
 to this state, one&nbsp;obtains,
 </p>
-<div class="math">$$ \frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s} \approx \ket{2^N \theta}\,.$$</div>
+<div class="math">$$
+\frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s} \approx \ket{2^N \theta}.
+$$</div>
 <p>
 The expression in brackets is picked&nbsp;at <span class="math">\(\theta = s/2^N\)</span>, therefore, after this inverse transformation, measurement of the ancilla qubits gives&nbsp;us <span class="math">\(s\)</span>,&nbsp;a <span class="math">\(N\)</span> bit approximation&nbsp;of <span class="math">\(\theta\)</span>.</p>
 <h3>Eigenvectors and eigenvalues&nbsp;finding</h3>
 <p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{\I \bar{\theta}}\)</span>.  They assumed an initial&nbsp;state <span class="math">\(\ket{\theta}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span>; this means that the&nbsp;expansion
 </p>
-<div class="math">$$\ket{\theta} = \sum_k \theta_k \ket{k}, \quad U \ket{k} = \E^{\I \bar{\theta}_k} \ket{k} \,,$$</div>
+<div class="math">$$
+\ket{\theta} = \sum_k \theta_k \ket{k}, \quad U \ket{k} = \E^{\I \bar{\theta}_k} \ket{k},
+$$</div>
 <p>
 contains essentially order one&nbsp;amplitudes
 </p>
-<div class="math">$$\theta_k = \braket{\bar{\theta}_k|\theta}\,.$$</div>
+<div class="math">$$
+\theta_k = \braket{\bar{\theta}_k|\theta}.
+$$</div>
 <p>
 The idea is to define a circuit using a set&nbsp;of <span class="math">\(N\)</span> ancilla qubits such that their measure leads with&nbsp;probability
 </p>
-<div class="math">$$p_k = |\braket{\bar{\theta}_k | \theta}|^2$$</div>
+<div class="math">$$
+p_k = |\braket{\bar{\theta}_k | \theta}|^2
+$$</div>
 <p>
 to the correct&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}_k}\)</span>. Consider the&nbsp;circuit,</p>
 <blockquote>
@@ -156,7 +200,9 @@ to the correct&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}_k}\)</spa
 </blockquote>
 <p>We note that instead of applying the&nbsp;successive <span class="math">\(U\)</span>, <span class="math">\(U^2\)</span>, <span class="math">\(U^4\)</span>, <span class="math">\(\ldots\)</span> controlled gates as in the phase estimation algorithm, here we simply use the&nbsp;sequence <span class="math">\(U,U^2,U^3,\ldots, U^{2^N-1}\)</span> (<span class="math">\(N\)</span> is the dimension of the ancilla register). The state after the application of the hadamard gates and the ancilla&nbsp;controlled <span class="math">\(U^n\)</span> gates&nbsp;(<span class="math">\(n=0, \ldots, 2^{N}-1\)</span>),&nbsp;is 
 </p>
-<div class="math">$$\ket{\psi} = \sum_k \theta_k \left( \sum_n \E^{\I \bar{\theta}_k n} \ket{n} \right) \ket{k} \,.$$</div>
+<div class="math">$$
+\ket{\psi} = \sum_k \theta_k \left( \sum_n \E^{\I \bar{\theta}_k n} \ket{n} \right) \ket{k}.
+$$</div>
 <p>
 As shown in the above circuit, this needs to control the application&nbsp;of <span class="math">\(U\)</span> on the set of ancilla qubits, choosing at each step a different combination&nbsp;of <span class="math">\(\ket{0}\)</span> (black)&nbsp;or <span class="math">\(\ket{1}\)</span> (white dots) as control qubit states (the gray box in the&nbsp;circuit).</p>
 <p>Now, we assume for simplicity that the eigenvalues&nbsp;are <span class="math">\(N\)</span>-decimal binary digits; in such a case, applying the inverse quantum fourier transform to the ancilla register state (as in the figure above), we obtain <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
@@ -164,8 +210,6 @@ As shown in the above circuit, this needs to control the application&nbsp;of <sp
 <div class="math">$$\ket{\psi} = \sum_k \theta_k \ket{\theta_k} \ket{k} \,,$$</div>
 <p>
 where, in the present approximation the&nbsp;phases <span class="math">\(\theta_k\)</span> coincides with the exact&nbsp;ones <span class="math">\(\bar{\theta}_k\)</span>. As a consequence, a measurement of the first register gives the binary&nbsp;digits <span class="math">\(n\)</span> of the&nbsp;phase <span class="math">\(n = 2^N\theta_k\)</span>, and the state of the second register is projected into its corresponding&nbsp;eigenvector <span class="math">\(\ket{k}\)</span>.</p>
-<h2>Shor</h2>
-<h2>Grover</h2>
 <h2>Exercises</h2>
 <ol>
 <li>
@@ -184,6 +228,28 @@ Compute the probabilities of measuring the ancilla qubit to be in&nbsp;state <sp
 from which one finally gets an approximate value of the&nbsp;phase <span class="math">\(\theta\)</span>.</p>
 </li>
 </ol>
+<h3>Practicum</h3>
+<h4>Quantum Fourier&nbsp;Transform</h4>
+<p>We follow the <span class="caps">QFT</span> circuit to write the corresponding algorithm. To compute the quantum Fourier transform of a bit&nbsp;string <span class="math">\(x=0, \ldots, 2^{N}-1\)</span> needs <span class="math">\(N\)</span> qubits, and can be written in the form of two loops because of the recursive nature of the product&nbsp;formula <span class="math">\(\eqref{e:prod}\)</span></p>
+<ol>
+<li>Loop <span class="math">\(n\)</span> over&nbsp;the <span class="math">\(N\)</span> qubits</li>
+<li>Apply hadamard and&nbsp;loop <span class="math">\(k \ge 2\)</span> over the&nbsp;remaining <span class="math">\(N-n+1\)</span> qubits to apply the control phase gates of decreasing&nbsp;angles <span class="math">\(2\pi/2^k\)</span>
+    <div class="math">$$
+    \mathsf{CPhase}(k) = \begin{pmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; \E^{2\I \pi/2^k} \end{pmatrix}.
+    $$</div>
+    End both&nbsp;loops.</li>
+<li>Apply the swap gates to reverse the qubit&nbsp;order.</li>
+<li>Choose a state product of up and down qubits and apply to it steps 1-3. Verify the&nbsp;result.</li>
+</ol>
+<p>Show that the result of applying the above circuit to an arbitrary&nbsp;state <span class="math">\(\ket{x}\)</span> is equivalent to apply the unitary&nbsp;operator
+</p>
+<div class="math">$$
+\braket{x|\mathrm{QFT}|y} = \exp\big(2\I\pi xy/2^N\big)
+$$</div>
 <h2>Notes</h2>
 <p>The <a href="https://qiskit.org/">qiskit.org</a> website contains complete documentation on the quantum <a href="https://qiskit.org/textbook/ch-algorithms/quantum-fourier-transform.html">fourier transform</a> and its application to the <a href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">phase estimation</a>.</p>
 <p>The diagrams of quantum circuits were drawn using the latex package <a href="https://ctan.org/pkg/quantikz"><code>quantikz</code></a> written by Alastair Kay <a href="https://arxiv.org/abs/1809.03842">arXiv:1809.03842</a> v.4&nbsp;(2020)</p>
