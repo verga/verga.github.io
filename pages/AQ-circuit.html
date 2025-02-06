@@ -109,7 +109,11 @@ Its matrix representations&nbsp;is,
 \mathsf{CNOT} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix},
 $$</div>
 <p>
-which exchange the values of the second qubit if the first one is in the 1 state, without modifying the first&nbsp;qubit.</p>
+which exchange the values of the second qubit if the first one is in the 1 state, without modifying the first qubit. A related gate is the control-phase or&nbsp;contro-<span class="math">\(Z\)</span> gate, equivalent&nbsp;to <span class="math">\(\mathsf{CNOT}\)</span> in&nbsp;the <span class="math">\(X\)</span> basis:
+</p>
+<div class="math">$$
+\mathsf{CZ} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 \end{pmatrix},
+$$</div>
 <p>A general controlled&nbsp;unitary <span class="math">\(U\)</span> has the form given by the&nbsp;circuit,</p>
 <p><img src="/images/AQ-ccu.svg" alt="control U" style="width: 250px;"/></p>
 <p>note the&nbsp;power <span class="math">\(x\)</span>:&nbsp;if <span class="math">\(x=0\)</span> the input state do not change,&nbsp;otherwise <span class="math">\(x=1\)</span> we&nbsp;apply <span class="math">\(U\)</span> to de second&nbsp;qubit.</p>
