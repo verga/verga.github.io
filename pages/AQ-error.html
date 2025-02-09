@@ -60,7 +60,9 @@
 <h1>Error&nbsp;Correction</h1>
 <p>We know from the theory of open systems that the interaction with the environment destroys the intrinsic coherence of the unitary evolution. In terms of quantum information the modification of the state of a qubit due to different forms of decoherence, and not to the normal operation of the unitary gates, defines an <em>error</em>. Protecting the quantum channels from the effects of noise is the goal of error correction codes. For instance, we may consider an imperfect channel that introduces a qubit flip with&nbsp;probability <span class="math">\(p\)</span>, leading to the mixed&nbsp;state
 </p>
-<div class="math">$$\mathcal{E_f}(\ket{\psi}\bra{\psi}) = (1-p)\ket{\psi}\bra{\psi} + p X \ket{\psi}\bra{\psi} X \,,$$</div>
+<div class="math">$$
+\mathcal{E_f}(\ket{\psi}\bra{\psi}) = (1-p)\ket{\psi}\bra{\psi} + p X \ket{\psi}\bra{\psi} X \,,
+$$</div>
 <p>
 from an arbitrary initial one qubit&nbsp;state <span class="math">\(\ket{\psi}\)</span>.&nbsp;Schematically,</p>
 <blockquote>
@@ -68,13 +70,17 @@ from an arbitrary initial one qubit&nbsp;state <span class="math">\(\ket{\psi}\)
 </blockquote>
 <p>The flip error is related to the kraus&nbsp;operator <span class="math">\(M = \sqrt{p} X\)</span>; therefore, if the initial state&nbsp;is <span class="math">\(\ket{\psi}\)</span>, the channel output&nbsp;is <span class="math">\(\rho\)</span> and the flip error probability&nbsp;is
 </p>
-<div class="math">$$p_f = 1 - \braket{\psi| \rho | \psi} = \alpha p, \quad \alpha = 1-\braket{\psi|X|\psi}^2$$</div>
+<div class="math">$$
+p_f = 1 - \braket{\psi| \rho | \psi} = \alpha p, \quad \alpha = 1-\braket{\psi|X|\psi}^2
+$$</div>
 <p>
 is proportional&nbsp;to <span class="math">\(p\)</span>. An error correction code is a strategy to reduce the error probability, and ideally, to detect and correct the&nbsp;errors.</p>
 <p>The idea of quantum correction codes is to use entanglement of the information carrying qubits (the message) with supplementary qubits, and to use a set of local operators whose action on the total space vectors, allow the identification of the modified qubits, without altering the original message&nbsp;subspace.</p>
 <p>As an example, to correct errors due to spin flips, we start by creating the entangled&nbsp;state:
 </p>
-<div class="math">$$(a \ket{0} + b \ket{1}) \otimes \ket{0} \otimes \ket{0} \rightarrow \ket{i_L} = a \ket{000} + b \ket{111}$$</div>
+<div class="math">$$
+(a \ket{0} + b \ket{1}) \otimes \ket{0} \otimes \ket{0} \rightarrow \ket{i_L} = a \ket{000} + b \ket{111}
+$$</div>
 <p>
 using the&nbsp;circuit</p>
 <blockquote>
@@ -82,28 +88,40 @@ using the&nbsp;circuit</p>
 </blockquote>
 <p>where <span class="math">\(\ket{\psi} = a \ket{0} + b \ket{1}\)</span> is the &#8220;message&#8221; state,&nbsp;and <span class="math">\(\ket{i_L} \in \mathcal{H}_L\)</span> is then the <em>logical</em> input state,&nbsp;and <span class="math">\(\mathcal{H}_L\)</span> the logical hilbert space.<sup id="fnref:l"><a class="footnote-ref" href="#fn:l">1</a></sup> In the input&nbsp;state <span class="math">\(\ket{i_L}\)</span> the message qubit&nbsp;states <span class="math">\(\ket{0}\)</span> and <span class="math">\(\ket{1}\)</span> are encoded using the logical&nbsp;qubits:
 </p>
-<div class="math">$$\ket{0_L} = \ket{000},\quad \ket{1_L} = \ket{111}\,,$$</div>
+<div class="math">$$
+\ket{0_L} = \ket{000},\quad \ket{1_L} = \ket{111}\,,
+$$</div>
 <p>
 which encodes each original qubit into three qubits. This redundancy allows the reduction of the error probability (see exercise), as in the classical error correction codes using majority voting. The qubits building the logical states are the physical qubits processed in the computer. The&nbsp;set <span class="math">\(\{\ket{0_L}, \ket{1_L}\}\)</span> is our first example of a quantum code&nbsp;space.</p>
 <p>Flipping one qubit of the encoded&nbsp;state <span class="math">\(\ket{i_L}\)</span>, can lead to one of the following three output&nbsp;states:
 </p>
-<div class="math">$$\ket{i_L} \rightarrow \ket{o_1} = a\ket{100} + b \ket{011}$$</div>
+<div class="math">$$
+\ket{i_L} \rightarrow \ket{o_1} = a\ket{100} + b \ket{011}
+$$</div>
 <p>
 if it is the qubit the one that is&nbsp;reversed,
 </p>
-<div class="math">$$\ket{i_L} \rightarrow \ket{o_2} = a\ket{010} + b \ket{101}$$</div>
+<div class="math">$$
+\ket{i_L} \rightarrow \ket{o_2} = a\ket{010} + b \ket{101}
+$$</div>
 <p>
 if qubit two is reversed,&nbsp;and
 </p>
-<div class="math">$$\ket{i_L} \rightarrow \ket{o_3} = a\ket{001} + b \ket{110}$$</div>
+<div class="math">$$
+\ket{i_L} \rightarrow \ket{o_3} = a\ket{001} + b \ket{110}
+$$</div>
 <p>
 if it is qubit three. Therefore, considering that it is also possible that no qubit at all is reversed, we have four different output states. A method to identify these four possibilities form the information contained in the logical state, is to apply successively the&nbsp;operators
 </p>
-<div class="math">$$Z_1 Z_2 = Z \otimes Z \otimes 1_2$$</div>
+<div class="math">$$
+Z_1 Z_2 = Z \otimes Z \otimes 1_2
+$$</div>
 <p>
 and
 </p>
-<div class="math">$$Z_2 Z_3 = 1_2 \otimes Z \otimes Z$$</div>
+<div class="math">$$
+Z_2 Z_3 = 1_2 \otimes Z \otimes Z
+$$</div>
 <p>
 to the output state and to record the&nbsp;eigenvalue:</p>
 <blockquote>
@@ -155,86 +173,122 @@ to the output state and to record the&nbsp;eigenvalue:</p>
 <span class="math">\(\{\ket{000}, \ket{111}\}\)</span> remains unchanged; this invariant set is the <em>quantum code</em> to correct spin flip&nbsp;errors.</p>
 <p>If instead of a spin flip, the error was a phase&nbsp;flip:
 </p>
-<div class="math">$$\ket{\psi} = a \ket{0} + b \ket{0} \rightarrow a \ket{0} - b \ket{0}\,, $$</div>
+<div class="math">$$
+\ket{\psi} = a \ket{0} + b \ket{0} \rightarrow a \ket{0} - b \ket{0}\,, 
+$$</div>
 <p>
 we may use an analogous strategy to&nbsp;encode <span class="math">\(\ket{\psi}\)</span> into a&nbsp;state <span class="math">\(\ket{i_L}\)</span>,
 </p>
-<div class="math">$$\ket{\psi} \rightarrow \ket{i_L} = a \ket{0_L} + b \ket{1_L}$$</div>
+<div class="math">$$
+\ket{\psi} \rightarrow \ket{i_L} = a \ket{0_L} + b \ket{1_L}
+$$</div>
 <p>
 using the quantum&nbsp;code:
 </p>
-<div class="math">$$\ket{0_L} = \ket{+++}, \quad \ket{q_L} = \ket{---}\,,$$</div>
+<div class="math">$$
+\ket{0_L} = \ket{+++}, \quad \ket{q_L} = \ket{---}\,,
+$$</div>
 <p>
 where <span class="math">\(\ket{\pm}\)</span> are, as usual, the eigenvectors&nbsp;of <span class="math">\(X\)</span>. The idea behind this encoding is that the phase error is related to&nbsp;a <span class="math">\(Z\)</span> kraus operator, instead of the&nbsp;flip <span class="math">\(X\)</span>, and the&nbsp;transformation:
 </p>
-<div class="math">$$Z = HXH$$</div>
+<div class="math">$$
+Z = HXH
+$$</div>
 <p>
 transform then a flip into a phase error; as a consequence we also transform the basis&nbsp;vectors:
 </p>
-<div class="math">$$\ket{+} = H \ket{0}, \quad \ket{-} = H \ket{1}\,.$$</div>
+<div class="math">$$
+\ket{+} = H \ket{0}, \quad \ket{-} = H \ket{1}\,.
+$$</div>
 <p>In 1995 Shor demonstrated that the code:<sup id="fnref:sh"><a class="footnote-ref" href="#fn:sh">2</a></sup>
 </p>
-<div class="math">\begin{align*}
+<div class="math">$$
+\begin{align*}
   \ket{0} &amp; \rightarrow \ket{0_L} = \frac{1}{8^{1/2}} \big( \ket{000} + \ket{111} \big)^{\otimes 3}\,, \\
   \ket{1} &amp; \rightarrow \ket{1_L} = \frac{1}{8^{1/2}} \big( \ket{000} - \ket{111} \big)^{\otimes 3}\,,
-\end{align*}</div>
+\end{align*}
+$$</div>
 <p>
 allows the correction of any one qubit error. If more than one qubit is modified the redundancy leads to a probability of error which is the&nbsp;product <span class="math">\(O(p^2)\)</span> of one error&nbsp;probabilities.</p>
 <p>In summary, we showed a procedure to encode a message qubit into a logical qubit in an extended hilbert space, allowing an arbitrary&nbsp;state <span class="math">\(\ket{\psi}\)</span> 
 </p>
-<div class="math">$$\ket{\psi} \rightarrow \ket{i_L}\,,$$</div>
+<div class="math">$$
+\ket{\psi} \rightarrow \ket{i_L}\,,
+$$</div>
 <p>
 to be manipulated through its logical&nbsp;counterpart <span class="math">\(\ket{i_L}\)</span>, in such a way that the&nbsp;errors <span class="math">\(\mathcal{E}(\ket{i_L})\)</span> (the noisy channel), can eventually be corrected. A <em>quantum code</em> is then a well chosen subspace of the expanded hilbert space, such that its vectors are not affected by the errors, implying that the information encoded within this subspace can be recovered even after being corrupted by a specific set of discrete&nbsp;errors.</p>
 <h3>Error correction&nbsp;conditions</h3>
 <p>We saw that the spin flip error was related with&nbsp;the <span class="math">\(X\)</span> kraus operator; similarly, the phase flip error is related with&nbsp;the <span class="math">\(Z\)</span> pauli matrix, and the more general depolarizing error, which combines flips, phase and amplitude changes, is related with the set of kraus&nbsp;operators:
 </p>
-<div class="math">$$M_0 = \sqrt{1-p} 1_2, \; M_1 = \sqrt{\frac{p}{3}} X, \; M_2 = \sqrt{\frac{p}{3}} Y, \; M_3 = \sqrt{\frac{p}{3}} Z\,.$$</div>
+<div class="math">$$
+M_0 = \sqrt{1-p} 1_2, \; M_1 = \sqrt{\frac{p}{3}} X, \; M_2 = \sqrt{\frac{p}{3}} Y, \; M_3 = \sqrt{\frac{p}{3}} Z\,.
+$$</div>
 <p>
 Generally,&nbsp;errors <span class="math">\(E\)</span> on a one qubit channel can be expressed in the pauli matrices&nbsp;basis:
 </p>
-<div class="math">$$E \in \{1_2, X, Y , Z\}$$</div>
+<div class="math">$$
+E \in \{1_2, X, Y , Z\}
+$$</div>
 <p>
 the pauli group (we may add the&nbsp;constants <span class="math">\(\{\pm1, \pm\I\}\)</span> to close the products); this is a simple consequence of the fact that any operation on twodimensional hilbert vectors can be decomposed as a linear combination of this&nbsp;set.</p>
 <p>A general error&nbsp;operator <span class="math">\(E_n\)</span>, in&nbsp;a <span class="math">\(N\)</span> dimensional space, is a tensor product of pauli matrices (including the identity) acting on the set&nbsp;of <span class="math">\(N\)</span> qubits. Therefore, a schematic way to write the action of the environment&nbsp;is,
 </p>
-<div class="math">$$\ket{\psi} \ket{e} \rightarrow \sum_n E_n \ket{\psi} \ket{e_n} \,,$$</div>
+<div class="math">$$
+\ket{\psi} \ket{e} \rightarrow \sum_n E_n \ket{\psi} \ket{e_n} \,,
+$$</div>
 <p>
 where <span class="math">\(\ket{e}\)</span> refers to the initial environment&nbsp;state, <span class="math">\(\ket{e_n}\)</span> are the environment related states; the sum spans the set of possible&nbsp;errors.</p>
 <p>Then an&nbsp;error <span class="math">\(n\)</span> transforms <span class="math">\(\ket{\psi}\)</span> into <span class="math">\(E_n\ket{\psi}\)</span>; correction of this error consists in transforming&nbsp;back <span class="math">\(E_n\ket{\psi}\)</span> into <span class="math">\(\ket{\psi}\)</span>, which amounts at&nbsp;correcting <span class="math">\(X\)</span>, <span class="math">\(Z\)</span> and <span class="math">\(XZ\)</span> type errors: the linear nature of quantum states leads to the fact that correcting spin and phase errors will correct all errors (even such for which the mixed state is subject to nonunitary&nbsp;relaxation).</p>
 <p>A quantum&nbsp;code <span class="math">\(\mathcal{C} = \{\ket{i_L}, i = 0,1,\ldots\}\)</span> allows correction of a&nbsp;set <span class="math">\(\{E_1, E_2, \ldots\}\)</span> of errors if the code&nbsp;words <span class="math">\(\ket{i_L}, \ket{j_L} \in \mathcal{C}\)</span> satisfy,
 </p>
-<div class="math">$$\braket{i_L | E_1E_2 | j_L} = 0$$</div>
+<div class="math">$$
+\braket{i_L | E_1E_2 | j_L} = 0
+$$</div>
 <p>
 and
 </p>
-<div class="math">$$\braket{i_L | E_1E_2 | i_L} = \braket{j_L | E_1E_2 | j_L}\,.$$</div>
+<div class="math">$$
+\braket{i_L | E_1E_2 | i_L} = \braket{j_L | E_1E_2 | j_L}\,.
+$$</div>
 <p>
 The first condition ensures discrimination between errors: the overlap of two errors over two different code words vanishes; the second condition says that the overlap of two errors on each word is independent on the code word. Then, even if two erroneous&nbsp;versions <span class="math">\(E_1\ket{i_L}\)</span> and <span class="math">\(E_2\ket{i_L}\)</span> of the same word may overlap, as long as this overlap is the same for all code words, the code can correct the set of&nbsp;errors.</p>
 <p>Let us&nbsp;denote <span class="math">\(R\)</span> the recovery&nbsp;procedure:
 </p>
-<div class="math">$$R\ket{a_1}E_1\ket{i_L} = \ket{A_1}\ket{i_L}$$</div>
+<div class="math">$$
+R\ket{a_1}E_1\ket{i_L} = \ket{A_1}\ket{i_L}
+$$</div>
 <p>
 where <span class="math">\(\ket{a}\)</span> and <span class="math">\(\ket{A}\)</span> are the initial and final ancilla&nbsp;states; <span class="math">\(R\)</span> is a unitary operator acting on the whole code space, including the message, noise and ancilla systems. We&nbsp;have, <span class="math">\(R\ket{a_2}E_2\ket{j_L} = \ket{A_2}\ket{j_L}\)</span>
 </p>
-<div class="math">$$\bra{i_L} E_1 \braket{a_1|R^\dagger R|a_2} E_2 \ket{j_L} = \braket{A_1|A_2} \braket{i_L|j_L} = 0$$</div>
+<div class="math">$$
+\bra{i_L} E_1 \braket{a_1|R^\dagger R|a_2} E_2 \ket{j_L} = \braket{A_1|A_2} \braket{i_L|j_L} = 0
+$$</div>
 <p>
 and&nbsp;also
 </p>
-<div class="math">$$\bra{i_L} E_1 \braket{a_1|R^\dagger R|a_2} E_2 \ket{j_L} = \bra{i_L} E_1 E_2 \ket{j_L}\,,$$</div>
+<div class="math">$$
+\bra{i_L} E_1 \braket{a_1|R^\dagger R|a_2} E_2 \ket{j_L} = \bra{i_L} E_1 E_2 \ket{j_L}\,,
+$$</div>
 <p>
 (for the&nbsp;case <span class="math">\(\braket{a_1|a_2} = \braket{a|a} = 1\)</span>, which must be included as a possible recovery case) leading to the first condition. Similarly, the second condition results&nbsp;from,
 </p>
-<div class="math">$$\bra{i_L} E_1 \braket{a|R^\dagger R|a} E_2 \ket{i_L} = \bra{i_L} E_1 E_2 \ket{i_L} = \braket{A_1|A_2}\,,$$</div>
+<div class="math">$$
+\bra{i_L} E_1 \braket{a|R^\dagger R|a} E_2 \ket{i_L} = \bra{i_L} E_1 E_2 \ket{i_L} = \braket{A_1|A_2}\,,
+$$</div>
 <p>
 which is independent&nbsp;of <span class="math">\(\ket{i_L}\)</span>, thus, we can&nbsp;replace <span class="math">\(\ket{i_L}\)</span> by&nbsp;another <span class="math">\(\ket{j_L}\)</span>,&nbsp;everywhere. </p>
 <h3>The stabilizer&nbsp;code</h3>
 <p>A stabilizer is an operator such that, when applied to a given&nbsp;state <span class="math">\(\ket{\psi}\)</span> in the logical hilbert&nbsp;space <span class="math">\(\mathcal{H}_L\)</span>, leaves the state&nbsp;invariant
 </p>
-<div class="math">$$g \ket{\psi} = \ket{\psi}\,,$$</div>
+<div class="math">$$
+g \ket{\psi} = \ket{\psi}\,,
+$$</div>
 <p>
 <span class="math">\(\ket{\psi}\)</span> is then an eigenvector&nbsp;of <span class="math">\(g\)</span> with eigenvalue 1. We observe that two such&nbsp;operators <span class="math">\(g_1, g_2\)</span>:
 </p>
-<div class="math">$$g_1 \ket{\psi} = \ket{\psi} \,, \quad g_2 \ket{\psi} = \ket{\psi}\,,$$</div>
+<div class="math">$$
+g_1 \ket{\psi} = \ket{\psi} \,, \quad g_2 \ket{\psi} = \ket{\psi}\,,
+$$</div>
 <p>
 commute <span class="math">\(g_1 g_2 = g_2 g_1\)</span>, and their&nbsp;product <span class="math">\(g = g_1 g_2\)</span> is also a stabilizer. Therefore, we can define the generators&nbsp;set
 </p>
@@ -246,103 +300,152 @@ commute <span class="math">\(g_1 g_2 = g_2 g_1\)</span>, and their&nbsp;product 
 of the stabilizer&nbsp;group <span class="math">\(\mathcal{S}\)</span>. The important point is&nbsp;that <span class="math">\(\mathcal{S}\)</span> defines a set of&nbsp;states <span class="math">\(\ket{i_L}\)</span>, the code states, as the invariant set under the action of the&nbsp;given <span class="math">\(g_n\)</span>. Therefore, instead of using the code states, which depend&nbsp;on <span class="math">\(2^N\)</span> parameters&nbsp;for <span class="math">\(N\)</span> qubits, we use the generators of the stabilizer group, whose size is essentially of the order&nbsp;of <span class="math">\(N\)</span>.</p>
 <p>More precisely, we&nbsp;define <span class="math">\(\mathcal{L}\)</span>, the code space, as a subset of the logical hilbert&nbsp;space <span class="math">\(\mathcal{L} \subset \mathcal{H}_L\)</span> such&nbsp;that:
 </p>
-<div class="math">$$\mathcal{L} = \{\ket{i_L} \in \mathcal{H}_L \mid g_n \ket{i_L} = \ket{i_L}, \; \forall n\}\,.$$</div>
+<div class="math">$$
+\mathcal{L} = \{\ket{i_L} \in \mathcal{H}_L \mid g_n \ket{i_L} = \ket{i_L}, \; \forall n\}\,.
+$$</div>
 <p>
 Error correction using the stabilizers results form the fact that, either the error&nbsp;operator <span class="math">\(E\)</span> commutes with the&nbsp;stabilizer
 </p>
-<div class="math">$$g E = E g $$</div>
+<div class="math">$$
+g E = E g 
+$$</div>
 <p>
 or it&nbsp;anti-commutes
 </p>
-<div class="math">$$g E = - E g\,.$$</div>
+<div class="math">$$
+g E = - E g\,.
+$$</div>
 <p>
 Remember that pauli matrices commute or anti-commute,&nbsp;e.g. <span class="math">\(X_1X_2 - X_2X_1 = 0\)</span>, <span class="math">\(X_1Z_1 + Z_1X_1 = 0\)</span>). Correcting an error reduces then to the detection of the&nbsp;eigenvalue <span class="math">\(\pm 1\)</span>, as we found in the case of the spin flip&nbsp;example:
 </p>
-<div class="math">$$g_n E \ket{\psi} = \pm E g_n \ket{\psi} = \pm E \ket{\psi}\,.$$</div>
+<div class="math">$$
+g_n E \ket{\psi} = \pm E g_n \ket{\psi} = \pm E \ket{\psi}\,.
+$$</div>
 <p>
 If the error is in the set of stabilizers, its eigenvalue&nbsp;is <span class="math">\(+1\)</span>, correction is the identity, since these errors do not change the logical basis. If instead, the eigenvalue&nbsp;is <span class="math">\(-1\)</span>, we may identify the error through the measurement of the&nbsp;generator <span class="math">\(g_n\)</span>, the observables in the stabilizer space. In the case of the spin flip code, measurement&nbsp;of <span class="math">\(Z_1Z_2\)</span> and <span class="math">\(Z_2Z_3\)</span>, gave us the necessary information to&nbsp;apply <span class="math">\(X\)</span> to the correct&nbsp;qubit.</p>
 <p>More specifically, consider a message space&nbsp;of <span class="math">\(K\)</span> dimensions and a code space&nbsp;of <span class="math">\(N&gt;K\)</span> dimensions. A set of independent&nbsp;observables <span class="math">\(g\)</span> of&nbsp;dimension <span class="math">\(N-K\)</span> should be enough to detect the errors (syndrome extraction). Using the formalism of the previous section, we note that a noisy state has the&nbsp;form:
 </p>
-<div class="math">$$\ket{0_A} \sum_n E_n \ket{i_L} \ket{e_n}$$</div>
+<div class="math">$$
+\ket{0_A} \sum_n E_n \ket{i_L} \ket{e_n}
+$$</div>
 <p>
 (the first term corresponds to the ancillary space, of&nbsp;dimension <span class="math">\(N-K\)</span>). To extract the eigenvalue associated to the&nbsp;generator <span class="math">\(g_n\)</span>, we may follow the steps (see the circuit&nbsp;above):</p>
 <ul>
 <li>put the ancilla in&nbsp;the <span class="math">\(\ket{+}\)</span> state by applying the hadamard&nbsp;gate <span class="math">\(H\)</span>,</li>
 <li>use the ancilla qubit to control the action of the&nbsp;stabilizer <span class="math">\(g_n\)</span> on the logical&nbsp;space,</li>
 <li>apply the hadamard gate to the ancilla to put it in the&nbsp;state:
-    <div class="math">$$\frac{1+s_n}{2}\ket{0} + \frac{1-s_n}{2}\ket{1} = \ket{b_n} \,, \; b_n = \frac{1 \pm 1}{2} \,,$$</div>
+    <div class="math">$$
+    \frac{1+s_n}{2}\ket{0} + \frac{1-s_n}{2}\ket{1} = \ket{b_n} \,, \; b_n = \frac{1 \pm 1}{2} \,,
+    $$</div>
     where <span class="math">\(s_n\)</span> is the eigenvalue&nbsp;of <span class="math">\(g_n\)</span>.</li>
 </ul>
 <p>The string&nbsp;of <span class="math">\(N-K\)</span> bits <span class="math">\(b_n = 0, 1\)</span> allows the syndrome&nbsp;extraction,
 </p>
-<div class="math">$$\ket{0_A} \sum_n E_n \ket{i_L} \ket{e_n} \rightarrow \sum_n \ket{b_n} \big(E_n \ket{i_L}\big) \ket{e_n} \rightarrow \big(E_\bar{n} \ket{i_L}\big) \ket{e_\bar{n}}\,,$$</div>
+<div class="math">$$
+\ket{0_A} \sum_n E_n \ket{i_L} \ket{e_n} \rightarrow \sum_n \ket{b_n} \big(E_n \ket{i_L}\big) \ket{e_n} \rightarrow \big(E_\bar{n} \ket{i_L}\big) \ket{e_\bar{n}}\,,
+$$</div>
 <p>
 where the first step is the syndrome extraction procedure, and the second the ancilla measurement projecting the message state to the corresponding&nbsp;error <span class="math">\(E_\bar{n} \ket{i_L}\)</span> state. Note that this projected state is disentangled, applying the&nbsp;operator <span class="math">\(E^\dagger_\bar{n}\)</span> to it we recover the original&nbsp;state <span class="math">\(\ket{i_L}\)</span> (or any superposition of logical&nbsp;states).</p>
 <h3>The Steane code<sup id="fnref:st"><a class="footnote-ref" href="#fn:st">3</a></sup></h3>
 <p>Quantum codes are labeled by the number of&nbsp;qubits <span class="math">\(N\)</span> in the code words, the number of original&nbsp;qubits <span class="math">\(K &lt; N\)</span>, and the minimal hamming distance between two code&nbsp;words <span class="math">\(d\)</span>: <span class="math">\([\![N,K,d]\!]\)</span>. The hamming distance between two binary strings of&nbsp;length <span class="math">\(N\)</span> is the number of different bits&nbsp;(<span class="math">\(d(01101,01001) = 1\)</span>), the weight of a&nbsp;string <span class="math">\(b\)</span> is its number of&nbsp;ones <span class="math">\(\mathrm{wt}(b) = d(0,b)\)</span>; note&nbsp;that <span class="math">\(d(b_1,b_2) = \mathrm{wt}(b_1 + b_2)\)</span>, where the addition is&nbsp;in <span class="math">\(\mathbb{Z}_2\)</span>.</p>
 <p>The Steane&nbsp;code <span class="math">\([\![7,1,3]\!]\)</span>, derived from the classical <a href="https://en.wikipedia.org/wiki/Hamming(7,4)">hamming</a> <span class="math">\((7,4,3)\)</span> code, encodes one&nbsp;qubit <span class="math">\(K=1\)</span> into&nbsp;seven <span class="math">\(N=7\)</span>, and can correct any one qubit&nbsp;error <span class="math">\(t = (d-1)/2 = 1\)</span>; its two logical words&nbsp;are:
 </p>
-<div class="math">\begin{multline*}
+<div class="math">$$
+\begin{multline*}
 \ket{0_L} = \frac{1}{8^{1/2}}\big( \ket{0000000} + \ket{1010101} + \ket{0110011} + \ket{1100110} + \\
 \ket{0001111} + \ket{1011010} + \ket{0111100} + \ket{1101001}
-\end{multline*}</div>
+\end{multline*}
+$$</div>
 <p>
 and
 </p>
-<div class="math">$$\ket{1_L} = X_1X_2X_3X_4X_5X_6X_7 \ket{0_L}\,.$$</div>
+<div class="math">$$
+\ket{1_L} = X_1X_2X_3X_4X_5X_6X_7 \ket{0_L}\,.
+$$</div>
 <p>
 The total dimension of the logical hilbert space&nbsp;is <span class="math">\(2^7\)</span>; the seven qubits might be subject to individual&nbsp;errors,
 </p>
-<div class="math">$$E \in \{X_1,\ldots,X_7,Z_1,\ldots,Z_7,X_1Z_1,\ldots,X_7Z_7\}\,.$$</div>
+<div class="math">$$
+E \in \{X_1,\ldots,X_7,Z_1,\ldots,Z_7,X_1Z_1,\ldots,X_7Z_7\}\,.
+$$</div>
 <p>
 However, only the two logical codewords are important, because their superposition carries the message information (that depends on only two&nbsp;amplitudes <span class="math">\(\ket{\psi} = a \ket{0} + b \ket{1} \rightarrow \ket{i_L} = a \ket{0_L} + b \ket{1_L} \in \mathcal{H}_L\)</span>). This means that we can shrink the number of relevant states, and this can be accomplished by using a set of six stabilizers of the logical&nbsp;qubits:
 </p>
-<div class="math">\begin{array}{lll}
+<div class="math">$$
+\begin{array}{lll}
 g_1 = 111XXXX, &amp; g_2 = X1X1X1X, &amp; g_3 = 1XX11XX, \\
 g_4 = 111ZZZZ, &amp; g_5 = Z1Z1Z1Z, &amp; g_6 = 1ZZ11ZZ,
-\end{array}</div>
+\end{array}
+$$</div>
 <p>
 the number of code words is found observing&nbsp;that <span class="math">\(2^{7-6}=2\)</span>, which corresponds to the dimension of the invariant subset&nbsp;of <span class="math">\(2^7\)</span> states under the action&nbsp;of <span class="math">\(\mathcal{S} = \braket{g_1,\ldots,g_6}\)</span>. Remark that since any two stabilizers commute, they divide&nbsp;the <span class="math">\(2^7\)</span> hilbert space&nbsp;into <span class="math">\(2^6\)</span> subspaces of dimension 2. In general, the number of stabilizers is such&nbsp;that <span class="math">\(N-|\mathcal{S}| = K\)</span>, the number of encoded qubits (or the number of original qubits). Note that the&nbsp;operator <span class="math">\(\bar{X} = XXXXXXX\)</span> exchange the two logical&nbsp;states:
 </p>
-<div class="math">$$\bar{X} \ket{0_L} = \ket{1_L}$$</div>
+<div class="math">$$
+\bar{X} \ket{0_L} = \ket{1_L}
+$$</div>
 <p>
 and <span class="math">\(\bar{Z} = ZZZZZZZ\)</span>, distinguishes between these two states by their&nbsp;phase:
 </p>
-<div class="math">$$\bar{Z} \ket{0_L} = \ket{0_L}, \; \bar{Z} \ket{1_L} = - \ket{1_L}\,.$$</div>
+<div class="math">$$
+\bar{Z} \ket{0_L} = \ket{0_L}, \; \bar{Z} \ket{1_L} = - \ket{1_L}\,.
+$$</div>
 <p>The encoding of the logical states&nbsp;is:
 </p>
-<div class="math">$$\ket{0_L} = \frac{1}{8^{1/2}} (1 + g_1)(1 + g_2)(1 + g_3) \ket{0}^{\otimes 7}$$</div>
+<div class="math">$$
+\ket{0_L} = \frac{1}{8^{1/2}} (1 + g_1)(1 + g_2)(1 + g_3) \ket{0}^{\otimes 7}
+$$</div>
 <p>
 The circuit for error syndrome&nbsp;is:
 </p>
-<div class="math">$$H_A \prod_{n=1}^6 \Lambda_n(g_n) H_A$$</div>
+<div class="math">$$
+H_A \prod_{n=1}^6 \Lambda_n(g_n) H_A
+$$</div>
 <p>
 where we introduced the&nbsp;notations <span class="math">\(H_A\)</span> for the hadamard gates applied to the 6 ancilla&nbsp;qubits,
 </p>
-<div class="math">$$H_A = H^{\otimes 6} \otimes 1_7\,,$$</div>
+<div class="math">$$
+H_A = H^{\otimes 6} \otimes 1_7\,,
+$$</div>
 <p>
 and the controlled gate&nbsp;operator <span class="math">\(O\)</span> with&nbsp;control <span class="math">\(n\)</span> and target the logical&nbsp;space, 
 </p>
-<div class="math">$$\Lambda_n(O) \ket{b} \ket{i_L} = \ket{b_1 \ldots b_6} O^{b_n}\ket{i_L}\,,$$</div>
+<div class="math">$$
+\Lambda_n(O) \ket{b} \ket{i_L} = \ket{b_1 \ldots b_6} O^{b_n}\ket{i_L}\,,
+$$</div>
 <p>
 where <span class="math">\(\ket{b}\)</span> is an ancilla basis&nbsp;state <span class="math">\(b = b_1 \ldots b_6\)</span>, <span class="math">\(b_n = 0, 1\)</span>. The measurement of the ancilla space identifies the error for subsequent&nbsp;correction.</p>
-<h2>Exercises</h2>
+<h2>Applications</h2>
+<h3>Exercises</h3>
 <ol>
 <li>
 <p>Apply the flip&nbsp;channel <span class="math">\(\mathcal{E_f}\)</span>, conveniently generalized to 3 qubits, to&nbsp;the <span class="math">\(\ket{i} = a \ket{0_L} + b \ket{1_L})\)</span>. The resulting&nbsp;state <span class="math">\(\rho\)</span> contains 8 terms corresponding to the 8 flips. Perform a projective&nbsp;measurement <span class="math">\(\sigma_m = P_m \rho P_m\)</span> (<span class="math">\(m=0,1,2,3\)</span>),&nbsp;with,
-    <div class="math">$$P_0 = \ket{000} \bra{000} + \ket{111} \bra{111},\; P_1 = X_1 P_0 X_1,\;P_2 = X_2 P_0 X_2,\; P_3 = X_3 P_0 X_3,$$</div>
+    <div class="math">$$
+    P_0 = \ket{000} \bra{000} + \ket{111} \bra{111},\; P_1 = X_1 P_0 X_1,\;P_2 = X_2 P_0 X_2,\; P_3 = X_3 P_0 X_3,
+    $$</div>
     where&nbsp;each <span class="math">\(X_n\)</span> applies to&nbsp;the <span class="math">\(n=1,2,3\)</span> qubit, respectively; note&nbsp;that <span class="math">\(\sigma_m\)</span> is not normalized; thus, its trace gives the corresponding probability. What is the meaning&nbsp;of <span class="math">\(P_m\)</span>? Calculate the (non normalized)&nbsp;state:
-    <div class="math">$$\bar{\sigma} = \sigma_0 + X_1 \sigma_1 X_1 + X_2 \sigma_2 X_2 + X_3 \sigma_3 X_3$$</div>
+    <div class="math">$$
+    \bar{\sigma} = \sigma_0 + X_1 \sigma_1 X_1 + X_2 \sigma_2 X_2 + X_3 \sigma_3 X_3
+    $$</div>
     and compute the error probability (which is the sum of probabilities for the four cases, just contained&nbsp;in <span class="math">\(\bar{\sigma}\)</span>)
-    <div class="math">$$p_f = 1 - \braket{i| \bar{\sigma} | i}$$</div>
+    <div class="math">$$
+    p_f = 1 - \braket{i| \bar{\sigma} | i}
+    $$</div>
     and show that it&nbsp;is
-    <div class="math">$$p_f = p^2 (3-2p)(1 - \braket{i | X_1 X_2 X_3 | i}^2\,.$$</div>
+    <div class="math">$$
+    p_f = p^2 (3-2p)(1 - \braket{i | X_1 X_2 X_3 | i}^2\,.
+    $$</div>
     Therefore we reduced the flip error in the final state to second order&nbsp;in <span class="math">\(p\)</span>.</p>
 <p>Remark. The generalization of the one qubit&nbsp;channel <span class="math">\(\mathcal{E}\)</span> to <span class="math">\(N\)</span> qubits&nbsp;is <span class="math">\(\mathcal{E}^{\otimes N}\)</span>. The&nbsp;matrices <span class="math">\(X_1,X_2,X_3\)</span> commute.</p>
 <p>Hint. The density matrix&nbsp;reads,
-<div class="math">$$\rho = (1-p)^3 \ket{i}\bra{i} + (1-p)^2p ( X_1\ket{i}\bra{i} X_1 + X_2 \ket{i}\bra{i} X_2 + X_3 \ket{i}\bra{i} X_3) + \ldots$$</div>
+<div class="math">$$
+\rho = (1-p)^3 \ket{i}\bra{i} + (1-p)^2p ( X_1\ket{i}\bra{i} X_1 + X_2 \ket{i}\bra{i} X_2 + X_3 \ket{i}\bra{i} X_3) + \ldots
+$$</div>
 The projected states are of the form,<br>
-<div class="math">\begin{align*}\sigma_0 &amp;= (1-p)^3 \ket{i}\bra{i} + p^3 X_1 X_2 X_3 \ket{i}\bra{i} X_1 X_2 X_3 \\ \sigma_1 &amp;= (1-p)^2p X_1 \ket{i}\bra{i} X_1 + (1-p)p^2 X_2 X_3 \ket{i}\bra{i} X_2 X_3 \\ \text{etc.} \end{align*}</div>
+<div class="math">$$
+\begin{align*}
+\sigma_0 &amp;= (1-p)^3 \ket{i}\bra{i} + p^3 X_1 X_2 X_3 \ket{i}\bra{i} X_1 X_2 X_3 \\ \sigma_1 &amp;= (1-p)^2p X_1 \ket{i}\bra{i} X_1 + (1-p)p^2 X_2 X_3 \ket{i}\bra{i} X_2 X_3 \\ \text{etc.}
+\end{align*}
+$$</div>
 </p>
 </li>
 <li>
@@ -350,28 +453,95 @@ The projected states are of the form,<br>
 </li>
 <li>
 <p>Show that the&nbsp;set,
-    <div class="math">\begin{multline*}
+    <div class="math">$$
+    \begin{multline*}
     \{Z_1Z_2,\, Z_2Z_3,\, Z_4Z_5,\, Z_5Z_6,\, Z_7Z_8,\, Z_8Z_9, \\
     X_1X_2X_3X_4X_5X_6X_7,\, X_4X_5X_6X_7X_8X_9\}
-    \end{multline*}</div>
+    \end{multline*}
+    $$</div>
     stabilizes the Shor&nbsp;code.</p>
 </li>
 <li>
 <p>Find the equivalent of the pauli and cnot gates acting on the Steane logical&nbsp;states <span class="math">\(\ket{0_L}\)</span> and <span class="math">\(\ket{1_L}\)</span>. For&nbsp;example, <span class="math">\(X \rightarrow \bar{X} = X^{\otimes 7}\)</span>,&nbsp;since <span class="math">\(\bar{X} \ket{0_L} = \ket{1_L}\)</span>. For the cnot case, consider two logical (seven qubit)&nbsp;states <span class="math">\(\ket{0_L}\)</span> and <span class="math">\(\ket{1_L}\)</span>. Give your answer in the form of a&nbsp;circuit.</p>
 </li>
 </ol>
+<h3>Practicum</h3>
+<p>We want to simulate a noisy quantum channel. Errors can be of any&nbsp;type <span class="math">\(X\)</span>, <span class="math">\(Y\)</span>,&nbsp;and <span class="math">\(Z\)</span>. In order to be able to correct one error occurring with&nbsp;probability <span class="math">\(p\)</span> (we exclude simultaneous errors), we encode the information using the five-qubits stabilizer code of Gottesman<sup id="fnref:GO"><a class="footnote-ref" href="#fn:GO">4</a></sup>. The&nbsp;code <span class="math">\([\![5,1,3]\!]\)</span>, can correct any one qubit error using one logical qubit encoded in five physical qubits. The set of generators&nbsp;is
+</p>
+<div class="math">$$
+\mathcal{S} = \left\langle \begin{matrix} X &amp; Z &amp; Z &amp; X &amp; 1 \\
+1 &amp; X &amp; Z &amp; Z &amp; X \\
+X &amp; 1 &amp; X &amp; Z &amp; Z \\
+Z &amp; X &amp; 1 &amp; X &amp; Z \end{matrix} \right\rangle = \{g_1, g_2, g_3, g_4\}
+$$</div>
+<p>
+(note the cycle structure of the stabilizer&nbsp;strings).</p>
+<p>The logical qubits are most simply expressed in terms of the&nbsp;stabilizers:
+</p>
+<div class="math">$$
+\ket{0_L} = \prod_{g \in \mathcal{S}} \big(1 + g) \ket{0}^{\otimes 5}, \quad \ket{1_L} = \bar{X} \ket{0_L}
+$$</div>
+<p>
+where
+</p>
+<div class="math">$$
+\bar{X} = XXXXX, \quad \bar{Z} = ZZZZZ, \quad \bar{Y} = \I \bar{X} \bar{Z}
+$$</div>
+<p>
+are the one <em>logical</em> qubits Pauli operators. You may show that the operator <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+G = \prod_{g \in \mathcal{S}} \big(1 + g) Z1111
+$$</div>
+<p>
+encodes a&nbsp;state <span class="math">\(\ket{\psi} = a \ket{0} + b\ket{1}\)</span> into the logical space&nbsp;state <span class="math">\(\ket{i}\)</span>.</p>
+<p>Errors are associated with&nbsp;the <span class="math">\(-1\)</span> eigenvalues of the stabilizer operators; they arise when one of the of the five physical qubit is modified by one of the three Pauli matrices: we then must&nbsp;consider <span class="math">\(16 = 3\times5 +1\)</span> different cases, including the no error case. The syndrome table is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+\begin{matrix}
+    &amp;   1 &amp; X_0 &amp; X_1 &amp; X_2 &amp; X_3 &amp; X_4 &amp; Y_0 &amp; Y_1 &amp; Y_2 &amp; Y_3 &amp; Y_4 &amp; Z_0 &amp; Z_1 &amp; Z_2 &amp; Z_3 &amp; Z_4 \\ \hline
+g_1 &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus  &amp;     &amp;     &amp;  \ominus  &amp;     \\
+g_2 &amp;     &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus  &amp;     &amp;     &amp;  \ominus  \\
+g_3 &amp;     &amp;     &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus   &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus  &amp;     &amp;     \\
+g_4 &amp;     &amp;  \ominus  &amp;     &amp;     &amp;     &amp;  \ominus  &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus  &amp;  \ominus  &amp;     &amp;  \ominus  &amp;     &amp;  \ominus  &amp;     \\ \hline
+    &amp;  0 &amp; 1 &amp; 8 &amp; 12 &amp; 6 &amp; 3 &amp; 11 &amp; 13 &amp; 14 &amp; 15 &amp; 7 &amp; 10 &amp; 5 &amp; 2 &amp; 9 &amp; 4
+\end{matrix}
+$$</div>
+<p>
+The first line contains the list of possible errors; the four stabilizer lines gives the signature of each error,&nbsp;a <span class="math">\(\ominus\)</span> symbol represents&nbsp;a <span class="math">\(-1\)</span> eigenvalue. The last line gives, in decimal notation, the measurements results with zero&nbsp;for <span class="math">\(1\)</span> and one&nbsp;for <span class="math">\(-1\)</span> eigenvalues,&nbsp;respectively.</p>
+<p>Before coding the algorithm draw the circuits for (i) encoding and errors, and (ii) syndrome and measurement; you may&nbsp;use <span class="math">\(\LaTeX\)</span> with the&nbsp;package <code>yquant</code>.</p>
+<blockquote>
+<p><img src="/images/AQ-ec_5q.svg" alt="five qubits" style="width: 350px;"/></p>
+<p>The encoding consists in transforming the initial product&nbsp;state <span class="math">\(\ket{\psi0000}\)</span> into an entangled&nbsp;state <span class="math">\(\ket{i}\)</span> based on the logical&nbsp;qubits <span class="math">\(\ket{0_L}\)</span> and <span class="math">\(\ket{1_L}\)</span>. The <span class="caps">XYZ</span> box (red) corresponds to the occurrence of one Pauli error. The central part of the circuit contains the syndrome detection algorithm, which uses the four&nbsp;stabilizers <span class="math">\(g_n\)</span>. In the final part, after the measurement of the ancilla qubits, we apply the recovery algorithm (blue box), which outputs the encoded initial&nbsp;state <span class="math">\(\ket{i}\)</span>.</p>
+</blockquote>
+<p>Five-qubits&nbsp;algorithm:</p>
+<ol>
+<li>Initialize the physical&nbsp;qubit <span class="math">\(\ket{i}\)</span> in an arbitrary state, for exemple, depending on the&nbsp;angle <span class="math">\(\theta\)</span>.</li>
+<li>Encode <span class="math">\(\ket{\psi}\)</span> using the logical&nbsp;qubits <span class="math">\(\ket{0_L}\)</span> and <span class="math">\(\ket{1_L}\)</span>.</li>
+<li>Randomly introduce a one Pauli gate&nbsp;error.</li>
+<li>Initialize the four ancillary qubits of the syndrome&nbsp;register.</li>
+<li>Compute the syndrome. Apply Hadamard gates to the ancillas and&nbsp;control-<span class="math">\(g\)</span> gates, with controls on the ancillas and targets on the logical register (for the four stabilizers). Apply Hadamard and measure the four stabilizers to get the&nbsp;syndrome.</li>
+<li>Apply the corresponding correction, as given by the table above, to the detected&nbsp;error.</li>
+<li>Project the output state to the logical space and compare with the initial logical&nbsp;state.</li>
+</ol>
 <h2>Notes</h2>
+<ul>
+<li>Roffe, Joschka, <em>Quantum Error Correction: An Introductory Guide</em>. Contemporary Physics 60 (3): 226–45 (2019). <a href="http://arxiv.org/abs/1907.11157">arXiv</a></li>
+</ul>
 <div class="footnote">
 <hr>
 <ol>
 <li id="fn:l">
-<p>Sometimes the original, uncoded, qubits are called &#8220;logical&#8221;, and the encoded qubits &#8220;physical&#8221;; we adopt here the convention that the unecoded qubits are the &#8220;message&#8221; or &#8220;original&#8221; ones, while the labelled&nbsp;&#8220;<span class="math">\(L\)</span>&#8221; states are the &#8220;encoded&#8221; or &#8220;logical&#8221; qubits. Note however that the number of encoded qubits corresponds to the number of original ones, generally denoted&nbsp;by <span class="math">\(K\)</span>. We&nbsp;denote <span class="math">\(N\)</span> the dimension of the encoded qubits.&#160;<a class="footnote-backref" href="#fnref:l" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Sometimes the original, unecoded, qubits are called &#8220;logical&#8221;, and the encoded qubits &#8220;physical&#8221;; we adopt here the more usual convention that the unecoded qubits correspond to the &#8220;message&#8221; or &#8220;original&#8221; physical qubits, while the labelled&nbsp;&#8220;<span class="math">\(L\)</span>&#8221; states are the encoded or logical qubits. Note however that the number of encoded qubits corresponds to the number of original ones, generally denoted&nbsp;by <span class="math">\(K\)</span>. We&nbsp;denote <span class="math">\(N\)</span> the dimension of the encoded qubits.&#160;<a class="footnote-backref" href="#fnref:l" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:sh">
 <p>Shor, P. A., <em>Scheme for reducing decoherence in quantum computer memory,</em> Phys. Rev. A <strong>52</strong>, R2493 (1995)&#160;<a class="footnote-backref" href="#fnref:sh" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:st">
 <p>Steane, A. M., <em>A Tutorial on Quantum Error Correction,</em> (Proceedings of the International School of Physics &#8220;Enrico Fermi&#8221;, 2006) <a href="/pdfs/Steane-2006.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:st" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:GO">
+<p>Gottesman, Daniel, <em>An Introduction to Quantum Error Correction and Fault-Tolerant Quantum Computation</em>. <a href="https://doi.org/10.48550/arXiv.0904.2557">arXiv:0904.2557</a> (2000).&#160;<a class="footnote-backref" href="#fnref:GO" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
