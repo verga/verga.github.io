@@ -151,16 +151,16 @@ at the end of the <span class="caps">QFT</span>&nbsp;circuit.</p>
 <h3>Phase&nbsp;estimation</h3>
 <p>The quantum fourier transform may be used to compute the&nbsp;phase <span class="math">\(\theta \in (0,1)\)</span>, related to the eigenvalue of a&nbsp;unitary <span class="math">\(U\)</span> by,
 </p>
-<div class="math">$$U \ket{u_\theta} = \E^{2 \pi \I \theta} \ket{u_\theta}$$</div>
+<div class="math">$$U \ket{\theta} = \E^{2 \pi \I \theta} \ket{\theta}$$</div>
 <p>
-where <span class="math">\(\ket{u_\theta}\)</span> is a known eigenvector (of&nbsp;dimension <span class="math">\(D\)</span>). The circuit (phase estimation&nbsp;algorithm) </p>
+where <span class="math">\(\ket{\theta}\)</span> is a <em>known</em> eigenvector (of&nbsp;dimension <span class="math">\(D\)</span>). The circuit (phase estimation&nbsp;algorithm) </p>
 <blockquote>
 <p><img src="/images/AQ-cphase.svg" alt="fft phase" style="width: 550px;"/></p>
 </blockquote>
-<p>implements the first part of the algorithm (Cleve et alia, 1998).<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup> One register, whose input&nbsp;is <span class="math">\(\ket{u_\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an ancilla register&nbsp;of <span class="math">\(N\)</span> qubits, which are used to control&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to&nbsp;get <span class="math">\(\theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bit precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+<p>implements the first part of the algorithm (Cleve et alia, 1998)<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup>. One register, whose input&nbsp;is <span class="math">\(\ket{\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an &#8220;index&#8221; register&nbsp;of <span class="math">\(N\)</span> ancilla qubits, used as controls of&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to get the&nbsp;eigenvalue <span class="math">\(\bar{\theta} \approx \theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bits precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
-\ket{2^N \theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k}.
+\ket{2^N \theta} \ket{\theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k} \ket{\theta} .
 $$</div>
 <p>Applying the inverse fourier&nbsp;transform
 </p>
@@ -171,33 +171,70 @@ $$</div>
 to this state, one&nbsp;obtains,
 </p>
 <div class="math">$$
-\frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s} \approx \ket{2^N \theta}.
+\frac{1}{2^N} \sum_{s=0}^{2^N - 1} \left[ \sum_{k=0}^{2^N - 1} \E^{-2\pi \I k (s - 2^N \theta)/2^N} \right] \ket{s}\ket{\theta}  \approx \ket{2^N \bar{\theta}}\ket{\theta} .
 $$</div>
 <p>
-The expression in brackets is picked&nbsp;at <span class="math">\(\theta = s/2^N\)</span>, therefore, after this inverse transformation, measurement of the ancilla qubits gives&nbsp;us <span class="math">\(s\)</span>,&nbsp;a <span class="math">\(N\)</span> bit approximation&nbsp;of <span class="math">\(\theta\)</span>.</p>
+The expression in brackets is picked&nbsp;at <span class="math">\(\theta \approx s/2^N = \bar{\theta}\)</span> (where <span class="math">\(\bar{\theta}\)</span> is a binary string), therefore, after this inverse transformation, measurement of the ancilla qubits gives&nbsp;us <span class="math">\(s\)</span>,&nbsp;a <span class="math">\(N\)</span> bit approximation&nbsp;of <span class="math">\(\theta\)</span>.</p>
 <h3>Eigenvectors and eigenvalues&nbsp;finding</h3>
-<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{\I \bar{\theta}}\)</span>.  They assumed an initial&nbsp;state <span class="math">\(\ket{\theta}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}}\)</span>; this means that the&nbsp;expansion
+<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{2\pi\I \theta_k}\)</span>. They assumed an initial&nbsp;state <span class="math">\(\ket{\bar{\theta}}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\theta}\)</span>; this means that the&nbsp;expansion
 </p>
 <div class="math">$$
-\ket{\theta} = \sum_k \theta_k \ket{k}, \quad U \ket{k} = \E^{\I \bar{\theta}_k} \ket{k},
+\ket{\bar{\theta}} = \sum_k a_k \ket{k}, \quad U \ket{k} = \E^{2\pi\I \theta_k} \ket{k},
 $$</div>
 <p>
 contains essentially order one&nbsp;amplitudes
 </p>
 <div class="math">$$
-\theta_k = \braket{\bar{\theta}_k|\theta}.
+a_k = \braket{\theta_k|\bar{\theta}}.
 $$</div>
 <p>
-The idea is to define a circuit using a set&nbsp;of <span class="math">\(N\)</span> ancilla qubits such that their measure leads with&nbsp;probability
+The idea is to define a circuit using a set&nbsp;of <span class="math">\(N\)</span> ancilla qubits (the index register) such that their measure leads with&nbsp;probability
 </p>
 <div class="math">$$
-p_k = |\braket{\bar{\theta}_k | \theta}|^2
+p_k = |\braket{\theta_k | \bar{\theta}}|^2 = \big| a_k \big|^2
 $$</div>
 <p>
-to the correct&nbsp;eigenvector <span class="math">\(\ket{\bar{\theta}_k}\)</span>. Consider the&nbsp;circuit,</p>
+to the correct&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> and its corresponding&nbsp;eigenvalue <span class="math">\(\theta_k\)</span>. Consider the&nbsp;circuit,</p>
 <blockquote>
 <p><img src="/images/AQ-cphase-2.svg" alt="Lloyd" style="width: 400px;"/></p>
 </blockquote>
+<p>the initial state&nbsp;is 
+</p>
+<div class="math">$$
+\ket{\psi} = \ket{0}^{\otimes N} \ket{\theta},
+$$</div>
+<p>
+the hadamard gates creates the superposition&nbsp;state,
+</p>
+<div class="math">$$
+\ket{\psi} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N-1} \ket{s} \ket{\theta} = \frac{1}{2^{N/2}} \sum_{s=0}^{2^N-1} \ket{s} \sum_k a_k \ket{\theta_k} , 
+$$</div>
+<p>
+where, in the last step, we&nbsp;expanded <span class="math">\(\theta\)</span> in&nbsp;the <span class="math">\(U\)</span> basis <span class="math">\(\ket{\theta_k}\)</span>. We apply next the&nbsp;control-<span class="math">\(U\)</span> gates:&nbsp;the <span class="math">\(s\)</span> iteration gives a&nbsp;factor <span class="math">\(\exp(2\pi\I s \theta_k\)</span> for each&nbsp;eigenvector,
+</p>
+<div class="math">$$
+\ket{\psi} = \frac{1}{2^{N/2}} \sum_k \sum_{s=0}^{2^N-1} a_k \E^{2\pi\I s \theta_k} \ket{s} \ket{\theta_k} .
+$$</div>
+<p>
+We observe that the sum&nbsp;over <span class="math">\(s\)</span> is the index register fourier transform of the set of&nbsp;eigenvalues <span class="math">\(\theta_k\)</span>; we then apply the corresponding inverse fourier&nbsp;transform:
+</p>
+<div class="math">$$
+\ket{\psi} = \sum_k a_k \sum_{t} \Big(\frac{1}{2^{N}} \sum_{s=0}^{2^N-1} \E^{2\pi\I s \theta_k}  \E^{-2\pi\I st/2^N} \Big) \ket{t} \ket{\theta_k} = \sum_k\sum_t a_k \delta(2^N \theta_k, t)\ket{t} \ket{\theta_k},
+$$</div>
+<p>
+which leads, using the Konecker delta, to the&nbsp;state
+</p>
+<div class="math">$$
+\ket{\psi} = \sum_k a_k \ket{2^N\bar{\theta}_k} \ket{\theta_k}
+$$</div>
+<p>
+with, similarly to the phase estimation&nbsp;case, <span class="math">\(\bar{\theta}_k\)</span> the <span class="math">\(N\)</span>-bits approximation of the actual&nbsp;eigenvalue <span class="math">\(\theta_k\)</span>. Therefore, a measure of the index register gives the&nbsp;eigenvalue
+</p>
+<div class="math">$$
+\bar{\theta_\bar{k}} \approx \theta_\bar{k}
+$$</div>
+<p>
+for&nbsp;some <span class="math">\(\bar{k}\)</span>, with&nbsp;probability <span class="math">\(|a_\bar{k}|^2\)</span> (supposed to be of order one for the initial&nbsp;guess <span class="math">\(\ket{\theta}\)</span>), and the after-measure state is projected to the corresponding&nbsp;eigenvector <span class="math">\(\ket{2^N \theta_{\bar{k}}}\)</span>. We may iterate the algorithm to obtain other eigenvalues and&nbsp;eigenvectors.</p>
 <h2>Exercises</h2>
 <ol>
 <li>
