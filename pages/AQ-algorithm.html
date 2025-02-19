@@ -244,9 +244,13 @@ for&nbsp;some <span class="math">\(\bar{k}\)</span>, with&nbsp;probability <span
 <p>Analyze the&nbsp;circuit,</p>
 <p><img src="/images/AQ-cphase-1.svg" alt="phase measure" style="width: 400px;"/></p>
 <p>where <span class="math">\(H\)</span> is the hadamard&nbsp;gate,
-<div class="math">$$Z_\varphi = \mathrm{diag} \left(1, \E^{\I \varphi} \right)$$</div>
+<div class="math">$$
+Z_\varphi = \mathrm{diag} \left(1, \E^{\I \varphi} \right)
+$$</div>
 is a phase gate,&nbsp;and <span class="math">\(L\)</span> an integer, and show that it transforms the initial&nbsp;state <span class="math">\(\ket{0} \otimes \ket{u_\theta}\)</span>, <span class="math">\(\ket{u_\theta}\)</span> is an eigenvector&nbsp;of <span class="math">\(U\)</span>,&nbsp;into <span class="math">\(\ket{L, \varphi, \theta} \otimes \ket{u_\theta}\)</span>,
-<div class="math">$$\ket{L,\varphi,\theta} = \frac{1}{2} \left( 1 + \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0} + \frac{1}{2} \left( 1 - \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0}$$</div>
+<div class="math">$$
+\ket{L,\varphi,\theta} = \frac{1}{2} \left( 1 + \E^{2\pi \I L \theta + \I \varphi} \right) \ket{0} + \frac{1}{2} \left( 1 - \E^{2\pi \I L \theta + \I \varphi} \right) \ket{1}
+$$</div>
 Compute the probabilities of measuring the ancilla qubit to be in&nbsp;state <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. (<em>Hint</em> <span class="math">\(P_{L,\varphi}(0, \theta) = |\braket{0|L,\varphi, \theta}|^2\)</span>)</p>
 <p>Show that with a choice&nbsp;of <span class="math">\(\varphi\)</span> one can accurately&nbsp;estimate 
 <div class="math">$$\cos(2\pi L \theta) \; \text{and} \; \sin(2\pi L \theta)$$</div>
