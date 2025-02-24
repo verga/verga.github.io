@@ -58,6 +58,41 @@
 <p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
 </blockquote>
 <h1>Quantum&nbsp;Algorithms</h1>
+<p>Since physical laws are inherently quantum, Feynman proposed, in a famous talk given in 1981, to use &#8220;quantum computers&#8221; to efficiently solve physical problems<sup id="fnref:FY"><a class="footnote-ref" href="#fn:FY">1</a></sup>. A specific model of quantum computation was devised by Deutsch, who, in 1989, found a set of universal unitary gates, extending to the quantum domain the universality of the classical Turing machine<sup id="fnref:DE"><a class="footnote-ref" href="#fn:DE">2</a></sup>. In fact, the <em>exponential</em> growth of the Hilbert space, prevents a quantum system to be simulated by a classic computer, with <em>polynomial</em> classical ressources. In Feynman&#8217;s view, a quantum computer should solve a quantum system with resources proportional to the size (number of degrees of freedom) of the physical&nbsp;system:</p>
+<blockquote>
+<p>&#8230;the physical world is quantum mechanical, and therefore the proper problem is the simulation of quantum physics<sup id="fnref2:FY"><a class="footnote-ref" href="#fn:FY">1</a></sup></p>
+</blockquote>
+<h1>Grover&nbsp;search</h1>
+<p>Classical search&nbsp;algorithm; <span class="math">\(f(x) = 1\)</span> if <span class="math">\(x = x_0\)</span> and zero&nbsp;otherwise:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">input</span><span class="p">:</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+
+<p>Quantum oracle unitary&nbsp;operator <span class="math">\(O\ket{x} \otimes \ket{y} = \ket{x} \otimes \ket{y \oplus f(x)}\)</span></p>
+<p>Quantum amplification: apply the reflection&nbsp;operator
+</p>
+<div class="math">$$
+R = (1 - \ket{s} \bra{s}) \otimes 1_2
+$$</div>
+<p>
+where <span class="math">\(\ket{s} = H^{\otimes N} \ket{0}\)</span> is the uniform amplitude global superposition&nbsp;state:
+</p>
+<div class="math">$$
+\ket{s} = \frac{1}{2^{N/2}} \sum_{n=0}^{2^N - 1} \ket{n}
+$$</div>
+<p>The Grover operator&nbsp;is <span class="math">\(G = RO\)</span></p>
+<p>Initialize the ancilla register in the&nbsp;state <span class="math">\(\ket{-}\)</span></p>
+<div class="highlight"><pre><span></span><code><span class="nb">input</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">initialize</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">ancilla</span> <span class="n">registers</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">state</span> <span class="o">|</span><span class="n">s</span><span class="o">&gt;</span> <span class="o">|-&gt;</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span> <span class="c1"># T approx pi/2 sqrt(N)</span>
+    <span class="n">apply</span> <span class="n">G</span> <span class="n">to</span> <span class="n">state</span> <span class="c1"># U = O R the Grover operator</span>
+
+<span class="n">measure</span> <span class="n">the</span> <span class="n">ancilla</span> <span class="n">qubit</span>
+<span class="n">project</span> <span class="n">the</span> <span class="n">state</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">answer</span>
+</code></pre></div>
+
 <h2>Fourier transform and phase&nbsp;estimation</h2>
 <p>The classical fourier transform has an inverse: applying the transform to a function and then applying its inverse, lead to the identity; the fact that the inverse is related to the complex conjugate of the direct transformation, naturally leads to the observation that the fourier transformation can be seen as a <em>unitary</em> operator. The quantum algorithm is simply an implementation of this unitary operator acting on a space of&nbsp;dimension <span class="math">\(2^N\)</span>, as a circuit of one and two qubits&nbsp;gates.</p>
 <p>Let us start with the fourier transform of the basis states. We denote a basis state of&nbsp;the <span class="math">\(N\)</span> qubits hilbert&nbsp;space,
@@ -157,7 +192,7 @@ where <span class="math">\(\ket{\theta}\)</span> is a <em>known</em> eigenvector
 <blockquote>
 <p><img src="/images/AQ-cphase.svg" alt="fft phase" style="width: 550px;"/></p>
 </blockquote>
-<p>implements the first part of the algorithm (Cleve et alia, 1998)<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">1</a></sup>. One register, whose input&nbsp;is <span class="math">\(\ket{\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an &#8220;index&#8221; register&nbsp;of <span class="math">\(N\)</span> ancilla qubits, used as controls of&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to get the&nbsp;eigenvalue <span class="math">\(\bar{\theta} \approx \theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bits precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+<p>implements the first part of the algorithm (Cleve et alia, 1998)<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">3</a></sup>. One register, whose input&nbsp;is <span class="math">\(\ket{\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an &#8220;index&#8221; register&nbsp;of <span class="math">\(N\)</span> ancilla qubits, used as controls of&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to get the&nbsp;eigenvalue <span class="math">\(\bar{\theta} \approx \theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bits precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
 \ket{2^N \theta} \ket{\theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k} \ket{\theta} .
@@ -176,7 +211,7 @@ $$</div>
 <p>
 The expression in brackets is picked&nbsp;at <span class="math">\(\theta \approx s/2^N = \bar{\theta}\)</span> (where <span class="math">\(\bar{\theta}\)</span> is a binary string), therefore, after this inverse transformation, measurement of the ancilla qubits gives&nbsp;us <span class="math">\(s\)</span>,&nbsp;a <span class="math">\(N\)</span> bit approximation&nbsp;of <span class="math">\(\theta\)</span>.</p>
 <h3>Eigenvectors and eigenvalues&nbsp;finding</h3>
-<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">2</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{2\pi\I \theta_k}\)</span>. They assumed an initial&nbsp;state <span class="math">\(\ket{\bar{\theta}}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\theta}\)</span>; this means that the&nbsp;expansion
+<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">4</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{2\pi\I \theta_k}\)</span>. They assumed an initial&nbsp;state <span class="math">\(\ket{\bar{\theta}}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\theta}\)</span>; this means that the&nbsp;expansion
 </p>
 <div class="math">$$
 \ket{\bar{\theta}} = \sum_k a_k \ket{k}, \quad U \ket{k} = \E^{2\pi\I \theta_k} \ket{k},
@@ -316,11 +351,15 @@ using the phase estimation&nbsp;algorithm.</p>
 <div class="footnote">
 <hr>
 <ol>
+<li id="fn:FY">
+<p>Feynman, Richard P. <em>Simulating Physics with Computers</em>. <a href="https://doi.org/10.1007/BF02650179">Inter. J. Theor. Phys. <strong>21</strong> 467 (1982)</a>&#160;<a class="footnote-backref" href="#fnref:FY" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:FY" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:DE"></li>
 <li id="fn:C">
-<p>Cleve et al. <em>Quantum algorithms revisited,</em> Proc. R. Soc. Lond. A <strong>454</strong>, 339 (1998) <a href="/pdfs/Cleve-1998.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:C" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Cleve et al. <em>Quantum algorithms revisited,</em> Proc. R. Soc. Lond. A <strong>454</strong>, 339 (1998) <a href="/pdfs/Cleve-1998.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:C" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:L">
-<p>Abrams, D., and Lloyd, S., <em>Quantum algorithm providing exponential speed increase for finding eigenvalues and eigenvectors,</em> Phys. Rev. Lett. <strong>83</strong>, 5162 (1999)&#160;<a class="footnote-backref" href="#fnref:L" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>Abrams, D., and Lloyd, S., <em>Quantum algorithm providing exponential speed increase for finding eigenvalues and eigenvectors,</em> Phys. Rev. Lett. <strong>83</strong>, 5162 (1999)&#160;<a class="footnote-backref" href="#fnref:L" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
