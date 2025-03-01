@@ -58,26 +58,42 @@
 <p><a href="/pages/AQ-index.html">Lectures</a> on advanced quantum&nbsp;mechanics</p>
 </blockquote>
 <h1>Cluster state and quantum&nbsp;computation</h1>
-<p>The most basic model of quantum computation is the <em>circuit</em>, in which an initial state, usually a product&nbsp;state <span class="math">\(\ket{0}^N\)</span> of <span class="math">\(N\)</span> qubits, is acted upon by a sequence of universal one and two qubits gates; for instance the&nbsp;pauli <span class="math">\(\bm \sigma = (X,Y,Z)\)</span>,&nbsp;hadamard <span class="math">\(\mathsf{H}\)</span>, the&nbsp;phase <span class="math">\(\mathsf{S}\)</span>,&nbsp;and <span class="math">\(\pi/4\)</span> phase <span class="math">\(\mathsf{T}\)</span> one qubit gates, complemented with the two&nbsp;qubits <span class="math">\(\mathsf{CNOT}\)</span> gate. Because of its universality the circuit model is also useful as a representation of other quantum computation models. Another important class is the <em>topological</em> model, whose first formulation is based on the <a href="/pages/AQ-toric.html">toric code</a> of Kitaev. In this case the computational resource is an entangled quantum state, the ground state of a many-body hamiltonian. Excitations of the toric code ground state are anyons, topological &#8220;particles&#8221; that take a phase when exchanged (not necessarily 0, as for bosons,&nbsp;or <span class="math">\(\pi\)</span>, as for fermions). Braiding these quasiparticles is thus used to implement logical gates. A third important quantum computational model is the cellular <em>automaton</em>. The idea is to apply a local unitary to a set of qubits (arranged in a line or a lattice) to an initial state, in order to, by discrete time iteration, update the state of the systems to eventually get a useful entangled state. The unitary generally implements a simple rule, in analogy with the classical cellular automata, and is applied in parallel; its homogeneity ensures translational invariance. The three models of quantum computation, circuit, topological, and automaton, are equivalently universal, in the sense that they can implement&nbsp;any <span class="math">\(N\)</span>-body unitary&nbsp;operator.</p>
+<p>The most basic model of quantum computation is the <a href="/pages/AQ-circuit.html"><em>circuit</em></a> model, in which an initial state, usually a product&nbsp;state <span class="math">\(\ket{0}^N\)</span> of <span class="math">\(N\)</span> qubits, is acted upon by a sequence of universal one and two qubits gates; for instance, the&nbsp;set
+</p>
+<div class="math">$$
+\{\mathsf{H}, \mathsf{S}, \mathsf{T}, \mathsf{CNOT}\}.
+$$</div>
+<p>
+of the&nbsp;hadamard <span class="math">\(\mathsf{H}\)</span>,&nbsp;phase <span class="math">\(\mathsf{S}\)</span>,&nbsp;and <span class="math">\(\pi/4\)</span> phase <span class="math">\(\mathsf{T}\)</span> one qubit gates, complemented with the two&nbsp;qubits <span class="math">\(\mathsf{CNOT}\)</span> gate, is universal. This set can be complemented, for convenience, with any one qubit gate, such as the pauli&nbsp;matrices <span class="math">\(\bm \sigma = (X,Y,Z)\)</span>; note however that for example, the pauli matrices can be obtained&nbsp;by <span class="math">\(\mathsf{S}^2 = Z\)</span> and <span class="math">\(\mathsf{H}Z\mathsf{H} = X\)</span>. In fact, with the above set any many-body unitary operator can be implemented. Because of its universality the circuit model is also useful as a representation of other quantum computation models, in analogy with the Turing machine for classical&nbsp;computations.</p>
+<p>A second quantum computational model is the cellular <em>automaton</em>. The idea is to apply a local unitary to a set of qubits (arranged in a line or a lattice) to an initial state, in order to, by discrete time iteration, update the state of the systems to eventually get a useful state form which a measurement gives the answer. The local unitary generally implements a simple rule, in analogy with classical cellular automata, and is applied in parallel; its homogeneity ensures translational invariance. The three models of quantum computation, circuit, topological, and automaton, are equivalently universal, in the sense that they can implement&nbsp;any <span class="math">\(N\)</span>-body unitary&nbsp;operator.</p>
+<p>Another important class of computational model is the <em>topological</em> model, whose first formulation was based on the <a href="/pages/AQ-toric.html">toric code</a> of Kitaev<sup id="fnref:KI"><a class="footnote-ref" href="#fn:KI">1</a></sup>. In this case the computational resource is an <em>entangled quantum state</em>, the topological ground state of a many-body hamiltonian. Excitations of the topological ground state, for example of the toric code, are anyons. Anions are topological &#8220;particles&#8221; that take a phase when exchanged (not necessarily 0, as for bosons,&nbsp;or <span class="math">\(\pi\)</span>, as for fermions). Braiding these quasiparticles is thus used to implement logical&nbsp;gates.</p>
 <p>A variant of the topological quantum model of computation is the one based on teleportation; it is called <em>measurement based</em> quantum computation. Let us start with an&nbsp;example:</p>
 <blockquote>
 <p><img src="/images/AQ-c_gtz.svg" alt="teleportation of Z" style="height: 44px;"/></p>
 </blockquote>
 <p>The initial state is the&nbsp;product <span class="math">\(\ket{t_0} = \ket{\psi}\otimes\ket{0} = a\ket{00} + b \ket{10}\)</span>, after&nbsp;the <span class="math">\(\mathsf{CNOT}\)</span> we get the <em>entangled</em>&nbsp;state
 </p>
-<div class="math">$$\ket{t_1} = a \ket{00} + b \ket{11},$$</div>
+<div class="math">$$
+\ket{t_1} = a \ket{00} + b \ket{11},
+$$</div>
 <p>
 which is our computational resource. To exploit this resource we <em>measure</em> the first qubit in the&nbsp;base <span class="math">\(\ket{\pm}\)</span> of&nbsp;the <span class="math">\(X\)</span> operator. Note&nbsp;that <span class="math">\(\ket{t_1}\)</span> writes <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>,
 </p>
-<div class="math">$$\ket{t_1} = P_+ \ket{t_1} + P_- \ket{t_1} = \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} + b \ket{1}\big) + \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} - b \ket{1}\big)$$</div>
+<div class="math">$$
+\ket{t_1} = P_+ \ket{t_1} + P_- \ket{t_1} = \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} + b \ket{1}\big) + \frac{\ket{+}}{\sqrt{2}}\big(a\ket{0} - b \ket{1}\big)
+$$</div>
 <p>
 where we used the&nbsp;projectors <span class="math">\(P_\pm  = \ket{\pm}\bra{\pm}\)</span>, the pre-measurement&nbsp;state:
 </p>
-<div class="math">$$\frac{\ket{+}}{\sqrt{2}}\ket{\psi} + \frac{\ket{-}}{\sqrt{2}} Z\ket{\psi}.$$</div>
+<div class="math">$$
+\frac{\ket{+}}{\sqrt{2}}\ket{\psi} + \frac{\ket{-}}{\sqrt{2}} Z\ket{\psi}.
+$$</div>
 <p>
 The final state of the second qubit, after the measurement, is&nbsp;then
 </p>
-<div class="math">$$\ket{\mathrm{out}} = Z^b \ket{\psi}$$</div>
+<div class="math">$$
+\ket{\mathrm{out}} = Z^b \ket{\psi}
+$$</div>
 <p>
 according to the&nbsp;result <span class="math">\(b\)</span> of the first qubit measurement. As a result the circuit teleports&nbsp;the <span class="math">\(\ket{\psi}\)</span> state, possibly modified by the&nbsp;gate <span class="math">\(Z\)</span>. Had we measured the first qubit in other basis, we could obtain other one qubit gate applied to the teleported state. Indeed, the slightly modified&nbsp;circuit</p>
 <blockquote>
@@ -85,13 +101,17 @@ according to the&nbsp;result <span class="math">\(b\)</span> of the first qubit 
 </blockquote>
 <p>in which we measure the first qubit in the base of the&nbsp;operator <span class="math">\(O = \bm{n} \cdot \bm \sigma\)</span>,&nbsp;and <span class="math">\(\bm n = (\cos\theta, \sin\theta,0)\)</span>, leads to the output state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">$$\ket{\mathrm{out}} = \E^{-\I \theta Z/2} Z^b \ket{\mathrm{in}}.$$</div>
+<div class="math">$$
+\ket{\mathrm{out}} = \E^{-\I \theta Z/2} Z^b \ket{\mathrm{in}}.
+$$</div>
 <p>
 <em>Hint</em>. Use the&nbsp;eigenvectors
 </p>
-<div class="math">$$\ket{\theta_\pm} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+<div class="math">$$
+\ket{\theta_\pm} = \frac{1}{\sqrt{2}} \begin{pmatrix}
   \E^{-\I\theta/2} \\ \pm\E^{\I\theta/2}
-\end{pmatrix}$$</div>
+\end{pmatrix}
+$$</div>
 <p>
 of&nbsp;the <span class="math">\(O\)</span> and the corresponding projectors to write the state just before the measure, as in the previous&nbsp;calculation.</p>
 <p>We observe that an appropriated measurement of on a single qubit on a previously prepared entangled state, is a computational resource that can be used to effectively apply a logical gate to an initial state; in the case of the last circuit we transformed the initial arbitrary&nbsp;state <span class="math">\(\ket{\mathrm{in}}\)</span>, into a rotated output one. As a result of the measurement, the entanglement in the system decreases, which is consistent with the notion of entanglement as a resource. In addition, too much entanglement, as for instance a thermal state (maximally entangled), would not be useful because the sequence of measurements cannot be distinguished from a random processes, which in fact can be efficiently implemented by a classical computer. Therefore, we need a <em>useful</em> entangled state: the cluster state satisfies these requirements, one qubits measurements can implement in it one qubit gates and&nbsp;the <span class="math">\(\mathsf{CNOT}\)</span> gate, leading to universal&nbsp;computing.</p>
@@ -104,87 +124,119 @@ of&nbsp;the <span class="math">\(O\)</span> and the corresponding projectors to 
 </blockquote>
 <p>The&nbsp;graph <span class="math">\(G\)</span> of the figure corresponds to the set of&nbsp;vertices <span class="math">\(V=\{0,1,2,3,4\}\)</span> and the set of&nbsp;edges <span class="math">\(E = \{(0,1),(0,4),(1,2),(2,3),(2,4),(3,4)\}\)</span>. To construct the <em>cluster</em> state we associate to each&nbsp;node <span class="math">\(x \in V\)</span> a quantum&nbsp;state <span class="math">\(\ket{+}\)</span> (the 1 eigenvalue eigenvector&nbsp;of <span class="math">\(X\)</span>), then we apply the controlled phase&nbsp;gate
 </p>
-<div class="math">$$\mathsf{CZ}(x,y) = \frac{1+Z_x}{2} \otimes 1_y + \frac{1-Z_x}{2} \otimes Z_y = \mathrm{diag}(1,1,1,-1),$$</div>
+<div class="math">$$
+\mathsf{CZ}(x,y) = \frac{1+Z_x}{2} \otimes 1_y + \frac{1-Z_x}{2} \otimes Z_y = \mathrm{diag}(1,1,1,-1),
+$$</div>
 <p>
 which change the sign of&nbsp;the <span class="math">\(\ket{11}\)</span> amplitude, to each&nbsp;edge <span class="math">\((x,y) \in E\)</span>;&nbsp;therefore,
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{e:C}
   \ket{C} = \prod_{(x,y)\in E} \mathsf{CZ}(x,y) \ket{+}^N
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where <span class="math">\(N = |V|\)</span> is the number of qubits, and to simplify the notation we write the kronecker product as a product of&nbsp;kets. </p>
 <p>The hilbert space of the&nbsp;graph <span class="math">\(\mathcal{H}(G)\)</span> is spanned by the&nbsp;vectors
 </p>
-<div class="math">$$\ket{s} = \ket{s_0} \otimes \cdots \otimes \ket{s_{N-1}} = \ket{s_0\ldots s_{N-1}} \in \mathcal{H}(G), \; s_x=\{0,1\}, \; x = 0,\ldots,N-1.$$</div>
+<div class="math">$$
+\ket{s} = \ket{s_0} \otimes \cdots \otimes \ket{s_{N-1}} = \ket{s_0\ldots s_{N-1}} \in \mathcal{H}(G), \; s_x=\{0,1\}, \; x = 0,\ldots,N-1.
+$$</div>
 <p>
 In this basis the action of the controlled phase gate&nbsp;is
 </p>
-<div class="math">$$\mathsf{CZ}(x,y) \ket{\ldots s_x \ldots s_y \ldots} = (-1)^{s_x s_y}\ket{\ldots s_x \ldots s_y \ldots}.$$</div>
+<div class="math">$$
+\mathsf{CZ}(x,y) \ket{\ldots s_x \ldots s_y \ldots} = (-1)^{s_x s_y}\ket{\ldots s_x \ldots s_y \ldots}.
+$$</div>
 <p>
 The&nbsp;string <span class="math">\(\{s_0\ldots s_{N-!}\}\)</span> is the binary representation of the&nbsp;integer <span class="math">\(s \in [0, 2^N -1]\)</span> (the equivalent of the classical configuration of a set&nbsp;of <span class="math">\(N\)</span> ising&nbsp;spins).</p>
 <h3>Example: two and three&nbsp;qubits</h3>
 <p>The simplest cluster state is the one formed by two&nbsp;qubits:
 </p>
-<div class="math">$$\ket{C_2} = \mathsf{CZ}(0,1) \ket{++} = \frac{1}{2} \big( \ket{00} + \ket{01} + \ket{10} - \ket{11}\big) = \mathsf{H} \otimes 1_2 \ket{\Phi_+}$$</div>
+<div class="math">$$
+\ket{C_2} = \mathsf{CZ}(0,1) \ket{++} = \frac{1}{2} \big( \ket{00} + \ket{01} + \ket{10} - \ket{11}\big) = \mathsf{H} \otimes 1_2 \ket{\Phi_+}
+$$</div>
 <p>
 where the last equality shows that&nbsp;the <span class="math">\(\ket{C_2}\)</span> state is equivalent to a bell state up to one qubit operations (here the hadamard&nbsp;gate <span class="math">\(\mathsf{H}\)</span>). It is straightforward to show that the schmidt decomposition&nbsp;of <span class="math">\(\ket{C_2}\)</span> leads to&nbsp;two <span class="math">\(p_n = 1/2\)</span> (<span class="math">\(n=1,2\)</span>) eigenvalues of the reduced density matrix, which implies that the von Neumann entropy is&nbsp;maximal:
 </p>
-<div class="math">$$S_1[C_2] = -\sum_{n=\{1,2\}} p_n \log p_n = 1.$$</div>
+<div class="math">$$
+S_1[C_2] = -\sum_{n=\{1,2\}} p_n \log p_n = 1.
+$$</div>
 <p>The case of three qubits can be represented by the&nbsp;circuit</p>
 <blockquote>
 <p><img src="/images/AQ-C3.svg" alt="C3" style="height: 60px;"/></p>
 </blockquote>
 <p>which gives <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
-<div class="math">$$\ket{C_3} = \frac{1}{2^{3/2}} \sum_{s_0, s_1, s_2} (-1)^{s_0 s_1 + s_0 s_2 + s_1 s_2} \ket{s_0 s_1 s_2},$$</div>
+<div class="math">$$
+\ket{C_3} = \frac{1}{2^{3/2}} \sum_{s_0, s_1, s_2} (-1)^{s_0 s_1 + s_0 s_2 + s_1 s_2} \ket{s_0 s_1 s_2},
+$$</div>
 <p>
 or&nbsp;explicitly
 </p>
-<div class="math">$$\ket{C_3} = \frac{1}{2^{3/2}} \big( \ket{000} + \ket{001} + \ket{010} - \ket{011} + \ket{100} - \ket{101} - \ket{110} - \ket{111} \big).$$</div>
+<div class="math">$$
+\ket{C_3} = \frac{1}{2^{3/2}} \big( \ket{000} + \ket{001} + \ket{010} - \ket{011} + \ket{100} - \ket{101} - \ket{110} - \ket{111} \big).
+$$</div>
 <p>
 Note that in the sum, the exponent is computed using operations in the finite&nbsp;field <span class="math">\(\mathrm{GF}(2)\)</span>, addition and multiplication modulo&nbsp;2.</p>
 <h3>Hamiltonian and&nbsp;stabilizers</h3>
 <p>The <a href="/pages/AQ-error.html">stabilizer</a> of a&nbsp;state <span class="math">\(\ket{\psi}\)</span> is a&nbsp;subgroup <span class="math">\(\mathcal{S}\)</span> of the pauli&nbsp;group <span class="math">\(\mathcal{P}\)</span> generated by a set of mutually commuting&nbsp;operators <span class="math">\(\{g_0, g_1, \ldots\}\)</span> (essentially products of pauli matrices)&nbsp;satisfying <span class="math">\(g_n \ket{\psi} = \ket{\psi}\)</span>; the particular&nbsp;states <span class="math">\(\ket{i_L}\)</span>  satisfying this equation for&nbsp;all <span class="math">\(n\)</span> are <em>logical</em> states. Whence, the quantum&nbsp;state <span class="math">\(\ket{i_L}\)</span> is a common eigenvector of the stabilizers with eigenvalue 1 (the&nbsp;subgroup <span class="math">\(\mathcal{S}\)</span> do not contain the&nbsp;matrix <span class="math">\(-1\)</span>). We show now that the stabilizer formalism reveals the rich structure of the cluster&nbsp;state <span class="math">\(\eqref{e:C}\)</span>.</p>
 <p>We reconsider the construction of the cluster state to identify step by step the relevant operators with eigenvalue 1. A graph of only one qubit in&nbsp;state <span class="math">\(\ket{+}\)</span> is easily related with the&nbsp;operator <span class="math">\(X\)</span>, which is its stabilizer. Adding a second qubit (also in the&nbsp;state <span class="math">\(\ket{+}\)</span>) and&nbsp;applying <span class="math">\(\mathsf{CZ}\)</span> we obtain the cluster&nbsp;state <span class="math">\(\ket{C_2}\)</span>, and we want to know how this state is modified by the (previous)&nbsp;stabilizer <span class="math">\(X\)</span>:
 </p>
-<div class="math">$$X_0 \mathsf{CZ}(0,1) \ket{++} = \mathsf{CZ}(0,1) X_0 Z_1 \ket{++}$$</div>
+<div class="math">$$
+X_0 \mathsf{CZ}(0,1) \ket{++} = \mathsf{CZ}(0,1) X_0 Z_1 \ket{++}
+$$</div>
 <p>
 where <span class="math">\(0\)</span> and <span class="math">\(1\)</span> refer to the respective qubits number (vertices of the graph). Multiplying this expression&nbsp;by <span class="math">\(Z_1\)</span> (note that it commutes with everything), we&nbsp;get
 </p>
-<div class="math">$$X_0 Z_1 \mathsf{CZ}(0,1) \ket{++} = \mathsf{CZ}(0,1) \ket{++}$$</div>
+<div class="math">$$
+X_0 Z_1 \mathsf{CZ}(0,1) \ket{++} = \mathsf{CZ}(0,1) \ket{++}
+$$</div>
 <p>
 which is just a stabilizer&nbsp;of <span class="math">\(\ket{C_2}\)</span>. Adding other neighbors,&nbsp;say <span class="math">\(y\)</span>,&nbsp;to <span class="math">\(0\)</span> will add to the stabilizer the&nbsp;corresponding <span class="math">\(Z_y\)</span>, therefore giving (by recurrence   <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>) the&nbsp;form
 </p>
-<div class="math">$$K_x = X_x \prod_{(x,y) \in N_x} Z_y$$</div>
+<div class="math">$$
+K_x = X_x \prod_{(x,y) \in N_x} Z_y
+$$</div>
 <p>
 of the stabilizer operator associated to&nbsp;vertex <span class="math">\(x\)</span>,&nbsp;where <span class="math">\(N_x\)</span> is the set of neighbors&nbsp;of <span class="math">\(x\)</span> (<span class="math">\(|N_x|\)</span> is the degree of&nbsp;node <span class="math">\(x\)</span>). Note that the set&nbsp;of <span class="math">\(K_x\)</span> is commuting, and its cardinality coincides with the number of nodes, therefore the general cluster state of a&nbsp;graph <span class="math">\(\ket{C}\)</span> satisfying
 </p>
-<div class="math">$$K_x \ket{C} = \ket{C}, \; \forall x,$$</div>
+<div class="math">$$
+K_x \ket{C} = \ket{C}, \; \forall x,
+$$</div>
 <p>
 is unique. We can then write the stabilizer set&nbsp;explicitly
 </p>
-<div class="math">$$\mathcal{S} = \{K \mid [K,K_x] = 0, \forall x \in V\}, \; |\mathcal{S}| = N.$$</div>
+<div class="math">$$
+\mathcal{S} = \{K \mid [K,K_x] = 0, \forall x \in V\}, \; |\mathcal{S}| = N.
+$$</div>
 <p>
 We observe that when a stabilizer is applied to the &#8220;up&#8221;&nbsp;state
 </p>
-<div class="math">$$K_x \ket{0}^N = X_x \ket{0}^N = \ket{0\ldots 1 \ldots 0} \; \Rightarrow \; \braket{0|X|0}=0$$</div>
+<div class="math">$$
+K_x \ket{0}^N = X_x \ket{0}^N = \ket{0\ldots 1 \ldots 0} \; \Rightarrow \; \braket{0|X|0}=0
+$$</div>
 <p>
 the new state is orthogonal to it. This leads us to the&nbsp;formula
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{e:CK}
 \ket{C} = \frac{1}{2^{N/2}} \prod_{x \in V} \big(1 + K_x \big) \ket{0}^N
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 that express the cluster state as a superposition&nbsp;of <span class="math">\(2^N\)</span> (orthogonal) terms,&nbsp;spanning <span class="math">\(\mathcal{H}(G)\)</span>. Note&nbsp;that <span class="math">\(K_x(1 + K_x) = 1 + K_x\)</span>, from which one deduce&nbsp;that <span class="math">\(\ket{C}\)</span> is effectively eigenvector&nbsp;of <span class="math">\(K_x\)</span> with eigenvalue&nbsp;1.</p>
 <p>Because <span class="math">\(\mathcal{S} = N\)</span> the dimension of the logical subspace is 0, and the cluster state do not code any logical qubit. We show below that a modification of the set of stabilizers may lead to a &#8220;degeneracy&#8221; of the cluster state which results in a nontrivial logical subspace: we can associate a <em>hamiltonian</em> to the&nbsp;graph <span class="math">\(G\)</span> and the corresponding cluster&nbsp;state <span class="math">\(\ket{C}\)</span>.</p>
 <p>As a matter of fact, we find&nbsp;that <span class="math">\(\ket{C}\)</span> is the unique <em>ground state</em> of the&nbsp;hamiltonian
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{e:H}
   H_C = -J \sum_{x \in V} K_x = -J \sum_x \prod_{y \in N_x} X_x Z_y
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 formed by a sum over the stabilizers&nbsp;of <span class="math">\(\ket{C}\)</span>:
 </p>
@@ -195,89 +247,182 @@ where <span class="math">\(-NJ\)</span> is the lowest possible energy. We remark
 <h4>The one dimensional cluster&nbsp;hamiltonian</h4>
 <p>In the special case of the one dimensional lattice with open boundary&nbsp;conditions
 </p>
-<div class="math">$$H_C^{(1)} = - \sum_{x=1}^{N-2} Z_{x-1} X_x Z_{x+1}$$</div>
+<div class="math">$$
+H_C^{(1)} = - \sum_{x=1}^{N-2} Z_{x-1} X_x Z_{x+1}
+$$</div>
 <p>
 the cluster&nbsp;state <span class="math">\(\ket{C^{(1)}}\)</span> is 4-fold degenerate, as can be seen by the fact that it is stabilized&nbsp;by <span class="math">\(N-2\)</span> operators <span class="math">\(K_x\)</span> (<span class="math">\(x=1,\ldots,N-2\)</span>), thus leaving free two qubits. Of course&nbsp;each <span class="math">\(K_x\)</span> is an integral of motion&nbsp;of <span class="math">\(H_C^{(1)}\)</span>. The <a href="/hexa2023.html">spin <span class="math">\(1/2\)</span> chain</a> with the cluster interaction, with open or periodic boundary conditions, is completely integrable, in the sense that it can be transformed into a system of free&nbsp;particles.</p>
 <p>We also find two global&nbsp;symmetries
 </p>
-<div class="math">$$P_e = \prod_{x \in e} X_x, \; P_o = \prod_{x \in o} X_x, \quad e = \{0,2,4, \ldots\}, \; o = \{1,3,5, \ldots\}$$</div>
+<div class="math">$$
+P_e = \prod_{x \in e} X_x, \; P_o = \prod_{x \in o} X_x, \quad e = \{0,2,4, \ldots\}, \; o = \{1,3,5, \ldots\}
+$$</div>
 <p>
 It is easy to verify that reversing the direction of every two spins leaves invariant the system, the two (parity symmetry)&nbsp;operators <span class="math">\(P_{e,o}\)</span> commute with the&nbsp;hamiltonian <span class="math">\(H_C^{(1)}\)</span>. The parity symmetry is associated with&nbsp;the <span class="math">\(\mathbb{Z}_2 \times \mathbb{Z}_2\)</span> group whose generators are&nbsp;precisely <span class="math">\(P_{e,o}\)</span> (for example, the quantum ising model has&nbsp;a <span class="math">\(\mathbb{Z}_2\)</span> symmetry).</p>
 <p>In addition we observe that the&nbsp;operators <span class="math">\(P_{e,o}\)</span> commute&nbsp;with <span class="math">\(K_x\)</span>,&nbsp;however <span class="math">\(\ket{C^{(1)}}\)</span> is not in their eigenstate space, we can therefore view these symmetries as the <em>logical</em> operators of the &#8220;cluster&#8221; code, spanned by the 4-fold degenerated ground state.&nbsp;Indeed,
 </p>
-<div class="math">$$[P_{e,o}, \mathsf{CZ}] = 0, \quad \mathsf{CZ} = \prod_{(x,y) \in E} \mathsf{CZ}(x,y)$$</div>
+<div class="math">$$
+[P_{e,o}, \mathsf{CZ}] = 0, \quad \mathsf{CZ} = \prod_{(x,y) \in E} \mathsf{CZ}(x,y)
+$$</div>
 <p>
 which implies that   <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>
 </p>
-<div class="math">$$\braket{C^{(1)} | P_n | C^{(1)}} = 0,  \; P_n \in \{P_e, P_o, P_eP_o\}$$</div>
+<div class="math">$$
+\braket{C^{(1)} | P_n | C^{(1)}} = 0,  \; P_n \in \{P_e, P_o, P_eP_o\}
+$$</div>
 <p>
 which shows that the four&nbsp;states <span class="math">\(\{\ket{C^{(1)}}, P_n \ket{C^{(1)}}\}\)</span> are orthogonal and therefore span the ground state subspace&nbsp;of <span class="math">\(H^{(1)}_C\)</span>.</p>
 <h2>Entanglement&nbsp;entropy</h2>
 <p>To measure the entanglement of the cluster&nbsp;state <span class="math">\(\eqref{e:C}\)</span>, which is a pure state that can be associated to the time independent&nbsp;hamiltonian <span class="math">\(\eqref{e:H}\)</span>, we may use the von Neumann entropy: we partition the system into two sets of&nbsp;nodes <span class="math">\(x \in A\)</span> and <span class="math">\(x \in B\)</span>, such&nbsp;that <span class="math">\(A \cup B = V\)</span>, and&nbsp;compute
 </p>
-<div class="math">$$S_A = -\Tr \rho_A \log \rho_A, \; \rho_A = \Tr_B \ket{C} \bra{C}$$</div>
+<div class="math">$$
+S_A = -\Tr \rho_A \log \rho_A, \; \rho_A = \Tr_B \ket{C} \bra{C}
+$$</div>
 <p>
 where <span class="math">\(\Tr_B\)</span> is the partial trace over the&nbsp;set <span class="math">\(B\)</span> (<span class="math">\(\log 2 = 1\)</span>). For an isolated system in thermodynamic&nbsp;equilibrium <span class="math">\(\rho_A\)</span> is the microcanonical density matrix, and the entropy is <em>extensive</em>, its value is proportional to the system&#8217;s size&nbsp;(<span class="math">\(|A| = N_A\)</span>, the number of sites in the&nbsp;partition <span class="math">\(A\)</span>). We do not expect for our system, which is in the ground state&nbsp;of <span class="math">\(H_C\)</span>, to satisfy this law. In fact, invoking the third law of thermodynamics (Nernst theorem), we would expect that the entropy of a <em>unique</em> state should be zero: the zero temperature state is dominated by the energy of the system, and the minimum energy configuration is unique. However, it is known that the ground state of some quantum systems can be disordered and therefore have a finite entropy. One example is the Heisenberg antiferromagnet. We show now that the cluster state satisfy an <em>area law</em> for the entanglement entropy: it is proportional to the size of the&nbsp;boundary <span class="math">\(\partial A\)</span> between the two&nbsp;regions.</p>
 <p>The&nbsp;product <span class="math">\(\eqref{e:CK}\)</span> can be transformed into a sum over the whole stabilizer&nbsp;group
 </p>
-<div class="math">$$\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in V} \big(1 + K_x\big) \ket{0}^{|V|} = \frac{1}{2^{|V|/2}} \sum_{K \in \mathcal{S}} K \ket{0}^{|V|},$$</div>
+<div class="math">$$
+\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in V} \big(1 + K_x\big) \ket{0}^{|V|} = \frac{1}{2^{|V|/2}} \sum_{K \in \mathcal{S}} K \ket{0}^{|V|},
+$$</div>
 <p>
 where <span class="math">\(|\mathcal{S}| = 2^{|V|}\)</span>.&nbsp;Each <span class="math">\(K\)</span> is a product of pauli&nbsp;matrices:
 </p>
-<div class="math">$$K = \sigma_0^{b_0} \sigma_1^{b_1} \ldots \sigma_{|V|-1}^{b_{|V|-1|}} = \sigma^b$$</div>
+<div class="math">$$
+K = \sigma_0^{b_0} \sigma_1^{b_1} \ldots \sigma_{|V|-1}^{b_{|V|-1|}} = \sigma^b
+$$</div>
 <p>
 where we introduced the&nbsp;notation <span class="math">\(\sigma_x = 1_2, X, Y, Z\)</span> is one of the pauli matrices (including the identity) of&nbsp;vertex <span class="math">\(x\)</span>, <span class="math">\(\sigma = (\sigma_0, \ldots, \sigma_{|V|-1})\)</span> and  <span class="math">\(b = (b_0, \ldots, b_{|V|-1})\)</span> are vectors of pauli and  binary numbers, and the&nbsp;notation <span class="math">\(\sigma^b\)</span> stands for the kronecker product of paulis each of which to the&nbsp;power <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. Using this notation it is easy to&nbsp;write <span class="math">\(\ket{C}\)</span> as a superposition of terms belonging to different subsets&nbsp;of <span class="math">\(V\)</span>. We also introduce the notion of support of an&nbsp;operator:
 </p>
-<div class="math">$$\mathrm{supp} K = \{x \in V \mid \sigma_x^{b_x} \ne 1_2\}$$</div>
+<div class="math">$$
+\mathrm{supp} K = \{x \in V \mid \sigma_x^{b_x} \ne 1_2\}
+$$</div>
 <p>
 it is then the set of nodes over&nbsp;which <span class="math">\(K\)</span> acts on&nbsp;nontrivially.</p>
 <p>We partition the&nbsp;graph <span class="math">\(G\)</span> into two&nbsp;domains <span class="math">\(A\)</span> and <span class="math">\(B\)</span>. The boundary&nbsp;between <span class="math">\(A\)</span> and <span class="math">\(B\)</span> cut the&nbsp;edges <span class="math">\((x,y)\)</span> with <span class="math">\(x \in A\)</span> and <span class="math">\(y \in B\)</span>. We distinguish among the&nbsp;stabilizers <span class="math">\(K\)</span> those <span class="math">\(K_{A_\circ}\)</span> whose support is entirely&nbsp;within <span class="math">\(A\)</span>, this set of nodes is&nbsp;called <span class="math">\(A_\circ\)</span> (the interior&nbsp;of <span class="math">\(A\)</span>),&nbsp;those <span class="math">\(K_{B_\circ}\)</span>,  equivalently, with support&nbsp;in <span class="math">\(B_\circ\)</span>, and&nbsp;finally <span class="math">\(K_{AB}\)</span> whose support belong to the interface&nbsp;between <span class="math">\(A\)</span> and <span class="math">\(B\)</span>.  We can split the&nbsp;domain <span class="math">\(V\)</span> into three nonoverlapping sets of&nbsp;nodes <span class="math">\(V = A_\circ \cup AB \cup B_\circ\)</span> according to the support&nbsp;of <span class="math">\(K\)</span>. The&nbsp;product <span class="math">\(\eqref{e:CK}\)</span> can then be written as a product of three nonoverlapping sets of&nbsp;nodes <span class="math">\(A_\circ, AB, B_\circ\)</span>:
 </p>
-<div class="math">$$\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in AB} \big(1 + K_x\big) \prod_{x \in A_\circ} (1 + K_x\big) \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|A|} \ket{0}^{|B|}.$$</div>
+<div class="math">$$
+\ket{C} = \frac{1}{2^{|V|/2}} \prod_{x \in AB} \big(1 + K_x\big) \prod_{x \in A_\circ} (1 + K_x\big) \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|A|} \ket{0}^{|B|}.
+$$</div>
 <p>
 Noting that the last two products&nbsp;give
 </p>
-<div class="math">$$\ket{C_{A_\circ}} = \frac{1}{2^{|A_\circ|/2}} \prod_{x \in A} (1 + K_x\big) \ket{0}^{|A|},\quad \ket{C_{B_\circ}} = \frac{1}{2^{|B_\circ|/2}} \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|B|} $$</div>
+<div class="math">$$
+\ket{C_{A_\circ}} = \frac{1}{2^{|A_\circ|/2}} \prod_{x \in A} (1 + K_x\big) \ket{0}^{|A|},\quad \ket{C_{B_\circ}} = \frac{1}{2^{|B_\circ|/2}} \prod_{x \in B_\circ} (1 + K_x\big) \ket{0}^{|B|}
+$$</div>
 <p>
 the cluster states of the&nbsp;subgraphs <span class="math">\(A_\circ\)</span> and <span class="math">\(B_\circ\)</span> we&nbsp;get
 </p>
-<div class="math">$$\ket{C} = \frac{1}{2^{|AB|/2}} \prod_{x \in \partial A} (1 + K_x\big) \ket{C_A} \ket{C_B},$$</div>
+<div class="math">$$
+\ket{C} = \frac{1}{2^{|AB|/2}} \prod_{x \in \partial A} (1 + K_x\big) \ket{C_A} \ket{C_B},
+$$</div>
 <p>
 note the change in the normalization factor: this last product&nbsp;has <span class="math">\(|AB|\)</span> terms, corresponding to the set&nbsp;of <span class="math">\(K_x\)</span> operators with support over nodes adjacent to the interface&nbsp;of <span class="math">\(A\)</span> and <span class="math">\(B\)</span>: the number of edges cut by the interface. Note also&nbsp;that <span class="math">\(\ket{C}\)</span> belongs&nbsp;to <span class="math">\(\mathcal{H}(G)= \mathcal{H}_A \otimes \mathcal{H}_B\)</span> and <span class="math">\(\ket{C_{A_\circ}} \in \mathcal{H}_A\)</span> and <span class="math">\(\ket{C_{B_\circ}} \in \mathcal{H}_B\)</span> are cluster states of open boundary graphs. This last expression is in fact the schmidt decomposition of the cluster state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
-<div class="math">\begin{equation}
+<div class="math">$$
+\begin{equation}
 \label{e:sch}
 \ket{C} = \frac{1}{2^{|AB|/2}} \sum_{K \in \mathcal{S}_{AB}} K \ket{C_A} \ket{C_B} = \frac{1}{2^{|AB|/2}} \sum_{b_A,b_B} \ket{b_A} \ket{b_B},
-\end{equation}</div>
+\end{equation}
+$$</div>
 <p>
 where <span class="math">\(\ket{b_A}\)</span> and <span class="math">\(\ket{b_B}\)</span> are basis vectors&nbsp;of <span class="math">\(\mathcal{H}_A\)</span> and <span class="math">\(\mathcal{H}_B\)</span>, respectively. Their are constructed from&nbsp;the <span class="math">\(K\)</span> operators by separating them into a product of pauli matrices&nbsp;in <span class="math">\(A\)</span> and&nbsp;in <span class="math">\(B\)</span>: <span class="math">\(K = \sigma_A^{b_A} \sigma_B^{b_B}\)</span>.&nbsp;If <span class="math">\(|A|&lt;|B|\)</span> and the rank of the schmidt decomposition&nbsp;is <span class="math">\(|AB| = L\)</span> where <span class="math">\(L\)</span> is the number of nodes&nbsp;in <span class="math">\(A\)</span> with links&nbsp;on <span class="math">\(B\)</span>, namely the&nbsp;boundary <span class="math">\(L = |\partial A|\)</span> of <span class="math">\(A\)</span>.</p>
 <p>As an immediate consequence&nbsp;of <span class="math">\(\eqref{e:sch}\)</span> we obtain the reduced density matrix&nbsp;of <span class="math">\(A\)</span>
 </p>
-<div class="math">$$\rho_A = \frac{1}{2^{L}} 1_L, \; |AB| = |\partial A| = L,$$</div>
+<div class="math">$$
+\rho_A = \frac{1}{2^{L}} 1_L, \; |AB| = |\partial A| = L,
+$$</div>
 <p>
 and thus, the entanglement&nbsp;entropy
 </p>
-<div class="math">$$S_A = L.$$</div>
+<div class="math">$$
+S_A = L.
+$$</div>
 <p>
 This is precisely what the <em>entanglement area law</em> states for the cluster ground&nbsp;state <span class="math">\(\ket{C}\)</span> of the graph hamiltonian&nbsp;system <span class="math">\(H_C(G)\)</span>.</p>
 <h4>Problem</h4>
 <p>Demonstrate that the density matrix associated to the cluster state can be written as a superposition of the&nbsp;stabilizers <span class="math">\(K = \sigma^b\)</span> (in the notation we introduced&nbsp;above)
 </p>
-<div class="math">$$\rho = \ket{C}\bra{C} = \frac{1}{|\mathcal{S}|} \sum_{K \in \mathcal{S}} K, \quad |\mathcal{S}| = 2^{|V|}$$</div>
+<div class="math">$$
+\rho = \ket{C}\bra{C} = \frac{1}{|\mathcal{S}|} \sum_{K \in \mathcal{S}} K, \quad |\mathcal{S}| = 2^{|V|}
+$$</div>
 <p>
 Using this expression show that the reduced density matrix of the&nbsp;subgraph <span class="math">\(A\)</span> is
 </p>
-<div class="math">$$\rho_A = \frac{1}{2^{|A|}} \sum_{K \in \mathcal{S}_A} K, \quad \mathcal{S}_A = \{K \in \mathcal{S} \mid \mathrm{supp}(K) \subseteq A \}.$$</div>
+<div class="math">$$
+\rho_A = \frac{1}{2^{|A|}} \sum_{K \in \mathcal{S}_A} K, \quad \mathcal{S}_A = \{K \in \mathcal{S} \mid \mathrm{supp}(K) \subseteq A \}.
+$$</div>
 <p>
 Explain&nbsp;why <span class="math">\(2^{|A|} \ne |\mathcal{S}_A|\)</span> in general, and compute the square&nbsp;of <span class="math">\(\rho_A\)</span>:
 </p>
-<div class="math">$$\rho_A^2 = \frac{|\mathcal{S}_A|}{2^{|A|}} \rho_A.$$</div>
+<div class="math">$$
+\rho_A^2 = \frac{|\mathcal{S}_A|}{2^{|A|}} \rho_A.
+$$</div>
 <p>
 Deduce from this result the entanglement&nbsp;entropy:
 </p>
-<div class="math">$$S_A = -\log\frac{|\mathcal{S}_A|}{2^{|A|}},$$</div>
+<div class="math">$$
+S_A = -\log\frac{|\mathcal{S}_A|}{2^{|A|}},
+$$</div>
 <p>
 compare with the result in the main&nbsp;text.</p>
+<h2>Practicum: Cluster entanglement in a random&nbsp;graph</h2>
+<p>In this workshop we analyze the entanglement of graph states. The idea is to start with a set of qubits sitting on the vertices of a cycle graph in the cluster state (one-dimensional periodic lattice), and progressively add random edges bearing an &#8220;ancilla&#8221; qubit. For each new edge we modify the system&#8217;s state using a toffoli gate with controls on the cluster vertices and target on the ancilla. Once the &#8220;growing&#8221; steps ended, we complete the cycle by measuring the added ancilla qubits. At each step of the adding and removing edge, forming a growing-shrinking cycle, we monitor the entanglement entropy of the cluster&nbsp;set.</p>
+<p>The hilbert space of the system evolves at each step: its dimension increases or decreases according to the addition or removing of ancilla qubits. It is composed by&nbsp;the <span class="math">\(N\)</span> cluster qubits (the&nbsp;set <span class="math">\(\mathcal{C}\)</span>), and of a variable number of ancilla qubits siting in the&nbsp;edges <span class="math">\(A \in \mathcal{A}\)</span>, the ancilla set. The computation involves then two registers, the cluster register (whose geometry is fixed) and the variable ancilla&nbsp;register.</p>
+<ul>
+<li>
+<p>Create a cyclic&nbsp;graph <span class="math">\(\mathcal{C} = (V,E)\)</span> (vertex <span class="math">\(V\)</span> and&nbsp;edges <span class="math">\(E\)</span>), the cluster set. The hilbert space of the cluster set is composed by&nbsp;the <span class="math">\(N\)</span> qubits defined on the&nbsp;vertices <span class="math">\(V \in \mathcal{C}\)</span>.</p>
+</li>
+<li>
+<p>Initialize the system in the cluster&nbsp;state <span class="math">\(\ket{C}\)</span>,
+    <div class="math">$$
+    \ket{C} = \prod_{e \in E} \mathsf{CZ}(e) \ket{+}^N
+    $$</div> 
+    where <span class="math">\(\mathsf{CZ}(e)\)</span> is the&nbsp;control-<span class="math">\(Z\)</span> gate with&nbsp;control <span class="math">\(x\)</span> and&nbsp;target <span class="math">\(y\)</span>, <span class="math">\((x,y)=e \in E\)</span>,&nbsp;where <span class="math">\(\ket{+}\)</span> is the eigenvector&nbsp;of <span class="math">\(X\)</span> with eigenvalue&nbsp;1.</p>
+</li>
+<li>
+<p>Initialize the ancilla&nbsp;set <span class="math">\(\mathcal{A}\)</span> as an empty list, and prepare a list to stock the entanglement entropy of the cluster&nbsp;set
+    <div class="math">$$
+    S = - \mathrm{tr} \rho_C \log \rho_C, \quad \rho_C = \mathrm{tr}_{\bar{C}} \ket{\psi}\bra{\psi}
+    $$</div>
+    where <span class="math">\(\ket{\psi}\)</span> is the actual pure state of the graph&nbsp;and <span class="math">\(C\)</span> is the set of half the cluster subsystem, of&nbsp;dimension <span class="math">\(|C|=N/2\)</span>.</p>
+</li>
+<li>
+<p>Start the graph&nbsp;dynamics: </p>
+<ul>
+<li>
+<p>For <span class="math">\(N/2\)</span> steps, add an edge with an ancilla qubit in the up&nbsp;state <span class="math">\(\ket{a} = \ket{0}\)</span>, and apply to it the toffoli&nbsp;gate: <span class="math">\(\mathsf{TOF}(e,a)\)</span>, where the two controls are&nbsp;vertices <span class="math">\(e \in V\)</span> and the target is the ancilla&nbsp;qubit <span class="math">\(a \in A\)</span>. apply to it the toffoli gate;&nbsp;compute <span class="math">\(S\)</span>. Keep the degree of the&nbsp;graph <span class="math">\(d \le 3\)</span>, such that the maximum number of edges&nbsp;is <span class="math">\(N/2\)</span> (<span class="math">\(N\)</span> even)</p>
+</li>
+<li>
+<p>For <span class="math">\(N/2\)</span> steps, measure an edge and remove it;&nbsp;compute <span class="math">\(S\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>                       <span class="c1"># T number of cycles</span>
+    <span class="c1"># add egdes</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>                   <span class="c1"># L maximum number of ancillas (N/2)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">add_e</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>                     <span class="c1"># add edge function</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">graph_state</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>           <span class="c1"># compute the new state (toffoli)</span>
+        <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entropy_L</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>    <span class="c1"># monitor the entropy</span>
+    <span class="c1"># remove edges</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>                         <span class="c1"># keep the ancilla graph to plot</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                 <span class="c1"># last qubit</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">down</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="c1"># project the state (measurment)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                       <span class="c1"># remove the last edge</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entropy_L</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>    <span class="c1"># monitor the entropy</span>
+</code></pre></div>
+
+<ul>
+<li>Plot <span class="math">\(S(t)\)</span>,&nbsp;where <span class="math">\(t\)</span> is the step number, and the&nbsp;graph <span class="math">\(G = \mathcal{C} \cup \mathcal{A}\)</span> when the number of qubits is&nbsp;maximum.</li>
+</ul>
+<blockquote>
+<p><img src="/images/AQ-tp_clusterG.svg" alt="random graph of degree 3" style="height: 250px;"/> <img src="/images/AQ-tp_cluster.svg" alt="entropy of the graph state" style="height: 250px;"/></p>
+<p>Graph with the cluster nodes (on the circumference) and the ancilla edges (inside the circle) and entanglement entropy for four add-remove edge cycles. At the cycle maximum the dimension of the hilbert space&nbsp;is <span class="math">\(2^{24}=16\,777\,216\)</span>.</p>
+</blockquote>
 <h2>Notes</h2>
 <ul>
 <li>
@@ -287,6 +432,14 @@ compare with the result in the main&nbsp;text.</p>
 <p><a href="https://arxiv.org/abs/1208.0041">Raussendorf and Wei (2012)</a> discuss the role of cluster states in the measurement based quantum computation, with some emphasis in entanglement as a&nbsp;resource.</p>
 </li>
 </ul>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:KI">
+<p>Kitaev, A., Laumann, C., <em>Topological phases and quantum computation, in: Exact Methods in Low-Dimensional Statistical Physics and Quantum Computing</em>, Lecture Notes of the Les Houches Summer School. <span class="caps">OUP</span> Oxford, p. 101 (2010) <a href="https://arxiv.org/abs/0904.2771">arXiv</a>&#160;<a class="footnote-backref" href="#fnref:KI" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

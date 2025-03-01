@@ -62,37 +62,69 @@
 <blockquote>
 <p>&#8230;the physical world is quantum mechanical, and therefore the proper problem is the simulation of quantum physics<sup id="fnref2:FY"><a class="footnote-ref" href="#fn:FY">1</a></sup></p>
 </blockquote>
-<h1>Grover&nbsp;search</h1>
-<p>Classical search&nbsp;algorithm; <span class="math">\(f(x) = 1\)</span> if <span class="math">\(x = x_0\)</span> and zero&nbsp;otherwise:</p>
+<p>The discovery by Shor (1994)<sup id="fnref:S4"><a class="footnote-ref" href="#fn:S4">3</a></sup> of a <em>quantum</em> algorithm that can factor large integers in a time which is polynomial in the number of digits, triggered interest in the whole new domain of quantum computing. In this section we discuss quantum algorithms, using the circuit model of computation, which show some of the basic ingredients allowing quantum computers to solve hard classical&nbsp;problems.</p>
+<h2>Grover&nbsp;search</h2>
+<p>Searching for an item in a unstructured data base is&nbsp;a <span class="math">\(O(N)\)</span> task,&nbsp;if <span class="math">\(N\)</span> is the number of items. However, Grover (1996) found that using a quantum computer, finding an item&nbsp;among <span class="math">\(N\)</span> can be done&nbsp;in <span class="math">\(O(\sqrt{N})\)</span> steps. The square speedup results from quantum interference: the algorithm uses amplitude amplification to reinforce the probability of the searched&nbsp;item.</p>
+<p>Let start with the classical search algorithm. Instead of searching for the data base item, we label each item with an&nbsp;integer <span class="math">\(x=1, \ldots, N\)</span>. To certify&nbsp;that <span class="math">\(x\)</span> correspond to the label that we are searching&nbsp;for, <span class="math">\(x_0\)</span> say, we define an <em>oracle</em>, a boolean function which&nbsp;is <span class="math">\(f(x) = 1\)</span> if <span class="math">\(x = x_0\)</span> and zero otherwise. Therefore, the search can be implemented as in the&nbsp;(psudo)code:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">input</span><span class="p">:</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">x</span>
 </code></pre></div>
 
-<p>Quantum oracle unitary&nbsp;operator <span class="math">\(O\ket{x} \otimes \ket{y} = \ket{x} \otimes \ket{y \oplus f(x)}\)</span></p>
-<p>Quantum amplification: apply the reflection&nbsp;operator
+<p>it uses a loop of&nbsp;length <span class="math">\(N\)</span>, meaning that we need&nbsp;about <span class="math">\(N\)</span> oracle evaluations to&nbsp;find <span class="math">\(x_0\)</span>.</p>
+<p>To search using quantum states we need two qubit registers, one addressing the data, the labels are encoded in a quantum&nbsp;state <span class="math">\(\ket{x}\)</span>, and a single qubit register, the ancilla to apply the oracle. The quantum algorithm replaces the classical oracle by a unitary operator, to test if the data state corresponds to the searched&nbsp;item, 
 </p>
 <div class="math">$$
-R = (1 - \ket{s} \bra{s}) \otimes 1_2
+O\ket{x} \otimes \ket{a} = \ket{x} \otimes \ket{a \oplus f(x)}, \quad \ket{x} \in \mathcal{H}, \;\ket{a} \in \mathcal{H}_A
+$$</div>
+<p>
+(<span class="math">\(\mathcal{H}\)</span> is the data space,&nbsp;and <span class="math">\(\mathcal{H}_A\)</span> is the ancilla space) which modifies the ancilla qubit according to the state of the data register (control) <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+O \ket{x} \ket{-} = (-1)^{f(x)} \ket{x}\ket{-},
+$$</div>
+<p>
+it marks&nbsp;the <span class="math">\(x_0\)</span> state with a&nbsp;phase <span class="math">\(\pi\)</span>. It is just this amplitude that, in the superposition state, is amplified. (See an example of oracle&nbsp;below.)</p>
+<p>The quantum amplification is effectively obtained by applying, after the oracle, the reflection&nbsp;operator
+</p>
+<div class="math">$$
+R = (2\ket{s} \bra{s} - 1_N) \otimes 1_2
 $$</div>
 <p>
 where <span class="math">\(\ket{s} = H^{\otimes N} \ket{0}\)</span> is the uniform amplitude global superposition&nbsp;state:
 </p>
 <div class="math">$$
-\ket{s} = \frac{1}{2^{N/2}} \sum_{n=0}^{2^N - 1} \ket{n}
+\ket{s} = \frac{1}{2^{N/2}} \sum_{n=0}^{2^N - 1} \ket{n}.
 $$</div>
-<p>The Grover operator&nbsp;is <span class="math">\(G = RO\)</span></p>
-<p>Initialize the ancilla register in the&nbsp;state <span class="math">\(\ket{-}\)</span></p>
-<div class="highlight"><pre><span></span><code><span class="nb">input</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">initialize</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">ancilla</span> <span class="n">registers</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">state</span> <span class="o">|</span><span class="n">s</span><span class="o">&gt;</span> <span class="o">|-&gt;</span>
+<p>
+The Grover operator&nbsp;is <span class="math">\(G = RO\)</span> is the composition of the two <em>reflections</em> acting on the data register (the ancilla state do not change, it&nbsp;always <span class="math">\(\ket{-}\)</span>) <span class="math">\(O\)</span>, implements a reflection about an axis orthogonal&nbsp;to <span class="math">\(\ket{x_0}\)</span>,&nbsp;and <span class="math">\(R\)</span>, another reflection about the&nbsp;axis <span class="math">\(\ket{s}\)</span> of the uniform state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>. Two reflections are equivalent to a rotation: at each iteration&nbsp;of <span class="math">\(G\)</span> rotates the state to &#8220;approach&#8221; the state labeled&nbsp;by <span class="math">\(x_0\)</span>; the rotation angle depends on the value&nbsp;of <span class="math">\(\braket{x_0|s}\)</span>, the angle between the searched item and the uniform state. The optimal number of iterations is <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+T = \frac{\pi}{2} \sqrt{N};
+$$</div>
+<p>
+at this &#8220;time&#8221; the probability to&nbsp;get <span class="math">\(x = x_0\)</span> approaches&nbsp;1.</p>
+<p>Quantum&nbsp;algorithm: </p>
+<ul>
+<li>input: <span class="math">\(N\)</span>, <span class="math">\(f(x)\)</span></li>
+<li>intialize the data and ancilla registers in the&nbsp;state <span class="math">\(\ket{0}^{\otimes N} \otimes \ket{-}\)</span></li>
+<li>apply <span class="math">\(H^{\otimes N}\)</span> to the data register, the state&nbsp;is <span class="math">\(\ket{\psi} = \ket{s}\ket{-}\)</span></li>
+<li>iterate <span class="math">\(G\)</span>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">psi</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span> <span class="c1"># T approx pi/2 sqrt(N)</span>
-    <span class="n">apply</span> <span class="n">G</span> <span class="n">to</span> <span class="n">state</span> <span class="c1"># U = O R the Grover operator</span>
-
-<span class="n">measure</span> <span class="n">the</span> <span class="n">ancilla</span> <span class="n">qubit</span>
-<span class="n">project</span> <span class="n">the</span> <span class="n">state</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">answer</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">psi</span> <span class="c1"># apply G to the total state </span>
 </code></pre></div>
 
+<ul>
+<li>measure the state register to get the&nbsp;answer</li>
+</ul>
+<p>Note that the oracle is&nbsp;applied <span class="math">\(T \sim O(\sqrt{N})\)</span>, leading to a quadratic speedup with respect to the classical algorithm.<sup id="fnref:I"><a class="footnote-ref" href="#fn:I">4</a></sup> </p>
+<blockquote>
+<p><img src="/images/AQ-cgrover.svg" alt="grover search" style="width: 120px;"/></p>
+<p>Example of a circuit implementing the oracle operator to identify the&nbsp;item <span class="math">\(x_0 = 6 = 110\)</span>: the output state is marked by&nbsp;a <span class="math">\(-1 = \E^{\I \pi}\)</span> phase.</p>
+</blockquote>
 <h2>Fourier transform and phase&nbsp;estimation</h2>
 <p>The classical fourier transform has an inverse: applying the transform to a function and then applying its inverse, lead to the identity; the fact that the inverse is related to the complex conjugate of the direct transformation, naturally leads to the observation that the fourier transformation can be seen as a <em>unitary</em> operator. The quantum algorithm is simply an implementation of this unitary operator acting on a space of&nbsp;dimension <span class="math">\(2^N\)</span>, as a circuit of one and two qubits&nbsp;gates.</p>
 <p>Let us start with the fourier transform of the basis states. We denote a basis state of&nbsp;the <span class="math">\(N\)</span> qubits hilbert&nbsp;space,
@@ -192,7 +224,7 @@ where <span class="math">\(\ket{\theta}\)</span> is a <em>known</em> eigenvector
 <blockquote>
 <p><img src="/images/AQ-cphase.svg" alt="fft phase" style="width: 550px;"/></p>
 </blockquote>
-<p>implements the first part of the algorithm (Cleve et alia, 1998)<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">3</a></sup>. One register, whose input&nbsp;is <span class="math">\(\ket{\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an &#8220;index&#8221; register&nbsp;of <span class="math">\(N\)</span> ancilla qubits, used as controls of&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to get the&nbsp;eigenvalue <span class="math">\(\bar{\theta} \approx \theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bits precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+<p>implements the first part of the algorithm (Cleve et alia, 1998)<sup id="fnref:C"><a class="footnote-ref" href="#fn:C">5</a></sup>. One register, whose input&nbsp;is <span class="math">\(\ket{\theta}\)</span>, is used to compute the&nbsp;iterates <span class="math">\(U^{2^n}\)</span> (<span class="math">\(n=0,\ldots,N-1\)</span>) which do not modify the eigenstate, and an &#8220;index&#8221; register&nbsp;of <span class="math">\(N\)</span> ancilla qubits, used as controls of&nbsp;the <span class="math">\(U\)</span> iterates; the value&nbsp;of <span class="math">\(N\)</span> is chosen in order to get the&nbsp;eigenvalue <span class="math">\(\bar{\theta} \approx \theta\)</span> with&nbsp;a <span class="math">\(N\)</span> bits precision. The state obtained after the circuit application corresponds to the fourier transform of the state <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
 </p>
 <div class="math">$$
 \ket{2^N \theta} \ket{\theta} = \frac{1}{2^{N/2}} \sum_{k=0}^{2^N - 1} \E^{2\pi \I \theta k} \ket{k} \ket{\theta} .
@@ -211,7 +243,7 @@ $$</div>
 <p>
 The expression in brackets is picked&nbsp;at <span class="math">\(\theta \approx s/2^N = \bar{\theta}\)</span> (where <span class="math">\(\bar{\theta}\)</span> is a binary string), therefore, after this inverse transformation, measurement of the ancilla qubits gives&nbsp;us <span class="math">\(s\)</span>,&nbsp;a <span class="math">\(N\)</span> bit approximation&nbsp;of <span class="math">\(\theta\)</span>.</p>
 <h3>Eigenvectors and eigenvalues&nbsp;finding</h3>
-<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">4</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{2\pi\I \theta_k}\)</span>. They assumed an initial&nbsp;state <span class="math">\(\ket{\bar{\theta}}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\theta}\)</span>; this means that the&nbsp;expansion
+<p>An influential paper of Abrams and Lloyd<sup id="fnref:L"><a class="footnote-ref" href="#fn:L">6</a></sup> adapted the phase estimation algorithm to calculate the&nbsp;eigenvector <span class="math">\(\ket{\theta_k}\)</span> of <span class="math">\(U\)</span> and its&nbsp;eigenvalue <span class="math">\(\E^{2\pi\I \theta_k}\)</span>. They assumed an initial&nbsp;state <span class="math">\(\ket{\bar{\theta}}\)</span> possessing a substantial overlap with the true&nbsp;eigenvector <span class="math">\(\ket{\theta}\)</span>; this means that the&nbsp;expansion
 </p>
 <div class="math">$$
 \ket{\bar{\theta}} = \sum_k a_k \ket{k}, \quad U \ket{k} = \E^{2\pi\I \theta_k} \ket{k},
@@ -352,14 +384,22 @@ using the phase estimation&nbsp;algorithm.</p>
 <hr>
 <ol>
 <li id="fn:FY">
-<p>Feynman, Richard P. <em>Simulating Physics with Computers</em>. <a href="https://doi.org/10.1007/BF02650179">Inter. J. Theor. Phys. <strong>21</strong> 467 (1982)</a>&#160;<a class="footnote-backref" href="#fnref:FY" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:FY" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Feynman, Richard P. <em>Simulating Physics with Computers</em>. Inter. J. Theor. Phys. <strong>21</strong> 467 (1982) <a href="https://doi.org/10.1007/BF02650179"><span class="caps">DOI</span></a>&#160;<a class="footnote-backref" href="#fnref:FY" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:FY" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:DE"></li>
+<li id="fn:DE">
+<p>Deutsch, D. <em>Quantum Theory, the Church-Turing Principle and the Universal Quantum Computer</em>. Proceedings of the Royal Society of London A: Mathematical, Physical and Engineering Sciences 400, 97-117 (1985) <a href="https://doi.org/10.1098/rspa.1985.0070"><span class="caps">DOI</span></a>&#160;<a class="footnote-backref" href="#fnref:DE" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:S4">
+<p>Shor, <span class="caps">P. W.</span> <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em>. In Foundations of Computer Science, 1994 Proceedings., 35th Annual Symposium On, 124-34 (1994) <a href="https://doi.org/10.1109/SFCS.1994.365700"><span class="caps">DOI</span></a>&#160;<a class="footnote-backref" href="#fnref:S4" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:I">
+<p>An implementation of the Grover algorithm to a real quantum computer can be found in the <a href="https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/grovers-algorithm"><span class="caps">IBM</span> <code>qiskit</code> site</a> by John Watrous.&#160;<a class="footnote-backref" href="#fnref:I" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
 <li id="fn:C">
-<p>Cleve et al. <em>Quantum algorithms revisited,</em> Proc. R. Soc. Lond. A <strong>454</strong>, 339 (1998) <a href="/pdfs/Cleve-1998.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:C" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>Cleve et al. <em>Quantum algorithms revisited,</em> Proc. R. Soc. Lond. A <strong>454</strong>, 339 (1998) <a href="/pdfs/Cleve-1998.pdf">.pdf</a>&#160;<a class="footnote-backref" href="#fnref:C" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:L">
-<p>Abrams, D., and Lloyd, S., <em>Quantum algorithm providing exponential speed increase for finding eigenvalues and eigenvectors,</em> Phys. Rev. Lett. <strong>83</strong>, 5162 (1999)&#160;<a class="footnote-backref" href="#fnref:L" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>Abrams, D., and Lloyd, S., <em>Quantum algorithm providing exponential speed increase for finding eigenvalues and eigenvectors,</em> Phys. Rev. Lett. <strong>83</strong>, 5162 (1999) <a href="https://doi.org/10.1103/PhysRevLett.83.5162"><span class="caps">DOI</span></a>&#160;<a class="footnote-backref" href="#fnref:L" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
