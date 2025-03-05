@@ -289,10 +289,26 @@ We observe that, up to one qubit rotations, the interaction between the two qubi
 </li>
 </ol>
 <h3>Practicum</h3>
-<h4><span class="caps">CNOT</span> tensor&nbsp;gate</h4>
+<h4>One and controlled gates using&nbsp;tensors</h4>
+<p>A convenient approach to code quantum circuits is to exploit the tensor structure of the underlying Hilbert space&nbsp;of <span class="math">\(N\)</span> qubits. For example, if the&nbsp;state <span class="math">\(\ket{\mathrm{state}}\)</span> of a system is defined as&nbsp;an <span class="math">\(N\)</span>-tensor (a tensor&nbsp;with <span class="math">\(N\)</span> indices), applying a&nbsp;gate <span class="math">\(G\)</span> can be implemented using&nbsp;the <code>tensordot</code> numpy&nbsp;routine:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gate_x</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;apply G to state at qubit x&quot;&quot;&quot;</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">gate</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+
+<p>or for a controlled&nbsp;gate:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ctrl_xy</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">CG</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;control-gate CG applied to &quot;state&quot; using the (x,y) as control and target</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">gate</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Explain with an example the functioning of this routines; you may try to write a circuit to build the&nbsp;Greenberger–Horne–Zeilinger <span class="math">\(\ket{\mathrm{GHZ}}\)</span> state.</p>
 <ol>
 <li>Define python routines to apply the kronecker product to a list of arrays. Use the&nbsp;method <code>reduce</code> of&nbsp;the <code>functools</code> python&nbsp;module.</li>
-<li>Use the&nbsp;numpy <code>tensordot</code> to apply a one qubit gate to a&nbsp;general <span class="math">\(N\)</span>-qubit state. The same for the two qubit <span class="caps">CNOT</span> gate applied to control and target qubits. To keep the original shape of the state (a vector) move conveniently the axes&nbsp;using <code>moveaxis</code> and <code>ravel</code> methods.</li>
+<li>Use the&nbsp;numpy <code>tensordot</code> to apply a one qubit gate to a&nbsp;general <span class="math">\(N\)</span>-qubit state. The same for the two qubit <span class="caps">CNOT</span> gate applied to control and target qubits. To keep the original shape of the state (a tensor) move conveniently the axes&nbsp;using <code>moveaxis</code>. If you use a vector to represent the quantum state,&nbsp;use <code>reshape</code> and <code>ravel</code> methods to apply the tensor&nbsp;gates.</li>
 <li>
 <p>The Born rule predicts the output of a measurement of, say, the up state of the qubit&nbsp;number <span class="math">\(n\)</span> belonging to a general state&nbsp;of <span class="math">\(N\)</span> qubits, with a probability given by the square of the corresponding&nbsp;amplitude <span class="math">\(|\braket{0|\psi_n}|^2\)</span>,&nbsp;where <span class="math">\(\ket{\psi_n} = P_0^{(n)}\ket{\psi}\)</span>,&nbsp;and <span class="math">\(P_0^{(n)} = \ldots 1_2 \otimes \ket{0}\bra{0}\otimes 1_2 \ldots\)</span> is the projector over the up state of&nbsp;the <span class="math">\(n\)</span> qubit.</p>
 <p>Write a python routine to predict the&nbsp;state <span class="math">\(\ket{\mathrm{out}}\)</span>, after a measurement in&nbsp;the <span class="math">\(Z\)</span> basis, of one qubit of a&nbsp;state <span class="math">\(\ket{\psi}\)</span> of arbitrary size, in accordance with the Born prescription. You need to sample the result with the Born probability to find up or&nbsp;down.</p>
