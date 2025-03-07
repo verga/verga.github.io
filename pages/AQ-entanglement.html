@@ -117,10 +117,11 @@ is the corresponding state&nbsp;of <span class="math">\(AB\)</span>. In a simila
 \rho_{AB} = \sum_n p_n \rho_n^A \otimes \rho_n^B
 $$</div>
 <p>
-is <em>separable</em>, and its state is said to be disentangled. A separable state contains only classical correlations between it two parts. Consider the case of two&nbsp;quibts <span class="math">\(AB\)</span> state:
+is <em>separable</em>, and its state is said to be disentangled. A separable state contains, in general, only classical correlations betweens its two parts, in the sense that they do not provide a quantum advantage for quantum&nbsp;computing.</p>
+<p>Consider the case of two&nbsp;qubits <span class="math">\(AB\)</span> Bell&nbsp;state:
 </p>
 <div class="math">$$
-\rho_e = \ket{\Phi_+} \bra{\Phi_+}
+\rho_e = \ket{\Phi_+} \bra{\Phi_+},
 $$</div>
 <p>
 which is a fully entangled pure state, and the mixed state formed by two Bell&nbsp;states:
@@ -135,7 +136,32 @@ which, at variance&nbsp;to <span class="math">\(\rho_e\)</span>, is disentangled
 \rho_d = \frac{1}{2} \ket{00}\bra{00} + \frac{1}{2} \ket{11}\bra{11}\,,
 $$</div>
 <p>
-resulting in a state without quantum correlations between A and B. In fact, any equal mixture of maximally entangled states is separable. A remark is in order, the entanglement entropy of a separable&nbsp;state <span class="math">\(S(\rho)\)</span>, thought as a subsystem of a pure state whole system, is not zero: it is the entanglement between its two parts, entanglement that cannot be measured by the von Neumann entropy, which vanishes. A suitable measure of a partition of a mixed state is the <em>negativity</em>, we define&nbsp;below. </p>
+resulting in a state without quantum correlations between A and B. In fact, any equal mixture of maximally entangled states is separable. A remark is in order, the entanglement entropy of a separable&nbsp;state <span class="math">\(S(\rho)\)</span>, thought as a subsystem of a pure state whole system, is not zero: it is the entanglement between its two parts, entanglement that cannot be measured by the von Neumann entropy, which vanishes. A suitable measure of a partition of a mixed state is the <em>negativity</em>, we define&nbsp;below.</p>
+<p>It is easy to show that, for a separable&nbsp;state,
+</p>
+<div class="math">$$
+\rho_A = \Tr_B \rho_d = \sum_n p_n \rho^A_n, \quad \rho_B = \Tr_A \rho_d = \sum_n p_n \rho^B_n,
+$$</div>
+<p>
+are the states&nbsp;of <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, respectively. For the case of the two maximally entangled states, we obatqin <strong style="color:DarkSlateBlue; background-color:LightGray;"><span class="caps">EX</span></strong>:
+</p>
+<div class="math">$$
+S(\rho_d) = 2, \; S_A = 2, \text{ and } S_B = 2,
+$$</div>
+<p>
+which is a particular case showing the subadditivity property of the&nbsp;entropy:
+</p>
+<div class="math">$$
+S(\rho_{AB}) \le S(\rho_A) + S(\rho_B).
+$$</div>
+<p>
+The difference of these two&nbsp;combinations <span class="math">\(AB\)</span>,&nbsp;and <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, defines the <em>mutual&nbsp;information</em>
+</p>
+<div class="math">$$
+I(A:B) = S_A + S_B - S_{AB} \ge 0,
+$$</div>
+<p>
+which is always positive, and measure the amount of information&nbsp;on <span class="math">\(B\)</span> we can gain knowing the&nbsp;state <span class="math">\(A\)</span>, or vice-versa. We obtain, in the&nbsp;example, <span class="math">\(I = 2 = S_B\)</span>, which coincides with the classical limit (the classical mutual information cannot excedd the Shannon entropy of one of its parts). We verity that, for a pure state, the maximum&nbsp;is <span class="math">\(I = 2S_A\)</span>.</p>
 <p>A necessary condition for a&nbsp;state <span class="math">\(\rho \in \mathcal{H}_A \otimes \mathcal{H}_B\)</span> to be separable, is the positive partial transpose or Peres&nbsp;criterion:
 </p>
 <div class="math">$$
