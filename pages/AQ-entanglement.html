@@ -59,24 +59,62 @@
 </blockquote>
 <h1>Entanglement&nbsp;measures</h1>
 <h2>von Neumann&nbsp;entropy</h2>
-<p>A composite system in a pure state is disentangled if it can be factored into a product of&nbsp;states:
+<p>A composite system in a pure state is entangled if it cannot be factored into a product of states: a state such&nbsp;as <span class="math">\(\ket{\psi}\)</span>,&nbsp;satisfying
 </p>
 <div class="math">$$
-\ket{\psi} = \ket{\psi_1}\ket{\psi_2} \ldots, \quad \ket{\psi}\in \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \ldots
+\ket{\psi} = \ket{\psi_1}\otimes\ket{\psi_2}\otimes \ldots \in \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \ldots, \; \ket{\psi_n} \in \mathcal{H}_n,
 $$</div>
 <p>
-and <span class="math">\(\ket{\psi_n} \in \mathcal{H}_n\)</span>.</p>
-<p>The von Neumann&nbsp;entropy <span class="math">\(S(\rho)\)</span> of a&nbsp;state <span class="math">\(\rho\)</span> is a measure of entanglement of a subsystem belonging to a system in a pure state, whose reduced density matrix is&nbsp;precisely <span class="math">\(\rho\)</span>;&nbsp;if <span class="math">\(p_1, p_2, \ldots\)</span> is a set of eigenvalues&nbsp;of <span class="math">\(\rho\)</span>,&nbsp;then <span class="math">\(S\)</span> coincides with the Shannon entropy of the&nbsp;distribution <span class="math">\(p_n\)</span>:
+is thus disentangled (a tensor product&nbsp;state). </p>
+<p>The von Neumann&nbsp;entropy
 </p>
 <div class="math">$$
-S(\rho) = -\sum_n p_n \log p_n\,.
+S(\rho_A) = - \Tr \rho_A \log\rho_A,
 $$</div>
 <p>
-The &#8220;neumann&#8221; entropy accounts then for the entanglement of a pure bipartite state,&nbsp;and <span class="math">\(p_n\)</span> are the schmidt decomposition coefficients (see the <a href="/pages/AQ-qubit.html">qubit lecture</a>). Note that the neumann entropy is not a good measure of the entanglement of a mixed state; for instance, the reduced density matrices of&nbsp;qubit <span class="math">\(A\)</span> corresponding to the&nbsp;states <span class="math">\(\rho_e\)</span> and <span class="math">\(\rho_d\)</span> are the same, but one is entangled and the other not. For general (bipartite) mixed states one must distinguish the contribution of classical correlation from the quantum&nbsp;ones.</p>
+of a&nbsp;state <span class="math">\(\rho_A \in \mathcal{H}_A\)</span>, is a measure of the entanglement of a&nbsp;subsystem <span class="math">\(A\)</span> belonging to a&nbsp;system <span class="math">\(AB\)</span> (bipartition of the whole system as in the figure below) in a pure&nbsp;state,
+</p>
+<div class="math">$$
+\ket{\psi} \in \mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B,
+$$</div>
+<p>
+whose reduced density matrix is&nbsp;precisely
+</p>
+<div class="math">$$
+\rho_A = \Tr_B \ket{\psi}\bra{\psi}.
+$$</div>
+<p>
+If <span class="math">\(p_1, p_2, \ldots\)</span> is the set of eigenvalues&nbsp;of <span class="math">\(\rho_A\)</span>,&nbsp;then <span class="math">\(S_A = S(\rho_A)\)</span> can be written in the familiar&nbsp;form
+</p>
+<div class="math">$$
+S_A = -\sum_n p_n \log p_n\,.
+$$</div>
+<p>
+which <em>formally</em> coincides with the classical Shannon entropy associated to the probability&nbsp;distribution <span class="math">\(p_n\)</span> (in quantum systems, the&nbsp;set <span class="math">\(p_n\)</span> is the spectrum of the state). The &#8220;neumann&#8221; entropy accounts then for the entanglement of a pure bipartite state,&nbsp;and <span class="math">\(p_n\)</span> are the schmidt decomposition coefficients&nbsp;of <span class="math">\(\ket{\psi} = \ket{\psi_{AB}}\)</span> (see the <a href="/pages/AQ-qubit.html">qubit lecture</a>).</p>
 <blockquote>
 <p><img src="/images/AQ-rhoAB.svg" alt="rho AB" style="height: 200px;"/></p>
+<p>The von Neumann entropy is a measure of the entanglement between two&nbsp;parts <span class="math">\(A\)</span> and <span class="math">\(B\)</span> of a&nbsp;system <span class="math">\(AB\)</span> in a pure&nbsp;state <span class="math">\(\ket{\psi}\)</span>.</p>
 </blockquote>
-<p>The neumann entropy fulfills a set of requirements that any entanglement&nbsp;measure <span class="math">\(Q\)</span> should&nbsp;satisfy:</p>
+<p>A simple example of an entangled state is the Bell&nbsp;state
+</p>
+<div class="math">$$
+\ket{\Psi_-} = \frac{\ket{01} - \ket{10}}{\sqrt{2}},
+$$</div>
+<p>
+of two qubits. The reduced density matrix of the first&nbsp;qubit <span class="math">\(A\)</span>, is readily&nbsp;computed
+</p>
+<div class="math">$$
+\rho_A =  \frac{1}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}, \quad p_0, p_1 = \frac{1}{2},
+$$</div>
+<p>
+leading&nbsp;to 
+</p>
+<div class="math">$$
+S_A = 1,
+$$</div>
+<p>
+the maximum possible value of the two qubit entanglement entropy: Bell states are maximally&nbsp;entangled.</p>
+<p>The neumann entropy is a faithful measure of the entanglement of bipartite pure states. More generally, any&nbsp;quantity <span class="math">\(Q\)</span> should satisfy a set of requirements to be a convenient entanglement&nbsp;measure:</p>
 <ul>
 <li>For pure&nbsp;states <span class="math">\(\rho = \ket{\psi} \bra{\psi}\)</span>, the entanglement measure is the von Neumann&nbsp;entropy 
     <div class="math">$$
@@ -84,35 +122,27 @@ The &#8220;neumann&#8221; entropy accounts then for the entanglement of a pure b
     $$</div>
     with <span class="math">\(\rho_A\)</span> the reduced density matrix of&nbsp;part <span class="math">\(A\)</span>.</li>
 <li>A separable&nbsp;state <span class="math">\(\rho_d\)</span> has zero&nbsp;entanglement <span class="math">\(Q(\rho_d) = 0\)</span>.</li>
-<li>The entanglement of independent&nbsp;systems <span class="math">\(\rho = \rho_A \otimes \rho_B\)</span> is&nbsp;additive 
+<li>Local measurements cannot increase the average entanglement.&nbsp;If
     <div class="math">$$
-    Q(\rho) = Q(\rho_A) + Q(\rho_B)\,.
+    \rho_M = \sum_n M_n \rho M_n^\dagger, \quad \sum_n M_n^\dagger M_n = 1,
     $$</div>
-</li>
-<li><span class="math">\(Q\)</span> is invariant under unitary&nbsp;transformations
+    where <span class="math">\(M_n\)</span> are Kraus operators describing the measure of the property&nbsp;labeled <span class="math">\(n\)</span>,&nbsp;and <span class="math">\(\rho\)</span> is the state before measurement&nbsp;and <span class="math">\(\rho_M\)</span> is the post-measurement state,&nbsp;then
     <div class="math">$$
-    Q(\rho) = Q(U \rho U^\dagger)\,.
+    Q(\rho) \ge \sum_n p_n Q\left(  \frac{M_n \rho M_n^\dagger}{p_n} \right), \quad p_n = \Tr M_n \rho M_n^\dagger,
     $$</div>
-</li>
-<li><span class="math">\(Q\)</span> is&nbsp;convex:
-    <div class="math">$$
-    Q\left(\sum_n p_n \rho_n\right) \le \sum_n p_n Q(\rho_n)\,.
-    $$</div>
-</li>
+    therefore, measurement cannot create entanglement, it generally decreases&nbsp;it. </li>
 </ul>
-<p>As a consequence, local measurements cannot increase the average&nbsp;entanglement
+<p>To the previous properties, it is sometimes required&nbsp;that <span class="math">\(Q\)</span> also satisfies&nbsp;convexity:
 </p>
-<div class="math">$$Q(\ket{\psi_{AB}}) \ge \sum_n p_n Q(\ket{\psi_n})\,,$$</div>
+<div class="math">$$
+Q\left(\sum_n p_n \rho_n\right) \le \sum_n p_n Q(\rho_n),
+$$</div>
 <p>
-where
+however, some important measures such as the logarithmic negativity do not satisfy convexity, and that the entanglement of independent&nbsp;systems <span class="math">\(\rho = \rho_A \otimes \rho_B\)</span> is&nbsp;additive 
 </p>
-<div class="math">$$p_n = \braket{\psi_{AB}| P^A_n |\psi_{AB}}$$</div>
-<p>
-is the probability of a measure of the&nbsp;property <span class="math">\(n\)</span> of&nbsp;the <span class="math">\(A\)</span> part,&nbsp;and 
-</p>
-<div class="math">$$\ket{\psi_n} = \frac{P^A_n \ket{\psi_{AB}}}{\sqrt{p_n}}$$</div>
-<p> 
-is the corresponding state&nbsp;of <span class="math">\(AB\)</span>. In a similar way, throwing away part of a system, cannot increase its&nbsp;entanglement.</p>
+<div class="math">$$
+Q(\rho) = Q(\rho_A) + Q(\rho_B).
+$$</div>
 <h2>Negativity</h2>
 <p>Contrary to the case of pure states, where the von Neumann entropy is a well defined entanglement measure, the quantification of the entanglement of general mixed states is more ambiguous. A mixed state of a bipartite&nbsp;system <span class="math">\(AB\)</span> that can be written&nbsp;as
 </p>
@@ -139,7 +169,7 @@ which, at variance&nbsp;to <span class="math">\(\rho_e\)</span>, is disentangled
 \rho_d = \frac{1}{2} \ket{00}\bra{00} + \frac{1}{2} \ket{11}\bra{11}\,,
 $$</div>
 <p>
-resulting in a state without quantum correlations between A and B. In fact, any equal mixture of maximally entangled states is separable. A remark is in order, the entanglement entropy of a separable&nbsp;state <span class="math">\(S(\rho)\)</span>, thought as a subsystem of a pure state whole system, is not zero: it is the entanglement between its two parts, entanglement that cannot be measured by the von Neumann entropy, which vanishes. A suitable measure of a partition of a mixed state is the <em>negativity</em>, we define&nbsp;below.</p>
+resulting in a state without quantum correlations between A and B. Note that the neumann entropy is not a good measure of the entanglement of a mixed state; for instance, the reduced density matrices of&nbsp;qubit <span class="math">\(A\)</span> corresponding to the&nbsp;states <span class="math">\(\rho_e\)</span> and <span class="math">\(\rho_d\)</span> are the same, but one is entangled and the other not. For general (bipartite) mixed states one must distinguish the contribution of classical correlation from the quantum ones. In fact, any equal mixture of maximally entangled states is separable. A remark is in order, the entanglement entropy of a separable&nbsp;state <span class="math">\(S(\rho)\)</span>, thought as a subsystem of a pure state whole system, is not zero: it is the entanglement between its two parts, entanglement that cannot be measured by the von Neumann entropy, which vanishes. A suitable measure of a partition of a mixed state is the <em>negativity</em>, we define&nbsp;below.</p>
 <p>It is easy to show that, for a separable&nbsp;state,
 </p>
 <div class="math">$$
