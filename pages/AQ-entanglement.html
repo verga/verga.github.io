@@ -372,7 +372,8 @@ where
 with <span class="math">\(\nu_A = 1/(D_A - 1)\)</span> and <span class="math">\(\nu_B = 1/(D_B - 1)\)</span>; or&nbsp;equivalently,
 </p>
 <div class="math">$$C_D(\rho) = \sqrt{2 \nu_A \nu_B(1 - \Tr \rho_A^2)}\,.$$</div>
-<h2>Exercises</h2>
+<h2>Applications</h2>
+<h3>Exercises</h3>
 <ol>
 <li>
 <p>Show that the&nbsp;state
@@ -412,7 +413,7 @@ and solve the set of differential equation for the&nbsp;unknowns <span class="ma
 <p><img src="/images/AQ-cqedC.png" alt="concurrence death" style="width: 400px;"/></p>
 <p>Concurrence as a function of time&nbsp;and <span class="math">\(x\)</span>, a parameter characterizing the quantum&nbsp;state <span class="math">\(\rho_x(t)\)</span>. The solid line separates the region where the entanglement vanishes: for a range&nbsp;of <span class="math">\(x\)</span> values the entanglement death time is&nbsp;finite.</p>
 </blockquote>
-<h2>Practicum</h2>
+<h3>Practicum</h3>
 <p>We want to investigate the growth of entanglement in a &#8220;generic&#8221; quantum system modeled by a random quantum circuit. We implement the quantum circuit&nbsp;using <code>python</code> and <code>numpy</code>.</p>
 <p>Initialize a the circuit&nbsp;of <span class="math">\(N\)</span> qubits in a product&nbsp;state <span class="math">\(\ket{0}^{\otimes N}\)</span>, and apply at each step a gate randomly chosen from the <em>Clifford</em>&nbsp;set
 </p>
@@ -434,11 +435,12 @@ where <span class="math">\(\mathsf{H,S,T,CNOT}\)</span> are the&nbsp;hadamard, <
 <p>After the application of the gate, measure the von Neumann&nbsp;entropy <span class="math">\(S(t)\)</span> of a (equal) bipartition of the qubits. Describe the evolution of the entanglement for the two sets of&nbsp;gates.</p>
 <p>One efficient way to code the von Neumann entropy is to use the singular value decomposition&nbsp;routine:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">entropy_L</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the singular value decomposition of a pure state L, N-L</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the singular value decomposition of a pure state bipartition (L, N-L)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">psi</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">L</span><span class="p">)))</span>
+    <span class="c1"># partition</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">L</span><span class="p">)))</span>
     <span class="c1"># spectrum</span>
-    <span class="n">ev</span> <span class="o">=</span> <span class="n">svdvals</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">ev</span> <span class="o">=</span> <span class="n">svdvals</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
     <span class="n">pn</span> <span class="o">=</span> <span class="n">ev</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">pn</span> <span class="o">=</span> <span class="n">pn</span><span class="p">[</span><span class="n">pn</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pn</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">pn</span><span class="p">))</span>
